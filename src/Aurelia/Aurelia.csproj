@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\index.html" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.3" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
@@ -20,6 +16,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
     <PackageReference Include="Voodoo.Patterns" Version="2.2.18" />
         <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="1.1.0" />
@@ -44,6 +41,11 @@
   <Folder Include="ClientApp\resources\binding-behaviors\" />
   <Folder Include="ClientApp\resources\elements\" />
   <Folder Include="ClientApp\resources\value-converters\" />
+  <Folder Include="wwwroot\dist\" />
+  <Folder Include="wwwroot\dist\" />
+</ItemGroup>
+<ItemGroup>
+  <None Include="wwwroot\index.html" />
 </ItemGroup>
   <Target Name="Custom" AfterTargets="Build">  
       <Exec Command="node node_modules/webpack/bin/webpack.js" />

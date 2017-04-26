@@ -6,7 +6,7 @@ import * as Moment from 'moment';
 
 @autoinject()
 export class App {
-    message = 'Hello World!?!?!';
+    message = 'Hello World!!!';
 
     constructor(private currentUserService: CurrentUserService,
     private userListApi: Api.UserList) {
@@ -15,11 +15,12 @@ export class App {
     }
     handleAutheticationState = async(user: Models.IAppPrincipal) =>{
         
-        console.log(user.isAuthenticated);
+        console.log("user.isAuthticated=" + user.isAuthenticated);
+        console.log("user.userName=" + user.userName);
         Moment()
         var date = Moment(user.refreshTime).format('YYYY-MM-DD HH:mm:ss')
         console.log("x=" + date);
-        console.log("foo");
+        
         var test = await this.userListApi.get({});
     }
 }

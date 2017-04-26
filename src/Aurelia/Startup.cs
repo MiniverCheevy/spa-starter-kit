@@ -66,8 +66,9 @@ namespace Fernweh.Aurelia
         app.UseDeveloperExceptionPage();
         app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
         {
-          HotModuleReplacement = true 
+          HotModuleReplacement = true , 
         });
+       // app.UseBrowserLink();
       }
 
       app.UseDefaultFiles();

@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-import { Aurelia } from 'aurelia-framework';
+import { Aurelia, PLATFORM } from "aurelia-framework";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 var Promise = require("bluebird");
@@ -14,7 +14,8 @@ export function configure(aurelia: Aurelia) {
         aurelia.use.developmentLogging();
     }
 
-    aurelia.start().then(() => aurelia.setRoot('app'));
+    aurelia.start()
+        .then(() => aurelia.setRoot(PLATFORM.moduleName("app")));
 }
 (<any>Promise).config({
     warnings: {
