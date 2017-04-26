@@ -1,0 +1,10 @@
+﻿<#foreach (var item in this.File.UsingStatements){#>
+using <#=item#>;
+<#}#>
+namespace <#=this.File.Namespace#>
+{
+    public class <#=this.File.Name#>
+    {
+
+    }
+}

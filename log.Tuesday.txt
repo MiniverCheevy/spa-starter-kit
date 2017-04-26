@@ -1,0 +1,460 @@
+Tuesday, April 25, 2017 9:04:30 AM
+System.Exception: Cannot find solution
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.findSolutionPath() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 150
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.Initialize(SolutionFacade solution) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 63
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 51
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 9:04:30 AM
+Details for 'Cannot find solution' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\Aurelia/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 9:05:43 AM
+System.Exception: Cannot find solution
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.findSolutionPath() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 150
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.Initialize(SolutionFacade solution) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 63
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 51
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 9:05:43 AM
+Details for 'Cannot find solution' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\Aurelia/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 9:06:28 AM
+System.Exception: Cannot find solution
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.findSolutionPath() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 150
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.Initialize(SolutionFacade solution) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 63
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 51
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 9:06:28 AM
+Details for 'Cannot find solution' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\Aurelia/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 10:46:00 AM
+System.Exception: Cannot find solution
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.findSolutionPath() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 150
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.Initialize(SolutionFacade solution) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 63
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 51
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 10:46:00 AM
+Details for 'Cannot find solution' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 10:52:17 AM
+System.Exception: Cannot find solution
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.findSolutionPath() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 150
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.Initialize(SolutionFacade solution) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 63
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 51
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 10:52:17 AM
+Details for 'Cannot find solution' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 10:54:46 AM
+System.Exception: Cannot find solution
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.findSolutionPath() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 150
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.Initialize(SolutionFacade solution) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 63
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 51
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 10:54:46 AM
+Details for 'Cannot find solution' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 10:56:45 AM
+System.Exception: Cannot find solution
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.findSolutionPath() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 150
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.Initialize(SolutionFacade solution) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 63
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 51
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 10:56:45 AM
+Details for 'Cannot find solution' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 11:41:29 AM
+System.Exception: Cannot find solution
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.findSolutionPath() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 150
+   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.Initialize(SolutionFacade solution) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 63
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 51
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 11:41:29 AM
+Details for 'Cannot find solution' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\tools\Spawn.exe",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 12:35:30 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 12:35:30 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 1:13:44 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 1:13:44 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 1:16:19 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 1:16:19 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 2:27:35 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 2:27:35 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 2:28:42 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 2:28:42 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 2:31:03 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 2:31:03 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 2:33:44 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 2:33:44 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 2:37:24 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 2:37:24 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 2:53:57 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 2:53:57 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 2:55:34 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 2:55:34 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 2:57:42 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 2:57:42 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Tuesday, April 25, 2017 3:00:16 PM
+System.Exception: Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 38
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 35
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dropbox\Lib\Projects\starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 65
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Tuesday, April 25, 2017 3:00:16 PM
+Details for 'Could not find command c:\dropbox\lib\projects\spa-starter-kit\src\react/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\Dropbox\Lib\Projects\spa-starter-kit\tools",
+     Arguments= new String[] {
+          "C:\Dropbox\Lib\Projects\spa-starter-kit\src\React/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************

@@ -1,0 +1,104 @@
+{
+  "Id": 0,
+  "GUID": "12f84e98-6f09-4333-80ff-50cab1db5fc6",
+  "IsProtected": false,
+  "Exception": {
+    "ClassName": "System.NotImplementedException",
+    "Message": "The method or operation is not implemented.",
+    "Data": {
+      "Test":
+        "Details for 'The method or operation is not implemented.' exception:\r\nCode to reproduce error:\r\n\r\nvar request= new EmptyRequest {\r\n},\r\n;\r\nvar response = new TestError(request).Execute();\r\nAssert.AreEqual(true, response.IsOk);\r\n"
+    },
+    "InnerException": null,
+    "HelpURL": null,
+    "StackTraceString":
+      "   at Fernweh.Core.Operations.Errors.TestError.ProcessRequestAsync() in C:\\Dev\\Fernweh.2\\Fernweh.Core\\Operations\\Errors\\TestError.cs:line 21\r\n   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()",
+    "RemoteStackTraceString": null,
+    "RemoteStackIndex": 0,
+    "ExceptionMethod":
+      "8\nProcessRequestAsync\nFernweh.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\nFernweh.Core.Operations.Errors.TestError\nSystem.Threading.Tasks.Task`1[Voodoo.Messages.Response] ProcessRequestAsync()",
+    "HResult": -2147467263,
+    "Source": "Fernweh.Core",
+    "WatsonBuckets": null
+  },
+  "MachineName": "SH-DEV-042",
+  "Type": "System.NotImplementedException",
+  "Source": "Fernweh.Core",
+  "Message": "The method or operation is not implemented.",
+  "Detail":
+    "System.NotImplementedException: The method or operation is not implemented.\r\n   at Fernweh.Core.Operations.Errors.TestError.ProcessRequestAsync() in C:\\Dev\\Fernweh.2\\Fernweh.Core\\Operations\\Errors\\TestError.cs:line 21\r\n   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()",
+  "ErrorHash": -1900871196,
+  "CreationDate": "2016-10-10T20:34:31.899358Z",
+  "StatusCode": 0,
+  "QueryString": [],
+  "Form": [
+    {
+      "Name": "Error Reading Form",
+      "Value": "Incorrect Content-Type: "
+    }
+  ],
+  "Cookies": [
+    {
+      "Name": "Fernwehcookie",
+      "Value":
+        "CfDJ8FSmaSye7GBKvY2hAMoZPwybv9D7mLtA8tUiR-RiaPVLYibqzTB7b2RIghVtIjJZmG7OpIx69vxnZsHBPUEf6LwdRJGx8o98CtC96L2LZ00BZ4au1pVuuxQOERARZqk0lLfkgWZYvRBaHKWN9XnRFfWyfOw65nD7kjQUJ3WPNoz28eBY7g_EKG72LEgxDa4DvvP-vgc9x1HFwYQzpyxl6UMpRsX3nja-en7DbnTaWhKslGTEa0d9CX5WJe2AaLzXJltHXeQaPru82aCAItzdlk9JbUSd-bpEtuy11T-5A4NdzSdEN3BN8mO11wK8gjswHSbi4hMvfG-alJiyHeWuTzHlV0WO53ZvH7LfxCBzQ-dXt-mU85qiFZ9jaxVMnKhrSEzH74tJsrjp0sxEXlAUSgKfHGcoBs8DVIAoxPVuMnMgQtVcfRkEEJnUMlB8JOeXPyk16ymW1u7FWa__GZXuRgYo1uPE-Z_u-Tg8qlG2sYOplhpXdzJa0uKi-7Zzbbs4Ua70t8HbKHsHgnZg_vZPj3qIteXPYy5s8WWgyldW6NXZjd6kcmE7fMs7yzM84AGmKVo9D8ezNanbb87TMwy6tp0h-NVQpJhu01wUSX5uY0ay_akfwbTOu6dkhqLybmsP8VL3wUXPdqM6_xmiR070eZ_6f73mOHBtlnJU6itOVPZmez6KWj4nFlDx0m0HjCXDcIzLqg7CcUfnPY5XMjLd_sxXQMTKJ3DBS6bk37u-7Wsxql53ld7Eop21UeNox20SO0Koozoy3LWLH-4SsWW5DgEFg2Hd0DWPG-c15MC2pSPY2O8sD9v8A9s_aOsFjTOczEJXjMdMLctWivPQ91ioNXCrMWFnJyb26dCKrbc6KzzpMffpULhmTd8NGpm0iRIxk_u4I6Mr3a8cNn_8hJdJrGv3NHHdo7JsrCzBzdMgXWay3dG8-YIEqCbbTOoSGtT-OJPVRwsqvbsasB5xNzssX2MsiWY1-7xp6gtmPhf6eIQS"
+    }
+  ],
+  "RequestHeaders": [
+    {
+      "Name": "Connection",
+      "Value": "Keep-Alive"
+    },
+    {
+      "Name": "Accept",
+      "Value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+    },
+    {
+      "Name": "Accept-Encoding",
+      "Value": "gzip, deflate, sdch"
+    },
+    {
+      "Name": "Accept-Language",
+      "Value": "en-US,en;q=0.8"
+    },
+    {
+      "Name": "Host",
+      "Value": "localhost:4828"
+    },
+    {
+      "Name": "User-Agent",
+      "Value":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+    },
+    {
+      "Name": "Upgrade-Insecure-Requests",
+      "Value": "1"
+    },
+    {
+      "Name": "DNT",
+      "Value": "1"
+    },
+    {
+      "Name": "MS-ASPNETCORE-TOKEN",
+      "Value": "b656a332-6b63-4064-be8e-32f3d6855ec1"
+    },
+    {
+      "Name": "X-Original-Proto",
+      "Value": "http"
+    },
+    {
+      "Name": "X-Original-For",
+      "Value": "127.0.0.1:5590"
+    }
+  ],
+  "CustomData": {
+    "Test":
+      "Details for 'The method or operation is not implemented.' exception:\r\nCode to reproduce error:\r\n\r\nvar request= new EmptyRequest {\r\n},\r\n;\r\nvar response = new TestError(request).Execute();\r\nAssert.AreEqual(true, response.IsOk);\r\n"
+  },
+  "DuplicateCount": 1,
+  "IsDuplicate": false,
+  "Host": "",
+  "Url": "http:///",
+  "IPAddress": "127.0.0.1",
+  "RollupPerServer": false
+}

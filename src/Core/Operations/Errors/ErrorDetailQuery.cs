@@ -1,0 +1,44 @@
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using Fernweh.Core.Context;
+using Fernweh.Core.Infrastructure;
+using Fernweh.Core.Operations.Errors.Extras;
+using Voodoo.Infrastructure;
+using Voodoo.Messages;
+using Voodoo.Operations.Async;
+
+namespace Fernweh.Core.Operations.Errors
+{
+    [Rest(Verb.Get, RestResources.ErrorDetail)]
+    public class ErrorDetailQuery : QueryAsync<IdRequest, Response<ErrorDetail>>
+    {
+        private FernwehContext context;
+
+        public ErrorDetailQuery(IdRequest request) : base(request)
+        {
+        }
+
+        protected override async Task<Response<ErrorDetail>> ProcessRequestAsync()
+        {
+            using (context = IOC.GetContext())
+            {
+                var error =
+                    await
+                        context.Errors.AsNoTracking()
+                            .AsQueryable()
+                            .Where(c => c.Id == request.Id)
+                            .Select(c => c.FullJson)
+                            .FirstOrDefaultAsync();
+                if (error != null)
+                    response.Data = ErrorJsonDeserializer.Deserialize(error);
+                else
+                {
+                    response.IsOk = false;
+                    response.Message = "Error not found";
+                }
+            }
+            return response;
+        }
+    }
+}

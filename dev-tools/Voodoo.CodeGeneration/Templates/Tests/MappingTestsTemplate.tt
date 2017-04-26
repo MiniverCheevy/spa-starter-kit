@@ -1,0 +1,80 @@
+﻿<#@ template language="C#"  linePragmas="false" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Cache;
+using System.Text;
+using System.Threading.Tasks;
+using Voodoo.Messages;
+using Voodoo.TestData;
+<#foreach (var item in this.File.UsingStatements){#>
+using <#=item#>;
+<#}#>
+
+namespace <#=this.File.Namespace#>
+{
+
+    <#=this.File.Tests.ClassLevelAttribute#>
+    public class <#=this.File.Name#> 
+    {
+              
+        private Randomizer randomizer = new Randomizer();
+
+        private <#=this.File.Type.Name#> arrange()
+        {
+            TestHelper.SetRandomDataSeed(1);			
+            var source = new <#=this.File.Type.Name#>();
+			TestHelper.Randomizer.Randomize(source);
+            return source;
+        }
+
+        <#=this.File.Tests.TestLevelAttribute#> 
+        public void Map_Message_PropertiesTheSame()
+        {
+			var testHelper =
+            new MappingTesterHelper<<#=this.File.Type.Name#>, <#=this.File.Type.MessageName#>>();
+            var source = arrange();
+            var message = source.To<#=this.File.Type.Name#>Message();
+            var target = new <#=this.File.Type.Name#>();
+            target.UpdateFrom(message);
+			<#if (this.File.Type.HasId) {#>
+
+            testHelper.Compare(source, message, new string[]{});
+			testHelper.Compare(target, message, new[] { "Id" });
+			<#}else{#>
+
+			testHelper.Compare(source, message, new string[]{});
+			testHelper.Compare(target, message, new string[]{});
+			<#}#>
+
+        }   
+		<#if (this.File.Type.HasDetailFlag) {#>
+
+		 <#=this.File.Tests.TestLevelAttribute#> 
+        public void Map_Detail_PropertiesTheSame()
+        {
+			var testHelper =
+            new MappingTesterHelper<<#=this.File.Type.Name#>, <#=this.File.Type.DetailName#>>();
+            var source = arrange();
+            var message = source.To<#=this.File.Type.Name#>Detail();
+            var target = new <#=this.File.Type.Name#>();
+			target.UpdateFrom(message);
+			<#if (this.File.Type.HasId) {#>
+
+            testHelper.Compare(source, message, new string[]{});
+			testHelper.Compare(target, message, new[] { "Id" });
+			<#}else{#>
+
+			testHelper.Compare(source, message, new string[]{});
+			testHelper.Compare(target, message, new string[]{});
+			<#}#>
+
+        }   
+		<#}#>
+
+    }
+}

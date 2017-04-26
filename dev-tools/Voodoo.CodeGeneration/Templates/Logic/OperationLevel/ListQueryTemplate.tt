@@ -1,0 +1,62 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#"  linePragmas="false"  #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".txt" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Voodoo.Messages;
+using Voodoo.Operations.Async;
+using Voodoo.Infrastructure;
+using Voodoo.Validation.Infrastructure;
+
+using System.Data.Entity;
+<#foreach (var item in this.File.UsingStatements){#>
+using <#=item#>;
+<#}#>
+namespace <#=this.File.Namespace#>
+{
+	[Rest(Verb.Get, RestResources.<#=this.File.Type.Name#>List)]
+    public class <#=this.File.Name#> : QueryAsync<<#=this.File.Type.Name#>QueryRequest,<#=this.File.Type.Name#>QueryResponse>
+    {
+		<#if(this.File.HasContext){#>
+private <#=this.File.ContextName#> context;
+		<#}#>
+		protected IValidator validator = ValidationManager.GetDefaultValidatitor();
+
+        public <#=this.File.Name#> (<#=this.File.Type.Name#>QueryRequest request) : base(request)
+        {
+        }
+
+        protected override async Task<<#=this.File.Type.Name#>QueryResponse> ProcessRequestAsync()
+        {
+
+		<#if(this.File.HasContext){#>
+		using(context = IOC.GetContext())
+		{
+		<#}#>
+
+		var query =context.<#=this.File.Type.PluralName#>.AsNoTracking().AsQueryable();
+		var data = await query.ToPagedResponseAsync(request, c => c.To<#=this.File.Type.Name#>Message());
+		response.From(data, c=>c);
+        //Note: complex operations in the mapping may result in an error you can replace it with 
+		
+		//var res = await query.ToPagedResponseAsync(request);
+        //response.From(res, c=> helper.Map(c));
+
+        //the first method is preferred as it limits the data returned from the server
+                    
+		<#if(this.File.HasContext){#>
+}
+		<#}#>
+
+		return response;
+        }
+
+    }
+}
+

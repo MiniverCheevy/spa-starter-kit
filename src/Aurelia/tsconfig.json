@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es5",
+    "inlineSourceMap":true,
+    "module": "amd",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipDefaultLibCheck": true,
+    "lib": [ "es6", "dom" ],
+    "types": [ "node" ]
+  },
+  "exclude": ["bin", "node_modules"],
+  "atom": { "rewriteTsconfig": false }
+}

@@ -1,0 +1,663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7AAC4FDB-1C6A-453F-8126-D2E89BC1B6D9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Voodoo.CodeGeneration</RootNamespace>
+    <AssemblyName>Spawn</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\tools\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Voodoo.CodeGeneration.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E4A2AD892D9BE58115BB0425F856D10A7E281771</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Voodoo.CodeGeneration_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.4.0.0\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Voodoo, Version=2.2.18.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Voodoo.Patterns.2.2.18\lib\net46\Voodoo.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\Cleaner.cs" />
+    <Compile Include="Helpers\CodeFormatter.cs" />
+    <Compile Include="Helpers\CommandHelper.cs" />
+    <Compile Include="Helpers\CommandLineParser.cs" />
+    <Compile Include="Helpers\Flags.cs" />
+    <Compile Include="Helpers\ModelBuilders\GraphBuilder.cs" />
+    <Compile Include="Helpers\ModelBuilders\ModelBuilder.cs" />
+    <Compile Include="Helpers\ModelBuilders\PCLGraphBuilder.cs" />
+    <Compile Include="Helpers\ModelBuilders\PCLModelBuilder.cs" />
+    <Compile Include="Helpers\ModelBuilders\ServiceDeclaration.cs" />
+    <Compile Include="Helpers\ModelBuilders\TypeScriptGraphBuilder.cs" />
+    <Compile Include="Helpers\ModelBuilders\TypeScriptModelBuilder.cs" />
+    <Compile Include="Helpers\NameValuePairBuilder.cs" />
+    <Compile Include="Helpers\RestBuilder.cs" />
+    <Compile Include="Helpers\StartupHelper.cs" />
+    <Compile Include="Helpers\TypeComparer.cs" />
+    <Compile Include="Helpers\ClientModelFactory.cs" />
+    <Compile Include="Helpers\VisualStudioAutomator.cs" />
+    <Compile Include="Helpers\ZipHelper.cs" />
+    <Compile Include="Infrastructure\GeneratesAttribute.cs" />
+    <Compile Include="Infrastructure\CodeFileComparer.cs" />
+    <Compile Include="Batches\Batch.cs" />
+    <Compile Include="Batches\Logics\CommandBatch.cs" />
+    <Compile Include="Batches\Logics\LogicBatch.cs" />
+    <Compile Include="Batches\Logics\MapperBatch.cs" />
+    <Compile Include="Batches\Logics\MessageBatch.cs" />
+    <Compile Include="Batches\Logics\QueryBatch.cs" />
+    <Compile Include="Batches\PCL\PCLBatch.cs" />
+    <Compile Include="Batches\ScratchFiles\MappingBatch.cs" />
+    <Compile Include="Batches\Tests\TestBatch.cs" />
+    <Compile Include="Models\Constants.cs" />
+    <Compile Include="Models\Empty.cs" />
+    <Compile Include="Models\GeneratorCommand.cs" />
+    <Compile Include="Models\LogEntry.cs" />
+    <Compile Include="Models\Reflection\GeneratedProperty.cs" />
+    <Compile Include="Models\Reflection\PropertyFacade.cs" />
+    <Compile Include="Models\Reflection\PropertyGroup.cs" />
+    <Compile Include="Models\Reflection\TypeFacade.cs" />
+    <Compile Include="Models\Reflection\NameValuePairTypeInformation.cs" />
+    <Compile Include="Models\Rest\Operation.cs" />
+    <Compile Include="Models\Rest\Resource.cs" />
+    <Compile Include="Models\Rest\RestMethod.cs" />
+    <Compile Include="Models\TestingFramework\ITestingFramework.cs" />
+    <Compile Include="Models\TestingFramework\MsTestTestingFramework.cs" />
+    <Compile Include="Models\TestingFramework\XUnitTestingFramework.cs" />
+    <Compile Include="Models\TypedCodeFile.cs" />
+    <Compile Include="Models\VisualStudio\ProjectFacade.cs" />
+    <Compile Include="Models\VisualStudio\SolutionFacade.cs" />
+    <Compile Include="Models\VisualStudio\VisualStudioItemType.cs" />
+    <Compile Include="Models\WebFramework.cs" />
+    <Compile Include="Operations\BuilderRequest.cs" />
+    <Compile Include="Operations\BuilderResponse.cs" />
+    <Compile Include="Operations\ProjectBuilderCommand.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Projects\IProject.cs" />
+    <Compile Include="Projects\ProjectHelper.cs" />
+    <Compile Include="Projects\SdkProjects\SdkProject.cs" />
+    <Compile Include="Projects\SdkProjects\SdkProjectInternal.cs" />
+    <Compile Include="Projects\ToolsProjects\ToolsProject.cs" />
+    <Compile Include="Projects\ToolsProjects\ToolsProjectInternal.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\DeleteCommandFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\DeleteCommandTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteCommandTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\DetailQueryFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\DetailQueryTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DetailQueryTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\ExtensionFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\Extras\ExtensionTemplate.cs">
+      <DependentUpon>ExtensionTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\MessagesTemplate.cs">
+      <DependentUpon>MessagesTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\MessagesFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\SaveCommandFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\SaveCommandTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaveCommandTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\UpdateCommandFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\UpdateCommandTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateCommandTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\PCL\ServiceFile.cs" />
+    <Compile Include="Templates\PCL\ServiceTemplate.cs">
+      <DependentUpon>ServiceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\PCL\ModelsFile.cs" />
+    <Compile Include="Templates\PCL\ModelsTemplate.cs">
+      <DependentUpon>ModelsTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Tests\AddSaveCommandTestsFile.cs" />
+    <Compile Include="Templates\Tests\AddSaveCommandTestsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddSaveCommandTestsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Tests\DeleteCommandTestsFile.cs" />
+    <Compile Include="Templates\Tests\MappingTestsFile.cs" />
+    <Compile Include="Templates\Tests\MappingTestsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MappingTestsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Tests\TestHelperSaveFile.cs" />
+    <Compile Include="Templates\Tests\TestHelperSaveTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestHelperSaveTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Tests\UpdateCommandTestsFile.cs" />
+    <Compile Include="Templates\Tests\UpdateCommandTestsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateCommandTestsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Tests\DeleteCommandTestsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteCommandTestsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Tests\TestFile.cs" />
+    <Compile Include="Templates\Tests\TestHelperFile.cs" />
+    <Compile Include="Templates\Tests\TestHelperTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestHelperTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Tests\TestTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Scratch\GridMdFile.cs" />
+    <Compile Include="Templates\Scratch\GridMdTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridMdTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Scratch\MappingFile.cs" />
+    <Compile Include="Templates\Scratch\MappingTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MappingTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Batches\ScratchFiles\TypeScriptModelBatch.cs" />
+    <Compile Include="Batches\Token.cs" />
+    <Compile Include="Batches\Webs\WebBatch.cs" />
+    <Compile Include="Models\ConfigurationFile.cs" />
+    <Compile Include="Models\SourceControl\ISourceControlProvider.cs" />
+    <Compile Include="Models\SourceControl\SourceControlProviderFactory.cs" />
+    <Compile Include="Models\SourceControl\TfExeSourceControlProvider.cs" />
+    <Compile Include="Models\SourceControl\TfsSourceControlProvider.cs" />
+    <Compile Include="Operations\Startup.cs" />
+    <Compile Include="Operations\StartupFromConfig.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\VisualStudioHelper.cs" />
+    <Compile Include="Helpers\VSHelper.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\AddCommandFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\AddCommandTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddCommandTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\RepositoryFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\Extras\RepositoryTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepositoryTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\MessageFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\Extras\MessageTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MessageTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\QueryResponseFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\Extras\QueryResponseTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QueryResponseTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\ListQueryTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListQueryTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\ListQueryFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\Extras\QueryRequestFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\Extras\QueryRequestTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QueryRequestTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsEnumFile.cs" />
+    <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsEnumTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListsEnumTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsHelperFile.cs" />
+    <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsHelperTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListsHelperTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsRequestFile.cs" />
+    <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsRequestTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListsRequestTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsResponseFile.cs" />
+    <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsResponseTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListsResponseTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\ProjectLevel\RestResourcesFile.cs" />
+    <Compile Include="Templates\Logic\ProjectLevel\RestResourcesTemplate.cs">
+      <DependentUpon>RestResourcesTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Templates\Tests\AddCommandTestsFile.cs" />
+    <Compile Include="Templates\Tests\AddCommandTestsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddCommandTestsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Tests\QueryTestsFile.cs" />
+    <Compile Include="Templates\Tests\QueryTestsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QueryTestsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\MapperTemplate.cs">
+      <DependentUpon>MapperTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\MapperFile.cs" />
+    <Compile Include="Templates\Scratch\TypeScriptModel.cs" />
+    <Compile Include="Templates\Tests\UpdateSaveCommandTestsFile.cs" />
+    <Compile Include="Templates\Tests\UpdateSaveCommandTestsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateSaveCommandTestsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Web\OperationLevel\AngularMd\AngularMdUiFactory.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\ApiControllerFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\ApiControllerTemplate.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\ApiControllerTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApiControllerTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\CustomAuthorizeAttributeTemplate.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\CustomAuthorizeAttributeTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomAuthorizeAttributeTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\CustomAuthorizeTemplate.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceTemplate.cs">
+      <DependentUpon>TsServiceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TypeScriptModelsFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TypeScriptModelsTemplate.cs">
+      <DependentUpon>TypeScriptModelsTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\JsServiceFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\JsServiceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JsServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TsServiceBatchFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TsServiceBatchTemplate.cs">
+      <DependentUpon>TsServiceBatchTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\TSModelsFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TypeScriptModelsFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TypeScriptModelsTemplate.cs">
+      <DependentUpon>TypeScriptModelsTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TsServiceFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TypeScriptModelsFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TypeScriptModelsTemplate.cs">
+      <DependentUpon>TypeScriptModelsTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\TSServiceFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TsServiceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TsServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\WebFrameworkFileFactory.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\WebFramworkBatchFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <Compile Include="Helpers\MappingFactory.cs" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="spawn.template.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\DeleteCommandTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DeleteCommandTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\DetailQueryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DetailQueryTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\Extras\ExtensionTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ExtensionTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\Extras\MessagesTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MessagesTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\SaveCommandTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SaveCommandTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\UpdateCommandTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UpdateCommandTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\PCL\ServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ServiceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\PCL\ModelsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ModelsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\AddSaveCommandTestsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AddSaveCommandTestsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\DeleteCommandTestsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DeleteCommandTestsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\MappingTestsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MappingTestsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\TestHelperSaveTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TestHelperSaveTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\UpdateCommandTestsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UpdateCommandTestsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\TestHelperTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TestHelperTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\TestTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TestTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Scratch\GridMdTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>GridMdTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Scratch\MappingTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MappingTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\AddCommandTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AddCommandTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\_fileTemplate.txt" />
+    <Content Include="Templates\Logic\OperationLevel\_templateTemplate.txt" />
+    <Content Include="Templates\Logic\OperationLevel\Extras\RepositoryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RepositoryTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\Extras\MessageTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MessageTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\Extras\QueryResponseTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>QueryResponseTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\ListQueryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ListQueryTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\OperationLevel\Extras\QueryRequestTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>QueryRequestTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsEnumTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ListsEnumTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsHelperTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ListsHelperTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsRequestTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ListsRequestTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsResponseTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ListsResponseTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\ProjectLevel\RestResourcesTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RestResourcesTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\AddCommandTestsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AddCommandTestsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\QueryTestsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>QueryTestsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Logic\ProjectLevel\_fileTemplate.txt" />
+    <Content Include="Templates\Logic\ProjectLevel\_templateTemplate.txt" />
+    <Content Include="Templates\Logic\OperationLevel\Extras\MapperTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MapperTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Tests\UpdateSaveCommandTestsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UpdateSaveCommandTestsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Web\OperationLevel\Grid.txt" />
+    <Content Include="Templates\Web\OperationLevel\GroupedGrid.txt" />
+    <Content Include="Templates\Web\ProjectLevel\ApiControllerTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiControllerTemplate1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Web\ProjectLevel\CustomAuthorizeAttributeTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CustomAuthorizeAttributeTemplate1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TsServiceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TypeScriptModelsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypeScriptModelsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\JsServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JsServiceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TypeScriptModelsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypeScriptModelsTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TsServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TsServiceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TsServiceBatchTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TsServiceBatchTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TypeScriptModelsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypeScriptModelsTemplate.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

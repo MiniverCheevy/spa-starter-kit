@@ -1,0 +1,62 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#"  linePragmas="false"  #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".txt" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Voodoo.Messages;
+using Voodoo.Operations.Async;
+using Voodoo.Infrastructure;
+using Voodoo.Validation.Infrastructure;
+using System.Data.Entity;
+<#foreach (var item in this.File.UsingStatements){#>
+using <#=item#>;
+<#}#>
+namespace <#=this.File.Namespace#>
+{
+	[Rest(Verb.Get, RestResources.<#=this.File.Type.Name#>)]
+    public class <#=this.File.Name#> : QueryAsync<IdRequest,Response<<#=this.File.Type.DetailQueryMessageName#>>>
+    {
+		<#if(this.File.HasContext){#>
+		private <#=this.File.ContextName#> context;
+		<#}#>
+		protected IValidator validator = ValidationManager.GetDefaultValidatitor();
+
+        public <#=this.File.Name#> (IdRequest request) : base(request)
+        {
+        }
+
+        protected override async Task<Response<<#=this.File.Type.DetailQueryMessageName#>>> ProcessRequestAsync()
+        {
+			var model = new <#=this.File.Type.Name#>();
+			if (request.Id != 0)
+			{
+				<#if(this.File.HasContext && this.File.Type.HasId){#>
+				using(context = IOC.GetContext())
+				{
+					var query = context.<#=this.File.Type.PluralName#>.AsNoTracking().AsQueryable()
+								.Where(c=>c.Id == request.Id);
+			
+					model = await query.FirstOrDefaultAsync();
+					if (model == null)
+						throw new Exception(<#=this.File.Type.Name#>Messages.NotFound);
+					}			
+
+					
+				}
+				<#}#>
+			<#if (this.File.Type.HasDetailFlag) {#>
+			 response.Data = model.To<#=this.File.Type.Name#>Detail();
+			 <#}else{#>
+			 response.Data = model.To<#=this.File.Type.Name#>Message();
+			 <#}#>
+			return response;	
+			}			
+		}
+}
+

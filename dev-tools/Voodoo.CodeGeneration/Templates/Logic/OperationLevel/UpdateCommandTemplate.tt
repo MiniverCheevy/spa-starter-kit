@@ -1,0 +1,57 @@
+﻿<#@ template language="C#"  linePragmas="false" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Voodoo;
+using Voodoo.Messages;
+using Voodoo.Operations;
+using Voodoo.Operations.Async;
+using Voodoo.Validation.Infrastructure;
+using System.Data.Entity;
+<#foreach (var item in this.File.UsingStatements){#>
+using <#=item#>; 
+<#}#>
+namespace <#=this.File.Namespace#>
+{
+	[Rest(Verb.Put, RestResources.<#=this.File.Type.Name#>Detail)]
+    public class <#=this.File.Name#> :CommandAsync<<#=this.File.Type.DetailQueryMessageName#>, Response>
+    {
+  
+		
+		<#if(this.File.HasContext){#>
+protected <#=this.File.ContextName#> context;
+		<#}#>
+		protected IValidator validator = ValidationManager.GetDefaultValidatitor();
+        public <#=this.File.Name#>(<#=this.File.Type.DetailQueryMessageName#> request) : base(request)
+        {
+        }      	  
+
+		protected override async Task<Response> ProcessRequestAsync()
+        {
+
+			//The request object is validated by default, validate anything else with
+			//request.<Something>.Validate();
+			
+            <#if(this.File.HasContext && this.File.Type.HasId){#>
+			using(context = IOC.GetContext())
+			{
+				var model = await context.<#=this.File.Type.PluralName#>
+									.FirstOrDefaultAsync(c=>c.Id == request.Id);
+
+				if (model == null)
+					throw new Exception(<#=this.File.Type.Name#>Messages.NotFound);
+				
+				model.UpdateFrom(request);
+				await context.SaveChangesAsync();
+			}
+			<#}#>
+			response.Message = <#=this.File.Type.Name#>Messages.UpdateOk;
+			return response;
+        }
+    }
+}

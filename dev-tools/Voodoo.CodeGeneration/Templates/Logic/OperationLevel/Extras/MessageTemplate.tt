@@ -1,0 +1,40 @@
+﻿<#@ template language="C#"  linePragmas="false" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using Voodoo.Messages;
+<#foreach (var item in File.UsingStatements){#>
+using <#=item#>;
+<#}#>
+namespace <#=this.File.Namespace#>
+{
+    public class <#=this.File.Type.MessageName#>
+    {
+        <#foreach(var item in this.File.Type.MessageProperties){#>
+		<#foreach(var attr in item.Property.Attributes){#>
+<#=attr.Text#>
+		<#}#>
+	public <#=item.StringifiedTypeName#> <#=item.PropertyName#> {get;set;}
+
+			<#}#>
+
+		
+    }
+	<#if(File.HasDetail){#>
+	public class <#=this.File.Type.DetailName#>
+	{
+	<#foreach(var item in this.File.Type.DetailMessageProperties){#>
+		<#foreach(var attr in item.Property.Attributes){#>
+<#=attr.Text#>
+		<#}#>
+	public <#=item.StringifiedTypeName#> <#=item.PropertyName#> {get;set;}
+
+			<#}#>
+	}
+	<#}#>
+}

@@ -1,0 +1,3 @@
+﻿namespace Fernweh.Core.Logging
+{
+}

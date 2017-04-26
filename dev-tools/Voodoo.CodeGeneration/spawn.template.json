@@ -1,0 +1,12 @@
+{
+  "SolutionName": "Template.sln",
+  "ModelProjectPath": "\\Template.Core\\Template.Core.csproj",
+  "LogicProjectPath": "\\Template.Core\\Template.Core.csproj",
+  "WebProjectPath": "\\Template.Spa\\Template.Spa.csproj",
+  "TestProjectPath": "\\Template.Tests\\Template.Tests.csproj",
+  "DataProjectPath": "\\Template.Core\\Template.Core.csproj",
+  "ContextTypeName": "Template.Core.Context.TemplateContext",
+  "JsAppPathFromWebProjectRoot": null,
+  "AddToSourceControl": true,
+  "SourceControlprovider": "TFS"
+}
