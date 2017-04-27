@@ -46,6 +46,8 @@
     <Reference Include="FluentAssertions.Core, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -65,29 +67,14 @@
     <Reference Include="Voodoo, Version=2.2.18.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Voodoo.Patterns.2.2.18\lib\net46\Voodoo.dll</HintPath>
     </Reference>
-    <Reference Include="Voodoo.TestData, Version=1.0.16.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.TestData.1.0.17\lib\net40\Voodoo.TestData.dll</HintPath>
+    <Reference Include="Voodoo.TestData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Voodoo.TestData.1.0.18\lib\net40\Voodoo.TestData.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInitialize.cs" />
     <Compile Include="CodeGeneration\Projects\SdkProjects\SdkProjectTests.cs" />
     <Compile Include="CodeGeneration\Projects\ToolsProjects\ToolsProjectTests.cs" />
-    <Compile Include="Core\Security\EncryptionTests.cs" />
-    <Compile Include="Fakes\FakeContextFactory.cs" />
-    <Compile Include="Fakes\TestFileSystemProvider.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingAddCommandTests.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingDeleteCommandTests.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingMappingTests.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingQueryTests.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingTestHelper.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingUpdateCommandTests.cs" />
-    <Compile Include="Operations\Users\UserAddCommandTests.cs" />
-    <Compile Include="Operations\Users\UserDeleteCommandTests.cs" />
-    <Compile Include="Operations\Users\UserMappingTests.cs" />
-    <Compile Include="Operations\Users\UserQueryTests.cs" />
-    <Compile Include="Operations\Users\UserTestHelper.cs" />
-    <Compile Include="Operations\Users\UserUpdateCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,13 +90,15 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CodeGeneration\Projects\ToolsProjects\standard.csproj.xml" />
-    <Content Include="Data\corporate.txt" />
-    <Content Include="Data\star-trek.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
+    <ProjectReference Include="..\..\src\Core\Core.csproj">
       <Project>{f298643e-3dae-4a0d-914b-ce85df3b0f99}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Voodoo.CodeGeneration\Voodoo.CodeGeneration.csproj">
+      <Project>{7aac4fdb-1c6a-453f-8126-d2e89bc1b6d9}</Project>
+      <Name>Voodoo.CodeGeneration</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -7,7 +7,7 @@ using Voodoo.CodeGeneration.Projects;
 using Voodoo.CodeGeneration.Projects.SdkProjects;
 using Voodoo.CodeGeneration.Projects.ToolsProjects;
 using SdkProjectInternal = Voodoo.CodeGeneration.Projects.SdkProjects.Project;
-using ToolsProjectInternal = Voodoo.CodeGeneration.Projects.ToolsProjects.Project;
+using ToolsProjectInternal = Microsoft.Build.Evaluation.Project;
 
 namespace Voodoo.CodeGeneration.Projects
 {
@@ -23,7 +23,7 @@ namespace Voodoo.CodeGeneration.Projects
             }
             else
             {
-                var obj = Objectifyer.FromXml<ToolsProjectInternal>(xml);
+                var obj = new ToolsProjectInternal(path);
                 return new ToolsProject(obj, path);
             }
         }

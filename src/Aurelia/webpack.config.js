@@ -25,7 +25,7 @@ module.exports = {
         loaders: [
             { test: /\.ts$/, include: /ClientApp/, loader: 'ts-loader', query: { silent: true } },
             { test: /\.html$/, loader: 'html-loader' },
-            { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
+            { test: /\.css$/, loader: 'raw-loader' },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
             { test: /\.json$/, loader: 'json-loader' }
         ]

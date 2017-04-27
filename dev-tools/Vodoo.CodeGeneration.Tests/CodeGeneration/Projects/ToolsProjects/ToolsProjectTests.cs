@@ -1,6 +1,8 @@
 ﻿using System.IO;
+using System.Xml;
 using Fernweh.Tests.CodeGeneration.Projects.SdkProjects;
 using FluentAssertions;
+using Microsoft.Build.Evaluation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo;
 using Voodoo.CodeGeneration.Projects.ToolsProjects;
@@ -11,25 +13,33 @@ namespace Fernweh.Tests.CodeGeneration.Projects.ToolsProjects
     public class ToolsProjectTests
     {
         private Project standardCsProj;
+        private XmlReader reader;        
 
-        private string loadResource(string name)
+        ~ToolsProjectTests()
+        {
+            
+            reader.Dispose();   
+        }
+
+        private XmlReader loadResource(string name)
         {
             var assembly = typeof(SdkProjectTests).Assembly;
             name = $"{assembly.GetName().Name}.{name}";
-            using (var stream = assembly.GetManifestResourceStream(name))
-            using (var reader = new StreamReader(stream))
-            {
-                return reader.ReadToEnd();
-            }
+            var stream = assembly.GetManifestResourceStream(name);
+            return XmlReader.Create(stream);
+
+
         }
 
         public ToolsProjectTests()
         {
-            this.standardCsProj =
-                Objectifyer.FromXml<Project>(loadResource("CodeGeneration.Projects.ToolsProjects.standard.csproj.xml"));
+
+            this.reader = loadResource("CodeGeneration.Projects.ToolsProjects.standard.csproj.xml");
+            this.standardCsProj = new Project(reader);
+
         }
 
-        
+
         [TestMethod]
         public void StandardProject_ReadNamespace_IsOk()
         {
@@ -37,7 +47,7 @@ namespace Fernweh.Tests.CodeGeneration.Projects.ToolsProjects
             project.GeRootNamespace().Should().Be("Fernweh.Core");
         }
 
-        
+
         [TestMethod]
         public void StandardProject_ReadAssemblyName_IsOk()
         {

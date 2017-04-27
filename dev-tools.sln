@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "watch", "dev-tools\watch\wa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.csproj", "{F298643E-3DAE-4A0D-914B-CE85DF3B0F99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "dev-tools\Vodoo.CodeGeneration.Tests\Tests.csproj", "{53DB22F0-C05A-41FC-8473-F0A1EDDF4A6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,12 @@ Global
 		{F298643E-3DAE-4A0D-914B-CE85DF3B0F99}.QA|Any CPU.Build.0 = Release|Any CPU
 		{F298643E-3DAE-4A0D-914B-CE85DF3B0F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F298643E-3DAE-4A0D-914B-CE85DF3B0F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53DB22F0-C05A-41FC-8473-F0A1EDDF4A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53DB22F0-C05A-41FC-8473-F0A1EDDF4A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53DB22F0-C05A-41FC-8473-F0A1EDDF4A6A}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{53DB22F0-C05A-41FC-8473-F0A1EDDF4A6A}.QA|Any CPU.Build.0 = Release|Any CPU
+		{53DB22F0-C05A-41FC-8473-F0A1EDDF4A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53DB22F0-C05A-41FC-8473-F0A1EDDF4A6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
