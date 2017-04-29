@@ -37,7 +37,7 @@ namespace Fernweh.Core.Migrations
             }
 
             var shawn = new User {UserName = "Shawn", Roles = new System.Collections.Generic.List<Role> {admin}};
-            context.Users.AddOrUpdate(shawn);
+            context.Users.AddOrUpdate(c=> c.UserName, shawn);
         }
     }
 }
