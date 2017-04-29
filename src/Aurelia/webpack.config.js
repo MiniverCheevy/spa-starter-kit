@@ -1,5 +1,6 @@
 var isDevBuild = process.argv.indexOf('--env.prod') < 0;
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require('path');
 var webpack = require('webpack');
 const { AureliaPlugin } = require("aurelia-webpack-plugin");
@@ -9,7 +10,7 @@ module.exports = {
     devtool: isDevBuild ? "#cheap-module-source-map" : null,
     resolve: {
         extensions: ['.js', '.ts'],
-        modules: ['ClientApp','node_modules']
+        modules: ['ClientApp', 'node_modules']
     },
     entry: {
         'app': [
@@ -26,7 +27,7 @@ module.exports = {
             { test: /\.ts$/, include: /ClientApp/, loader: 'ts-loader', query: { silent: true } },
             { test: /\.html$/, loader: 'html-loader' },
             { test: /\.css$/, loader: 'raw-loader' },
-            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+            { test: /\.(png|woff|woff2|eot|ttf|svg|ico)$/, loader: 'url-loader?limit=100000' },
             { test: /\.json$/, loader: 'json-loader' }
         ]
     },
@@ -38,9 +39,9 @@ module.exports = {
             baseUrl: '/',
             aureliaApp: "boot",
             features: {
-                ie:  true,
+                ie: true,
                 svg: false,
-                unparser:  true              
+                unparser: true
             }
         }),
         new webpack.ProvidePlugin({
@@ -53,6 +54,11 @@ module.exports = {
             context: __dirname,
             manifest: require('./wwwroot/dist/vendor-manifest.json')
         }),
+        new CopyWebpackPlugin([
+            { from: 'ClientApp/index.html', to: '../' },
+            { from: 'ClientApp/favicon.ico', to: '../' },
+            { from: 'ClientApp/assets', to:'../assets/'},
+        ])
 
     ].concat(isDevBuild ? [
         //new BrowserSyncPlugin({

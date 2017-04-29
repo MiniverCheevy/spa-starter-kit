@@ -18,7 +18,6 @@ module.exports = {
     entry: {
         vendor: [
             'aurelia-event-aggregator',
-            'aurelia-fetch-client',
             'aurelia-framework',
             'aurelia-history-browser',
             'aurelia-logging-console',
@@ -29,9 +28,8 @@ module.exports = {
             'aurelia-templating-binding',
             'aurelia-templating-resources',
             'aurelia-templating-router',
-            'bootstrap',
-            'bootstrap/dist/css/bootstrap.css',
             'bluebird',
+            'moment',
             'jquery'
         ],
     },
