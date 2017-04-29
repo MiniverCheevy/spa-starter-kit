@@ -6,7 +6,6 @@
     "aurelia-bootstrapper": "^2.1.1",
     "aurelia-http-client": "^1.1.1",
     "bluebird": "^3.5.0",
-    "bootstrap": "^3.3.7",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.1",
     "moment": "^2.18.1"
@@ -17,7 +16,7 @@
     "aurelia-webpack-plugin": "^2.0.0-rc.2",
     "browser-sync": "^2.18.8",
     "browser-sync-webpack-plugin": "^1.1.4",
-    "copy-webpack-plugin": "^3.0.1",
+    "copy-webpack-plugin": "^4.0.1",
     "css": "^2.2.1",
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.4",

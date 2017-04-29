@@ -30,6 +30,11 @@
     <None Remove="yarn.lock" />
   </ItemGroup>
 <ItemGroup>
+  <Content Include="ClientApp\favicon.ico">
+    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+  </Content>
+</ItemGroup>
+<ItemGroup>
   <ProjectReference Include="..\Core\Core.csproj" />
 </ItemGroup>
 <ItemGroup>
@@ -41,8 +46,6 @@
   <Folder Include="ClientApp\resources\binding-behaviors\" />
   <Folder Include="ClientApp\resources\elements\" />
   <Folder Include="ClientApp\resources\value-converters\" />
-  <Folder Include="wwwroot\dist\" />
-  <Folder Include="wwwroot\dist\" />
 </ItemGroup>
 <ItemGroup>
   <None Include="wwwroot\index.html" />
