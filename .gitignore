@@ -248,3 +248,8 @@ _Pvt_Extensions
 *.ncrunchproject
 *.ncrunchsolution
 tools/
+/src/Aurelia/wwwroot/assets
+/src/Aurelia/wwwroot/assets/theme.html
+/log.Friday.txt
+/log.Saturday.txt
+/wwwroot

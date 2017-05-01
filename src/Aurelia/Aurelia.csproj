@@ -38,7 +38,6 @@
   <ProjectReference Include="..\Core\Core.csproj" />
 </ItemGroup>
 <ItemGroup>
-  <Folder Include="ClientApp\assets\" />
   <Folder Include="ClientApp\components\" />
   <Folder Include="ClientApp\lib\" />
   <Folder Include="ClientApp\pages\" />
