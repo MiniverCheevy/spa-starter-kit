@@ -11,7 +11,7 @@ export class Counter extends React.Component<any, CounterState> {
     }
 
     public render() {
-        return <div>
+        return <div >
             <h1>Counter</h1>
 
             <p>This is a simple example of a React component.</p>
@@ -19,8 +19,9 @@ export class Counter extends React.Component<any, CounterState> {
             <p>Current count: <strong>{ this.state.currentCount }</strong></p>
 
             <button onClick={() => { this.incrementCounter() }}>Increment</button>
-            <button onClick={() => { this.incrementCounter() }} >Decrament</button>
-            <button onClick={() => { this.incrementCounter() }} >Decrament</button>
+            <button onClick={() => { this.incrementCounter() }}>Increment</button>
+            
+            
             
         </div>;
     }

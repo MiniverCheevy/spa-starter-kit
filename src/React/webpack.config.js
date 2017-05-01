@@ -1,3 +1,4 @@
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -8,7 +9,7 @@ module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
     return [{
         stats: { modules: false },
-        entry: { 'main': './ClientApp/boot.tsx' },
+        entry: { 'main': ['babel-polyfill','./ClientApp/boot.tsx'] },
         resolve: { extensions: [ '.js', '.jsx', '.ts', '.tsx' ] },
         output: {
             path: path.join(__dirname, bundleOutputDir),
@@ -29,6 +30,12 @@ module.exports = (env) => {
                 context: __dirname,
                 manifest: require('./wwwroot/dist/vendor-manifest.json')
             })
+,
+        new CopyWebpackPlugin([
+            { from: 'ClientApp/index.html', to: '../' },
+            { from: 'ClientApp/favicon.ico', to: '../' },
+            { from: 'ClientApp/assets', to:'../assets/'},
+        ])
         ].concat(isDevBuild ? [
             // Plugins that apply in development builds only
             new webpack.SourceMapDevToolPlugin({

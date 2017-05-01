@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "ClientApp/css/_bootswatch.css",
+    "inputFile": "ClientApp/css/_bootswatch.scss"
+  },
+  {
+    "outputFile": "ClientApp/css/_variables.css",
+    "inputFile": "ClientApp/css/_variables.scss"
+  },
+  {
+    "outputFile": "ClientApp/css/bootswatch.css",
+    "inputFile": "ClientApp/css/bootswatch.less"
+  },
+  {
+    "outputFile": "Theme/bootswatch.css",
+    "inputFile": "Theme/bootswatch.less"
+  }
+]

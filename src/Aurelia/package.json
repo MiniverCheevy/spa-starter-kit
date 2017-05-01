@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "aurelia",
   "version": "0.0.0",
   "dependencies": {
     "aspnet-webpack": "^1.0.28",
