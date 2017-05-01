@@ -7,14 +7,14 @@ namespace Voodoo.CodeGeneration.Helpers
 {
     public class TypeComparer
     {
-        public TypeComparer(TypeFacade left, TypeFacade right)
+        public TypeComparer(TypeFacade entity, TypeFacade message)
         {
-            LeftType = left;
-            RightType = right;
+            EntityType = entity;
+            MessageType = message;
             var commonProperties =
-                left.Properties.Where(
+                entity.Properties.Where(
                         c =>
-                            right.Properties.Any(
+                            message.Properties.Any(
                                 p => p.Name == c.Name && p.PropertyType == c.PropertyType && p.IsWritable && c.IsWritable))
                     .ToArray();
             ScalarProperties = commonProperties.Where(c => c.PropertyType.IsScalar()).ToArray();
@@ -24,8 +24,8 @@ namespace Voodoo.CodeGeneration.Helpers
             ComplexProperties = commonProperties.Except(ScalarProperties).Except(CollectionProperties).ToArray();
         }
 
-        public TypeFacade LeftType { get; set; }
-        public TypeFacade RightType { get; set; }
+        public TypeFacade EntityType { get; set; }
+        public TypeFacade MessageType { get; set; }
         public PropertyFacade[] ScalarProperties { get; set; }
         public PropertyFacade[] CollectionProperties { get; set; }
         public PropertyFacade[] ComplexProperties { get; set; }
