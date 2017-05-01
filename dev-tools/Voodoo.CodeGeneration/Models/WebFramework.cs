@@ -4,6 +4,7 @@
     {
         Angular1 = 1,
         Aurelia = 2,
-        Angular2 = 3
+        Angular2 = 3,
+        React = 4
     }
 }

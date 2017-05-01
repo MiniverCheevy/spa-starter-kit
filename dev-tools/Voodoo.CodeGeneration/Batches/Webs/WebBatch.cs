@@ -29,8 +29,10 @@ namespace Voodoo.CodeGeneration.Batches.Webs
             }
 
             var modelTypes = new ClientModelFactory(logic).GetTypes();
-            web.AddFile(new TsServiceBatchFile(web, restBuilder.Resources.OrderBy(c => c.Name).ToArray(),
-                Vs.Helper.Solution.JsAppPathFromWebProjectRoot));
+            var api = WebFramworkBatchFactory.GetTypeServiceFile(web, restBuilder.Resources.OrderBy(c => c.Name).ToArray(),
+                Vs.Helper.Solution.JsAppPathFromWebProjectRoot);
+            if (api != null)
+                web.AddFile(api);
             var models = WebFrameworkFileFactory.GetTypeScriptModelsFile(web, modelTypes.ToArray(),
                 Vs.Helper.Solution.JsAppPathFromWebProjectRoot);
             if (models != null)

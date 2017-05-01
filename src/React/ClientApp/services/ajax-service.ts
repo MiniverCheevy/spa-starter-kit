@@ -1,52 +1,52 @@
-﻿//import { HttpClient, HttpResponseMessage, RequestBuilder } from 'aurelia-http-client';
-//import { autoinject, inject } from "aurelia-framework";
-import { EncoderService }  from "./encoder-service";
+﻿import { EncoderService }  from "./encoder-service";
 import { CurrentUserService }  from "./current-user-service";
 import { MessengerService } from "./messenger-service";
 
 //import * as Models from "../models.generated";
 import * as $ from 'jquery';
+let fetch = (<any>window).fetch;
 
+export const AjaxService = new AjaxServicePrototype();
 
-export class AjaxService {
-    private messenger: MessengerService = new MessengerService();
-    private encoder: EncoderService = new EncoderService();
-    private currentUserService: CurrentUserService = new CurrentUserService();
-      
+export class AjaxServicePrototype {
+   
     private getAjaxRequest(url: string, verb: string, token:string, request: any)
     {
-        return $.ajax({
-                cache: false,
-                dataType: 'json',
-                data: request,
-                type: verb,
-                url: url,
+        var body = JSON.stringify(request);
+        return fetch(url,
+            {
+                method: verb,
+                credentials: 'same-origon',
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json; charset=utf-8',
                     'Token': token
-                }
-            });
+                },
+                body: body                
+            }
+        );
+      
     }
     public buildGetRequest = async (request, url): Promise<any> => {
-        var user = await this.currentUserService.get();
-        var params = this.encoder.serializeParams(request);
+        var user = await CurrentUserService.get();
+        var params = EncoderService.serializeParams(request);
         return this.getAjaxRequest(url, 'GET', user.token, params);        
 
     }
     public buildPutRequest = async (request, url): Promise<any> => {
 
-        var user = await this.currentUserService.get();
+        var user = await CurrentUserService.get();
         return this.getAjaxRequest(url, 'PUT', user.token, request);             
     }
     public buildPostRequest = async (request, url): Promise<any> => {
 
-        var user = await this.currentUserService.get();
+        var user = await CurrentUserService.get();
         return this.getAjaxRequest(url, 'POST', user.token, request);    
     }
     public buildDeleteRequest = async (request, url): Promise<any> => {
 
-        var user = await this.currentUserService.get();
-        var params = this.encoder.serializeParams(request);
+        var user = await CurrentUserService.get();
+        var params = EncoderService.serializeParams(request);
         return this.getAjaxRequest(url, 'DELETE', user.token, params);        
 
     }

@@ -71,28 +71,13 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
                 //service.Template = new Angular2.TsServiceTemplate { File = service };
                 //return service;
             }
+            else if (Vs.Helper.Solution.WebFramework == WebFramework.React)
+            {
+
+                var service = new React.TsServiceBatchFile(web, items, path);
+                return service;
+            }
             Console.WriteLine("Web Framework unexpected, not supported or not configured.");
-            return null;
-        }
-
-
-        public static CodeFile GetTypeScriptModelsFile(ProjectFacade web, Type[] types, string path)
-        {
-            if (Vs.Helper.Solution.WebFramework == WebFramework.Angular1)
-            {
-                var service = new Angular.TypeScriptModelsFile(web, types, path);
-                return service;
-            }
-            else if (Vs.Helper.Solution.WebFramework == WebFramework.Aurelia)
-            {
-                var service = new Aurelia.TypeScriptModelsFile(web, types, path);
-                return service;
-            }
-            else if (Vs.Helper.Solution.WebFramework == WebFramework.Angular2)
-            {
-                var service = new Angular2.TypeScriptModelsFile(web, types, path);
-                return service;
-            }
             return null;
         }
     }

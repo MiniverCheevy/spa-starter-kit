@@ -6,11 +6,11 @@
   "TestProjectPath": "\\src\\Tests\\Tests.csproj",
   "DataProjectPath": "\\src\\Core\\Core.csproj",
   "ContextTypeName": "Fernweh.Core.Context.FernwehContext",
-  "JsAppPathFromWebProjectRoot": "src",
+  "JsAppPathFromWebProjectRoot": "ClientApp",
   "AddToSourceControl": true,
   "SourceControlprovider": "tfexe",
   "TestingFramework": "MSTest",
-  "WebFramework": "Aurelia",
+  "WebFramework": "React",
   "UseTypeScript": true,
   "PathToTfDotExe": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\TF.exe",
   "WebIsAspNetCore": true

@@ -2,15 +2,17 @@
 //import * as Api from "../api.generated";
 import { MessengerService } from "./messenger-service";
 import { AjaxService } from "./ajax-service"
-import $ from 'jquery';
+
 let fetch: any;
 
-export class CurrentUserService {
+export const CurrentUserService = new CurrentUserServicePrototype();
+
+class CurrentUserServicePrototype {
 
     url: string = 'api/CurrentUser';
     private user: any//Models.IAppPrincipal | Promise<Models.IAppPrincipal>;
     public ClientInfo: any;//Models.IClientInfo
-    private messenger: MessengerService = new MessengerService();
+   
 
     constructor() {
 
@@ -61,7 +63,7 @@ export class CurrentUserService {
             return this.user;
         }
         else {
-            this.messenger.showResponseMessage(response);
+            MessengerService.showResponseMessage(response);
         }
         return this.user;
     }

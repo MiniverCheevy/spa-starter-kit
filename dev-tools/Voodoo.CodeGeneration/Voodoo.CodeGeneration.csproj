@@ -400,7 +400,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UpdateSaveCommandTestsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Web\OperationLevel\AngularMd\AngularMdUiFactory.cs" />
     <Compile Include="Templates\Web\ProjectLevel\ApiControllerFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\ApiControllerTemplate.cs" />
     <Compile Include="Templates\Web\ProjectLevel\ApiControllerTemplate1.cs">
@@ -439,6 +438,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\React\TsServiceBatchFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\React\TypeScriptModelsFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\TSModelsFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TypeScriptModelsFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TypeScriptModelsTemplate.cs">
@@ -607,8 +608,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UpdateSaveCommandTestsTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Web\OperationLevel\Grid.txt" />
-    <Content Include="Templates\Web\OperationLevel\GroupedGrid.txt" />
     <Content Include="Templates\Web\ProjectLevel\ApiControllerTemplate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ApiControllerTemplate1.cs</LastGenOutput>
@@ -660,6 +659,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Templates\Web\OperationLevel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

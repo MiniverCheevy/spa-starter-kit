@@ -3,12 +3,12 @@ import 'isomorphic-fetch';
 import {CurrentUserService} from "ClientApp/services/current-user-service";
 
 export class Home extends React.Component<any, void> {
-    private currentUserService: CurrentUserService = new CurrentUserService();
+    
     
     public async componentDidMount()
     {
         
-        var userResponse = await this.currentUserService.get();
+        var userResponse = await CurrentUserService.get();
         
         console.log("user.isAuthenticated=" + userResponse.isAuthenticated);
         console.log("user.userName=" + userResponse.userName);
