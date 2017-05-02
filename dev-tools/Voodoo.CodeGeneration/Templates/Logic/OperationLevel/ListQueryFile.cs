@@ -1,4 +1,5 @@
-﻿using Voodoo.CodeGeneration.Models;
+﻿using Voodoo.CodeGeneration.Helpers;
+using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 
@@ -16,6 +17,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
         {
             Template = new ListQueryTemplate {File = this};
             Name = $"{Name}ListQuery";
+            PageSpecificUsingStatements.Add($"{Namespace}.Extras");
+            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
             if (HasContext)
             {
                 PageSpecificUsingStatements.Add(ContextNamespace);

@@ -1,4 +1,5 @@
-﻿using Voodoo.CodeGeneration.Models;
+﻿using Voodoo.CodeGeneration.Helpers;
+using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.Rest;
 using Voodoo.CodeGeneration.Models.VisualStudio;
@@ -19,6 +20,7 @@ namespace Voodoo.CodeGeneration.Templates.Tests
             Name = $"{Name}TestHelper";
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName);
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName + ".Extras");
+            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
             PageSpecificUsingStatements.Add("Voodoo.TestData");
             PageSpecificUsingStatements.Add(ContextNamespace);
             PageSpecificUsingStatements.Add(logic.RootNamespace);

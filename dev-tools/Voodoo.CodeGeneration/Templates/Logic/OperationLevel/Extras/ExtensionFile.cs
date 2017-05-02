@@ -22,13 +22,14 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             : base(project, type)
         {
             Template = new ExtensionTemplate {File = this};
-            Name = string.Format("{0}Extensions", Name);
+            Name = $"{Name}Extensions";
 
             PageSpecificUsingStatements.Add(type.SystemType.Namespace);
             if (HasContext)
                 PageSpecificUsingStatements.Add(ContextNamespace);
             Mappings = MappingFactory.GetMappings(type, project);
             Mappings.ForEach(c => PageSpecificUsingStatements.AddIfNotNullOrWhiteSpace(c.Namespace));
+            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
         }
 
         public List<MappingFactory.Mapping> Mappings { get; set; }
@@ -41,7 +42,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
 
         public override string GetFolder()
         {
-            return string.Format(@"Operations\{0}", ExtrasFolder);
+            return $@"Operations\{ExtrasFolder}";
         }
 
         public class EmptyClass

@@ -17,11 +17,11 @@ namespace Voodoo.CodeGeneration.Batches.Logics
 
         public override void Build()
         {
-            logic.AddFile(new MessageFile(logic, type));
+            data.AddFile(new MessageFile(data, type));
             logic.AddFile(new RepositoryFile(logic, type));
             logic.AddFile(new MapperFile(logic, type));
             logic.AddFile(new ExtensionFile(logic, type));
-            logic.AddFile(new MessagesFile(logic, type));
+            data.AddFile(new MessagesFile(data, type));
 
             tests?.AddFile(new MappingTestsFile(tests, type, logic));
             if (contextType != null)

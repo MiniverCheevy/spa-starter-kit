@@ -26,7 +26,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
         public virtual string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.ComponentModel.Dat" +
-                    "aAnnotations;\r\nusing System.Linq;\r\nusing Voodoo.Messages;\r\n");
+                    "aAnnotations;\r\nusing System.Linq;\r\nusing Voodoo.Messages;\r\nusing Voodoo.Infrastr" +
+                    "ucture.Notations;\r\n");
 foreach (var item in File.UsingStatements){
             this.Write("using ");
             this.Write(this.ToStringHelper.ToStringWithCulture(item));
@@ -34,7 +35,9 @@ foreach (var item in File.UsingStatements){
 }
             this.Write("namespace ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Namespace));
-            this.Write("\r\n{\r\n    public class ");
+            this.Write("\r\n{\r\n\t[MapsTo(typeof(");
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.Name));
+            this.Write("))]\r\n    public class ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.MessageName));
             this.Write("\r\n    {\r\n        ");
 foreach(var item in this.File.Type.MessageProperties){
@@ -51,7 +54,9 @@ foreach(var attr in item.Property.Attributes){
 }
             this.Write("\r\n\t\t\r\n    }\r\n\t");
 if(File.HasDetail){
-            this.Write("\tpublic class ");
+            this.Write("\t[MapsTo(typeof(");
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.Name));
+            this.Write("))]\r\n\tpublic class ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.DetailName));
             this.Write("\r\n\t{\r\n\t");
 foreach(var item in this.File.Type.DetailMessageProperties){

@@ -18,6 +18,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             PageSpecificUsingStatements.Add("Voodoo.Validation");
             Name = $"{Name}Message";
             HasDetail = type.HasDetailFlag;
+            PageSpecificUsingStatements.Add(type.Namespace);
+            type.Properties.ForEach(c => PageSpecificUsingStatements.Add(c.PropertyType.Namespace));
         }
 
         public bool HasDetail { get; set; }

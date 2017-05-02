@@ -8,11 +8,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Voodoo.Messages;
+using Voodoo.Infrastructure.Notations;
 <#foreach (var item in File.UsingStatements){#>
 using <#=item#>;
 <#}#>
 namespace <#=this.File.Namespace#>
 {
+	[MapsTo(typeof(<#=this.File.Type.Name#>))]
     public class <#=this.File.Type.MessageName#>
     {
         <#foreach(var item in this.File.Type.MessageProperties){#>
@@ -26,6 +28,7 @@ namespace <#=this.File.Namespace#>
 		
     }
 	<#if(File.HasDetail){#>
+	[MapsTo(typeof(<#=this.File.Type.Name#>))]
 	public class <#=this.File.Type.DetailName#>
 	{
 	<#foreach(var item in this.File.Type.DetailMessageProperties){#>

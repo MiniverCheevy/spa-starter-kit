@@ -1,4 +1,5 @@
-﻿using Voodoo.CodeGeneration.Models;
+﻿using Voodoo.CodeGeneration.Helpers;
+using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 
@@ -20,6 +21,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             PageSpecificUsingStatements.Add(type.Namespace);
             PageSpecificUsingStatements.Add("Voodoo.Infrastructure");
             PageSpecificUsingStatements.Add($"{Namespace}.Extras");
+            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
         }
 
         public UpdateCommandTemplate Template { get; set; }

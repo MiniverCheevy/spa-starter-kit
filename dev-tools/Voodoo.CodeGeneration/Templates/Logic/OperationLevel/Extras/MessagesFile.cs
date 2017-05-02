@@ -25,6 +25,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             Name = $"{Name}Messages";
             PageSpecificUsingStatements.Add(Type.SystemType.Namespace);
             Errors = type.Properties.SelectMany(c => c.ErrorMessages).Select(c => c.Text).ToArray();
+            type.Properties.ForEach(c => PageSpecificUsingStatements.Add(c.PropertyType.Namespace));
         }
 
         public string FriendlyName { get; set; }

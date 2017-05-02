@@ -23,6 +23,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             PageSpecificUsingStatements.Add(type.SystemType.Namespace);
             Mappings = MappingFactory.GetMappings(type, project);
             Mappings.ForEach(c => PageSpecificUsingStatements.AddIfNotNullOrWhiteSpace(c.Namespace));
+            Mappings.ForEach(c => PageSpecificUsingStatements.AddIfNotNullOrWhiteSpace(c.Namespace));
+            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
         }
 
         public List<MappingFactory.Mapping> Mappings { get; set; } = new List<MappingFactory.Mapping>();

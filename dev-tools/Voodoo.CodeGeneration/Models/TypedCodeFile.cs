@@ -19,7 +19,6 @@ namespace Voodoo.CodeGeneration.Models
         {
             if (project == null) return;
             Project = project;
-            PageSpecificUsingStatements = new List<string>();
 
             if (Vs.Helper.Solution.ContextType == null) return;
             HasContext = true;
@@ -30,7 +29,7 @@ namespace Voodoo.CodeGeneration.Models
         public bool OverwriteExistingFile { get; set; }
         public string Name { get; set; }
         public ProjectFacade Project { get; set; }
-        public List<string> PageSpecificUsingStatements { get; set; }
+        public List<string> PageSpecificUsingStatements { get; set; } = new List<string>();
         public bool HasContext { get; set; }
         public string ContextName { get; set; }
         public string ContextNamespace { get; set; }
@@ -41,12 +40,14 @@ namespace Voodoo.CodeGeneration.Models
         {
             get
             {
-                return
+                var statements =
                     Project.UsingStatements
                         .Union(PageSpecificUsingStatements)
                         .Where(c => c != Namespace && !string.IsNullOrWhiteSpace(c))
                         .Distinct()
                         .ToList();
+
+                return statements;
             }
         }
 

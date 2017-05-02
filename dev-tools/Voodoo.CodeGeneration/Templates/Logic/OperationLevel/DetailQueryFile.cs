@@ -1,4 +1,5 @@
-﻿using Voodoo.CodeGeneration.Models;
+﻿using Voodoo.CodeGeneration.Helpers;
+using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 
@@ -15,8 +16,9 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             : base(project, type)
         {
             Template = new DetailQueryTemplate {File = this};
-            Name = string.Format("{0}DetailQuery", Name);
+            Name = $"{Name}DetailQuery";
             PageSpecificUsingStatements.Add($"{Namespace}.Extras");
+            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
             PageSpecificUsingStatements.Add(type.SystemType.Namespace);
             if (HasContext)
                 PageSpecificUsingStatements.Add(ContextNamespace);
@@ -33,7 +35,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
 
         public override string GetFolder()
         {
-            return string.Format(@"Operations\{0}", PluralName);
+            return $@"Operations\{PluralName}";
         }
     }
 }
