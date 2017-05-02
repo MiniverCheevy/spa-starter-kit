@@ -25,15 +25,15 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.React
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-import { CurrentUserService } from 'ClientApp/services/current-user-service';
-import { MessengerService } from 'ClientApp/services/messenger-service';
-import { AjaxService } from 'ClientApp/services/ajax-service';
+import { CurrentUserService } from './services/current-user-service';
+import { MessengerService } from './services/messenger-service';
+import { AjaxService } from './services/ajax-service';
 import * as Models from './models.generated';");
 
             foreach (var resource in Resources)
             {
                 builder.AppendLine();
-                builder.Append($@" export class {resource.Name}    {{
+                builder.Append($@" export class {resource.Name}Prototype    {{
                     url: string = 'api/{resource.Name}';");
 
                 foreach (var verb in resource.Verbs)
@@ -72,6 +72,7 @@ import * as Models from './models.generated';");
                  
                 }
                 builder.AppendLine("}");
+                builder.AppendLine($"export const {resource.Name} = new {resource.Name}Prototype();");
             }
             return builder.ToString();
         }

@@ -17,7 +17,8 @@ module.exports = (env) => {
             ]
         },
         entry: {
-            vendor: ['babel-polyfill','bootstrap', 'theme/bootswatch.min.css', 'event-source-polyfill', 'isomorphic-fetch', 'react', 'react-dom', 'react-router', 'jquery','toastr'],
+            //'jquery','bootstrap',
+            vendor: ['cerebral', 'babel-polyfill', 'react-bootstrap','react-router-dom','react-router-bootstrap','theme/bootswatch.min.css', 'event-source-polyfill', 'isomorphic-fetch', 'react', 'react-dom', 'react-router', 'toastr','mdi'],
         },
         output: {
             path: path.join(__dirname, 'wwwroot', 'dist'),

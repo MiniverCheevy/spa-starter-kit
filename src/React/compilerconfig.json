@@ -14,5 +14,9 @@
   {
     "outputFile": "Theme/bootswatch.css",
     "inputFile": "Theme/bootswatch.less"
+  },
+  {
+    "outputFile": "ClientApp/theme/bootswatch.css",
+    "inputFile": "ClientApp/theme/bootswatch.less"
   }
 ]

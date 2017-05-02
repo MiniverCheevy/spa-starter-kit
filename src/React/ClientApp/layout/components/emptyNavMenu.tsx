@@ -1,4 +1,6 @@
 ﻿import * as React from 'react';
+import { Link } from 'react-router';
+
 
 export class EmptyNavMenu extends React.Component<any, void> {
     public render() {

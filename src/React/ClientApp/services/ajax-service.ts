@@ -6,8 +6,6 @@ import { MessengerService } from "./messenger-service";
 import * as $ from 'jquery';
 let fetch = (<any>window).fetch;
 
-export const AjaxService = new AjaxServicePrototype();
-
 export class AjaxServicePrototype {
    
     private getAjaxRequest(url: string, verb: string, token:string, request: any)
@@ -63,4 +61,7 @@ export class AjaxServicePrototype {
             data: error
         });
     }
+    
 }
+
+export const AjaxService = new AjaxServicePrototype();

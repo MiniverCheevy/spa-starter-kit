@@ -4,8 +4,6 @@
 import * as $ from 'jquery';
 import * as toastr from 'toastr';
 
-export const MessengerService = new MessengerServicePrototype();
-
 class MessengerServicePrototype {
     private router: any//Router:
     //Do not add additional local dependencies here or you will likely cause circular references and be sad
@@ -90,3 +88,4 @@ class MessengerServicePrototype {
     public message: string;
 }
 
+export const MessengerService = new MessengerServicePrototype();

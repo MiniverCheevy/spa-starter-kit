@@ -1,40 +1,39 @@
 import * as React from 'react';
+import * as  ReactDOM from 'react-dom'
 import { Link } from 'react-router';
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export class NavMenu extends React.Component<any, void> {
+
     public render() {
-        return <div className='main-nav'>
-                <div className='navbar navbar-inverse'>
-                <div className='navbar-header'>
-                    <button type='button' className='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
-                        <span className='sr-only'>Toggle navigation</span>
-                        <span className='icon-bar'></span>
-                        <span className='icon-bar'></span>
-                        <span className='icon-bar'></span>
-                    </button>
-                    <Link className='navbar-brand' to={ '/' }>react</Link>
-                </div>
-                <div className='clearfix'></div>
-                <div className='navbar-collapse collapse'>
-                    <ul className='nav navbar-nav'>
-                        <li>
-                            <Link to={ '/' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-home'></span> Home
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={ '/counter' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-education'></span> Counter
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={ '/fetchdata' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-th-list'></span> Fetch data
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>;
+
+        return (<div>
+            <Navbar bsStyle="inverse">
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <a href="#">React</a>
+                    </Navbar.Brand>
+                </Navbar.Header>
+                <Nav>
+                    <LinkContainer to="/home">
+                        <NavItem eventKey={1}> <span className='mdi mdi-home'></span> Home</NavItem>
+                    </LinkContainer>
+                    <LinkContainer to="/counter">
+                        <NavItem eventKey={2}>  <span className='mdi mdi-school'></span> Counter!!!</NavItem>
+                    </LinkContainer>
+                    <LinkContainer to="/fetchdata">
+                        <NavItem eventKey={3}> <span className='mdi mdi-format-list-bulleted'></span> Fetch data Home</NavItem>
+                    </LinkContainer>
+
+                    <NavDropdown eventKey={4} title="Admin" id="basic-nav-dropdown">
+                        <LinkContainer to="/UserList">
+                            <NavItem eventKey={4.1}>Users</NavItem>
+                        </LinkContainer>
+                    </NavDropdown>
+                </Nav>
+            </Navbar>
+        </div>
+        );
     }
 }

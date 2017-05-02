@@ -1,6 +1,6 @@
 import * as React from 'react';
 import 'isomorphic-fetch';
-import {CurrentUserService} from "ClientApp/services/current-user-service";
+import {CurrentUserService} from "./../../services/current-user-service";
 
 export class Home extends React.Component<any, void> {
     

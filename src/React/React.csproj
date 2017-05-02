@@ -11,7 +11,7 @@
     <Folder Include="ClientApp\assets\" />
     <Folder Include="ClientApp\components\NewFolder\" />
     <Folder Include="ClientApp\scenes\errors\" />
-    <Folder Include="ClientApp\scenes\users\" />
+    <Folder Include="ClientApp\scenes\NewFolder\" />
     <Folder Include="wwwroot\assets\" />
   </ItemGroup>
 

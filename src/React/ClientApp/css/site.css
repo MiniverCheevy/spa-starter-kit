@@ -19,12 +19,15 @@
     z-index: 1;
 }
 
-
-    .main-nav .navbar a {
-        /* If a menu item's text is too long, truncate it */
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
+navbar-collapse .main-nav .navbar a {
+    /* If a menu item's text is too long, truncate it */
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#container {
+    /*margin-left:10%;
+    margin-right: 10%;
+    margin-top: 40px;*/
+}

@@ -7,18 +7,17 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-base:              #000;
-@gray-darker:            lighten(@gray-base, 13.5%); // #222
-@gray-dark:              #212121;
-@gray:                   #666;
-@gray-light:             #bbb;
-@gray-lighter:           lighten(@gray-base, 93.5%); // #eee
-
-@brand-primary:         #2196F3;
-@brand-success:         #4CAF50;
-@brand-info:            #9C27B0;
-@brand-warning:         #ff9800;
-@brand-danger:          #e51c23;
+@gray-base: #000;
+@gray-darker: rgb(39, 43, 48);
+@gray-dark: rgb(58, 63, 68);
+@gray: rgb(82, 87, 92);
+@gray-light: rgb(122, 130, 136);
+@gray-lighter: rgb(153, 153, 153);
+@brand-primary: @gray-light;
+@brand-success: rgb(98, 196, 98);
+@brand-info: rgb(91, 192, 222);
+@brand-warning: rgb(248, 148, 6);
+@brand-danger: rgb(238, 95, 91);
 
 
 //== Scaffolding
@@ -26,15 +25,9 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
-//** Global text color on `<body>`.
-@text-color:            @gray;
-
-//** Global textual link color.
-@link-color:            @brand-primary;
-//** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
-//** Link hover decoration.
+@text-color: rgb(200, 200, 200);
+@link-color: rgb(255, 255, 255);
+@link-hover-color: rgb(255, 255, 255);
 @link-hover-decoration: underline;
 
 

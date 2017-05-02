@@ -3,7 +3,7 @@
 //https://raw.githubusercontent.com/angular/angular.js/ddb4ef13a9793b93280e6b5ab2e0593af1c04743/src/Angular.js
 //better handling of arrays (more model binder friendly) than $.params
 
-export const EncoderService = new EncoderServicePrototype();
+
 
 class EncoderServicePrototype {
     private isNumber = (value) => {
@@ -78,3 +78,5 @@ class EncoderServicePrototype {
         return parts.join('&');
     }
 }
+
+export const EncoderService = new EncoderServicePrototype();

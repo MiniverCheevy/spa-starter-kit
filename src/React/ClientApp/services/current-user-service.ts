@@ -5,7 +5,7 @@ import { AjaxService } from "./ajax-service"
 
 let fetch: any;
 
-export const CurrentUserService = new CurrentUserServicePrototype();
+
 
 class CurrentUserServicePrototype {
 
@@ -67,9 +67,7 @@ class CurrentUserServicePrototype {
         }
         return this.user;
     }
-
-
-    //var unaothorizedUser: Models.IAppPrincipal = { isAuthenticated: false };
-    //return unaothorizedUser;
+    
 }
+export const CurrentUserService = new CurrentUserServicePrototype();    
 

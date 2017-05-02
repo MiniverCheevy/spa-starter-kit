@@ -2,15 +2,30 @@ import './css/site.css';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { browserHistory, Router } from 'react-router';
-import routes from './routes';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import { Container } from 'cerebral/react'
+import controller from './controller'
+import { Layout } from './Layout/layout';
+import { Home } from './scenes/Home/Home';
+import { FetchData } from './components/FetchData';
+import { Counter } from './components/Counter';
+import { UserListContainer } from './scenes/users/userListContainer';
 
 
-//const initialState = (window as any).initialReduxState as ApplicationState;
-//const store = configureStore(initialState);
-//const history = syncHistoryWithStore(browserHistory, store);
 
-ReactDOM.render(
-    <Router history={browserHistory} children={routes} />,
-    document.getElementById('react-app')
-);
+ReactDOM.render((
+    <Container controller={controller}>
+        <Router>
+            <Layout>
+            </Layout>
+        </Router>
+    </Container>
+), document.getElementById('react-app') as any);
+
+
+// Allow Hot Module Reloading
+declare var module: any;
+if (module.hot) {
+    module.hot.accept();
+}
