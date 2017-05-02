@@ -26,11 +26,11 @@ namespace Voodoo.CodeGeneration.Templates.Scratch
         public virtual string TransformText()
         {
             this.Write(" public class ScratchFile \r\n {    \t\t\t\r\n        public  ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.RightType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.MessageType.Name));
             this.Write(" Map(");
-            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.LeftType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.EntityType.Name));
             this.Write(" source, ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.RightType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.MessageType.Name));
             this.Write(" target )\r\n        {\r\n           ");
 foreach(var item in File.Types.ScalarProperties) {
             this.Write("\t\t\t\t\ttarget.");
@@ -40,11 +40,11 @@ foreach(var item in File.Types.ScalarProperties) {
             this.Write(";\r\n\t\t   ");
 }
             this.Write("\t\t   return target;\r\n        }\r\n        \r\n        public  ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.LeftType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.EntityType.Name));
             this.Write(" Map( ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.RightType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.MessageType.Name));
             this.Write(" source , ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.LeftType.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(File.Types.EntityType.Name));
             this.Write(" target)\r\n        {\r\n           ");
 foreach(var item in File.Types.ScalarProperties) {
             this.Write("\t\t\t\t\ttarget.");

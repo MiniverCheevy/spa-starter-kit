@@ -84,7 +84,7 @@ namespace Voodoo.CodeGeneration.Models.Reflection
         {
             const int threshold = 5;
             var items = new List<PropertyFacade>();
-            foreach (var property in Properties.Where(c => c.Group != PropertyGroup.Enumerable).ToArray())
+            foreach (var property in Properties.Where(c => c.Group != PropertyGroup.Enumerable && c.IsWritable).ToArray())
             {
                 if (items.Count < threshold)
                     items.Add(property);
@@ -98,7 +98,7 @@ namespace Voodoo.CodeGeneration.Models.Reflection
         public List<GeneratedProperty> buildGeneratedProperty(List<PropertyFacade> items)
         {
             var properties = new List<GeneratedProperty>();
-            foreach (var item in items)
+            foreach (var item in items.Where(c=>c.IsWritable).ToArray())
             {
                 if (item.Group != PropertyGroup.Scalar)
                     continue;

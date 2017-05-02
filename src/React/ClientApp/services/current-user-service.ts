@@ -2,24 +2,30 @@
 //import * as Api from "../api.generated";
 import { MessengerService } from "./messenger-service";
 import { AjaxService } from "./ajax-service"
-import $ from 'jquery';
 
-export class CurrentUserService {
+let fetch: any;
+
+export const CurrentUserService = new CurrentUserServicePrototype();
+
+class CurrentUserServicePrototype {
 
     url: string = 'api/CurrentUser';
     private user: any//Models.IAppPrincipal | Promise<Models.IAppPrincipal>;
     public ClientInfo: any;//Models.IClientInfo
-    private messenger: MessengerService = new MessengerService();
+   
 
-    //Do not add additional local dependencies here or you will likely cause circular references and be sad
-    //third party stuff (aurelia,jquery, etc) is fine
     constructor() {
 
 
     }
 
-    public get() {
+    public get = async () => {
 
+        if (this.user == null) {
+            var storedUser = localStorage.getItem("user");
+            if (storedUser != null)
+                this.user = JSON.parse(storedUser);
+        }
         if (this.user != null && (<any>this.user).refreshTime != null) {
             if ((<any>this.user).refreshTime > new Date()) {
                 console.log('RefreshUser');
@@ -27,7 +33,8 @@ export class CurrentUserService {
             }
         }
         if (this.user == null) {
-            this.user = this.getUser();
+            this.user = await this.getUser();
+            localStorage.setItem("user", JSON.stringify(this.user));
             return this.user;
         }
 
@@ -36,33 +43,30 @@ export class CurrentUserService {
     }
 
 
-    private getUser() {
+    private getUser = async () => {
 
         console.log('Query User');
-
-        return $.ajax({
-            cache: false,
-            dataType: 'json',
-            data: {},
-            type: 'GET',
-            url: this.url,
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8',
-            }
-        }).done((response) => {
-            if (response.isOk) {
-                this.user = response.data;
-                return this.user;
-            }
-            else {
-                this.messenger.showResponseMessage(response);
-            }
-            }).fail((err) => {
-            debugger;
-        })
+        
+        var httpResponse = await (<any>window).fetch(this.url,
+            {
+                method: 'GET',
+                credentials: 'same-origin',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            });
+        
+        var response = await httpResponse.json();
+        if (response.isOk) {
+            this.user = response.data;
+            return this.user;
+        }
+        else {
+            MessengerService.showResponseMessage(response);
+        }
+        return this.user;
     }
-
-
 
 
     //var unaothorizedUser: Models.IAppPrincipal = { isAuthenticated: false };

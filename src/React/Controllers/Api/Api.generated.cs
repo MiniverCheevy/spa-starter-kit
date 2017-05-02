@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
 using Voodoo;
-using Fernweh.Aurelia;
+using React;
 using Voodoo.Messages;
 using Fernweh.Core.Operations.ApplicationSettings;
 using Fernweh.Core.Operations.ApplicationSettings.Extras;
@@ -23,7 +23,7 @@ using Fernweh.Core.Operations.Errors;
 using Fernweh.Core.Operations.Errors.Extras;
 using Fernweh.Core.Operations.CurrentUsers;
 using Fernweh.Core.Identity;
-namespace Fernweh.Aurelia.Controllers.Api
+namespace React.Controllers.Api
 {
     [Route("api/[controller]")]
     public class ApplicationSettingDetailController : ApiControllerBase

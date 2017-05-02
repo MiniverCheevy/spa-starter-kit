@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Router, Route, HistoryBase } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
+import { Layout } from 'ClientApp/Layout/layout';
+import { Home } from 'ClientApp/scenes/Home/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 

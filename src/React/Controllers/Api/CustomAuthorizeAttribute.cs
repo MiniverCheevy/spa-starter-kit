@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 
-namespace Fernweh.Aurelia.Controllers.Api
+namespace React.Controllers.Api
 {
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {

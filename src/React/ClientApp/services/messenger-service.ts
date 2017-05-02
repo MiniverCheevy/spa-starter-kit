@@ -4,9 +4,9 @@
 import * as $ from 'jquery';
 import * as toastr from 'toastr';
 
+export const MessengerService = new MessengerServicePrototype();
 
-
-export class MessengerService {
+class MessengerServicePrototype {
     private router: any//Router:
     //Do not add additional local dependencies here or you will likely cause circular references and be sad
     //third party stuff (aurelia,jquery, etc) are fine

@@ -2,7 +2,10 @@
 //lifted with love from angularjs 1.0
 //https://raw.githubusercontent.com/angular/angular.js/ddb4ef13a9793b93280e6b5ab2e0593af1c04743/src/Angular.js
 //better handling of arrays (more model binder friendly) than $.params
-export class EncoderService {
+
+export const EncoderService = new EncoderServicePrototype();
+
+class EncoderServicePrototype {
     private isNumber = (value) => {
         try {
             var num = parseFloat(value);
