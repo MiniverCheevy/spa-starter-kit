@@ -6,7 +6,7 @@ using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Http;
 using Voodoo.Messages;
 
-namespace Fernweh.Aurelia.Infrastructure.Authentication
+namespace React.Infrastructure.Authentication
 {
     [Obsolete]
     public class AuthorizationMiddleware

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fernweh.Core.Identity;
+﻿using Fernweh.Core.Identity;
 using Fernweh.Core.Infrastructure;
-using Fernweh.Core.Security;
 using Microsoft.AspNetCore.Http;
 using Voodoo;
 
-namespace Fernweh.Aurelia.Infrastructure
+namespace React.Infrastructure
 {
   public class RequestContextProvider : IRequestContextProvider
   {

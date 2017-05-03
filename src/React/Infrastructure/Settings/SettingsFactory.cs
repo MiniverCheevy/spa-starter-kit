@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Fernweh.Aurelia.Infrastructure.Settings
+namespace React.Infrastructure.Settings
 {
     public static class SettingsFactory
     {
-        public static Core.Infrastructure.Settings GetSettings(IConfigurationRoot configuration)
+        public static Fernweh.Core.Infrastructure.Settings GetSettings(IConfigurationRoot configuration)
         {
-            return new Core.Infrastructure.Settings
+            return new Fernweh.Core.Infrastructure.Settings
             {
                 DefaultConnectionString = configuration.GetConnectionString("DefaultConnection")
             };

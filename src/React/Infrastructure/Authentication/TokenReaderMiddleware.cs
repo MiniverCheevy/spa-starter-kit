@@ -1,33 +1,34 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Fernweh.Core.Identity;
 using Fernweh.Core.Security;
 using Microsoft.AspNetCore.Http;
 
-namespace Fernweh.Aurelia.Infrastructure.Authentication
+namespace React.Infrastructure.Authentication
 {
-  public class TokenReaderMiddleware
-  {
-    private readonly RequestDelegate next;
-
-    public TokenReaderMiddleware(RequestDelegate next)
+    public class TokenReaderMiddleware
     {
-      this.next = next;
-    }
-    public async Task Invoke(HttpContext context)
-    {
-      var key = "Token";
-      var headers = context.Request.Headers;
-      if (headers.ContainsKey(key))
-      {
-        var token = headers[key].ToString();
-        var decrypted = Encryption.Decrypt<AppPrincipal>(token);
-        if (decrypted.Expiration < DateTime.Now)
-          context.Items[RequestContextProvider.AppPrincipal] = decrypted;
-      }
+        private readonly RequestDelegate next;
 
-      await next(context);
+        public TokenReaderMiddleware(RequestDelegate next)
+        {
+            this.next = next;
+        }
+        public async Task Invoke(HttpContext context)
+        {
+            if (context.IsSecureRequest())
+            {
+                var key = "Token";
+                var headers = context.Request.Headers;
+                if (headers.ContainsKey(key))
+                {
+                    var token = headers[key].ToString();
+                    var decrypted = Encryption.Decrypt<AppPrincipal>(token);
+                    if (decrypted.Expiration < DateTime.Now)
+                        context.Items[RequestContextProvider.AppPrincipal] = decrypted;
+                }
+            }
+            await next(context);
+        }
     }
-  }
 }

@@ -8,394 +8,533 @@ import { CurrentUserService } from './services/current-user-service';
 import { MessengerService } from './services/messenger-service';
 import { AjaxService } from './services/ajax-service';
 import * as Models from './models.generated';
-export class ApplicationSettingPrototype    {
-url: string = 'api/ApplicationSetting';
-public async get (request: Models.IIdRequest):
-Promise<Models.IResponseOfApplicationSettingMessage>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildGetRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class ApplicationSettingPrototype {
+    url: string = 'api/ApplicationSetting';
+    public async get(request: Models.IIdRequest):
+        Promise<Models.IResponseOfApplicationSettingMessage> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildGetRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
-}
-}
-public async delete (request: Models.IIdRequest):
-Promise<Models.IResponse>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildDeleteRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
+    public async delete(request: Models.IIdRequest):
+        Promise<Models.IResponse> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildDeleteRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
+
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
 }
-}}
 export const ApplicationSetting = new ApplicationSettingPrototype();
 
-export class ApplicationSettingDetailPrototype    {
-url: string = 'api/ApplicationSettingDetail';
-public async put (request: Models.IApplicationSettingMessage):
-Promise<Models.INewItemResponse>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildPutRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class ApplicationSettingDetailPrototype {
+    url: string = 'api/ApplicationSettingDetail';
+    public async put(request: Models.IApplicationSettingMessage):
+        Promise<Models.INewItemResponse> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildPutRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
 }
-}}
 export const ApplicationSettingDetail = new ApplicationSettingDetailPrototype();
 
-export class ApplicationSettingListPrototype    {
-url: string = 'api/ApplicationSettingList';
-public async get (request: Models.IApplicationSettingQueryRequest):
-Promise<Models.IApplicationSettingQueryResponse>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildGetRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class ApplicationSettingListPrototype {
+    url: string = 'api/ApplicationSettingList';
+    public async get(request: Models.IApplicationSettingQueryRequest):
+        Promise<Models.IApplicationSettingQueryResponse> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildGetRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
 }
-}}
 export const ApplicationSettingList = new ApplicationSettingListPrototype();
 
-export class CurrentUserPrototype    {
-url: string = 'api/CurrentUser';
-public async get (request: Models.IEmptyRequest):
-Promise<Models.IResponseOfAppPrincipal>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildGetRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class CurrentUserPrototype {
+    url: string = 'api/CurrentUser';
+    public async get(request: Models.IEmptyRequest):
+        Promise<Models.IResponseOfAppPrincipal> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildGetRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
 }
-}}
 export const CurrentUser = new CurrentUserPrototype();
 
-export class ErrorDetailPrototype    {
-url: string = 'api/ErrorDetail';
-public async get (request: Models.IIdRequest):
-Promise<Models.IResponseOfErrorDetail>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildGetRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class ErrorDetailPrototype {
+    url: string = 'api/ErrorDetail';
+    public async get(request: Models.IIdRequest):
+        Promise<Models.IResponseOfErrorDetail> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildGetRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
 }
-}}
 export const ErrorDetail = new ErrorDetailPrototype();
 
-export class ErrorListPrototype    {
-url: string = 'api/ErrorList';
-public async get (request: Models.IErrorQueryRequest):
-Promise<Models.IErrorQueryResponse>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildGetRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class ErrorListPrototype {
+    url: string = 'api/ErrorList';
+    public async get(request: Models.IErrorQueryRequest):
+        Promise<Models.IErrorQueryResponse> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildGetRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
 }
-}}
 export const ErrorList = new ErrorListPrototype();
 
-export class ListsPrototype    {
-url: string = 'api/Lists';
-public async get (request: Models.IListsRequest):
-Promise<Models.IListsResponse>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildGetRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class ListsPrototype {
+    url: string = 'api/Lists';
+    public async get(request: Models.IListsRequest):
+        Promise<Models.IListsResponse> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildGetRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
 }
-}}
 export const Lists = new ListsPrototype();
 
-export class MobileErrorPrototype    {
-url: string = 'api/MobileError';
-public async post (request: Models.IMobileErrorRequest):
-Promise<Models.IResponse>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildPostRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class MobileErrorPrototype {
+    url: string = 'api/MobileError';
+    public async post(request: Models.IMobileErrorRequest):
+        Promise<Models.IResponse> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildPostRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
 }
-}}
 export const MobileError = new MobileErrorPrototype();
 
-export class UserDetailPrototype    {
-url: string = 'api/UserDetail';
-public async delete (request: Models.IIdRequest):
-Promise<Models.IResponse>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildDeleteRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class UserDetailPrototype {
+    url: string = 'api/UserDetail';
+    public async delete(request: Models.IIdRequest):
+        Promise<Models.IResponse> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildDeleteRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
-}
-}
-public async get (request: Models.IIdRequest):
-Promise<Models.IResponseOfUserDetail>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildGetRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
-}
-}
-public async put (request: Models.IUserDetail):
-Promise<Models.INewItemResponse>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildPutRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
+    public async get(request: Models.IIdRequest):
+        Promise<Models.IResponseOfUserDetail> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildGetRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
+
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
+    public async put(request: Models.IUserDetail):
+        Promise<Models.INewItemResponse> {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            var httpResponse = await AjaxService.buildPutRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
+
+                var out = <Models.IResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            }
+        }
+        catch (err) {
+            if (err != null)
+                error = err;
+        };
+
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return result;
+        }
+    }
 }
-}}
 export const UserDetail = new UserDetailPrototype();
 
-export class UserListPrototype    {
-url: string = 'api/UserList';
-public async get (request: Models.IUserQueryRequest):
-Promise<Models.IUserQueryResponse>
-{
-    try {
-    MessengerService.incrementHttpRequestCounter();
-    var httpResponse = await AjaxService.buildGetRequest(request, this.url);
-    var response = await httpResponse.json();
-    
-    var out = <Models.IResponse>response;
-    MessengerService.showResponseMessage(out);
-    MessengerService.decrementHttpRequestCounter();
-    return out;
-}
-catch (err)
-{
-    AjaxService.logError(err, this.url, (<any>new Error()).stack);
-    
-    var result = {
-    isOk: false,
-    message: err.statusText
-};
+export class UserListPrototype {
+    url: string = 'api/UserList';
+    public get(request: Models.IUserQueryRequest): 
+    Promise<Models.IUserQueryResponse> 
+        {
+        var error;
+        try {
+            MessengerService.incrementHttpRequestCounter();
+            //var httpResponse =
+                return AjaxService.buildGetRequest(request, this.url)
+                .then((httpResponse)=>
+                {
+                var response = (<any>httpResponse).data;
 
-MessengerService.decrementHttpRequestCounter();
-MessengerService.showResponseMessage(result);
-return result;
+                var out = <Models.IUserQueryResponse>response;
+                MessengerService.showResponseMessage(out);
+                MessengerService.decrementHttpRequestCounter();
+                return out;
+            })
+                    .catch(function (err) {
+                    error = err;
+                });
+            //if (error == null) {
+            //    var response = httpResponse.json();
+
+            //    var out = <Models.IResponse>response;
+            //    MessengerService.showResponseMessage(out);
+            //    MessengerService.decrementHttpRequestCounter();
+            //    return out;
+            //}
+        }
+        catch (err) {
+        
+            if (err != null)
+                error = err;
+        };
+        
+        if (error != null) {
+            AjaxService.logError(error, this.url, (<any>new Error()).stack);
+
+            var result = {
+                isOk: false,
+                message: error.statusText
+            };
+
+            MessengerService.decrementHttpRequestCounter();
+            MessengerService.showResponseMessage(result);
+            return <any>result;
+        }
+    }
 }
-}}
 export const UserList = new UserListPrototype();
 

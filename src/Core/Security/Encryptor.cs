@@ -29,6 +29,7 @@ namespace Fernweh.Core.Security
             this.encoder = new UTF8Encoding();
 
             var psuedoKey = Convert.FromBase64String(Objectifyer.Base64Encode(EncryptionKey));
+            //TODO: allow 64 or 128 length keys
             if (psuedoKey.Length < 32)
                 throw new Exception("Encryption key too short");
             this.key = psuedoKey.Take(32).ToArray();

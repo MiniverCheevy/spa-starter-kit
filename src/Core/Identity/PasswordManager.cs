@@ -26,9 +26,9 @@ namespace Fernweh.Core.Identity
 
         public bool Compare(string cleartext, string salt, string hash)
         {
-            if (String.IsNullOrWhiteSpace(cleartext)
-                || String.IsNullOrWhiteSpace(salt)
-                || String.IsNullOrWhiteSpace(hash))
+            if (string.IsNullOrWhiteSpace(cleartext)
+                || string.IsNullOrWhiteSpace(salt)
+                || string.IsNullOrWhiteSpace(hash))
                 return false;
 
             var newHash = this.CreateHash(cleartext, salt);

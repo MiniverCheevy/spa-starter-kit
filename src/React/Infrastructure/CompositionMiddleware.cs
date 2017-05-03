@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Fernweh.Aurelia.Infrastructure.ExceptionHandling;
-using Fernweh.Aurelia.Infrastructure.Logging;
-using Fernweh.Aurelia.Infrastructure.Settings;
+﻿using System.Threading.Tasks;
 using Fernweh.Core;
 using Fernweh.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
+using React.Infrastructure.Logging;
 using Voodoo;
 
-namespace Fernweh.Aurelia.Infrastructure
+namespace React.Infrastructure
 {
   public class CompositionMiddleware
   {

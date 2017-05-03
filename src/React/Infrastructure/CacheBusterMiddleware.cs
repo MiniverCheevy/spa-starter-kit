@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using Fernweh.Core.Security;
 using Microsoft.AspNetCore.Http;
 
-namespace Fernweh.Aurelia.Infrastructure
+namespace React.Infrastructure
 {
   //TODO: ideally this should only add headers to the index.html
   //and webpack should be configured to js/css files so they'll be unique on the first load and cached after that

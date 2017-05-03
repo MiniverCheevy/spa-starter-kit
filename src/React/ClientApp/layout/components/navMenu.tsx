@@ -20,14 +20,14 @@ export class NavMenu extends React.Component<any, void> {
                         <NavItem eventKey={1}> <span className='mdi mdi-home'></span> Home</NavItem>
                     </LinkContainer>
                     <LinkContainer to="/counter">
-                        <NavItem eventKey={2}>  <span className='mdi mdi-school'></span> Counter!!!</NavItem>
+                        <NavItem eventKey={2}>  <span className='mdi mdi-school'></span> Counter</NavItem>
                     </LinkContainer>
                     <LinkContainer to="/fetchdata">
-                        <NavItem eventKey={3}> <span className='mdi mdi-format-list-bulleted'></span> Fetch data Home</NavItem>
+                        <NavItem eventKey={3}> <span className='mdi mdi-format-list-bulleted'></span> Fetch Data</NavItem>
                     </LinkContainer>
 
                     <NavDropdown eventKey={4} title="Admin" id="basic-nav-dropdown">
-                        <LinkContainer to="/UserList">
+                        <LinkContainer to="/user-list">
                             <NavItem eventKey={4.1}>Users</NavItem>
                         </LinkContainer>
                     </NavDropdown>

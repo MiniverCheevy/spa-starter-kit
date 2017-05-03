@@ -1,8 +1,7 @@
-﻿using Fernweh.Core.Infrastructure;
-using Fernweh.Core.Logging;
+﻿using Fernweh.Core.Logging;
 using Voodoo.Logging;
 
-namespace Fernweh.Aurelia.Infrastructure.Logging
+namespace React.Infrastructure.Logging
 {
     public class TraceWriter : ITraceLogger
     {

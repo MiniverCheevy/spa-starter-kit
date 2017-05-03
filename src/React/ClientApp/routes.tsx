@@ -13,12 +13,14 @@ export class Routes extends React.Component<any, void>
 {
     render() {
         return <Switch>
-            <Route path='/' component={ Home } />
+            
             <Route path='/counter' component={ Counter } />
             <Route path='/fetchdata' component={ FetchData } />
-            <Route path='/users' component={ UserListContainer } />
+            <Route path='/user-list' component={UserListContainer} />
+            <Route path='/' component={Home} />
         </Switch >;
     }
+    // the '/' route must be last, router navs to the first thing it matches
 }
 
 
@@ -26,3 +28,4 @@ export class Routes extends React.Component<any, void>
 declare var module: any;
 if (module.hot) {
     module.hot.accept();
+}

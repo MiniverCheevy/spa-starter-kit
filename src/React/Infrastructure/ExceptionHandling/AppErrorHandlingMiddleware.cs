@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Net;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
@@ -7,15 +7,17 @@ using Newtonsoft.Json;
 using Voodoo;
 using Voodoo.Messages;
 
-namespace Fernweh.Aurelia.Infrastructure.ExceptionHandling
+namespace React.Infrastructure.ExceptionHandling
 {
-  public class AppErrorHandlingMiddleware
-  {
+    public class AppErrorHandlingMiddleware
+    {
+        public static Stopwatch Stopwatch { get; } = new Stopwatch();
     private readonly RequestDelegate next;
 
     public AppErrorHandlingMiddleware(RequestDelegate next)
     {
-      this.next = next;
+        Stopwatch.Start();
+        this.next = next;
     }
     public async Task Invoke(HttpContext context, IHttpContextAccessor httpContextAccessor)
     {
@@ -24,6 +26,7 @@ namespace Fernweh.Aurelia.Infrastructure.ExceptionHandling
       VoodooGlobalConfiguration.RegisterLogger(new CoreErrorLogger());      
       try
       {
+                Console.WriteLine("AppErrorHandlingMiddleware S=" + Stopwatch.ElapsedMilliseconds);
         await next(context);
       }
       catch (Exception ex)

@@ -1,30 +1,21 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using Fernweh.Aurelia.Infrastructure;
-using Fernweh.Aurelia.Infrastructure.Authentication;
-using Fernweh.Aurelia.Infrastructure.ExceptionHandling;
-using Fernweh.Aurelia.Infrastructure.Logging;
-using Fernweh.Aurelia.Infrastructure.Settings;
 using Fernweh.Core;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using React.Infrastructure;
+using React.Infrastructure.Authentication;
+using React.Infrastructure.ExceptionHandling;
+using React.Infrastructure.Settings;
 using Voodoo;
-using Voodoo.Logging;
-using Voodoo.Messages;
-using Newtonsoft.Json.Serialization;
-using Aurelia.Infrastructure;
 
-namespace Fernweh.Aurelia
+namespace React
 {
   public class Startup
   {

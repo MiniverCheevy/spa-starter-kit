@@ -3,11 +3,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Text.RegularExpressions;
 using Voodoo.Messages;
 
-namespace Fernweh.Aurelia.Infrastructure.ExceptionHandling
+namespace React.Infrastructure.ExceptionHandling
 {
     public static class ExtensionMethods
     {

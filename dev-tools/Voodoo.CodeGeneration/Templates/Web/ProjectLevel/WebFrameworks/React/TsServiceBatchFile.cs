@@ -43,30 +43,43 @@ import * as Models from './models.generated';");
 			public async {verb.Name.ToLower()} (request: Models.{declarations.RequestDeclaration}):
 											Promise<Models.{declarations.ResponseDeclaration}>
 			{{
+            var error;
             try {{
 			        MessengerService.incrementHttpRequestCounter();
-                    var httpResponse = await AjaxService.build{verb.Name}Request(request, this.url);
-                    var response = await httpResponse.json();
+                    var httpResponse = await AjaxService.build{verb.Name}Request(request, this.url)
+                    .catch(function (err) {{
+                                        error = err;
+                                    }});
+                    if(error == null)
+                    {{
+                        var response = await httpResponse.json();
                     
-                    var out = <Models.IResponse>response;
-                    MessengerService.showResponseMessage(out);
-                    MessengerService.decrementHttpRequestCounter();
-                    return out;
+                        var out = <Models.IResponse>response;
+                        MessengerService.showResponseMessage(out);
+                        MessengerService.decrementHttpRequestCounter();
+                        return out;
+                    }}
             }}
             catch (err)
             {{
-            AjaxService.logError(err, this.url, (<any>new Error()).stack);
-           
-            var result = {{
-                isOk: false,
-                message: err.statusText
+                if (err != null)
+                    error = err;
             }};
 
 
-            MessengerService.decrementHttpRequestCounter();
-            MessengerService.showResponseMessage(result);
-            return result;
-        }}
+             if (error != null)
+            {{
+                AjaxService.logError(error, this.url, (<any> new Error()).stack);
+
+                var result = {{
+                    isOk: false,
+                    message: error.statusText
+                }};
+
+                MessengerService.decrementHttpRequestCounter();
+                MessengerService.showResponseMessage(result);
+                return result;
+            }}
 }}");
 
                  
