@@ -13,7 +13,7 @@ using Voodoo.Validation.Infrastructure;
 
 namespace Fernweh.Core.Operations.Users
 {
-    [Rest(Verb.Get, RestResources.UserDetail)]
+    [Rest(Verb.Get, RestResources.UserDetail, Roles = new string[] { RoleNames.Administrator })]
     public class UserDetailQuery : QueryAsync<IdRequest, Response<UserDetail>>
     {
         private FernwehContext context;
@@ -26,15 +26,11 @@ namespace Fernweh.Core.Operations.Users
         protected override async Task<Response<UserDetail>> ProcessRequestAsync()
         {
             var model = new User();
-            var principal = IOC.GetCurrentPrincipal();
-            if (principal == null)
-                throw new Exception("Principal not found exception.");
             if (request.Id != 0)
             {
                 using (context = IOC.GetContext())
                 {
                     var query = context.Users.Include(c => c.Roles).AsNoTracking().AsQueryable();
-
                     model = await query.FirstOrDefaultAsync();
                     if (model == null)
                         throw new Exception(UserMessages.NotFound);

@@ -6,6 +6,7 @@
 <#foreach (var item in File.UsingStatements){#>
 using <#=item#>;
 <#}#>
+using System.Data.Entity;
 namespace <#=this.File.Namespace#>
 {
     public class <#=this.File.Name#>

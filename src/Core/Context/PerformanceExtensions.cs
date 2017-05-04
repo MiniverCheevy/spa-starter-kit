@@ -176,7 +176,7 @@ namespace Fernweh.Core.Context
         {
             string alias = GetFieldName(propertyName);
 
-            Target.SetStatements.Add(String.Format("[{0}] = {1} ", alias, GetParameter(value)));
+            Target.SetStatements.Add($"[{alias}] = {GetParameter(value)} ");
         }
 
         public override string ToString()

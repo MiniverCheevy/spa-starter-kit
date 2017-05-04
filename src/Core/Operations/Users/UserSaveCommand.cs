@@ -1,28 +1,22 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Voodoo;
 using Voodoo.Messages;
-using Voodoo.Operations;
 using Voodoo.Operations.Async;
 using Voodoo.Validation.Infrastructure;
 using System.Data.Entity;
-using Fernweh.Core;
 using Fernweh.Core.Context;
 using Fernweh.Core.Identity;
-using Fernweh.Core.Infrastructure;
 using Fernweh.Core.Models.Identity;
 using Fernweh.Core.Operations.Lists;
 using Fernweh.Core.Operations.Roles.Extras;
 using Voodoo.Infrastructure;
 using Fernweh.Core.Operations.Users.Extras;
-using Fernweh.Core.Security;
 
 namespace Fernweh.Core.Operations.Users
 {
-    [Rest(Verb.Put, RestResources.UserDetail,
-        Roles = new string[] {RoleNames.Administrator})]
+    [Rest(Verb.Put, RestResources.UserDetail, Roles = new string[] {RoleNames.Administrator})]
     public class UserSaveCommand : CommandAsync<UserDetail, NewItemResponse>
     {
         protected bool isNew;
@@ -30,7 +24,6 @@ namespace Fernweh.Core.Operations.Users
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
         private User model;
         private List<Role> allRoles;
-        private AppPrincipal user;
 
         public UserSaveCommand(UserDetail request) : base(request)
         {
@@ -40,24 +33,21 @@ namespace Fernweh.Core.Operations.Users
         {
             //The request object is validated by default, validate anything else with
             //request.<Something>.Validate();
-            this.user = IOC.GetCurrentPrincipal();
+
             using (context = IOC.GetContext())
             {
                 model = await createOrGetExisting();
+                model.ThrowIfNull(UserMessages.NotFound);
                 allRoles = context.Roles.ToList();
-                if (model == null)
-                    throw new Exception(UserMessages.NotFound);
-
                 updateModel();
                 generatePasswordIfNeeded();
+
                 await context.SaveChangesAsync();
 
                 response.NewItemId = model.Id;
             }
 
-            response.Message = isNew
-                ? UserMessages.AddOk
-                : UserMessages.UpdateOk;
+            response.Message = isNew ? UserMessages.AddOk: UserMessages.UpdateOk;
 
             return response;
         }
@@ -65,20 +55,11 @@ namespace Fernweh.Core.Operations.Users
         private void updateModel()
         {
             model.UpdateFrom(request);
-            synchronizeRoles();
+            context.Sync(model.Roles, request.Roles, c => c.Id, c => c.Value, mapRole);
         }
 
-        private void synchronizeRoles()
-        {
-            var client = request.Roles;
-            var target = model.Roles;
-            context.Sync(target, client, c => c.Id, c => c.Value, getRoles);
-        }
-
-        private Role getRoles(IListItem arg1, Role arg2)
-        {
-            return allRoles.FirstOrDefault(c => c.Id == arg1.Value);
-        }
+        private Role mapRole(IListItem clientRole, Role dbRole) => 
+                allRoles.FirstOrDefault(c => c.Id == clientRole.Value);
 
 
         private void generatePasswordIfNeeded()
@@ -99,9 +80,9 @@ namespace Fernweh.Core.Operations.Users
             if (request.Id == 0)
             {
                 isNew = true;
-                var model = new User();
-                context.Users.Add(model);
-                return model;
+                var entity = new User();
+                context.Users.Add(entity);
+                return entity;
             }
             else
             {

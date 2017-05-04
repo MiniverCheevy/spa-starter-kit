@@ -13,7 +13,7 @@ using Voodoo.Validation.Infrastructure;
 
 namespace Fernweh.Core.Operations.Users
 {
-    [Rest(Verb.Delete, RestResources.UserDetail)]
+    [Rest(Verb.Delete, RestResources.UserDetail, Roles = new string[] { RoleNames.Administrator })]
     public class UserDeleteCommand : CommandAsync<IdRequest, Response>
     {
         protected FernwehContext context;

@@ -17,7 +17,7 @@ export class NavMenu extends React.Component<any, void> {
                 </Navbar.Header>
                 <Nav>
                     <LinkContainer to="/home">
-                        <NavItem eventKey={1}> <span className='mdi mdi-home'></span> Home</NavItem>
+                        <NavItem eventKey={1}> <span className='mdi mdi-home'></span> Home!!!</NavItem>
                     </LinkContainer>
                     <LinkContainer to="/counter">
                         <NavItem eventKey={2}>  <span className='mdi mdi-school'></span> Counter</NavItem>

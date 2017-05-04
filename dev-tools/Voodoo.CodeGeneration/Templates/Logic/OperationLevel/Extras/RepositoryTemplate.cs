@@ -30,7 +30,7 @@ foreach (var item in File.UsingStatements){
             this.Write(this.ToStringHelper.ToStringWithCulture(item));
             this.Write(";\r\n");
 }
-            this.Write("namespace ");
+            this.Write("using System.Data.Entity;\r\nnamespace ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Namespace));
             this.Write("\r\n{\r\n    public class ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Name));

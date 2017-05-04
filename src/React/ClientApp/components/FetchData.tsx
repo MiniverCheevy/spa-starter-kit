@@ -3,7 +3,6 @@ import * as ReactDOM from 'react-dom';
 import axios from 'axios';
 import * as Api from './../api.generated';
 import * as Models from './../models.generated'
-import { UserList } from './../scenes/users/userList';
 class FetchDataProps
 {
     subreddit: string = 'javascript';

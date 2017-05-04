@@ -20,14 +20,12 @@ using Fernweh.Core.Security;
 
 namespace Fernweh.Core.Operations.Users
 {
-    [Rest(Verb.Get, RestResources.UserList)]
+    [Rest(Verb.Get, RestResources.UserList, Roles = new string[] { RoleNames.Administrator })]
     public class UserListQuery : QueryAsync<UserQueryRequest, UserQueryResponse>
     {
         private FernwehContext context;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
-        private bool isAdmin;
         private IQueryable<User> query;
-        private AppPrincipal currentUser;
 
         public UserListQuery(UserQueryRequest request) : base(request)
         {
@@ -35,12 +33,6 @@ namespace Fernweh.Core.Operations.Users
 
         protected override async Task<UserQueryResponse> ProcessRequestAsync()
         {
-            currentUser = IOC.GetCurrentPrincipal();
-            isAdmin = currentUser.IsAdmin;
-
-            if (!isAdmin)
-                return response;
-
             using (context = IOC.GetContext())
             {
                 query = context.UserRepository().GetUserAndRolesQuery();

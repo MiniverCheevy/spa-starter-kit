@@ -46,7 +46,8 @@ export class ApplicationSettingPrototype {
             return result;
         }
     }
-    public async delete(request: Models.IIdRequest):
+
+    public async d(request: Models.IIdRequest):
         Promise<Models.IResponse> {
         var error;
         try {
@@ -487,41 +488,29 @@ export const UserDetail = new UserDetailPrototype();
 
 export class UserListPrototype {
     url: string = 'api/UserList';
-    public get(request: Models.IUserQueryRequest): 
-    Promise<Models.IUserQueryResponse> 
-        {
+    public async get(request: Models.IUserQueryRequest):
+        Promise<Models.IUserQueryResponse> {
         var error;
         try {
             MessengerService.incrementHttpRequestCounter();
-            //var httpResponse =
-                return AjaxService.buildGetRequest(request, this.url)
-                .then((httpResponse)=>
-                {
-                var response = (<any>httpResponse).data;
+            var httpResponse = await AjaxService.buildGetRequest(request, this.url)
+                .catch(function (err) {
+                    error = err;
+                });
+            if (error == null) {
+                var response = await httpResponse.json();
 
-                var out = <Models.IUserQueryResponse>response;
+                var out = <Models.IResponse>response;
                 MessengerService.showResponseMessage(out);
                 MessengerService.decrementHttpRequestCounter();
                 return out;
-            })
-                    .catch(function (err) {
-                    error = err;
-                });
-            //if (error == null) {
-            //    var response = httpResponse.json();
-
-            //    var out = <Models.IResponse>response;
-            //    MessengerService.showResponseMessage(out);
-            //    MessengerService.decrementHttpRequestCounter();
-            //    return out;
-            //}
+            }
         }
         catch (err) {
-        
             if (err != null)
                 error = err;
         };
-        
+
         if (error != null) {
             AjaxService.logError(error, this.url, (<any>new Error()).stack);
 
@@ -532,7 +521,7 @@ export class UserListPrototype {
 
             MessengerService.decrementHttpRequestCounter();
             MessengerService.showResponseMessage(result);
-            return <any>result;
+            return result;
         }
     }
 }

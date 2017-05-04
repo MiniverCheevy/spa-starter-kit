@@ -1,36 +1,34 @@
 ﻿import * as React from 'react';
 import * as Api from './../../api.generated';
 import * as Models from './../../models.generated';
-import { UserList } from './userList'
+import { userList } from './userList'
 
 export class UserListProps {
-    users: Models.IUserMessage = [];
+    users: Models.IUserMessage[] = [];
     request: Models.IUserQueryRequest = {};
-    onEdit: void;
-    onRefresh: void;
+    onEdit(user: Models.IUserMessage): void{};
+    onRefresh(request: Models.IUserQueryRequest): void{ };
 }
 
 export class UserListContainer extends React.Component<any, any>
 {
-    private that = this;
     constructor(props) {
         super(props);
-        console.log('ctor-in');
         this.state = {
             users: [], request: {}
         };
-
-        console.log('ctor-out');
     }
-    componentDidMount() {
-        console.log('componentWillMount');
-        //var response: Models.IUserQueryResponse = await Api.UserList.get(this.state.request);
-        var response = Api.UserList.get(this.state.request).then((response) => {
+    setStateAsync(response) {
+        return new Promise((resolve) => {
             if (response.isOk) {
-                console.log('ajax-data');
-                this.setState({ users: response.data });
+                this.setState({ users: response.data, request: response.state }, resolve);
             }
         });
+    }
+    async componentDidMount() {
+        var response = await Api.UserList.get(this.state.request);
+        await this.setStateAsync(response);
+        
 
     }
     public edit(user: Models.IUserMessage) {
@@ -40,33 +38,13 @@ export class UserListContainer extends React.Component<any, any>
 
     }
     render() {
-        console.log('render');
-        debugger;
-        return <UserList
-            request={this.state.request}
-            users={this.state.users}
-            onEdit={this.edit}
-            onRefresh={this.refresh}
-        />;
-    }
-    
-    componentWillReceiveProps() {
-        console.log('componentWillReceiveProps');
-       
-    }
-    shouldComponentUpdate() { console.log('shouldComponentUpdate'); return true; }
-    componentWillUpdate() { console.log('componentWillUpdate'); }
-
-    componentDidUpdate() {
-        console.log('componentDidUpdate');
-        
-        
-    }
-    unmounting() { console.log('unmounting'); }
-
-
-    componentWillUnmount() { console.log('componentWillUnmount'); }
-
-    
-
+        return (
+            userList({
+                request: this.state.request,
+                users: this.state.users,
+                onEdit: this.edit,
+                onRefresh: this.refresh
+            })
+        );
+    }   
 }
