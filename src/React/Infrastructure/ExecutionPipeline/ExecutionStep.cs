@@ -1,4 +1,5 @@
-﻿using React.Infrastructure.ExecutionPipeline.Models;
+﻿using System.Threading.Tasks;
+using React.Infrastructure.ExecutionPipeline.Models;
 using Voodoo.Messages;
 
 namespace React.Infrastructure.ExecutionPipeline
@@ -7,9 +8,11 @@ namespace React.Infrastructure.ExecutionPipeline
          where TResponse : class, IResponse, new()
         where TRequest : class
     {
-        protected override Task process()
+        protected override async Task<ExecutionState<TRequest, TResponse>> processAsync()
         {
-            throw new System.NotImplementedException();
+            
+            state.Response = await state.Command.ExecuteAsync();
+            return state;
         }
     }
 }

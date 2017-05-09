@@ -52,7 +52,7 @@ import * as Models from './models.generated';");
                                     }});
                     if(error == null)
                     {{
-                        var response = await httpResponse.json();
+                        var response = await httpResponse.data;
                     
                         var out = <Models.IResponse>response;
                         MessengerService.showResponseMessage(out);

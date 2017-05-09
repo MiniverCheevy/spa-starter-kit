@@ -1,0 +1,55 @@
+﻿<template>
+    <div>
+        <div class="pagination" show.bind="hasRecords" style="margin: 0px 0px 0px 0px;">
+            <div style="float: left; margin-right: 20px; white-space: nowrap;">
+                <label style="float: left; margin-right: 4px; margin-top: 6px;">Page Size</label>
+                <select value.bind="gridState.pageSize" matcher.bind="selectMatcher"
+                        change.delegate="update()"
+                        class="form-control" style="width: 80px; float: left;">
+                    <option >10</option>
+                    <option >25</option>
+                    <option >50</option>
+                    <option >100</option>
+                </select>
+            </div>
+            <div style="float:left; vertical-align:top;">
+                <ul class="pagination" style="margin: 0px 0px 0px 0px;">
+                    <li ng-class="${ isFirstPage ? 'disabled' : ''}">
+                        <a  disabled.bind="isFirstPage"
+                           click.delegate="firstPage()">&laquo;</a>
+                    </li>
+                    <li ng-class="${ isFirstBlock ? 'disabled' : ''}">
+                        <a  disabled.bind="isFirstBlock"
+                           click.delegate="prevBlock()">...</a>
+                    </li>
+                    <li ng-class="${ isFirstPage ? 'disabled' : ''}">
+                        <a  disabled.bind="isFirstPage"
+                           click.delegate="prevPage()">&lt</a>
+                    </li>
+                    <li repeat.for="block of pageBlock" class="${block.isActive ? 'active' : ''}">
+                        <a  click.delegate="page(block.page)">${block.page}</a>
+                    </li>
+                    <li ng-class="${ isLastPage ? 'disabled' : ''}">
+                        <a  disabled.bind="isLastPage"
+                           click.delegate="nextPage()">&gt</a>
+                    </li>
+                    <li ng-class="${ isLastBlock ? 'disabled' : ''}">
+                        <a  disabled.bind="isLastBlock"
+                           click.delegate="nextBlock()">...</a>
+                    </li>
+                    <li ng-class="${ isLastPage ? 'disabled' : ''}">
+                        <a  disabled.bind="isLastPage"
+                           click.delegate="lastPage()">&raquo</a>
+                    </li>
+                </ul>
+                <div>
+                    ${recordsVerbiage}
+                </div>
+            </div>
+
+        </div>
+        <div id="norecords" show.bind="!hasRecords">
+            <h3>No records found</h3>
+        </div>
+    </div>
+</template>

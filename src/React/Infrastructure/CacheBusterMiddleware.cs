@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace React.Infrastructure
 {
-  //TODO: ideally this should only add headers to the index.html
-  //and webpack should be configured to js/css files so they'll be unique on the first load and cached after that
+    //TODO: ideally this should only add headers to the index.html
+    //and webpack should be configured to js/css files so they'll be 
+    //unique on the first load and cached after that
   public class CacheBusterMiddleware
   {
     private readonly RequestDelegate next;
@@ -22,7 +23,7 @@ namespace React.Infrastructure
         context.Response.Headers.Append("Cache-Control", "no-cache, no-store, must-revalidate");
         context.Response.Headers.Append("Pragma", "no-cache");
         context.Response.Headers.Append("Expires", "0");
-        context.Response.Headers.Append("X-UA-Compatible", "IE = Edge");
+        context.Response.Headers.Append("X-UA-Compatible", "IE=Edge");
       }
       await next(context);
     }

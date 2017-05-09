@@ -1,70 +1,73 @@
-﻿import { EncoderService }  from "./encoder-service";
-import { CurrentUserService }  from "./current-user-service";
+﻿import { EncoderService } from "./encoder-service";
+import { CurrentUserService } from "./current-user-service";
 import { MessengerService } from "./messenger-service";
 
 //import * as Models from "../models.generated";
 import * as $ from 'jquery';
-import * as  axios  from 'axios';
+import * as  axios from 'axios';
 
 export class AjaxServicePrototype {
-   
-    private getAjaxRequest(url: string, verb: string, token:string, request: any)
-    {
+
+    private getAjaxRequest(url: string, verb: string, token: string, request: any) {
         var body = JSON.stringify(request);
-        if (verb.toLowerCase() == 'get' || verb.toLowerCase() == 'delete')
-        {
+        if (verb.toLowerCase() == 'get' || verb.toLowerCase() == 'delete') {
 
-          
 
-            return (<any>axios)({                    
-                    url: url,
-                    method: verb,
-                    credentials: 'same-origin',
-                    headers: [{ 'Accept': 'application/json' },
-                    { 'Content-Type': 'application/json; charset=utf-8' },
-                    { 'Token': token }]                    
-                });    
+
+            return (<any>axios)({
+                url: url,
+                method: verb,
+                credentials: 'same-origin',
+                headers: [{ 'Accept': 'application/json' },
+                { 'Content-Type': 'application/json; charset=utf-8' },
+                { 'Token': token }]
+            });
         }
-        else
-            {
-            (<any>axios)({ 
-                    url: url,
-                    method: verb,
-                    credentials: 'same-origin',
-                    headers: [{ 'Accept': 'application/json' },
-                    { 'Content-Type': 'application/json; charset=utf-8' },
-                    { 'Token': token }],
-                    body: body
-                });               
-            }      
+        else {
+            (<any>axios)({
+                url: url,
+                method: verb,
+                credentials: 'same-origin',
+                headers: [{ 'Accept': 'application/json' },
+                { 'Content-Type': 'application/json; charset=utf-8' },
+                { 'Token': token }],
+                body: body
+            });
+        }
     }
     public buildGetRequest = async (request, url): Promise<any> => {
-        var user = await CurrentUserService.get();        
+        var user = await CurrentUserService.get();
         var params = EncoderService.serializeParams(request);
         var urlWithParams = url + '?' + params;
-        return this.getAjaxRequest(urlWithParams, 'GET', user.token, params);        
+        return this.getAjaxRequest(urlWithParams, 'GET', user.token, params);
 
     }
     public buildPutRequest = async (request, url): Promise<any> => {
 
         var user = await CurrentUserService.get();
-        return this.getAjaxRequest(url, 'PUT', user.token, request);             
+        return this.getAjaxRequest(url, 'PUT', user.token, request);
     }
     public buildPostRequest = async (request, url): Promise<any> => {
 
         var user = await CurrentUserService.get();
-        return this.getAjaxRequest(url, 'POST', user.token, request);    
+        return this.getAjaxRequest(url, 'POST', user.token, request);
     }
     public buildDeleteRequest = async (request, url): Promise<any> => {
 
         var user = await CurrentUserService.get();
         var params = EncoderService.serializeParams(request);
         var urlWithParams = url + '?' + params;
-        return this.getAjaxRequest(urlWithParams, 'DELETE', user.token, params);        
+        return this.getAjaxRequest(urlWithParams, 'DELETE', user.token, params);
 
     }
     public logError(err, url, stack) {
-        var message = err.statusText + ' (' + err.statusCode + ')';
+
+        var message = err.message;
+        if (message == null) {
+            message = err.statusText;
+            if (message != null && err.statusCode != null)
+                message = message + ' (' + err.statusCode + ')';
+        }
         console.error(err);
         var error = <any>{};
         error.errorMsg = message;
@@ -76,17 +79,17 @@ export class AjaxServicePrototype {
             data: error
         });
     }
-    
+
 }
 
 export const AjaxService = new AjaxServicePrototype();
 
 window.onerror = (message, file, line, column, errorObject) => {
     console.log("window.onerror fired");
-    
+
     column = column || (<any>(window.event));
     var stack = errorObject ? errorObject.stack : null;
-    
+
     //trying to get stack from IE
     if (!stack) {
         var builtStack = [];
@@ -107,6 +110,6 @@ window.onerror = (message, file, line, column, errorObject) => {
     };
     console.log(data);
     AjaxService.logError(errorObject, file, stack);
-    MessengerService.showToast(message, true);  
+    MessengerService.showToast(message, true);
     return false;
 }

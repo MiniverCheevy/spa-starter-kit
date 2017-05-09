@@ -7,16 +7,15 @@ namespace React.Infrastructure.ExecutionPipeline.Models
         where TResponse : class, IResponse, new()
         where TRequest : class
     {
-        protected ExecutionState<TRequest, TResponse> request;
+        protected ExecutionState<TRequest, TResponse> state;
 
         public async Task<ExecutionState<TRequest, TResponse>> ExecuteAsync(ExecutionState<TRequest, TResponse> executionRequest)
         {
-            this.request = executionRequest;
-            await process();
-            return await Task.FromResult(request);
+            this.state = executionRequest;
+            return await processAsync();
 
         }
-        protected abstract Task process();  
+        protected abstract Task<ExecutionState<TRequest, TResponse>> processAsync();  
 
     }
 }

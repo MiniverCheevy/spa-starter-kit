@@ -401,19 +401,6 @@
       <DependentUpon>UpdateSaveCommandTestsTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Web\ProjectLevel\ApiControllerFile.cs" />
-    <Compile Include="Templates\Web\ProjectLevel\ApiControllerTemplate.cs" />
-    <Compile Include="Templates\Web\ProjectLevel\ApiControllerTemplate1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ApiControllerTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\Web\ProjectLevel\CustomAuthorizeAttributeTemplate.cs" />
-    <Compile Include="Templates\Web\ProjectLevel\CustomAuthorizeAttributeTemplate1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CustomAuthorizeAttributeTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\Web\ProjectLevel\CustomAuthorizeTemplate.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceTemplate.cs">
       <DependentUpon>TsServiceTemplate.tt</DependentUpon>
@@ -607,14 +594,6 @@
     <Content Include="Templates\Tests\UpdateSaveCommandTestsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UpdateSaveCommandTestsTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Web\ProjectLevel\ApiControllerTemplate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ApiControllerTemplate1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Web\ProjectLevel\CustomAuthorizeAttributeTemplate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CustomAuthorizeAttributeTemplate1.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

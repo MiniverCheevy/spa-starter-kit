@@ -4,13 +4,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
-import { Container } from 'cerebral/react'
-import controller from './controller'
 import { Layout } from './Layout/layout';
 import { Routes } from './routes';
 
-//<Container controller={controller}>
-//</Container>
 ReactDOM.render((
 
     

@@ -1,0 +1,8 @@
+﻿<template>
+    
+    <span class="sorter btn btn-block" click.delegate="sort(member,direction)">
+        ${text}
+        &nbsp;<span show.bind="isCurrentSortAsc"  class="sortArrow glyphicon glyphicon-chevron-up"></span>
+        <span show.bind="isCurrentSortDesc"   class="sortArrow glyphicon glyphicon-chevron-down"></span>
+    </span>
+</template>

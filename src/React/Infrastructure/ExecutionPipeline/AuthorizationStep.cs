@@ -8,9 +8,9 @@ namespace React.Infrastructure.ExecutionPipeline
          where TResponse : class, IResponse, new()
         where TRequest : class
     {
-        protected override Task process()
+        protected override Task<ExecutionState<TRequest, TResponse>> processAsync()
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult(state);
         }
     }
 }

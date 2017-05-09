@@ -14,16 +14,20 @@ namespace React.Infrastructure.ExecutionPipeline
                 where TResponse : class, IResponse, new()
                 where TRequest : class;
 
+
+    //TODO: should I remove web api entirely and switch this to middleware
+    //that would instantiate the command and hydrate the response directly 
+    //from the context 
     public class ExcecutionPipeline<TRequest, TResponse>
          where TResponse : class, IResponse, new()
         where TRequest : class
     {
         private List<Step<TRequest, TResponse>> steps = new List<Step<TRequest, TResponse>>()
         {
-            new ModelStateVerificationStep(),
-            new AuthorizationStep<,>(),
-            new ExecutionStep(),
-            new ResponseDecorationStep()
+            new ModelStateVerificationStep<TRequest,TResponse>(),
+            new AuthorizationStep<TRequest,TResponse>(),
+            new ExecutionStep<TRequest,TResponse>(),            
+           
         }
             ;
         private ExecutionState<TRequest, TResponse> state;
@@ -37,14 +41,12 @@ namespace React.Infrastructure.ExecutionPipeline
 
             foreach (var step in steps)
             {
-                result = await step.Execute(executionRequest);
-                if (result.IsDone)
-                    break;
-                else
-                    executionRequest = result.Request;
+                state = await step.ExecuteAsync(state);
+                if (state.IsDone)
+                    break;                
             }
-            new ResponseDecorationStep().
-            return result.Resposne;
+            state = await new ResponseDecorationStep<TRequest, TResponse>().ExecuteAsync(state);
+            return state.Response;
         }
     }
 }

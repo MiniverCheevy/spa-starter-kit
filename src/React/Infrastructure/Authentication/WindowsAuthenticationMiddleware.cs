@@ -25,7 +25,6 @@ namespace React.Infrastructure.Authentication
 
                 if (context.Items[RequestContextProvider.AppPrincipal] == null)
                 {
-                    var principal = AppPrincipal.GetAnonymousPrincipal();
                     var userName = getUserName(context);
                     var userAgent = getUserAgent(context);
 
@@ -33,8 +32,7 @@ namespace React.Infrastructure.Authentication
                     if (response.IsOk)
                         context.Items[RequestContextProvider.AppPrincipal] = response.Data;
                 }
-            }
-            Console.WriteLine("WindowsAuthenticationMiddleware S=" + AppErrorHandlingMiddleware.Stopwatch.ElapsedMilliseconds);
+            }            
             await next(context);
         }
 

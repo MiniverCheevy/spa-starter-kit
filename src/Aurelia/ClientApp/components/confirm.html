@@ -1,0 +1,29 @@
+﻿<template>
+
+    <div class="modal modal-dialog" tabindex="-1" role="dialog" id="modal_dialog" style="display: none;">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Confirmation</h4>
+                    </div>
+                    <div class="modal-body">
+                        ${messengerService.confirmPrompt}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                click.trigger="messengerService.confirmNo()">
+                            No!
+                        </button>
+                        <button type="button" class="btn btn-danger"
+                                click.trigger="messengerService.confirmYes()">
+                            Yes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</template>
