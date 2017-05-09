@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace React.Controllers.Api
+namespace Fernweh.Controllers.Api
 {
     public class ApiControllerBase : Controller
     {

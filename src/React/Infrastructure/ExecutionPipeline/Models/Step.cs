@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Voodoo.Messages;
 
-namespace React.Infrastructure.ExecutionPipeline.Models
+namespace Fernweh.Infrastructure.ExecutionPipeline.Models
 {
     public abstract class Step<TRequest, TResponse>
         where TResponse : class, IResponse, new()
@@ -9,13 +9,13 @@ namespace React.Infrastructure.ExecutionPipeline.Models
     {
         protected ExecutionState<TRequest, TResponse> state;
 
-        public async Task<ExecutionState<TRequest, TResponse>> ExecuteAsync(ExecutionState<TRequest, TResponse> executionRequest)
+        public async Task<ExecutionState<TRequest, TResponse>> ExecuteAsync(
+            ExecutionState<TRequest, TResponse> executionRequest)
         {
-            this.state = executionRequest;
+            state = executionRequest;
             return await processAsync();
-
         }
-        protected abstract Task<ExecutionState<TRequest, TResponse>> processAsync();  
 
+        protected abstract Task<ExecutionState<TRequest, TResponse>> processAsync();
     }
 }

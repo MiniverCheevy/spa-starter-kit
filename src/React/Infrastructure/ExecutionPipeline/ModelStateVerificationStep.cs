@@ -1,19 +1,18 @@
-﻿using System;
-using System.Threading.Tasks;
-using React.Infrastructure.ExecutionPipeline.Models;
+﻿using System.Threading.Tasks;
+using Fernweh.Infrastructure.ExecutionPipeline.Models;
 using Voodoo.Messages;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-namespace React.Infrastructure.ExecutionPipeline
+
+namespace Fernweh.Infrastructure.ExecutionPipeline
 {
     internal class ModelStateVerificationStep<TRequest, TResponse> : Step<TRequest, TResponse>
-         where TResponse : class, IResponse, new()
+        where TResponse : class, IResponse, new()
         where TRequest : class
     {
         protected override Task<ExecutionState<TRequest, TResponse>> processAsync()
         {
             if (state.Request == null && state.ModelState.ErrorCount > 0)
             {
-                var response = new TResponse() { IsOk = false, Message = "Model binding error" };
+                var response = new TResponse {IsOk = false, Message = "Model binding error"};
                 foreach (var error in state.ModelState.Keys)
                 {
                     var value = state.ModelState[error];

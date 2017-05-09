@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Fernweh.Core.Context.ExceptionalContext;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Http.Internal;
+using Newtonsoft.Json;
 using Voodoo;
 using Voodoo.Messages;
-using HttpContext = Microsoft.AspNetCore.Http.HttpContext;
-using HttpRequest = Microsoft.AspNetCore.Http.HttpRequest;
 
-namespace React.Infrastructure.ExceptionHandling
+namespace Fernweh.Infrastructure.ExceptionHandling
 {
     public class ErrorFactory
     {
         internal const string CollectionErrorKey = "CollectionFetchError";
-        private Error error;
         private HttpContext context;
-        private List<NameValuePair> queryString = new List<NameValuePair>();
-        private List<NameValuePair> form = new List<NameValuePair>();
         private List<NameValuePair> cookies = new List<NameValuePair>();
-        private List<NameValuePair> requestHeaders = new List<NameValuePair>();
-        private List<NameValuePair> customData = new List<NameValuePair>();
         private DateTime creationDate;
+        private List<NameValuePair> customData = new List<NameValuePair>();
+        private Error error;
+        private List<NameValuePair> form = new List<NameValuePair>();
+        private List<NameValuePair> queryString = new List<NameValuePair>();
+        private List<NameValuePair> requestHeaders = new List<NameValuePair>();
 
 
 /*
@@ -46,9 +46,7 @@ add the below line to the startup to enable reading the form
             buildError(e);
 
             foreach (var key in e.Data.Keys)
-            {
                 customData.Add(new NameValuePair(key.To<string>(), e.Data[key].To<string>()));
-            }
 
             setContextProperties();
             var body = captureBody(context);
@@ -67,14 +65,12 @@ add the below line to the startup to enable reading the form
 
             var excptionForMessage = e;
             while (excptionForMessage.InnerException != null)
-            {
                 excptionForMessage = excptionForMessage.InnerException;
-            }
 
             error = new Error
             {
                 GUID = Guid.NewGuid(),
-                ApplicationName = Voodoo.VoodooGlobalConfiguration.ApplicationName,
+                ApplicationName = VoodooGlobalConfiguration.ApplicationName,
                 MachineName = Environment.MachineName,
                 Type = baseException.GetType().FullName,
                 Message = excptionForMessage.Message,
@@ -130,10 +126,10 @@ add the below line to the startup to enable reading the form
             if (context == null) return;
             var request = context.Request;
             error.User = getUser();
-            error.IPAddress = this.context.Connection.RemoteIpAddress.To<string>();
-            error.HTTPMethod = this.context.Request.Method;
-            error.Url = this.context.Request.GetEncodedUrl();
-            error.Host = this.context.Request.Host.Host.To<string>();
+            error.IPAddress = context.Connection.RemoteIpAddress.To<string>();
+            error.HTTPMethod = context.Request.Method;
+            error.Url = context.Request.GetEncodedUrl();
+            error.Host = context.Request.Host.Host.To<string>();
             Func<Func<HttpRequest, List<NameValuePair>>, List<NameValuePair>> tryGetCollection = getter =>
             {
                 try
@@ -151,8 +147,8 @@ add the below line to the startup to enable reading the form
             {
                 if (request.ContentType != "application/json")
                 {
-                    this.form = new List<NameValuePair>();
-          
+                    form = new List<NameValuePair>();
+
                     foreach (var pair in request.Form)
                     {
                         var name = pair.Key;
@@ -163,12 +159,12 @@ add the below line to the startup to enable reading the form
             }
             catch (Exception e)
             {
-                this.form = new List<NameValuePair>();
+                form = new List<NameValuePair>();
                 form.Add("Error Reading Form", e.Message);
             }
             try
             {
-                this.queryString = new List<NameValuePair>();
+                queryString = new List<NameValuePair>();
                 foreach (var cookie in request.Query)
                 {
                     var name = cookie.Key;
@@ -178,7 +174,7 @@ add the below line to the startup to enable reading the form
             }
             catch (Exception e)
             {
-                this.queryString = new List<NameValuePair>();
+                queryString = new List<NameValuePair>();
                 queryString.Add("Error Reading QueryString", e.Message);
             }
             try
@@ -193,7 +189,7 @@ add the below line to the startup to enable reading the form
             }
             catch (Exception e)
             {
-                this.cookies = new List<NameValuePair>();
+                cookies = new List<NameValuePair>();
                 cookies.Add("Error Reading Cookies", e.Message);
             }
 
@@ -227,7 +223,6 @@ add the below line to the startup to enable reading the form
             if (exception.Data.Contains("SQL"))
                 error.SQL = exception.Data["SQL"] as string;
 
-
             // Regardless of what Resharper may be telling you, .Data can be null on things like a null ref exception.
             if (exception.Data != null)
             {
@@ -235,9 +230,7 @@ add the below line to the startup to enable reading the form
                     customData = new List<NameValuePair>();
 
                 foreach (string k in exception.Data.Keys)
-                {
                     customData.Add(k, exception.Data[k].To<string>());
-                }
             }
         }
 
@@ -248,13 +241,13 @@ add the below line to the startup to enable reading the form
 
         public string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+            return JsonConvert.SerializeObject(this);
         }
 
 
         public string ToDetailedJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(
+            return JsonConvert.SerializeObject(
                 new
                 {
                     error.GUID,
@@ -286,7 +279,7 @@ add the below line to the startup to enable reading the form
 
         public static Error FromJson(string json)
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Error>(json);
+            return JsonConvert.DeserializeObject<Error>(json);
         }
     }
 }

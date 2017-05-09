@@ -1,7 +1,7 @@
 ﻿using Fernweh.Core;
 using Microsoft.AspNetCore.Mvc;
 
-namespace React.Controllers.Api
+namespace Fernweh.Controllers.Api
 {
     [Route("api/[controller]")]
     public class TestController : Controller

@@ -5,7 +5,7 @@ using Voodoo;
 using Voodoo.Logging;
 using Voodoo.Messages;
 
-namespace React.Controllers.Api
+namespace Fernweh.Controllers.Api
 {
     [Serializable]
     public class JavascriptException : Exception

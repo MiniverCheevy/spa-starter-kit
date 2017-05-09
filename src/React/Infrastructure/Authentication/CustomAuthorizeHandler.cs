@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using Fernweh.Core;
@@ -6,7 +7,7 @@ using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Http;
 using Voodoo.Messages;
 
-namespace React.Infrastructure.Authentication
+namespace Fernweh.Infrastructure.Authentication
 {
     [Obsolete]
     public class AuthorizationMiddleware
@@ -24,11 +25,10 @@ namespace React.Infrastructure.Authentication
             var isAuthenticated = IOC.GetCurrentPrincipal().IsAuthenticated;
             var requestPath = context.Request.GetUri().ToString().ToLower();
             if (!isAuthenticated)
-            {
                 if (requestPath.Contains("api") && !requestPath.Contains("login") && !requestPath.Contains("profile") &&
                     !requestPath.Contains("oauth"))
                 {
-                    context.Response.StatusCode = (int) System.Net.HttpStatusCode.Unauthorized;
+                    context.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
                     context.Response.ContentType = "application/json";
 
                     var response = new Response();
@@ -38,7 +38,6 @@ namespace React.Infrastructure.Authentication
                     await context.Response.WriteAsync(json).ConfigureAwait(false);
                     return;
                 }
-            }
             await _next(context);
         }
     }

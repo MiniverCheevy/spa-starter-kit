@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Http;
 using Voodoo;
 using Voodoo.Logging;
 
-namespace React.Infrastructure.ExceptionHandling
+namespace Fernweh.Infrastructure.ExceptionHandling
 {
     public class CoreErrorLogger : ILogger
     {
+        public static IHttpContextAccessor HttpContextAccessor { get; set; }
+
         public void Log(string message)
         {
             Exception ex = null;
@@ -22,7 +24,7 @@ namespace React.Infrastructure.ExceptionHandling
                 var error = new ErrorFactory().GetError(ex, context);
 
                 var telemetry = new TelemetryClient();
-                var properties = new Dictionary<string, string> {};
+                var properties = new Dictionary<string, string>();
                 telemetry.TrackException(ex, properties);
 
 #pragma warning disable 4014
@@ -40,7 +42,7 @@ namespace React.Infrastructure.ExceptionHandling
         {
             try
             {
-                var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+                var telemetry = new TelemetryClient();
                 telemetry.TrackException(ex);
 
                 Console.WriteLine(ex.ToString());
@@ -66,18 +68,14 @@ namespace React.Infrastructure.ExceptionHandling
                 var logPath = IoNic.PathCombineLocal(path, "logs");
                 Console.WriteLine(logPath);
                 IoNic.MakeDir(logPath);
-                Voodoo.VoodooGlobalConfiguration.LogFilePath = logPath;
+                VoodooGlobalConfiguration.LogFilePath = logPath;
                 var fallbackLogger = new FallbackLogger();
                 fallbackLogger.Log(ex);
             }
             catch (Exception e)
             {
-        
                 Console.WriteLine(e.ToString());
             }
         }
-
-
-        public static IHttpContextAccessor HttpContextAccessor { get; set; }
     }
 }

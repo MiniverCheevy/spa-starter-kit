@@ -1,14 +1,11 @@
-﻿using System;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 using System.Threading.Tasks;
-using Fernweh.Core.Identity;
 using Fernweh.Core.Operations.CurrentUsers;
 using Fernweh.Core.Operations.CurrentUsers.Extras;
 using Microsoft.AspNetCore.Http;
-using React.Infrastructure.ExceptionHandling;
 using Voodoo;
 
-namespace React.Infrastructure.Authentication
+namespace Fernweh.Infrastructure.Authentication
 {
     public class WindowsAuthenticationMiddleware
     {
@@ -18,21 +15,21 @@ namespace React.Infrastructure.Authentication
         {
             this.next = next;
         }
+
         public async Task Invoke(HttpContext context)
         {
             if (context.IsSecureRequest())
-            {
-
                 if (context.Items[RequestContextProvider.AppPrincipal] == null)
                 {
                     var userName = getUserName(context);
                     var userAgent = getUserAgent(context);
 
-                    var response = await new BuildPrincipalCommand(new BuildPrincipalRequest { UserAgent = userAgent, UserName = userName }).ExecuteAsync();
+                    var response =
+                        await new BuildPrincipalCommand(
+                            new BuildPrincipalRequest {UserAgent = userAgent, UserName = userName}).ExecuteAsync();
                     if (response.IsOk)
                         context.Items[RequestContextProvider.AppPrincipal] = response.Data;
                 }
-            }            
             await next(context);
         }
 
@@ -43,6 +40,7 @@ namespace React.Infrastructure.Authentication
             var userName = ModelHelper.ExtractUserNameFromDomainNameOrEmailAddress(windowsUser?.Identity?.Name);
             return userName;
         }
+
         private string getUserAgent(HttpContext context)
         {
             var key = "User-Agent";

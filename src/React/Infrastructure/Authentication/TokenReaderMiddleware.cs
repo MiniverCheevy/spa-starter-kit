@@ -4,7 +4,7 @@ using Fernweh.Core.Identity;
 using Fernweh.Core.Security;
 using Microsoft.AspNetCore.Http;
 
-namespace React.Infrastructure.Authentication
+namespace Fernweh.Infrastructure.Authentication
 {
     public class TokenReaderMiddleware
     {
@@ -14,6 +14,7 @@ namespace React.Infrastructure.Authentication
         {
             this.next = next;
         }
+
         public async Task Invoke(HttpContext context)
         {
             if (context.IsSecureRequest())

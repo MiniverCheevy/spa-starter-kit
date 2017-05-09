@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Linq;
 using Voodoo;
 using Voodoo.Infrastructure;
 using Voodoo.Logging;
 using Voodoo.Messages;
 
-namespace Fernweh.Core.Context
+namespace Fernweh.Core.Context.ExceptionTranslators
 {
     public class UniqueConstraintExceptionTranslation : ExceptionTranslation
     {

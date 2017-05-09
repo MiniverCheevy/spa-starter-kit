@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Net;
 using System.Threading.Tasks;
-using Fernweh.Core;
-using Fernweh.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Newtonsoft.Json;
-using React.Infrastructure.Logging;
-using Voodoo;
 using Voodoo.Messages;
 
-namespace React.Infrastructure.ExceptionHandling
+namespace Fernweh.Infrastructure.ExceptionHandling
 {
     public class AppErrorHandlingMiddleware
     {
@@ -20,12 +16,13 @@ namespace React.Infrastructure.ExceptionHandling
         {
             this.next = next;
         }
+
         public async Task Invoke(HttpContext context, IHttpContextAccessor httpContextAccessor)
         {
             CoreErrorLogger.HttpContextAccessor = httpContextAccessor;
             context.Request.EnableRewind();
             try
-            {                
+            {
                 await next(context);
             }
             catch (Exception ex)
@@ -36,19 +33,17 @@ namespace React.Infrastructure.ExceptionHandling
 
         private async Task handleExceptionAsync(HttpContext context, Exception exception)
         {
-            context.Response.StatusCode = (int)System.Net.HttpStatusCode.InternalServerError;
+            context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
             context.Response.ContentType = "application/json";
 
             if (exception != null)
             {
-                var logger = new CoreErrorLogger();                
+                var logger = new CoreErrorLogger();
                 logger.Log(exception);
                 var ex = exception;
-                var response = new Response { };
+                var response = new Response();
                 while (ex.InnerException != null)
-                {
                     ex = ex.InnerException;
-                }
                 response.Message = ex.Message;
                 response.IsOk = false;
                 var json = JsonConvert.SerializeObject(response);

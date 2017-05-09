@@ -2,7 +2,10 @@
 using System.Diagnostics;
 using System.IO;
 using Fernweh.Core;
-using Fernweh.Core.Infrastructure;
+using Fernweh.Infrastructure;
+using Fernweh.Infrastructure.Authentication;
+using Fernweh.Infrastructure.ExceptionHandling;
+using Fernweh.Infrastructure.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,40 +13,33 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using React.Infrastructure;
-using React.Infrastructure.Authentication;
-using React.Infrastructure.ExceptionHandling;
-using React.Infrastructure.Logging;
-using React.Infrastructure.Settings;
 using Voodoo;
 
-namespace React
+namespace Fernweh
 {
     public class Startup
     {
+        public IConfigurationRoot Configuration { get; set; }
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder();
             builder.AddEnvironmentVariables();
             builder
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
                 .AddEnvironmentVariables();
             Console.WriteLine($"Environment: {env.EnvironmentName}");
-            this.Configuration = builder.Build();
+            Configuration = builder.Build();
             IOC.Settings = SettingsFactory.GetSettings(builder.Build());
-
         }
-
-        public IConfigurationRoot Configuration { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationInsightsTelemetry(Configuration);
             services.AddWebApi();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

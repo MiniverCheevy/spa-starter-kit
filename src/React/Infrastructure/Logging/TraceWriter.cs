@@ -1,7 +1,8 @@
 ﻿using Fernweh.Core.Logging;
+using Microsoft.ApplicationInsights;
 using Voodoo.Logging;
 
-namespace React.Infrastructure.Logging
+namespace Fernweh.Infrastructure.Logging
 {
     public class TraceWriter : ITraceLogger
     {
@@ -12,7 +13,7 @@ namespace React.Infrastructure.Logging
 
         public void Log(string message)
         {
-            var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+            var telemetry = new TelemetryClient();
             telemetry.TrackTrace(message);
 
             LogManager.Log(message);

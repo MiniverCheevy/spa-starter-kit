@@ -1,12 +1,11 @@
-using System.Security;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 
-namespace React.Infrastructure.ExecutionPipeline.Models
+namespace Fernweh.Infrastructure.ExecutionPipeline.Models
 {
-    public class ExecutionState<TRequest,TResponse> where TResponse : class, IResponse, new() where TRequest : class
+    public class ExecutionState<TRequest, TResponse> where TResponse : class, IResponse, new() where TRequest : class
     {
         public ModelStateDictionary ModelState { get; set; }
         public SecurityContext SecurityContext { get; set; }
