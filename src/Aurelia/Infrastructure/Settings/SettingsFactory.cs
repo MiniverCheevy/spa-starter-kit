@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Fernweh.Aurelia.Infrastructure.Settings
+namespace Fernweh.Infrastructure.Settings
 {
     public static class SettingsFactory
     {

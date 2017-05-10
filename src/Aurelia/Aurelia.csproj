@@ -4,6 +4,7 @@
     <TargetFramework>net461</TargetFramework>
     <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
     <BuildForLiveUnitTesting>false</BuildForLiveUnitTesting>
+    <RootNamespace>Fernweh</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +17,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
     <PackageReference Include="Voodoo.Patterns" Version="2.2.18" />
         <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="1.1.0" />
@@ -57,7 +57,7 @@
   </Target>
   <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
-    <Exec Command="npm install" />
+    <Exec Command="yarn install" />
     <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod" />
     <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
 

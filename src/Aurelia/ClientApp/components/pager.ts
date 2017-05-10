@@ -1,4 +1,4 @@
-﻿import Models = require("models.generated");
+﻿import * as  Models from './../models.generated';
 import { bindable, inject, customElement } from 'aurelia-framework';
 
 

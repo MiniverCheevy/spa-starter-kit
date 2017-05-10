@@ -1,5 +1,5 @@
 ﻿import { bindable, inject, customElement } from 'aurelia-framework';
-import Models = require("models.generated");
+import * as Models from './../models.generated';
 
 @customElement('button-bar')
 @inject(Element)

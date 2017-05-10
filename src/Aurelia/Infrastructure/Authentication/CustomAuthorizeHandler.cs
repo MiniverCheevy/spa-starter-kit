@@ -2,11 +2,8 @@
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using Fernweh.Core;
-using Microsoft.ApplicationInsights.AspNetCore.Extensions;
-using Microsoft.AspNetCore.Http;
-using Voodoo.Messages;
 
-namespace Fernweh.Aurelia.Infrastructure.Authentication
+namespace Fernweh.Infrastructure.Authentication
 {
     [Obsolete]
     public class AuthorizationMiddleware

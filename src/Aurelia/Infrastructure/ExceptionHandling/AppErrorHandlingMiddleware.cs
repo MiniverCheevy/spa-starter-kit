@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Net;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
-using Newtonsoft.Json;
-using Voodoo;
-using Voodoo.Messages;
 
-namespace Fernweh.Aurelia.Infrastructure.ExceptionHandling
+namespace Fernweh.Infrastructure.ExceptionHandling
 {
   public class AppErrorHandlingMiddleware
   {

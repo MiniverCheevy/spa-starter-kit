@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Fernweh.Aurelia.Controllers.Api
+namespace Fernweh.Controllers.Api
 {
     public class ApiControllerBase : Controller
     {

@@ -1,10 +1,12 @@
-var isDevBuild = process.argv.indexOf('--env.prod') < 0;
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractCSS = new ExtractTextPlugin('vendor.css');
 
-module.exports = {
+module.exports = ({ prod } = {}) => {
+    const isDevBuild = !prod;
+    return [{
+        stats: { modules: false },
     resolve: {
         extensions: [ '.js' ]
     },
@@ -12,7 +14,7 @@ module.exports = {
 
         loaders: [
             { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, loader: 'url-loader?limit=100000' },
-            { test: /\.css(\?|$)/, loader: extractCSS.extract(['css-loader']) }
+                { test: /\.css(\?|$)/, loader: extractCSS.extract([isDevBuild ? 'css-loader' : 'css-loader?minimize']) }
         ]
     },
     entry: {
@@ -30,6 +32,8 @@ module.exports = {
             'aurelia-templating-router',
             'bluebird',
             'moment',
+'bootstrap',
+                'bootstrap/dist/css/bootstrap.css',
             'jquery'
         ],
     },
@@ -53,4 +57,5 @@ module.exports = {
     ].concat(isDevBuild ? [] : [
         new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
     ])
+    }]
 };

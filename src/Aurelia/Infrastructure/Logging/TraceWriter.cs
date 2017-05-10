@@ -1,8 +1,8 @@
-﻿using Fernweh.Core.Infrastructure;
-using Fernweh.Core.Logging;
+﻿using Fernweh.Core.Logging;
+using Microsoft.ApplicationInsights;
 using Voodoo.Logging;
 
-namespace Fernweh.Aurelia.Infrastructure.Logging
+namespace Fernweh.Infrastructure.Logging
 {
     public class TraceWriter : ITraceLogger
     {
@@ -13,7 +13,7 @@ namespace Fernweh.Aurelia.Infrastructure.Logging
 
         public void Log(string message)
         {
-            var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+            var telemetry = new TelemetryClient();
             telemetry.TrackTrace(message);
 
             LogManager.Log(message);

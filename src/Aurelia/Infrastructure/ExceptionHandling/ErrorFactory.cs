@@ -2,16 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using Fernweh.Core.Context.ExceptionalContext;
-using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Http.Internal;
-using Voodoo;
-using Voodoo.Messages;
 using HttpContext = Microsoft.AspNetCore.Http.HttpContext;
 using HttpRequest = Microsoft.AspNetCore.Http.HttpRequest;
 
-namespace Fernweh.Aurelia.Infrastructure.ExceptionHandling
+namespace Fernweh.Infrastructure.ExceptionHandling
 {
     public class ErrorFactory
     {

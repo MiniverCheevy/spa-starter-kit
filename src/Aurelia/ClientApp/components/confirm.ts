@@ -1,5 +1,5 @@
 ﻿import { autoinject, customElement } from "aurelia-framework";
-import { MessengerService } from 'services/MessengerService';
+import { MessengerService } from './../services/messenger-service';
 
 
 @customElement('confirm')

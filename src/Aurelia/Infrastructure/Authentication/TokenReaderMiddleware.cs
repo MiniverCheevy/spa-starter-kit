@@ -1,11 +1,9 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Fernweh.Core.Identity;
 using Fernweh.Core.Security;
-using Microsoft.AspNetCore.Http;
 
-namespace Fernweh.Aurelia.Infrastructure.Authentication
+namespace Fernweh.Infrastructure.Authentication
 {
   public class TokenReaderMiddleware
   {

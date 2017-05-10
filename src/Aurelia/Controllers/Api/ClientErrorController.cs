@@ -1,11 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Voodoo;
-using Voodoo.Logging;
-using Voodoo.Messages;
 
-namespace Fernweh.Aurelia.Controllers.Api
+namespace Fernweh.Controllers.Api
 {
     [Serializable]
     public class JavascriptException : Exception

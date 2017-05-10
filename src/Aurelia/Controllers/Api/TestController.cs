@@ -1,8 +1,6 @@
 ﻿using Fernweh.Core;
-using Fernweh.Core.Infrastructure;
-using Microsoft.AspNetCore.Mvc;
 
-namespace Fernweh.Aurelia.Controllers.Api
+namespace Fernweh.Controllers.Api
 {
     [Route("api/[controller]")]
     public class TestController : Controller

@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Fernweh.Aurelia.Infrastructure.Settings;
 using Fernweh.Core.Operations.Errors;
 using Fernweh.Core.Operations.Errors.Extras;
-using Microsoft.ApplicationInsights;
-using Microsoft.AspNetCore.Http;
-using Voodoo;
-using Voodoo.Logging;
 
-namespace Fernweh.Aurelia.Infrastructure.ExceptionHandling
+namespace Fernweh.Infrastructure.ExceptionHandling
 {
     public class CoreErrorLogger : ILogger
     {

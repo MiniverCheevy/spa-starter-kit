@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Voodoo.Messages;
-
-namespace Fernweh.Aurelia.Controllers.Api
+﻿namespace Fernweh.Controllers.Api
 {
     public class ModelBinderResponseBuilder
     {

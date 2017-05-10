@@ -1,14 +1,10 @@
-﻿using System;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 using System.Threading.Tasks;
 using Fernweh.Core.Identity;
 using Fernweh.Core.Operations.CurrentUsers;
 using Fernweh.Core.Operations.CurrentUsers.Extras;
-using Fernweh.Core.Security;
-using Microsoft.AspNetCore.Http;
-using Voodoo;
 
-namespace Fernweh.Aurelia.Infrastructure.Authentication
+namespace Fernweh.Infrastructure.Authentication
 {
     public class WindowsAuthenticationMiddleware
   {

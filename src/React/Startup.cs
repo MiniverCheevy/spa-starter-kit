@@ -27,13 +27,14 @@ namespace Fernweh
             builder.AddEnvironmentVariables();
             builder
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", true, true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
+          .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Console.WriteLine($"Environment: {env.EnvironmentName}");
-            Configuration = builder.Build();
+      this.Configuration = builder.Build();
             IOC.Settings = SettingsFactory.GetSettings(builder.Build());
         }
+    public IConfigurationRoot Configuration { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
         {

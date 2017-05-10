@@ -1,33 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Fernweh.Aurelia.Infrastructure.ExceptionHandling;
-using Fernweh.Aurelia.Infrastructure.Logging;
-using Fernweh.Aurelia.Infrastructure.Settings;
+﻿using System.Threading.Tasks;
 using Fernweh.Core;
 using Fernweh.Core.Infrastructure;
+using Fernweh.Infrastructure.Logging;
 using Microsoft.AspNetCore.Http;
 using Voodoo;
 
-namespace Fernweh.Aurelia.Infrastructure
+namespace Fernweh.Infrastructure
 {
-  public class CompositionMiddleware
-  {
-    private readonly RequestDelegate next;
-    public CompositionMiddleware(RequestDelegate next)
+    public class CompositionMiddleware
     {
-      this.next = next;
-    }
-    public async Task Invoke(HttpContext context, IHttpContextAccessor httpContextAccessor)
-    {
-      
-      IOC.TraceWriter = new TraceWriter();
-      IOC.ContextFactory = new ContextFactory();
-      IOC.RequestContextProvier = new RequestContextProvider(httpContextAccessor);
-      VoodooGlobalConfiguration.ErrorDetailLoggingMethodology = ErrorDetailLoggingMethodology.LogInExceptionData;
+        private readonly RequestDelegate next;
 
-      await next(context);
+        public CompositionMiddleware(RequestDelegate next)
+        {
+            this.next = next;
+        }
+
+        public async Task Invoke(HttpContext context, IHttpContextAccessor httpContextAccessor)
+        {
+            IOC.TraceWriter = new TraceWriter();
+            IOC.ContextFactory = new ContextFactory();
+            IOC.RequestContextProvier = new RequestContextProvider(httpContextAccessor);
+            VoodooGlobalConfiguration.ErrorDetailLoggingMethodology = ErrorDetailLoggingMethodology.LogInExceptionData;
+            await next(context);
+        }
     }
-  }
 }
