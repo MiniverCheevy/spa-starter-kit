@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-   
+    <Folder Include="ClientApp\assets\" />
+    <Folder Include="wwwroot\assets\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,9 +3,12 @@ const path = require('path');
 const webpack = require('webpack');
 const { AureliaPlugin } = require('aurelia-webpack-plugin');
 const bundleOutputDir = './wwwroot/dist';
+const RuntimeAnalyzerPlugin = require('webpack-runtime-analyzer');
+
 module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
-    return [{
+    return [
+        {
         stats: { modules: false },
         entry: { 'app': 'aurelia-bootstrapper' },
         resolve: {
@@ -24,20 +27,35 @@ module.exports = (env) => {
         },
         module: {
             loaders: [
-                { test: /\.ts$/i, include: /ClientApp/, use: 'ts-loader?silent=true' },
-                { test: /\.html$/i, use: 'html-loader' },
+                { test: /\.ts$/, include: /ClientApp/, use: 'ts-loader?silent=true' },
+                { test: /\.html$/, use: 'html-loader' },
                 { test: /\.css$/, loader: 'raw-loader' },
                 { test: /\.(png|woff|woff2|eot|ttf|svg|ico)$/, loader: 'url-loader?limit=100000' },
                 { test: /\.json$/, loader: 'json-loader' }
             ]
         },
         plugins: [
+            new RuntimeAnalyzerPlugin({
+                mode: 'standalone',
+                port: 0,
+                open: false,
+                watchModeOnly: false
+            }),
             new webpack.DefinePlugin({ IS_DEV_BUILD: JSON.stringify(isDevBuild) }),
             new webpack.DllReferencePlugin({
                 context: __dirname,
                 manifest: require('./wwwroot/dist/vendor-manifest.json')
             }),
-            new AureliaPlugin({ aureliaApp: 'boot' }),
+                //https://github.com/jods4/aurelia-webpack-build/wiki/AureliaPlugin%20options
+
+            new AureliaPlugin({
+                aureliaApp: 'boot',
+                features: {
+                    ie: true,
+                    svg: false,
+                    unparser: true
+                }
+            }),
             new webpack.ProvidePlugin({
                 Promise: 'bluebird',
                 $: 'jquery',

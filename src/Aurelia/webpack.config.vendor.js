@@ -32,8 +32,7 @@ module.exports = ({ prod } = {}) => {
             'aurelia-templating-router',
             'bluebird',
             'moment',
-'bootstrap',
-                'bootstrap/dist/css/bootstrap.css',
+            'bootstrap',
             'jquery'
         ],
     },
@@ -43,7 +42,7 @@ module.exports = ({ prod } = {}) => {
         filename: '[name].js',
         library: '[name]_[hash]',
     },
-    plugins: [
+    plugins: [       
         extractCSS,
         new webpack.ProvidePlugin({
             Promise: 'bluebird',
