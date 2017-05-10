@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Voodoo.CodeGeneration.Helpers
 {
@@ -19,9 +16,9 @@ namespace Voodoo.CodeGeneration.Helpers
             foreach (var line in lines)
             {
                 var formatted = line.Trim();
-                var thisIsBlank = String.IsNullOrWhiteSpace(formatted);
+                var thisIsBlank = string.IsNullOrWhiteSpace(formatted);
                 var isOpen = formatted == "{";
-                if ((thisIsBlank && lastWasBlank) || (lastWasOpen && thisIsBlank))
+                if (thisIsBlank && lastWasBlank || lastWasOpen && thisIsBlank)
                     continue;
                 if (isOpen)
                 {
@@ -40,7 +37,9 @@ namespace Voodoo.CodeGeneration.Helpers
                     response.AppendLine(addIndent(formatted, indent + last));
                 }
                 else
+                {
                     response.AppendLine(addIndent(formatted, indent));
+                }
 
                 lastWasBlank = thisIsBlank;
                 lastWasOpen = isOpen;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Voodoo;
 
 namespace Voodoo.CodeGeneration.Helpers
 {
@@ -118,7 +117,6 @@ namespace Voodoo.CodeGeneration.Helpers
                 return;
             findBinAndObjFolders(solutionFolder);
             foreach (var item in foldersToDelete)
-            {
                 try
                 {
                     IoNic.KillDir(item);
@@ -128,20 +126,15 @@ namespace Voodoo.CodeGeneration.Helpers
                 {
                     Console.WriteLine("Failed to Delete " + item);
                 }
-            }
         }
 
         private static void findBinAndObjFolders(string directory)
         {
             foreach (var dir in Directory.GetDirectories(directory))
-            {
                 tryAndDontThrow(() => { findBinAndObjFolders(dir); });
-            }
             var info = new DirectoryInfo(directory);
             if (binAndObj.Contains(info.Name.ToLower()))
-            {
                 foldersToDelete.Add(directory);
-            }
         }
     }
 }

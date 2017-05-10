@@ -14,16 +14,14 @@ namespace Fernweh.Tests.Operations.ApplicationSettings
         public async Task ApplicationSettingDeleteCommand_ValidRequest_IsOk()
         {
             var model = await ApplicationSettingTestHelper.GetExistingApplicationSetting();
-            var request = new IdRequest { Id=model.Id };
+            var request = new IdRequest {Id = model.Id};
             var command = new ApplicationSettingDeleteCommand(request);
-            
+
             var response = await command.ExecuteAsync();
-            
+
             response.Details.Should().BeEmpty();
             response.Message.Should().Be(ApplicationSettingMessages.DeleteOk);
             response.IsOk.Should().BeTrue();
         }
-        
     }
 }
-

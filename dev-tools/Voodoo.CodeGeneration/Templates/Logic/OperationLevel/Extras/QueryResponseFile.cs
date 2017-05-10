@@ -11,14 +11,14 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
 
     public class QueryResponseFile : TypedCodeFile
     {
+        public QueryResponseTemplate Template { get; set; }
+
         public QueryResponseFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
             Template = new QueryResponseTemplate {File = this};
             Name = string.Format("{0}QueryResponse", Name);
         }
-
-        public QueryResponseTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

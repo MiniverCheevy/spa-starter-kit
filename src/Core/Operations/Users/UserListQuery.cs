@@ -1,31 +1,21 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Voodoo.Messages;
-using Voodoo.Operations.Async;
-using Voodoo.Infrastructure;
-using Voodoo.Validation.Infrastructure;
-using System.Data.Entity;
-using Fernweh.Core;
 using Fernweh.Core.Context;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Infrastructure;
-using Fernweh.Core.Models;
 using Fernweh.Core.Models.Identity;
-using Voodoo;
 using Fernweh.Core.Operations.Users.Extras;
-using Fernweh.Core.Security;
+using Voodoo;
+using Voodoo.Infrastructure;
+using Voodoo.Operations.Async;
+using Voodoo.Validation.Infrastructure;
 
 namespace Fernweh.Core.Operations.Users
 {
-    [Rest(Verb.Get, RestResources.UserList, Roles = new string[] { RoleNames.Administrator })]
+    [Rest(Verb.Get, RestResources.UserList, Roles = new[] {RoleNames.Administrator})]
     public class UserListQuery : QueryAsync<UserQueryRequest, UserQueryResponse>
     {
         private FernwehContext context;
-        protected IValidator validator = ValidationManager.GetDefaultValidatitor();
         private IQueryable<User> query;
+        protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
         public UserListQuery(UserQueryRequest request) : base(request)
         {
@@ -46,13 +36,11 @@ namespace Fernweh.Core.Operations.Users
         private async Task buildList()
         {
             if (!string.IsNullOrWhiteSpace(request.SearchText))
-            {
                 query = query.Where(c => c.FirstName.Contains(request.SearchText)
                                          || c.LastName.Contains(request.SearchText)
                                          || c.UserName.Contains(request.SearchText)
                                          || c.Roles.Any(r => r.Name.Contains(request.SearchText)
                                          ));
-            }
             var data = await query.ToPagedResponseAsync(request);
             response.From(data, c => c.ToUserMessage());
         }

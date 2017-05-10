@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fernweh.Core.Security;
-using Voodoo.Messages;
-using Voodoo.Operations.Async;
-using Fernweh.Core.Operations.Users.Extras;
-using Voodoo;
 using System.Data.Entity;
+using System.Linq;
 using System.Security;
+using System.Threading.Tasks;
 using Fernweh.Core.Context;
 using Fernweh.Core.Identity;
 using Fernweh.Core.Models.Identity;
 using Fernweh.Core.Operations.CurrentUsers.Extras;
+using Fernweh.Core.Operations.Users.Extras;
+using Fernweh.Core.Security;
+using Voodoo;
+using Voodoo.Messages;
+using Voodoo.Operations.Async;
 
 namespace Fernweh.Core.Operations.CurrentUsers
 {
@@ -49,12 +47,13 @@ namespace Fernweh.Core.Operations.CurrentUsers
         private AppPrincipal buildPrincipal()
         {
             var principal = user.ToAppPrincipal();
-            principal.IsAuthenticated = true;            
+            principal.IsAuthenticated = true;
             principal.Expiration = DateTime.UtcNow.AddDays(1);
             principal.RefreshTime = DateTime.UtcNow.AddMinutes(5);
             principal.Token = Encryption.Encrypt(principal);
             return principal;
         }
+
         private async Task updateDatabase()
         {
             user.LastAuthentication = DateTime.UtcNow;

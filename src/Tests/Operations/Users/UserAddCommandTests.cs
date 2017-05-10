@@ -14,9 +14,9 @@ namespace Fernweh.Tests.Operations.Users
         {
             var request = UserTestHelper.GetNewUser();
             var command = new UserSaveCommand(request);
-            
+
             var response = await command.ExecuteAsync();
-            
+
             response.Details.Should().BeEmpty();
             response.Message.Should().Be(UserMessages.AddOk);
             response.IsOk.Should().BeTrue();
@@ -24,4 +24,3 @@ namespace Fernweh.Tests.Operations.Users
         }
     }
 }
-

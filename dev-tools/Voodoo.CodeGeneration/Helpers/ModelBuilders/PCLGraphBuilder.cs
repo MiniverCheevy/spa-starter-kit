@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Voodoo;
 using Voodoo.Messages;
 
 namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
@@ -16,7 +12,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 return;
 
             var nullableType = Nullable.GetUnderlyingType(currentType);
-            if (currentType.IsEnum || (nullableType != null && nullableType.IsEnum))
+            if (currentType.IsEnum || nullableType != null && nullableType.IsEnum)
             {
                 buildEnumDeclaration(currentType);
                 return;
@@ -38,10 +34,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             output.AppendLine(" {");
             var responseProprties = typeof(Response).GetProperties().Select(c => c.Name).ToArray();
             foreach (var property in properties)
-            {
                 if (!responseProprties.Contains(property.Name))
                     output.AppendLine(builder.GetPropertyDeclaration(property));
-            }
             output.AppendLine("}");
         }
 

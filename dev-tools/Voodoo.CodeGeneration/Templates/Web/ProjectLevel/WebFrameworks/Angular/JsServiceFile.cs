@@ -1,5 +1,4 @@
-﻿using Voodoo.CodeGeneration.Helpers;
-using Voodoo.CodeGeneration.Models;
+﻿using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.Rest;
 using Voodoo.CodeGeneration.Models.VisualStudio;
@@ -15,6 +14,16 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Angular
     {
         private string path;
 
+        public string[] BodyVerbs => new[] {"post", "put"};
+
+        public override string VisualStudioItemTypeNode => VisualStudioItemType.Content.ToString();
+
+        public override string FileName => string.Format("{0}.generated.js", JsName);
+
+        public JsServiceTemplate Template { get; set; }
+        public Resource Resource { get; set; }
+        public string JsName { get; set; }
+
         public JsServiceFile(ProjectFacade project, TypeFacade type, Resource resource, string path)
             : base(project, type)
         {
@@ -27,25 +36,6 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Angular
             this.path = path;
             Template = new JsServiceTemplate {File = this};
         }
-
-        public string[] BodyVerbs
-        {
-            get { return new[] {"post", "put"}; }
-        }
-
-        public override string VisualStudioItemTypeNode
-        {
-            get { return VisualStudioItemType.Content.ToString(); }
-        }
-
-        public override string FileName
-        {
-            get { return string.Format("{0}.generated.js", JsName); }
-        }
-
-        public JsServiceTemplate Template { get; set; }
-        public Resource Resource { get; set; }
-        public string JsName { get; set; }
 
         public override string GetFileContents()
         {

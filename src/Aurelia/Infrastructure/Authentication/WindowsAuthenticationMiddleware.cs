@@ -3,10 +3,12 @@ using System.Threading.Tasks;
 using Fernweh.Core.Identity;
 using Fernweh.Core.Operations.CurrentUsers;
 using Fernweh.Core.Operations.CurrentUsers.Extras;
+using Microsoft.AspNetCore.Http;
+using Voodoo;
 
 namespace Fernweh.Infrastructure.Authentication
 {
-    public class WindowsAuthenticationMiddleware
+  public class WindowsAuthenticationMiddleware
   {
     private readonly RequestDelegate next;
 
@@ -14,6 +16,7 @@ namespace Fernweh.Infrastructure.Authentication
     {
       this.next = next;
     }
+
     public async Task Invoke(HttpContext context)
     {
       if (context.Items[RequestContextProvider.AppPrincipal] == null)
@@ -22,9 +25,11 @@ namespace Fernweh.Infrastructure.Authentication
         var userName = getUserName(context);
         var userAgent = getUserAgent(context);
 
-        var response = await new BuildPrincipalCommand(new BuildPrincipalRequest { UserAgent = userAgent, UserName = userName }).ExecuteAsync();
+        var response =
+          await new BuildPrincipalCommand(new BuildPrincipalRequest {UserAgent = userAgent, UserName = userName})
+            .ExecuteAsync();
         if (response.IsOk)
-            context.Items[RequestContextProvider.AppPrincipal] = response.Data;
+          context.Items[RequestContextProvider.AppPrincipal] = response.Data;
       }
       await next(context);
     }
@@ -36,6 +41,7 @@ namespace Fernweh.Infrastructure.Authentication
       var userName = ModelHelper.ExtractUserNameFromDomainNameOrEmailAddress(windowsUser?.Identity?.Name);
       return userName;
     }
+
     private string getUserAgent(HttpContext context)
     {
       var key = "User-Agent";

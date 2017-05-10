@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Serialization;
-using Voodoo;
+﻿using System.Linq;
 using Voodoo.Logging;
 
 namespace Voodoo.CodeGeneration.Models
@@ -12,7 +6,7 @@ namespace Voodoo.CodeGeneration.Models
     public class LogEntry
     {
         public string Message { get; set; }
-        public Voodoo.Logging.LogLevels Level { get; set; }
+        public LogLevels Level { get; set; }
 
         private static string Format(string[] message)
         {
@@ -23,17 +17,17 @@ namespace Voodoo.CodeGeneration.Models
 
         public static LogEntry Error(params string[] message)
         {
-            return new LogEntry() {Level = LogLevels.Error, Message = Format(message)};
+            return new LogEntry {Level = LogLevels.Error, Message = Format(message)};
         }
 
         public static LogEntry Info(params string[] message)
         {
-            return new LogEntry() {Level = LogLevels.Info, Message = Format(message)};
+            return new LogEntry {Level = LogLevels.Info, Message = Format(message)};
         }
 
         public static LogEntry Trace(params string[] message)
         {
-            return new LogEntry() {Level = LogLevels.Info, Message = Format(message)};
+            return new LogEntry {Level = LogLevels.Info, Message = Format(message)};
         }
 
         public override string ToString()

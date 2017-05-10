@@ -13,6 +13,9 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
 
     public class ListsResponseFile : TypedCodeFile
     {
+        public ListsResponseTemplate Template { get; set; }
+        public IEnumerable<string> TypeNames { get; set; }
+
         public ListsResponseFile(ProjectFacade project, NameValuePairTypeInformation[] nameValuePairTypes)
             : base(project, null)
         {
@@ -23,9 +26,6 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
             PageSpecificUsingStatements.Add("Voodoo.Messages");
             PageSpecificUsingStatements.Add("System.Collections.Generic");
         }
-
-        public ListsResponseTemplate Template { get; set; }
-        public IEnumerable<string> TypeNames { get; set; }
 
         public override string GetFileContents()
         {

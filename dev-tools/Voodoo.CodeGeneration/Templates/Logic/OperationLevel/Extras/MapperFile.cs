@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Models;
-using Voodoo.CodeGeneration.Models.VisualStudio;
-using Voodoo;
 using Voodoo.CodeGeneration.Models.Reflection;
+using Voodoo.CodeGeneration.Models.VisualStudio;
 
 namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
 {
@@ -14,6 +13,9 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
 
     public class MapperFile : TypedCodeFile
     {
+        public List<MappingFactory.Mapping> Mappings { get; set; } = new List<MappingFactory.Mapping>();
+        public MapperTemplate Template { get; set; }
+
         public MapperFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
@@ -24,11 +26,9 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             Mappings = MappingFactory.GetMappings(type, project);
             Mappings.ForEach(c => PageSpecificUsingStatements.AddIfNotNullOrWhiteSpace(c.Namespace));
             Mappings.ForEach(c => PageSpecificUsingStatements.AddIfNotNullOrWhiteSpace(c.Namespace));
-            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
         }
-
-        public List<MappingFactory.Mapping> Mappings { get; set; } = new List<MappingFactory.Mapping>();
-        public MapperTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

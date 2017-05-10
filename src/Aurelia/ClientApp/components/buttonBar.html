@@ -1,24 +1,24 @@
 ﻿<template>
-    <div class="pull-left">
-        <span if.bind="deleteDelegate != null" click.delegate="deleteDelegate()">
-            <a class="btn btn-danger">Delete</a>
-        </span>
-    </div>
-    <div class="pull-right">
+  <div class="pull-left">
+    <span if.bind="deleteDelegate != null" click.delegate="deleteDelegate()">
+      <a class="btn btn-danger">Delete</a>
+    </span>
+  </div>
+  <div class="pull-right">
 
-        <span if.bind="printDelegate != null" click.delegate="printDelegate()">
-            <span class="btn btn-default">Print</span>
-        </span>
-        <span if.bind="addLink != null">
-            <a href="${addLink}" class="btn btn-primary">Add</a>
-        </span>
-        
-        <span if.bind="cancelLink != null">
-            <a href="${cancelLink}" class="btn btn-default">Cancel</a>
-        </span>
-        <span if.bind="save">
-            <input type="submit" class="btn btn-success" value="Save" />
-        </span>
-    </div>
+    <span if.bind="printDelegate != null" click.delegate="printDelegate()">
+      <span class="btn btn-default">Print</span>
+    </span>
+    <span if.bind="addLink != null">
+      <a href="${addLink}" class="btn btn-primary">Add</a>
+    </span>
+
+    <span if.bind="cancelLink != null">
+      <a href="${cancelLink}" class="btn btn-default">Cancel</a>
+    </span>
+    <span if.bind="save">
+      <input type="submit" class="btn btn-success" value="Save"/>
+    </span>
+  </div>
 
 </template>

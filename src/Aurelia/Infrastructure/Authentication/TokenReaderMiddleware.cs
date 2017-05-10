@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Fernweh.Core.Identity;
 using Fernweh.Core.Security;
+using Microsoft.AspNetCore.Http;
 
 namespace Fernweh.Infrastructure.Authentication
 {
@@ -13,6 +14,7 @@ namespace Fernweh.Infrastructure.Authentication
     {
       this.next = next;
     }
+
     public async Task Invoke(HttpContext context)
     {
       var key = "Token";

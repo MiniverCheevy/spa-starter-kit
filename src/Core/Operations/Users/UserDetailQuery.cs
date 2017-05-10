@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Fernweh.Core.Context;
-using Fernweh.Core.Infrastructure;
 using Fernweh.Core.Models.Identity;
 using Fernweh.Core.Operations.Users.Extras;
 using Voodoo.Infrastructure;
@@ -13,7 +12,7 @@ using Voodoo.Validation.Infrastructure;
 
 namespace Fernweh.Core.Operations.Users
 {
-    [Rest(Verb.Get, RestResources.UserDetail, Roles = new string[] { RoleNames.Administrator })]
+    [Rest(Verb.Get, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
     public class UserDetailQuery : QueryAsync<IdRequest, Response<UserDetail>>
     {
         private FernwehContext context;
@@ -27,7 +26,6 @@ namespace Fernweh.Core.Operations.Users
         {
             var model = new User();
             if (request.Id != 0)
-            {
                 using (context = IOC.GetContext())
                 {
                     var query = context.Users.Include(c => c.Roles).AsNoTracking().AsQueryable();
@@ -35,7 +33,6 @@ namespace Fernweh.Core.Operations.Users
                     if (model == null)
                         throw new Exception(UserMessages.NotFound);
                 }
-            }
             response.Data = model.ToUserDetail();
             return response;
         }

@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Voodoo;
 
 namespace Voodoo.CodeGeneration.Models.Rest
 {
@@ -26,9 +25,7 @@ namespace Voodoo.CodeGeneration.Models.Rest
             var type = operationType;
 
             while (type.BaseType != null && type.GetGenericArguments().Count() != 2)
-            {
                 type = type.BaseType;
-            }
             if (type.Namespace != null)
                 operation.IsAsync = type.Namespace.Contains(".Async");
 

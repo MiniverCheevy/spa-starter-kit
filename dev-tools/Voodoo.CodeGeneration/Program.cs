@@ -9,7 +9,7 @@ namespace Voodoo.CodeGeneration
     {
         public static void Main(string[] args)
         {
-            var request = new StartupRequest()
+            var request = new StartupRequest
             {
                 Arguments = Environment.GetCommandLineArgs(),
                 Path = StartupHelper.GetPath()
@@ -21,7 +21,6 @@ namespace Voodoo.CodeGeneration
             foreach (var log in Vs.Helper.Log)
             {
                 if (log != null)
-                {
                     switch (log.Level)
                     {
                         case LogLevels.Error:
@@ -34,7 +33,6 @@ namespace Voodoo.CodeGeneration
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             break;
                     }
-                }
                 if (log.Message != null)
                     Console.WriteLine(log.Message);
             }

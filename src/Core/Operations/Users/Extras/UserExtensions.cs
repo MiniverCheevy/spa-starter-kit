@@ -1,11 +1,8 @@
 using System.Linq;
-using Fernweh.Core;
-using Fernweh.Core.Models.Identity;
 using Fernweh.Core.Context;
 using Fernweh.Core.Identity;
+using Fernweh.Core.Models.Identity;
 using Fernweh.Core.Operations.Lists;
-using Fernweh.Core.Operations.Roles.Extras;
-using Fernweh.Core.Security;
 
 namespace Fernweh.Core.Operations.Users.Extras
 {
@@ -20,9 +17,7 @@ namespace Fernweh.Core.Operations.Users.Extras
         {
             var message = toUserMessage(model, new UserMessage());
             if (model.Roles.Any())
-            {
                 message.Roles = string.Join(",", model.Roles.Select(x => x.Name));
-            }
             return message;
         }
 
@@ -35,9 +30,7 @@ namespace Fernweh.Core.Operations.Users.Extras
         {
             var message = toUserDetail(model, new UserDetail());
             if (model.Roles != null)
-            {
-                message.Roles = model.Roles.Select(c => new ListItem() {Name = c.Name, Value = c.Id}).ToList();
-            }
+                message.Roles = model.Roles.Select(c => new ListItem {Name = c.Name, Value = c.Id}).ToList();
             return message;
         }
 
@@ -45,13 +38,13 @@ namespace Fernweh.Core.Operations.Users.Extras
         {
             return updateFromUserDetail(message, model);
         }
+
         public static AppPrincipal ToAppPrincipal(this User model)
         {
-            var principal = toAppPrincipal(model,new AppPrincipal());
+            var principal = toAppPrincipal(model, new AppPrincipal());
             principal.UserId = model.Id;
-            principal.Roles = model.Roles.Select(c =>  c.Name ).ToList();
+            principal.Roles = model.Roles.Select(c => c.Name).ToList();
             return principal;
-
         }
     }
 }

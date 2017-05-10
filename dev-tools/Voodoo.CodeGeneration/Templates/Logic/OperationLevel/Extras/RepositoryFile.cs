@@ -1,8 +1,7 @@
 ﻿using System.Linq;
 using Voodoo.CodeGeneration.Models;
-using Voodoo.CodeGeneration.Models.VisualStudio;
-using Voodoo;
 using Voodoo.CodeGeneration.Models.Reflection;
+using Voodoo.CodeGeneration.Models.VisualStudio;
 
 namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
 {
@@ -13,6 +12,10 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
 
     public class RepositoryFile : TypedCodeFile
     {
+        public string FriendlyName { get; set; }
+        public RepositoryTemplate Template { get; set; }
+        public string[] Errors { get; set; }
+
         public RepositoryFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
@@ -22,14 +25,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             PageSpecificUsingStatements.Add(Type.SystemType.Namespace);
             Errors = type.Properties.SelectMany(c => c.ErrorMessages).Select(c => c.Text).ToArray();
             if (HasContext)
-            {
                 PageSpecificUsingStatements.Add(ContextNamespace);
-            }
         }
-
-        public string FriendlyName { get; set; }
-        public RepositoryTemplate Template { get; set; }
-        public string[] Errors { get; set; }
 
         public override string GetFileContents()
         {

@@ -2,8 +2,6 @@
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Transactions;
-using Fernweh.Core.Context.ExceptionalContext;
-using Fernweh.Core.Infrastructure;
 using Fernweh.Core.Operations.Errors.Extras;
 using Voodoo;
 using Voodoo.Logging;

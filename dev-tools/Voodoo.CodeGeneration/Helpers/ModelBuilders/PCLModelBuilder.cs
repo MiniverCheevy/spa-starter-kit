@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
-using Voodoo;
 
 namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 {
@@ -17,7 +14,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
         public override string GenerateDeclaration(Type modelType, params string[] exclusions)
         {
-            exclusions = exclusions ?? new string[] {};
+            exclusions = exclusions ?? new string[] { };
 
             var result = new StringBuilder();
 
@@ -25,9 +22,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
             if (modelType.BaseType != null
                 && modelType.BaseType != typeof(object))
-            {
                 result.AppendFormat(": {0} ", modelType.BaseType.Name);
-            }
 
             result.Append("{");
             result.AppendLine();

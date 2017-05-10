@@ -13,6 +13,12 @@ namespace Voodoo.CodeGeneration.Templates.Tests
 
     public class TestHelperFile : TypedTestFile
     {
+        public Operation Operation { get; set; }
+
+        public ProjectFacade LogicProject { get; set; }
+
+        public TestHelperTemplate Template { get; set; }
+
         public TestHelperFile(ProjectFacade project, TypeFacade type, ProjectFacade logic)
             : base(project, type)
         {
@@ -20,17 +26,12 @@ namespace Voodoo.CodeGeneration.Templates.Tests
             Name = string.Format("{0}TestHelper", Name);
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName);
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName + ".Extras");
-            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
             PageSpecificUsingStatements.Add("Voodoo.TestData");
             PageSpecificUsingStatements.Add(ContextNamespace);
             PageSpecificUsingStatements.Add(logic.RootNamespace);
         }
-
-        public Operation Operation { get; set; }
-
-        public ProjectFacade LogicProject { get; set; }
-
-        public TestHelperTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

@@ -14,6 +14,10 @@ namespace Fernweh.Core.Context
     //TODO: consider consistent naming, bulk insert, bulk update and coming one day bulk delete
     public class BulkCopyRequest
     {
+        public string TableName { get; set; }
+        public SqlConnection Connection { get; set; }
+        public List<string> ExclusionList { get; set; }
+
         public BulkCopyRequest()
         {
             ExclusionList = new List<string>();
@@ -26,10 +30,6 @@ namespace Fernweh.Core.Context
 
             ExclusionList = exclusionList ?? new List<string>();
         }
-
-        public string TableName { get; set; }
-        public SqlConnection Connection { get; set; }
-        public List<string> ExclusionList { get; set; }
     }
 
     public static class PerformanceExtensions
@@ -100,15 +100,13 @@ namespace Fernweh.Core.Context
 
         public static int Update<T>(this DbContext context, SqlUpdater<T> update)
         {
-            int result = 0;
+            var result = 0;
             var cnn = context.Database.Connection;
 
             using (var cmd = new SqlCommand(update.ToString(), cnn.To<SqlConnection>()))
             {
                 foreach (var param in update.Parameters)
-                {
                     cmd.Parameters.AddWithValue(param.Key, param.Value);
-                }
                 result = cmd.ExecuteNonQuery();
             }
 
@@ -117,16 +115,14 @@ namespace Fernweh.Core.Context
 
         public static int Delete<T>(this DbContext context, SqlDeleter<T> update)
         {
-            int result = 0;
+            var result = 0;
             var cnn = context.Database.Connection;
 
             cnn.Open();
             using (var cmd = new SqlCommand(update.ToString(), cnn.To<SqlConnection>()))
             {
                 foreach (var param in update.Parameters)
-                {
                     cmd.Parameters.AddWithValue(param.Key, param.Value);
-                }
                 result = cmd.ExecuteNonQuery();
             }
 
@@ -156,10 +152,8 @@ namespace Fernweh.Core.Context
             sb.AppendLine("");
             sb.AppendFormat("FROM [{0}].[{1}] {2}", SqlSchema, SqlTableName, Prefix);
             if (Target.SqlJoinClauses.Any())
-            {
                 foreach (var join in Target.SqlJoinClauses)
                     sb.AppendLine(join);
-            }
             sb.Append(GetWhereClause());
             return sb.ToString();
         }
@@ -174,7 +168,7 @@ namespace Fernweh.Core.Context
 
         public void Set<TProperty>(Expression<Func<TModel, TProperty>> propertyName, TProperty value)
         {
-            string alias = GetFieldName(propertyName);
+            var alias = GetFieldName(propertyName);
 
             Target.SetStatements.Add($"[{alias}] = {GetParameter(value)} ");
         }
@@ -212,10 +206,8 @@ namespace Fernweh.Core.Context
 
             sb.AppendFormat(" FROM [{0}].[{1}] {2}", SqlSchema, SqlTableName, Prefix);
             if (Target.SqlJoinClauses.Any())
-            {
                 foreach (var join in Target.SqlJoinClauses)
                     sb.AppendLine(join);
-            }
             var whereClause = GetWhereClause();
             var parameters = Parameters;
             parameters.Reverse();
@@ -231,6 +223,7 @@ namespace Fernweh.Core.Context
 
     public abstract class SqlStrings
     {
+        public int SqlParameterCount;
         public SqlOperation SqlOperation { get; set; }
         public List<string> SqlWhereClauses { get; set; }
         public List<string> SqlFromClauses { get; set; }
@@ -238,7 +231,6 @@ namespace Fernweh.Core.Context
         public List<string> SetStatements { get; set; }
 
         public List<KeyValuePair<string, object>> Parameters { get; set; }
-        public int SqlParameterCount = 0;
 
         protected SqlStrings()
         {
@@ -252,7 +244,7 @@ namespace Fernweh.Core.Context
 
     public class SqlUpateStrings : SqlStrings
     {
-        public SqlUpateStrings() : base()
+        public SqlUpateStrings()
         {
             SqlOperation = SqlOperation.Update;
         }
@@ -261,7 +253,6 @@ namespace Fernweh.Core.Context
     public class SqlDeleteStrings : SqlStrings
     {
         public SqlDeleteStrings()
-            : base()
         {
             SqlOperation = SqlOperation.Delete;
         }
@@ -282,24 +273,25 @@ namespace Fernweh.Core.Context
 
     public class SqlBuilder<TModel>
     {
-        public List<KeyValuePair<string, object>> Parameters
-        {
-            get { return Target.Parameters; }
-        }
+        public const string ParamaterFormat = "@p{0}";
+
+        public List<KeyValuePair<string, object>> Parameters => Target.Parameters;
 
         public string SqlSchema { get; set; }
         public string SqlTableName { get; set; }
 
         protected SqlStrings Target { get; set; }
 
-        public Type Type
-        {
-            get { return typeof(TModel); }
-        }
+        public Type Type => typeof(TModel);
 
-        protected string Prefix
+        protected string Prefix => SqlTableName.ToLower();
+
+
+        public SqlBuilder(TableInformation tableInformation, SqlStrings target)
         {
-            get { return SqlTableName.ToLower(); }
+            SqlSchema = tableInformation.Schema;
+            SqlTableName = tableInformation.Table;
+            Target = target;
         }
 
         protected string GetAliasedFieldName(string name, bool forceAliasing = false)
@@ -308,16 +300,6 @@ namespace Fernweh.Core.Context
                 return string.Format(" [{0}].[{1}] ", Prefix, name);
 
             return name;
-        }
-
-        public const string ParamaterFormat = "@p{0}";
-
-
-        public SqlBuilder(TableInformation tableInformation, SqlStrings target)
-        {
-            SqlSchema = tableInformation.Schema;
-            SqlTableName = tableInformation.Table;
-            Target = target;
         }
 
         protected string GetWhereClause()
@@ -352,7 +334,7 @@ namespace Fernweh.Core.Context
 
         public void WhereNotIn<TProperty>(Expression<Func<TModel, TProperty>> propertyName, params TProperty[] values)
         {
-            string name = GetFieldName(propertyName);
+            var name = GetFieldName(propertyName);
 
             var sb = new StringBuilder();
             sb.Append("(");
@@ -368,7 +350,7 @@ namespace Fernweh.Core.Context
             var alias = GetFieldName(propertyName);
             var sqlValue = GetParameter(value);
             if (typeof(TProperty) == typeof(DateTime))
-                buildDatePredicate<TProperty>(value, alias, "!=");
+                buildDatePredicate(value, alias, "!=");
             else
                 Target.SqlWhereClauses.Add(string.Format("[{0}].[{1}] != {2}", Prefix, alias, sqlValue));
         }
@@ -414,9 +396,11 @@ namespace Fernweh.Core.Context
 
         protected static string GetFieldName<TObject, TProperty>(Expression<Func<TObject, TProperty>> propertyName)
         {
-            string name = string.Empty;
+            var name = string.Empty;
             if (propertyName.Body is MemberExpression)
+            {
                 name = ((MemberExpression) propertyName.Body).Member.Name;
+            }
             else
             {
                 var op = ((UnaryExpression) propertyName.Body).Operand;
@@ -435,7 +419,7 @@ namespace Fernweh.Core.Context
             sb.AppendFormat(" INNER JOIN [{0}].[{1}] {2}", targetEntity.SqlSchema, targetEntity.SqlTableName,
                 targetEntity.Prefix);
             sb.AppendLine("");
-            sb.AppendFormat(" ON {0} = {1} ", this.GetAliasedFieldName(GetFieldName(leftSide), true),
+            sb.AppendFormat(" ON {0} = {1} ", GetAliasedFieldName(GetFieldName(leftSide), true),
                 targetEntity.GetAliasedFieldName(GetFieldName(rightSide), true));
             Target.SqlJoinClauses.Add(sb.ToString());
         }
@@ -474,7 +458,7 @@ namespace Fernweh.Core.Context
         public static object Sqlize(object value)
         {
             if (value == null)
-                return System.DBNull.Value;
+                return DBNull.Value;
 
             var type = value.GetType();
             //TODO: dates nulls?
@@ -493,7 +477,7 @@ namespace Fernweh.Core.Context
                 return " NULL ";
 
             var outDate = DateTime.MinValue;
-            bool isDate = DateTime.TryParse(value.ToString(), out outDate);
+            var isDate = DateTime.TryParse(value.ToString(), out outDate);
             var type = typeof(T);
             var format = "{0}";
             if (type == typeof(string) || isDate)
@@ -520,10 +504,8 @@ namespace Fernweh.Core.Context
 
             sb.AppendFormat(" FROM [{0}].[{1}] {2}", SqlSchema, SqlTableName, Prefix);
             if (Target.SqlJoinClauses.Any())
-            {
                 foreach (var join in Target.SqlJoinClauses)
                     sb.AppendLine(join);
-            }
             var whereClause = GetWhereClause();
             var parameters = Parameters;
             parameters.Reverse();

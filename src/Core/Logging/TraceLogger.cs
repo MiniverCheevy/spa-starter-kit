@@ -35,15 +35,15 @@ namespace Fernweh.Core.Logging
 
     public class TraceLogger : IScopedLogger
     {
-        private Stopwatch stopwatch;
         private string scope;
+        private Stopwatch stopwatch;
 
         public TraceLogger(string scope)
         {
             this.scope = scope.PadRight(16);
             if (this.scope.Length > 16)
                 this.scope = this.scope.Substring(0, 16);
-            this.stopwatch = Stopwatch.StartNew();
+            stopwatch = Stopwatch.StartNew();
         }
 
         public void Write(string message)

@@ -11,6 +11,7 @@ namespace Fernweh.Core.Context.ExceptionTranslators
         //Cannot insert duplicate key row in object 'dbo.Users' 
         //with unique index 'IX_UserName'. The duplicate key value is (admin @admin.com).
         private const string flag = "with unique index";
+
         private IResponse response;
 
         protected override bool TranslateException(Exception exception, IResponse response)
@@ -30,7 +31,7 @@ namespace Fernweh.Core.Context.ExceptionTranslators
                 //index 'IX_UserName'.
                 var start = message.IndexOf("'IX");
                 var first = message.Substring(start);
-                var parts = first.Split(new char[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
+                var parts = first.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
                 var indexName = parts[0].To<string>().Replace("IX_", "");
                 var friendlyName = indexName.ToFriendlyString();
 

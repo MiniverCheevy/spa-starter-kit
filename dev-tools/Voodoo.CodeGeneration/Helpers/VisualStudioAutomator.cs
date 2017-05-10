@@ -10,7 +10,7 @@ namespace Voodoo.CodeGeneration.Helpers
 
         public static void OpenFileInVisualStudio(CodeFile file)
         {
-            Process vsProcess = getVsProcess();
+            var vsProcess = getVsProcess();
             if (vsProcess != null)
             {
                 vsProcess.StartInfo.Arguments = string.Format("/Edit {0}", file.FullPath);

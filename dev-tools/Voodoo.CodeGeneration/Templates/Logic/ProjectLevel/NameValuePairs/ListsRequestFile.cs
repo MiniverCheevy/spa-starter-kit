@@ -10,6 +10,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
 
     public class ListsRequestFile : TypedCodeFile
     {
+        public ListsRequestTemplate Template { get; set; }
+
         public ListsRequestFile(ProjectFacade project)
             : base(project, null)
         {
@@ -17,8 +19,6 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
             Name = "ListsRequest";
             PageSpecificUsingStatements.Add("System.Collections.Generic");
         }
-
-        public ListsRequestTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

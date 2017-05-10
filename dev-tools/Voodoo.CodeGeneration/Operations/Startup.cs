@@ -1,9 +1,7 @@
 ﻿using System;
 using System.IO;
 using Voodoo.CodeGeneration.Helpers;
-using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.VisualStudio;
-using Voodoo;
 using Voodoo.Messages;
 using Voodoo.Operations;
 

@@ -15,12 +15,8 @@ namespace Fernweh.Core.Context.ExceptionTranslators
                 return false;
             response.Message = dbException.Message;
             foreach (var item in dbException.EntityValidationErrors)
-            {
-                foreach (var error in item.ValidationErrors)
-                {
-                    response.Details.Add(error.PropertyName, error.ErrorMessage);
-                }
-            }
+            foreach (var error in item.ValidationErrors)
+                response.Details.Add(error.PropertyName, error.ErrorMessage);
             return true;
         }
     }

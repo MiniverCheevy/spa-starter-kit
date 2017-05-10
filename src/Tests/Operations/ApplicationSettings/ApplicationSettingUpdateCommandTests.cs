@@ -19,7 +19,5 @@ namespace Fernweh.Tests.Operations.ApplicationSettings
             response.Message.Should().Be(ApplicationSettingMessages.UpdateOk);
             response.IsOk.Should().BeTrue();
         }
-        
     }
 }
-

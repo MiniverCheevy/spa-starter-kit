@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Voodoo;
 
 namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 {
@@ -80,25 +79,22 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         protected TypeFamily GetTypeFamily(Type type)
         {
             if (type == null)
-            {
                 throw new ArgumentNullException(nameof(type));
-            }
             var nullableUnderlyingType = Nullable.GetUnderlyingType(type);
-            var isString = (type == typeof(string));
+            var isString = type == typeof(string);
             var isEnumerable = typeof(IEnumerable).IsAssignableFrom(type);
             var isDictionary = type.FullName.StartsWith(typeof(IDictionary).FullName)
                                || type.FullName.StartsWith(typeof(IDictionary<,>).FullName)
                                || type.FullName.StartsWith(typeof(Dictionary<,>).FullName);
-            var isClr = (type.Module.ScopeName == "CommonLanguageRuntimeLibrary");
+            var isClr = type.Module.ScopeName == "CommonLanguageRuntimeLibrary";
 
             if (!isString && !isDictionary && isEnumerable)
                 return TypeFamily.Collection;
-            else if (type.IsEnum || nullableUnderlyingType != null && nullableUnderlyingType.IsEnum)
+            if (type.IsEnum || nullableUnderlyingType != null && nullableUnderlyingType.IsEnum)
                 return TypeFamily.Enum;
-            else if (type.Module.ScopeName == "CommonLanguageRuntimeLibrary")
+            if (type.Module.ScopeName == "CommonLanguageRuntimeLibrary")
                 return TypeFamily.System;
-            else
-                return TypeFamily.Model;
+            return TypeFamily.Model;
         }
 
         protected enum TypeFamily

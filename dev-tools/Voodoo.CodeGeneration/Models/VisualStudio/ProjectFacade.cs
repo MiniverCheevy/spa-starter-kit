@@ -22,20 +22,12 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
         private bool isInitialized;
         private ISourceControlProvider sourceControl;
 
-        public ProjectFacade(string csProj, bool needsAssembly)
-        {
-            NeedsAssembly = needsAssembly;
-            CsProj = csProj;
-            UsingStatements = new List<string>();
-            Files = new List<CodeFile>();
-        }
-
         public string CsProj { get; set; }
         public string RootNamespace { get; set; }
         public string Folder { get; set; }
         public string FullPath { get; set; }
         public Assembly Assembly { get; set; }
-        public Projects.IProject Project { get; set; }
+        public IProject Project { get; set; }
         public List<CodeFile> Files { get; set; }
         public List<string> UsingStatements { get; set; }
         public List<string> RestResources { get; set; }
@@ -47,7 +39,15 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
         public bool IsAssemblyLoaded { get; set; }
 
         public bool NeedsAssembly { get; set; }
-        
+
+        public ProjectFacade(string csProj, bool needsAssembly)
+        {
+            NeedsAssembly = needsAssembly;
+            CsProj = csProj;
+            UsingStatements = new List<string>();
+            Files = new List<CodeFile>();
+        }
+
 
         public void AddRestResource(string name)
         {
@@ -144,9 +144,7 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
         private string getAssemblyPath()
         {
             if (!NeedsAssembly)
-            {
                 return null;
-            }
 
             var outputPath = Project.GetOutputPath();
             var extension = Project.GetOutputType().ToLower() == "exe" ? "exe" : "dll";
@@ -166,7 +164,7 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
 
         public bool Contains(string item)
         {
-            return Project.Contains(item);            
+            return Project.Contains(item);
         }
 
         internal void WriteFiles()
@@ -223,7 +221,6 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
 
         private bool shouldSkipFile(CodeFile file)
         {
-           
             var response = File.Exists(file.FullPath) && !file.OverwriteExistingFile;
             if (response)
                 Vs.Helper.Log.Add(LogEntry.Trace(

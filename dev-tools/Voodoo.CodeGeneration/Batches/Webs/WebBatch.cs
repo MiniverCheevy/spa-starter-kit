@@ -1,10 +1,8 @@
 ﻿using System.Linq;
 using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Infrastructure;
-using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Templates.Web.ProjectLevel;
 using Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks;
-using Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Aurelia;
 
 namespace Voodoo.CodeGeneration.Batches.Webs
 {
@@ -24,12 +22,11 @@ namespace Voodoo.CodeGeneration.Batches.Webs
             var restBuilder = new RestBuilder(logic, web);
 
             foreach (var item in restBuilder.Resources)
-            {
                 web.AddFile(new ApiControllerFile(web, type, restBuilder.Resources));
-            }
 
             var modelTypes = new ClientModelFactory(logic).GetTypes();
-            var api = WebFramworkBatchFactory.GetTypeServiceFile(web, restBuilder.Resources.OrderBy(c => c.Name).ToArray(),
+            var api = WebFramworkBatchFactory.GetTypeServiceFile(web,
+                restBuilder.Resources.OrderBy(c => c.Name).ToArray(),
                 Vs.Helper.Solution.JsAppPathFromWebProjectRoot);
             if (api != null)
                 web.AddFile(api);

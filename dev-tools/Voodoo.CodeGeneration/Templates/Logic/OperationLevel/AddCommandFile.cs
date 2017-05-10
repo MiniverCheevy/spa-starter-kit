@@ -12,6 +12,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
 
     public class AddCommandFile : TypedCodeFile
     {
+        public AddCommandTemplate Template { get; set; }
+
         public AddCommandFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
@@ -20,11 +22,10 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             PageSpecificUsingStatements.Add(ContextNamespace);
             PageSpecificUsingStatements.Add(type.Namespace);
             PageSpecificUsingStatements.Add("Voodoo.Infrastructure");
-            PageSpecificUsingStatements.Add($"{Namespace}.Extras");            
-            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            PageSpecificUsingStatements.Add($"{Namespace}.Extras");
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
         }
-
-        public AddCommandTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

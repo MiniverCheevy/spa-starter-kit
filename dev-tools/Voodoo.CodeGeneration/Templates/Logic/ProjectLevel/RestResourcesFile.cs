@@ -10,6 +10,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel
 
     public class RestResourcesFile : CodeFile
     {
+        public RestResourcesTemplate Template { get; set; }
+
         public RestResourcesFile(ProjectFacade project)
             : base(project)
         {
@@ -17,8 +19,6 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel
             Name = "RestResources";
             OverwriteExistingFile = true;
         }
-
-        public RestResourcesTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

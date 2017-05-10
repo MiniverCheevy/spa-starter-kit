@@ -11,14 +11,14 @@ namespace Voodoo.CodeGeneration.Templates.Scratch
 
     public class MappingFile : ScratchFile
     {
+        public TypeComparer Types { get; set; }
+        public MappingTemplate Template { get; set; }
+
         public MappingFile(TypeFacade left, TypeFacade right)
         {
             Template = new MappingTemplate {File = this};
             Types = new TypeComparer(left, right);
         }
-
-        public TypeComparer Types { get; set; }
-        public MappingTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

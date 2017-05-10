@@ -12,14 +12,18 @@ namespace Voodoo.CodeGeneration.Templates.Tests
 
     public class TestFile : TypedTestFile
     {
+        public ProjectFacade LogicProject { get; set; }
+
+        public Operation Operation { get; set; }
+
+        public TestTemplate Template { get; set; }
+
         public TestFile(ProjectFacade project, TypeFacade type, ProjectFacade logic)
             : base(project, type)
         {
-            this.Operation = Operation.DiscoverTypes(type.SystemType, new Operation());
+            Operation = Operation.DiscoverTypes(type.SystemType, new Operation());
             if (Operation != null)
-            {
-                this.PageSpecificUsingStatements.Add(Operation.RequestType.Namespace);
-            }
+                PageSpecificUsingStatements.Add(Operation.RequestType.Namespace);
             LogicProject = logic;
             Template = new TestTemplate {File = this};
             Name = $"{Name}Tests";
@@ -27,12 +31,6 @@ namespace Voodoo.CodeGeneration.Templates.Tests
             PageSpecificUsingStatements.Add(logic.RootNamespace);
             PageSpecificUsingStatements.Add(Type.Namespace);
         }
-
-        public ProjectFacade LogicProject { get; set; }
-
-        public Operation Operation { get; set; }
-
-        public TestTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

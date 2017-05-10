@@ -14,9 +14,9 @@ namespace Fernweh.Tests.Operations.ApplicationSettings
         {
             var request = ApplicationSettingTestHelper.GetNewApplicationSetting();
             var command = new ApplicationSettingSaveCommand(request);
-            
+
             var response = await command.ExecuteAsync();
-            
+
             response.Details.Should().BeEmpty();
             response.Message.Should().Be(ApplicationSettingMessages.AddOk);
             response.IsOk.Should().BeTrue();
@@ -24,4 +24,3 @@ namespace Fernweh.Tests.Operations.ApplicationSettings
         }
     }
 }
-

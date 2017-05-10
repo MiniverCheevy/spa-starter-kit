@@ -1,21 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using Voodoo;
 using Voodoo.CodeGeneration.Projects;
 
 namespace Voodoo.CodeGeneration.Models.VisualStudio
 {
     public class SolutionFacade
     {
-        private readonly Dictionary<string, Projects.IProject> projects = new Dictionary<string, Projects.IProject>();
+        private readonly Dictionary<string, IProject> projects = new Dictionary<string, IProject>();
         public ProjectFacade PCLProject;
-
-        public SolutionFacade()
-        {
-            if (!AddToSourceControl.HasValue)
-                AddToSourceControl = true;
-        }
 
 
         //TODO: revisit this
@@ -53,7 +45,13 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
         public string VisualStudioPath { get; set; }
         public bool WebIsAspDotNetCore { get; internal set; }
 
-        internal Projects.IProject GetProject(string fullPath)
+        public SolutionFacade()
+        {
+            if (!AddToSourceControl.HasValue)
+                AddToSourceControl = true;
+        }
+
+        internal IProject GetProject(string fullPath)
         {
             var loweredPath = fullPath.ToLower();
             if (projects.ContainsKey(loweredPath))

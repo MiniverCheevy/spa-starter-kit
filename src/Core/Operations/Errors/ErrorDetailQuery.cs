@@ -2,7 +2,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Fernweh.Core.Context;
-using Fernweh.Core.Infrastructure;
 using Fernweh.Core.Operations.Errors.Extras;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
@@ -31,7 +30,9 @@ namespace Fernweh.Core.Operations.Errors
                             .Select(c => c.FullJson)
                             .FirstOrDefaultAsync();
                 if (error != null)
+                {
                     response.Data = ErrorJsonDeserializer.Deserialize(error);
+                }
                 else
                 {
                     response.IsOk = false;

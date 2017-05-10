@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Voodoo;
 using Voodoo.Messages;
 
 namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
@@ -10,18 +9,18 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
     public abstract class GraphBuilder<TModelBuilder>
         where TModelBuilder : ModelBuilder, new()
     {
+        protected readonly StringBuilder output;
         private List<Type> alreadyTouched = new List<Type>();
         protected TModelBuilder builder;
-        protected readonly StringBuilder output;
+
+        protected List<Type> GeneratedTypeDefinitions { get; set; } = new List<Type>();
+        protected List<string> GeneratedTypeNames { get; set; } = new List<string>();
 
         protected GraphBuilder()
         {
             output = new StringBuilder();
             builder = new TModelBuilder();
         }
-
-        protected List<Type> GeneratedTypeDefinitions { get; set; } = new List<Type>();
-        protected List<string> GeneratedTypeNames { get; set; } = new List<string>();
 
         public ServiceDeclaration AddTypes(Type requestType, Type responseType)
         {
@@ -39,9 +38,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         {
             var modelTypes = types.Distinct().OrderBy(c => c.Name).ToArray();
             foreach (var model in modelTypes)
-            {
                 buildGraph(model, model.DoesImplementInterfaceOf(typeof(IResponse)));
-            }
         }
 
         private void buildGraph(Type type, bool isResponse)
@@ -63,9 +60,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             }
 
             foreach (var t in enumTypes.Distinct().ToArray())
-            {
                 buildEnumDeclaration(t);
-            }
         }
 
         public string GetOutput()

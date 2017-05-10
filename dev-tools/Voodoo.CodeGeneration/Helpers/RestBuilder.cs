@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Rest;
 using Voodoo.CodeGeneration.Models.VisualStudio;
-using Voodoo;
 using Voodoo.Infrastructure;
 
 namespace Voodoo.CodeGeneration.Helpers
@@ -13,6 +10,24 @@ namespace Voodoo.CodeGeneration.Helpers
     public class RestBuilder
     {
         private ProjectFacade web;
+
+        public List<Resource> Resources { get; set; }
+
+        public Dictionary<Verb, RestMethod> Methods => Vs.Helper.Solution.WebIsAspDotNetCore.To<bool>()
+            ? new Dictionary<Verb, RestMethod>
+            {
+                {Verb.Get, new RestMethod {Attribute = "[HttpGet]", Name = "Get", Parameter = ""}},
+                {Verb.Post, new RestMethod {Attribute = "[HttpPost]", Name = "Post", Parameter = "[FromBody]"}},
+                {Verb.Put, new RestMethod {Attribute = "[HttpPut]", Name = "Put", Parameter = "[FromBody]"}},
+                {Verb.Delete, new RestMethod {Attribute = "[HttpDelete]", Name = "Delete", Parameter = ""}}
+            }
+            : new Dictionary<Verb, RestMethod>
+            {
+                {Verb.Get, new RestMethod {Attribute = "[HttpGet]", Name = "Get", Parameter = "[FromUri]"}},
+                {Verb.Post, new RestMethod {Attribute = "[HttpPost]", Name = "Post", Parameter = "[FromBody]"}},
+                {Verb.Put, new RestMethod {Attribute = "[HttpPut]", Name = "Put", Parameter = "[FromBody]"}},
+                {Verb.Delete, new RestMethod {Attribute = "[HttpDelete]", Name = "Delete", Parameter = "[FromUri]"}}
+            };
 
         public RestBuilder(ProjectFacade logic, ProjectFacade web)
         {
@@ -39,24 +54,6 @@ namespace Voodoo.CodeGeneration.Helpers
                 Resources.Add(resource);
             }
         }
-
-        public List<Resource> Resources { get; set; }
-
-        public Dictionary<Verb, RestMethod> Methods => (Vs.Helper.Solution.WebIsAspDotNetCore).To<bool>()
-            ? new Dictionary<Verb, RestMethod>
-            {
-                {Verb.Get, new RestMethod {Attribute = "[HttpGet]", Name = "Get", Parameter = ""}},
-                {Verb.Post, new RestMethod {Attribute = "[HttpPost]", Name = "Post", Parameter = "[FromBody]"}},
-                {Verb.Put, new RestMethod {Attribute = "[HttpPut]", Name = "Put", Parameter = "[FromBody]"}},
-                {Verb.Delete, new RestMethod {Attribute = "[HttpDelete]", Name = "Delete", Parameter = ""}}
-            }
-            : new Dictionary<Verb, RestMethod>
-            {
-                {Verb.Get, new RestMethod {Attribute = "[HttpGet]", Name = "Get", Parameter = "[FromUri]"}},
-                {Verb.Post, new RestMethod {Attribute = "[HttpPost]", Name = "Post", Parameter = "[FromBody]"}},
-                {Verb.Put, new RestMethod {Attribute = "[HttpPut]", Name = "Put", Parameter = "[FromBody]"}},
-                {Verb.Delete, new RestMethod {Attribute = "[HttpDelete]", Name = "Delete", Parameter = "[FromUri]"}}
-            };
 
         private RestMethod buildVerb(object attributeObject, Type operationType)
         {

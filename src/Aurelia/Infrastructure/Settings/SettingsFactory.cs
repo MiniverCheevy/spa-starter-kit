@@ -2,14 +2,14 @@
 
 namespace Fernweh.Infrastructure.Settings
 {
-    public static class SettingsFactory
+  public static class SettingsFactory
+  {
+    public static Core.Infrastructure.Settings GetSettings(IConfigurationRoot configuration)
     {
-        public static Core.Infrastructure.Settings GetSettings(IConfigurationRoot configuration)
-        {
-            return new Core.Infrastructure.Settings
-            {
-                DefaultConnectionString = configuration.GetConnectionString("DefaultConnection")
-            };
-        }
+      return new Core.Infrastructure.Settings
+      {
+        DefaultConnectionString = configuration.GetConnectionString("DefaultConnection")
+      };
     }
+  }
 }

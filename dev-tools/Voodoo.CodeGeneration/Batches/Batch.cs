@@ -9,12 +9,12 @@ namespace Voodoo.CodeGeneration.Batches
 {
     public abstract class Batch
     {
+        protected string[] allTargets;
+        protected Type contextType;
+        protected string js;
 
         protected string targetTypeName;
-        protected string js;
-        protected string[] allTargets;
         protected TypeFacade type;
-        protected Type contextType;
         protected ProjectFacade data => Vs.Helper.Solution.DataProject;
         protected ProjectFacade logic => Vs.Helper.Solution.LogicProject;
         protected ProjectFacade tests => Vs.Helper.Solution.TestProject;
@@ -39,9 +39,7 @@ namespace Voodoo.CodeGeneration.Batches
             Type type = null;
             var project = GetProjectFrom(token);
             if (targetTypeName != null)
-            {
                 type = project.FindType(targetTypeName);
-            }
             if (type != null)
                 this.type = new TypeFacade(type);
             if (type == null && throwIfNotFound && Vs.Helper.Flags.IsEmptyType)
@@ -99,25 +97,20 @@ namespace Voodoo.CodeGeneration.Batches
         protected void ThrowIfNotFound(params Token[] tokens)
         {
             foreach (var token in tokens)
-            {
                 if (!validate(token))
                     throw new Exception($"{token} is not setup");
-            }
         }
 
         protected bool AreAllSet(params Token[] tokens)
         {
             foreach (var token in tokens)
-            {
                 if (!validate(token))
                     return false;
-            }
             return true;
         }
 
         private void initialize()
         {
-
         }
 
         protected void addNameValuePairs()

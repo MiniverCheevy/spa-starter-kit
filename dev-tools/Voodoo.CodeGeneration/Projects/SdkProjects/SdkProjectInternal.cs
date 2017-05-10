@@ -1,212 +1,211 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace Voodoo.CodeGeneration.Projects.SdkProjects
 {
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-    public partial class Project
+    /// <remarks />
+    [Serializable]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "", IsNullable = false)]
+    public class Project
     {
-        private ProjectPropertyGroup[] propertyGroupField;
-
         private ProjectItemGroup[] itemGroupField;
+        private ProjectPropertyGroup[] propertyGroupField;
 
         private string sdkField;
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("PropertyGroup")]
+        /// <remarks />
+        [XmlElement("PropertyGroup")]
         public ProjectPropertyGroup[] PropertyGroup
         {
-            get { return this.propertyGroupField; }
-            set { this.propertyGroupField = value; }
+            get => propertyGroupField;
+            set => propertyGroupField = value;
         }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemGroup")]
+        /// <remarks />
+        [XmlElement("ItemGroup")]
         public ProjectItemGroup[] ItemGroup
         {
-            get { return this.itemGroupField; }
-            set { this.itemGroupField = value; }
+            get => itemGroupField;
+            set => itemGroupField = value;
         }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        /// <remarks />
+        [XmlAttribute]
         public string Sdk
         {
-            get { return this.sdkField; }
-            set { this.sdkField = value; }
+            get => sdkField;
+            set => sdkField = value;
         }
     }
 
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class ProjectPropertyGroup
+    /// <remarks />
+    [Serializable]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
+    public class ProjectPropertyGroup
     {
-        private string outputPathField;
-
-        private string targetFrameworkField;
+        private object applicationIconField;
 
         private string assemblyNameField;
 
-        private string rootNamespaceField;
+        private string conditionField;
 
-        private object applicationIconField;
+        private string labelField;
+        private string outputPathField;
 
         private string outputTypeExField;
 
-        private object startupObjectField;
-
         private string outputTypeField;
 
-        private string labelField;
+        private string rootNamespaceField;
 
-        private string conditionField;
+        private object startupObjectField;
 
-        /// <remarks/>
+        private string targetFrameworkField;
+
+        /// <remarks />
         public string OutputPath
         {
-            get { return this.outputPathField; }
-            set { this.outputPathField = value; }
+            get => outputPathField;
+            set => outputPathField = value;
         }
 
-        /// <remarks/>
+        /// <remarks />
         public string TargetFramework
         {
-            get { return this.targetFrameworkField; }
-            set { this.targetFrameworkField = value; }
+            get => targetFrameworkField;
+            set => targetFrameworkField = value;
         }
 
-        /// <remarks/>
+        /// <remarks />
         public string AssemblyName
         {
-            get { return this.assemblyNameField; }
-            set { this.assemblyNameField = value; }
+            get => assemblyNameField;
+            set => assemblyNameField = value;
         }
 
-        /// <remarks/>
+        /// <remarks />
         public string RootNamespace
         {
-            get { return this.rootNamespaceField; }
-            set { this.rootNamespaceField = value; }
+            get => rootNamespaceField;
+            set => rootNamespaceField = value;
         }
 
-        /// <remarks/>
+        /// <remarks />
         public object ApplicationIcon
         {
-            get { return this.applicationIconField; }
-            set { this.applicationIconField = value; }
+            get => applicationIconField;
+            set => applicationIconField = value;
         }
 
-        /// <remarks/>
+        /// <remarks />
         public string OutputTypeEx
         {
-            get { return this.outputTypeExField; }
-            set { this.outputTypeExField = value; }
+            get => outputTypeExField;
+            set => outputTypeExField = value;
         }
 
-        /// <remarks/>
+        /// <remarks />
         public object StartupObject
         {
-            get { return this.startupObjectField; }
-            set { this.startupObjectField = value; }
+            get => startupObjectField;
+            set => startupObjectField = value;
         }
 
-        /// <remarks/>
+        /// <remarks />
         public string OutputType
         {
-            get { return this.outputTypeField; }
-            set { this.outputTypeField = value; }
+            get => outputTypeField;
+            set => outputTypeField = value;
         }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        /// <remarks />
+        [XmlAttribute]
         public string Label
         {
-            get { return this.labelField; }
-            set { this.labelField = value; }
+            get => labelField;
+            set => labelField = value;
         }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        /// <remarks />
+        [XmlAttribute]
         public string Condition
         {
-            get { return this.conditionField; }
-            set { this.conditionField = value; }
+            get => conditionField;
+            set => conditionField = value;
         }
     }
 
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class ProjectItemGroup
+    /// <remarks />
+    [Serializable]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
+    public class ProjectItemGroup
     {
+        private ProjectItemGroupPackageReference[] packageReferenceField;
         private ProjectItemGroupReference[] referenceField;
 
-        private ProjectItemGroupPackageReference[] packageReferenceField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Reference")]
+        /// <remarks />
+        [XmlElement("Reference")]
         public ProjectItemGroupReference[] Reference
         {
-            get { return this.referenceField; }
-            set { this.referenceField = value; }
+            get => referenceField;
+            set => referenceField = value;
         }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("PackageReference")]
+        /// <remarks />
+        [XmlElement("PackageReference")]
         public ProjectItemGroupPackageReference[] PackageReference
         {
-            get { return this.packageReferenceField; }
-            set { this.packageReferenceField = value; }
+            get => packageReferenceField;
+            set => packageReferenceField = value;
         }
     }
 
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class ProjectItemGroupReference
+    /// <remarks />
+    [Serializable]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
+    public class ProjectItemGroupReference
     {
         private string includeField;
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        /// <remarks />
+        [XmlAttribute]
         public string Include
         {
-            get { return this.includeField; }
-            set { this.includeField = value; }
+            get => includeField;
+            set => includeField = value;
         }
     }
 
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class ProjectItemGroupPackageReference
+    /// <remarks />
+    [Serializable]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true)]
+    public class ProjectItemGroupPackageReference
     {
         private string includeField;
 
         private string versionField;
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        /// <remarks />
+        [XmlAttribute]
         public string Include
         {
-            get { return this.includeField; }
-            set { this.includeField = value; }
+            get => includeField;
+            set => includeField = value;
         }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        /// <remarks />
+        [XmlAttribute]
         public string Version
         {
-            get { return this.versionField; }
-            set { this.versionField = value; }
+            get => versionField;
+            set => versionField = value;
         }
     }
 }

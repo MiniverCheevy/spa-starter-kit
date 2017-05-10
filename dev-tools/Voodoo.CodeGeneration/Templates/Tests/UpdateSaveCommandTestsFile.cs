@@ -12,6 +12,8 @@ namespace Voodoo.CodeGeneration.Templates.Tests
 
     public class UpdateSaveCommandTestsFile : TypedTestFile
     {
+        public UpdateSaveCommandTestsTemplate Template { get; set; }
+
         public UpdateSaveCommandTestsFile(ProjectFacade project, TypeFacade type, ProjectFacade logic)
             : base(project, type)
         {
@@ -19,11 +21,10 @@ namespace Voodoo.CodeGeneration.Templates.Tests
             Name = $"{Name}UpdateCommandTests";
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName);
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName + ".Extras");
-            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
             PageSpecificUsingStatements.Add("Voodoo.TestData");
         }
-
-        public UpdateSaveCommandTestsTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

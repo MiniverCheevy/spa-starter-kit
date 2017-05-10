@@ -3,11 +3,11 @@ using Voodoo;
 
 namespace Fernweh.Infrastructure
 {
-    public static class ContextExtensions
+  public static class ContextExtensions
+  {
+    public static bool IsSecureRequest(this HttpContext context)
     {
-        public static bool IsSecureRequest(this HttpContext context)
-        {
-            return context.Request.Path.To<string>().ToLower().Contains(@"/api/");
-        }
+      return context.Request.Path.To<string>().ToLower().Contains(@"/api/");
     }
+  }
 }

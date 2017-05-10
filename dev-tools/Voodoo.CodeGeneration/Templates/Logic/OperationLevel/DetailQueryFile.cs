@@ -12,21 +12,22 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
 
     public class DetailQueryFile : TypedCodeFile
     {
+        public string MapMethodName { get; set; }
+        public string MessageName { get; set; }
+        public DetailQueryTemplate Template { get; set; }
+
         public DetailQueryFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
             Template = new DetailQueryTemplate {File = this};
             Name = $"{Name}DetailQuery";
             PageSpecificUsingStatements.Add($"{Namespace}.Extras");
-            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
             PageSpecificUsingStatements.Add(type.SystemType.Namespace);
             if (HasContext)
                 PageSpecificUsingStatements.Add(ContextNamespace);
         }
-
-        public string MapMethodName { get; set; }
-        public string MessageName { get; set; }
-        public DetailQueryTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

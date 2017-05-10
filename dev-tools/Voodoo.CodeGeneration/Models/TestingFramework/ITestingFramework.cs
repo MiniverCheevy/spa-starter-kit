@@ -1,6 +1,4 @@
-﻿using Voodoo;
-
-namespace Voodoo.CodeGeneration.Models.TestingFramework
+﻿namespace Voodoo.CodeGeneration.Models.TestingFramework
 {
     public interface ITestingFramework
     {

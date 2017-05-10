@@ -5,10 +5,9 @@ using System.Linq;
 using System.Reflection;
 using Voodoo.CodeGeneration.Infrastructure;
 using Voodoo.CodeGeneration.Models;
-using Voodoo.CodeGeneration.Models.TestingFramework;
-using Voodoo;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.SourceControl;
+using Voodoo.CodeGeneration.Models.TestingFramework;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 using Voodoo.Logging;
 
@@ -16,6 +15,18 @@ namespace Voodoo.CodeGeneration.Helpers
 {
     public class VisualStudioHelper
     {
+        public List<LogEntry> Log { get; set; }
+        public SolutionFacade Solution { get; set; }
+        public List<ProjectFacade> Projects { get; set; }
+        public string GenFolder { get; set; }
+        public string SolutionFolder { get; set; }
+        public List<ScratchFile> ScratchFiles { get; set; }
+        public bool HasConfig { get; set; }
+        public ITestingFramework TestingFramework { get; set; }
+        public string SpawnPath { get; set; }
+        public string PluginPath { get; set; }
+        public Flags Flags { get; set; } = new Flags();
+
         internal VisualStudioHelper()
         {
             HasConfig = false;
@@ -31,18 +42,6 @@ namespace Voodoo.CodeGeneration.Helpers
             Solution = solution;
             HasConfig = true;
         }
-
-        public List<LogEntry> Log { get; set; }
-        public SolutionFacade Solution { get; set; }
-        public List<ProjectFacade> Projects { get; set; }
-        public string GenFolder { get; set; }
-        public string SolutionFolder { get; set; }
-        public List<ScratchFile> ScratchFiles { get; set; }
-        public bool HasConfig { get; set; }
-        public ITestingFramework TestingFramework { get; set; }
-        public string SpawnPath { get; set; }
-        public string PluginPath { get; set; }
-        public Flags Flags { get; set; } = new Flags();
 
         public TypeFacade FindType(string typeName)
         {
@@ -64,21 +63,13 @@ namespace Voodoo.CodeGeneration.Helpers
             if (Solution.IonicProject != null)
                 Projects.Add(Solution.IonicProject);
             if (Solution.WebProject != null)
-            {
                 Projects.Add(Solution.WebProject);
-            }
             if (Solution.LogicProject != null)
-            {
                 Projects.Add(Solution.LogicProject);
-            }
             if (Solution.ModelProject != null)
-            {
                 Projects.Add(Solution.ModelProject);
-            }
             if (Solution.TestProject != null)
-            {
                 Projects.Add(Solution.TestProject);
-            }
             if (Solution.DataProject != null)
             {
                 Projects.Add(Solution.DataProject);
@@ -92,9 +83,7 @@ namespace Voodoo.CodeGeneration.Helpers
             {
                 var paths = Projects.Select(c => c.FullPath).Distinct().ToArray();
                 foreach (var path in paths)
-                {
                     provider.CheckOutFiles(path);
-                }
             }
 
             findContext();
@@ -103,7 +92,6 @@ namespace Voodoo.CodeGeneration.Helpers
         private void findContext()
         {
             if (!string.IsNullOrWhiteSpace(Solution.ContextTypeName))
-            {
                 try
                 {
                     foreach (var project in Projects)
@@ -118,13 +106,12 @@ namespace Voodoo.CodeGeneration.Helpers
                 }
                 catch
                 {
-                    Vs.Helper.Log.Add(new LogEntry()
+                    Vs.Helper.Log.Add(new LogEntry
                     {
                         Level = LogLevels.Error,
                         Message = $"Could not find Context: {Solution.ContextTypeName}"
                     });
                 }
-            }
         }
 
         private void findSolutionPath()

@@ -1,19 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Design.PluralizationServices;
+using System.Globalization;
 using System.Linq;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
-using Voodoo;
-using System.Data.Entity.Design.PluralizationServices;
-using System.Globalization;
 
 namespace Voodoo.CodeGeneration.Helpers
 {
     public class NameValuePairBuilder
     {
         private readonly Type contextType;
-        PluralizationService pluralizer = PluralizationService.CreateService(CultureInfo.CurrentCulture);
+        private PluralizationService pluralizer = PluralizationService.CreateService(CultureInfo.CurrentCulture);
 
         public NameValuePairBuilder(Type contextType)
         {
@@ -47,7 +46,8 @@ namespace Voodoo.CodeGeneration.Helpers
             var skipped = response.Where(c => c.EntityType.FullName.Contains("+")).ToArray();
             skipped.ForEach(
                 c =>
-                    Vs.Helper.Log.Add(LogEntry.Error("Enums inside of classes not supported: {0}", c.EntityType.FullName)));
+                    Vs.Helper.Log.Add(LogEntry.Error("Enums inside of classes not supported: {0}",
+                        c.EntityType.FullName)));
 
             return response.Where(c => !c.EntityType.FullName.Contains("+")).ToList();
         }

@@ -19,7 +19,5 @@ namespace Fernweh.Tests.Operations.Users
             response.Message.Should().Be(UserMessages.UpdateOk);
             response.IsOk.Should().BeTrue();
         }
-        
     }
 }
-

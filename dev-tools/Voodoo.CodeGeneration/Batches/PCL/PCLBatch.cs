@@ -1,8 +1,6 @@
 ﻿using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Infrastructure;
 using Voodoo.CodeGeneration.Templates.PCL;
-using Voodoo.CodeGeneration.Templates.Web.ProjectLevel;
-using Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks;
 
 namespace Voodoo.CodeGeneration.Batches.PCL
 {
@@ -26,9 +24,7 @@ namespace Voodoo.CodeGeneration.Batches.PCL
             var restBuilder = new RestBuilder(logic, null);
 
             foreach (var item in restBuilder.Resources)
-            {
                 pcl.AddFile(new ServiceFile(pcl, type, item));
-            }
         }
     }
 }

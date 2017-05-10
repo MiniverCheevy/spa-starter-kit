@@ -1,6 +1,4 @@
-﻿
-
-//Namespace is ok
+﻿//Namespace is ok
 // ReSharper disable once CheckNamespace
 
 namespace System

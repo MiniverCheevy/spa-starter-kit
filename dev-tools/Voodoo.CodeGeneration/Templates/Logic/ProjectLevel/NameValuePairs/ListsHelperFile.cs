@@ -11,6 +11,9 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
 
     public class ListsHelperFile : TypedCodeFile
     {
+        public ListsHelperTemplate Template { get; set; }
+        public NameValuePairTypeInformation[] NameValuePairTypes { get; set; }
+
         public ListsHelperFile(ProjectFacade project, NameValuePairTypeInformation[] nameValuePairTypes)
             : base(project, null)
         {
@@ -23,9 +26,6 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
             PageSpecificUsingStatements.Add("System.Linq");
             PageSpecificUsingStatements.Add(ContextNamespace);
         }
-
-        public ListsHelperTemplate Template { get; set; }
-        public NameValuePairTypeInformation[] NameValuePairTypes { get; set; }
 
         public override string GetFileContents()
         {

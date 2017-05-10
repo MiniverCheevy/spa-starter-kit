@@ -11,6 +11,9 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
 
     public class MessageFile : TypedCodeFile
     {
+        public bool HasDetail { get; set; }
+        public MessageTemplate Template { get; set; }
+
         public MessageFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
@@ -21,9 +24,6 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             PageSpecificUsingStatements.Add(type.Namespace);
             type.Properties.ForEach(c => PageSpecificUsingStatements.Add(c.PropertyType.Namespace));
         }
-
-        public bool HasDetail { get; set; }
-        public MessageTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

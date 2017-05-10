@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Voodoo.CodeGeneration.Helpers;
-using Voodoo.CodeGeneration.Helpers.ModelBuilders;
-using Voodoo.CodeGeneration.Models;
+﻿using Voodoo.CodeGeneration.Helpers.ModelBuilders;
 using Voodoo.CodeGeneration.Models.Rest;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 
@@ -18,11 +11,13 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Angular
 
     public class TsServiceFile : TsServiceFileBase
     {
+        public TsServiceTemplate Template { get; set; }
+
         public TsServiceFile(ProjectFacade project, Resource resource, string path)
             : base(project, resource, path)
         {
             Name = $"{resource.Name}Service";
-            TsName = $"{TypeScriptModelBuilder.LowerCaseFirstLetter(resource.Name)}Service";
+            TsName = $"{ModelBuilder.LowerCaseFirstLetter(resource.Name)}Service";
             Template = new TsServiceTemplate {File = this};
         }
 
@@ -30,7 +25,5 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Angular
         {
             return Template.TransformText();
         }
-
-        public TsServiceTemplate Template { get; set; }
     }
 }

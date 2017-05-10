@@ -3,31 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.SqlServer;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Fernweh.Core.Context.ExceptionalContext;
 using Fernweh.Core.Context.ExceptionTranslators;
-using Fernweh.Core.Identity;
 using Fernweh.Core.Models;
 using Fernweh.Core.Models.Identity;
-using Fernweh.Core.Security;
 using Voodoo;
-using Voodoo.Logging;
-using Voodoo.Messages;
 
 namespace Fernweh.Core.Context
 {
     public class FernwehContext : DbContext
     {
         private const string EffortConnectionString = "instanceid=this";
-        public bool IsEffort => this.Database.Connection.ConnectionString == EffortConnectionString;
+        public bool IsEffort => Database.Connection.ConnectionString == EffortConnectionString;
         public DbSet<Error> Errors { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -88,9 +81,10 @@ namespace Fernweh.Core.Context
         }
 
         /// <summary>
-        /// Used to sync a collection on a database entity
+        ///     Used to sync a collection on a database entity
         /// </summary>
-        public void Sync<TExisting, TModified, TKey>(List<TExisting> childCollection, List<TModified> modifiedCollection,
+        public void Sync<TExisting, TModified, TKey>(List<TExisting> childCollection,
+            List<TModified> modifiedCollection,
             Func<TExisting, TKey> existingKey, Func<TModified, TKey> modifiedKey,
             Func<TModified, TExisting, TExisting> transform)
             where TExisting : class, new()
@@ -102,7 +96,7 @@ namespace Fernweh.Core.Context
         }
 
         /// <summary>
-        /// Reconciles an arbitrary collection of entities, allows custom action on delete
+        ///     Reconciles an arbitrary collection of entities, allows custom action on delete
         /// </summary>
         public void SyncCustom<TExisting, TModified, TKey>(List<TExisting> existingCollection,
             List<TModified> modifiedCollection,

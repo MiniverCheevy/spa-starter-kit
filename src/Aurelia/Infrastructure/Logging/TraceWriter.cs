@@ -4,19 +4,19 @@ using Voodoo.Logging;
 
 namespace Fernweh.Infrastructure.Logging
 {
-    public class TraceWriter : ITraceLogger
+  public class TraceWriter : ITraceLogger
+  {
+    public IScopedLogger GetScopedLogger(string scope)
     {
-        public IScopedLogger GetScopedLogger(string scope)
-        {
-            return new TraceLogger(scope);
-        }
-
-        public void Log(string message)
-        {
-            var telemetry = new TelemetryClient();
-            telemetry.TrackTrace(message);
-
-            LogManager.Log(message);
-        }
+      return new TraceLogger(scope);
     }
+
+    public void Log(string message)
+    {
+      var telemetry = new TelemetryClient();
+      telemetry.TrackTrace(message);
+
+      LogManager.Log(message);
+    }
+  }
 }

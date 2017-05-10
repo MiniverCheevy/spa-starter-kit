@@ -1,29 +1,28 @@
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using Voodoo;
-using Voodoo.Messages;
-using Voodoo.Operations.Async;
-using Voodoo.Validation.Infrastructure;
-using System.Data.Entity;
 using Fernweh.Core.Context;
 using Fernweh.Core.Identity;
 using Fernweh.Core.Models.Identity;
 using Fernweh.Core.Operations.Lists;
-using Fernweh.Core.Operations.Roles.Extras;
-using Voodoo.Infrastructure;
 using Fernweh.Core.Operations.Users.Extras;
+using Voodoo;
+using Voodoo.Infrastructure;
+using Voodoo.Messages;
+using Voodoo.Operations.Async;
+using Voodoo.Validation.Infrastructure;
 
 namespace Fernweh.Core.Operations.Users
 {
-    [Rest(Verb.Put, RestResources.UserDetail, Roles = new string[] {RoleNames.Administrator})]
+    [Rest(Verb.Put, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
     public class UserSaveCommand : CommandAsync<UserDetail, NewItemResponse>
     {
-        protected bool isNew;
-        protected FernwehContext context;
-        protected IValidator validator = ValidationManager.GetDefaultValidatitor();
-        private User model;
         private List<Role> allRoles;
+        protected FernwehContext context;
+        protected bool isNew;
+        private User model;
+        protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
         public UserSaveCommand(UserDetail request) : base(request)
         {
@@ -47,7 +46,7 @@ namespace Fernweh.Core.Operations.Users
                 response.NewItemId = model.Id;
             }
 
-            response.Message = isNew ? UserMessages.AddOk: UserMessages.UpdateOk;
+            response.Message = isNew ? UserMessages.AddOk : UserMessages.UpdateOk;
 
             return response;
         }
@@ -58,8 +57,10 @@ namespace Fernweh.Core.Operations.Users
             context.Sync(model.Roles, request.Roles, c => c.Id, c => c.Value, mapRole);
         }
 
-        private Role mapRole(IListItem clientRole, Role dbRole) => 
-                allRoles.FirstOrDefault(c => c.Id == clientRole.Value);
+        private Role mapRole(IListItem clientRole, Role dbRole)
+        {
+            return allRoles.FirstOrDefault(c => c.Id == clientRole.Value);
+        }
 
 
         private void generatePasswordIfNeeded()
@@ -68,9 +69,7 @@ namespace Fernweh.Core.Operations.Users
                 return;
 
             if (request.Password.Trim() != request.ConfirmPassword.Trim())
-            {
                 throw new LogicException("Password and Confirm Password do not match!");
-            }
             var manager = new PasswordManager();
             manager.BuildPasswordAndSalt(ref model, request.Password);
         }
@@ -84,12 +83,9 @@ namespace Fernweh.Core.Operations.Users
                 context.Users.Add(entity);
                 return entity;
             }
-            else
-            {
-                return await context.Users
-                    .Include(c => c.Roles)
-                    .FirstOrDefaultAsync(c => c.Id == request.Id);
-            }
+            return await context.Users
+                .Include(c => c.Roles)
+                .FirstOrDefaultAsync(c => c.Id == request.Id);
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.Net.Http;
-using System.Text;
-using Voodoo.CodeGeneration.Helpers;
-using Voodoo.CodeGeneration.Models;
+﻿using System.Text;
 using Voodoo.CodeGeneration.Models.Rest;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 
@@ -9,12 +6,13 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.React
 {
     public class TsServiceBatchFile : TypeScriptServiceBatchFileBase
     {
+        public override string FileName => "api.generated.ts";
+
         public TsServiceBatchFile(ProjectFacade project, Resource[] resources, string path)
             : base(project, resources, path)
         {
-
         }
-        public override string FileName => "api.generated.ts";
+
         public override string GetFileContents()
         {
             var builder = new StringBuilder();
@@ -81,8 +79,6 @@ import * as Models from './models.generated';");
                 return result;
             }}
 }}");
-
-                 
                 }
                 builder.AppendLine("}");
                 builder.AppendLine($"export const {resource.Name} = new {resource.Name}Prototype();");
@@ -91,5 +87,3 @@ import * as Models from './models.generated';");
         }
     }
 }
-
-

@@ -12,6 +12,9 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
 
     public class ListsEnumFile : TypedCodeFile
     {
+        public ListsEnumTemplate Template { get; set; }
+        public string[] Names { get; set; }
+
         public ListsEnumFile(ProjectFacade project, NameValuePairTypeInformation[] nameValuePairTypes)
             : base(project, null)
         {
@@ -20,9 +23,6 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
             Name = "Lists";
             OverwriteExistingFile = true;
         }
-
-        public ListsEnumTemplate Template { get; set; }
-        public string[] Names { get; set; }
 
         public override string GetFileContents()
         {

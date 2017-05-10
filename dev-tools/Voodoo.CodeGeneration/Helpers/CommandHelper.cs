@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
+using Voodoo.CodeGeneration.Batches;
 using Voodoo.CodeGeneration.Infrastructure;
 using Voodoo.CodeGeneration.Models;
-using Voodoo;
-using Voodoo.CodeGeneration.Batches;
 
 namespace Voodoo.CodeGeneration.Helpers
 {
     public class CommandHelper
     {
+        public List<GeneratorCommand> Commands { get; set; }
+
         public CommandHelper()
         {
             Commands = getCommands(GetType().Assembly);
         }
-
-        public List<GeneratorCommand> Commands { get; set; }
 
         private List<GeneratorCommand> getCommands(Assembly assembly)
         {
@@ -40,12 +38,8 @@ namespace Voodoo.CodeGeneration.Helpers
             batch.Build();
             Console.WriteLine("Writing Files");
             foreach (var project in Vs.Helper.Projects)
-            {
                 if (project.Files.Any())
-                {
                     project.WriteFiles();
-                }
-            }
 
             Vs.Helper.WriteScratchFiles();
 

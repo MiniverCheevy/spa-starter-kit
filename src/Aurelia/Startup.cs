@@ -19,23 +19,21 @@ namespace Fernweh
 {
   public class Startup
   {
-        public IConfigurationRoot Configuration { get; set; }
+    public IConfigurationRoot Configuration { get; set; }
+
     public Startup(IHostingEnvironment env)
     {
       var builder = new ConfigurationBuilder();
       builder.AddEnvironmentVariables();
       builder
-          .SetBasePath(env.ContentRootPath)
-          .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-          .AddEnvironmentVariables();
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json", true, true)
+        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
+        .AddEnvironmentVariables();
       Console.WriteLine($"Environment: {env.EnvironmentName}");
-      this.Configuration = builder.Build();
+      Configuration = builder.Build();
       IOC.Settings = SettingsFactory.GetSettings(builder.Build());
-
     }
-
-    public IConfigurationRoot Configuration { get; set; }
 
     public void ConfigureServices(IServiceCollection services)
     {
@@ -58,9 +56,8 @@ namespace Fernweh
         app.UseDeveloperExceptionPage();
         app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
         {
-          HotModuleReplacement = true , 
+          HotModuleReplacement = true
         });
-
       }
 
       app.UseDefaultFiles();

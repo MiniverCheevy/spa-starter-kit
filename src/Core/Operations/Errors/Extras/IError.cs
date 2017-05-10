@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fernweh.Core.Context.ExceptionalContext;
-using Voodoo.Infrastructure.Notations;
 using Voodoo.Messages;
 
 namespace Fernweh.Core.Operations.Errors.Extras
@@ -42,11 +36,11 @@ namespace Fernweh.Core.Operations.Errors.Extras
         public string FullJson { get; set; }
         public bool RollupPerServer { get; set; }
 
+        public string User { get; set; }
+
         public int? GetHash()
         {
-            return base.GetHashCode();
+            return GetHashCode();
         }
-
-        public string User { get; set; }
     }
 }

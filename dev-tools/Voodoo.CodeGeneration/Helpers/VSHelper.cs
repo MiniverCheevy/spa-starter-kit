@@ -2,11 +2,11 @@
 {
     public static class Vs
     {
+        public static VisualStudioHelper Helper { get; set; }
+
         static Vs()
         {
             Helper = new VisualStudioHelper();
         }
-
-        public static VisualStudioHelper Helper { get; set; }
     }
 }

@@ -11,6 +11,25 @@ namespace Voodoo.CodeGeneration.Models.Reflection
 {
     public class TypeFacade
     {
+        public bool IsFake { get; set; }
+        public string Namespace { get; set; }
+        public string DetailName { get; set; }
+        public string MessageName { get; set; }
+        public string Name { get; set; }
+        public string PluralName { get; set; }
+        public string CamelCaseName { get; set; }
+        public bool HasId { get; set; }
+        public bool HasDetailFlag { get; set; }
+        public bool HasActiveFlag { get; set; }
+        public bool HasSortOrder { get; set; }
+        public PropertyFacade[] Properties { get; set; }
+        public Type SystemType { get; set; }
+        public bool HasName { get; set; }
+        public List<GeneratedProperty> MessageProperties { get; set; }
+        public List<GeneratedProperty> DetailMessageProperties { get; set; }
+        public string DetailQueryMapMethodName { get; set; }
+        public string DetailQueryMessageName { get; set; }
+
         public TypeFacade(Type type)
         {
             SystemType = type;
@@ -31,25 +50,6 @@ namespace Voodoo.CodeGeneration.Models.Reflection
             buildProperties();
         }
 
-        public bool IsFake { get; set; }
-        public string Namespace { get; set; }
-        public string DetailName { get; set; }
-        public string MessageName { get; set; }
-        public string Name { get; set; }
-        public string PluralName { get; set; }
-        public string CamelCaseName { get; set; }
-        public bool HasId { get; set; }
-        public bool HasDetailFlag { get; set; }
-        public bool HasActiveFlag { get; set; }
-        public bool HasSortOrder { get; set; }
-        public PropertyFacade[] Properties { get; set; }
-        public Type SystemType { get; set; }
-        public bool HasName { get; set; }
-        public List<GeneratedProperty> MessageProperties { get; set; }
-        public List<GeneratedProperty> DetailMessageProperties { get; set; }
-        public string DetailQueryMapMethodName { get; set; }
-        public string DetailQueryMessageName { get; set; }
-
         public override string ToString()
         {
             return SystemType.FullName;
@@ -58,7 +58,7 @@ namespace Voodoo.CodeGeneration.Models.Reflection
         private void buildProperties()
         {
             Properties = SystemType.GetProperties()
-                .Where(c => CustomAttributeExtensions.GetCustomAttribute<SecretAttribute>((MemberInfo) c) == null)
+                .Where(c => c.GetCustomAttribute<SecretAttribute>() == null)
                 .Select(c => new PropertyFacade(c, this))
                 .ToArray();
 
@@ -84,13 +84,12 @@ namespace Voodoo.CodeGeneration.Models.Reflection
         {
             const int threshold = 5;
             var items = new List<PropertyFacade>();
-            foreach (var property in Properties.Where(c => c.Group != PropertyGroup.Enumerable && c.IsWritable).ToArray())
-            {
+            foreach (var property in Properties.Where(c => c.Group != PropertyGroup.Enumerable && c.IsWritable)
+                .ToArray())
                 if (items.Count < threshold)
                     items.Add(property);
                 else
                     continue;
-            }
 
             MessageProperties = buildGeneratedProperty(items);
         }
@@ -98,7 +97,7 @@ namespace Voodoo.CodeGeneration.Models.Reflection
         public List<GeneratedProperty> buildGeneratedProperty(List<PropertyFacade> items)
         {
             var properties = new List<GeneratedProperty>();
-            foreach (var item in items.Where(c=>c.IsWritable).ToArray())
+            foreach (var item in items.Where(c => c.IsWritable).ToArray())
             {
                 if (item.Group != PropertyGroup.Scalar)
                     continue;
@@ -122,7 +121,7 @@ namespace Voodoo.CodeGeneration.Models.Reflection
 
         public static TypeFacade CreateEmptyType(string targetTypeName)
         {
-            var typeFacade = new TypeFacade(typeof(System.Empty));
+            var typeFacade = new TypeFacade(typeof(Empty));
             typeFacade.createNames(targetTypeName);
             typeFacade.Namespace = "System";
             typeFacade.IsFake = true;

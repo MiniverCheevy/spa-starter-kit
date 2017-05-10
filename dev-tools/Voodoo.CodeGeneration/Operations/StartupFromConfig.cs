@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.TestingFramework;
 using Voodoo.CodeGeneration.Models.VisualStudio;
-using Newtonsoft.Json;
-using Voodoo;
 using Voodoo.Messages;
 using Voodoo.Operations;
 
@@ -17,8 +16,8 @@ namespace Voodoo.CodeGeneration.Operations
     public class StartupFromConfig : Executor<StartupRequest, Response>
     {
         private ConfigurationFile configFile;
-        private SolutionFacade solution;
         private Dictionary<string, ProjectFacade> projects;
+        private SolutionFacade solution;
 
         public StartupFromConfig(StartupRequest request) : base(request)
         {
@@ -104,9 +103,7 @@ namespace Voodoo.CodeGeneration.Operations
                 Vs.Helper.PluginPath = configFile.PluginPath;
 
             if (solution.AddToSourceControl.To<bool>())
-            {
                 solution.SourceControlProviderName = configFile.SourceControlProvider?.ToLower();
-            }
             if (!string.IsNullOrWhiteSpace(configFile.PathToTfDotExe))
                 solution.PathToTfDotExe = configFile.PathToTfDotExe;
 

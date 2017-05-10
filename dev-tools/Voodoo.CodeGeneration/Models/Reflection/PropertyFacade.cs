@@ -3,13 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using Voodoo;
 
 namespace Voodoo.CodeGeneration.Models.Reflection
 {
     public class PropertyFacade
     {
         private readonly PropertyInfo info;
+
+        public PropertyGroup Group { get; set; }
+
+        public List<ErrorMessage> ErrorMessages { get; set; }
+        public List<GeneratedAttribute> Attributes { get; set; }
+        public string Name { get; set; }
+        public Type PropertyType { get; set; }
+        public string StringifiedType { get; set; }
+        public TypeFacade ParentType { get; set; }
+        public string CamelCaseName { get; set; }
+
+        public bool IsWritable { get; set; }
 
         public PropertyFacade(PropertyInfo info, TypeFacade parentType)
         {
@@ -21,16 +32,6 @@ namespace Voodoo.CodeGeneration.Models.Reflection
             buildProperties();
             buildAttributes();
         }
-
-        public PropertyGroup Group { get; set; }
-
-        public List<ErrorMessage> ErrorMessages { get; set; }
-        public List<GeneratedAttribute> Attributes { get; set; }
-        public string Name { get; set; }
-        public Type PropertyType { get; set; }
-        public string StringifiedType { get; set; }
-        public TypeFacade ParentType { get; set; }
-        public string CamelCaseName { get; set; }
 
         public override string ToString()
         {
@@ -52,8 +53,6 @@ namespace Voodoo.CodeGeneration.Models.Reflection
             else
                 Group = PropertyGroup.Navigation;
         }
-
-        public bool IsWritable { get; set; }
 
         private void buildAttributes()
         {
@@ -88,26 +87,23 @@ namespace Voodoo.CodeGeneration.Models.Reflection
             var isInt = intTypes.Contains(PropertyType);
 
             if (!isNullable && !isName && !isId && isInt)
-            {
                 Attributes.Add(new GeneratedAttribute
                     {Text = "[RequiredNonZeroInt(ErrorMessage = Constants.Messages.Required)]"});
-            }
             else if (!isNullable && !isName && !isId)
-            {
-                Attributes.Add(new GeneratedAttribute {Text = "[Required(ErrorMessage = Constants.Messages.Required)]"});
-            }
+                Attributes.Add(new GeneratedAttribute
+                {
+                    Text = "[Required(ErrorMessage = Constants.Messages.Required)]"
+                });
         }
 
         private void buildRange()
         {
             if (PropertyType == typeof(DateTime) || PropertyType == typeof(DateTime?))
-            {
                 Attributes.Add(new GeneratedAttribute
                 {
                     Text =
                         "[Range(typeof(DateTime), \"1/1/1900\", \"3/4/2050\", ErrorMessage = Constants.Messages.DateOutOfRange)]"
                 });
-            }
         }
 
         private void buildMaxLength()

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Voodoo.CodeGeneration.Models;
-using Voodoo.CodeGeneration.Models.VisualStudio;
-using Voodoo;
 using Voodoo.CodeGeneration.Models.Reflection;
+using Voodoo.CodeGeneration.Models.VisualStudio;
 
 namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
 {
@@ -17,6 +12,10 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
 
     public class MessagesFile : TypedCodeFile
     {
+        public string FriendlyName { get; set; }
+        public MessagesTemplate Template { get; set; }
+        public string[] Errors { get; set; }
+
         public MessagesFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
@@ -27,10 +26,6 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             Errors = type.Properties.SelectMany(c => c.ErrorMessages).Select(c => c.Text).ToArray();
             type.Properties.ForEach(c => PageSpecificUsingStatements.Add(c.PropertyType.Namespace));
         }
-
-        public string FriendlyName { get; set; }
-        public MessagesTemplate Template { get; set; }
-        public string[] Errors { get; set; }
 
         public override string GetFileContents()
         {

@@ -8,7 +8,6 @@ using Voodoo.Messages;
 
 namespace Fernweh.Core.Context.ExceptionTranslators
 {
-
     public class ForiegnKeyExceptionTranslation : ExceptionTranslation
     {
         //The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Evaluations_dbo.Users_UserId". The conflict occurred in database "LGM", table "dbo.Users", column 'Id'.

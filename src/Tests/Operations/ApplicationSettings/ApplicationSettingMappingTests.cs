@@ -9,7 +9,7 @@ namespace Fernweh.Tests.Operations.ApplicationSettings
     public class ApplicationSettingMappingTests
     {
         private Randomizer randomizer = new Randomizer();
-        
+
         private ApplicationSetting arrange()
         {
             TestHelper.SetRandomDataSeed(1);
@@ -17,22 +17,19 @@ namespace Fernweh.Tests.Operations.ApplicationSettings
             TestHelper.Randomizer.Randomize(source);
             return source;
         }
-        
+
         [TestMethod]
         public void Map_Message_PropertiesTheSame()
         {
             var testHelper =
-            new MappingTesterHelper<ApplicationSetting, ApplicationSettingMessage>();
+                new MappingTesterHelper<ApplicationSetting, ApplicationSettingMessage>();
             var source = arrange();
             var message = source.ToApplicationSettingMessage();
             var target = new ApplicationSetting();
             target.UpdateFrom(message);
-            
-            testHelper.Compare(source, message, new string[]{});
-            testHelper.Compare(target, message, new[] { "Id" });
-            
+
+            testHelper.Compare(source, message, new string[] { });
+            testHelper.Compare(target, message, new[] {"Id"});
         }
-        
     }
 }
-

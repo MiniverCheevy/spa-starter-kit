@@ -1,8 +1,4 @@
-﻿using System;
-using Fernweh.Core.Models;
-using Fernweh.Core.Security;
-
-namespace Fernweh.Core.ModelExtensions
+﻿namespace Fernweh.Core.ModelExtensions
 {
     public static class ModelExtensions
     {

@@ -12,6 +12,8 @@ namespace Voodoo.CodeGeneration.Templates.Tests
 
     public class QueryTestsFile : TypedTestFile
     {
+        public QueryTestsTemplate Template { get; set; }
+
         public QueryTestsFile(ProjectFacade project, TypeFacade type, ProjectFacade logic)
             : base(project, type)
         {
@@ -19,12 +21,11 @@ namespace Voodoo.CodeGeneration.Templates.Tests
             Name = string.Format("{0}QueryTests", Name);
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName);
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName + ".Extras");
-            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
             PageSpecificUsingStatements.Add(ContextNamespace);
             PageSpecificUsingStatements.Add(logic.RootNamespace);
         }
-
-        public QueryTestsTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

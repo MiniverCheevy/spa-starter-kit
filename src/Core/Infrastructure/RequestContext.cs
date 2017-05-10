@@ -1,8 +1,5 @@
-﻿
-using System;
+﻿using System;
 using Fernweh.Core.Identity;
-using Fernweh.Core.Security;
-using Voodoo.Infrastructure.Notations;
 
 namespace Fernweh.Core.Infrastructure
 {

@@ -1,31 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using Voodoo.CodeGeneration.Helpers;
-using Voodoo.CodeGeneration.Models.TestingFramework;
-using Voodoo.CodeGeneration.Models.VisualStudio;
-using Voodoo;
-using Voodoo.CodeGeneration.Models.Reflection;
 using System.Data.Entity.Design.PluralizationServices;
 using System.Globalization;
+using System.IO;
+using System.Linq;
+using Voodoo.CodeGeneration.Helpers;
+using Voodoo.CodeGeneration.Models.Reflection;
+using Voodoo.CodeGeneration.Models.TestingFramework;
+using Voodoo.CodeGeneration.Models.VisualStudio;
 
 namespace Voodoo.CodeGeneration.Models
 {
     public abstract class CodeFile
     {
-        protected CodeFile(ProjectFacade project)
-        {
-            if (project == null) return;
-            Project = project;
-
-            if (Vs.Helper.Solution.ContextType == null) return;
-            HasContext = true;
-            ContextName = Vs.Helper.Solution.ContextType.Name;
-            ContextNamespace = Vs.Helper.Solution.ContextType.Namespace;
-        }
-
         public bool OverwriteExistingFile { get; set; }
         public string Name { get; set; }
         public ProjectFacade Project { get; set; }
@@ -61,6 +48,17 @@ namespace Voodoo.CodeGeneration.Models
 
         public virtual string FileName => OverwriteExistingFile ? $"{Name}.generated.cs" : $"{Name}.cs";
 
+        protected CodeFile(ProjectFacade project)
+        {
+            if (project == null) return;
+            Project = project;
+
+            if (Vs.Helper.Solution.ContextType == null) return;
+            HasContext = true;
+            ContextName = Vs.Helper.Solution.ContextType.Name;
+            ContextNamespace = Vs.Helper.Solution.ContextType.Namespace;
+        }
+
         public virtual IEnumerable<KeyValuePair<string, string>> CustomVisualStudioMetaData()
         {
             return null;
@@ -72,6 +70,8 @@ namespace Voodoo.CodeGeneration.Models
 
     public abstract class TypedTestFile : TypedCodeFile
     {
+        public ITestingFramework Tests { get; set; }
+
         protected TypedTestFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
@@ -80,12 +80,17 @@ namespace Voodoo.CodeGeneration.Models
                 .ForEach(c => PageSpecificUsingStatements.Add(c));
             PageSpecificUsingStatements.Add("FluentAssertions");
         }
-
-        public ITestingFramework Tests { get; set; }
     }
 
     public abstract class TypedCodeFile : CodeFile
     {
+        public TypeFacade Type { get; set; }
+        public string PluralName { get; set; }
+
+        public string Folder => PluralName;
+
+        public string ExtrasFolder => $@"{Folder}\Extras";
+
         protected TypedCodeFile(ProjectFacade project, TypeFacade type) : base(project)
         {
             Type = type;
@@ -94,13 +99,6 @@ namespace Voodoo.CodeGeneration.Models
             Name = type.Name;
             PluralName = pluralizer.Pluralize(Name);
         }
-
-        public TypeFacade Type { get; set; }
-        public string PluralName { get; set; }
-
-        public string Folder => PluralName;
-
-        public string ExtrasFolder => $@"{Folder}\Extras";
     }
 
     public abstract class TypedUiScratchFile : ScratchFile
@@ -114,14 +112,14 @@ namespace Voodoo.CodeGeneration.Models
     {
         private readonly string fileName;
 
+        public override string FullPath => IoNic.PathCombineLocal(Path.GetTempPath(), fileName);
+
+        public override string FileName => fileName;
+
         protected ScratchFile() : base(null)
         {
             fileName = $"{Guid.NewGuid().ToString().Replace("-", "")}.cs";
         }
-
-        public override string FullPath => IoNic.PathCombineLocal(Path.GetTempPath(), fileName);
-
-        public override string FileName => fileName;
 
         public override string GetFolder()
         {

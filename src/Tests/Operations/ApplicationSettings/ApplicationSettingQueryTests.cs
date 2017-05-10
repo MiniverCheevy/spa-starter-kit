@@ -21,20 +21,20 @@ namespace Fernweh.Tests.Operations.ApplicationSettings
                 id = context.ApplicationSettings.Max(c => c.Id);
             }
             id.Should().HaveValue().Should().NotBe(0,
-            "No data in ApplicationSetting table");
-            var request = new IdRequest{Id = id.Value};
+                "No data in ApplicationSetting table");
+            var request = new IdRequest {Id = id.Value};
             var response = await new ApplicationSettingDetailQuery(request).ExecuteAsync();
             response.Details.Should().BeEmpty();
             response.Message.Should().BeNull();
             response.IsOk.Should().BeTrue();
             response.Data.Should().NotBeNull();
-            
         }
+
         public ApplicationSettingQueryRequest getValidRequest()
         {
             return new ApplicationSettingQueryRequest();
         }
-        
+
         [TestMethod]
         public async Task ApplicationSettingListQuery_ValidRequest_IsOk()
         {
@@ -48,4 +48,3 @@ namespace Fernweh.Tests.Operations.ApplicationSettings
         }
     }
 }
-

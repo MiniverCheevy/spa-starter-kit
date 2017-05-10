@@ -1,7 +1,5 @@
-﻿using Voodoo.CodeGeneration.Helpers;
-using Voodoo.CodeGeneration.Infrastructure;
+﻿using Voodoo.CodeGeneration.Infrastructure;
 using Voodoo.CodeGeneration.Templates.Logic.ProjectLevel;
-using Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs;
 
 namespace Voodoo.CodeGeneration.Batches.Logics
 {

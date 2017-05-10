@@ -26,11 +26,6 @@ namespace Fernweh.Core.Operations.Errors.Extras
 
     public class ErrorDetail : ErrorMessage
     {
-        public ErrorDetail()
-        {
-            Items = new List<Grouping<NameValuePair>>();
-        }
-
         public string Details { get; set; }
         public string Host { get; set; }
 
@@ -38,5 +33,10 @@ namespace Fernweh.Core.Operations.Errors.Extras
 
 
         public List<Grouping<NameValuePair>> Items { get; set; }
+
+        public ErrorDetail()
+        {
+            Items = new List<Grouping<NameValuePair>>();
+        }
     }
 }

@@ -12,13 +12,16 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
 
     public class ListQueryFile : TypedCodeFile
     {
+        public ListQueryTemplate Template { get; set; }
+
         public ListQueryFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
             Template = new ListQueryTemplate {File = this};
             Name = $"{Name}ListQuery";
             PageSpecificUsingStatements.Add($"{Namespace}.Extras");
-            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
             if (HasContext)
             {
                 PageSpecificUsingStatements.Add(ContextNamespace);
@@ -26,8 +29,6 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
                 PageSpecificUsingStatements.Add($"{Namespace}.Extras");
             }
         }
-
-        public ListQueryTemplate Template { get; set; }
 
         public override string GetFileContents()
         {

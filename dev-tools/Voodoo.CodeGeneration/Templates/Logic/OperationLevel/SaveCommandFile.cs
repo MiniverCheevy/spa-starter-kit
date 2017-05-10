@@ -12,6 +12,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
 
     public class SaveCommandFile : TypedCodeFile
     {
+        public SaveCommandTemplate Template { get; set; }
+
         public SaveCommandFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
@@ -21,10 +23,9 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             PageSpecificUsingStatements.Add(type.Namespace);
             PageSpecificUsingStatements.Add("Voodoo.Infrastructure");
             PageSpecificUsingStatements.Add($"{Namespace}.Extras");
-            PageSpecificUsingStatements.Add($"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
         }
-
-        public SaveCommandTemplate Template { get; set; }
 
 
         public override string GetFileContents()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
+using System.Text;
 using Fernweh.Core.Models.Identity;
 
 namespace Fernweh.Core.Identity
@@ -8,7 +9,7 @@ namespace Fernweh.Core.Identity
     {
         public string CreateSalt()
         {
-            byte[] buffer = new byte[32];
+            var buffer = new byte[32];
             new RNGCryptoServiceProvider().GetBytes(buffer);
             return Convert.ToBase64String(buffer);
         }
@@ -16,7 +17,7 @@ namespace Fernweh.Core.Identity
         public string CreateHash(string clearText, string salt)
         {
             var toBeHashed = clearText + salt;
-            var bytValue = System.Text.Encoding.UTF8.GetBytes(toBeHashed);
+            var bytValue = Encoding.UTF8.GetBytes(toBeHashed);
 
             var hashAlg = new SHA512CryptoServiceProvider();
             var bytHash = hashAlg.ComputeHash(bytValue);
@@ -31,13 +32,13 @@ namespace Fernweh.Core.Identity
                 || string.IsNullOrWhiteSpace(hash))
                 return false;
 
-            var newHash = this.CreateHash(cleartext, salt);
+            var newHash = CreateHash(cleartext, salt);
             return newHash == hash;
         }
 
         public User Create(string userName, string password)
         {
-            var user = new User()
+            var user = new User
             {
                 UserName = userName,
                 Salt = CreateSalt()

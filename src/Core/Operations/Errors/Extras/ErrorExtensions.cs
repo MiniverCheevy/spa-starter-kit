@@ -1,13 +1,11 @@
-using System;
-using Fernweh.Core;
-using Fernweh.Core.Context.ExceptionalContext;
 using Fernweh.Core.Context;
+using Fernweh.Core.Context.ExceptionalContext;
 
 namespace Fernweh.Core.Operations.Errors.Extras
 {
     public static partial class ErrorExtensions
     {
-        public static ErrorRepository ErrorRepository(this Context.FernwehContext context)
+        public static ErrorRepository ErrorRepository(this FernwehContext context)
         {
             return new ErrorRepository(context);
         }

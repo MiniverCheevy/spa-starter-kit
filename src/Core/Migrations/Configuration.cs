@@ -1,22 +1,19 @@
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using Fernweh.Core.Context;
 using Fernweh.Core.Models.Identity;
+using Voodoo;
 
 namespace Fernweh.Core.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-    using Voodoo;
-
-    public sealed class Configuration : DbMigrationsConfiguration<Fernweh.Core.Context.FernwehContext>
+    public sealed class Configuration : DbMigrationsConfiguration<FernwehContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Fernweh.Core.Context.FernwehContext context)
+        protected override void Seed(FernwehContext context)
         {
             addRolesAndUsers(context);
         }
@@ -36,8 +33,8 @@ namespace Fernweh.Core.Migrations
                     user = dbRole;
             }
 
-            var shawn = new User {UserName = "Shawn", Roles = new System.Collections.Generic.List<Role> {admin}};
-            context.Users.AddOrUpdate(c=> c.UserName, shawn);
+            var shawn = new User {UserName = "Shawn", Roles = new List<Role> {admin}};
+            context.Users.AddOrUpdate(c => c.UserName, shawn);
         }
     }
 }

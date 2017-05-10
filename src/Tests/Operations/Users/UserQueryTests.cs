@@ -21,20 +21,20 @@ namespace Fernweh.Tests.Operations.Users
                 id = context.Users.Max(c => c.Id);
             }
             id.Should().HaveValue().Should().NotBe(0,
-            "No data in User table");
-            var request = new IdRequest{Id = id.Value};
+                "No data in User table");
+            var request = new IdRequest {Id = id.Value};
             var response = await new UserDetailQuery(request).ExecuteAsync();
             response.Details.Should().BeEmpty();
             response.Message.Should().BeNull();
             response.IsOk.Should().BeTrue();
             response.Data.Should().NotBeNull();
-            
         }
+
         public UserQueryRequest getValidRequest()
         {
             return new UserQueryRequest();
         }
-        
+
         [TestMethod]
         public async Task UserListQuery_ValidRequest_IsOk()
         {
@@ -48,4 +48,3 @@ namespace Fernweh.Tests.Operations.Users
         }
     }
 }
-

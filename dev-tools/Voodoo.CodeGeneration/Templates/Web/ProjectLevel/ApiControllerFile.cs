@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.Rest;
@@ -10,10 +9,12 @@ using Voodoo.CodeGeneration.Models.VisualStudio;
 
 namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
 {
-
-
     public class ApiControllerFile : TypedCodeFile
     {
+        public IEnumerable<Resource> Resources { get; set; }
+
+        public override string FileName => "Api.generated.cs";
+
         public ApiControllerFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
@@ -23,26 +24,20 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
         public ApiControllerFile(ProjectFacade project, TypeFacade type, IEnumerable<Resource> resources)
             : base(project, type)
         {
-            this.Resources = resources;
+            Resources = resources;
             OverwriteExistingFile = true;
             PageSpecificUsingStatements.Add("Voodoo.Messages");
             PageSpecificUsingStatements.Add($"{project.RootNamespace}.Infrastructure.ExecutionPipeline");
             PageSpecificUsingStatements.Add($"{project.RootNamespace}.Infrastructure.ExecutionPipeline.Models");
 
             foreach (var resource in resources)
+            foreach (var verb in resource.Verbs)
             {
-                foreach (var verb in resource.Verbs)
-                {
-                    addNamespaces(verb.OperationType);
-                    addNamespaces(verb.RequestType);
-                    addNamespaces(verb.ResponseType);
-                }
+                addNamespaces(verb.OperationType);
+                addNamespaces(verb.RequestType);
+                addNamespaces(verb.ResponseType);
             }
         }
-
-        public IEnumerable<Resource> Resources { get; set; }
-  
-        public override string FileName => "Api.generated.cs";
 
         public override string GetFolder()
         {
@@ -56,12 +51,8 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
 
             PageSpecificUsingStatements.Add(type.Namespace);
             if (type.GenericTypeArguments.Any())
-            {
                 foreach (var arg in type.GenericTypeArguments)
-                {
                     addNamespaces(arg);
-                }
-            }
         }
 
         public override string GetFileContents()
@@ -80,29 +71,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Voodoo;");
-            foreach (var item in this.UsingStatements)
-            {
+            foreach (var item in UsingStatements)
                 builder.AppendLine($"using {item};");
-            }
 
-            builder.AppendLine($"namespace {this.Namespace}");
+            builder.AppendLine($"namespace {Namespace}");
             builder.AppendLine("{");
-            foreach (var resource in this.Resources) {
-
+            foreach (var resource in Resources)
+            {
                 builder.AppendLine();
                 builder.AppendLine("[Route(\"api/[controller]\")]");
 
                 builder.AppendLine($"public class {resource.Name}Controller : ApiControllerBase");
                 builder.AppendLine("{");
-                foreach (var verb in resource.Verbs) {
+                foreach (var verb in resource.Verbs)
+                {
                     builder.AppendLine($"{verb.Attribute}");
 
                     builder.AppendLine($"public async Task<{verb.ResponseTypeName}> {verb.Name}");
                     builder.AppendLine($"({verb.Parameter} {verb.RequestTypeName} request)");
                     builder.AppendLine("{");
                     builder.AppendLine();
-
-
 
                     builder.AppendLine($@" var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
              <{verb.RequestTypeName}, {verb.ResponseTypeName}>
@@ -111,22 +99,23 @@ using Voodoo;");
                 Context = HttpContext,
                 ModelState = ModelState,
                 Request = request,
-                SecurityContext = new SecurityContext {{ AllowAnonymouse = {verb.AllowAnonymous.ToString().ToLower()}, Roles=new string[] {{ {verb.RoleArrayString} }} }}
+                SecurityContext = new SecurityContext {{ AllowAnonymouse = {
+                            verb.AllowAnonymous.ToString().ToLower()
+                        }, Roles=new string[] {{ {verb.RoleArrayString} }} }}
             }};");
 
-                    builder.AppendLine($"var pipeline = new ExcecutionPipeline<{verb.RequestTypeName}, {verb.ResponseTypeName}>");
+                    builder.AppendLine(
+                        $"var pipeline = new ExcecutionPipeline<{verb.RequestTypeName}, {verb.ResponseTypeName}>");
                     builder.AppendLine($" (state);");
                     builder.AppendLine($"await pipeline.ExecuteAsync();");
 
                     builder.AppendLine($"return state.Response;");
                     builder.AppendLine("}");
-
                 }
                 builder.AppendLine("}");
             }
             builder.AppendLine("}");
             return builder.ToString();
-
         }
     }
 }

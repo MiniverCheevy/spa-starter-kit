@@ -6,7 +6,6 @@ using Voodoo.Infrastructure.Notations;
 
 namespace Fernweh.Core.Identity
 {
-
     [Client]
     [MapsTo(typeof(User))]
     public class AppPrincipal
@@ -21,24 +20,19 @@ namespace Fernweh.Core.Identity
         public IEnumerable<string> Roles { get; set; } = new List<string>();
         public bool IsAdmin => IsInRole(RoleNames.Administrator);
         public string Token { get; set; }
-        public AppPrincipal()
-        {
-        }
-
 
 
         public bool IsInRole(string role)
         {
-            if (this.Roles != null)
-                return this.Roles.Contains(role);
-            else
-                return false;
+            if (Roles != null)
+                return Roles.Contains(role);
+            return false;
         }
 
 
         public static AppPrincipal GetAnonymousPrincipal()
         {
-            return new AppPrincipal { IsAuthenticated = false, UserName = "Anonymous User" };
+            return new AppPrincipal {IsAuthenticated = false, UserName = "Anonymous User"};
         }
     }
 }

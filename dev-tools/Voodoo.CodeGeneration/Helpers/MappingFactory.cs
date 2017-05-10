@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 using Voodoo.Infrastructure.Notations;
@@ -12,11 +10,11 @@ namespace Voodoo.CodeGeneration.Helpers
 {
     public class MappingFactory
     {
-        private List<Mapping> mappings;
-        private TypeFacade type;
-        private ProjectFacade project;
-        private List<Type> includedTypes = new List<Type>();
         private List<string> includedTypeNames = new List<string>();
+        private List<Type> includedTypes = new List<Type>();
+        private List<Mapping> mappings;
+        private ProjectFacade project;
+        private TypeFacade type;
 
         public MappingFactory(TypeFacade type, ProjectFacade project)
         {
@@ -33,13 +31,9 @@ namespace Voodoo.CodeGeneration.Helpers
                 return;
 
             if (messageType == null)
-            {
                 mappings.Add(new Mapping(type, properties, name));
-            }
             else
-            {
                 mappings.Add(new Mapping(type, messageType, name));
-            }
             includedTypes.AddIfNotNull(messageType?.SystemType);
             includedTypeNames.AddIfNotNull(name);
         }
@@ -83,6 +77,12 @@ namespace Voodoo.CodeGeneration.Helpers
 
         public class Mapping
         {
+            public string ModelTypeName { get; set; }
+            public string MessageTypeName { get; set; }
+            public string Namespace { get; set; }
+            public PropertyFacade[] Properties { get; set; }
+            public PropertyFacade[] PropertiesWithoutId { get; set; }
+
             public Mapping(TypeFacade entity, TypeFacade message, string name = null)
             {
                 ModelTypeName = entity.Name;
@@ -102,12 +102,6 @@ namespace Voodoo.CodeGeneration.Helpers
                 Properties = messageProperties.Select(c => c.Property).ToArray();
                 PropertiesWithoutId = messageProperties.Select(c => c.Property).Where(c => c.Name != "Id").ToArray();
             }
-
-            public string ModelTypeName { get; set; }
-            public string MessageTypeName { get; set; }
-            public string Namespace { get; set; }
-            public PropertyFacade[] Properties { get; set; }
-            public PropertyFacade[] PropertiesWithoutId { get; set; }
         }
     }
 }
