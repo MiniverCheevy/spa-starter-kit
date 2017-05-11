@@ -61,7 +61,7 @@ namespace Fernweh.Core.Operations.Errors
                         command.Parameters.AddWithValue("@Source", error.Source.Truncate(200));
                         command.Parameters.AddWithValue("@Message", error.Message.Truncate(200));
                         command.Parameters.AddWithValue("@Detail", error.Details);
-                        command.Parameters.AddWithValue("@StatusCode", error.StatusCode);
+                        command.Parameters.AddWithValue("@StatusCode", error.StatusCode ?? 200);
                         command.Parameters.AddWithValue("@SQL", error.SQL.To<string>());
                         command.Parameters.AddWithValue("@FullJson", error.FullJson);
                         command.Parameters.AddWithValue("@ErrorHash", error.ErrorHash);

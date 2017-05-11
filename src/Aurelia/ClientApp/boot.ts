@@ -5,8 +5,7 @@ declare const IS_DEV_BUILD: boolean; // The value is supplied by Webpack during 
 //Configure Bluebird Promises.
 
 export function configure(aurelia: Aurelia) {
-    aurelia.use.standardConfiguration()
-        .feature('resources');
+    aurelia.use.standardConfiguration();
 
     if (IS_DEV_BUILD) {
         aurelia.use.developmentLogging();

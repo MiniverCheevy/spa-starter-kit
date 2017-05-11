@@ -3,11 +3,14 @@ import * as Api from "./api.generated";
 import { autoinject } from "aurelia-framework";
 import { CurrentUserService } from "./services/current-user-service";
 import * as Moment from 'moment';
+import { Aurelia, PLATFORM } from 'aurelia-framework';
+import { Router, RouterConfiguration } from 'aurelia-router';
+
 
 @autoinject()
 export class App {
     message = 'Hello World!!!';
-
+ router: Router;
     constructor(private currentUserService: CurrentUserService,
     private userListApi: Api.UserList) {
         var user =  currentUserService.get().then(this.handleAutheticationState);
@@ -23,4 +26,17 @@ export class App {
         
         var test = await this.userListApi.get({});
     }
+    configureRouter(config: RouterConfiguration, router: Router) {
+        config.title = 'Aurelia';
+        //config.map([{
+        //    route: [ '', 'home' ],
+        //    name: 'home',
+        //    settings: { icon: 'home' },
+        //    moduleId: PLATFORM.moduleName('../home/home'),
+        //    nav: true,
+        //    title: 'Home'
+       // }]);
+
+        this.router = router;
+}
 }

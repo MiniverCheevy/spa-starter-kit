@@ -15,11 +15,7 @@ module.exports = (env) => {
             extensions: ['.js', '.ts'],
             modules: ['ClientApp', 'node_modules']
         },
-        entry: {
-            'app': [
-                'webpack-hot-middleware/client?reload=true',
-                'aurelia-bootstrapper']
-        }, // Note: The aurelia-webpack-plugin will add your app's modules to this bundle automatically
+        entry: { 'app': 'aurelia-bootstrapper' },
         output: {
             path: path.resolve(bundleOutputDir),
             publicPath: '/dist/',
@@ -35,12 +31,12 @@ module.exports = (env) => {
             ]
         },
         plugins: [
-            new RuntimeAnalyzerPlugin({
-                mode: 'standalone',
-                port: 0,
-                open: false,
-                watchModeOnly: false
-            }),
+            //new RuntimeAnalyzerPlugin({
+            //    mode: 'standalone',
+            //    port: 0,
+            //    open: false,
+            //    watchModeOnly: false
+            //}),
             new webpack.DefinePlugin({ IS_DEV_BUILD: JSON.stringify(isDevBuild) }),
             new webpack.DllReferencePlugin({
                 context: __dirname,
