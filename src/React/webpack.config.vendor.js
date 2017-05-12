@@ -18,7 +18,9 @@ module.exports = (env) => {
         },
         entry: {
             //'jquery','bootstrap',
-            vendor: ['cerebral', 'axios','babel-polyfill', 'react-bootstrap','react-router-dom','react-router-bootstrap','theme/bootswatch.min.css', 'event-source-polyfill', 'isomorphic-fetch', 'react', 'react-dom', 'react-router', 'toastr','mdi'],
+            vendor: ['axios', 'babel-polyfill', 'react-bootstrap', 'react-router-dom', 'react-router-bootstrap',
+                'event-source-polyfill', 'isomorphic-fetch', 'react', 'react-dom', 'react-router', 'toastr',
+                'mdi/css/materialdesignicons.css'],
         },
         output: {
             path: path.join(__dirname, 'wwwroot', 'dist'),
