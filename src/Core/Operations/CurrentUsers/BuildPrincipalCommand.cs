@@ -17,7 +17,7 @@ namespace Fernweh.Core.Operations.CurrentUsers
 {
     public class BuildPrincipalCommand : CommandAsync<BuildPrincipalRequest, Response<AppPrincipal>>
     {
-        private Context.AppContext context;
+        private Context.MainContext context;
         private User user;
 
         public BuildPrincipalCommand(BuildPrincipalRequest request) : base(request)

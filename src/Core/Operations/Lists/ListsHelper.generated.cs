@@ -19,7 +19,7 @@ namespace Fernweh.Core.Operations.Lists
 {
     public class ListsHelper
     {
-        public async Task<List<IListItem>> GetList(Context.AppContext context, Lists list, bool includeInactive = false)
+        public async Task<List<IListItem>> GetList(Context.MainContext context, Lists list, bool includeInactive = false)
         {
             var response = new List<IListItem>();
             var items = new List<ListItem>();
@@ -52,7 +52,7 @@ namespace Fernweh.Core.Operations.Lists
             return response;
         }
         
-        public async Task<ListsResponse> GetLists(Context.AppContext context, ListsRequest request)
+        public async Task<ListsResponse> GetLists(Context.MainContext context, ListsRequest request)
         {
             Type enumType=null;
             var response = new ListsResponse();

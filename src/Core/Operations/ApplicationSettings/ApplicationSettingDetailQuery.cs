@@ -15,7 +15,7 @@ namespace Fernweh.Core.Operations.ApplicationSettings
     [Rest(Verb.Get, RestResources.ApplicationSetting)]
     public class ApplicationSettingDetailQuery : QueryAsync<IdRequest, Response<ApplicationSettingMessage>>
     {
-        private Context.AppContext context;
+        private Context.MainContext context;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
         public ApplicationSettingDetailQuery(IdRequest request) : base(request)

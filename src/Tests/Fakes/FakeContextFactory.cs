@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System;
+using System.Data.Common;
 using Effort;
 using Fernweh.Core.Context;
 using Fernweh.Core.Infrastructure;
@@ -15,9 +16,9 @@ namespace Fernweh.Tests.Fakes
         }
 
 
-        AppContext IContextFactory.GetContext()
+        MainContext IContextFactory.GetContext()
         {
-            return new AppContext(connection);
+            return new MainContext(connection);
         }
 
 

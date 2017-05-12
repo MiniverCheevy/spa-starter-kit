@@ -642,3 +642,49 @@ var response = new StartupFromConfig(request).Execute();
 Assert.AreEqual(true, response.IsOk);
 
 **********************************************************
+Thursday, May 11, 2017 11:08:37 PM
+System.Exception: Could not find command c:\dev\spa\src\aurelia/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Thursday, May 11, 2017 11:08:37 PM
+Details for 'Could not find command c:\dev\spa\src\aurelia/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\dev\spa\tools",
+     Arguments= new String[] {
+          "C:\dev\spa\src\Aurelia/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************
+Thursday, May 11, 2017 11:09:12 PM
+System.Exception: Could not find command c:\dev\spa\src\aurelia/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
+   at Voodoo.Operations.Executor`2.Execute()
+**********************************************************
+Thursday, May 11, 2017 11:09:12 PM
+Details for 'Could not find command c:\dev\spa\src\aurelia/../../tools/spawn' exception:
+Code to reproduce error:
+
+var request= new StartupRequest {
+     Path="C:\dev\spa\tools",
+     Arguments= new String[] {
+          "C:\dev\spa\src\Aurelia/../../tools/spawn",
+          "web",
+     },
+},
+;
+var response = new StartupFromConfig(request).Execute();
+Assert.AreEqual(true, response.IsOk);
+
+**********************************************************

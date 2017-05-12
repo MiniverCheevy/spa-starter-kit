@@ -13,7 +13,7 @@ namespace Fernweh.Core.Operations.ApplicationSettings
     [Rest(Verb.Delete, RestResources.ApplicationSetting)]
     public class ApplicationSettingDeleteCommand : CommandAsync<IdRequest, Response>
     {
-        protected Context.AppContext context;
+        protected Context.MainContext context;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
         public ApplicationSettingDeleteCommand(IdRequest request) : base(request)

@@ -4,9 +4,9 @@ namespace Fernweh.Core.Operations.Errors.Extras
 {
     public class ErrorRepository
     {
-        private AppContext context;
+        private MainContext context;
 
-        public ErrorRepository(AppContext context)
+        public ErrorRepository(MainContext context)
         {
             this.context = context;
         }

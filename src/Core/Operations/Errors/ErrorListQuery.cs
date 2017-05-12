@@ -11,7 +11,7 @@ namespace Fernweh.Core.Operations.Errors
     [Rest(Verb.Get, RestResources.ErrorList)]
     public class ErrorListQuery : QueryAsync<ErrorQueryRequest, ErrorQueryResponse>
     {
-        private AppContext context;
+        private MainContext context;
 
         public ErrorListQuery(ErrorQueryRequest request) : base(request)
         {

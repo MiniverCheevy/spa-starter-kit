@@ -4,9 +4,9 @@ namespace Fernweh.Core.Operations.Roles.Extras
 {
     public class RoleRepository
     {
-        private AppContext context;
+        private MainContext context;
 
-        public RoleRepository(AppContext context)
+        public RoleRepository(MainContext context)
         {
             this.context = context;
         }

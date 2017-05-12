@@ -13,7 +13,7 @@ namespace Fernweh.Core.Operations.Users
     [Rest(Verb.Get, RestResources.UserList, Roles = new[] {RoleNames.Administrator})]
     public class UserListQuery : QueryAsync<UserQueryRequest, UserQueryResponse>
     {
-        private AppContext context;
+        private MainContext context;
         private IQueryable<User> query;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 

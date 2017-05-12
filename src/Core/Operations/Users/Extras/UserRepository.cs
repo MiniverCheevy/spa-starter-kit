@@ -7,9 +7,9 @@ namespace Fernweh.Core.Operations.Users.Extras
 {
     public class UserRepository
     {
-        private AppContext context;
+        private MainContext context;
 
-        public UserRepository(AppContext context)
+        public UserRepository(MainContext context)
         {
             this.context = context;
         }

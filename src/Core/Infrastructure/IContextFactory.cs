@@ -4,7 +4,7 @@ namespace Fernweh.Core.Infrastructure
 {
     public interface IContextFactory
     {
-        AppContext GetContext();
+        MainContext GetContext();
 
         string GetConnectionString();
     }

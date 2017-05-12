@@ -14,7 +14,7 @@ namespace Fernweh.Core.Operations.ApplicationSettings
     [Rest(Verb.Put, RestResources.ApplicationSettingDetail)]
     public class ApplicationSettingSaveCommand : CommandAsync<ApplicationSettingMessage, NewItemResponse>
     {
-        protected AppContext context;
+        protected MainContext context;
         protected bool isNew;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 

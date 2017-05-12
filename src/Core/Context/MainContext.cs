@@ -17,7 +17,7 @@ using Voodoo;
 
 namespace Fernweh.Core.Context
 {
-    public class FernwehContext : DbContext
+    public class MainContext : DbContext
     {
         private const string EffortConnectionString = "instanceid=this";
         public bool IsEffort => Database.Connection.ConnectionString == EffortConnectionString;
@@ -27,7 +27,7 @@ namespace Fernweh.Core.Context
         public DbSet<ApplicationSetting> ApplicationSettings { get; set; }
 
 
-        static FernwehContext()
+        static MainContext()
         {
             // http://robsneuron.blogspot.nl/2013/11/entity-framework-upgrade-to-6.html
             var ensureDllIsCopied = SqlProviderServices.Instance;
@@ -41,7 +41,7 @@ namespace Fernweh.Core.Context
                 new UniqueConstraintExceptionTranslation());
         }
 
-        public FernwehContext() : base("DefaultConnection")
+        public MainContext() : base("DefaultConnection")
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
@@ -50,14 +50,14 @@ namespace Fernweh.Core.Context
 #endif
         }
 
-        public FernwehContext(string connectionString)
+        public MainContext(string connectionString)
             : base(connectionString)
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }
 
-        public FernwehContext(DbConnection connection)
+        public MainContext(DbConnection connection)
             : base(connection, true)
         {
             Configuration.ProxyCreationEnabled = false;

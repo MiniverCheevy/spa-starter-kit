@@ -22,7 +22,7 @@ namespace Fernweh.Core
             return result;
         }
 
-        public static AppContext GetContext()
+        public static MainContext GetContext()
         {
             return ContextFactory.GetContext();
         }

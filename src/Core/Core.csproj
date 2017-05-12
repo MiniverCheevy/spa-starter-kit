@@ -60,7 +60,7 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="Constants.generated.cs" />
-    <Compile Include="Context\AppContext.cs" />
+    <Compile Include="Context\MainContext.cs" />
     <Compile Include="Context\ExceptionalContext\Error.cs" />
     <Compile Include="Context\ExceptionalContext\IErrorContext.cs" />
     <Compile Include="Context\ExceptionTranslators\DbEntityValidationExceptionTranslator.cs" />

@@ -6,8 +6,11 @@ declare const IS_DEV_BUILD: boolean; // The value is supplied by Webpack during 
 
 export function configure(aurelia: Aurelia) {
     aurelia.use.standardConfiguration();
+        //.plugin('aurelia-html-import-template-loader')
+        //.feature(PLATFORM.moduleName('resources/index'));
 
     if (IS_DEV_BUILD) {
+        console.log('dev');
         aurelia.use.developmentLogging();
     }
 

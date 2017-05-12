@@ -8,7 +8,7 @@ namespace Fernweh.Core.Operations.Users.Extras
 {
     public static partial class UserExtensions
     {
-        public static UserRepository UserRepository(this AppContext context)
+        public static UserRepository UserRepository(this MainContext context)
         {
             return new UserRepository(context);
         }

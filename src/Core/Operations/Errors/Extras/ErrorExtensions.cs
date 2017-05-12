@@ -5,7 +5,7 @@ namespace Fernweh.Core.Operations.Errors.Extras
 {
     public static partial class ErrorExtensions
     {
-        public static ErrorRepository ErrorRepository(this AppContext context)
+        public static ErrorRepository ErrorRepository(this MainContext context)
         {
             return new ErrorRepository(context);
         }
