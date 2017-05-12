@@ -14,7 +14,7 @@ namespace Fernweh.Core.Operations.Users
     [Rest(Verb.Delete, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
     public class UserDeleteCommand : CommandAsync<IdRequest, Response>
     {
-        protected FernwehContext context;
+        protected Context.AppContext context;
         private AppPrincipal currentUser;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 

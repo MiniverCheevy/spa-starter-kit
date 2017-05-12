@@ -10,12 +10,16 @@ module.exports = (env) => {
     return [
         {
         stats: { modules: false },
-        entry: { 'app': 'aurelia-bootstrapper' },
         resolve: {
             extensions: ['.js', '.ts'],
             modules: ['ClientApp', 'node_modules']
         },
-        entry: { 'app': 'aurelia-bootstrapper' },
+        entry:  {
+        'app': [
+            'webpack-hot-middleware/client?reload=true',
+            'aurelia-bootstrapper'
+       ]
+        },
         output: {
             path: path.resolve(bundleOutputDir),
             publicPath: '/dist/',
@@ -25,7 +29,7 @@ module.exports = (env) => {
             loaders: [
                 { test: /\.ts$/, include: /ClientApp/, use: 'ts-loader?silent=true' },
                 { test: /\.html$/, use: 'html-loader' },
-                { test: /\.css$/, loader: 'raw-loader' },
+                { test: /\.css$/i, use: isDevBuild ? 'css-loader' : 'css-loader?minimize' },
                 { test: /\.(png|woff|woff2|eot|ttf|svg|ico)$/, loader: 'url-loader?limit=100000' },
                 { test: /\.json$/, loader: 'json-loader' }
             ]
@@ -63,6 +67,7 @@ module.exports = (env) => {
                 { from: 'ClientApp/index.html', to: '../' },
                 { from: 'ClientApp/favicon.ico', to: '../' },
                 { from: 'ClientApp/assets', to: '../assets/' },
+                { from: 'ClientApp/theme/theme.min.css', to: '../theme/' },
             ])
 
         ].concat(isDevBuild ? [

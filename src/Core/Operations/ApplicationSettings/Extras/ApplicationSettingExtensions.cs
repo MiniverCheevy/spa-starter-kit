@@ -5,7 +5,7 @@ namespace Fernweh.Core.Operations.ApplicationSettings.Extras
 {
     public static partial class ApplicationSettingExtensions
     {
-        public static ApplicationSettingRepository ApplicationSettingRepository(this FernwehContext context)
+        public static ApplicationSettingRepository ApplicationSettingRepository(this AppContext context)
         {
             return new ApplicationSettingRepository(context);
         }

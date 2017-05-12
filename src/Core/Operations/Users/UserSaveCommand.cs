@@ -19,7 +19,7 @@ namespace Fernweh.Core.Operations.Users
     public class UserSaveCommand : CommandAsync<UserDetail, NewItemResponse>
     {
         private List<Role> allRoles;
-        protected FernwehContext context;
+        protected AppContext context;
         protected bool isNew;
         private User model;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();

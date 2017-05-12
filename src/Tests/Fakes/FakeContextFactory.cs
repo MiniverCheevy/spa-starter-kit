@@ -15,9 +15,9 @@ namespace Fernweh.Tests.Fakes
         }
 
 
-        FernwehContext IContextFactory.GetContext()
+        AppContext IContextFactory.GetContext()
         {
-            return new FernwehContext(connection);
+            return new AppContext(connection);
         }
 
 

@@ -4,9 +4,9 @@ namespace Fernweh.Core.Operations.ApplicationSettings.Extras
 {
     public class ApplicationSettingRepository
     {
-        private FernwehContext context;
+        private AppContext context;
 
-        public ApplicationSettingRepository(FernwehContext context)
+        public ApplicationSettingRepository(AppContext context)
         {
             this.context = context;
         }

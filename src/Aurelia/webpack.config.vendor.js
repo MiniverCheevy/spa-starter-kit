@@ -33,6 +33,7 @@ module.exports = ({ prod } = {}) => {
             'bluebird',
             'moment',
             'bootstrap',
+            'mdi/css/materialdesignicons.min.css',
             'jquery'
         ],
     },

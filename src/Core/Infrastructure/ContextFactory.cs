@@ -4,9 +4,9 @@ namespace Fernweh.Core.Infrastructure
 {
     public class ContextFactory : IContextFactory
     {
-        public FernwehContext GetContext()
+        public AppContext GetContext()
         {
-            return new FernwehContext(IOC.Settings.DefaultConnectionString);
+            return new AppContext(IOC.Settings.DefaultConnectionString);
         }
 
         public string GetConnectionString()

@@ -15,7 +15,9 @@ namespace Fernweh.Core.Operations.CurrentUsers
 
         protected override Task<Response<AppPrincipal>> ProcessRequestAsync()
         {
-            response.Data = IOC.RequestContext.AppPrincipal;
+            var user = IOC.RequestContext.AppPrincipal ?? 
+                new AppPrincipal { UserName = "anonymous" };
+            response.Data = user;
             return Task.FromResult(response);
         }
     }

@@ -1,28 +1,16 @@
-﻿<template>
-  <div class="ui fixed inverted menu">
-    <div class="ui container">
-      <a href="#" class="header item">
-        <!--<img class="logo" src="assets/images/logo.png">-->
-        Project Name
-      </a>
-      <a href="#" class="item">Home</a>
-      <div class="ui simple dropdown item">
-        Dropdown <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item" href="#">Link Item</a>
-          <a class="item" href="#">Link Item</a>
-          <div class="divider"></div>
-          <div class="header">Header Item</div>
-          <div class="item">
-            <i class="dropdown icon"></i>
-            Sub Menu
-            <div class="menu">
-              <a class="item" href="#">Link Item</a>
-              <a class="item" href="#">Link Item</a>
-            </div>
-          </div>
-          <a class="item" href="#">Link Item</a>
-        </div>
+﻿<template bindable="router">  
+  <div class="main-nav">
+    <div class="navbar navbar-inverse">
+      <div class="clearfix"></div>
+      <div class="navbar-collapse collapse">
+        <a class="navbar-brand" href="#/home">Aurelia</a>
+        <ul class="nav navbar-nav">
+          <li repeat.for="row of router.navigation" class="${ row.isActive ? 'link-active' : '' }">
+            <a href.bind="row.href">
+              <span class="mdi mdi-${ row.settings.icon }"></span> ${ row.title }
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

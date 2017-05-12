@@ -9,11 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\assets\" />
-    <Folder Include="wwwroot\assets\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.3" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
@@ -40,6 +35,10 @@
 </ItemGroup>
 <ItemGroup>
   <None Include="wwwroot\index.html" />
+</ItemGroup>
+<ItemGroup>
+  <Folder Include="ClientApp\assets\" />
+  <Folder Include="ClientApp\components\top\loading-bar\" />
 </ItemGroup>
   <Target Name="Custom" AfterTargets="Build">  
       <Exec Command="node node_modules/webpack/bin/webpack.js" />

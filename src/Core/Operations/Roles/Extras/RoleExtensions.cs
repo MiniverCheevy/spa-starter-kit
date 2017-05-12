@@ -5,7 +5,7 @@ namespace Fernweh.Core.Operations.Roles.Extras
 {
     public static partial class RoleExtensions
     {
-        public static RoleRepository RoleRepository(this FernwehContext context)
+        public static RoleRepository RoleRepository(this AppContext context)
         {
             return new RoleRepository(context);
         }

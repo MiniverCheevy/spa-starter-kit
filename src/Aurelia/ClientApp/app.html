@@ -1,3 +1,17 @@
-<template>  
-  <h1>${message}</h1>
+<template>
+  <require from="./components/top/page-header/page-header"></require>
+  <require from="./components/top/menu/menu.html"></require>
+  <require from="./theme/theme.min.css"> </require>
+  <require from="./theme/site.css"> </require>
+  <page-header>
+    <menu router.bind="router"></menu>
+  </page-header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 body-content">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
 </template>
+

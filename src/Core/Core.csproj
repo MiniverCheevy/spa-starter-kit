@@ -60,17 +60,16 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="Constants.generated.cs" />
+    <Compile Include="Context\AppContext.cs" />
     <Compile Include="Context\ExceptionalContext\Error.cs" />
     <Compile Include="Context\ExceptionalContext\IErrorContext.cs" />
     <Compile Include="Context\ExceptionTranslators\DbEntityValidationExceptionTranslator.cs" />
     <Compile Include="Context\ExceptionTranslators\ForiegnKeyExceptionTranslation.cs" />
     <Compile Include="Context\ExceptionTranslators\SqlExceptionTranslator.cs" />
-    <Compile Include="Context\FernwehContext.cs" />
     <Compile Include="Context\PerformanceExtensions.cs" />
     <Compile Include="Context\ExceptionTranslators\UniqueConstraintExceptionTranslation.cs" />
     <Compile Include="Identity\AppPrincipal.cs" />
     <Compile Include="Identity\PasswordManager.cs" />
-    <Compile Include="Identity\UserStore.cs" />
     <Compile Include="Infrastructure\ClientInfo.cs" />
     <Compile Include="Infrastructure\ContextFactory.cs" />
     <Compile Include="Infrastructure\IContextFactory.cs" />

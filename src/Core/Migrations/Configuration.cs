@@ -6,19 +6,19 @@ using Voodoo;
 
 namespace Fernweh.Core.Migrations
 {
-    public sealed class Configuration : DbMigrationsConfiguration<FernwehContext>
+    public sealed class Configuration : DbMigrationsConfiguration<AppContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(FernwehContext context)
+        protected override void Seed(AppContext context)
         {
             addRolesAndUsers(context);
         }
 
-        private static void addRolesAndUsers(FernwehContext context)
+        private static void addRolesAndUsers(AppContext context)
         {
             var roles = typeof(Roles).ToINameIdPairList();
             Role admin = null;

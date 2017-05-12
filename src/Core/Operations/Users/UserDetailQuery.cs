@@ -15,7 +15,7 @@ namespace Fernweh.Core.Operations.Users
     [Rest(Verb.Get, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
     public class UserDetailQuery : QueryAsync<IdRequest, Response<UserDetail>>
     {
-        private FernwehContext context;
+        private Context.AppContext context;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
         public UserDetailQuery(IdRequest request) : base(request)

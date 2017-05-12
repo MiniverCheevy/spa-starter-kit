@@ -12,7 +12,7 @@ namespace Fernweh.Core.Operations.Errors
     [Rest(Verb.Get, RestResources.ErrorDetail)]
     public class ErrorDetailQuery : QueryAsync<IdRequest, Response<ErrorDetail>>
     {
-        private FernwehContext context;
+        private AppContext context;
 
         public ErrorDetailQuery(IdRequest request) : base(request)
         {

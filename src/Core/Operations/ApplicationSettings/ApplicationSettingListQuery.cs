@@ -13,7 +13,7 @@ namespace Fernweh.Core.Operations.ApplicationSettings
     public class ApplicationSettingListQuery : QueryAsync<ApplicationSettingQueryRequest,
         ApplicationSettingQueryResponse>
     {
-        private FernwehContext context;
+        private AppContext context;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
         public ApplicationSettingListQuery(ApplicationSettingQueryRequest request) : base(request)
