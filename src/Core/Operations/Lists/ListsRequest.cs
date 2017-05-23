@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Fernweh.Core.Operations.Lists
+namespace Core.Operations.Lists
 {
     public class ListsRequest
     {

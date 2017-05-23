@@ -1,4 +1,4 @@
-﻿namespace Fernweh.Core.Infrastructure
+﻿namespace Core.Infrastructure
 {
     public interface IRequestContextProvider
     {

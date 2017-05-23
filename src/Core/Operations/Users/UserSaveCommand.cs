@@ -2,18 +2,18 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using Fernweh.Core.Context;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Models.Identity;
-using Fernweh.Core.Operations.Lists;
-using Fernweh.Core.Operations.Users.Extras;
+using Core.Context;
+using Core.Identity;
+using Core.Models.Identity;
+using Core.Operations.Lists;
+using Core.Operations.Users.Extras;
 using Voodoo;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 using Voodoo.Validation.Infrastructure;
 
-namespace Fernweh.Core.Operations.Users
+namespace Core.Operations.Users
 {
     [Rest(Verb.Put, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
     public class UserSaveCommand : CommandAsync<UserDetail, NewItemResponse>

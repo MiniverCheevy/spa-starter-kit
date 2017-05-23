@@ -1,9 +1,9 @@
-using Fernweh.Core.Models;
-using Fernweh.Core.Operations.ApplicationSettings.Extras;
+using Core.Models;
+using Core.Operations.ApplicationSettings.Extras;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.TestData;
 
-namespace Fernweh.Tests.Operations.ApplicationSettings
+namespace Tests.Operations.ApplicationSettings
 {
     [TestClass]
     public class ApplicationSettingMappingTests
@@ -28,7 +28,7 @@ namespace Fernweh.Tests.Operations.ApplicationSettings
             var target = new ApplicationSetting();
             target.UpdateFrom(message);
 
-            testHelper.Compare(source, message, new string[] { });
+            testHelper.Compare(source, message, new string[] {});
             testHelper.Compare(target, message, new[] {"Id"});
         }
     }

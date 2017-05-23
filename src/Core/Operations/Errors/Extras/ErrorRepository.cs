@@ -1,6 +1,6 @@
-using Fernweh.Core.Context;
+using Core.Context;
 
-namespace Fernweh.Core.Operations.Errors.Extras
+namespace Core.Operations.Errors.Extras
 {
     public class ErrorRepository
     {

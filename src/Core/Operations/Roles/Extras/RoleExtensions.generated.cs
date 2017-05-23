@@ -4,9 +4,10 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-using Fernweh.Core;
-using Fernweh.Core.Models.Identity;
-namespace Fernweh.Core.Operations.Roles.Extras
+
+using Core.Models.Identity;
+
+namespace Core.Operations.Roles.Extras
 {
     public static partial class RoleExtensions
     {

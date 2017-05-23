@@ -9,13 +9,13 @@ using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
-using Fernweh.Core.Context.ExceptionalContext;
-using Fernweh.Core.Context.ExceptionTranslators;
-using Fernweh.Core.Models;
-using Fernweh.Core.Models.Identity;
+using Core.Context.ExceptionalContext;
+using Core.Context.ExceptionTranslators;
+using Core.Models;
+using Core.Models.Identity;
 using Voodoo;
 
-namespace Fernweh.Core.Context
+namespace Core.Context
 {
     public class MainContext : DbContext
     {

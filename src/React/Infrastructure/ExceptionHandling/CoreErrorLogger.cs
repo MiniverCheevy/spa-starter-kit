@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Fernweh.Core.Operations.Errors;
-using Fernweh.Core.Operations.Errors.Extras;
+using Core.Operations.Errors;
+using Core.Operations.Errors.Extras;
 using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Http;
 using Voodoo;

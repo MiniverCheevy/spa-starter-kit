@@ -1,3 +1,3 @@
-﻿namespace Fernweh.Core.Logging
+﻿namespace Core.Logging
 {
 }

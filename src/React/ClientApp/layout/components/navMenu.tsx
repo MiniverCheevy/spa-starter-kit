@@ -3,12 +3,26 @@ import * as  ReactDOM from 'react-dom'
 import { Link } from 'react-router';
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { CurrentUserService } from "./../../services/current-user-service";
+import { MessengerService } from "./../../services/messenger-service";
+import { observer } from 'mobx-react';
 
+@observer
 export class NavMenu extends React.Component<any, void> {
-
+public async componentDidMount() {
+    var user = await CurrentUserService.get();
+}
     public render() {
-
+        var progress = undefined;
+        if (MessengerService.numberOfPendingHttpRequest != 0)
+            progress = <div className="progress">abc
+                <div className="indeterminate"></div>
+            </div>;
+       
         return (<div>
+            <div className="progress-container">
+                {progress}
+            </div>
             <Navbar bsStyle="inverse">
                 <Navbar.Header>
                     <Navbar.Brand>

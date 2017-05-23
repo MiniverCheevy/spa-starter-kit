@@ -4,11 +4,11 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-using Fernweh.Core;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Models.Identity;
-using Fernweh.Core.Security;
-namespace Fernweh.Core.Operations.Users.Extras
+
+using Core.Identity;
+using Core.Models.Identity;
+
+namespace Core.Operations.Users.Extras
 {
     public static partial class UserExtensions
     {

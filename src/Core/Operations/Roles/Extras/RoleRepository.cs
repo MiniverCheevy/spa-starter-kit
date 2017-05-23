@@ -1,6 +1,6 @@
-using Fernweh.Core.Context;
+using Core.Context;
 
-namespace Fernweh.Core.Operations.Roles.Extras
+namespace Core.Operations.Roles.Extras
 {
     public class RoleRepository
     {

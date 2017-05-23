@@ -1,9 +1,9 @@
-using Fernweh.Core.Models.Identity;
-using Fernweh.Core.Operations.Users.Extras;
+using Core.Models.Identity;
+using Core.Operations.Users.Extras;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.TestData;
 
-namespace Fernweh.Tests.Operations.Users
+namespace Tests.Operations.Users
 {
     [TestClass]
     public class UserMappingTests
@@ -28,7 +28,7 @@ namespace Fernweh.Tests.Operations.Users
             var target = new User();
             target.UpdateFrom(message);
 
-            testHelper.Compare(source, message, new string[] { });
+            testHelper.Compare(source, message, new string[] {});
             testHelper.Compare(target, message, new[] {"Id"});
         }
 
@@ -42,7 +42,7 @@ namespace Fernweh.Tests.Operations.Users
             var target = new User();
             target.UpdateFrom(message);
 
-            testHelper.Compare(source, message, new string[] { });
+            testHelper.Compare(source, message, new string[] {});
             testHelper.Compare(target, message, new[] {"Id"});
         }
     }

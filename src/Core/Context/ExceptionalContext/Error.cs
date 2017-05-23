@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Fernweh.Core.Context.ExceptionalContext
+namespace Core.Context.ExceptionalContext
 {
     [Table("Exceptions")]
     public class Error

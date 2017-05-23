@@ -1,13 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Fernweh.Core.Context;
-using Fernweh.Core.Operations.ApplicationSettings.Extras;
+using Core.Context;
+using Core.Operations.ApplicationSettings.Extras;
 using Voodoo;
 using Voodoo.Infrastructure;
 using Voodoo.Operations.Async;
 using Voodoo.Validation.Infrastructure;
 
-namespace Fernweh.Core.Operations.ApplicationSettings
+namespace Core.Operations.ApplicationSettings
 {
     [Rest(Verb.Get, RestResources.ApplicationSettingList)]
     public class ApplicationSettingListQuery : QueryAsync<ApplicationSettingQueryRequest,

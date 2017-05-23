@@ -137,7 +137,9 @@ using System.Data.Entity;
                     generationEnvironmentField = new StringBuilder();
                 return generationEnvironmentField;
             }
-            set => generationEnvironmentField = value;
+            set  =>
+            generationEnvironmentField  =
+            value;
         }
 
         /// <summary>
@@ -317,7 +319,8 @@ using System.Data.Entity;
             /// </summary>
             public IFormatProvider FormatProvider
             {
-                get => formatProviderField;
+                get  =>
+                formatProviderField;
                 set
                 {
                     if (value != null)

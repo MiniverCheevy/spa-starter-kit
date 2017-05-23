@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Fernweh.Core;
-using Fernweh.Core.Infrastructure;
+using Core;
+using Core.Infrastructure;
 using Fernweh.Infrastructure.Logging;
 using Microsoft.AspNetCore.Http;
 using Voodoo;

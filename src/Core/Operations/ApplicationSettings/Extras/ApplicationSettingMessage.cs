@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Fernweh.Core.Operations.ApplicationSettings.Extras
+namespace Core.Operations.ApplicationSettings.Extras
 {
     public class ApplicationSettingMessage
     {

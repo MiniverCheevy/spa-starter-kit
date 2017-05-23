@@ -3,9 +3,6 @@ import { NavMenu } from './Components/NavMenu';
 import { Routes } from './../routes';
 import { Router, Route, HistoryBase } from 'react-router';
 import { Home } from '../scenes/Home/Home';
-import { FetchData } from '../components/FetchData';
-import { Counter } from '../components/Counter';
-import { UserListContainer } from '../scenes/users/userListContainer';
 
 export interface LayoutProps {
    

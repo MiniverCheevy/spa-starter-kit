@@ -1,10 +1,10 @@
 using System.Linq;
-using Fernweh.Core.Context;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Models.Identity;
-using Fernweh.Core.Operations.Lists;
+using Core.Context;
+using Core.Identity;
+using Core.Models.Identity;
+using Core.Operations.Lists;
 
-namespace Fernweh.Core.Operations.Users.Extras
+namespace Core.Operations.Users.Extras
 {
     public static partial class UserExtensions
     {

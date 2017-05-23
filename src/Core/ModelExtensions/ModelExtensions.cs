@@ -1,4 +1,4 @@
-﻿namespace Fernweh.Core.ModelExtensions
+﻿namespace Core.ModelExtensions
 {
     public static class ModelExtensions
     {

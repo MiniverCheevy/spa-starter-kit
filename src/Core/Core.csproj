@@ -7,8 +7,8 @@
     <ProjectGuid>{F298643E-3DAE-4A0D-914B-CE85DF3B0F99}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fernweh.Core</RootNamespace>
-    <AssemblyName>Fernweh.Core</AssemblyName>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

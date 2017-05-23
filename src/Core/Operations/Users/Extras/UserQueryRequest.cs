@@ -1,6 +1,6 @@
 using Voodoo.Messages;
 
-namespace Fernweh.Core.Operations.Users.Extras
+namespace Core.Operations.Users.Extras
 {
     public class UserQueryRequest : PagedRequest
     {

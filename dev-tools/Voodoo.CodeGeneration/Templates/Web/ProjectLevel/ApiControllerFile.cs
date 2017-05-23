@@ -100,7 +100,7 @@ using Voodoo;");
                 ModelState = ModelState,
                 Request = request,
                 SecurityContext = new SecurityContext {{ AllowAnonymouse = {
-                            verb.AllowAnonymous.ToString().ToLower()
+                        verb.AllowAnonymous.ToString().ToLower()
                         }, Roles=new string[] {{ {verb.RoleArrayString} }} }}
             }};");
 

@@ -1,4 +1,4 @@
-﻿namespace Fernweh.Core.Operations.CurrentUsers.Extras
+﻿namespace Core.Operations.CurrentUsers.Extras
 {
     public class BuildPrincipalRequest
     {

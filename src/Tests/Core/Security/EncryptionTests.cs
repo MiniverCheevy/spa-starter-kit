@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Security;
+using Core.Identity;
+using Core.Security;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.TestData;
 
-namespace Fernweh.Tests.Core.Security
+namespace Tests.Core.Security
 {
     [TestClass]
     public class EncryptionTests

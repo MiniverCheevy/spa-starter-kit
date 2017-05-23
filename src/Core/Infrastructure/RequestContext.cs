@@ -1,7 +1,7 @@
 ﻿using System;
-using Fernweh.Core.Identity;
+using Core.Identity;
 
-namespace Fernweh.Core.Infrastructure
+namespace Core.Infrastructure
 {
     public class RequestContext
     {

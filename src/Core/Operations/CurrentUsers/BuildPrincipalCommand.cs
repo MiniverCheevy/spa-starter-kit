@@ -3,17 +3,16 @@ using System.Data.Entity;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
-using Fernweh.Core.Context;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Models.Identity;
-using Fernweh.Core.Operations.CurrentUsers.Extras;
-using Fernweh.Core.Operations.Users.Extras;
-using Fernweh.Core.Security;
+using Core.Identity;
+using Core.Models.Identity;
+using Core.Operations.CurrentUsers.Extras;
+using Core.Operations.Users.Extras;
+using Core.Security;
 using Voodoo;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 
-namespace Fernweh.Core.Operations.CurrentUsers
+namespace Core.Operations.CurrentUsers
 {
     public class BuildPrincipalCommand : CommandAsync<BuildPrincipalRequest, Response<AppPrincipal>>
     {
@@ -28,6 +27,10 @@ namespace Fernweh.Core.Operations.CurrentUsers
         {
             using (context = IOC.GetContext())
             {
+#if DEBUG
+                if (request.UserName == "shawn")
+                    request.UserName = "shawn.doucet";
+#endif
                 user = await context.UserRepository().GetUserAndRolesQuery()
                     .Where(c => c.UserName == request.UserName)
                     .FirstOrDefaultAsync();

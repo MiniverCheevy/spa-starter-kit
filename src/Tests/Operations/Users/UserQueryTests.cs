@@ -1,13 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Fernweh.Core;
-using Fernweh.Core.Operations.Users;
-using Fernweh.Core.Operations.Users.Extras;
+using Core;
+using Core.Operations.Users;
+using Core.Operations.Users.Extras;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.Messages;
 
-namespace Fernweh.Tests.Operations.Users
+namespace Tests.Operations.Users
 {
     [TestClass]
     public class UserQueryTests

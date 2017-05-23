@@ -155,7 +155,9 @@ public class ");
                     generationEnvironmentField = new StringBuilder();
                 return generationEnvironmentField;
             }
-            set => generationEnvironmentField = value;
+            set  =>
+            generationEnvironmentField  =
+            value;
         }
 
         /// <summary>
@@ -335,7 +337,8 @@ public class ");
             /// </summary>
             public IFormatProvider FormatProvider
             {
-                get => formatProviderField;
+                get  =>
+                formatProviderField;
                 set
                 {
                     if (value != null)

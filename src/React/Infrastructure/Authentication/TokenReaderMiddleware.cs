@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Security;
+using Core.Identity;
+using Core.Security;
 using Microsoft.AspNetCore.Http;
 
 namespace Fernweh.Infrastructure.Authentication

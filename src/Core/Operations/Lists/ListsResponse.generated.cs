@@ -4,10 +4,11 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-using Fernweh.Core;
-using Voodoo.Messages;
+
 using System.Collections.Generic;
-namespace Fernweh.Core.Operations.Lists
+using Voodoo.Messages;
+
+namespace Core.Operations.Lists
 {
     public class ListsResponse :Response
     {

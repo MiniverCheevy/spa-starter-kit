@@ -1,6 +1,6 @@
 using System.Data.Entity.Migrations;
 
-namespace Fernweh.Core.Migrations
+namespace Core.Migrations
 {
     public partial class Initial : DbMigration
     {

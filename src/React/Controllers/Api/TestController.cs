@@ -1,4 +1,4 @@
-﻿using Fernweh.Core;
+﻿using Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fernweh.Controllers.Api

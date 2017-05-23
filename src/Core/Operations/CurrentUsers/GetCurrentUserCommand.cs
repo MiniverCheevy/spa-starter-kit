@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Fernweh.Core.Identity;
+using Core.Identity;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 
-namespace Fernweh.Core.Operations.CurrentUsers
+namespace Core.Operations.CurrentUsers
 {
     [Rest(Verb.Get, RestResources.CurrentUser, AllowAnonymous = true)]
     public class GetCurrentUserCommand : QueryAsync<EmptyRequest, Response<AppPrincipal>>
@@ -15,8 +15,8 @@ namespace Fernweh.Core.Operations.CurrentUsers
 
         protected override Task<Response<AppPrincipal>> ProcessRequestAsync()
         {
-            var user = IOC.RequestContext.AppPrincipal ?? 
-                new AppPrincipal { UserName = "anonymous" };
+            var user = IOC.RequestContext.AppPrincipal ??
+                       new AppPrincipal {UserName = "anonymous"};
             response.Data = user;
             return Task.FromResult(response);
         }

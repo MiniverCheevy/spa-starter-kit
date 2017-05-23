@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Security;
 using System.Threading.Tasks;
-using Fernweh.Core.Context.ExceptionalContext;
-using Fernweh.Core.Operations.Errors.Extras;
+using Core.Context.ExceptionalContext;
+using Core.Operations.Errors.Extras;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 
-namespace Fernweh.Core.Operations.Errors
+namespace Core.Operations.Errors
 {
     [Rest(Verb.Post, RestResources.MobileError, true)]
     public class MobileErrorAddCommand : CommandAsync<MobileErrorRequest, Response>

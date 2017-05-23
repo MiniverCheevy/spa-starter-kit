@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace Fernweh.Tests.Fakes
+namespace Tests.Fakes
 {
     public class TestFileSystemProvider
     {

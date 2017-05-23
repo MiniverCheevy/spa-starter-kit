@@ -102,7 +102,9 @@ namespace Voodoo.CodeGeneration.Templates.Scratch
                     generationEnvironmentField = new StringBuilder();
                 return generationEnvironmentField;
             }
-            set => generationEnvironmentField = value;
+            set  =>
+            generationEnvironmentField  =
+            value;
         }
 
         /// <summary>
@@ -282,7 +284,8 @@ namespace Voodoo.CodeGeneration.Templates.Scratch
             /// </summary>
             public IFormatProvider FormatProvider
             {
-                get => formatProviderField;
+                get  =>
+                formatProviderField;
                 set
                 {
                     if (value != null)

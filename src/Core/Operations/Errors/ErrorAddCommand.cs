@@ -2,13 +2,13 @@
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Transactions;
-using Fernweh.Core.Operations.Errors.Extras;
+using Core.Operations.Errors.Extras;
 using Voodoo;
 using Voodoo.Logging;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 
-namespace Fernweh.Core.Operations.Errors
+namespace Core.Operations.Errors
 {
     public static class ErrorExtentions
     {

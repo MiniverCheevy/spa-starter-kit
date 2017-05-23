@@ -1,4 +1,4 @@
-﻿namespace Fernweh.Core.Models
+﻿namespace Core.Models
 {
     public class ApplicationSetting
     {

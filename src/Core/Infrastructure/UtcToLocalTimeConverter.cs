@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Fernweh.Core.Infrastructure
+namespace Core.Infrastructure
 {
     public class UtcToLocalTimeConverter : JsonConverter
     {

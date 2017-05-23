@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using Fernweh.Core;
+using Core;
 using Fernweh.Infrastructure;
 using Fernweh.Infrastructure.Authentication;
 using Fernweh.Infrastructure.ExceptionHandling;
@@ -31,10 +31,10 @@ namespace Fernweh
           .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Console.WriteLine($"Environment: {env.EnvironmentName}");
-      this.Configuration = builder.Build();
+            this.Configuration = builder.Build();
             IOC.Settings = SettingsFactory.GetSettings(builder.Build());
         }
-    public IConfigurationRoot Configuration { get; set; }
+
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -64,7 +64,7 @@ namespace Fernweh
             }
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            updateDatabaseToLatestVersion(env);
+            //updateDatabaseToLatestVersion(env);
 
             app.UseMvcWithDefaultRoute();
         }

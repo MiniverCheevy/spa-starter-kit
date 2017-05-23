@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Fernweh.Core.Security
+namespace Core.Security
 {
     public static class Encryption
     {

@@ -1,14 +1,14 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Fernweh.Core.Context;
-using Fernweh.Core.Models.Identity;
-using Fernweh.Core.Operations.Users.Extras;
+using Core.Context;
+using Core.Models.Identity;
+using Core.Operations.Users.Extras;
 using Voodoo;
 using Voodoo.Infrastructure;
 using Voodoo.Operations.Async;
 using Voodoo.Validation.Infrastructure;
 
-namespace Fernweh.Core.Operations.Users
+namespace Core.Operations.Users
 {
     [Rest(Verb.Get, RestResources.UserList, Roles = new[] {RoleNames.Administrator})]
     public class UserListQuery : QueryAsync<UserQueryRequest, UserQueryResponse>

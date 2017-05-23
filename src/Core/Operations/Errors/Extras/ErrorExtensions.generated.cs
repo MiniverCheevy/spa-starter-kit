@@ -4,9 +4,10 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-using Fernweh.Core;
-using Fernweh.Core.Context.ExceptionalContext;
-namespace Fernweh.Core.Operations.Errors.Extras
+
+using Core.Context.ExceptionalContext;
+
+namespace Core.Operations.Errors.Extras
 {
     public static partial class ErrorExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using Voodoo.Infrastructure.Notations;
 
-namespace Fernweh.Core.Infrastructure
+namespace Core.Infrastructure
 {
     [Client]
     public class ClientInfo

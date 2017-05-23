@@ -96,7 +96,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
         public override string GenerateDeclaration(Type modelType, params string[] exclusions)
         {
-            exclusions = exclusions ?? new string[] { };
+            exclusions = exclusions ?? new string[] {};
 
             var result = new StringBuilder();
 

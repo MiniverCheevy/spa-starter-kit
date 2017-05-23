@@ -1,5 +1,5 @@
-﻿using Fernweh.Core.Identity;
-using Fernweh.Core.Infrastructure;
+﻿using Core.Identity;
+using Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Voodoo;
 

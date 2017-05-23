@@ -1,4 +1,4 @@
-﻿using Fernweh.Core.Logging;
+﻿using Core.Logging;
 using Microsoft.ApplicationInsights;
 using Voodoo.Logging;
 

@@ -21,6 +21,7 @@ namespace Voodoo.CodeGeneration.Batches
         protected ProjectFacade web => Vs.Helper.Solution.WebProject;
         protected ProjectFacade pcl => Vs.Helper.Solution.PCLProject;
         protected ProjectFacade ionic => Vs.Helper.Solution.IonicProject;
+        protected ProjectFacade models => Vs.Helper.Solution.ModelProject;
 
         protected Batch(string[] targetTypes = null)
         {
@@ -39,7 +40,9 @@ namespace Voodoo.CodeGeneration.Batches
             Type type = null;
             var project = GetProjectFrom(token);
             if (targetTypeName != null)
+            {
                 type = project.FindType(targetTypeName);
+            }
             if (type != null)
                 this.type = new TypeFacade(type);
             if (type == null && throwIfNotFound && Vs.Helper.Flags.IsEmptyType)
@@ -89,6 +92,8 @@ namespace Voodoo.CodeGeneration.Batches
                     return ionic != null;
                 case Token.JsWebAppPath:
                     return !string.IsNullOrWhiteSpace(js);
+                case Token.Models:
+                    return models != null;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(token));
             }
@@ -97,15 +102,19 @@ namespace Voodoo.CodeGeneration.Batches
         protected void ThrowIfNotFound(params Token[] tokens)
         {
             foreach (var token in tokens)
+            {
                 if (!validate(token))
                     throw new Exception($"{token} is not setup");
+            }
         }
 
         protected bool AreAllSet(params Token[] tokens)
         {
             foreach (var token in tokens)
+            {
                 if (!validate(token))
                     return false;
+            }
             return true;
         }
 

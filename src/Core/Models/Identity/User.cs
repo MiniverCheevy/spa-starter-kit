@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Voodoo.Infrastructure.Notations;
 
-namespace Fernweh.Core.Models.Identity
+namespace Core.Models.Identity
 {
     public class User
     {

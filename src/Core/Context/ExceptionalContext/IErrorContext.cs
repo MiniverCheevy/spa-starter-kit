@@ -1,6 +1,6 @@
 using System.Data.Entity;
 
-namespace Fernweh.Core.Context.ExceptionalContext
+namespace Core.Context.ExceptionalContext
 {
     public interface IErrorContext
     {

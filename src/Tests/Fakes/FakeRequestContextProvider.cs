@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Fernweh.Core;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Infrastructure;
+using Core;
+using Core.Identity;
+using Core.Infrastructure;
 
-namespace Fernweh.Tests.Fakes
+namespace Tests.Fakes
 {
     internal class FakeRequestContextProvider : IRequestContextProvider
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fernweh.Core.Models.Identity;
+using Core.Models.Identity;
 using Voodoo.Infrastructure.Notations;
 
-namespace Fernweh.Core.Identity
+namespace Core.Identity
 {
     [Client]
     [MapsTo(typeof(User))]

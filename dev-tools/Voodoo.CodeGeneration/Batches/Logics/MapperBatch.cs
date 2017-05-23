@@ -17,7 +17,7 @@ namespace Voodoo.CodeGeneration.Batches.Logics
 
         public override void Build()
         {
-            logic.AddFile(new MapperFile(logic, type));
+            logic.AddFile(new MapperFile(logic, type, models));
 
             if (tests == null) return;
 

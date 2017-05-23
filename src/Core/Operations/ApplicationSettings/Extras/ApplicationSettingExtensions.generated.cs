@@ -4,9 +4,10 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-using Fernweh.Core;
-using Fernweh.Core.Models;
-namespace Fernweh.Core.Operations.ApplicationSettings.Extras
+
+using Core.Models;
+
+namespace Core.Operations.ApplicationSettings.Extras
 {
     public static partial class ApplicationSettingExtensions
     {

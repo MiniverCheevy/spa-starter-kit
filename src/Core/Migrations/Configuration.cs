@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using Fernweh.Core.Context;
-using Fernweh.Core.Models.Identity;
+using Core.Context;
+using Core.Models.Identity;
 using Voodoo;
 
-namespace Fernweh.Core.Migrations
+namespace Core.Migrations
 {
     public sealed class Configuration : DbMigrationsConfiguration<MainContext>
     {

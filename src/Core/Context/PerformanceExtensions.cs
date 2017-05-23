@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using Voodoo;
 
-namespace Fernweh.Core.Context
+namespace Core.Context
 {
     //TODO: consider creating a facade that wraps all of this and having the repository expose it
     //TODO: consider consistent naming, bulk insert, bulk update and coming one day bulk delete

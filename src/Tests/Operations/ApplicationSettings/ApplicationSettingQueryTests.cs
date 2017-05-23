@@ -1,13 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Fernweh.Core;
-using Fernweh.Core.Operations.ApplicationSettings;
-using Fernweh.Core.Operations.ApplicationSettings.Extras;
+using Core;
+using Core.Operations.ApplicationSettings;
+using Core.Operations.ApplicationSettings.Extras;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.Messages;
 
-namespace Fernweh.Tests.Operations.ApplicationSettings
+namespace Tests.Operations.ApplicationSettings
 {
     [TestClass]
     public class ApplicationSettingQueryTests
