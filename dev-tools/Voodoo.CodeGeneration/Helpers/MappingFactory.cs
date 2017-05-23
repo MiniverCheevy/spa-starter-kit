@@ -10,16 +10,16 @@ namespace Voodoo.CodeGeneration.Helpers
 {
     public class MappingFactory
     {
-        private List<string> includedTypeNames = new List<string>();
-        private List<Type> includedTypes = new List<Type>();
         private List<Mapping> mappings;
-        private ProjectFacade project;
         private TypeFacade type;
+        private ProjectFacade[] projects;
+        private List<Type> includedTypes = new List<Type>();
+        private List<string> includedTypeNames = new List<string>();
 
-        public MappingFactory(TypeFacade type, ProjectFacade project)
+        public MappingFactory(TypeFacade type, params ProjectFacade[] projects)
         {
             this.type = type;
-            this.project = project;
+            this.projects = projects;
         }
 
         private void addMapping(TypeFacade messageType, List<GeneratedProperty> properties, string name)
@@ -38,7 +38,7 @@ namespace Voodoo.CodeGeneration.Helpers
             includedTypeNames.AddIfNotNull(name);
         }
 
-        public static List<Mapping> GetMappings(TypeFacade type, ProjectFacade project)
+        public static List<Mapping> GetMappings(TypeFacade type, params ProjectFacade[] project)
         {
             return new MappingFactory(type, project).Build();
         }
@@ -47,7 +47,7 @@ namespace Voodoo.CodeGeneration.Helpers
         {
             mappings = new List<Mapping>();
 
-            var projectMappings = project.MappingTypes.ToArray();
+            var projectMappings = projects.SelectMany(c => c.MappingTypes).ToArray();
 
             foreach (var map in projectMappings)
             {
@@ -56,8 +56,6 @@ namespace Voodoo.CodeGeneration.Helpers
                 {
                     var facade = new TypeFacade(map);
                     mappings.Add(new Mapping(type, facade, type.Name));
-                    includedTypes.Add(map);
-                    includedTypeNames.Add(map.FullName);
                 }
             }
 
@@ -81,12 +79,6 @@ namespace Voodoo.CodeGeneration.Helpers
 
         public class Mapping
         {
-            public string ModelTypeName { get; set; }
-            public string MessageTypeName { get; set; }
-            public string Namespace { get; set; }
-            public PropertyFacade[] Properties { get; set; }
-            public PropertyFacade[] PropertiesWithoutId { get; set; }
-
             public Mapping(TypeFacade entity, TypeFacade message, string name = null)
             {
                 ModelTypeName = entity.Name;
@@ -106,6 +98,12 @@ namespace Voodoo.CodeGeneration.Helpers
                 Properties = messageProperties.Select(c => c.Property).ToArray();
                 PropertiesWithoutId = messageProperties.Select(c => c.Property).Where(c => c.Name != "Id").ToArray();
             }
+
+            public string ModelTypeName { get; set; }
+            public string MessageTypeName { get; set; }
+            public string Namespace { get; set; }
+            public PropertyFacade[] Properties { get; set; }
+            public PropertyFacade[] PropertiesWithoutId { get; set; }
         }
     }
 }
