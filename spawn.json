@@ -5,7 +5,7 @@
   "WebProjectPath": "\\src\\Aurelia\\Aurelia.csproj",
   "TestProjectPath": "\\src\\Tests\\Tests.csproj",
   "DataProjectPath": "\\src\\Core\\Core.csproj",
-  "ContextTypeName": "Fernweh.Core.Context.FernwehContext",
+  "ContextTypeName": "Core.Context.MainContext",
   "JsAppPathFromWebProjectRoot": "ClientApp",
   "AddToSourceControl": true,
   "SourceControlprovider": "tfexe",

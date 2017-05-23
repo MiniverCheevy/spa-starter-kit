@@ -24,16 +24,16 @@ namespace Voodoo.CodeGeneration.Batches.Webs
             foreach (var item in restBuilder.Resources)
                 web.AddFile(new ApiControllerFile(web, type, restBuilder.Resources));
 
-            var modelTypes = new ClientModelFactory(logic).GetTypes();
+            var modelTypes = new ClientModelFactory(logic, models).GetTypes();
             var api = WebFramworkBatchFactory.GetTypeServiceFile(web,
                 restBuilder.Resources.OrderBy(c => c.Name).ToArray(),
                 Vs.Helper.Solution.JsAppPathFromWebProjectRoot);
             if (api != null)
                 web.AddFile(api);
-            var models = WebFrameworkFileFactory.GetTypeScriptModelsFile(web, modelTypes.ToArray(),
+            var webModels = WebFrameworkFileFactory.GetTypeScriptModelsFile(web, modelTypes.ToArray(),
                 Vs.Helper.Solution.JsAppPathFromWebProjectRoot);
-            if (models != null)
-                web.AddFile(models);
+            if (webModels != null)
+                web.AddFile(webModels);
         }
     }
 }
