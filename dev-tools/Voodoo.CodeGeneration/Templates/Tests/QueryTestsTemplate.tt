@@ -26,9 +26,10 @@ namespace <#=this.File.Namespace#>
         {
 			<# if (this.File.Type.HasId) {#>
 
-			int? id = null;
+			int? id = 0;
 			using (var context = IOC.GetContext())
 			{
+				if (context.<#=this.File.Type.PluralName#>.Any())
 				id = context.<#=this.File.Type.PluralName#>.Max(c => c.Id);
 			}
 			id.Should().HaveValue().Should().NotBe(0, 

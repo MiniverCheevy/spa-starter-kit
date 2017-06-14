@@ -1,6 +1,6 @@
-using Fernweh.Core.Context;
+using Core.Context;
 
-namespace Fernweh.Core.Operations.ApplicationSettings.Extras
+namespace Core.Operations.ApplicationSettings.Extras
 {
     public class ApplicationSettingRepository
     {

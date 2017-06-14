@@ -4,7 +4,7 @@
 //The file gets rebuilt by building a distinct list of rest resources used
 //on commands and queries
 //***************************************************************
-namespace Fernweh.Core
+namespace Core
 {
     public class RestResources
     {

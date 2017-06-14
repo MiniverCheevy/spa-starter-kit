@@ -46,6 +46,18 @@ namespace Voodoo.CodeGeneration.Helpers
         public List<Mapping> Build()
         {
             mappings = new List<Mapping>();
+            var projectMappings = project.MappingTypes.ToArray();
+            foreach (var map in projectMappings)
+            {
+                var attribute = map.GetCustomAttribute<MapsToAttribute>();
+                if (attribute.Type.FullName == type.SystemType.FullName)
+                {
+                    var facade = new TypeFacade(map);
+                    mappings.Add(new Mapping(type, facade, type.Name));
+                    includedTypes.Add(map);
+                    includedTypeNames.Add(map.FullName);
+                }
+            }
             var messageType = Vs.Helper.FindType(type.MessageName);
             var properties = messageType == null
                 ? type.MessageProperties
@@ -61,17 +73,7 @@ namespace Voodoo.CodeGeneration.Helpers
                 addMapping(detailType, properties, type.DetailName);
             }
 
-            var projectMappings = project.MappingTypes.ToArray();
 
-            foreach (var map in projectMappings)
-            {
-                var attribute = map.GetCustomAttribute<MapsToAttribute>();
-                if (attribute.Type.FullName == type.SystemType.FullName)
-                {
-                    var facade = new TypeFacade(map);
-                    mappings.Add(new Mapping(type, facade, type.Name));
-                }
-            }
             return mappings;
         }
 

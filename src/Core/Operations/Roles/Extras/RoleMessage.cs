@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Fernweh.Core.Operations.Roles.Extras
+namespace Core.Operations.Roles.Extras
 {
     public class RoleMessage
     {

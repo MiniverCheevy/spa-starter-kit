@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http.Internal;
 using Newtonsoft.Json;
 using Voodoo.Messages;
 
-namespace Fernweh.Infrastructure.ExceptionHandling
+namespace Web.Infrastructure.ExceptionHandling
 {
     public class AppErrorHandlingMiddleware
     {

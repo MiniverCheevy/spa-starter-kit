@@ -1,7 +1,7 @@
-using Fernweh.Core.Context;
-using Fernweh.Core.Models.Identity;
+using Core.Context;
+using Core.Models.Identity;
 
-namespace Fernweh.Core.Operations.Roles.Extras
+namespace Core.Operations.Roles.Extras
 {
     public static partial class RoleExtensions
     {

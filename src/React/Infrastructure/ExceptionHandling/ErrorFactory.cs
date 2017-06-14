@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Fernweh.Core.Context.ExceptionalContext;
+using Core.Models.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Http.Internal;
@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using Voodoo;
 using Voodoo.Messages;
 
-namespace Fernweh.Infrastructure.ExceptionHandling
+namespace Web.Infrastructure.ExceptionHandling
 {
     public class ErrorFactory
     {
@@ -126,8 +126,8 @@ add the below line to the startup to enable reading the form
             if (context == null) return;
             var request = context.Request;
             error.User = getUser();
-            error.IPAddress = context.Connection.RemoteIpAddress.To<string>();
-            error.HTTPMethod = context.Request.Method;
+            error.IpAddress = context.Connection.RemoteIpAddress.To<string>();
+            error.HttpMethod = context.Request.Method;
             error.Url = context.Request.GetEncodedUrl();
             error.Host = context.Request.Host.Host.To<string>();
             Func<Func<HttpRequest, List<NameValuePair>>, List<NameValuePair>> tryGetCollection = getter =>
@@ -221,7 +221,7 @@ add the below line to the startup to enable reading the form
         internal void AddFromData(Exception exception)
         {
             if (exception.Data.Contains("SQL"))
-                error.SQL = exception.Data["SQL"] as string;
+                error.Sql = exception.Data["SQL"] as string;
 
             // Regardless of what Resharper may be telling you, .Data can be null on things like a null ref exception.
             if (exception.Data != null)
@@ -257,13 +257,13 @@ add the below line to the startup to enable reading the form
                     error.Details,
                     error.DuplicateCount,
                     error.ErrorHash,
-                    error.HTTPMethod,
+                    HTTPMethod = error.HttpMethod,
                     error.Host,
-                    error.IPAddress,
+                    IPAddress = error.IpAddress,
                     error.IsProtected,
                     error.MachineName,
                     error.Message,
-                    error.SQL,
+                    SQL = error.Sql,
                     error.Source,
                     error.StatusCode,
                     error.Type,

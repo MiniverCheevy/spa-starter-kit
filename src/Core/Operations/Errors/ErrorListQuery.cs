@@ -1,12 +1,12 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Fernweh.Core.Context;
-using Fernweh.Core.Operations.Errors.Extras;
+using Core.Context;
+using Core.Operations.Errors.Extras;
 using Voodoo;
 using Voodoo.Infrastructure;
 using Voodoo.Operations.Async;
 
-namespace Fernweh.Core.Operations.Errors
+namespace Core.Operations.Errors
 {
     [Rest(Verb.Get, RestResources.ErrorList)]
     public class ErrorListQuery : QueryAsync<ErrorQueryRequest, ErrorQueryResponse>

@@ -1,7 +1,7 @@
-using Fernweh.Core.Context;
-using Fernweh.Core.Models;
+using Core.Context;
+using Core.Models;
 
-namespace Fernweh.Core.Operations.ApplicationSettings.Extras
+namespace Core.Operations.ApplicationSettings.Extras
 {
     public static partial class ApplicationSettingExtensions
     {

@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using Fernweh.Core;
-using Fernweh.Core.Infrastructure;
-using Fernweh.Infrastructure.Logging;
+using Core;
+using Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Voodoo;
+using Web.Infrastructure.Logging;
 
-namespace Fernweh.Infrastructure
+namespace Web.Infrastructure
 {
     public class CompositionMiddleware
     {

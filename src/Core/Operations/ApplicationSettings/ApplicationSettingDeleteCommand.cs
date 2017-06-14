@@ -1,14 +1,13 @@
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using Fernweh.Core.Context;
-using Fernweh.Core.Operations.ApplicationSettings.Extras;
+using Core.Operations.ApplicationSettings.Extras;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 using Voodoo.Validation.Infrastructure;
 
-namespace Fernweh.Core.Operations.ApplicationSettings
+namespace Core.Operations.ApplicationSettings
 {
     [Rest(Verb.Delete, RestResources.ApplicationSetting)]
     public class ApplicationSettingDeleteCommand : CommandAsync<IdRequest, Response>

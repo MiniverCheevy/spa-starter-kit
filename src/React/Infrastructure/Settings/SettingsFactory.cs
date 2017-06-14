@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Fernweh.Infrastructure.Settings
+namespace Web.Infrastructure.Settings
 {
     public static class SettingsFactory
     {

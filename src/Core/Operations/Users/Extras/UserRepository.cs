@@ -1,9 +1,9 @@
 using System.Data.Entity;
 using System.Linq;
-using Fernweh.Core.Context;
-using Fernweh.Core.Models.Identity;
+using Core.Context;
+using Core.Models.Identity;
 
-namespace Fernweh.Core.Operations.Users.Extras
+namespace Core.Operations.Users.Extras
 {
     public class UserRepository
     {

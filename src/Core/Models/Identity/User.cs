@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Voodoo.Infrastructure.Notations;
 
-namespace Fernweh.Core.Models.Identity
+namespace Core.Models.Identity
 {
     public class User
     {
@@ -31,18 +31,6 @@ namespace Fernweh.Core.Models.Identity
         public User()
         {
             Roles = new List<Role>();
-        }
-    }
-
-    public class Role
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public List<User> Users { get; set; }
-
-        public Role()
-        {
-            Users = new List<User>();
         }
     }
 }

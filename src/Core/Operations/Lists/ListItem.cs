@@ -1,4 +1,4 @@
-﻿namespace Fernweh.Core.Operations.Lists
+﻿namespace Core.Operations.Lists
 {
     public class ListItem : IListItem
     {

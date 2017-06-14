@@ -1,4 +1,4 @@
-namespace Fernweh.Core.Operations.Roles.Extras
+namespace Core.Operations.Roles.Extras
 {
     public struct RoleMessages
     {

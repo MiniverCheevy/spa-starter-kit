@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Fernweh.Core.Logging
+namespace Core.Logging
 {
     public class VoidTraceWriter : ITraceLogger
     {

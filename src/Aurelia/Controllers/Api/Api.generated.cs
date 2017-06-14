@@ -4,27 +4,23 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 ***************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using System.Threading.Tasks;
+using Core.Identity;
+using Core.Operations.ApplicationSettings;
+using Core.Operations.ApplicationSettings.Extras;
+using Core.Operations.CurrentUsers;
+using Core.Operations.Errors;
+using Core.Operations.Errors.Extras;
+using Core.Operations.Lists;
+using Core.Operations.Users;
+using Core.Operations.Users.Extras;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Voodoo;
-using Fernweh;
 using Voodoo.Messages;
-using Fernweh.Infrastructure.ExecutionPipeline;
-using Fernweh.Infrastructure.ExecutionPipeline.Models;
-using Fernweh.Core.Operations.ApplicationSettings;
-using Fernweh.Core.Operations.ApplicationSettings.Extras;
-using Fernweh.Core.Operations.Users;
-using Fernweh.Core.Operations.Users.Extras;
-using Fernweh.Core.Operations.Lists;
-using Fernweh.Core.Operations.Errors;
-using Fernweh.Core.Operations.Errors.Extras;
-using Fernweh.Core.Operations.CurrentUsers;
-using Fernweh.Core.Identity;
-namespace Fernweh.Controllers.Api
+using Web.Infrastructure.ExecutionPipeline;
+using Web.Infrastructure.ExecutionPipeline.Models;
+
+namespace Web.Controllers.Api
 {
     [Route("api/[controller]")]
     public class ApplicationSettingDetailController : ApiControllerBase

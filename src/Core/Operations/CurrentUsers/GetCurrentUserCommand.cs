@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Fernweh.Core.Identity;
+using Core.Identity;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 
-namespace Fernweh.Core.Operations.CurrentUsers
+namespace Core.Operations.CurrentUsers
 {
     [Rest(Verb.Get, RestResources.CurrentUser, AllowAnonymous = true)]
     public class GetCurrentUserCommand : QueryAsync<EmptyRequest, Response<AppPrincipal>>

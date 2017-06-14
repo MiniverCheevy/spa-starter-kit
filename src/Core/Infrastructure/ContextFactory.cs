@@ -1,6 +1,6 @@
-using Fernweh.Core.Context;
+using Core.Context;
 
-namespace Fernweh.Core.Infrastructure
+namespace Core.Infrastructure
 {
     public class ContextFactory : IContextFactory
     {

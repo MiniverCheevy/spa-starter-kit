@@ -1,5 +1,5 @@
-using Fernweh.Core.Models.Identity;
-using Fernweh.Core.Operations.Users.Extras;
+using Core.Models.Identity;
+using Core.Operations.Users.Extras;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.TestData;
 

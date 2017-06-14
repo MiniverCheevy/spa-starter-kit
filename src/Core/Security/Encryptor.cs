@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using Voodoo;
 
-namespace Fernweh.Core.Security
+namespace Core.Security
 {
     //http://stackoverflow.com/questions/165808/simple-two-way-encryption-for-c-sharp
     internal class Encryptor

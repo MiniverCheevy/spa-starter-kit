@@ -4,7 +4,7 @@ using Voodoo;
 using Voodoo.Infrastructure;
 using Voodoo.Operations.Async;
 
-namespace Fernweh.Core.Operations.Lists
+namespace Core.Operations.Lists
 {
     [Rest(Verb.Get, RestResources.Lists)]
     public class LookupsQuery : QueryAsync<ListsRequest, ListsResponse>

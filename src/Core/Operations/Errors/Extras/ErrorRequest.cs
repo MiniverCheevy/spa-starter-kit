@@ -1,6 +1,6 @@
-﻿using Fernweh.Core.Context.ExceptionalContext;
+﻿using Core.Models.Exceptions;
 
-namespace Fernweh.Core.Operations.Errors.Extras
+namespace Core.Operations.Errors.Extras
 {
     public class ErrorRequest
     {

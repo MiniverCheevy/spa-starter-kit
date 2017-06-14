@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
-using Fernweh.Core.Operations.Errors.Extras;
+using Core.Operations.Errors.Extras;
 using Voodoo;
 using Voodoo.Messages;
 
-namespace Fernweh.Core.Operations.Errors
+namespace Core.Operations.Errors
 {
     public static class ErrorJsonDeserializer
     {

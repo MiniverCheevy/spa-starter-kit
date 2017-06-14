@@ -1,15 +1,14 @@
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using Fernweh.Core.Context;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Operations.Users.Extras;
+using Core.Identity;
+using Core.Operations.Users.Extras;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 using Voodoo.Validation.Infrastructure;
 
-namespace Fernweh.Core.Operations.Users
+namespace Core.Operations.Users
 {
     [Rest(Verb.Delete, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
     public class UserDeleteCommand : CommandAsync<IdRequest, Response>

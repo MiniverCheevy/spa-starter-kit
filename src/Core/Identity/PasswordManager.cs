@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using Fernweh.Core.Models.Identity;
+using Core.Models.Identity;
 
-namespace Fernweh.Core.Identity
+namespace Core.Identity
 {
     public class PasswordManager
     {

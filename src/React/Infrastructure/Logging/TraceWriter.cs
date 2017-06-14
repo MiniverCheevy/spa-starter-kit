@@ -1,8 +1,8 @@
-﻿using Fernweh.Core.Logging;
+﻿using Core.Logging;
 using Microsoft.ApplicationInsights;
 using Voodoo.Logging;
 
-namespace Fernweh.Infrastructure.Logging
+namespace Web.Infrastructure.Logging
 {
     public class TraceWriter : ITraceLogger
     {

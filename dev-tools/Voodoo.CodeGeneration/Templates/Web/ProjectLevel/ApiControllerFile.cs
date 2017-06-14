@@ -6,6 +6,7 @@ using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.Rest;
 using Voodoo.CodeGeneration.Models.VisualStudio;
+using Voodoo.Messages;
 
 namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
 {
@@ -31,12 +32,12 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
             PageSpecificUsingStatements.Add($"{project.RootNamespace}.Infrastructure.ExecutionPipeline.Models");
 
             foreach (var resource in resources)
-            foreach (var verb in resource.Verbs)
-            {
-                addNamespaces(verb.OperationType);
-                addNamespaces(verb.RequestType);
-                addNamespaces(verb.ResponseType);
-            }
+                foreach (var verb in resource.Verbs)
+                {
+                    addNamespaces(verb.OperationType);
+                    addNamespaces(verb.RequestType);
+                    addNamespaces(verb.ResponseType);
+                }
         }
 
         public override string GetFolder()
@@ -70,6 +71,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Voodoo;");
             foreach (var item in UsingStatements)
                 builder.AppendLine($"using {item};");
@@ -85,37 +87,84 @@ using Voodoo;");
                 builder.AppendLine("{");
                 foreach (var verb in resource.Verbs)
                 {
-                    builder.AppendLine($"{verb.Attribute}");
-
-                    builder.AppendLine($"public async Task<{verb.ResponseTypeName}> {verb.Name}");
-                    builder.AppendLine($"({verb.Parameter} {verb.RequestTypeName} request)");
-                    builder.AppendLine("{");
-                    builder.AppendLine();
-
-                    builder.AppendLine($@" var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
-             <{verb.RequestTypeName}, {verb.ResponseTypeName}>
-            {{
-                Command = new {verb.OperationTypeName}(request),
-                Context = HttpContext,
-                ModelState = ModelState,
-                Request = request,
-                SecurityContext = new SecurityContext {{ AllowAnonymouse = {
-                            verb.AllowAnonymous.ToString().ToLower()
-                        }, Roles=new string[] {{ {verb.RoleArrayString} }} }}
-            }};");
-
-                    builder.AppendLine(
-                        $"var pipeline = new ExcecutionPipeline<{verb.RequestTypeName}, {verb.ResponseTypeName}>");
-                    builder.AppendLine($" (state);");
-                    builder.AppendLine($"await pipeline.ExecuteAsync();");
-
-                    builder.AppendLine($"return state.Response;");
-                    builder.AppendLine("}");
+                    appendMethod(builder, verb, resource);
                 }
                 builder.AppendLine("}");
             }
             builder.AppendLine("}");
             return builder.ToString();
+        }
+        private void appendMethod(StringBuilder builder, RestMethod verb, Resource resource)
+        {
+            if (verb.ResponseType == typeof(BinaryResponse))
+            {
+                appendBinaryMethod(builder, verb, resource);
+            }
+            else
+            {
+                appendRestMethod(builder, verb, resource);
+            }
+        }
+
+        private void appendBinaryMethod(StringBuilder builder, RestMethod verb, Resource resource)
+        {
+            builder.AppendLine($"{verb.Attribute}");
+
+            builder.AppendLine($"public async Task<FileResult> {verb.Name}");
+            builder.AppendLine($"({verb.Parameter} {verb.RequestTypeName} request)");
+            builder.AppendLine("{");
+            builder.AppendLine();
+
+            builder.AppendLine($@" var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+                     <{verb.RequestTypeName}, {verb.ResponseTypeName}>
+                    {{
+                        Command = new {verb.OperationTypeName}(request),
+                        Context = HttpContext,
+                        ModelState = ModelState,
+                        Request = request,
+                        SecurityContext = new SecurityContext {{ AllowAnonymouse = {
+                    verb.AllowAnonymous.ToString().ToLower()
+                }, Roles=new string[] {{ {verb.RoleArrayString} }} }}
+                    }};");
+
+            builder.AppendLine(
+                $"var pipeline = new ExcecutionPipeline<{verb.RequestTypeName}, {verb.ResponseTypeName}>");
+            builder.AppendLine($" (state);");
+            builder.AppendLine($"await pipeline.ExecuteAsync();");
+
+            builder.AppendLine($"return File(state.Response.Data, state.Response.ContentType, state.Response.FileName);");            
+
+            builder.AppendLine("}");
+        }
+
+        private void appendRestMethod(StringBuilder builder, RestMethod verb, Resource resource)
+        {
+            builder.AppendLine($"{verb.Attribute}");
+
+            builder.AppendLine($"public async Task<{verb.ResponseTypeName}> {verb.Name}");
+            builder.AppendLine($"({verb.Parameter} {verb.RequestTypeName} request)");
+            builder.AppendLine("{");
+            builder.AppendLine();
+
+            builder.AppendLine($@" var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+                     <{verb.RequestTypeName}, {verb.ResponseTypeName}>
+                    {{
+                        Command = new {verb.OperationTypeName}(request),
+                        Context = HttpContext,
+                        ModelState = ModelState,
+                        Request = request,
+                        SecurityContext = new SecurityContext {{ AllowAnonymouse = {
+                            verb.AllowAnonymous.ToString().ToLower()
+                        }, Roles=new string[] {{ {verb.RoleArrayString} }} }}
+                    }};");
+
+            builder.AppendLine(
+                $"var pipeline = new ExcecutionPipeline<{verb.RequestTypeName}, {verb.ResponseTypeName}>");
+            builder.AppendLine($" (state);");
+            builder.AppendLine($"await pipeline.ExecuteAsync();");
+
+            builder.AppendLine($"return state.Response;");
+            builder.AppendLine("}");
         }
     }
 }

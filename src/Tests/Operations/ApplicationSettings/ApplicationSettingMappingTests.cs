@@ -1,5 +1,5 @@
-using Fernweh.Core.Models;
-using Fernweh.Core.Operations.ApplicationSettings.Extras;
+using Core.Models;
+using Core.Operations.ApplicationSettings.Extras;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.TestData;
 

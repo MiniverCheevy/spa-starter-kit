@@ -1,28 +1,28 @@
 ﻿using System.Threading.Tasks;
-using Fernweh.Core;
-using Fernweh.Core.Infrastructure;
-using Fernweh.Infrastructure.Logging;
+using Core;
+using Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Voodoo;
+using Web.Infrastructure.Logging;
 
-namespace Fernweh.Infrastructure
+namespace Web.Infrastructure
 {
-  public class CompositionMiddleware
-  {
-    private readonly RequestDelegate next;
-
-    public CompositionMiddleware(RequestDelegate next)
+    public class CompositionMiddleware
     {
-      this.next = next;
-    }
+        private readonly RequestDelegate next;
 
-    public async Task Invoke(HttpContext context, IHttpContextAccessor httpContextAccessor)
-    {
-      IOC.TraceWriter = new TraceWriter();
-      IOC.ContextFactory = new ContextFactory();
-      IOC.RequestContextProvier = new RequestContextProvider(httpContextAccessor);
-      VoodooGlobalConfiguration.ErrorDetailLoggingMethodology = ErrorDetailLoggingMethodology.LogInExceptionData;
-      await next(context);
+        public CompositionMiddleware(RequestDelegate next)
+        {
+            this.next = next;
+        }
+
+        public async Task Invoke(HttpContext context, IHttpContextAccessor httpContextAccessor)
+        {
+            IOC.TraceWriter = new TraceWriter();
+            IOC.ContextFactory = new ContextFactory();
+            IOC.RequestContextProvier = new RequestContextProvider(httpContextAccessor);
+            VoodooGlobalConfiguration.ErrorDetailLoggingMethodology = ErrorDetailLoggingMethodology.LogInExceptionData;
+            await next(context);
+        }
     }
-  }
 }

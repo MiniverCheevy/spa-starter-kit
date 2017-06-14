@@ -1,7 +1,7 @@
-using Fernweh.Core.Context;
-using Fernweh.Core.Context.ExceptionalContext;
+using Core.Context;
+using Core.Models.Exceptions;
 
-namespace Fernweh.Core.Operations.Errors.Extras
+namespace Core.Operations.Errors.Extras
 {
     public static partial class ErrorExtensions
     {

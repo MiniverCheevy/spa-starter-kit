@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Diagnostics;
-using Fernweh.Core;
-using Fernweh.Core.Infrastructure;
+using Core;
+using Core.Infrastructure;
 using Fernweh.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -6,21 +6,21 @@
 ***************************************************************/
 
 using System.Threading.Tasks;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Operations.ApplicationSettings;
-using Fernweh.Core.Operations.ApplicationSettings.Extras;
-using Fernweh.Core.Operations.CurrentUsers;
-using Fernweh.Core.Operations.Errors;
-using Fernweh.Core.Operations.Errors.Extras;
-using Fernweh.Core.Operations.Lists;
-using Fernweh.Core.Operations.Users;
-using Fernweh.Core.Operations.Users.Extras;
-using Fernweh.Infrastructure.ExecutionPipeline;
-using Fernweh.Infrastructure.ExecutionPipeline.Models;
+using Core.Identity;
+using Core.Operations.ApplicationSettings;
+using Core.Operations.ApplicationSettings.Extras;
+using Core.Operations.CurrentUsers;
+using Core.Operations.Errors;
+using Core.Operations.Errors.Extras;
+using Core.Operations.Lists;
+using Core.Operations.Users;
+using Core.Operations.Users.Extras;
 using Microsoft.AspNetCore.Mvc;
 using Voodoo.Messages;
+using Web.Infrastructure.ExecutionPipeline;
+using Web.Infrastructure.ExecutionPipeline.Models;
 
-namespace Fernweh.Controllers.Api
+namespace Web.Controllers.Api
 {
     [Route("api/[controller]")]
     public class ApplicationSettingDetailController : ApiControllerBase

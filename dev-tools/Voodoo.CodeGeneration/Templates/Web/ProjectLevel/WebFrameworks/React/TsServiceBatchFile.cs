@@ -41,43 +41,36 @@ import * as Models from './models.generated';");
 			public async {verb.Name.ToLower()} (request: Models.{declarations.RequestDeclaration}):
 											Promise<Models.{declarations.ResponseDeclaration}>
 			{{
-            var error;
+            var result;
             try {{
 			        MessengerService.incrementHttpRequestCounter();
-                    var httpResponse = await AjaxService.build{verb.Name}Request(request, this.url)
-                    .catch(function (err) {{
-                                        error = err;
-                                    }});
-                    if(error == null)
-                    {{
-                        var response = await httpResponse.data;
-                    
-                        var out = <Models.IResponse>response;
-                        MessengerService.showResponseMessage(out);
-                        MessengerService.decrementHttpRequestCounter();
-                        return out;
-                    }}
+                    var response = await AjaxService.build{verb.Name}Request(request, this.url)
+                     if (response.isOk != undefined) {{
+                var out = <Models.Response>response;
+                result = out;
             }}
-            catch (err)
-            {{
-                if (err != null)
-                    error = err;
-            }};
+            else {{
+                AjaxService.logError(response, this.url, (< any > new Error()).stack);
 
-
-             if (error != null)
-            {{
-                AjaxService.logError(error, this.url, (<any> new Error()).stack);
-
-                var result = {{
+                var errorResposne = {{
                     isOk: false,
-                    message: error.statusText
+                    message: response.statusText || response.message
                 }};
-
-                MessengerService.decrementHttpRequestCounter();
-                MessengerService.showResponseMessage(result);
-                return result;
+                result = out;
             }}
+        }}
+        catch (e)
+        {{
+            AjaxService.logError(e, this.url, (< any > new Error()).stack);
+
+            result = {{
+                isOk: false,
+                message: e.statusText || e.message
+            }};            
+        }}
+        MessengerService.decrementHttpRequestCounter();
+        MessengerService.showResponseMessage(result);
+        return result;
 }}");
                 }
                 builder.AppendLine("}");

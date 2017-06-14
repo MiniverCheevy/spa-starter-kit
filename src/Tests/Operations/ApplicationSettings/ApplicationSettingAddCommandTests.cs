@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
-using Fernweh.Core.Operations.ApplicationSettings;
-using Fernweh.Core.Operations.ApplicationSettings.Extras;
+using Core.Operations.ApplicationSettings;
+using Core.Operations.ApplicationSettings.Extras;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

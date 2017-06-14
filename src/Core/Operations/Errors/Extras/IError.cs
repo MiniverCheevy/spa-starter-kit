@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Voodoo.Messages;
 
-namespace Fernweh.Core.Operations.Errors.Extras
+namespace Core.Operations.Errors.Extras
 {
     public class ErrorModel
     {

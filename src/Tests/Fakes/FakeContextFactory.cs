@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.Common;
+using Core.Context;
+using Core.Infrastructure;
 using Effort;
-using Fernweh.Core.Context;
-using Fernweh.Core.Infrastructure;
 
 namespace Fernweh.Tests.Fakes
 {

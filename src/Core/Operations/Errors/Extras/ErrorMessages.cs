@@ -1,4 +1,4 @@
-namespace Fernweh.Core.Operations.Errors.Extras
+namespace Core.Operations.Errors.Extras
 {
     public struct ErrorMessages
     {

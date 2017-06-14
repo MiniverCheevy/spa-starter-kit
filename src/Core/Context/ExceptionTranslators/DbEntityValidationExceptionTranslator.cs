@@ -4,7 +4,7 @@ using Voodoo;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
 
-namespace Fernweh.Core.Context.ExceptionTranslators
+namespace Core.Context.ExceptionTranslators
 {
     public class DbEntityValidationExceptionTranlator : ExceptionTranslation
     {

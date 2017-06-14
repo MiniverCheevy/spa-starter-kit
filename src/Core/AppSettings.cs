@@ -1,4 +1,4 @@
-﻿namespace Fernweh.Core
+﻿namespace Core
 {
     public class AppSettings
     {

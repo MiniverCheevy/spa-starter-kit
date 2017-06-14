@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Fernweh.Core.Operations.Lists;
+using Core.Operations.Lists;
 using Voodoo.Validation;
 
-namespace Fernweh.Core.Operations.Users.Extras
+namespace Core.Operations.Users.Extras
 {
     public class UserMessage
     {

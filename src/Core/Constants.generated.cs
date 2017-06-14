@@ -4,7 +4,7 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-namespace Fernweh.Core
+namespace Core
 {
     public partial class Constants
     {

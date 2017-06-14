@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Fernweh.Core.Context.ExceptionalContext
+namespace Core.Models.Exceptions
 {
     [Table("Exceptions")]
     public class Error
@@ -32,10 +32,10 @@ namespace Fernweh.Core.Context.ExceptionalContext
         public string Url { get; set; }
 
         [MaxLength(200)]
-        public string HTTPMethod { get; set; }
+        public string HttpMethod { get; set; }
 
         [MaxLength(200)]
-        public string IPAddress { get; set; }
+        public string IpAddress { get; set; }
 
         [MaxLength(200)]
         public string Source { get; set; }
@@ -50,7 +50,7 @@ namespace Fernweh.Core.Context.ExceptionalContext
         public int? StatusCode { get; set; }
 
         [MaxLength]
-        public string SQL { get; set; }
+        public string Sql { get; set; }
 
         public DateTime? DeletionDate { get; set; }
 

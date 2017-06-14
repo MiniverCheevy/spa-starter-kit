@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Fernweh.Controllers.Api
+namespace Web.Controllers.Api
 {
-  public class ApiControllerBase : Controller
-  {
-  }
+    public class ApiControllerBase : Controller
+    {
+    }
 }

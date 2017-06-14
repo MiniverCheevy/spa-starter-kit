@@ -1,10 +1,10 @@
-using Fernweh.Core.Context;
-using Fernweh.Core.Identity;
-using Fernweh.Core.Infrastructure;
-using Fernweh.Core.Logging;
+using Core.Context;
+using Core.Identity;
+using Core.Infrastructure;
+using Core.Logging;
 using Voodoo;
 
-namespace Fernweh.Core
+namespace Core
 {
     public static class IOC
     {

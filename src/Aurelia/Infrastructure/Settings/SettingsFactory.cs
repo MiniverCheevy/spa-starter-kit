@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Fernweh.Infrastructure.Settings
+namespace Web.Infrastructure.Settings
 {
-  public static class SettingsFactory
-  {
-    public static Core.Infrastructure.Settings GetSettings(IConfigurationRoot configuration)
+    public static class SettingsFactory
     {
-      return new Core.Infrastructure.Settings
-      {
-        DefaultConnectionString = configuration.GetConnectionString("DefaultConnection")
-      };
+        public static Core.Infrastructure.Settings GetSettings(IConfigurationRoot configuration)
+        {
+            return new Core.Infrastructure.Settings
+            {
+                DefaultConnectionString = configuration.GetConnectionString("DefaultConnection")
+            };
+        }
     }
-  }
 }

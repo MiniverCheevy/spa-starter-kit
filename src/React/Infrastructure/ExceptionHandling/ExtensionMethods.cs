@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 using System.Text.RegularExpressions;
 using Voodoo.Messages;
 
-namespace Fernweh.Infrastructure.ExceptionHandling
+namespace Web.Infrastructure.ExceptionHandling
 {
     public static class ExtensionMethods
     {

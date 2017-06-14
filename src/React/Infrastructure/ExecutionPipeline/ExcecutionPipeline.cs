@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Fernweh.Infrastructure.ExecutionPipeline.Models;
 using Voodoo.Messages;
+using Web.Infrastructure.ExecutionPipeline.Models;
 
-namespace Fernweh.Infrastructure.ExecutionPipeline
+namespace Web.Infrastructure.ExecutionPipeline
 {
     public delegate Task ExecutionDelegate<TRequest, TResponse>
         (ExecutionState<TRequest, TResponse> context)

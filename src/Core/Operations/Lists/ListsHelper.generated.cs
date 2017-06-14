@@ -4,18 +4,16 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
+
 using System;
-using Voodoo;
-using System.Data.Entity;
-using System.Threading.Tasks;
-
-using Fernweh.Core;
-using Voodoo.Messages;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using Fernweh.Core.Context;
+using System.Threading.Tasks;
+using Core.Context;
+using Voodoo;
 
-namespace Fernweh.Core.Operations.Lists
+namespace Core.Operations.Lists
 {
     public class ListsHelper
     {
@@ -37,13 +35,13 @@ namespace Fernweh.Core.Operations.Lists
             }
             if(list == Lists.Lists)
             {
-                enumType = typeof(Fernweh.Core.Operations.Lists.Lists);
+                enumType = typeof(Lists);
                 enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
                 response.AddRange(enumItems);
             }
             if(list == Lists.SqlOperation)
             {
-                enumType = typeof(Fernweh.Core.Context.SqlOperation);
+                enumType = typeof(SqlOperation);
                 enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
                 response.AddRange(enumItems);
             }
@@ -69,14 +67,14 @@ namespace Fernweh.Core.Operations.Lists
             }
             if(request.Lists.Contains(Lists.Lists))
             {
-                enumType = typeof(Fernweh.Core.Operations.Lists.Lists);
+                enumType = typeof(Lists);
                 enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
                 response.Lists.AddRange(enumItems);
                 
             }
             if(request.Lists.Contains(Lists.SqlOperation))
             {
-                enumType = typeof(Fernweh.Core.Context.SqlOperation);
+                enumType = typeof(SqlOperation);
                 enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
                 response.SqlOperations.AddRange(enumItems);
                 
