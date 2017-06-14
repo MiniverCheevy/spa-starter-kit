@@ -38,15 +38,15 @@ namespace Voodoo.CodeGeneration.Helpers
             includedTypeNames.AddIfNotNull(name);
         }
 
-        public static List<Mapping> GetMappings(TypeFacade type, params ProjectFacade[] project)
+        public static List<Mapping> GetMappings(TypeFacade type, params ProjectFacade[] projects)
         {
-            return new MappingFactory(type, project).Build();
+            return new MappingFactory(type, projects).Build();
         }
 
         public List<Mapping> Build()
         {
             mappings = new List<Mapping>();
-            var projectMappings = project.MappingTypes.ToArray();
+            var projectMappings = projects.SelectMany(c=>c.MappingTypes).ToArray();
             foreach (var map in projectMappings)
             {
                 var attribute = map.GetCustomAttribute<MapsToAttribute>();

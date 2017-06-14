@@ -4,6 +4,7 @@ using Core;
 using Core.Infrastructure;
 using Fernweh.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Tests.Fakes;
 
 namespace Fernweh.Tests
 {
