@@ -4,7 +4,7 @@ using Core;
 using Core.Identity;
 using Core.Infrastructure;
 
-namespace Fernweh.Tests.Fakes
+namespace Tests.Fakes
 {
     internal class FakeRequestContextProvider : IRequestContextProvider
     {

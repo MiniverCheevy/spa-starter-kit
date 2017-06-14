@@ -2,39 +2,113 @@
 import { CurrentUserService } from "./current-user-service";
 import { MessengerService } from "./messenger-service";
 
-//import * as Models from "../models.generated";
+
 import * as $ from 'jquery';
-import * as  axios from 'axios';
+//import * as  axios from 'axios';
+let fetch = (<any>window).fetch;
 
 export class AjaxServicePrototype {
-
-    private getAjaxRequest(url: string, verb: string, token: string, request: any) {
-        var body = JSON.stringify(request);
-        if (verb.toLowerCase() == 'get' || verb.toLowerCase() == 'delete') {
-
-
-
-            return (<any>axios)({
-                url: url,
-                method: verb,
-                credentials: 'same-origin',
-                headers: [{ 'Accept': 'application/json' },
-                { 'Content-Type': 'application/json; charset=utf-8' },
-                { 'Token': token }]
-            });
-        }
-        else {
-            (<any>axios)({
-                url: url,
-                method: verb,
-                credentials: 'same-origin',
-                headers: [{ 'Accept': 'application/json' },
-                { 'Content-Type': 'application/json; charset=utf-8' },
-                { 'Token': token }],
-                body: body
-            });
-        }
+    public showReport(url: string, request: any)
+    {
+        var params = EncoderService.serializeParams(request);
+        var urlWithParams = url + '?' + params;
+        window.open(urlWithParams);
     }
+    private getAjaxRequest = (url: string, verb: string, token: string, request: any) => {
+        try {
+            var body = JSON.stringify(request);
+            if (verb.toLowerCase() == 'get' || verb.toLowerCase() == 'delete') {
+                return fetch(url,
+                    {
+                        method: verb,
+                        credentials: 'same-origin',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json; charset=utf-8',
+                            'Token': token
+                        }
+                    }
+                )
+                    .then((r) => { return r.json(); })
+                    .catch((e) => {
+                        this.logError(e, url, new Error().stack);
+                        return {
+                            isOk: false,
+                            message: e.statusText || e.message
+                        };
+                    });
+            } else {
+                return fetch(url,
+                    {
+                        method: verb,
+                        credentials: 'same-origin',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json; charset=utf-8',
+                            'Token': token
+                        },
+                        body: body
+                    }
+                )
+                    .then((r) => {
+                        console.log('get ajax request-then');
+                        return r.json();
+                        
+                    })
+                    .catch((e) => {
+                        console.log('get ajax request-catch');
+                        this.logError(e, url, new Error().stack);
+                        return {
+                            isOk: false,
+                            message: e.statusText || e.message
+                        };
+                    }
+                    );
+            }
+        }
+        catch (e) {
+            //never hit, why?
+            //debugger;
+            console.log('The try caught' + e.toString());
+        }
+
+    }
+    //private getAjaxRequest=(url: string, verb: string, token: string, request: any)=> {
+    //    var body = JSON.stringify(request);
+    //    if (verb.toLowerCase() == 'get' || verb.toLowerCase() == 'delete') {
+
+
+
+    //        return (<any>axios)({
+    //            url: url,
+    //            method: verb,
+    //            credentials: 'same-origin',
+    //            headers: [{ 'Accept': 'application/json' },
+    //            { 'Content-Type': 'application/json; charset=utf-8' },
+    //            { 'Token': token }]
+    //        }).catch(
+    //            (error) => {
+    //                this.logError(error, url, error.stack);
+    //                MessengerService.showToast(error.message, true);
+    //            });;;
+    //    }
+    //    else {
+    //        (<any>axios)({
+    //            url: url,
+    //            method: verb,
+    //            credentials: 'same-origin',
+    //            headers: [{ 'Accept': 'application/json' },
+    //            { 'Content-Type': 'application/json; charset=utf-8' },
+    //            { 'Token': token }],
+    //            data: request
+    //        })
+    //            .catch(
+    //            (error) => {
+    //                this.logError(error, url, error.stack);
+    //                MessengerService.showToast(error.message, true);
+    //            });;;;
+    //    }
+    //}
     public buildGetRequest = async (request, url): Promise<any> => {
         var user = await CurrentUserService.get();
         var params = EncoderService.serializeParams(request);
@@ -43,9 +117,9 @@ export class AjaxServicePrototype {
 
     }
     public buildPutRequest = async (request, url): Promise<any> => {
-
         var user = await CurrentUserService.get();
-        return this.getAjaxRequest(url, 'PUT', user.token, request);
+        var req = await this.getAjaxRequest(url, 'PUT', user.token, request);
+        return req;
     }
     public buildPostRequest = async (request, url): Promise<any> => {
 

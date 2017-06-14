@@ -1,37 +1,246 @@
-body {
-  margin: 0px 0px 0px 0px;
+/*start progress bar*/
+
+/* Progress Bar */
+.progress-container {
+    height: 6px;
+    width: 100%;
+    background-color: #730C02;
 }
 
-.main-nav li .glyphicon { margin-right: 10px; }
+.progress-conainer,
+.progress {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.progress {
+    position: relative;
+    height: 4px;
+    display: block;
+    width: 100%;
+    background-color: #acece6;
+    border-radius: 2px;
+    background-clip: padding-box;
+    margin: 0.5rem 0 1rem 0;
+    overflow: hidden;
+}
+
+    .progress .determinate {
+        position: absolute;
+        background-color: inherit;
+        top: 0;
+        bottom: 0;
+        background-color: #26a69a;
+        transition: width .3s linear;
+    }
+
+    .progress .indeterminate {
+        background-color: #26a69a;
+    }
+
+        .progress .indeterminate:before {
+            content: '';
+            position: absolute;
+            background-color: inherit;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            will-change: left, right;
+            -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+            animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+        }
+
+        .progress .indeterminate:after {
+            content: '';
+            position: absolute;
+            background-color: inherit;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            will-change: left, right;
+            -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+            animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+            -webkit-animation-delay: 1.15s;
+            animation-delay: 1.15s;
+        }
+
+@-webkit-keyframes indeterminate {
+    0% {
+        left: -35%;
+        right: 100%;
+    }
+
+    60% {
+        left: 100%;
+        right: -90%;
+    }
+
+    100% {
+        left: 100%;
+        right: -90%;
+    }
+}
+
+@keyframes indeterminate {
+    0% {
+        left: -35%;
+        right: 100%;
+    }
+
+    60% {
+        left: 100%;
+        right: -90%;
+    }
+
+    100% {
+        left: 100%;
+        right: -90%;
+    }
+}
+
+@-webkit-keyframes indeterminate-short {
+    0% {
+        left: -200%;
+        right: 100%;
+    }
+
+    60% {
+        left: 107%;
+        right: -8%;
+    }
+
+    100% {
+        left: 107%;
+        right: -8%;
+    }
+}
+
+@keyframes indeterminate-short {
+    0% {
+        left: -200%;
+        right: 100%;
+    }
+
+    60% {
+        left: 107%;
+        right: -8%;
+    }
+
+    100% {
+        left: 107%;
+        right: -8%;
+    }
+}
+/*end progress bar*/
+body {
+    margin: 0px 0px 0px 0px;
+}
+
+.main-nav li .glyphicon {
+    margin-right: 10px;
+}
 
 /* Highlighting rules for nav menu items */
 
 .main-nav li a.active,
 .main-nav li a.active:hover,
 .main-nav li a.active:focus {
-  background-color: #4189C7;
-  color: white;
+    background-color: #4189C7;
+    color: white;
 }
 
 /* Keep the nav menu independent of scrolling and on top of other items */
 
 .main-nav {
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 1;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
 }
 
 navbar-collapse .main-nav .navbar a {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  /* If a menu item's text is too long, truncate it */
-  width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* If a menu item's text is too long, truncate it */
+    width: 100%;
 }
 
 #container {
-  margin-left: 10%;
-  margin-right: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.main-panel {
+    min-height: 400px;
+    padding: 12px;
+}
+
+.item-panel,
+.user-panel {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.search-form {
+    margin-bottom: 22px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+    .btn-circle.btn-lg {
+        width: 50px;
+        height: 50px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 25px;
+    }
+
+    .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        font-size: 24px;
+        line-height: 1.33;
+        border-radius: 35px;
+    }
+
+.fluffy {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.item-button {
+    margin-top: 24px;
+}
+.nav-header-left {
+    margin-left: -90px !important;
+}
+.form-label {
+    min-width: 128px;
+    text-align:right;
+}
+.margin {
+    margin: 20px;
+}
+
+.border {
+    border: solid 1px red;
+
+}
+.inline {
+    display: inline;
+}
+.up {
+    margin-top: -30px;
 }

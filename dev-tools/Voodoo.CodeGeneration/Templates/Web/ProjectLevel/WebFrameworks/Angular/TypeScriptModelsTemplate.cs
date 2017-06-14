@@ -72,7 +72,9 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Angular
                     generationEnvironmentField = new StringBuilder();
                 return generationEnvironmentField;
             }
-            set => generationEnvironmentField = value;
+            set  =>
+            generationEnvironmentField  =
+            value;
         }
 
         /// <summary>
@@ -252,7 +254,8 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Angular
             /// </summary>
             public IFormatProvider FormatProvider
             {
-                get => formatProviderField;
+                get  =>
+                formatProviderField;
                 set
                 {
                     if (value != null)

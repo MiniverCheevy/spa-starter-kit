@@ -10,16 +10,16 @@ namespace Voodoo.CodeGeneration.Helpers
 {
     public class MappingFactory
     {
-        private List<string> includedTypeNames = new List<string>();
-        private List<Type> includedTypes = new List<Type>();
         private List<Mapping> mappings;
-        private ProjectFacade project;
         private TypeFacade type;
+        private ProjectFacade[] projects;
+        private List<Type> includedTypes = new List<Type>();
+        private List<string> includedTypeNames = new List<string>();
 
-        public MappingFactory(TypeFacade type, ProjectFacade project)
+        public MappingFactory(TypeFacade type, params ProjectFacade[] projects)
         {
             this.type = type;
-            this.project = project;
+            this.projects = projects;
         }
 
         private void addMapping(TypeFacade messageType, List<GeneratedProperty> properties, string name)
@@ -38,7 +38,7 @@ namespace Voodoo.CodeGeneration.Helpers
             includedTypeNames.AddIfNotNull(name);
         }
 
-        public static List<Mapping> GetMappings(TypeFacade type, ProjectFacade project)
+        public static List<Mapping> GetMappings(TypeFacade type, params ProjectFacade[] project)
         {
             return new MappingFactory(type, project).Build();
         }
@@ -72,7 +72,6 @@ namespace Voodoo.CodeGeneration.Helpers
                     : detailType.buildGeneratedProperty(detailType.Properties.ToList());
                 addMapping(detailType, properties, type.DetailName);
             }
-
 
             return mappings;
         }

@@ -15,8 +15,8 @@ namespace Core.Operations.CurrentUsers
 
         protected override Task<Response<AppPrincipal>> ProcessRequestAsync()
         {
-            var user = IOC.RequestContext.AppPrincipal ?? 
-                new AppPrincipal { UserName = "anonymous" };
+            var user = IOC.RequestContext.AppPrincipal ??
+                       new AppPrincipal {UserName = "anonymous"};
             response.Data = user;
             return Task.FromResult(response);
         }

@@ -27,6 +27,10 @@ namespace Core.Operations.CurrentUsers
         {
             using (context = IOC.GetContext())
             {
+#if DEBUG
+                if (request.UserName == "shawn")
+                    request.UserName = "shawn.doucet";
+#endif
                 user = await context.UserRepository().GetUserAndRolesQuery()
                     .Where(c => c.UserName == request.UserName)
                     .FirstOrDefaultAsync();

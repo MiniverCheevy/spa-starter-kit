@@ -1,8 +1,7 @@
-﻿//import * as Models from "../models.generated";
-//import * as Api from "../api.generated";
-//import { Confirm } from "components/confirm";
+﻿//import { Confirm } from "components/confirm";
 import * as $ from 'jquery';
 import * as toastr from 'toastr';
+import { observable } from 'mobx';
 
 class MessengerServicePrototype {
     private router: any//Router:
@@ -36,7 +35,7 @@ class MessengerServicePrototype {
         if (this.confirmYesAction != null)
             this.confirmYesAction();
     }
-    public numberOfPendingHttpRequest: number;
+    @observable public numberOfPendingHttpRequest: number;
     public clearMessages = () => {
         $("#message2").text('');
         this.messageCss = '';
@@ -45,6 +44,8 @@ class MessengerServicePrototype {
     }
     public showResponseMessage = (response: any//Models.IResponse
     ) => {
+        if (response == null)
+            return;
         //file upload?
         if (this.numberOfPendingHttpRequest < 0)
             this.numberOfPendingHttpRequest = 0;

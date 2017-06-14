@@ -21,11 +21,11 @@ class CurrentUserServicePrototype {
 
     public get = async () => {
 
-        if (this.user == null) {
-            var storedUser = localStorage.getItem("user");
-            if (storedUser != null)
-                this.user = JSON.parse(storedUser);
-        }
+        //if (this.user == null) {
+        //    var storedUser = localStorage.getItem("user");
+        //    if (storedUser != null && storedUser != "undefined")
+        //        this.user = JSON.parse(storedUser);
+        //}
         if (this.user != null && (<any>this.user).refreshTime != null) {
             if ((<any>this.user).refreshTime > new Date()) {
                 console.log('RefreshUser');
@@ -34,7 +34,7 @@ class CurrentUserServicePrototype {
         }
         if (this.user == null) {
             this.user = await this.getUser();
-            localStorage.setItem("user", JSON.stringify(this.user));
+           // localStorage.setItem("user", JSON.stringify(this.user));
             return this.user;
         }
 

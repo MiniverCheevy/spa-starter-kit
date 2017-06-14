@@ -5,7 +5,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.Messages;
 
-namespace Fernweh.Tests.Operations.ApplicationSettings
+namespace Tests.Operations.ApplicationSettings
 {
     [TestClass]
     public class ApplicationSettingDeleteCommandTests

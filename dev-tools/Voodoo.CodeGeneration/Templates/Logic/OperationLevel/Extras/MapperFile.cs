@@ -16,14 +16,14 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
         public List<MappingFactory.Mapping> Mappings { get; set; } = new List<MappingFactory.Mapping>();
         public MapperTemplate Template { get; set; }
 
-        public MapperFile(ProjectFacade project, TypeFacade type)
+        public MapperFile(ProjectFacade project, TypeFacade type, ProjectFacade models)
             : base(project, type)
         {
             OverwriteExistingFile = true;
             Template = new MapperTemplate {File = this};
             Name = string.Format("{0}Extensions", Name);
             PageSpecificUsingStatements.Add(type.SystemType.Namespace);
-            Mappings = MappingFactory.GetMappings(type, project);
+            Mappings = MappingFactory.GetMappings(type, project, models);
             Mappings.ForEach(c => PageSpecificUsingStatements.AddIfNotNullOrWhiteSpace(c.Namespace));
             Mappings.ForEach(c => PageSpecificUsingStatements.AddIfNotNullOrWhiteSpace(c.Namespace));
             PageSpecificUsingStatements.Add(

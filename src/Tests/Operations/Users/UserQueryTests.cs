@@ -7,7 +7,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.Messages;
 
-namespace Fernweh.Tests.Operations.Users
+namespace Tests.Operations.Users
 {
     [TestClass]
     public class UserQueryTests

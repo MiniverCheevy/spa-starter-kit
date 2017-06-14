@@ -4,7 +4,7 @@ using Core.Operations.ApplicationSettings.Extras;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Fernweh.Tests.Operations.ApplicationSettings
+namespace Tests.Operations.ApplicationSettings
 {
     [TestClass]
     public class ApplicationSettingUpdateCommandTests

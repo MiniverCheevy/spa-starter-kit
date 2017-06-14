@@ -7,7 +7,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.TestData;
 
-namespace Fernweh.Tests.Core.Security
+namespace Tests.Core.Security
 {
     [TestClass]
     public class EncryptionTests

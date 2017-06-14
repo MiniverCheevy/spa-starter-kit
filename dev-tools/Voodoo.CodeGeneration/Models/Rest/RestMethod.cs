@@ -13,7 +13,7 @@ namespace Voodoo.CodeGeneration.Models.Rest
         public string Name { get; set; }
         public string Parameter { get; set; }
         public bool AllowAnonymous { get; set; }
-        public string[] Roles { get; set; } = { };
+        public string[] Roles { get; set; } = {};
 
         public string RoleString => !Roles.Any()
             ? null
@@ -23,7 +23,7 @@ namespace Voodoo.CodeGeneration.Models.Rest
 
         public RestMethod()
         {
-            Roles = new string[] { };
+            Roles = new string[] {};
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Core
 
         public static string GetConnectionString()
         {
-            return ContextFactory.GetConnectionString();
+            return ContextFactory?.GetConnectionString() ?? Settings.DefaultConnectionString;
         }
     }
 }

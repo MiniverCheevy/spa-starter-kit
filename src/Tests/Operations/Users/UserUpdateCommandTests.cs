@@ -4,7 +4,7 @@ using Core.Operations.Users.Extras;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Fernweh.Tests.Operations.Users
+namespace Tests.Operations.Users
 {
     [TestClass]
     public class UserUpdateCommandTests

@@ -1,6 +1,8 @@
 ﻿using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Infrastructure;
 using Voodoo.CodeGeneration.Templates.PCL;
+using Voodoo.CodeGeneration.Templates.Web.ProjectLevel;
+using Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks;
 
 namespace Voodoo.CodeGeneration.Batches.PCL
 {
@@ -17,14 +19,16 @@ namespace Voodoo.CodeGeneration.Batches.PCL
 
         public override void Build()
         {
-            var modelTypes = new ClientModelFactory(logic).GetTypes();
-            var models = new ModelsFile(pcl, modelTypes.ToArray());
-            pcl.AddFile(models);
+            var modelTypes = new ClientModelFactory(logic, models).GetTypes();
+            var modelsFile = new ModelsFile(pcl, modelTypes.ToArray());
+            pcl.AddFile(modelsFile);
 
             var restBuilder = new RestBuilder(logic, null);
 
             foreach (var item in restBuilder.Resources)
+            {
                 pcl.AddFile(new ServiceFile(pcl, type, item));
+            }
         }
     }
 }

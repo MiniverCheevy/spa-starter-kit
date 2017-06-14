@@ -18,27 +18,15 @@ namespace Voodoo.CodeGeneration.Projects.SdkProjects
 
         /// <remarks />
         [XmlElement("PropertyGroup")]
-        public ProjectPropertyGroup[] PropertyGroup
-        {
-            get => propertyGroupField;
-            set => propertyGroupField = value;
-        }
+        public ProjectPropertyGroup[] PropertyGroup { get  => propertyGroupField; set  => propertyGroupField  = value; }
 
         /// <remarks />
         [XmlElement("ItemGroup")]
-        public ProjectItemGroup[] ItemGroup
-        {
-            get => itemGroupField;
-            set => itemGroupField = value;
-        }
+        public ProjectItemGroup[] ItemGroup { get  => itemGroupField; set  => itemGroupField  = value; }
 
         /// <remarks />
         [XmlAttribute]
-        public string Sdk
-        {
-            get => sdkField;
-            set => sdkField = value;
-        }
+        public string Sdk { get  => sdkField; set  => sdkField  = value; }
     }
 
     /// <remarks />
@@ -67,76 +55,36 @@ namespace Voodoo.CodeGeneration.Projects.SdkProjects
         private string targetFrameworkField;
 
         /// <remarks />
-        public string OutputPath
-        {
-            get => outputPathField;
-            set => outputPathField = value;
-        }
+        public string OutputPath { get  => outputPathField; set  => outputPathField  = value; }
 
         /// <remarks />
-        public string TargetFramework
-        {
-            get => targetFrameworkField;
-            set => targetFrameworkField = value;
-        }
+        public string TargetFramework { get  => targetFrameworkField; set  => targetFrameworkField  = value; }
 
         /// <remarks />
-        public string AssemblyName
-        {
-            get => assemblyNameField;
-            set => assemblyNameField = value;
-        }
+        public string AssemblyName { get  => assemblyNameField; set  => assemblyNameField  = value; }
 
         /// <remarks />
-        public string RootNamespace
-        {
-            get => rootNamespaceField;
-            set => rootNamespaceField = value;
-        }
+        public string RootNamespace { get  => rootNamespaceField; set  => rootNamespaceField  = value; }
 
         /// <remarks />
-        public object ApplicationIcon
-        {
-            get => applicationIconField;
-            set => applicationIconField = value;
-        }
+        public object ApplicationIcon { get  => applicationIconField; set  => applicationIconField  = value; }
 
         /// <remarks />
-        public string OutputTypeEx
-        {
-            get => outputTypeExField;
-            set => outputTypeExField = value;
-        }
+        public string OutputTypeEx { get  => outputTypeExField; set  => outputTypeExField  = value; }
 
         /// <remarks />
-        public object StartupObject
-        {
-            get => startupObjectField;
-            set => startupObjectField = value;
-        }
+        public object StartupObject { get  => startupObjectField; set  => startupObjectField  = value; }
 
         /// <remarks />
-        public string OutputType
-        {
-            get => outputTypeField;
-            set => outputTypeField = value;
-        }
+        public string OutputType { get  => outputTypeField; set  => outputTypeField  = value; }
 
         /// <remarks />
         [XmlAttribute]
-        public string Label
-        {
-            get => labelField;
-            set => labelField = value;
-        }
+        public string Label { get  => labelField; set  => labelField  = value; }
 
         /// <remarks />
         [XmlAttribute]
-        public string Condition
-        {
-            get => conditionField;
-            set => conditionField = value;
-        }
+        public string Condition { get  => conditionField; set  => conditionField  = value; }
     }
 
     /// <remarks />
@@ -150,19 +98,12 @@ namespace Voodoo.CodeGeneration.Projects.SdkProjects
 
         /// <remarks />
         [XmlElement("Reference")]
-        public ProjectItemGroupReference[] Reference
-        {
-            get => referenceField;
-            set => referenceField = value;
-        }
+        public ProjectItemGroupReference[] Reference { get  => referenceField; set  => referenceField  = value; }
 
         /// <remarks />
         [XmlElement("PackageReference")]
-        public ProjectItemGroupPackageReference[] PackageReference
-        {
-            get => packageReferenceField;
-            set => packageReferenceField = value;
-        }
+        public ProjectItemGroupPackageReference[] PackageReference { get  => packageReferenceField; set  =>
+            packageReferenceField  = value; }
     }
 
     /// <remarks />
@@ -175,11 +116,7 @@ namespace Voodoo.CodeGeneration.Projects.SdkProjects
 
         /// <remarks />
         [XmlAttribute]
-        public string Include
-        {
-            get => includeField;
-            set => includeField = value;
-        }
+        public string Include { get  => includeField; set  => includeField  = value; }
     }
 
     /// <remarks />
@@ -194,18 +131,10 @@ namespace Voodoo.CodeGeneration.Projects.SdkProjects
 
         /// <remarks />
         [XmlAttribute]
-        public string Include
-        {
-            get => includeField;
-            set => includeField = value;
-        }
+        public string Include { get  => includeField; set  => includeField  = value; }
 
         /// <remarks />
         [XmlAttribute]
-        public string Version
-        {
-            get => versionField;
-            set => versionField = value;
-        }
+        public string Version { get  => versionField; set  => versionField  = value; }
     }
 }

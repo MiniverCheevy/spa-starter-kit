@@ -101,7 +101,9 @@ namespace Voodoo.CodeGeneration.Templates.Tests
                     generationEnvironmentField = new StringBuilder();
                 return generationEnvironmentField;
             }
-            set => generationEnvironmentField = value;
+            set  =>
+            generationEnvironmentField  =
+            value;
         }
 
         /// <summary>
@@ -281,7 +283,8 @@ namespace Voodoo.CodeGeneration.Templates.Tests
             /// </summary>
             public IFormatProvider FormatProvider
             {
-                get => formatProviderField;
+                get  =>
+                formatProviderField;
                 set
                 {
                     if (value != null)

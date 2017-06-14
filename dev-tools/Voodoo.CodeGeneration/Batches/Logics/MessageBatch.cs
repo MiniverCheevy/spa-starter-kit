@@ -11,7 +11,7 @@ namespace Voodoo.CodeGeneration.Batches.Logics
         public MessageBatch(string[] targetTypes = null)
             : base(targetTypes)
         {
-            ThrowIfNotFound(Token.Data, Token.Logic);
+            ThrowIfNotFound(Token.Data, Token.Logic, Token.Models);
             GetTargetFrom(Token.Data);
         }
 
@@ -19,7 +19,7 @@ namespace Voodoo.CodeGeneration.Batches.Logics
         {
             data.AddFile(new MessageFile(data, type));
             logic.AddFile(new RepositoryFile(logic, type));
-            logic.AddFile(new MapperFile(logic, type));
+            logic.AddFile(new MapperFile(logic, type, models));
             logic.AddFile(new ExtensionFile(logic, type));
             data.AddFile(new MessagesFile(data, type));
 
