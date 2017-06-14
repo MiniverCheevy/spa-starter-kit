@@ -9,6 +9,14 @@ id? : number;
 name? : string;
 value? : string;
 }
+
+export const EmptyIApplicationSettingMessage =
+{
+    id : number=undefined;
+    name : string=undefined;
+    value : string=undefined;
+}
+
 export interface IApplicationSettingQueryRequest  {
 defaultSortMember? : string;
 sortDirection? : string;
@@ -19,6 +27,19 @@ sortMember? : string;
 totalRecords? : number;
 totalPages? : number;
 }
+
+export const EmptyIApplicationSettingQueryRequest =
+{
+    defaultSortMember : string=undefined;
+    sortDirection : string=undefined;
+    resetPaging : boolean=undefined;
+    pageNumber : number=undefined;
+    pageSize : number=undefined;
+    sortMember : string=undefined;
+    totalRecords : number=undefined;
+    totalPages : number=undefined;
+}
+
 export interface IApplicationSettingQueryResponse extends IResponse {
 state? : IGridState;
 data? : IApplicationSettingMessage[];
@@ -29,6 +50,19 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyIApplicationSettingQueryResponse =
+{
+    state : IGridState=undefined;
+    data : IApplicationSettingMessage[]=undefined;
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IGridState  {
 pageNumber? : number;
 pageSize? : number;
@@ -39,10 +73,30 @@ sortDirection? : string;
 defaultSortMember? : string;
 resetPaging? : boolean;
 }
+
+export const EmptyIGridState =
+{
+    pageNumber : number=undefined;
+    pageSize : number=undefined;
+    totalRecords : number=undefined;
+    totalPages : number=undefined;
+    sortMember : string=undefined;
+    sortDirection : string=undefined;
+    defaultSortMember : string=undefined;
+    resetPaging : boolean=undefined;
+}
+
 export interface INameValuePair  {
 name? : string;
 value? : string;
 }
+
+export const EmptyINameValuePair =
+{
+    name : string=undefined;
+    value : string=undefined;
+}
+
 export interface IAppPrincipal  {
 expiration? : Date;
 refreshTime? : Date;
@@ -55,11 +109,37 @@ roles? : string[];
 isAdmin? : boolean;
 token? : string;
 }
+
+export const EmptyIAppPrincipal =
+{
+    expiration : Date=undefined;
+    refreshTime : Date=undefined;
+    isAuthenticated : boolean=undefined;
+    userName : string=undefined;
+    userId : number=undefined;
+    firstName : string=undefined;
+    lastName : string=undefined;
+    roles : string[]=undefined;
+    isAdmin : boolean=undefined;
+    token : string=undefined;
+}
+
 export interface IClientInfo  {
 timeZoneOffsetInMinutes? : number;
 }
+
+export const EmptyIClientInfo =
+{
+    timeZoneOffsetInMinutes : number=undefined;
+}
+
 export interface IEmptyRequest  {
 }
+
+export const EmptyIEmptyRequest =
+{
+}
+
 export interface IErrorQueryRequest  {
 searchText? : string;
 defaultSortMember? : string;
@@ -71,6 +151,20 @@ sortMember? : string;
 totalRecords? : number;
 totalPages? : number;
 }
+
+export const EmptyIErrorQueryRequest =
+{
+    searchText : string=undefined;
+    defaultSortMember : string=undefined;
+    sortDirection : string=undefined;
+    resetPaging : boolean=undefined;
+    pageNumber : number=undefined;
+    pageSize : number=undefined;
+    sortMember : string=undefined;
+    totalRecords : number=undefined;
+    totalPages : number=undefined;
+}
+
 export interface IErrorQueryResponse extends IResponse {
 state? : IGridState;
 data? : IErrorMessage[];
@@ -81,6 +175,19 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyIErrorQueryResponse =
+{
+    state : IGridState=undefined;
+    data : IErrorMessage[]=undefined;
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IErrorMessage  {
 id? : number;
 creationDate? : Date;
@@ -88,9 +195,25 @@ type? : string;
 message? : string;
 user? : string;
 }
+
+export const EmptyIErrorMessage =
+{
+    id : number=undefined;
+    creationDate : Date=undefined;
+    type : string=undefined;
+    message : string=undefined;
+    user : string=undefined;
+}
+
 export interface IIdRequest  {
 id? : number;
 }
+
+export const EmptyIIdRequest =
+{
+    id : number=undefined;
+}
+
 export enum Lists  {
 Role = 1,
 Lists = 2,
@@ -100,6 +223,13 @@ export interface IListsRequest  {
 includeInactive? : boolean;
 lists? : Lists[];
 }
+
+export const EmptyIListsRequest =
+{
+    includeInactive : boolean=undefined;
+    lists : Lists[]=undefined;
+}
+
 export interface IListsResponse extends IResponse {
 roles? : IListItem[];
 lists? : IListItem[];
@@ -111,10 +241,31 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyIListsResponse =
+{
+    roles : IListItem[]=undefined;
+    lists : IListItem[]=undefined;
+    sqlOperations : IListItem[]=undefined;
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IListItem  {
 value? : number;
 name? : string;
 }
+
+export const EmptyIListItem =
+{
+    value : number=undefined;
+    name : string=undefined;
+}
+
 export interface IMobileErrorRequest  {
 errorMsg? : string;
 url? : string;
@@ -122,6 +273,16 @@ lineNumber? : string;
 column? : string;
 errorObject? : string;
 }
+
+export const EmptyIMobileErrorRequest =
+{
+    errorMsg : string=undefined;
+    url : string=undefined;
+    lineNumber : string=undefined;
+    column : string=undefined;
+    errorObject : string=undefined;
+}
+
 export interface INewItemResponse extends IResponse {
 newItemId? : number;
 numberOfRowsEffected? : number;
@@ -131,6 +292,18 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyINewItemResponse =
+{
+    newItemId : number=undefined;
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IResponse  {
 numberOfRowsEffected? : number;
 isOk? : boolean;
@@ -139,6 +312,17 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyIResponse =
+{
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IResponseOfApplicationSettingMessage extends IResponse {
 data? : IApplicationSettingMessage;
 numberOfRowsEffected? : number;
@@ -148,6 +332,18 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyIResponseOfApplicationSettingMessage =
+{
+    data : IApplicationSettingMessage=undefined;
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IResponseOfUserDetail extends IResponse {
 data? : IUserDetail;
 numberOfRowsEffected? : number;
@@ -157,6 +353,18 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyIResponseOfUserDetail =
+{
+    data : IUserDetail=undefined;
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IUserDetail  {
 id? : number;
 userName? : string;
@@ -168,6 +376,20 @@ password? : string;
 confirmPassword? : string;
 roles? : IListItem[];
 }
+
+export const EmptyIUserDetail =
+{
+    id : number=undefined;
+    userName : string=undefined;
+    clientId : number=undefined;
+    firstName : string=undefined;
+    lastName : string=undefined;
+    lockoutEnabled : boolean=undefined;
+    password : string=undefined;
+    confirmPassword : string=undefined;
+    roles : IListItem[]=undefined;
+}
+
 export interface IResponseOfErrorDetail extends IResponse {
 data? : IErrorDetail;
 numberOfRowsEffected? : number;
@@ -177,6 +399,18 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyIResponseOfErrorDetail =
+{
+    data : IErrorDetail=undefined;
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IErrorDetail  {
 details? : string;
 host? : string;
@@ -188,11 +422,33 @@ type? : string;
 message? : string;
 user? : string;
 }
+
+export const EmptyIErrorDetail =
+{
+    details : string=undefined;
+    host : string=undefined;
+    url : string=undefined;
+    items : IGroupingOfNameValuePair[]=undefined;
+    id : number=undefined;
+    creationDate : Date=undefined;
+    type : string=undefined;
+    message : string=undefined;
+    user : string=undefined;
+}
+
 export interface IGroupingOfNameValuePair  {
 name? : string;
 id? : any;
 data? : INameValuePair[];
 }
+
+export const EmptyIGroupingOfNameValuePair =
+{
+    name : string=undefined;
+    id : any=undefined;
+    data : INameValuePair[]=undefined;
+}
+
 export interface IResponseOfAppPrincipal extends IResponse {
 data? : IAppPrincipal;
 numberOfRowsEffected? : number;
@@ -202,6 +458,18 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyIResponseOfAppPrincipal =
+{
+    data : IAppPrincipal=undefined;
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IUserQueryRequest  {
 searchText? : string;
 clientId? : number;
@@ -215,6 +483,22 @@ sortMember? : string;
 totalRecords? : number;
 totalPages? : number;
 }
+
+export const EmptyIUserQueryRequest =
+{
+    searchText : string=undefined;
+    clientId : number=undefined;
+    defaultSortMember : string=undefined;
+    id : number=undefined;
+    sortDirection : string=undefined;
+    resetPaging : boolean=undefined;
+    pageNumber : number=undefined;
+    pageSize : number=undefined;
+    sortMember : string=undefined;
+    totalRecords : number=undefined;
+    totalPages : number=undefined;
+}
+
 export interface IUserQueryResponse extends IResponse {
 state? : IGridState;
 data? : IUserMessage[];
@@ -225,6 +509,19 @@ message? : string;
 details? : INameValuePair[];
 exception? : any;
 }
+
+export const EmptyIUserQueryResponse =
+{
+    state : IGridState=undefined;
+    data : IUserMessage[]=undefined;
+    numberOfRowsEffected : number=undefined;
+    isOk : boolean=undefined;
+    hasLogicException : boolean=undefined;
+    message : string=undefined;
+    details : INameValuePair[]=undefined;
+    exception : any=undefined;
+}
+
 export interface IUserMessage  {
 id? : number;
 userName? : string;
@@ -232,5 +529,15 @@ clientId? : number;
 firstName? : string;
 lastName? : string;
 roles? : string;
+}
+
+export const EmptyIUserMessage =
+{
+    id : number=undefined;
+    userName : string=undefined;
+    clientId : number=undefined;
+    firstName : string=undefined;
+    lastName : string=undefined;
+    roles : string=undefined;
 }
 

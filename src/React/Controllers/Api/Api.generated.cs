@@ -4,22 +4,27 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 ***************************************************************/
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using Core.Identity;
-using Core.Operations.ApplicationSettings;
-using Core.Operations.ApplicationSettings.Extras;
-using Core.Operations.CurrentUsers;
-using Core.Operations.Errors;
-using Core.Operations.Errors.Extras;
-using Core.Operations.Lists;
-using Core.Operations.Users;
-using Core.Operations.Users.Extras;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Voodoo;
+using Web;
 using Voodoo.Messages;
 using Web.Infrastructure.ExecutionPipeline;
 using Web.Infrastructure.ExecutionPipeline.Models;
-
+using Core.Operations.ApplicationSettings;
+using Core.Operations.ApplicationSettings.Extras;
+using Core.Operations.Users;
+using Core.Operations.Users.Extras;
+using Core.Operations.Lists;
+using Core.Operations.Errors;
+using Core.Operations.Errors.Extras;
+using Core.Operations.CurrentUsers;
+using Core.Identity;
 namespace Web.Controllers.Api
 {
     [Route("api/[controller]")]

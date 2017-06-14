@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		build-vendor.bat = build-vendor.bat
 		build.bat = build.bat
 		ReadMe.txt = ReadMe.txt
+		scratch.html = scratch.html
 		spawn.json = spawn.json
 	EndProjectSection
 EndProject

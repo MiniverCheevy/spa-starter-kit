@@ -4,7 +4,7 @@
 .progress-container {
     height: 6px;
     width: 100%;
-    background-color: #730C02;
+    background-color: #0e4ead;
 }
 
 .progress-conainer,
@@ -35,7 +35,7 @@
     }
 
     .progress .indeterminate {
-        background-color: #26a69a;
+        background-color: #730C02;
     }
 
         .progress .indeterminate:before {

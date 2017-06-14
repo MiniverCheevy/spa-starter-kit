@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Router, Route, HistoryBase } from 'react-router';
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
+import { hashHistory } from 'react-router-dom';
 import {  Switch } from 'react-router-dom';
 import { Layout } from './Layout/layout';
 import { Home } from './scenes/Home/Home';
@@ -10,11 +11,11 @@ import { UserListContainer } from './scenes/users/userListContainer';
 export class Routes extends React.Component<any, void>
 {
     render() {
-        return <Switch>
+        return <Router history={hashHistory}>
             
             <Route path='/user-list' component={UserListContainer} />
             <Route path='/' component={Home} />
-        </Switch >;
+        </Router >;
     }
     // the '/' route must be last, router navs to the first thing it matches
 }

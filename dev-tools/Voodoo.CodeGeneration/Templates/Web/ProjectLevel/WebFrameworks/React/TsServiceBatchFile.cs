@@ -46,7 +46,7 @@ import * as Models from './models.generated';");
 			        MessengerService.incrementHttpRequestCounter();
                     var response = await AjaxService.build{verb.Name}Request(request, this.url)
                      if (response.isOk != undefined) {{
-                var out = <Models.Response>response;
+                var out = <Models.IResponse>response;
                 result = out;
             }}
             else {{

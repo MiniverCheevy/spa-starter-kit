@@ -16,7 +16,6 @@ module.exports = (env) => {
         stats: { modules: false },
         entry: {
             'main': ['babel-polyfill', './ClientApp/boot.tsx',
-                './ClientApp/theme/theme.css',
                 './ClientApp/theme/site.css']
         },
         resolve: { extensions: [ '.js', '.jsx', '.ts', '.tsx' ] },

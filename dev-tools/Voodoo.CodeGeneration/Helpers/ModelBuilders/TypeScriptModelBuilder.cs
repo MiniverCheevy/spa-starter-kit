@@ -138,6 +138,14 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             var type = ConvertTypeName(property.PropertyType);
             return $" {LowerCaseFirstLetter(name)}? : {type};";
         }
+        public string GetConstPropertyDeclaration(PropertyInfo property, bool isLast)
+        {
+            var name = property.Name;
+
+            var lastChar = isLast ? string.Empty : ",";
+            var type = ConvertTypeName(property.PropertyType);
+            return $" {LowerCaseFirstLetter(name)}:undefined{lastChar}";
+        }
 
         public string ConvertTypeName(Type type)
         {

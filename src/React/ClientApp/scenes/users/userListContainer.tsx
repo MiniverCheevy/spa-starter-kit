@@ -2,6 +2,9 @@
 import * as Api from './../../api.generated';
 import * as Models from './../../models.generated';
 import { userList } from './userList'
+import { observer } from 'mobx-react';
+import { observable, IObservableArray} from 'mobx';
+
 
 export class UserListProps {
     users: Models.IUserMessage[] = [];
@@ -10,32 +13,29 @@ export class UserListProps {
     onRefresh(request: Models.IUserQueryRequest): void{ };
 }
 
+@observer
 export class UserListContainer extends React.Component<any, any>
 {
+    @observable request: Models.IUserQueryRequest = Models.EmptyIUserQueryRequest;
+    @observable users: IObservableArray<Models.IUserMessage> = observable([]);
     constructor(props) {
         super(props);
         this.state = {
             users: [], request: {}
         };
+        this.refresh(this.request);
     }
-    setStateAsync(response) {
-        return new Promise((resolve) => {
-            if (response.isOk) {
-                this.setState({ users: response.data, request: response.state }, resolve);
-            }
-        });
-    }
-    async componentDidMount() {
-        var response = await Api.UserList.get(this.state.request);
-        await this.setStateAsync(response);
-        
-
-    }
+   
+   
     public edit(user: Models.IUserMessage) {
 
     }
-    public refresh(request: Models.IUserQueryRequest) {
-
+    public refresh=async(request: Models.IUserQueryRequest) =>{
+        var response = await Api.UserList.get(this.state.request);
+        if (response.isOk)
+        {
+            this.users.replace(response.data);
+        }
     }
     render() {
         return (
