@@ -244,3 +244,9 @@ navbar-collapse .main-nav .navbar a {
 .up {
     margin-top: -30px;
 }
+
+
+a.mdc-toolbar__title {
+    text-decoration: none;
+    color:white;
+}

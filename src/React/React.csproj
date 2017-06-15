@@ -9,16 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ClientApp\scenes\errors\**" />
     <Compile Remove="wwwroot\assets\**" />
+    <Content Remove="ClientApp\scenes\errors\**" />
     <Content Remove="wwwroot\assets\**" />
+    <EmbeddedResource Remove="ClientApp\scenes\errors\**" />
     <EmbeddedResource Remove="wwwroot\assets\**" />
+    <None Remove="ClientApp\scenes\errors\**" />
     <None Remove="wwwroot\assets\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    
-    
-    <Folder Include="ClientApp\scenes\errors\" />
   </ItemGroup>
 
   <ItemGroup>

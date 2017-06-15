@@ -1,9 +1,6 @@
 ﻿import * as React from 'react';
-import * as Api from './../../api.generated';
-import * as Models from './../../models.generated';
-import { userList } from './userList'
-import { observer } from 'mobx-react';
-import { observable, IObservableArray} from 'mobx';
+import { userList } from './user-list'
+import { observer, observable, IObservableArray, Models, Api } from './../../root';
 
 
 export class UserListProps {
@@ -23,9 +20,12 @@ export class UserListContainer extends React.Component<any, any>
         this.state = {
             users: [], request: {}
         };
+        
+    }
+    public componentDidMount()
+    {
         this.refresh(this.request);
     }
-   
    
     public edit(user: Models.IUserMessage) {
 
@@ -38,6 +38,7 @@ export class UserListContainer extends React.Component<any, any>
         }
     }
     render() {
+        console.log('user-list-container render')
         return (
             userList({
                 request: this.state.request,

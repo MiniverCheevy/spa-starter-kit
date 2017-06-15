@@ -1,4 +1,8 @@
-﻿//export { CurrentUserService } from "./services/current-user-service";
-//export { MessengerService } from "./services/messenger-service";
+﻿import { CurrentUserService } from "./current-user-service";
+import { MessengerService } from "./messenger-service";
 
-//seems to break webpack, research
+export {
+CurrentUserService,
+MessengerService
+}
+

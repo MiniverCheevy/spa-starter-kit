@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
-import * as Api from './../../api.generated';
-import * as Models from './../../models.generated';
-import { UserListProps } from "./userListContainer"
+import { Api, Models } from './../../root';
+import { UserListProps } from "./user-list-container"
 
 //https://medium.com/missive-app/45-faster-react-functional-components-now-3509a668e69f
 

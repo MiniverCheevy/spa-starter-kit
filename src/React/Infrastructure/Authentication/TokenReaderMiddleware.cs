@@ -23,10 +23,18 @@ namespace Web.Infrastructure.Authentication
                 var headers = context.Request.Headers;
                 if (headers.ContainsKey(key))
                 {
-                    var token = headers[key].ToString();
-                    var decrypted = Encryption.Decrypt<AppPrincipal>(token);
-                    if (decrypted.Expiration < DateTime.Now)
-                        context.Items[RequestContextProvider.AppPrincipal] = decrypted;
+                    try
+                    {
+                        var token = headers[key].ToString();
+                        var decrypted = Encryption.Decrypt<AppPrincipal>(token);
+                        if (decrypted.Expiration < DateTime.Now)
+                            context.Items[RequestContextProvider.AppPrincipal] = decrypted;
+                    }
+                    catch
+                    {
+                        // ignored, token is invalid don't set the user
+                        // do not log this or it will spam the error log
+                    }
                 }
             }
             await next(context);
