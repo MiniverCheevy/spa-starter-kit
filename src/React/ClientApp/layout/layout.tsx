@@ -9,13 +9,13 @@ export interface LayoutProps {
 }
 export class Layout extends React.Component<LayoutProps, void> {
     public render() {
-        return  <div>
-                    <div>
-                        <NavMenu />
-                    </div>
-                    <div id="container" className="mdc-toolbar-fixed-adjust">
-                        {this.props.children}
-                    </div>           
-                </div>;
+        return <div>
+            <div>
+                <NavMenu />
+            </div>
+            <div id="container" className="mdc-toolbar-fixed-adjust">
+                {this.props.children}
+            </div>
+        </div>;
     }
 }

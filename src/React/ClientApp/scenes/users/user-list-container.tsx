@@ -2,9 +2,6 @@
 import { userList } from './user-list'
 import { observer, observable, IObservableArray, Models, Api } from './../../root';
 
-
-
-
 @observer
 export class UserListContainer extends React.Component<any, any>
 {
