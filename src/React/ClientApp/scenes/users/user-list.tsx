@@ -3,17 +3,17 @@ import * as React from 'react';
 import { Models, Components } from './../../root';
 
 export const userList = (props: UserListProps) => {
+
     var header = getHeader();
     var rows = getRows(props);
-    return <div>{Components.DataTable(header,rows,props.request,props.refresh)}  </div>  
+    return <div>{Components.DataTable(header, rows, props.request, props.refresh)}  </div>
 };
-const getHeader = () =>
-{
+const getHeader = () => {
     return [{ text: '' },
-            { text: 'User Name', sortMember: 'UserName' },
-            { text: 'First Name', sortMember: 'FirstName' },
-            { text: 'Last Name', sortMember: 'LastName' },
-            { text: 'Roles' }];
+    { text: 'User Name', sortMember: 'UserName' },
+    { text: 'First Name', sortMember: 'FirstName' },
+    { text: 'Last Name', sortMember: 'LastName' },
+    { text: 'Roles' }];
 }
 const getRows = (props: UserListProps) => {
     return props.users.map(

@@ -1,7 +1,15 @@
 ﻿import * as React from 'react';
 
 import { Models, Components } from './../root';
+
+export class DataTableProps
+{
+
+}
 export const DataTable = (headers: ColumnHeader[], rows, request: Models.IGridState, refresh: (request: Models.IGridState) => void) => {
+    //if (!request.totalRecords)
+    //    return <div></div>;
+
     var headerRow = getHeaders(headers, request, refresh);
     return <div className="mdc-card ">
         <table className="data-table mdc-card__primary">
@@ -16,22 +24,20 @@ export const DataTable = (headers: ColumnHeader[], rows, request: Models.IGridSt
         <section className="mdc-card__supporting-text">
         </section>
         <section className="mdc-card__actions">
-            PAGER
+            Pager
         </section>
     </div>;
 }
-const getHeaders=(headers: ColumnHeader[],  request: Models.IGridState, refreshMethod: (request: Models.IGridState) => void)=>
-{
-     var cells = headers.map(
+const getHeaders = (headers: ColumnHeader[], request: Models.IGridState, refreshMethod: (request: Models.IGridState) => void) => {
+    var cells = headers.map(
         (header: ColumnHeader) => {
             return header.sortMember ?
                 <th><Components.Sorter gridState={request} refresh={refreshMethod} member={header.sortMember} text={header.text} /></th> :
                 <th>{header.text}</th>
         });
-        return <tr>{cells}</tr>;
+    return <tr key={0}>{cells}</tr>;
 }
-export class ColumnHeader
-{
+export class ColumnHeader {
     text: string;
     sortMember?: string;
 }

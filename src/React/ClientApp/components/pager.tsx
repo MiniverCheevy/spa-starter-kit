@@ -1,61 +1,81 @@
 ﻿import * as React from 'react';
-import { Models } from './../models.generated';
+import { Models, observer, observable, IObservableValue, IObservableArray } from './../root';
 
 export class PagerProps {
-    request: Models.IGridState;
+    gridState: Models.IGridState;
     refresh(request: Models.IGridState): void { };
+}
+
+class PageBlock
+{
+    page: number;
+    isActive: boolean;
 }
 export class Pager extends React.Component<PagerProps, any>
 {
-    constructor(props) {
+    pageBlock: IObservableArray<PageBlock> = observable([]);
+    isLastBlock: boolean = false;
+    isFirstBlock: boolean = false;
+    isFirstPage: boolean = false;
+    isLastPage: boolean = false;
+    hasRecords: IObservableValue<boolean> = observable(false);
+    totalPages: number = 0;
+    blockSize: number = 10;
+    nextBlockPage: number;
+    prevBlockPage: number;
+    recordsVerbiage: string;
+    gridState: Models.IGridState;
+
+    constructor(props: PagerProps) {
         super(props);
+        this.gridState = observable(props.gridState);
     }
     public resetPagingIfNeeded = () => {
-        if (this.props.request != null && this.props.request.resetPaging)
-            this.props.request.pageNumber = 1;
+        if (this.gridState != null && this.gridState.resetPaging)
+            this.gridState.pageNumber = 1;
     };
     public setup = () => {
-        if (this.props.request.totalRecords == undefined) {
-            this.hasRecords = false;
+        if (this.gridState.totalRecords == undefined) {
+            this.hasRecords.set(false);
             return;
         }
-        this.hasRecords = this.props.request.totalRecords !== 0;
+        this.hasRecords.set( this.gridState.totalRecords !== 0);
 
-        this.totalPages = Math.ceil(this.props.request.totalRecords / this.props.request.pageSize);
+        this.totalPages = Math.ceil(this.gridState.totalRecords / this.gridState.pageSize);
         var blocks = [];
-        var blockNumber = Math.ceil(this.props.request.pageNumber / this.blockSize) - 1;
+        var blockNumber = Math.ceil(this.gridState.pageNumber / this.blockSize) - 1;
         var blockStart = blockNumber * this.blockSize;
         var min = blockStart + 1;
         var max = blockStart + this.blockSize;
 
         for (let i = 1; i < this.blockSize + 1; i++) {
             if (blockStart + i < this.totalPages + 1)
-                blocks.push({ page: blockStart + i, isActive: blockStart + i === this.props.request.pageNumber });
+                blocks.push({ page: blockStart + i, isActive: blockStart + i === this.gridState.pageNumber });
         }
-        this.pageBlock = blocks;
+        this.pageBlock.replace(blocks);
 
-        var pageNumber = this.props.request.pageNumber;
+        var pageNumber = this.gridState.pageNumber;
         this.prevBlockPage = min - 1;
         this.nextBlockPage = max + 1;
 
-        this.isLastBlock = this.pageBlock.length > 0 && max >= this.totalPages;
+        this.isLastBlock =this.pageBlock.length > 0 && max >= this.totalPages;
         this.isFirstBlock = min === 1;
         this.isFirstPage = pageNumber === 1;
         this.isLastPage = this.totalPages === pageNumber;
-        var startRow = ((pageNumber - 1) * this.props.request.pageSize) + 1;
-        var endRow = startRow + this.props.request.pageSize - 1;
+        var startRow = ((pageNumber - 1) * this.gridState.pageSize) + 1;
+        var endRow = startRow + this.gridState.pageSize - 1;
         if (this.isLastPage)
-            endRow = this.props.request.totalRecords;
+            endRow = this.gridState.totalRecords;
 
-        this.recordsVerbiage = 'Showing ' + startRow + ' to ' + endRow + ' of ' + this.props.request.totalRecords;
+        this.recordsVerbiage = 'Showing ' + startRow + ' to ' + endRow + ' of ' + this.gridState.totalRecords;
     }
     public update = () => {
-        this.page(this.props.request.pageNumber);
+        this.page(this.gridState.pageNumber);
     }
     public page = (number) => {
 
-        this.props.request.pageNumber = number;
-        this.props.refresh(this.props.request);
+        this.gridState.pageNumber = number;
+        this.props.refresh(this.gridState);
     };
     public firstPage = () => {
         return this.page(1);
@@ -64,10 +84,10 @@ export class Pager extends React.Component<PagerProps, any>
         return this.page(this.prevBlockPage);
     };
     public prevPage = () => {
-        return this.page(this.props.request.pageNumber - 1);
+        return this.page(this.gridState.pageNumber - 1);
     };
     public nextPage = () => {
-        return this.page(this.props.request.pageNumber + 1);
+        return this.page(this.gridState.pageNumber + 1);
     };
     public nextBlock = () => {
         return this.page(this.nextBlockPage);
@@ -76,19 +96,12 @@ export class Pager extends React.Component<PagerProps, any>
         return this.page(this.totalPages);
     };
 
-    pageBlock: any[];
-    isLastBlock: boolean = false;
-    isFirstBlock: boolean = false;
-    isFirstPage: boolean = false;
-    isLastPage: boolean = false;
-    hasRecords: boolean = false;
-    totalPages: number = 0;
-    blockSize: number = 10;
-    nextBlockPage: number;
-    prevBlockPage: number;
-    recordsVerbiage: string;
+    
 
     render() {
+        console.log('pager render');
+        console.log(this.gridState.totalRecords);
+        this.setup();
         var noRecords = <div id="norecords" ><h3 className="mdc-typography--body2">No records found</h3></div>;
         var pager = this.pager();
 
@@ -116,7 +129,7 @@ export class Pager extends React.Component<PagerProps, any>
         return <div className="mdc-form-field">
             <label>Page Size</label>
             <select
-                value={this.props.request.pageSize}
+                value={this.gridState.pageSize}
                 onChange={this.props.refresh}
             >
                 <option>10</option>
@@ -126,7 +139,66 @@ export class Pager extends React.Component<PagerProps, any>
             </select>
         </div >;
     }
-    button = (text, isDisabled, method, isActive) => {
+    
+    buttons = () => {
+        //return this.pageBlock.map((block) => {
+        //    
+        //});
+
+    }
+    foo()
+    {
+       
+        //{ this.button("...", this.isFirstBlock, this.firstPage(), false) }
+        //{ this.button("&lt", this.isFirstPage, this.prevPage(), false) }
+        //{ this.buttons() }
+        //{ this.button("&lt", this.isLastPage, this.nextPage(), false) }
+        //{ this.button("...", this.isLastBlock, this.nextBlock(), false) }
+        //{ this.button("&laquo;", this.isLastPage, this.lastPage(), false) }
+    }
+    pager = () => {
+        console.log('pager method');
+        var buttons = this.pageBlock.map(
+            (block) => {
+                return <PagerButton text={block.page.toString()} isDisabled={this.isFirstPage} method={this.page(block.page)} isActive={block.isActive} />
+            });
+        return <div>
+            <div className="pagination">
+                <PagerButton text="&laquo;" isDisabled={this.isFirstBlock} method={this.firstPage} isActive={false} />
+                <PagerButton text="..." isDisabled={this.isFirstPage} method={this.prevPage} isActive={false} />
+                <PagerButton text="&lt;" isDisabled={this.isFirstBlock} method={this.prevBlock} isActive={false} />
+                {buttons}
+                <PagerButton text="&gt;" isDisabled={this.isLastPage} method={this.nextPage} isActive={false} />
+                <PagerButton text="..." isDisabled={this.isLastBlock} method={this.nextBlock} isActive={false} />
+                <PagerButton text="&raquo;" isDisabled={this.isLastPage} method={this.lastPage} isActive={false} />
+                
+            <div>
+                    <span className="mdc-typography--body1">{this.recordsVerbiage}</span>
+                </div>
+            </div >
+        </div>
+    }
+
+}
+class PagerButtonProps
+{
+    text: string;
+    isDisabled: boolean;
+    method: any;// (request: Models.IGridState)=> void;
+    isActive?: boolean;
+}
+class PagerButton extends React.Component<PagerButtonProps,any>
+{
+    constructor(props: PagerButtonProps) {
+        super(props);        
+    }
+
+    render() {
+        var text = this.props.text;
+        var isDisabled = this.props.isDisabled;
+        var method = this.props.method;
+        var isActive = this.props.isDisabled;
+
         var classes = "mdc-button mdc-button--raised mdc-button--compact mdc-ripple-upgraded mdc-ripple-upgraded--foreground-deactivation";
         if (isActive)
             classes = "mdc-button mdc-button--raised mdc-button--primary mdc-ripple-upgraded mdc-ripple-upgraded--foreground-deactivation";
@@ -141,27 +213,4 @@ export class Pager extends React.Component<PagerProps, any>
             >{text}</button>
         }
     };
-    buttons = () => {
-        return this.pageBlock.map((block) => {
-            return this.button(block.page.ToString(), false, this.page(block.page), block.isActive);
-        });
-
-    }
-    pager = () => {
-        return <div>
-            <div className="pagination">
-                this.button("&laquo;",this.isFirstPage,firstPage());
-                this.button("...",this.isFirstBlock,firstBlock());
-                this.button("&lt",this.isFirstPage,prevPage());
-                this.buttons();
-                this.button("&lt",this.isLastPage,nextPage());
-                this.button("...",this.isLastBlock,nextBlock());
-                this.button("&laquo;",this.isLastPage,lastPage());
-            <div>
-                    <span className="mdc-typography--body1">{this.recordsVerbiage}</span>
-                </div>
-            </div >
-        </div>
-    }
-
 }

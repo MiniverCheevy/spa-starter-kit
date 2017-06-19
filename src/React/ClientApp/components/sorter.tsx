@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { observable, IObservableObject, Models } from './../root';
+import { observable, Models } from './../root';
 
 export class SorterProps {
     member: string = '';
@@ -43,8 +43,7 @@ export class Sorter extends React.Component<SorterProps, any>
         this.props.refresh(this.gridState);
     }
 
-    render() {
-
+    render() {       
         var showUp = this.isCurrentSortAsc();
         var showDown = this.isCurrentSortDesc();
         var showFaded = !showUp && !showDown;
@@ -55,7 +54,7 @@ export class Sorter extends React.Component<SorterProps, any>
             <i className="mdi mdi-arrow-up"></i>
         </span>;
         return <span>
-            <span className="sort-indicator">
+            <span className="sort-indicator">                
                 {showUp && upArrow}
                 {showDown && downArrow}
                 {showFaded && fadedArrow}
@@ -65,5 +64,4 @@ export class Sorter extends React.Component<SorterProps, any>
             </span>
         </span>
     }
-
 }

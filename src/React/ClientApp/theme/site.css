@@ -299,3 +299,6 @@ a.mdc-toolbar__title {
     width: 12px;
     opacity: .54;
 }
+.pagination button {
+    width: 24px !important;
+}
