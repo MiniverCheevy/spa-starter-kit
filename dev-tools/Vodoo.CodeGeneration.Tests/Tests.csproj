@@ -73,9 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInitialize.cs" />
-    <Compile Include="CodeGeneration\Helpers\ModelBuilders\TestClassAttribute.cs" />
     <Compile Include="CodeGeneration\Helpers\ModelBuilders\TestClasses\DateTest.cs" />
-    <Compile Include="CodeGeneration\Helpers\ModelBuilders\TestMethodAttribute.cs" />
     <Compile Include="CodeGeneration\Helpers\ModelBuilders\TypescriptMetadataBuilderTests.cs" />
     <Compile Include="CodeGeneration\Projects\SdkProjects\SdkProjectTests.cs" />
     <Compile Include="CodeGeneration\Projects\ToolsProjects\ToolsProjectTests.cs" />

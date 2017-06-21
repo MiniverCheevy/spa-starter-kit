@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -20,7 +21,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         }
         public string Build()
         {
-            output.AppendLine($"export const Empty{typeName}Metadata =");
+            output.AppendLine($"export const {typeName}Metadata =");
 
             output.AppendLine(" {");
             var lastProperty = properties.Any() ? properties.Last() : null;
@@ -41,27 +42,101 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             var decimalType = new Type[] { typeof(decimal) };
 
             if (dateTypes.Contains(property.PropertyType))
-                generateDateDeclaration();
+                generateDateDeclaration(property);
             else if (intTypes.Contains(property.PropertyType))
-                generateIntDeclaration();
+                generateIntDeclaration(property);
             else if (decimalType.Contains(property.PropertyType))
-                generateDecimalDeclaration();
+                generateDecimalDeclaration(property);
 
         }
 
-        private void generateDateDeclaration()
+        private RangeAttribute GetRangeAttribute(PropertyInfo info)
         {
-            throw new NotImplementedException();
+            return info.GetCustomAttribute<RangeAttribute>();
         }
 
-        private void generateIntDeclaration()
+        private void generateDateDeclaration(PropertyInfo property)
         {
-            throw new NotImplementedException();
+            output.AppendLine($"date:{{");
+            output.AppendLine("shouldValidate:true");
+            var range = GetRangeAttribute(property);
+            if (range != null)
+            {
+                if (range.Minimum != null)
+                {
+                    output.Append(",");
+                    output.AppendLine($"min: new Date('{range.Minimum}')");
+                }
+                if (range.Maximum != null)
+                {
+                    output.Append(",");
+                    output.AppendLine($"max: new Date('{range.Maximum}')");
+                }
+                
+                if (range.ErrorMessage != null)
+                {
+                    output.Append(",");
+                    output.AppendLine($"message: '{range.ErrorMessage}'");
+                }
+                
+            }
+            
+            output.AppendLine("}");
         }
 
-        private void generateDecimalDeclaration()
+
+    private void generateIntDeclaration(PropertyInfo property)
         {
-            throw new NotImplementedException();
+            output.AppendLine($"int:{{");
+            output.AppendLine("shouldValidate:true");
+            var range = GetRangeAttribute(property);
+            if (range != null)
+            {
+                if (range.Minimum != null)
+                {
+                    output.Append(",");
+                    output.AppendLine($"min: {range.Minimum}");
+                }
+                if (range.Maximum != null)
+                {
+                    output.Append(",");
+                    output.AppendLine($"max: {range.Maximum}");
+                }
+
+                if (range.ErrorMessage != null)
+                {
+                    output.Append(",");
+                    output.AppendLine($"message: '{range.ErrorMessage}'");
+                }
+
+            }
+        }
+
+        private void generateDecimalDeclaration(PropertyInfo property)
+        {
+            output.AppendLine($"decimal:{{");
+            output.AppendLine("shouldValidate:true");
+            var range = GetRangeAttribute(property);
+            if (range != null)
+            {
+                if (range.Minimum != null)
+                {
+                    output.Append(",");
+                    output.AppendLine($"min: {range.Minimum}");
+                }
+                if (range.Maximum != null)
+                {
+                    output.Append(",");
+                    output.AppendLine($"max: {range.Maximum}");
+                }
+
+                if (range.ErrorMessage != null)
+                {
+                    output.Append(",");
+                    output.AppendLine($"message: '{range.ErrorMessage}'");
+                }
+
+            }
         }
     }
 }
