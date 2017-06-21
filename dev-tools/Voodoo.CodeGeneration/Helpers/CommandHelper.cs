@@ -10,7 +10,7 @@ namespace Voodoo.CodeGeneration.Helpers
 {
     public class CommandHelper
     {
-        public List<GeneratorCommand> Commands { get; set; }
+        private List<GeneratorCommand> Commands { get; set; }
 
         public CommandHelper()
         {

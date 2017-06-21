@@ -74,8 +74,7 @@
     <Compile Include="Infrastructure\IRequestContextProvider.cs" />
     <Compile Include="Infrastructure\Metadata\DisplayFormat.cs" />
     <Compile Include="Infrastructure\Metadata\FormMetadata.cs" />
-    <Compile Include="Infrastructure\Metadata\GridMetadata.cs" />
-    <Compile Include="Infrastructure\Metadata\HiddenAttribute.cs" />
+    <Compile Include="Infrastructure\Metadata\UIAttribute.cs" />
     <Compile Include="Infrastructure\Metadata\UIMetadata.cs" />
     <Compile Include="Infrastructure\RequestContext.cs" />
     <Compile Include="Infrastructure\Settings.cs" />

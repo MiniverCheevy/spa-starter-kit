@@ -1,0 +1,18 @@
+<div>
+    <div class="progress-container" >
+        <div className="progress" *ngIf="messengerService.numberOfPendingHttpRequest != 0">
+            <div className="indeterminate"></div>
+        </div>
+    </div>
+    <header class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall">
+        <div class="mdc-toolbar__row">
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                <a href="/" class="mdc-toolbar__title">Angular</a>
+            </section>
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+                <toolbar-icon-link  route="home" icon="home" title="home"></toolbar-icon-link>
+                <toolbar-icon-link route="user-list" icon="account-multiple" title="Users" ></toolbar-icon-link>
+            </section>
+        </div>
+    </header>
+</div>

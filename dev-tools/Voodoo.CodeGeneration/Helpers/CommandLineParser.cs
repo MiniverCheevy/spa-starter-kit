@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Voodoo.CodeGeneration.Helpers
 {
-    internal class CommandLineParser
+    internal static class CommandLineParser
     {
-        internal static CommandHelper commands = new CommandHelper();
+        private static CommandHelper commands = new CommandHelper();
 
         internal static void ParseAndExecute(string[] args)
         {

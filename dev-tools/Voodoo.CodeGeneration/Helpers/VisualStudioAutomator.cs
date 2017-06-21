@@ -13,7 +13,7 @@ namespace Voodoo.CodeGeneration.Helpers
             var vsProcess = getVsProcess();
             if (vsProcess != null)
             {
-                vsProcess.StartInfo.Arguments = string.Format("/Edit {0}", file.FullPath);
+                vsProcess.StartInfo.Arguments = $"/Edit {file.FullPath}";
                 vsProcess.Start();
             }
             else

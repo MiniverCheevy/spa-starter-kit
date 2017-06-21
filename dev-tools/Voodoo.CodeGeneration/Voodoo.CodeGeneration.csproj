@@ -145,6 +145,7 @@
     <Compile Include="Helpers\ModelBuilders\PCLModelBuilder.cs" />
     <Compile Include="Helpers\ModelBuilders\ServiceDeclaration.cs" />
     <Compile Include="Helpers\ModelBuilders\TypeScriptGraphBuilder.cs" />
+    <Compile Include="Helpers\ModelBuilders\TypescriptMetadataBuilder.cs" />
     <Compile Include="Helpers\ModelBuilders\TypeScriptModelBuilder.cs" />
     <Compile Include="Helpers\NameValuePairBuilder.cs" />
     <Compile Include="Helpers\RestBuilder.cs" />
@@ -162,7 +163,6 @@
     <Compile Include="Batches\Logics\MessageBatch.cs" />
     <Compile Include="Batches\Logics\QueryBatch.cs" />
     <Compile Include="Batches\PCL\PCLBatch.cs" />
-    <Compile Include="Batches\ScratchFiles\MappingBatch.cs" />
     <Compile Include="Batches\Tests\TestBatch.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Empty.cs" />
@@ -296,7 +296,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MappingTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Batches\ScratchFiles\TypeScriptModelBatch.cs" />
     <Compile Include="Batches\Token.cs" />
     <Compile Include="Batches\Webs\WebBatch.cs" />
     <Compile Include="Models\ConfigurationFile.cs" />
@@ -401,17 +400,17 @@
       <DependentUpon>UpdateSaveCommandTestsTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Web\ProjectLevel\ApiControllerFile.cs" />
-    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceFile.cs" />
-    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceTemplate.cs">
-      <DependentUpon>TsServiceTemplate.tt</DependentUpon>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceBatchFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceBatchTemplate.cs">
+      <DependentUpon>TsServiceBatchTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TypeScriptModelsFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TypeScriptModelsTemplate.cs">
       <DependentUpon>TypeScriptModelsTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\JsServiceFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\JsServiceTemplate.cs">
@@ -595,9 +594,9 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UpdateSaveCommandTestsTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceTemplate.tt">
+    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceBatchTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TsServiceTemplate.cs</LastGenOutput>
+      <LastGenOutput>TsServiceBatchTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TypeScriptModelsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

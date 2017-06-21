@@ -31,6 +31,28 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
             var properties = currentType.GetProperties();
 
+            buildInterfaceDeclaration(isResponse, typeName, properties);
+            buildConstantDeclaration(typeName, properties);
+
+        }
+
+        private void buildConstantDeclaration(string typeName, PropertyInfo[] properties)
+        {
+            output.AppendLine($"export const Empty{typeName} =");
+
+            output.AppendLine(" {");
+            var lastProperty = properties.Any() ? properties.Last() : null;
+            foreach (var property in properties)
+            {
+                var isLast = property == lastProperty;
+                output.AppendLine(builder.GetConstPropertyDeclaration(property, isLast));
+            }
+            output.AppendLine("}");
+            output.AppendLine();
+        }
+
+        private void buildInterfaceDeclaration(bool isResponse, string typeName, PropertyInfo[] properties)
+        {
             output.Append($"export interface {typeName} ");
             if (isResponse && typeName != "IResponse")
             {
@@ -42,17 +64,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 output.AppendLine(builder.GetPropertyDeclaration(property));
             output.AppendLine("}");
             output.AppendLine();
-            output.AppendLine($"export const Empty{typeName} =");
             
-            output.AppendLine(" {");
-            var lastProperty = properties.Any() ? properties.Last() : null;
-            foreach (var property in properties)
-            {
-                var isLast = property == lastProperty;
-                output.AppendLine(builder.GetConstPropertyDeclaration(property, isLast));
-            }
-            output.AppendLine("}");
-            output.AppendLine();
         }
 
         protected override void buildEnumDeclaration(Type currentType)
