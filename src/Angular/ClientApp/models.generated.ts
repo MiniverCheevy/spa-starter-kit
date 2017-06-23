@@ -10,6 +10,16 @@ name? : string;
 value? : string;
 }
 
+export const testMetadata =
+    {
+        date: {
+            shouldValidate: true
+            , min: new Date('1/1/1980')
+            , max: new Date('1/1/2050')
+            , message: 'AAAAAHHHHHHHH'
+        }
+    }
+
 export const EmptyIApplicationSettingMessage =
 {
     id:undefined,
