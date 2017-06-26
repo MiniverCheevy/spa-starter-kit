@@ -2,7 +2,7 @@
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
-using Fernweh.Core.Migrations;
+using Core.Migrations;
 using Voodoo;
 using Voodoo.Logging;
 
