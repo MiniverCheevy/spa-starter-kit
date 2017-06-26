@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Diagnostics;
-using Fernweh.Core;
-using Fernweh.Core.Infrastructure;
+//using Fernweh.Core;
+//using Fernweh.Core.Infrastructure;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo.Logging;

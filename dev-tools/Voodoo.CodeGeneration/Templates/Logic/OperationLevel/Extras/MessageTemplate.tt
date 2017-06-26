@@ -14,7 +14,6 @@ using <#=item#>;
 <#}#>
 namespace <#=this.File.Namespace#>
 {
-	[MapsTo(typeof(<#=this.File.Type.Name#>))]
     public class <#=this.File.Type.MessageName#>
     {
         <#foreach(var item in this.File.Type.MessageProperties){#>
@@ -23,12 +22,9 @@ namespace <#=this.File.Namespace#>
 		<#}#>
 	public <#=item.StringifiedTypeName#> <#=item.PropertyName#> {get;set;}
 
-			<#}#>
-
-		
+			<#}#>		
     }
 	<#if(File.HasDetail){#>
-	[MapsTo(typeof(<#=this.File.Type.Name#>))]
 	public class <#=this.File.Type.DetailName#>
 	{
 	<#foreach(var item in this.File.Type.DetailMessageProperties){#>

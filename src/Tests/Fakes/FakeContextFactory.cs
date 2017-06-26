@@ -1,9 +1,10 @@
-﻿using System.Data.Common;
+﻿using System;
+using System.Data.Common;
 using Core.Context;
 using Core.Infrastructure;
 using Effort;
 
-namespace Tests.Fakes
+namespace Fernweh.Tests.Fakes
 {
     public class FakeContextFactory : IContextFactory
     {
@@ -25,7 +26,6 @@ namespace Tests.Fakes
         {
             return connection.ConnectionString;
         }
-
 //			//DTC issues - possible fix
 //		public LGMContext GetContext()
 //		{

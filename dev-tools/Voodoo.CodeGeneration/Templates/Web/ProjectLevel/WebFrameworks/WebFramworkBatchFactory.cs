@@ -3,7 +3,8 @@ using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Rest;
 using Voodoo.CodeGeneration.Models.VisualStudio;
-using Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Aurelia;
+using Aurelia=Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Aurelia;
+using Angular2 = Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Aurelia;
 
 namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
 {
@@ -16,6 +17,8 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
             if (Vs.Helper.Solution.WebFramework == WebFramework.Aurelia)
                 return @"App";
             if (Vs.Helper.Solution.WebFramework == WebFramework.Aurelia)
+                return "app";
+            if (Vs.Helper.Solution.WebFramework == WebFramework.Angular2)
                 return "app";
             throw new NotImplementedException("No Module Name Configured");
         }
@@ -40,15 +43,13 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
                 throw new NotImplementedException();
             if (Vs.Helper.Solution.WebFramework == WebFramework.Aurelia)
             {
-                var service = new TsServiceBatchFile(web, items, path);
+                var service = new Aurelia.TsServiceBatchFile(web, items, path);
                 return service;
             }
             if (Vs.Helper.Solution.WebFramework == WebFramework.Angular2)
             {
-                throw new NotImplementedException();
-                //var service = new Angular2.TsServiceFile(web, item, path);
-                //service.Template = new Angular2.TsServiceTemplate { File = service };
-                //return service;
+                var service = new Angular2.TsServiceBatchFile(web, items, path);
+                return service;               
             }
             if (Vs.Helper.Solution.WebFramework == WebFramework.React)
             {

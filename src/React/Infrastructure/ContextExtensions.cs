@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Voodoo;
 
-namespace Fernweh.Infrastructure
+namespace Web.Infrastructure
 {
     public static class ContextExtensions
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Voodoo.Messages;
 
-namespace Fernweh.Infrastructure.ExecutionPipeline.Models
+namespace Web.Infrastructure.ExecutionPipeline.Models
 {
     public abstract class Step<TRequest, TResponse>
         where TResponse : class, IResponse, new()

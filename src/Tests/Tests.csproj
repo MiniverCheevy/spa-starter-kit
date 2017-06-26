@@ -64,8 +64,8 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Voodoo, Version=2.2.18.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Patterns.2.2.19\lib\net46\Voodoo.dll</HintPath>
+    <Reference Include="Voodoo, Version=2.2.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Voodoo.Patterns.2.2.21\lib\net46\Voodoo.dll</HintPath>
     </Reference>
     <Reference Include="Voodoo.TestData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Voodoo.TestData.1.0.18\lib\net40\Voodoo.TestData.dll</HintPath>

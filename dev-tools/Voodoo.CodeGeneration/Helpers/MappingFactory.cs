@@ -38,17 +38,15 @@ namespace Voodoo.CodeGeneration.Helpers
             includedTypeNames.AddIfNotNull(name);
         }
 
-        public static List<Mapping> GetMappings(TypeFacade type, params ProjectFacade[] project)
+        public static List<Mapping> GetMappings(TypeFacade type, params ProjectFacade[] projects)
         {
-            return new MappingFactory(type, project).Build();
+            return new MappingFactory(type, projects).Build();
         }
 
         public List<Mapping> Build()
         {
             mappings = new List<Mapping>();
-
-            var projectMappings = projects.SelectMany(c => c.MappingTypes).ToArray();
-
+            var projectMappings = projects.SelectMany(c=>c.MappingTypes).ToArray();
             foreach (var map in projectMappings)
             {
                 var attribute = map.GetCustomAttribute<MapsToAttribute>();
@@ -56,9 +54,10 @@ namespace Voodoo.CodeGeneration.Helpers
                 {
                     var facade = new TypeFacade(map);
                     mappings.Add(new Mapping(type, facade, type.Name));
+                    includedTypes.Add(map);
+                    includedTypeNames.Add(map.FullName);
                 }
             }
-
             var messageType = Vs.Helper.FindType(type.MessageName);
             var properties = messageType == null
                 ? type.MessageProperties
@@ -79,6 +78,12 @@ namespace Voodoo.CodeGeneration.Helpers
 
         public class Mapping
         {
+            public string ModelTypeName { get; set; }
+            public string MessageTypeName { get; set; }
+            public string Namespace { get; set; }
+            public PropertyFacade[] Properties { get; set; }
+            public PropertyFacade[] PropertiesWithoutId { get; set; }
+
             public Mapping(TypeFacade entity, TypeFacade message, string name = null)
             {
                 ModelTypeName = entity.Name;
@@ -98,12 +103,6 @@ namespace Voodoo.CodeGeneration.Helpers
                 Properties = messageProperties.Select(c => c.Property).ToArray();
                 PropertiesWithoutId = messageProperties.Select(c => c.Property).Where(c => c.Name != "Id").ToArray();
             }
-
-            public string ModelTypeName { get; set; }
-            public string MessageTypeName { get; set; }
-            public string Namespace { get; set; }
-            public PropertyFacade[] Properties { get; set; }
-            public PropertyFacade[] PropertiesWithoutId { get; set; }
         }
     }
 }

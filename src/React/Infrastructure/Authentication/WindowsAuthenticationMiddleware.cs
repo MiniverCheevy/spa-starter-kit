@@ -5,7 +5,7 @@ using Core.Operations.CurrentUsers.Extras;
 using Microsoft.AspNetCore.Http;
 using Voodoo;
 
-namespace Fernweh.Infrastructure.Authentication
+namespace Web.Infrastructure.Authentication
 {
     public class WindowsAuthenticationMiddleware
     {

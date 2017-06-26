@@ -9,9 +9,9 @@ using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
-using Core.Context.ExceptionalContext;
 using Core.Context.ExceptionTranslators;
 using Core.Models;
+using Core.Models.Exceptions;
 using Core.Models.Identity;
 using Voodoo;
 

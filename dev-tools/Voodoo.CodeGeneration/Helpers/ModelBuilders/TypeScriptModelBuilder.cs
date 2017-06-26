@@ -8,38 +8,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 {
     //based on
     //https://bitbucket.org/JamesDiacono/jdiacono/src/97b5ac3b21fe/JDiacono/TypeScript?at=default
-
-
-    //public class KnockoutTypeScriptModelBuilder : BaseTypeScriptModelBuilder
-    //{
-    //    public static string GenerateDeclaration<T>(Type modelType, params string[] exclusions)
-    //    {
-    //        return new KnockoutTypeScriptModelBuilder().GenerateTypeScriptDeclaration(modelType, exclusions);
-    //    }
-    //    protected override string TypeScriptEnumType { get { return "KnockoutObservableNumber"; } }
-    //    protected override Dictionary<string, string> Mappings
-    //    {
-    //        get
-    //        {
-    //            return new Dictionary<string, string>
-    //            {
-    //                { "System.Int16", "KnockoutObservableNumber" },
-    //                { "System.Int32", "KnockoutObservableNumber" },
-    //                { "System.Int64", "KnockoutObservableNumber" },
-    //                { "System.UInt16", "KnockoutObservableNumber" },
-    //                { "System.UInt32", "KnockoutObservableNumber" },
-    //                { "System.UInt64", "KnockoutObservableNumber" },
-    //                { "System.Decimal", "KnockoutObservableNumber" },
-    //                { "System.Single", "KnockoutObservableNumber" },
-    //                { "System.Double", "KnockoutObservableNumber" },
-    //                { "System.Char", "KnockoutObservableString" },
-    //                { "System.String", "KnockoutObservableString" },
-    //                { "System.Boolean", "KnockoutObservableBool" },
-    //                { "System.DateTime", "KnockoutObservableDate" }
-    //            };
-    //        }
-    //    }
-    //}
+ 
     public class TypeScriptModelBuilder : ModelBuilder
     {
         public static Dictionary<string, string> Mappings => new Dictionary<string, string>
@@ -138,33 +107,40 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             var type = ConvertTypeName(property.PropertyType);
             return $" {LowerCaseFirstLetter(name)}? : {type};";
         }
+        public string GetConstPropertyDeclaration(PropertyInfo property, bool isLast)
+        {
+            var name = property.Name;
+
+            var lastChar = isLast ? string.Empty : ",";
+            var type = ConvertTypeName(property.PropertyType);
+            return $" {LowerCaseFirstLetter(name)}:undefined{lastChar}";
+        }
 
         public string ConvertTypeName(Type type)
         {
             type = Nullable.GetUnderlyingType(type) ?? type;
             var name = RewriteTypeName(type);
             var family = GetTypeFamily(type);
-            if (family == TypeFamily.Enum)
-                return name;
-            if (family == TypeFamily.System)
+            switch (family)
             {
-                if (Mappings.ContainsKey(type.FullName))
+                case TypeFamily.Enum:
                     return name;
+                case TypeFamily.System:
+                    if (Mappings.ContainsKey(type.FullName))
+                        return name;
 
-                return "any";
-            }
-            if (family == TypeFamily.Collection)
-            {
-                name = string.Empty;
-                var elementType = type.GetGenericArguments().FirstOrDefault();
+                    return "any";
+                case TypeFamily.Collection:
+                    name = string.Empty;
+                    var elementType = type.GetGenericArguments().FirstOrDefault();
 
-                name = elementType == null
-                    ? RewriteTypeName(type).Replace("[]", "")
-                    : RewriteTypeName(elementType);
-                if (!name.Contains("[]"))
-                    name = string.Format("{0}[]", name);
+                    name = elementType == null
+                        ? RewriteTypeName(type).Replace("[]", "")
+                        : RewriteTypeName(elementType);
+                    if (!name.Contains("[]"))
+                        name = $"{name}[]";
 
-                return name;
+                    return name;
             }
             // Single relationship to another model
             return RewriteTypeName(type);

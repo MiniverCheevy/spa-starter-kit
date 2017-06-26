@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Fernweh.Infrastructure.ExecutionPipeline.Models;
 using Voodoo.Messages;
+using Web.Infrastructure.ExecutionPipeline.Models;
 
-namespace Fernweh.Infrastructure.ExecutionPipeline
+namespace Web.Infrastructure.ExecutionPipeline
 {
     internal class AuthorizationStep<TRequest, TResponse> : Step<TRequest, TResponse>
         where TResponse : class, IResponse, new()

@@ -2,7 +2,7 @@
   "SolutionName": "Aurelia.sln",
   "ModelProjectPath": "\\src\\Core\\Core.csproj",
   "LogicProjectPath": "\\src\\Core\\Core.csproj",
-  "WebProjectPath": "\\src\\Aurelia\\Aurelia.csproj",
+  "WebProjectPath": "\\src\\Angular\\Angular.csproj",
   "TestProjectPath": "\\src\\Tests\\Tests.csproj",
   "DataProjectPath": "\\src\\Core\\Core.csproj",
   "ContextTypeName": "Core.Context.MainContext",
@@ -10,7 +10,7 @@
   "AddToSourceControl": true,
   "SourceControlprovider": "tfexe",
   "TestingFramework": "MSTest",
-  "WebFramework": "Aurelia",
+  "WebFramework": "Angular2",
   "UseTypeScript": true,
   "PathToTfDotExe": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\TF.exe",
   "WebIsAspNetCore": true

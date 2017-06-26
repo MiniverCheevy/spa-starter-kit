@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Voodoo;
 using Voodoo.Logging;
 
-namespace Fernweh.Infrastructure.ExceptionHandling
+namespace Web.Infrastructure.ExceptionHandling
 {
     public class CoreErrorLogger : ILogger
     {

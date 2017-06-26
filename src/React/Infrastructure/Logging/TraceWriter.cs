@@ -2,7 +2,7 @@
 using Microsoft.ApplicationInsights;
 using Voodoo.Logging;
 
-namespace Fernweh.Infrastructure.Logging
+namespace Web.Infrastructure.Logging
 {
     public class TraceWriter : ITraceLogger
     {

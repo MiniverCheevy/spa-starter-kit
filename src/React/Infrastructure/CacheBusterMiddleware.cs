@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace Fernweh.Infrastructure
+namespace Web.Infrastructure
 {
     //TODO: ideally this should only add headers to the index.html
     //and webpack should be configured to js/css files so they'll be 

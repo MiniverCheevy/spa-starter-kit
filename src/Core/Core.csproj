@@ -53,16 +53,14 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Voodoo, Version=2.2.18.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Patterns.2.2.19\lib\net46\Voodoo.dll</HintPath>
+    <Reference Include="Voodoo, Version=2.2.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Voodoo.Patterns.2.2.21\lib\net46\Voodoo.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="Constants.generated.cs" />
     <Compile Include="Context\MainContext.cs" />
-    <Compile Include="Context\ExceptionalContext\Error.cs" />
-    <Compile Include="Context\ExceptionalContext\IErrorContext.cs" />
     <Compile Include="Context\ExceptionTranslators\DbEntityValidationExceptionTranslator.cs" />
     <Compile Include="Context\ExceptionTranslators\ForiegnKeyExceptionTranslation.cs" />
     <Compile Include="Context\ExceptionTranslators\SqlExceptionTranslator.cs" />
@@ -74,9 +72,12 @@
     <Compile Include="Infrastructure\ContextFactory.cs" />
     <Compile Include="Infrastructure\IContextFactory.cs" />
     <Compile Include="Infrastructure\IRequestContextProvider.cs" />
+    <Compile Include="Infrastructure\Metadata\DisplayFormat.cs" />
+    <Compile Include="Infrastructure\Metadata\FormMetadata.cs" />
+    <Compile Include="Infrastructure\Metadata\UIAttribute.cs" />
+    <Compile Include="Infrastructure\Metadata\UIMetadata.cs" />
     <Compile Include="Infrastructure\RequestContext.cs" />
     <Compile Include="Infrastructure\Settings.cs" />
-    <Compile Include="Infrastructure\UtcToLocalTimeConverter.cs" />
     <Compile Include="IOC.cs" />
     <Compile Include="Logging\ITraceWriter.cs" />
     <Compile Include="Logging\TraceLogger.cs" />
@@ -87,6 +88,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelExtensions\ModelExtensions.cs" />
     <Compile Include="Models\ApplicationSetting.cs" />
+    <Compile Include="Models\Exceptions\Error.cs" />
+    <Compile Include="Models\Identity\Role.cs" />
     <Compile Include="Models\Identity\User.cs" />
     <Compile Include="Operations\CurrentUsers\BuildPrincipalCommand.cs" />
     <Compile Include="Operations\CurrentUsers\Extras\BuildPrincipalRequest.cs" />

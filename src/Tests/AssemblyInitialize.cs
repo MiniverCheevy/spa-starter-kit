@@ -2,10 +2,11 @@
 using System.Diagnostics;
 using Core;
 using Core.Infrastructure;
+using Fernweh.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tests.Fakes;
 
-namespace Tests
+namespace Fernweh.Tests
 {
     [TestClass]
     public class AssemblyInitialize

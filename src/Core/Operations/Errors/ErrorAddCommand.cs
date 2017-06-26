@@ -56,13 +56,13 @@ namespace Core.Operations.Errors
                         command.Parameters.AddWithValue("@IsProtected", error.IsProtected);
                         command.Parameters.AddWithValue("@Host", error.Host.Truncate(200));
                         command.Parameters.AddWithValue("@Url", error.Url.Truncate(200));
-                        command.Parameters.AddWithValue("@HTTPMethod", error.HTTPMethod.Truncate(200));
-                        command.Parameters.AddWithValue("@IPAddress", error.IPAddress.Truncate(200));
+                        command.Parameters.AddWithValue("@HTTPMethod", error.HttpMethod.Truncate(200));
+                        command.Parameters.AddWithValue("@IPAddress", error.IpAddress.Truncate(200));
                         command.Parameters.AddWithValue("@Source", error.Source.Truncate(200));
                         command.Parameters.AddWithValue("@Message", error.Message.Truncate(200));
                         command.Parameters.AddWithValue("@Detail", error.Details);
                         command.Parameters.AddWithValue("@StatusCode", error.StatusCode ?? 200);
-                        command.Parameters.AddWithValue("@SQL", error.SQL.To<string>());
+                        command.Parameters.AddWithValue("@SQL", error.Sql.To<string>());
                         command.Parameters.AddWithValue("@FullJson", error.FullJson);
                         command.Parameters.AddWithValue("@ErrorHash", error.ErrorHash);
                         command.Parameters.AddWithValue("@DuplicateCount", error.DuplicateCount);

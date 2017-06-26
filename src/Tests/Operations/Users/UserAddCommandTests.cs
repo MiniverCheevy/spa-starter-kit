@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Core.Operations.Users;
 using Core.Operations.Users.Extras;
@@ -12,15 +13,18 @@ namespace Tests.Operations.Users
         [TestMethod]
         public async Task UserAddCommand_ValidRequest_IsOk()
         {
-            var request = UserTestHelper.GetNewUser();
-            var command = new UserSaveCommand(request);
+            foreach (var number in Enumerable.Range(1, 20))
+            {
+                var request = UserTestHelper.GetNewUser();
+                var command = new UserSaveCommand(request);
 
-            var response = await command.ExecuteAsync();
+                var response = await command.ExecuteAsync();
 
-            response.Details.Should().BeEmpty();
-            response.Message.Should().Be(UserMessages.AddOk);
-            response.IsOk.Should().BeTrue();
-            response.NewItemId.Should().NotBe(0);
+                response.Details.Should().BeEmpty();
+                response.Message.Should().Be(UserMessages.AddOk);
+                response.IsOk.Should().BeTrue();
+                response.NewItemId.Should().NotBe(0);
+            }
         }
     }
 }

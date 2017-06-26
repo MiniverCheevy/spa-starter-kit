@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Core.Context;
 using Core.Models.Identity;
@@ -41,7 +44,12 @@ namespace Core.Operations.Users
                                          || c.UserName.Contains(request.SearchText)
                                          || c.Roles.Any(r => r.Name.Contains(request.SearchText)
                                          ));
+            var x = query.ToListAsync();
+            var bar = (Task<List<User>>)
+                query.Provider.Execute(Expression.Call(typeof(IQueryable<User>), "ToListAsync", new[] { query.ElementType },
+                    query.Expression));
             var data = await query.ToPagedResponseAsync(request);
+            var foo = Voodoo.Linq.LinqHelper.HasToListAsync;
             response.From(data, c => c.ToUserMessage());
         }
     }

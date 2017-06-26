@@ -5,7 +5,7 @@
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
 
-using Core.Context.ExceptionalContext;
+using Core.Models.Exceptions;
 
 namespace Core.Operations.Errors.Extras
 {

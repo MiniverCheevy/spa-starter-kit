@@ -16,14 +16,13 @@ module.exports = (env) => {
         stats: { modules: false },
         entry: {
             'main': ['babel-polyfill', './ClientApp/boot.tsx',
-                './ClientApp/theme/theme.css',
                 './ClientApp/theme/site.css']
         },
-        resolve: { extensions: [ '.js', '.jsx', '.ts', '.tsx' ] },
+        resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
         output: {
             path: path.join(__dirname, bundleOutputDir),
             filename: '[name].js',
-            publicPath: virtualDirectory+'dist/'
+            publicPath: virtualDirectory + 'dist/'
         },
         module: {
             rules: [
@@ -41,22 +40,19 @@ module.exports = (env) => {
                 context: __dirname,
                 manifest: require('./wwwroot/dist/vendor-manifest.json')
             }),
-        new CopyWebpackPlugin([
-            { from: 'ClientApp/index.html', to: '../' },
-            { from: 'ClientApp/favicon.ico', to: '../' },
-        ])
+            new CopyWebpackPlugin([
+                { from: 'ClientApp/index.html', to: '../' },
+                { from: 'ClientApp/favicon.ico', to: '../' },
+            ])
         ].concat(isDevBuild ? [
-            // Plugins that apply in development builds only
             new webpack.SourceMapDevToolPlugin({
-                filename: '[file].map', // Remove this line if you prefer inline source maps
-                moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
+                filename: '[file].map',
+                moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]')
             })
         ] : [
-            // Plugins that apply in production builds only
-            //new webpack.optimize.UglifyJsPlugin(),
                 new BaseHrefWebpackPlugin({
                     baseHref: virtualDirectory
                 })
-        ])
+            ])
     }];
 };

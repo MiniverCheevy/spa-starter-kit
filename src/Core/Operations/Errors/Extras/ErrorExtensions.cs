@@ -1,5 +1,5 @@
 using Core.Context;
-using Core.Context.ExceptionalContext;
+using Core.Models.Exceptions;
 
 namespace Core.Operations.Errors.Extras
 {

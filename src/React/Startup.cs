@@ -2,10 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using Core;
-using Fernweh.Infrastructure;
-using Fernweh.Infrastructure.Authentication;
-using Fernweh.Infrastructure.ExceptionHandling;
-using Fernweh.Infrastructure.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,12 +10,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Voodoo;
+using Web.Infrastructure;
+using Web.Infrastructure.Authentication;
+using Web.Infrastructure.ExceptionHandling;
+using Web.Infrastructure.Settings;
 
-namespace Fernweh
+namespace Web
 {
     public class Startup
     {
-        public IConfigurationRoot Configuration { get; set; }
+
 
         public Startup(IHostingEnvironment env)
         {
@@ -31,10 +31,10 @@ namespace Fernweh
           .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Console.WriteLine($"Environment: {env.EnvironmentName}");
-            this.Configuration = builder.Build();
+      this.Configuration = builder.Build();
             IOC.Settings = SettingsFactory.GetSettings(builder.Build());
         }
-
+    public IConfigurationRoot Configuration { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -64,7 +64,7 @@ namespace Fernweh
             }
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            //updateDatabaseToLatestVersion(env);
+            updateDatabaseToLatestVersion(env);
 
             app.UseMvcWithDefaultRoute();
         }

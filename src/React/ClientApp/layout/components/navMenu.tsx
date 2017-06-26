@@ -1,21 +1,17 @@
 import * as React from 'react';
 import * as  ReactDOM from 'react-dom'
-import { Link } from 'react-router';
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import { CurrentUserService } from "./../../services/current-user-service";
-import { MessengerService } from "./../../services/messenger-service";
-import { observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
+import { Components, Services, observer, observable } from './../../root';
 
 @observer
 export class NavMenu extends React.Component<any, void> {
 public async componentDidMount() {
-    var user = await CurrentUserService.get();
+    var user = await Services.CurrentUserService.get();
 }
     public render() {
         var progress = undefined;
-        if (MessengerService.numberOfPendingHttpRequest != 0)
-            progress = <div className="progress">abc
+        if (Services.MessengerService.numberOfPendingHttpRequest != 0)
+            progress = <div className="progress">
                 <div className="indeterminate"></div>
             </div>;
        
@@ -23,30 +19,17 @@ public async componentDidMount() {
             <div className="progress-container">
                 {progress}
             </div>
-            <Navbar bsStyle="inverse">
-                <Navbar.Header>
-                    <Navbar.Brand>
-                        <a href="#">React</a>
-                    </Navbar.Brand>
-                </Navbar.Header>
-                <Nav>
-                    <LinkContainer to="/home">
-                        <NavItem eventKey={1}> <span className='mdi mdi-home'></span> Home!!!</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/counter">
-                        <NavItem eventKey={2}>  <span className='mdi mdi-school'></span> Counter</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/fetchdata">
-                        <NavItem eventKey={3}> <span className='mdi mdi-format-list-bulleted'></span> Fetch Data</NavItem>
-                    </LinkContainer>
-
-                    <NavDropdown eventKey={4} title="Admin" id="basic-nav-dropdown">
-                        <LinkContainer to="/user-list">
-                            <NavItem eventKey={4.1}>Users</NavItem>
-                        </LinkContainer>
-                    </NavDropdown>
-                </Nav>
-            </Navbar>
+            <header className="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall">
+                <div className="mdc-toolbar__row">
+                    <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
+                        <a href="/" className="mdc-toolbar__title">React</a>
+                    </section>
+                    <section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+                        {Components.ToolBarIconLink('', 'home', 'Home')}
+                        {Components.ToolBarIconLink('user-list', 'account-multiple', 'Users')}                        
+                    </section>
+                </div>
+            </header>
         </div>
         );
     }

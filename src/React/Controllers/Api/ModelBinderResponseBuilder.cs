@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Voodoo.Messages;
 
-namespace Fernweh.Controllers.Api
+namespace Web.Controllers.Api
 {
     public class ModelBinderResponseBuilder
     {

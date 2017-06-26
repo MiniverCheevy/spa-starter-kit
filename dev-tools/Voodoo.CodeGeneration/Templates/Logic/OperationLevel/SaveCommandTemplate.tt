@@ -18,15 +18,15 @@ using <#=item#>;
 <#}#>
 namespace <#=this.File.Namespace#>
 {
-	[Rest(Verb.Put, RestResources.<#=this.File.Type.Name#>Detail)]
+	[Rest(Verb.Put, RestResources.<#=this.File.Type.Name#>)]
     public class <#=this.File.Name#> :CommandAsync<<#=this.File.Type.DetailQueryMessageName#>, NewItemResponse>
     {
   
-		protected bool isNew;
+		private bool isNew;
 		<#if(this.File.HasContext){#>
-protected <#=this.File.ContextName#> context;
+private <#=this.File.ContextName#> context;
 		<#}#>
-		protected IValidator validator = ValidationManager.GetDefaultValidatitor();
+		private IValidator validator = ValidationManager.GetDefaultValidatitor();
         public <#=this.File.Name#>(<#=this.File.Type.DetailQueryMessageName#> request) : base(request)
         {
         }      	  
@@ -52,7 +52,7 @@ protected <#=this.File.ContextName#> context;
 			response.Message = isNew ? <#=this.File.Type.Name#>Messages.AddOk:<#=this.File.Type.Name#>Messages.UpdateOk;
 			return response;
         }
-		protected async Task<<#=this.File.Type.Name#>> createOrGetExisting()
+		private async Task<<#=this.File.Type.Name#>> createOrGetExisting()
 		{
 			if (request.Id == 0)
 			{

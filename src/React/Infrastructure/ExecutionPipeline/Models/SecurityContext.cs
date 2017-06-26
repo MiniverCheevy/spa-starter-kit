@@ -1,4 +1,4 @@
-﻿namespace Fernweh.Infrastructure.ExecutionPipeline.Models
+﻿namespace Web.Infrastructure.ExecutionPipeline.Models
 {
     public class SecurityContext
     {

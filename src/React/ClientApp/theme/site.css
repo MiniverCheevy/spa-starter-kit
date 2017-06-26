@@ -4,7 +4,7 @@
 .progress-container {
     height: 6px;
     width: 100%;
-    background-color: #730C02;
+    background-color: #0e4ead;
 }
 
 .progress-conainer,
@@ -35,7 +35,7 @@
     }
 
     .progress .indeterminate {
-        background-color: #26a69a;
+        background-color: #730C02;
     }
 
         .progress .indeterminate:before {
@@ -223,24 +223,82 @@ navbar-collapse .main-nav .navbar a {
 .item-button {
     margin-top: 24px;
 }
+
 .nav-header-left {
     margin-left: -90px !important;
 }
+
 .form-label {
     min-width: 128px;
-    text-align:right;
+    text-align: right;
 }
+
 .margin {
     margin: 20px;
 }
 
 .border {
     border: solid 1px red;
-
 }
+
 .inline {
     display: inline;
 }
+
 .up {
     margin-top: -30px;
+}
+
+
+a.mdc-toolbar__title {
+    text-decoration: none;
+    color: white;
+}
+
+.data-table {
+    position: relative;
+    border: 1px solid rgba(0,0,0,.12);
+    border-collapse: collapse;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+}
+
+    .data-table th {
+        padding: 12px 18px;
+        vertical-align: middle;
+    }
+
+    .data-table  tr {
+        height: 36px;
+    }
+
+    .data-table tbody tr:hover {
+        background-color: #EEEEEE;
+    }
+
+    .data-table td {
+        position: relative;
+        border-top: 1px solid rgba(0,0,0,.12);
+        border-bottom: 1px solid rgba(0,0,0,.12);
+        padding: 12px 18px;
+        box-sizing: border-box;
+    }
+
+.sorter {
+    cursor: pointer;
+}
+
+.sort-indicator {
+    width: 12px;    
+}
+.available-sort-indicator {
+    width: 12px;
+    opacity: .54;
+}
+.pagination button {
+    width: 24px !important;
 }

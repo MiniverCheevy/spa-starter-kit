@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security;
 using System.Threading.Tasks;
-using Core.Context.ExceptionalContext;
+using Core.Models.Exceptions;
 using Core.Operations.Errors.Extras;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;

@@ -3,7 +3,7 @@ using Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Voodoo;
 
-namespace Fernweh.Infrastructure
+namespace Web.Infrastructure
 {
     public class RequestContextProvider : IRequestContextProvider
     {

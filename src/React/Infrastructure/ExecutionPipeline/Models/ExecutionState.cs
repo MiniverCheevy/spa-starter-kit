@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;
 
-namespace Fernweh.Infrastructure.ExecutionPipeline.Models
+namespace Web.Infrastructure.ExecutionPipeline.Models
 {
     public class ExecutionState<TRequest, TResponse> where TResponse : class, IResponse, new() where TRequest : class
     {
