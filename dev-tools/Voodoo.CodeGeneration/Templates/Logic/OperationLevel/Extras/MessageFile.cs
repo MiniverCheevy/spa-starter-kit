@@ -22,6 +22,15 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             Name = $"{Name}Message";
             HasDetail = type.HasDetailFlag;
             PageSpecificUsingStatements.Add(type.Namespace);
+
+
+            PageSpecificUsingStatements.Add("System");
+            PageSpecificUsingStatements.Add("System.Collections.Generic");
+            PageSpecificUsingStatements.Add("System.ComponentModel.DataAnnotations");
+            PageSpecificUsingStatements.Add("System.Linq");
+            PageSpecificUsingStatements.Add("Voodoo.Messages");
+            PageSpecificUsingStatements.Add("Voodoo.Infrastructure.Notations");
+
             type.Properties.ForEach(c => PageSpecificUsingStatements.Add(c.PropertyType.Namespace));
         }
 

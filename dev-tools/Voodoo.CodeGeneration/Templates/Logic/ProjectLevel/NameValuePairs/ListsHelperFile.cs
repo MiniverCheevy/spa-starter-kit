@@ -25,6 +25,10 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
             PageSpecificUsingStatements.Add("System.Collections.Generic");
             PageSpecificUsingStatements.Add("System.Linq");
             PageSpecificUsingStatements.Add(ContextNamespace);
+            PageSpecificUsingStatements.Add("System");
+            PageSpecificUsingStatements.Add("Voodoo");
+            PageSpecificUsingStatements.Add("System.Data.Entity");
+            PageSpecificUsingStatements.Add("System.Threading.Tasks");
         }
 
         public override string GetFileContents()

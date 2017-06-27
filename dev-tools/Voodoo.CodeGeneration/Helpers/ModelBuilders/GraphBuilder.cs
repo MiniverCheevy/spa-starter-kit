@@ -18,6 +18,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         {
             output = new StringBuilder();
             builder = new TModelBuilder();
+            var constantTypes = new Type[] { new Grouping<NameValuePair>().GetType() };
+            AddTypes(constantTypes);
         }
 
         protected List<Type> GeneratedTypeDefinitions { get; set; } = new List<Type>();
@@ -50,7 +52,9 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 return;
             alreadyTouched.Add(type);
             buildDeclaration(type, isResponse);
-
+            
+            var metaData = new TypescriptMetadataBuilder(type, type.GetProperties());
+            output.AppendLine(metaData.Build());
             var types = new List<Type>();
             var enumTypes = new List<Type>();
             types.AddRange(builder.getComplexPropertyTypes(type));

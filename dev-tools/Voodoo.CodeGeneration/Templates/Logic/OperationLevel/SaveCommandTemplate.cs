@@ -25,17 +25,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(@"using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Voodoo;
-using Voodoo.Messages;
-using Voodoo.Operations;
-using Voodoo.Operations.Async;
-using Voodoo.Validation.Infrastructure;
-using System.Data.Entity;
-");
+            this.Write("\r\n");
 foreach (var item in this.File.UsingStatements){
             this.Write("using ");
             this.Write(this.ToStringHelper.ToStringWithCulture(item));

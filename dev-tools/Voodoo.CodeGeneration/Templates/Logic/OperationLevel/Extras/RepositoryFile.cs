@@ -23,9 +23,18 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             Template = new RepositoryTemplate {File = this};
             Name = string.Format("{0}Repository", Name);
             PageSpecificUsingStatements.Add(Type.SystemType.Namespace);
+            
+
+
             Errors = type.Properties.SelectMany(c => c.ErrorMessages).Select(c => c.Text).ToArray();
             if (HasContext)
+            {
                 PageSpecificUsingStatements.Add(ContextNamespace);
+                PageSpecificUsingStatements.Add("System.Data.Entity");
+            }
+                
+
+
         }
 
         public override string GetFileContents()

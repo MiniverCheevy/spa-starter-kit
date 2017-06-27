@@ -19,12 +19,28 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
         {
             Template = new SaveCommandTemplate {File = this};
             Name = $"{Name}SaveCommand";
-            PageSpecificUsingStatements.Add(ContextNamespace);
             PageSpecificUsingStatements.Add(type.Namespace);
-            PageSpecificUsingStatements.Add("Voodoo.Infrastructure");
             PageSpecificUsingStatements.Add($"{Namespace}.Extras");
             PageSpecificUsingStatements.Add(
                 $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+
+
+            PageSpecificUsingStatements.Add("System");
+            PageSpecificUsingStatements.Add("System.Collections.Generic");
+            PageSpecificUsingStatements.Add("System.Linq");
+            PageSpecificUsingStatements.Add("System.Threading.Tasks");
+            PageSpecificUsingStatements.Add("Voodoo");
+            PageSpecificUsingStatements.Add("Voodoo.Messages");
+            PageSpecificUsingStatements.Add("Voodoo.Operations");
+            PageSpecificUsingStatements.Add("Voodoo.Operations.Async");
+            PageSpecificUsingStatements.Add("Voodoo.Validation.Infrastructure");
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            if (HasContext)
+            {
+                PageSpecificUsingStatements.Add(ContextNamespace);
+                PageSpecificUsingStatements.Add("System.Data.Entity");
+            }
         }
 
 

@@ -30,7 +30,14 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
             PageSpecificUsingStatements.Add("Voodoo.Messages");
             PageSpecificUsingStatements.Add($"{project.RootNamespace}.Infrastructure.ExecutionPipeline");
             PageSpecificUsingStatements.Add($"{project.RootNamespace}.Infrastructure.ExecutionPipeline.Models");
-
+            PageSpecificUsingStatements.Add("using System");
+            PageSpecificUsingStatements.Add("using System.Collections.Generic");
+            PageSpecificUsingStatements.Add("using System.Linq");
+            PageSpecificUsingStatements.Add("using System.Threading.Tasks");
+            PageSpecificUsingStatements.Add("using Microsoft.AspNetCore.Mvc");
+            PageSpecificUsingStatements.Add("using Microsoft.AspNetCore.Authorization");
+            PageSpecificUsingStatements.Add("using Microsoft.AspNetCore.Http");
+            PageSpecificUsingStatements.Add("using Voodoo");
             foreach (var resource in resources)
                 foreach (var verb in resource.Verbs)
                 {
@@ -65,14 +72,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 ***************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Voodoo;");
+");
             foreach (var item in UsingStatements)
                 builder.AppendLine($"using {item};");
 

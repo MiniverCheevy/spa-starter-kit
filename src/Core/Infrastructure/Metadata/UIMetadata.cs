@@ -7,18 +7,7 @@ using Voodoo.Infrastructure.Notations;
 
 namespace Core.Infrastructure.Metadata
 {
-    //StringLengthAttribute
-    //RequiredAttribute
-    //CollectionMustHaveAtLeastOneItem
-    //EnumIsRequired
-    //GreaterThanZeroIntegerIsRequired
-
-    //RangeAttribute
-    //RequiredDateTime
-    //RequiredInt
-    //RequiredNonZeroInt
-    //CompareAttribute
-    //Create GreaterThan
+    
 
     [Client]
     public class UIMetadata
@@ -28,7 +17,7 @@ namespace Core.Infrastructure.Metadata
         public ValidationMetaData Date { get; set; }
         public ValidationMetaData Integer { get; set; }
         public ValidationMetaData Decimal { get; set; }
-        public bool IsRequired { get; set; }
+        public ValidationMetaData Required { get; set; }
         public string PropertyName { get; set; }
         public string DisplayName { get; set; }
         public string Format { get; set; } = "Text";

@@ -17,7 +17,17 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             : base(project, type)
         {
             Template = new QueryResponseTemplate {File = this};
-            Name = string.Format("{0}QueryResponse", Name);
+            Name = $"{Name}QueryResponse";
+
+
+
+            PageSpecificUsingStatements.Add("System");
+            PageSpecificUsingStatements.Add("System.Collections.Generic");
+            PageSpecificUsingStatements.Add("System.Linq");
+            PageSpecificUsingStatements.Add("System.Text");
+            PageSpecificUsingStatements.Add("System.Threading.Tasks");
+            PageSpecificUsingStatements.Add("Voodoo.Messages");
+            PageSpecificUsingStatements.Add("Voodoo.Operations.Async");
         }
 
         public override string GetFileContents()

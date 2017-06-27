@@ -22,6 +22,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
             Names = nameValuePairTypes.Select(c => c.Name).ToArray();
             Name = "Lists";
             OverwriteExistingFile = true;
+            PageSpecificUsingStatements.Add("Voodoo.Infrastructure.Notations");
         }
 
         public override string GetFileContents()

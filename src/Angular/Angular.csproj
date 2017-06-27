@@ -53,11 +53,11 @@
 <ItemGroup>
   <Folder Include="wwwroot\dist\" />
 </ItemGroup>
-  <Target Name="Custom" AfterTargets="Build">  
-      <Exec Command="node node_modules/webpack/bin/webpack.js" />
+  <Target Name="Custom" AfterTargets="Build">
+    <Exec Command="$(MSBuildProjectDirectory)\..\..\tools\spawn.exe web" />
+    <Message Importance="High" Text="ran spawn" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
       <Message Importance="High" Text="built app.js" />      
-      <Exec Command="$(MSBuildProjectDirectory)/../../tools/spawn web" />
-      <Message Importance="High" Text="ran spawn" />      
   </Target>
   <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->

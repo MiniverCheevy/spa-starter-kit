@@ -3,16 +3,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Voodoo;
-using Voodoo.Messages;
-using Voodoo.Operations;
-using Voodoo.Operations.Async;
-using Voodoo.Validation.Infrastructure;
-using System.Data.Entity;
+
 <#foreach (var item in this.File.UsingStatements){#>
 using <#=item#>; 
 <#}#>

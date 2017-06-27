@@ -4,15 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".txt" #>
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Voodoo.Messages;
-using Voodoo.Operations.Async;
-using Voodoo.Infrastructure;
-using Voodoo.Validation.Infrastructure;
+
 
 using System.Data.Entity;
 <#foreach (var item in this.File.UsingStatements){#>
