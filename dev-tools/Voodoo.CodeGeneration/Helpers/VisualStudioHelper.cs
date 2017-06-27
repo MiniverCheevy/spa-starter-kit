@@ -42,6 +42,7 @@ namespace Voodoo.CodeGeneration.Helpers
             Solution = solution;
             HasConfig = true;
         }
+        public string[] VisualStudioVersions { get; internal set; } =  new string [] {"9.0", "10.0", "11.0", "12.0", "14.0", "15.0"};
 
         public TypeFacade FindType(string typeName)
         {

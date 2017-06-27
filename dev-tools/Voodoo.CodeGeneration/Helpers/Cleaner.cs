@@ -49,7 +49,7 @@ namespace Voodoo.CodeGeneration.Helpers
             var winFolder = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
             var localSettings = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-            var studios = new[] {"9.0", "10.0", "11.0", "12.0", "14.0", "15.0"};
+            var studios = Vs.Helper.VisualStudioVersions;
 
             foreach (var studio in studios)
             {

@@ -1,31 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
+using System.Linq;
 using Voodoo.CodeGeneration.Helpers;
+using System.Threading.Tasks;
 
 namespace Voodoo.CodeGeneration.Models.SourceControl
 {
     public class TfExeSourceControlProvider : ISourceControlProvider
     {
+        public bool IsActive { get; set; }
+
         public TfExeSourceControlProvider()
         {
             if (File.Exists(Vs.Helper.Solution.PathToTfDotExe))
+            {
                 IsActive = true;
+            }
             else
+            {
+                Vs.Helper.Log.Add(new LogEntry { Message = $"Could not find tf.exe at {Vs.Helper.Solution.PathToTfDotExe}", Level = Logging.LogLevels.Error });
+                if (findTfExe())
+                    IsActive = true;
+
                 return;
+            }
+                
         }
 
-        public bool IsActive { get; set; }
-
-        public void AddFiles(params string[] files)
+        private bool findTfExe()
         {
-            shell("add -I {0} ", files);
-        }
+            var versions = Vs.Helper.VisualStudioVersions;
+            foreach (var version in versions)
+            {
+                var path = $"C:\\Program Files (x86)\\Microsoft Visual Studio {version}\\Common7\\IDE\\TF.exe";
+                if (File.Exists(path))
+                {
+                    Vs.Helper.Log.Add(new LogEntry { Message = $"Using tf.exe at {path}", Level = Logging.LogLevels.Info });
+                    Vs.Helper.Solution.PathToTfDotExe = path;
+                    return true;
+                }
+            }
 
-        public void CheckOutFiles(params string[] files)
-        {
-            shell(" checkout {0} ", files);
+            return false;
         }
 
         public Process GetProcess()
@@ -45,9 +63,19 @@ namespace Voodoo.CodeGeneration.Models.SourceControl
             };
         }
 
+        public void AddFiles(params string[] files)
+        {
+            shell("add -I {0} ", files);
+        }
+
+        public void CheckOutFiles(params string[] files)
+        {
+            shell(" checkout {0} ", files);
+        }
+
         public void shell(string arguments, string[] paths)
         {
-            Parallel.ForEach(paths, c => shellone(arguments, c));
+            Parallel.ForEach(paths, (c) => shellone(arguments, c));
         }
 
         public void shellone(string arguments, string path)
