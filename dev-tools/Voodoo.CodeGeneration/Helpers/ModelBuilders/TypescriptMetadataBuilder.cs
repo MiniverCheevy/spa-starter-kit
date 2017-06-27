@@ -88,7 +88,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             if (ui == null)
             {
                 //TODO: if no ui attribute default format based on data type
-
+                //add hidden attirbute to id
                 return true;
             }
 
