@@ -20,6 +20,7 @@ namespace Voodoo.CodeGeneration.Helpers
         {
             this.type = type;
             this.projects = projects;
+            
         }
 
         private void addMapping(TypeFacade messageType, List<GeneratedProperty> properties, string name)
@@ -46,7 +47,7 @@ namespace Voodoo.CodeGeneration.Helpers
         public List<Mapping> Build()
         {
             mappings = new List<Mapping>();
-            var projectMappings = projects.SelectMany(c=>c.MappingTypes).ToArray();
+            var projectMappings = projects.SelectMany(c=>c.MappingTypes).Distinct().ToArray();
             foreach (var map in projectMappings)
             {
                 var attribute = map.GetCustomAttribute<MapsToAttribute>();

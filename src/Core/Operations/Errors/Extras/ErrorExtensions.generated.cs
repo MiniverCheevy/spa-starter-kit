@@ -4,14 +4,13 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-
+using Core;
 using Core.Models.Exceptions;
-
 namespace Core.Operations.Errors.Extras
 {
     public static partial class ErrorExtensions
     {
-        private static ErrorMessage toErrorMessage(Error model, ErrorMessage message)
+        private static ErrorRow toErrorRow(Error model, ErrorRow message)
         {
             message.Id = model.Id;
             message.CreationDate = model.CreationDate;
@@ -21,7 +20,7 @@ namespace Core.Operations.Errors.Extras
             
             return message;
         }
-        public static Error updateFromErrorMessage(ErrorMessage message, Error model)
+        public static Error updateFromErrorRow(ErrorRow message, Error model)
         {
             model.CreationDate =message.CreationDate;
             model.Type =message.Type;
@@ -52,7 +51,8 @@ namespace Core.Operations.Errors.Extras
             model.Details =message.Details;
             model.User =message.User;
             return model;
-        }           
+        }
+        
     }
 }
 

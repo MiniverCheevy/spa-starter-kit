@@ -9,15 +9,15 @@ using Voodoo.Operations.Async;
 namespace Core.Operations.Errors
 {
     [Rest(Verb.Get, RestResources.ErrorList)]
-    public class ErrorListQuery : QueryAsync<ErrorQueryRequest, ErrorQueryResponse>
+    public class ErrorListQuery : QueryAsync<ErrorListRequest, ErrorListResponse>
     {
         private MainContext context;
 
-        public ErrorListQuery(ErrorQueryRequest request) : base(request)
+        public ErrorListQuery(ErrorListRequest request) : base(request)
         {
         }
 
-        protected override async Task<ErrorQueryResponse> ProcessRequestAsync()
+        protected override async Task<ErrorListResponse> ProcessRequestAsync()
         {
             using (context = IOC.GetContext())
             {
@@ -30,7 +30,7 @@ namespace Core.Operations.Errors
                                              c.User.Contains(request.SearchText)
                     );
 
-                var data = await query.ToPagedResponseAsync(request, c => c.ToErrorMessage());
+                var data = await query.ToPagedResponseAsync(request, c => c.ToErrorRow());
                 response.From(data, c => c);
             }
 

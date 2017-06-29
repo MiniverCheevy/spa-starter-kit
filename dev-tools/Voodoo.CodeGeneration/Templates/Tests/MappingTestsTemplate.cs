@@ -53,7 +53,7 @@ foreach (var item in this.File.UsingStatements){
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.MessageName));
             this.Write(">();\r\n            var source = arrange();\r\n            var message = source.To");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.Name));
-            this.Write("Message();\r\n            var target = new ");
+            this.Write("Row();\r\n            var target = new ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.Name));
             this.Write("();\r\n            target.UpdateFrom(message);\r\n\t\t\t");
 if (this.File.Type.HasId) {

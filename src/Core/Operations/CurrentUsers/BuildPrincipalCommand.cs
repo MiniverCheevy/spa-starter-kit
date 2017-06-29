@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
+using Core.Context;
 using Core.Identity;
 using Core.Models.Identity;
 using Core.Operations.CurrentUsers.Extras;
@@ -16,7 +17,7 @@ namespace Core.Operations.CurrentUsers
 {
     public class BuildPrincipalCommand : CommandAsync<BuildPrincipalRequest, Response<AppPrincipal>>
     {
-        private Context.MainContext context;
+        private MainContext context;
         private User user;
 
         public BuildPrincipalCommand(BuildPrincipalRequest request) : base(request)

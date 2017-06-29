@@ -41,24 +41,28 @@ export const EmptyINameValuePair =
     value:undefined
 }
 
-export interface IApplicationSettingMessage  {
+export interface IApplicationSettingDetail  {
 id? : number;
 name? : string;
 value? : string;
 }
 
-export const EmptyIApplicationSettingMessage =
+export const EmptyIApplicationSettingDetail =
 {
     id:undefined,
     name:undefined,
     value:undefined
 }
 
-export const IApplicationSettingMessageMetadata =
+export const IApplicationSettingDetailMetadata =
 {
     id:
     {
-        int:
+        displayFormat:'text',
+        isHidden: true,
+        propertyName:'Id',
+        displayName:'Id'
+        ,int:
         {
             shouldValidate:true
         }
@@ -89,7 +93,7 @@ export const IApplicationSettingMessageMetadata =
     }
 }
 
-export interface IApplicationSettingQueryRequest  {
+export interface IApplicationSettingListRequest  {
 defaultSortMember? : string;
 sortDirection? : string;
 resetPaging? : boolean;
@@ -100,7 +104,7 @@ totalRecords? : number;
 totalPages? : number;
 }
 
-export const EmptyIApplicationSettingQueryRequest =
+export const EmptyIApplicationSettingListRequest =
 {
     defaultSortMember:undefined,
     sortDirection:undefined,
@@ -112,16 +116,16 @@ export const EmptyIApplicationSettingQueryRequest =
     totalPages:undefined
 }
 
-export const IApplicationSettingQueryRequestMetadata =
+export const IApplicationSettingListRequestMetadata =
 {
     defaultSortMember:
     {
     }
     ,}
     
-    export interface IApplicationSettingQueryResponse extends IResponse {
+    export interface IApplicationSettingListResponse extends IResponse {
     state? : IGridState;
-    data? : IApplicationSettingMessage[];
+    data? : IApplicationSettingRow[];
     numberOfRowsEffected? : number;
     isOk? : boolean;
     hasLogicException? : boolean;
@@ -130,7 +134,7 @@ export const IApplicationSettingQueryRequestMetadata =
     exception? : any;
 }
 
-export const EmptyIApplicationSettingQueryResponse =
+export const EmptyIApplicationSettingListResponse =
 {
     state:undefined,
     data:undefined,
@@ -165,6 +169,19 @@ export const EmptyIGridState =
     resetPaging:undefined
 }
 
+export interface IApplicationSettingRow  {
+id? : number;
+name? : string;
+value? : string;
+}
+
+export const EmptyIApplicationSettingRow =
+{
+    id:undefined,
+    name:undefined,
+    value:undefined
+}
+
 export interface IAppPrincipal  {
 expiration? : Date;
 refreshTime? : Date;
@@ -196,14 +213,16 @@ export const IAppPrincipalMetadata =
 {
     expiration:
     {
-        date:
+        displayFormat:'date'
+        ,date:
         {
             shouldValidate:true
         }
     }
     ,refreshTime:
     {
-        date:
+        displayFormat:'date'
+        ,date:
         {
             shouldValidate:true
         }
@@ -216,6 +235,11 @@ export const IAppPrincipalMetadata =
     }
     ,userId:
     {
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
     }
     ,firstName:
     {
@@ -247,7 +271,8 @@ export const IClientInfoMetadata =
 {
     timeZoneOffsetInMinutes:
     {
-        int:
+        displayFormat:'int'
+        ,int:
         {
             shouldValidate:true
         }
@@ -265,7 +290,7 @@ export const IEmptyRequestMetadata =
 {
 }
 
-export interface IErrorQueryRequest  {
+export interface IErrorListRequest  {
 searchText? : string;
 defaultSortMember? : string;
 sortDirection? : string;
@@ -277,7 +302,7 @@ totalRecords? : number;
 totalPages? : number;
 }
 
-export const EmptyIErrorQueryRequest =
+export const EmptyIErrorListRequest =
 {
     searchText:undefined,
     defaultSortMember:undefined,
@@ -290,7 +315,7 @@ export const EmptyIErrorQueryRequest =
     totalPages:undefined
 }
 
-export const IErrorQueryRequestMetadata =
+export const IErrorListRequestMetadata =
 {
     searchText:
     {
@@ -300,9 +325,9 @@ export const IErrorQueryRequestMetadata =
     }
     ,}
     
-    export interface IErrorQueryResponse extends IResponse {
+    export interface IErrorListResponse extends IResponse {
     state? : IGridState;
-    data? : IErrorMessage[];
+    data? : IErrorRow[];
     numberOfRowsEffected? : number;
     isOk? : boolean;
     hasLogicException? : boolean;
@@ -311,7 +336,7 @@ export const IErrorQueryRequestMetadata =
     exception? : any;
 }
 
-export const EmptyIErrorQueryResponse =
+export const EmptyIErrorListResponse =
 {
     state:undefined,
     data:undefined,
@@ -323,7 +348,7 @@ export const EmptyIErrorQueryResponse =
     exception:undefined
 }
 
-export interface IErrorMessage  {
+export interface IErrorRow  {
 id? : number;
 creationDate? : Date;
 type? : string;
@@ -331,7 +356,7 @@ message? : string;
 user? : string;
 }
 
-export const EmptyIErrorMessage =
+export const EmptyIErrorRow =
 {
     id:undefined,
     creationDate:undefined,
@@ -353,7 +378,8 @@ export const IIdRequestMetadata =
 {
     id:
     {
-        int:
+        displayFormat:'int'
+        ,int:
         {
             shouldValidate:true
         }
@@ -424,6 +450,216 @@ export const EmptyIListItem =
 {
     value:undefined,
     name:undefined
+}
+
+export interface IMemberDetail  {
+id? : number;
+name? : string;
+title? : string;
+requiredInt? : number;
+optionalInt? : number;
+requiredDate? : Date;
+optionalDate? : Date;
+requiredDecimal? : number;
+optionalDecimal? : number;
+managerId? : number;
+}
+
+export const EmptyIMemberDetail =
+{
+    id:undefined,
+    name:undefined,
+    title:undefined,
+    requiredInt:undefined,
+    optionalInt:undefined,
+    requiredDate:undefined,
+    optionalDate:undefined,
+    requiredDecimal:undefined,
+    optionalDecimal:undefined,
+    managerId:undefined
+}
+
+export const IMemberDetailMetadata =
+{
+    id:
+    {
+        displayFormat:'text',
+        isHidden: true,
+        propertyName:'Id',
+        displayName:'Id'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,name:
+    {
+        length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+    }
+    ,title:
+    {
+        length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,requiredInt:
+    {
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,optionalInt:
+    {
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,requiredDate:
+    {
+        displayFormat:'date'
+        ,date:
+        {
+            shouldValidate:true
+            ,min: new Date('1/1/1900')
+            ,max: new Date('3/4/2050')
+            ,message: 'date is either too far in the future or past'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,optionalDate:
+    {
+        displayFormat:'date'
+        ,date:
+        {
+            shouldValidate:true
+            ,min: new Date('1/1/1900')
+            ,max: new Date('3/4/2050')
+            ,message: 'date is either too far in the future or past'
+        }
+    }
+    ,requiredDecimal:
+    {
+        displayFormat:'decimal'
+        ,decimal:
+        {
+            shouldValidate:true
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,optionalDecimal:
+    {
+        displayFormat:'decimal'
+        ,decimal:
+        {
+            shouldValidate:true
+        }
+    }
+    ,managerId:
+    {
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+}
+
+export interface IMemberListRequest  {
+defaultSortMember? : string;
+sortDirection? : string;
+resetPaging? : boolean;
+pageNumber? : number;
+pageSize? : number;
+sortMember? : string;
+totalRecords? : number;
+totalPages? : number;
+}
+
+export const EmptyIMemberListRequest =
+{
+    defaultSortMember:undefined,
+    sortDirection:undefined,
+    resetPaging:undefined,
+    pageNumber:undefined,
+    pageSize:undefined,
+    sortMember:undefined,
+    totalRecords:undefined,
+    totalPages:undefined
+}
+
+export const IMemberListRequestMetadata =
+{
+    defaultSortMember:
+    {
+    }
+    ,}
+    
+    export interface IMemberListResponse extends IResponse {
+    state? : IGridState;
+    data? : IMemberRow[];
+    numberOfRowsEffected? : number;
+    isOk? : boolean;
+    hasLogicException? : boolean;
+    message? : string;
+    details? : INameValuePair[];
+    exception? : any;
+}
+
+export const EmptyIMemberListResponse =
+{
+    state:undefined,
+    data:undefined,
+    numberOfRowsEffected:undefined,
+    isOk:undefined,
+    hasLogicException:undefined,
+    message:undefined,
+    details:undefined,
+    exception:undefined
+}
+
+export interface IMemberRow  {
+id? : number;
+name? : string;
+title? : string;
+requiredInt? : number;
+optionalInt? : number;
+}
+
+export const EmptyIMemberRow =
+{
+    id:undefined,
+    name:undefined,
+    title:undefined,
+    requiredInt:undefined,
+    optionalInt:undefined
 }
 
 export interface IMobileErrorRequest  {
@@ -502,27 +738,6 @@ export const EmptyIResponse =
     exception:undefined
 }
 
-export interface IResponseOfApplicationSettingMessage extends IResponse {
-data? : IApplicationSettingMessage;
-numberOfRowsEffected? : number;
-isOk? : boolean;
-hasLogicException? : boolean;
-message? : string;
-details? : INameValuePair[];
-exception? : any;
-}
-
-export const EmptyIResponseOfApplicationSettingMessage =
-{
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
-}
-
 export interface IResponseOfUserDetail extends IResponse {
 data? : IUserDetail;
 numberOfRowsEffected? : number;
@@ -567,6 +782,27 @@ export const EmptyIUserDetail =
     password:undefined,
     confirmPassword:undefined,
     roles:undefined
+}
+
+export interface IResponseOfMemberDetail extends IResponse {
+data? : IMemberDetail;
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export const EmptyIResponseOfMemberDetail =
+{
+    data:undefined,
+    numberOfRowsEffected:undefined,
+    isOk:undefined,
+    hasLogicException:undefined,
+    message:undefined,
+    details:undefined,
+    exception:undefined
 }
 
 export interface IResponseOfErrorDetail extends IResponse {
@@ -636,13 +872,34 @@ export const EmptyIResponseOfAppPrincipal =
     exception:undefined
 }
 
+export interface IResponseOfApplicationSettingDetail extends IResponse {
+data? : IApplicationSettingDetail;
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export const EmptyIResponseOfApplicationSettingDetail =
+{
+    data:undefined,
+    numberOfRowsEffected:undefined,
+    isOk:undefined,
+    hasLogicException:undefined,
+    message:undefined,
+    details:undefined,
+    exception:undefined
+}
+
 export interface IUIMetadata  {
 email? : IValidationMetaData;
 length? : IValidationMetaData;
 date? : IValidationMetaData;
 integer? : IValidationMetaData;
 decimal? : IValidationMetaData;
-isRequired? : boolean;
+required? : IValidationMetaData;
 propertyName? : string;
 displayName? : string;
 format? : string;
@@ -657,7 +914,7 @@ export const EmptyIUIMetadata =
     date:undefined,
     integer:undefined,
     decimal:undefined,
-    isRequired:undefined,
+    required:undefined,
     propertyName:undefined,
     displayName:undefined,
     format:undefined,
@@ -682,7 +939,7 @@ export const IUIMetadataMetadata =
     ,decimal:
     {
     }
-    ,isRequired:
+    ,required:
     {
     }
     ,propertyName:
@@ -717,7 +974,7 @@ export const EmptyIValidationMetaData =
     max:undefined
 }
 
-export interface IUserQueryRequest  {
+export interface IUserListRequest  {
 searchText? : string;
 defaultSortMember? : string;
 id? : number;
@@ -730,7 +987,7 @@ totalRecords? : number;
 totalPages? : number;
 }
 
-export const EmptyIUserQueryRequest =
+export const EmptyIUserListRequest =
 {
     searchText:undefined,
     defaultSortMember:undefined,
@@ -744,7 +1001,7 @@ export const EmptyIUserQueryRequest =
     totalPages:undefined
 }
 
-export const IUserQueryRequestMetadata =
+export const IUserListRequestMetadata =
 {
     searchText:
     {
@@ -754,16 +1011,17 @@ export const IUserQueryRequestMetadata =
     }
     ,id:
     {
-        int:
+        displayFormat:'int'
+        ,int:
         {
             shouldValidate:true
         }
     }
     ,}
     
-    export interface IUserQueryResponse extends IResponse {
+    export interface IUserListResponse extends IResponse {
     state? : IGridState;
-    data? : IUserMessage[];
+    data? : IUserRow[];
     numberOfRowsEffected? : number;
     isOk? : boolean;
     hasLogicException? : boolean;
@@ -772,7 +1030,7 @@ export const IUserQueryRequestMetadata =
     exception? : any;
 }
 
-export const EmptyIUserQueryResponse =
+export const EmptyIUserListResponse =
 {
     state:undefined,
     data:undefined,
@@ -784,7 +1042,7 @@ export const EmptyIUserQueryResponse =
     exception:undefined
 }
 
-export interface IUserMessage  {
+export interface IUserRow  {
 id? : number;
 userName? : string;
 clientId? : number;
@@ -793,7 +1051,7 @@ lastName? : string;
 roles? : string;
 }
 
-export const EmptyIUserMessage =
+export const EmptyIUserRow =
 {
     id:undefined,
     userName:undefined,

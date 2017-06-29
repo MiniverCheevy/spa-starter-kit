@@ -9,13 +9,15 @@ namespace Core
     public class RestResources
     {
         public const string ApplicationSetting = "ApplicationSetting";
-        public const string ApplicationSettingDetail = "ApplicationSettingDetail";
         public const string ApplicationSettingList = "ApplicationSettingList";
-        public const string ApplicationSettings = "ApplicationSettings";
         public const string CurrentUser = "CurrentUser";
         public const string ErrorDetail = "ErrorDetail";
         public const string ErrorList = "ErrorList";
         public const string Lists = "Lists";
+        public const string Member = "Member";
+        public const string MemberDetail = "MemberDetail";
+        public const string MemberList = "MemberList";
+        public const string Members = "Members";
         public const string MobileError = "MobileError";
         public const string UserDetail = "UserDetail";
         public const string UserList = "UserList";

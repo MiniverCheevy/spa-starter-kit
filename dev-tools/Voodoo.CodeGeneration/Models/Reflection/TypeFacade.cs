@@ -19,7 +19,7 @@ namespace Voodoo.CodeGeneration.Models.Reflection
         public string PluralName { get; set; }
         public string CamelCaseName { get; set; }
         public bool HasId { get; set; }
-        public bool HasDetailFlag { get; set; }
+        public bool HasDetailFlag { get; set; } = true;
         public bool HasActiveFlag { get; set; }
         public bool HasSortOrder { get; set; }
         public PropertyFacade[] Properties { get; set; }
@@ -45,7 +45,7 @@ namespace Voodoo.CodeGeneration.Models.Reflection
             var pluralizer = PluralizationService.CreateService(CultureInfo.CurrentCulture);
             PluralName = pluralizer.Pluralize(Name);
             CamelCaseName = Name.Substring(0, 1).ToLower() + Name.Substring(1);
-            MessageName = $"{Name}Message";
+            MessageName = $"{Name}Row";
             DetailName = $"{Name}Detail";
             buildProperties();
         }
@@ -66,11 +66,9 @@ namespace Voodoo.CodeGeneration.Models.Reflection
                 HasActiveFlag = true;
             if (Properties.Any(c => c.Name == "SortOrder"))
                 HasSortOrder = true;
-            if (Properties.Count() > 5 || Vs.Helper.FindType(DetailName) != null)
-                HasDetailFlag = true;
 
             DetailQueryMessageName = HasDetailFlag ? DetailName : MessageName;
-            DetailQueryMapMethodName = HasDetailFlag ? "ToDetail" : "ToMessage";
+            DetailQueryMapMethodName = HasDetailFlag ? "ToDetail" : "ToRow";
             if (Properties.Any(c => c.Name == "Id" && c.PropertyType == typeof(int)))
                 HasId = true;
             if (HasId && Properties.Any(c => c.Name == "Name"))

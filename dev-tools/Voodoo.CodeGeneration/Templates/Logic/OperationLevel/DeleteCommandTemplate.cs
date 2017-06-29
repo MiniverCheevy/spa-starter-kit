@@ -39,12 +39,12 @@ foreach (var item in this.File.UsingStatements){
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Name));
             this.Write(" :CommandAsync<IdRequest,Response>\r\n    {\r\n  \r\n\t\t");
 if(this.File.HasContext){
-            this.Write("protected ");
+            this.Write("private ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.ContextName));
             this.Write(" context;\r\n\t\t");
 }
-            this.Write("\t\tprotected IValidator validator = ValidationManager.GetDefaultValidatitor();\r\n\r\n" +
-                    "        public ");
+            this.Write("\t\tprivate IValidator validator = ValidationManager.GetDefaultValidatitor();\r\n\r\n  " +
+                    "      public ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Name));
             this.Write("(IdRequest request) : base(request)\r\n        {\r\n        }\r\n       \r\n\t\tprotected o" +
                     "verride async Task<Response> ProcessRequestAsync()\r\n        {\r\n\t\t\t\r\n            " +

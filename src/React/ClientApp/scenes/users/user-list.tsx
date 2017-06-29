@@ -17,7 +17,7 @@ const getHeader = () => {
 }
 const getRows = (props: UserListProps) => {
     return props.users.map(
-        (user: Models.IUserMessage) => {
+        (user: Models.IUserRow) => {
             return (
                 <tr key={user.id}>
                     <td></td>
@@ -30,8 +30,8 @@ const getRows = (props: UserListProps) => {
         });
 }
 class UserListProps {
-    users: Models.IUserMessage[] = [];
-    request: Models.IUserQueryRequest = {};
-    edit(user: Models.IUserMessage): void { };
-    refresh(request: Models.IUserQueryRequest): void { };
+    users: Models.IUserRow[] = [];
+    request: Models.IUserListRequest = {};
+    edit(user: Models.IUserRow): void { };
+    refresh(request: Models.IUserListRequest): void { };
 }

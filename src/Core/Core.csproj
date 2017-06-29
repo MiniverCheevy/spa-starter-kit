@@ -53,8 +53,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Voodoo, Version=2.2.21.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Patterns.2.2.21\lib\net46\Voodoo.dll</HintPath>
+    <Reference Include="Voodoo, Version=2.2.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Voodoo.Patterns.2.2.23\lib\net46\Voodoo.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -78,16 +78,32 @@
     <Compile Include="IOC.cs" />
     <Compile Include="Logging\ITraceWriter.cs" />
     <Compile Include="Logging\TraceLogger.cs" />
-    <Compile Include="Migrations\201704181945159_Initial.cs" />
-    <Compile Include="Migrations\201704181945159_Initial.Designer.cs">
-      <DependentUpon>201704181945159_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201706282021537_Initial.cs" />
+    <Compile Include="Migrations\201706282021537_Initial.Designer.cs">
+      <DependentUpon>201706282021537_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\TestDataBuilder.cs" />
     <Compile Include="ModelExtensions\ModelExtensions.cs" />
     <Compile Include="Models\ApplicationSetting.cs" />
     <Compile Include="Models\Exceptions\Error.cs" />
     <Compile Include="Models\Identity\Role.cs" />
     <Compile Include="Models\Identity\User.cs" />
+    <Compile Include="Models\Scratch\Member.cs" />
+    <Compile Include="Models\Scratch\Project.cs" />
+    <Compile Include="Models\Scratch\Team.cs" />
+    <Compile Include="Operations\ApplicationSettings\ApplicationSettingDeleteCommand.cs" />
+    <Compile Include="Operations\ApplicationSettings\ApplicationSettingListQuery.cs" />
+    <Compile Include="Operations\ApplicationSettings\ApplicationSettingSaveCommand.cs" />
+    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingDetail.cs" />
+    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingExtensions.cs" />
+    <Compile Include="Operations\ApplicationSettings\ApplicationSettingDetailQuery.cs" />
+    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingExtensions.generated.cs" />
+    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingListRequest.cs" />
+    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingListResponse.cs" />
+    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingMessages.cs" />
+    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingRepository.cs" />
+    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingRow.cs" />
     <Compile Include="Operations\CurrentUsers\BuildPrincipalCommand.cs" />
     <Compile Include="Operations\CurrentUsers\Extras\BuildPrincipalRequest.cs" />
     <Compile Include="Operations\CurrentUsers\GetCurrentUserCommand.cs" />
@@ -95,12 +111,13 @@
     <Compile Include="Operations\Errors\ErrorDetailQuery.cs" />
     <Compile Include="Operations\Errors\ErrorJsonDeserializer.cs" />
     <Compile Include="Operations\Errors\ErrorListQuery.cs" />
+    <Compile Include="Operations\Errors\Extras\ErrorDetail.cs" />
     <Compile Include="Operations\Errors\Extras\ErrorExtensions.cs" />
     <Compile Include="Operations\Errors\Extras\ErrorExtensions.generated.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorMessage.cs" />
+    <Compile Include="Operations\Errors\Extras\ErrorRow.cs" />
     <Compile Include="Operations\Errors\Extras\ErrorMessages.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorQueryRequest.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorQueryResponse.cs" />
+    <Compile Include="Operations\Errors\Extras\ErrorListRequest.cs" />
+    <Compile Include="Operations\Errors\Extras\ErrorListResponse.cs" />
     <Compile Include="Operations\Errors\Extras\ErrorRepository.cs" />
     <Compile Include="Operations\Errors\Extras\ErrorRequest.cs" />
     <Compile Include="Operations\Errors\Extras\IError.cs" />
@@ -112,19 +129,31 @@
     <Compile Include="Operations\Lists\ListsQuery.cs" />
     <Compile Include="Operations\Lists\ListsRequest.cs" />
     <Compile Include="Operations\Lists\ListsResponse.generated.cs" />
+    <Compile Include="Operations\Members\Extras\MemberDetail.cs" />
+    <Compile Include="Operations\Members\Extras\MemberExtensions.cs" />
+    <Compile Include="Operations\Members\Extras\MemberExtensions.generated.cs" />
+    <Compile Include="Operations\Members\Extras\MemberListRequest.cs" />
+    <Compile Include="Operations\Members\Extras\MemberListResponse.cs" />
+    <Compile Include="Operations\Members\Extras\MemberMessages.cs" />
+    <Compile Include="Operations\Members\Extras\MemberRepository.cs" />
+    <Compile Include="Operations\Members\Extras\MemberRow.cs" />
+    <Compile Include="Operations\Members\MemberDeleteCommand.cs" />
+    <Compile Include="Operations\Members\MemberDetailQuery.cs" />
+    <Compile Include="Operations\Members\MemberListQuery.cs" />
+    <Compile Include="Operations\Members\MemberSaveCommand.cs" />
+    <Compile Include="Operations\Roles\Extras\RoleDetail.cs" />
     <Compile Include="Operations\Roles\Extras\RoleExtensions.cs" />
     <Compile Include="Operations\Roles\Extras\RoleExtensions.generated.cs" />
-    <Compile Include="Operations\Roles\Extras\RoleMessage.cs" />
     <Compile Include="Operations\Roles\Extras\RoleMessages.cs" />
-    <Compile Include="Operations\Roles\Extras\RoleQueryRequest.cs" />
-    <Compile Include="Operations\Roles\Extras\RoleQueryResponse.cs" />
     <Compile Include="Operations\Roles\Extras\RoleRepository.cs" />
+    <Compile Include="Operations\Roles\Extras\RoleRow.cs" />
+    <Compile Include="Operations\Users\Extras\UserDetail.cs" />
     <Compile Include="Operations\Users\Extras\UserExtensions.cs" />
     <Compile Include="Operations\Users\Extras\UserExtensions.generated.cs" />
-    <Compile Include="Operations\Users\Extras\UserMessage.cs" />
+    <Compile Include="Operations\Users\Extras\UserRow.cs" />
     <Compile Include="Operations\Users\Extras\UserMessages.cs" />
-    <Compile Include="Operations\Users\Extras\UserQueryRequest.cs" />
-    <Compile Include="Operations\Users\Extras\UserQueryResponse.cs" />
+    <Compile Include="Operations\Users\Extras\UserListRequest.cs" />
+    <Compile Include="Operations\Users\Extras\UserListResponse.cs" />
     <Compile Include="Operations\Users\Extras\UserRepository.cs" />
     <Compile Include="Operations\Users\UserDeleteCommand.cs" />
     <Compile Include="Operations\Users\UserDetailQuery.cs" />
@@ -135,17 +164,6 @@
     <Compile Include="RoleNames.cs" />
     <Compile Include="Security\Encryption.cs" />
     <Compile Include="Security\Encryptor.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingRepository.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingSaveCommand.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingExtensions.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingListQuery.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingMessage.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingQueryRequest.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingQueryResponse.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingDetailQuery.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingMessages.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingExtensions.generated.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingDeleteCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -153,12 +171,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704181945159_Initial.resx">
-      <DependentUpon>201704181945159_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706282021537_Initial.resx">
+      <DependentUpon>201706282021537_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Scripts\Lookups.sql" />
     <Content Include="Migrations\Scripts\ReadMe.txt" />
     <EmbeddedResource Include="Migrations\Scripts\Script.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

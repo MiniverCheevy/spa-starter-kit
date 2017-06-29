@@ -4,14 +4,13 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-
+using Core;
 using Core.Models;
-
 namespace Core.Operations.ApplicationSettings.Extras
 {
     public static partial class ApplicationSettingExtensions
     {
-        private static ApplicationSettingMessage toApplicationSettingMessage(ApplicationSetting model, ApplicationSettingMessage message)
+        private static ApplicationSettingRow toApplicationSettingRow(ApplicationSetting model, ApplicationSettingRow message)
         {
             message.Id = model.Id;
             message.Name = model.Name;
@@ -19,7 +18,21 @@ namespace Core.Operations.ApplicationSettings.Extras
             
             return message;
         }
-        public static ApplicationSetting updateFromApplicationSettingMessage(ApplicationSettingMessage message, ApplicationSetting model)
+        public static ApplicationSetting updateFromApplicationSettingRow(ApplicationSettingRow message, ApplicationSetting model)
+        {
+            model.Name =message.Name;
+            model.Value =message.Value;
+            return model;
+        }
+        private static ApplicationSettingDetail toApplicationSettingDetail(ApplicationSetting model, ApplicationSettingDetail message)
+        {
+            message.Id = model.Id;
+            message.Name = model.Name;
+            message.Value = model.Value;
+            
+            return message;
+        }
+        public static ApplicationSetting updateFromApplicationSettingDetail(ApplicationSettingDetail message, ApplicationSetting model)
         {
             model.Name =message.Name;
             model.Value =message.Value;

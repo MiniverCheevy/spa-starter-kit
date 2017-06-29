@@ -1,8 +1,18 @@
-using System.Threading.Tasks;
+
+using Tests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FluentAssertions;
 using Core.Operations.Users;
 using Core.Operations.Users.Extras;
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Voodoo.TestData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Cache;
+using System.Text;
+using System.Threading.Tasks;
+using Voodoo;
+using Voodoo.Messages;
 
 namespace Tests.Operations.Users
 {
@@ -19,5 +29,7 @@ namespace Tests.Operations.Users
             response.Message.Should().Be(UserMessages.UpdateOk);
             response.IsOk.Should().BeTrue();
         }
+        
     }
 }
+

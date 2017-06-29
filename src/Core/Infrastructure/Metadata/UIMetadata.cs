@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Voodoo.Infrastructure.Notations;
+﻿using Voodoo.Infrastructure.Notations;
 
 namespace Core.Infrastructure.Metadata
 {
-    
-
     [Client]
     public class UIMetadata
     {

@@ -45,8 +45,8 @@ if(this.File.HasContext){
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.ContextName));
             this.Write(" context;\r\n\t\t");
 }
-            this.Write("\t\tprotected IValidator validator = ValidationManager.GetDefaultValidatitor();\r\n\r\n" +
-                    "        public ");
+            this.Write("\t\tprivate IValidator validator = ValidationManager.GetDefaultValidatitor();\r\n\r\n  " +
+                    "      public ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Name));
             this.Write(" (IdRequest request) : base(request)\r\n        {\r\n        }\r\n\r\n        protected o" +
                     "verride async Task<Response<");

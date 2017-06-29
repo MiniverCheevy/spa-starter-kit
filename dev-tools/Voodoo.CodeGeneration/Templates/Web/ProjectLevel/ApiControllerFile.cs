@@ -30,14 +30,14 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
             PageSpecificUsingStatements.Add("Voodoo.Messages");
             PageSpecificUsingStatements.Add($"{project.RootNamespace}.Infrastructure.ExecutionPipeline");
             PageSpecificUsingStatements.Add($"{project.RootNamespace}.Infrastructure.ExecutionPipeline.Models");
-            PageSpecificUsingStatements.Add("using System");
-            PageSpecificUsingStatements.Add("using System.Collections.Generic");
-            PageSpecificUsingStatements.Add("using System.Linq");
-            PageSpecificUsingStatements.Add("using System.Threading.Tasks");
-            PageSpecificUsingStatements.Add("using Microsoft.AspNetCore.Mvc");
-            PageSpecificUsingStatements.Add("using Microsoft.AspNetCore.Authorization");
-            PageSpecificUsingStatements.Add("using Microsoft.AspNetCore.Http");
-            PageSpecificUsingStatements.Add("using Voodoo");
+            PageSpecificUsingStatements.Add("System");
+            PageSpecificUsingStatements.Add("System.Collections.Generic");
+            PageSpecificUsingStatements.Add("System.Linq");
+            PageSpecificUsingStatements.Add("System.Threading.Tasks");
+            PageSpecificUsingStatements.Add("Microsoft.AspNetCore.Mvc");
+            PageSpecificUsingStatements.Add("Microsoft.AspNetCore.Authorization");
+            PageSpecificUsingStatements.Add("Microsoft.AspNetCore.Http");
+            PageSpecificUsingStatements.Add("Voodoo");
             foreach (var resource in resources)
                 foreach (var verb in resource.Verbs)
                 {

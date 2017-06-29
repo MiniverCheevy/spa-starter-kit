@@ -1,8 +1,18 @@
-using System.Threading.Tasks;
+
+using Tests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FluentAssertions;
 using Core.Operations.ApplicationSettings;
 using Core.Operations.ApplicationSettings.Extras;
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Voodoo.TestData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Cache;
+using System.Text;
+using System.Threading.Tasks;
+using Voodoo;
+using Voodoo.Messages;
 
 namespace Tests.Operations.ApplicationSettings
 {
@@ -19,5 +29,7 @@ namespace Tests.Operations.ApplicationSettings
             response.Message.Should().Be(ApplicationSettingMessages.UpdateOk);
             response.IsOk.Should().BeTrue();
         }
+        
     }
 }
+

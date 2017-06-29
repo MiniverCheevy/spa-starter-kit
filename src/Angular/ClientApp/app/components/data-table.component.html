@@ -1,0 +1,17 @@
+<div className="mdc-card ">
+    <table className="data-table mdc-card__primary">
+        <thead className="mdc-typography--body2">
+            <ng-content select="headerRow">
+
+            </ng-content>
+        </thead>
+        <tbody className="mdc-typography--body1">
+            <ng-content select="rows">
+            </ng-content>
+        </tbody>
+    </table>
+    <section className="mdc-card__supporting-text"></section>
+    <section className="mdc-card__actions">
+        Pager
+    </section>
+</div>

@@ -1,57 +1,64 @@
-using System.Data.Entity;
-using System.Threading.Tasks;
-using Core.Context;
+
+using Core;
 using Core.Models;
 using Core.Operations.ApplicationSettings.Extras;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Voodoo;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
+using Voodoo.Operations;
 using Voodoo.Operations.Async;
 using Voodoo.Validation.Infrastructure;
-
+using Core.Context;
+using System.Data.Entity;
 namespace Core.Operations.ApplicationSettings
 {
-    [Rest(Verb.Put, RestResources.ApplicationSettingDetail)]
-    public class ApplicationSettingSaveCommand : CommandAsync<ApplicationSettingMessage, NewItemResponse>
+    [Rest(Verb.Put, RestResources.ApplicationSetting)]
+    public class ApplicationSettingSaveCommand :CommandAsync<ApplicationSettingDetail, NewItemResponse>
     {
-        protected MainContext context;
-        protected bool isNew;
-        protected IValidator validator = ValidationManager.GetDefaultValidatitor();
-
-        public ApplicationSettingSaveCommand(ApplicationSettingMessage request) : base(request)
+        private bool isNew;
+        private MainContext context;
+        private IValidator validator = ValidationManager.GetDefaultValidatitor();
+        public ApplicationSettingSaveCommand(ApplicationSettingDetail request) : base(request)
         {
         }
-
+        
         protected override async Task<NewItemResponse> ProcessRequestAsync()
         {
             //The request object is validated by default, validate anything else with
             //validator.Validate(<something>);
-
-            using (context = IOC.GetContext())
+            
+            using(context = IOC.GetContext())
             {
                 var model = await createOrGetExisting();
                 model.ThrowIfNull(ApplicationSettingMessages.NotFound);
-
+                
                 model.UpdateFrom(request);
                 await context.SaveChangesAsync();
-
+                
                 response.NewItemId = model.Id;
             }
-            response.Message = isNew ? ApplicationSettingMessages.AddOk : ApplicationSettingMessages.UpdateOk;
+            response.Message = isNew ? ApplicationSettingMessages.AddOk:ApplicationSettingMessages.UpdateOk;
             return response;
         }
-
-        protected async Task<ApplicationSetting> createOrGetExisting()
+        private async Task<ApplicationSetting> createOrGetExisting()
         {
             if (request.Id == 0)
             {
-                isNew = true;
+                isNew=true;
                 var model = new ApplicationSetting();
                 context.ApplicationSettings.Add(model);
                 return model;
             }
-            return await context.ApplicationSettings
-                .FirstOrDefaultAsync(c => c.Id == request.Id);
+            else
+            {
+                return await context.ApplicationSettings
+                                    .FirstOrDefaultAsync(c=>c.Id == request.Id);
+            }
         }
     }
 }
+

@@ -31,14 +31,14 @@ namespace Voodoo.CodeGeneration.Templates.Tests
             PageSpecificUsingStatements.Add("Voodoo.TestData");
             PageSpecificUsingStatements.Add(ContextNamespace);
             PageSpecificUsingStatements.Add(logic.RootNamespace);
-            PageSpecificUsingStatements.Add("using System");
-            PageSpecificUsingStatements.Add("using System.Collections.Generic");
-            PageSpecificUsingStatements.Add("using System.Linq");
-            PageSpecificUsingStatements.Add("using System.Net.Cache");
-            PageSpecificUsingStatements.Add("using System.Text");
-            PageSpecificUsingStatements.Add("using System.Threading.Tasks");
-            PageSpecificUsingStatements.Add("using Voodoo");
-            PageSpecificUsingStatements.Add("using Voodoo.Messages");
+            PageSpecificUsingStatements.Add("System");
+            PageSpecificUsingStatements.Add("System.Collections.Generic");
+            PageSpecificUsingStatements.Add("System.Linq");
+            PageSpecificUsingStatements.Add("System.Net.Cache");
+            PageSpecificUsingStatements.Add("System.Text");
+            PageSpecificUsingStatements.Add("System.Threading.Tasks");
+            PageSpecificUsingStatements.Add("Voodoo");
+            PageSpecificUsingStatements.Add("Voodoo.Messages");
         }
 
         public override string GetFileContents()

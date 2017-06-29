@@ -1,0 +1,15 @@
+li { cursor:pointer; min-width: 54px; width: 54px;}
+.pagination {
+    margin-top:12px;
+    margin-bottom:12px;
+}
+.pagination a.disabled {
+    color: gray;
+    cursor: not-allowed;
+    text-decoration: none;
+}
+.pager-container {
+    margin-left: 12px;
+    margin-top: 12px;
+}
+

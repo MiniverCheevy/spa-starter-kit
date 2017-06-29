@@ -2,6 +2,7 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Context;
 using Core.Models.Identity;
 using Core.Operations.Users.Extras;
 using Voodoo.Infrastructure;
@@ -14,7 +15,7 @@ namespace Core.Operations.Users
     [Rest(Verb.Get, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
     public class UserDetailQuery : QueryAsync<IdRequest, Response<UserDetail>>
     {
-        private Context.MainContext context;
+        private MainContext context;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
         public UserDetailQuery(IdRequest request) : base(request)

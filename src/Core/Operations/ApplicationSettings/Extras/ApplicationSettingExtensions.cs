@@ -1,24 +1,36 @@
-using Core.Context;
+using Core;
 using Core.Models;
-
+using Core.Context;
 namespace Core.Operations.ApplicationSettings.Extras
 {
-    public static partial class ApplicationSettingExtensions
+    public  static partial class ApplicationSettingExtensions
     {
         public static ApplicationSettingRepository ApplicationSettingRepository(this MainContext context)
         {
             return new ApplicationSettingRepository(context);
         }
-
-        public static ApplicationSettingMessage ToApplicationSettingMessage(this ApplicationSetting model)
+        
+        public static ApplicationSettingRow ToApplicationSettingRow(this ApplicationSetting model)
         {
-            var message = toApplicationSettingMessage(model, new ApplicationSettingMessage());
+            var message = toApplicationSettingRow(model, new ApplicationSettingRow());
             return message;
         }
-
-        public static ApplicationSetting UpdateFrom(this ApplicationSetting model, ApplicationSettingMessage message)
+        public static ApplicationSetting UpdateFrom(this  ApplicationSetting model, ApplicationSettingRow message)
         {
-            return updateFromApplicationSettingMessage(message, model);
+            return updateFromApplicationSettingRow(message, model);
+            
         }
+        public static ApplicationSettingDetail ToApplicationSettingDetail(this ApplicationSetting model)
+        {
+            var message = toApplicationSettingDetail(model, new ApplicationSettingDetail());
+            return message;
+        }
+        public static ApplicationSetting UpdateFrom(this  ApplicationSetting model, ApplicationSettingDetail message)
+        {
+            return updateFromApplicationSettingDetail(message, model);
+            
+        }
+        
     }
 }
+

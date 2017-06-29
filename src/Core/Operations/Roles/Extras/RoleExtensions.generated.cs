@@ -4,21 +4,32 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-
+using Core;
 using Core.Models.Identity;
-
 namespace Core.Operations.Roles.Extras
 {
     public static partial class RoleExtensions
     {
-        private static RoleMessage toRoleMessage(Role model, RoleMessage message)
+        private static RoleRow toRoleRow(Role model, RoleRow message)
         {
             message.Id = model.Id;
             message.Name = model.Name;
             
             return message;
         }
-        public static Role updateFromRoleMessage(RoleMessage message, Role model)
+        public static Role updateFromRoleRow(RoleRow message, Role model)
+        {
+            model.Name =message.Name;
+            return model;
+        }
+        private static RoleDetail toRoleDetail(Role model, RoleDetail message)
+        {
+            message.Id = model.Id;
+            message.Name = model.Name;
+            
+            return message;
+        }
+        public static Role updateFromRoleDetail(RoleDetail message, Role model)
         {
             model.Name =message.Name;
             return model;

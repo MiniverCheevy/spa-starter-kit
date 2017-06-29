@@ -129,8 +129,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Voodoo, Version=2.2.21.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Patterns.2.2.21\lib\net46\Voodoo.dll</HintPath>
+    <Reference Include="Voodoo, Version=2.2.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Voodoo.Patterns.2.2.23\lib\net46\Voodoo.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +206,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DetailQueryTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\DetailFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\Extras\ExtensionFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\Extras\ExtensionTemplate.cs">
       <DependentUpon>ExtensionTemplate.tt</DependentUpon>
@@ -218,17 +219,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\Logic\OperationLevel\Extras\MessagesFile.cs" />
+    <Compile Include="Templates\Logic\OperationLevel\Extras\RowFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\SaveCommandFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\SaveCommandTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaveCommandTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\Logic\OperationLevel\UpdateCommandFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\UpdateCommandTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UpdateCommandTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\PCL\ServiceFile.cs" />
     <Compile Include="Templates\PCL\ServiceTemplate.cs">
@@ -308,12 +304,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\VisualStudioHelper.cs" />
     <Compile Include="Helpers\VSHelper.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\AddCommandFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\AddCommandTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AddCommandTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\Logic\OperationLevel\Extras\RepositoryFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\Extras\RepositoryTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -326,24 +316,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MessageTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Logic\OperationLevel\Extras\QueryResponseFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\Extras\QueryResponseTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QueryResponseTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\Logic\OperationLevel\ListQueryTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ListQueryTemplate.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\ListResponseFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\ListQueryFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\Extras\QueryRequestFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\Extras\QueryRequestTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QueryRequestTemplate.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Templates\Logic\OperationLevel\Extras\ListRequestFile.cs" />
     <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsEnumFile.cs" />
     <Compile Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsEnumTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -381,11 +356,6 @@
       <DependentUpon>AddCommandTestsTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Tests\QueryTestsFile.cs" />
-    <Compile Include="Templates\Tests\QueryTestsTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QueryTestsTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\Logic\OperationLevel\Extras\MapperTemplate.cs">
       <DependentUpon>MapperTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -482,10 +452,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>SaveCommandTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Logic\OperationLevel\UpdateCommandTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>UpdateCommandTemplate.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\PCL\ServiceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ServiceTemplate.cs</LastGenOutput>
@@ -530,10 +496,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MappingTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Logic\OperationLevel\AddCommandTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>AddCommandTemplate.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\Logic\OperationLevel\_fileTemplate.txt" />
     <Content Include="Templates\Logic\OperationLevel\_templateTemplate.txt" />
     <Content Include="Templates\Logic\OperationLevel\Extras\RepositoryTemplate.tt">
@@ -543,18 +505,6 @@
     <Content Include="Templates\Logic\OperationLevel\Extras\MessageTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MessageTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\OperationLevel\Extras\QueryResponseTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>QueryResponseTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\OperationLevel\ListQueryTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ListQueryTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\OperationLevel\Extras\QueryRequestTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>QueryRequestTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsEnumTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -579,10 +529,6 @@
     <Content Include="Templates\Tests\AddCommandTestsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AddCommandTestsTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Tests\QueryTestsTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>QueryTestsTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Logic\ProjectLevel\_fileTemplate.txt" />
     <Content Include="Templates\Logic\ProjectLevel\_templateTemplate.txt" />

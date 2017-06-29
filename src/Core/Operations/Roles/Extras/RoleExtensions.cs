@@ -1,24 +1,36 @@
-using Core.Context;
+using Core;
 using Core.Models.Identity;
-
+using Core.Context;
 namespace Core.Operations.Roles.Extras
 {
-    public static partial class RoleExtensions
+    public  static partial class RoleExtensions
     {
         public static RoleRepository RoleRepository(this MainContext context)
         {
             return new RoleRepository(context);
         }
-
-        public static RoleMessage ToRoleMessage(this Role model)
+        
+        public static RoleRow ToRoleRow(this Role model)
         {
-            var message = toRoleMessage(model, new RoleMessage());
+            var message = toRoleRow(model, new RoleRow());
             return message;
         }
-
-        public static Role UpdateFrom(this Role model, RoleMessage message)
+        public static Role UpdateFrom(this  Role model, RoleRow message)
         {
-            return updateFromRoleMessage(message, model);
+            return updateFromRoleRow(message, model);
+            
         }
+        public static RoleDetail ToRoleDetail(this Role model)
+        {
+            var message = toRoleDetail(model, new RoleDetail());
+            return message;
+        }
+        public static Role UpdateFrom(this  Role model, RoleDetail message)
+        {
+            return updateFromRoleDetail(message, model);
+            
+        }
+        
     }
 }
+

@@ -3,8 +3,8 @@ import * as Models from './../../../models.generated';
 
 export class UserList
 {
-    request: Models.IUserQueryRequest = {};
-    data: Models.IUserMessage[] = [];
+    request: Models.IUserListRequest = {};
+    data: Models.IUserRow[] = [];
 
     public constructor(private userListService: Api.UserList)
     {

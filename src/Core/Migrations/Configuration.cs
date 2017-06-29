@@ -16,6 +16,14 @@ namespace Core.Migrations
         protected override void Seed(MainContext context)
         {
             addRolesAndUsers(context);
+            addTestData(context);
+        }
+
+        private void addTestData(MainContext context)
+        {
+#if DEBUG
+            new TestDataBuilder().Build(context);
+#endif
         }
 
         private static void addRolesAndUsers(MainContext context)

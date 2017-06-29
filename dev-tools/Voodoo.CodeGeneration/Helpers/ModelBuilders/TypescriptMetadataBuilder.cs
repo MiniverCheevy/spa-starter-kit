@@ -18,8 +18,11 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         private PropertyInfo[] properties;
         private StringBuilder output = new StringBuilder();
         private Type[] dateTypes = new Type[] { typeof(DateTime), typeof(DateTime?) };
-        private Type[] intTypes = new Type[] { typeof(short), typeof(int), typeof(long) };
-        private Type[] decimalType = new Type[] { typeof(decimal) };
+        private Type[] intTypes = new Type[] { typeof(short), typeof(int), typeof(long), typeof(short?), typeof(int?), typeof(long?) };
+        private Type[] decimalTypes = new Type[] { typeof(decimal), typeof(decimal?) };
+        private bool isDate = false;
+        private bool isInt = false;
+        private bool isDecimal = false;
         private ModelBuilder modelBuilder = new TypeScriptModelBuilder();
         private Type type;
 
@@ -50,8 +53,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
         private void getDeclaration(PropertyInfo property, bool isLast)
         {
-            if (property.DeclaringType == typeof(PagedResponse<>) 
-                || property.DeclaringType == typeof(Response) 
+            if (property.DeclaringType == typeof(PagedResponse<>)
+                || property.DeclaringType == typeof(Response)
                 || property.DeclaringType == typeof(Response<>)
                 || property.DeclaringType == typeof(PagedRequest)
                 || property.DeclaringType == typeof(GridState)
@@ -59,6 +62,10 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 return;
 
             var tsName = ModelBuilder.LowerCaseFirstLetter(property.Name);
+
+            isDate = dateTypes.Contains(property.PropertyType);
+            isInt = intTypes.Contains(property.PropertyType);
+            isDecimal = decimalTypes.Contains(property.PropertyType);
 
             output.Append(tsName);
             output.AppendLine(":");
@@ -71,40 +78,50 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             previous = generateDecimalDeclaration(property, previous);
             previous = generateStringLengthDeclaration(property, previous);
             previous = generateRequiredDeclaration(property, previous);
-            
+
             output.AppendLine("}");
             if (!isLast)
                 output.Append(",");
             //TODO:
             //CollectionMustHaveAtLeastOneItem
             //CompareAttribute
-            //Create GreaterThan
+            //GreaterThan
 
         }
 
         private bool generateUi(PropertyInfo property)
         {
+            var items = new List<string>();
             var ui = property.GetCustomAttribute<UIAttribute>();
             if (ui == null)
             {
-                //TODO: if no ui attribute default format based on data type
-                //add hidden attirbute to id
-                return true;
+                if (isDecimal)
+                    items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(DisplayFormat.Decimal.ToString())}'");
+                else if (isDate)
+                    items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(DisplayFormat.Date.ToString())}'");
+                else if (isInt)
+                    items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(DisplayFormat.Int.ToString())}'");
+
+            }
+            else
+            {
+
+                items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(ui.DisplayFormat.ToString())}'");
+                if (ui.IsHidden)
+                    items.Add("isHidden: true");
+                if (ui.IsReadOnly)
+                    items.Add("isReadonly: true");
+                if (!string.IsNullOrWhiteSpace(ui.Grouping))
+                    items.Add($"grouping:'{ui.Grouping}'");
+                items.Add($"propertyName:'{property.Name}'");
+
+                var displayName = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name.ToFriendlyString();
+
+                items.Add($"displayName:'{displayName}'");
             }
 
-            var items = new List<string>();
-            items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(ui.DisplayFormat.ToString())}'");
-            if (ui.IsHidden)
-                items.Add("isHidden: true");
-            if (ui.IsReadOnly)
-                items.Add("isReadonly: true");
-            if (!string.IsNullOrWhiteSpace(ui.Grouping))
-                items.Add($"grouping:'{ui.Grouping}'");
-            items.Add($"propertyName:'{property.Name}'");
-
-            var displayName = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name.ToFriendlyString();
-
-            items.Add($"displayName:'{displayName}'");
+            if (!items.Any())
+                return false;
 
             var lastItem = items.Last();
             foreach (var item in items)
@@ -112,7 +129,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 output.Append(item);
                 if (item != lastItem)
                     output.Append(",");
-                output.AppendLine();            
+                output.AppendLine();
             }
             return true;
 
@@ -181,10 +198,12 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
 
 
-        private bool generateDateDeclaration(PropertyInfo property, bool previous)
+        private bool generateDateDeclaration(PropertyInfo property, bool hasPrevious)
         {
-            if (!dateTypes.Contains(property.PropertyType))
-                return previous;
+            if (!isDate)
+                return hasPrevious;
+            if (hasPrevious)
+                output.Append(",");
 
             output.AppendLine($"date:");
             output.AppendLine("{");
@@ -223,7 +242,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
         private bool generateIntDeclaration(PropertyInfo property, bool hasPrevious)
         {
-            if (!intTypes.Contains(property.PropertyType))
+            if (!isInt)
                 return hasPrevious;
             if (hasPrevious)
                 output.Append(",");
@@ -268,7 +287,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
         private bool generateDecimalDeclaration(PropertyInfo property, bool hasPrevious)
         {
-            if (!decimalType.Contains(property.PropertyType))
+            if (!isDecimal)
                 return hasPrevious;
             if (hasPrevious)
                 output.Append(",");

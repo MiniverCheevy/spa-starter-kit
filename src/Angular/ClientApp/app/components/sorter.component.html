@@ -1,0 +1,13 @@
+<span>
+    <span className="sort-indicator">
+        <i *ngIf="this.isCurrentSortAsc" class="mdi mdi-arrow-up"></i>
+        <i *ngIf="this.isCurrentSortDesc" class="mdi mdi-arrow-down"></i>;
+        <span *ngIf="!this.isCurrentSortDesc && !isCurrentSortAsc"
+              className="available-sort-indicator">
+            <i className="mdi mdi-arrow-up"></i>
+        </span>
+    </span>
+    <span className="sorter" onClick=(this.sort(this.member)>
+        {this.text}
+    </span>
+</span>

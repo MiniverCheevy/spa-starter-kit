@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular", "src\Angular\Angu
 		{7AAC4FDB-1C6A-453F-8126-D2E89BC1B6D9} = {7AAC4FDB-1C6A-453F-8126-D2E89BC1B6D9}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbUpdate", "dev-tools\DbUpdate\DbUpdate.csproj", "{B328234D-01AA-4EA5-956B-2145B3372570}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,18 @@ Global
 		{AC0ECB22-B06D-4BD7-B72C-A8583C690070}.Release|x64.Build.0 = Release|Any CPU
 		{AC0ECB22-B06D-4BD7-B72C-A8583C690070}.Release|x86.ActiveCfg = Release|Any CPU
 		{AC0ECB22-B06D-4BD7-B72C-A8583C690070}.Release|x86.Build.0 = Release|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Debug|x64.Build.0 = Debug|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Debug|x86.Build.0 = Debug|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Release|x64.ActiveCfg = Release|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Release|x64.Build.0 = Release|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Release|x86.ActiveCfg = Release|Any CPU
+		{B328234D-01AA-4EA5-956B-2145B3372570}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

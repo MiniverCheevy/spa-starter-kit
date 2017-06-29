@@ -1,6 +1,7 @@
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using Core.Context;
 using Core.Identity;
 using Core.Operations.Users.Extras;
 using Voodoo.Infrastructure;
@@ -13,7 +14,7 @@ namespace Core.Operations.Users
     [Rest(Verb.Delete, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
     public class UserDeleteCommand : CommandAsync<IdRequest, Response>
     {
-        protected Context.MainContext context;
+        protected MainContext context;
         private AppPrincipal currentUser;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 

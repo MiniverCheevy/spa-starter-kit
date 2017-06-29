@@ -13,6 +13,9 @@ import * as Services from './../services';
 import { AjaxServiceStatic } from '../services/ajax-service';
 import { InputFieldComponent } from './components/input-field.component';
 import { SwitchComponent } from './components/switch.component';
+import { ScratchComponent } from './scratch/scratch.component';
+import { SorterComponent } from './components/sorter.component';
+import { DataTableComponent } from './components/data-table.component';
 export class GlobalErrorHandler implements ErrorHandler {
     handleError(ex) {
         var error: any = {};
@@ -42,7 +45,10 @@ export class GlobalErrorHandler implements ErrorHandler {
         ToolbarIconLinkComponent,
         AppComponent,
         InputFieldComponent,
-        SwitchComponent
+        SwitchComponent,
+        ScratchComponent,
+        SorterComponent,
+        DataTableComponent
     ],    
     providers: [
         { provide: 'ORIGIN_URL', useValue: location.origin },
@@ -59,6 +65,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
+            { path: 'scratch', component: ScratchComponent },
             { path: '**', redirectTo: 'home' }
         ], { useHash:true })
     ]

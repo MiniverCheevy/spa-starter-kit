@@ -30,6 +30,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             PageSpecificUsingStatements.Add("System.Linq");
             PageSpecificUsingStatements.Add("System.Threading.Tasks");
             PageSpecificUsingStatements.Add("Voodoo");
+            PageSpecificUsingStatements.Add("Voodoo.Infrastructure");
             PageSpecificUsingStatements.Add("Voodoo.Messages");
             PageSpecificUsingStatements.Add("Voodoo.Operations");
             PageSpecificUsingStatements.Add("Voodoo.Operations.Async");

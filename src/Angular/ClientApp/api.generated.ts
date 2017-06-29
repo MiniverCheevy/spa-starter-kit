@@ -17,11 +17,11 @@ export class ApplicationSetting
     {
     }
     
-    public async get (request: Models.IIdRequest):
-    Promise<Models.IResponseOfApplicationSettingMessage>
+    public async delete (request: Models.IIdRequest):
+    Promise<Models.IResponse>
     {
         this.messenger.incrementHttpRequestCounter();
-        var requestBuilder = await this.ajaxService.buildGetRequest(request, this.url);
+        var requestBuilder = await this.ajaxService.buildDeleteRequest(request, this.url);
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
@@ -44,11 +44,38 @@ export class ApplicationSetting
 }
 }
 
-public async delete (request: Models.IIdRequest):
-Promise<Models.IResponse>
+public async put (request: Models.IApplicationSettingDetail):
+Promise<Models.INewItemResponse>
 {
     this.messenger.incrementHttpRequestCounter();
-    var requestBuilder = await this.ajaxService.buildDeleteRequest(request, this.url);
+    var requestBuilder = await this.ajaxService.buildPutRequest(request, this.url);
+    try {
+    var response = await requestBuilder.send();
+    this.messenger.decrementHttpRequestCounter();
+    var out = <Models.IResponse>JSON.parse(response.response);
+    this.messenger.showResponseMessage(out);
+    return out;
+}
+catch (err)
+{
+    this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
+    
+    var result = {
+    isOk: false,
+    message: err.statusText
+};
+
+this.messenger.decrementHttpRequestCounter();
+this.messenger.showResponseMessage(result);
+return result;
+}
+}
+
+public async get (request: Models.IIdRequest):
+Promise<Models.IResponseOfApplicationSettingDetail>
+{
+    this.messenger.incrementHttpRequestCounter();
+    var requestBuilder = await this.ajaxService.buildGetRequest(request, this.url);
     try {
     var response = await requestBuilder.send();
     this.messenger.decrementHttpRequestCounter();
@@ -72,42 +99,6 @@ return result;
 }
 }
 
-export class ApplicationSettingDetail
-{
-    url: string = 'api/ApplicationSettingDetail';
-    
-    constructor(private ajaxService: AjaxService, private messenger:MessengerService)
-    {
-    }
-    
-    public async put (request: Models.IApplicationSettingMessage):
-    Promise<Models.INewItemResponse>
-    {
-        this.messenger.incrementHttpRequestCounter();
-        var requestBuilder = await this.ajaxService.buildPutRequest(request, this.url);
-        try {
-        var response = await requestBuilder.send();
-        this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
-        this.messenger.showResponseMessage(out);
-        return out;
-    }
-    catch (err)
-    {
-        this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
-        var result = {
-        isOk: false,
-        message: err.statusText
-    };
-    
-    this.messenger.decrementHttpRequestCounter();
-    this.messenger.showResponseMessage(result);
-    return result;
-}
-}
-}
-
 export class ApplicationSettingList
 {
     url: string = 'api/ApplicationSettingList';
@@ -116,8 +107,8 @@ export class ApplicationSettingList
     {
     }
     
-    public async get (request: Models.IApplicationSettingQueryRequest):
-    Promise<Models.IApplicationSettingQueryResponse>
+    public async get (request: Models.IApplicationSettingListRequest):
+    Promise<Models.IApplicationSettingListResponse>
     {
         this.messenger.incrementHttpRequestCounter();
         var requestBuilder = await this.ajaxService.buildGetRequest(request, this.url);
@@ -224,8 +215,8 @@ export class ErrorList
     {
     }
     
-    public async get (request: Models.IErrorQueryRequest):
-    Promise<Models.IErrorQueryResponse>
+    public async get (request: Models.IErrorListRequest):
+    Promise<Models.IErrorListResponse>
     {
         this.messenger.incrementHttpRequestCounter();
         var requestBuilder = await this.ajaxService.buildGetRequest(request, this.url);
@@ -262,6 +253,132 @@ export class Lists
     
     public async get (request: Models.IListsRequest):
     Promise<Models.IListsResponse>
+    {
+        this.messenger.incrementHttpRequestCounter();
+        var requestBuilder = await this.ajaxService.buildGetRequest(request, this.url);
+        try {
+        var response = await requestBuilder.send();
+        this.messenger.decrementHttpRequestCounter();
+        var out = <Models.IResponse>JSON.parse(response.response);
+        this.messenger.showResponseMessage(out);
+        return out;
+    }
+    catch (err)
+    {
+        this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
+        
+        var result = {
+        isOk: false,
+        message: err.statusText
+    };
+    
+    this.messenger.decrementHttpRequestCounter();
+    this.messenger.showResponseMessage(result);
+    return result;
+}
+}
+}
+
+export class Member
+{
+    url: string = 'api/Member';
+    
+    constructor(private ajaxService: AjaxService, private messenger:MessengerService)
+    {
+    }
+    
+    public async delete (request: Models.IIdRequest):
+    Promise<Models.IResponse>
+    {
+        this.messenger.incrementHttpRequestCounter();
+        var requestBuilder = await this.ajaxService.buildDeleteRequest(request, this.url);
+        try {
+        var response = await requestBuilder.send();
+        this.messenger.decrementHttpRequestCounter();
+        var out = <Models.IResponse>JSON.parse(response.response);
+        this.messenger.showResponseMessage(out);
+        return out;
+    }
+    catch (err)
+    {
+        this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
+        
+        var result = {
+        isOk: false,
+        message: err.statusText
+    };
+    
+    this.messenger.decrementHttpRequestCounter();
+    this.messenger.showResponseMessage(result);
+    return result;
+}
+}
+
+public async get (request: Models.IIdRequest):
+Promise<Models.IResponseOfMemberDetail>
+{
+    this.messenger.incrementHttpRequestCounter();
+    var requestBuilder = await this.ajaxService.buildGetRequest(request, this.url);
+    try {
+    var response = await requestBuilder.send();
+    this.messenger.decrementHttpRequestCounter();
+    var out = <Models.IResponse>JSON.parse(response.response);
+    this.messenger.showResponseMessage(out);
+    return out;
+}
+catch (err)
+{
+    this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
+    
+    var result = {
+    isOk: false,
+    message: err.statusText
+};
+
+this.messenger.decrementHttpRequestCounter();
+this.messenger.showResponseMessage(result);
+return result;
+}
+}
+
+public async put (request: Models.IMemberDetail):
+Promise<Models.INewItemResponse>
+{
+    this.messenger.incrementHttpRequestCounter();
+    var requestBuilder = await this.ajaxService.buildPutRequest(request, this.url);
+    try {
+    var response = await requestBuilder.send();
+    this.messenger.decrementHttpRequestCounter();
+    var out = <Models.IResponse>JSON.parse(response.response);
+    this.messenger.showResponseMessage(out);
+    return out;
+}
+catch (err)
+{
+    this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
+    
+    var result = {
+    isOk: false,
+    message: err.statusText
+};
+
+this.messenger.decrementHttpRequestCounter();
+this.messenger.showResponseMessage(result);
+return result;
+}
+}
+}
+
+export class MemberList
+{
+    url: string = 'api/MemberList';
+    
+    constructor(private ajaxService: AjaxService, private messenger:MessengerService)
+    {
+    }
+    
+    public async get (request: Models.IMemberListRequest):
+    Promise<Models.IMemberListResponse>
     {
         this.messenger.incrementHttpRequestCounter();
         var requestBuilder = await this.ajaxService.buildGetRequest(request, this.url);
@@ -422,8 +539,8 @@ export class UserList
     {
     }
     
-    public async get (request: Models.IUserQueryRequest):
-    Promise<Models.IUserQueryResponse>
+    public async get (request: Models.IUserListRequest):
+    Promise<Models.IUserListResponse>
     {
         this.messenger.incrementHttpRequestCounter();
         var requestBuilder = await this.ajaxService.buildGetRequest(request, this.url);

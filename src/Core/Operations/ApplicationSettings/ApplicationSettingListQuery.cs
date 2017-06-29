@@ -1,41 +1,38 @@
+using Core;
+using Core.Models;
+using Core.Operations.ApplicationSettings.Extras;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Context;
-using Core.Operations.ApplicationSettings.Extras;
 using Voodoo;
 using Voodoo.Infrastructure;
+using Voodoo.Messages;
+using Voodoo.Operations;
 using Voodoo.Operations.Async;
 using Voodoo.Validation.Infrastructure;
-
+using Core.Context;
+using System.Data.Entity;
 namespace Core.Operations.ApplicationSettings
 {
     [Rest(Verb.Get, RestResources.ApplicationSettingList)]
-    public class ApplicationSettingListQuery : QueryAsync<ApplicationSettingQueryRequest,
-        ApplicationSettingQueryResponse>
+    public class ApplicationSettingListQuery:QueryAsync<ApplicationSettingListRequest,ApplicationSettingListResponse>
     {
         private MainContext context;
-        protected IValidator validator = ValidationManager.GetDefaultValidatitor();
-
-        public ApplicationSettingListQuery(ApplicationSettingQueryRequest request) : base(request)
+        private IValidator validator = ValidationManager.GetDefaultValidatitor();
+        public ApplicationSettingListQuery (ApplicationSettingListRequest request) : base(request)
         {
         }
-
-        protected override async Task<ApplicationSettingQueryResponse> ProcessRequestAsync()
+        protected override async Task<ApplicationSettingListResponse> ProcessRequestAsync()
         {
             using (context = IOC.GetContext())
             {
                 var query = context.ApplicationSettings.AsNoTracking().AsQueryable();
-                var data = await query.ToPagedResponseAsync(request, c => c.ToApplicationSettingMessage());
-                response.From(data, c => c);
-                //Note: complex operations in the mapping may result in an error you can replace it with
-
-                //var res = await query.ToPagedResponseAsync(request);
-                //response.From(res, c=> helper.Map(c));
-
-                //the first method is preferred as it limits the data returned from the server
+                var data = await query.ToPagedResponseAsync(request, c => c.ToApplicationSettingRow());
+                response.From(data, c=>c);
             }
-
             return response;
         }
     }
 }
+

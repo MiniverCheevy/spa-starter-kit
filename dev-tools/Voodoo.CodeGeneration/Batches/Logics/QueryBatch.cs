@@ -32,8 +32,8 @@ namespace Voodoo.CodeGeneration.Batches.Logics
             logic.AddRestResource(type.PluralName);
             logic.AddFile(new ListQueryFile(logic, type));
             logic.AddFile(new DetailQueryFile(logic, type));
-            data.AddFile(new QueryResponseFile(data, type));
-            data.AddFile(new QueryRequestFile(data, type));
+            data.AddFile(new ListResponseFile(data, type));
+            data.AddFile(new ListRequestFile(data, type));
             logic.AddFile(new RestResourcesFile(logic));
 
             var message = new MessageBatch(allTargets);

@@ -13,18 +13,18 @@ using Voodoo.Validation.Infrastructure;
 
 namespace Core.Operations.Users
 {
-    [Rest(Verb.Get, RestResources.UserList, Roles = new[] {RoleNames.Administrator})]
-    public class UserListQuery : QueryAsync<UserQueryRequest, UserQueryResponse>
+    [Rest(Verb.Get, RestResources.UserList, Roles = new[] { RoleNames.Administrator })]
+    public class UserListQuery : QueryAsync<UserListRequest, UserListResponse>
     {
         private MainContext context;
         private IQueryable<User> query;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
-        public UserListQuery(UserQueryRequest request) : base(request)
+        public UserListQuery(UserListRequest request) : base(request)
         {
         }
 
-        protected override async Task<UserQueryResponse> ProcessRequestAsync()
+        protected override async Task<UserListResponse> ProcessRequestAsync()
         {
             using (context = IOC.GetContext())
             {
@@ -44,13 +44,9 @@ namespace Core.Operations.Users
                                          || c.UserName.Contains(request.SearchText)
                                          || c.Roles.Any(r => r.Name.Contains(request.SearchText)
                                          ));
-            var x = query.ToListAsync();
-            var bar = (Task<List<User>>)
-                query.Provider.Execute(Expression.Call(typeof(IQueryable<User>), "ToListAsync", new[] { query.ElementType },
-                    query.Expression));
             var data = await query.ToPagedResponseAsync(request);
-            var foo = Voodoo.Linq.LinqHelper.HasToListAsync;
-            response.From(data, c => c.ToUserMessage());
+
+            response.From(data, c => c.ToUserRow());
         }
     }
 }

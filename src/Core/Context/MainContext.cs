@@ -13,6 +13,7 @@ using Core.Context.ExceptionTranslators;
 using Core.Models;
 using Core.Models.Exceptions;
 using Core.Models.Identity;
+using Core.Models.Scratch;
 using Voodoo;
 
 namespace Core.Context
@@ -26,6 +27,9 @@ namespace Core.Context
         public DbSet<Role> Roles { get; set; }
         public DbSet<ApplicationSetting> ApplicationSettings { get; set; }
 
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Member> Members { get; set; }
+        public DbSet<Team> Teams { get; set; }
 
         static MainContext()
         {

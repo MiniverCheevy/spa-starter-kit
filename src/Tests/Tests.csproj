@@ -64,11 +64,11 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Voodoo, Version=2.2.21.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Patterns.2.2.21\lib\net46\Voodoo.dll</HintPath>
+    <Reference Include="Voodoo, Version=2.2.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Voodoo.Patterns.2.2.23\lib\net46\Voodoo.dll</HintPath>
     </Reference>
     <Reference Include="Voodoo.TestData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.TestData.1.0.18\lib\net40\Voodoo.TestData.dll</HintPath>
+      <HintPath>..\..\packages\Voodoo.TestData.1.0.19\lib\net40\Voodoo.TestData.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -77,12 +77,17 @@
     <Compile Include="Fakes\FakeContextFactory.cs" />
     <Compile Include="Fakes\FakeRequestContextProvider.cs" />
     <Compile Include="Fakes\TestFileSystemProvider.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingAddCommandTests.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingDeleteCommandTests.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingMappingTests.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingQueryTests.cs" />
     <Compile Include="Operations\ApplicationSettings\ApplicationSettingTestHelper.cs" />
+    <Compile Include="Operations\ApplicationSettings\ApplicationSettingDeleteCommandTests.cs" />
     <Compile Include="Operations\ApplicationSettings\ApplicationSettingUpdateCommandTests.cs" />
+    <Compile Include="Operations\Errors\ErrorMappingTests.cs" />
+    <Compile Include="Operations\Members\MemberAddCommandTests.cs" />
+    <Compile Include="Operations\Members\MemberMappingTests.cs" />
+    <Compile Include="Operations\Members\MemberQueryTests.cs" />
+    <Compile Include="Operations\Members\MemberTestHelper.cs" />
+    <Compile Include="Operations\Members\MemberUpdateCommandTests.cs" />
+    <Compile Include="Operations\Members\MemberDeleteCommandTests.cs" />
+    <Compile Include="Operations\Roles\RoleMappingTests.cs" />
     <Compile Include="Operations\Users\UserAddCommandTests.cs" />
     <Compile Include="Operations\Users\UserDeleteCommandTests.cs" />
     <Compile Include="Operations\Users\UserMappingTests.cs" />

@@ -25,44 +25,44 @@
     overflow: hidden;
 }
 
-    .progress .determinate {
-        position: absolute;
-        background-color: inherit;
-        top: 0;
-        bottom: 0;
-        background-color: #26a69a;
-        transition: width .3s linear;
-    }
+.progress .determinate {
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    bottom: 0;
+    background-color: #26a69a;
+    transition: width .3s linear;
+}
 
-    .progress .indeterminate {
-        background-color: #730C02;
-    }
+.progress .indeterminate {
+    background-color: #730C02;
+}
 
-        .progress .indeterminate:before {
-            content: '';
-            position: absolute;
-            background-color: inherit;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            will-change: left, right;
-            -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-            animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-        }
+.progress .indeterminate:before {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+    animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
 
-        .progress .indeterminate:after {
-            content: '';
-            position: absolute;
-            background-color: inherit;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            will-change: left, right;
-            -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-            animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-            -webkit-animation-delay: 1.15s;
-            animation-delay: 1.15s;
-        }
+.progress .indeterminate:after {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    -webkit-animation-delay: 1.15s;
+    animation-delay: 1.15s;
+}
 
 @-webkit-keyframes indeterminate {
     0% {
@@ -159,18 +159,17 @@ body {
     z-index: 1;
 }
 
-navbar-collapse .main-nav .navbar a { 
+navbar-collapse .main-nav .navbar a {
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
     white-space: nowrap;
     /* If a menu item's text is too long, truncate it */
     width: 100%;
 }
 
-#container { 
+#container {
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 72px !important;
 }
 
 .main-panel {
@@ -198,23 +197,23 @@ navbar-collapse .main-nav .navbar a {
     border-radius: 15px;
 }
 
-    .btn-circle.btn-lg {
-        width: 50px;
-        height: 50px;
-        padding: 10px 16px;
-        font-size: 18px;
-        line-height: 1.33;
-        border-radius: 25px;
-    }
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
 
-    .btn-circle.btn-xl {
-        width: 70px;
-        height: 70px;
-        padding: 10px 16px;
-        font-size: 24px;
-        line-height: 1.33;
-        border-radius: 35px;
-    }
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}
 
 .fluffy {
     padding-top: 12px;
@@ -268,26 +267,26 @@ a.mdc-toolbar__title {
     text-align: left;
 }
 
-    .data-table th {
-        padding: 12px 18px;
-        vertical-align: middle;
-    }
+.data-table th {
+    padding: 12px 18px;
+    vertical-align: middle;
+}
 
-    .data-table  tr {
-        height: 36px;
-    }
+.data-table  tr {
+    height: 36px;
+}
 
-    .data-table tbody tr:hover {
-        background-color: #EEEEEE;
-    }
+.data-table tbody tr:hover {
+    background-color: #EEEEEE;
+}
 
-    .data-table td {
-        position: relative;
-        border-top: 1px solid rgba(0,0,0,.12);
-        border-bottom: 1px solid rgba(0,0,0,.12);
-        padding: 12px 18px;
-        box-sizing: border-box;
-    }
+.data-table td {
+    position: relative;
+    border-top: 1px solid rgba(0,0,0,.12);
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    padding: 12px 18px;
+    box-sizing: border-box;
+}
 
 .sorter {
     cursor: pointer;

@@ -4,15 +4,29 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-
-using Core.Identity;
+using Core;
 using Core.Models.Identity;
-
+using Core.Identity;
 namespace Core.Operations.Users.Extras
 {
     public static partial class UserExtensions
     {
-        private static UserMessage toUserMessage(User model, UserMessage message)
+        private static AppPrincipal toAppPrincipal(User model, AppPrincipal message)
+        {
+            message.UserName = model.UserName;
+            message.FirstName = model.FirstName;
+            message.LastName = model.LastName;
+            
+            return message;
+        }
+        public static User updateFromAppPrincipal(AppPrincipal message, User model)
+        {
+            model.UserName =message.UserName;
+            model.FirstName =message.FirstName;
+            model.LastName =message.LastName;
+            return model;
+        }
+        private static UserRow toUserRow(User model, UserRow message)
         {
             message.Id = model.Id;
             message.UserName = model.UserName;
@@ -21,7 +35,7 @@ namespace Core.Operations.Users.Extras
             
             return message;
         }
-        public static User updateFromUserMessage(UserMessage message, User model)
+        public static User updateFromUserRow(UserRow message, User model)
         {
             model.UserName =message.UserName;
             model.FirstName =message.FirstName;
@@ -44,21 +58,6 @@ namespace Core.Operations.Users.Extras
             model.FirstName =message.FirstName;
             model.LastName =message.LastName;
             model.LockoutEnabled =message.LockoutEnabled;
-            return model;
-        }
-        private static AppPrincipal toAppPrincipal(User model, AppPrincipal message)
-        {
-            message.UserName = model.UserName;
-            message.FirstName = model.FirstName;
-            message.LastName = model.LastName;
-            
-            return message;
-        }
-        public static User updateFromAppPrincipal(AppPrincipal message, User model)
-        {
-            model.UserName =message.UserName;
-            model.FirstName =message.FirstName;
-            model.LastName =message.LastName;
             return model;
         }
         

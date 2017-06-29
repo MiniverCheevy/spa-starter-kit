@@ -14,9 +14,9 @@ namespace <#=this.File.Namespace#>
     {
   
 		<#if(this.File.HasContext){#>
-protected <#=this.File.ContextName#> context;
+private <#=this.File.ContextName#> context;
 		<#}#>
-		protected IValidator validator = ValidationManager.GetDefaultValidatitor();
+		private IValidator validator = ValidationManager.GetDefaultValidatitor();
 
         public <#=this.File.Name#>(IdRequest request) : base(request)
         {

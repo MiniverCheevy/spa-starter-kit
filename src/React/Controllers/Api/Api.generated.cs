@@ -4,6 +4,11 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 ***************************************************************/
+
+using Web;
+using Voodoo.Messages;
+using Web.Infrastructure.ExecutionPipeline;
+using Web.Infrastructure.ExecutionPipeline.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,108 +17,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Voodoo;
-using Web;
-using Voodoo.Messages;
-using Web.Infrastructure.ExecutionPipeline;
-using Web.Infrastructure.ExecutionPipeline.Models;
-using Core.Operations.ApplicationSettings;
-using Core.Operations.ApplicationSettings.Extras;
 using Core.Operations.Users;
 using Core.Operations.Users.Extras;
+using Core.Operations.Members;
+using Core.Operations.Members.Extras;
 using Core.Operations.Lists;
 using Core.Operations.Errors;
 using Core.Operations.Errors.Extras;
 using Core.Operations.CurrentUsers;
 using Core.Identity;
+using Core.Operations.ApplicationSettings;
+using Core.Operations.ApplicationSettings.Extras;
 namespace Web.Controllers.Api
 {
-    [Route("api/[controller]")]
-    public class ApplicationSettingDetailController : ApiControllerBase
-    {
-        [HttpPut]
-        public async Task<NewItemResponse> Put
-        ([FromBody] ApplicationSettingMessage request)
-        {
-            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
-            <ApplicationSettingMessage, NewItemResponse>
-            {
-                Command = new ApplicationSettingSaveCommand(request),
-                Context = HttpContext,
-                ModelState = ModelState,
-                Request = request,
-                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
-            };
-            var pipeline = new ExcecutionPipeline<ApplicationSettingMessage, NewItemResponse>
-            (state);
-            await pipeline.ExecuteAsync();
-            return state.Response;
-        }
-    }
-    
-    [Route("api/[controller]")]
-    public class ApplicationSettingListController : ApiControllerBase
-    {
-        [HttpGet]
-        public async Task<ApplicationSettingQueryResponse> Get
-        ( ApplicationSettingQueryRequest request)
-        {
-            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
-            <ApplicationSettingQueryRequest, ApplicationSettingQueryResponse>
-            {
-                Command = new ApplicationSettingListQuery(request),
-                Context = HttpContext,
-                ModelState = ModelState,
-                Request = request,
-                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
-            };
-            var pipeline = new ExcecutionPipeline<ApplicationSettingQueryRequest, ApplicationSettingQueryResponse>
-            (state);
-            await pipeline.ExecuteAsync();
-            return state.Response;
-        }
-    }
-    
-    [Route("api/[controller]")]
-    public class ApplicationSettingController : ApiControllerBase
-    {
-        [HttpGet]
-        public async Task<Response<ApplicationSettingMessage>> Get
-        ( IdRequest request)
-        {
-            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
-            <IdRequest, Response<ApplicationSettingMessage>>
-            {
-                Command = new ApplicationSettingDetailQuery(request),
-                Context = HttpContext,
-                ModelState = ModelState,
-                Request = request,
-                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
-            };
-            var pipeline = new ExcecutionPipeline<IdRequest, Response<ApplicationSettingMessage>>
-            (state);
-            await pipeline.ExecuteAsync();
-            return state.Response;
-        }
-        [HttpDelete]
-        public async Task<Response> Delete
-        ( IdRequest request)
-        {
-            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
-            <IdRequest, Response>
-            {
-                Command = new ApplicationSettingDeleteCommand(request),
-                Context = HttpContext,
-                ModelState = ModelState,
-                Request = request,
-                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
-            };
-            var pipeline = new ExcecutionPipeline<IdRequest, Response>
-            (state);
-            await pipeline.ExecuteAsync();
-            return state.Response;
-        }
-    }
-    
     [Route("api/[controller]")]
     public class UserDetailController : ApiControllerBase
     {
@@ -177,11 +93,11 @@ namespace Web.Controllers.Api
     public class UserListController : ApiControllerBase
     {
         [HttpGet]
-        public async Task<UserQueryResponse> Get
-        ( UserQueryRequest request)
+        public async Task<UserListResponse> Get
+        ( UserListRequest request)
         {
             var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
-            <UserQueryRequest, UserQueryResponse>
+            <UserListRequest, UserListResponse>
             {
                 Command = new UserListQuery(request),
                 Context = HttpContext,
@@ -189,7 +105,89 @@ namespace Web.Controllers.Api
                 Request = request,
                 SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] { "Administrator" } }
             };
-            var pipeline = new ExcecutionPipeline<UserQueryRequest, UserQueryResponse>
+            var pipeline = new ExcecutionPipeline<UserListRequest, UserListResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class MemberController : ApiControllerBase
+    {
+        [HttpDelete]
+        public async Task<Response> Delete
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response>
+            {
+                Command = new MemberDeleteCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpGet]
+        public async Task<Response<MemberDetail>> Get
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response<MemberDetail>>
+            {
+                Command = new MemberDetailQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response<MemberDetail>>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpPut]
+        public async Task<NewItemResponse> Put
+        ([FromBody] MemberDetail request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <MemberDetail, NewItemResponse>
+            {
+                Command = new MemberSaveCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<MemberDetail, NewItemResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class MemberListController : ApiControllerBase
+    {
+        [HttpGet]
+        public async Task<MemberListResponse> Get
+        ( MemberListRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <MemberListRequest, MemberListResponse>
+            {
+                Command = new MemberListQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<MemberListRequest, MemberListResponse>
             (state);
             await pipeline.ExecuteAsync();
             return state.Response;
@@ -246,11 +244,11 @@ namespace Web.Controllers.Api
     public class ErrorListController : ApiControllerBase
     {
         [HttpGet]
-        public async Task<ErrorQueryResponse> Get
-        ( ErrorQueryRequest request)
+        public async Task<ErrorListResponse> Get
+        ( ErrorListRequest request)
         {
             var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
-            <ErrorQueryRequest, ErrorQueryResponse>
+            <ErrorListRequest, ErrorListResponse>
             {
                 Command = new ErrorListQuery(request),
                 Context = HttpContext,
@@ -258,7 +256,7 @@ namespace Web.Controllers.Api
                 Request = request,
                 SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
             };
-            var pipeline = new ExcecutionPipeline<ErrorQueryRequest, ErrorQueryResponse>
+            var pipeline = new ExcecutionPipeline<ErrorListRequest, ErrorListResponse>
             (state);
             await pipeline.ExecuteAsync();
             return state.Response;
@@ -305,6 +303,88 @@ namespace Web.Controllers.Api
                 SecurityContext = new SecurityContext { AllowAnonymouse = true, Roles=new string[] {  } }
             };
             var pipeline = new ExcecutionPipeline<EmptyRequest, Response<AppPrincipal>>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class ApplicationSettingController : ApiControllerBase
+    {
+        [HttpDelete]
+        public async Task<Response> Delete
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response>
+            {
+                Command = new ApplicationSettingDeleteCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpPut]
+        public async Task<NewItemResponse> Put
+        ([FromBody] ApplicationSettingDetail request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <ApplicationSettingDetail, NewItemResponse>
+            {
+                Command = new ApplicationSettingSaveCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<ApplicationSettingDetail, NewItemResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpGet]
+        public async Task<Response<ApplicationSettingDetail>> Get
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response<ApplicationSettingDetail>>
+            {
+                Command = new ApplicationSettingDetailQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response<ApplicationSettingDetail>>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class ApplicationSettingListController : ApiControllerBase
+    {
+        [HttpGet]
+        public async Task<ApplicationSettingListResponse> Get
+        ( ApplicationSettingListRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <ApplicationSettingListRequest, ApplicationSettingListResponse>
+            {
+                Command = new ApplicationSettingListQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<ApplicationSettingListRequest, ApplicationSettingListResponse>
             (state);
             await pipeline.ExecuteAsync();
             return state.Response;

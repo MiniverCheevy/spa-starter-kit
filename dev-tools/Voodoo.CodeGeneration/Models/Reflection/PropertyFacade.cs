@@ -86,6 +86,9 @@ namespace Voodoo.CodeGeneration.Models.Reflection
             var intTypes = new List<Type> {typeof(int), typeof(short), typeof(long)};
             var isInt = intTypes.Contains(PropertyType);
 
+            if (isId)
+                Attributes.Add(new GeneratedAttribute { Text = "[UI(IsHidden = true)]" });
+
             if (!isNullable && !isName && !isId && isInt)
                 Attributes.Add(new GeneratedAttribute
                     {Text = "[RequiredNonZeroInt(ErrorMessage = Constants.Messages.Required)]"});

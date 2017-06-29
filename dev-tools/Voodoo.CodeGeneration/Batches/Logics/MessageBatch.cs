@@ -17,7 +17,8 @@ namespace Voodoo.CodeGeneration.Batches.Logics
 
         public override void Build()
         {
-            data.AddFile(new MessageFile(data, type));
+            data.AddFile(new DetailFile(data, type));
+            data.AddFile(new RowFile(data, type));
             logic.AddFile(new RepositoryFile(logic, type));
             logic.AddFile(new MapperFile(logic, type, models));
             logic.AddFile(new ExtensionFile(logic, type));
