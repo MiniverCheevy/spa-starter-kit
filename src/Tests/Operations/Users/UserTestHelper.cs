@@ -13,6 +13,9 @@ using System.Linq;
 using System.Net.Cache;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Models.Identity;
+using Core.Operations.Lists;
+using Core.Operations.Roles.Extras;
 using Voodoo;
 using Voodoo.Messages;
 namespace Tests.Operations.Users
@@ -24,6 +27,11 @@ namespace Tests.Operations.Users
         {
             var request= new UserDetail();
             TestHelper.Randomizer.Randomize(request);
+            const string password = "password";
+            request.Password = password;
+            request.ConfirmPassword = password;
+
+            request.Roles.Add(new ListItem() { Value = 1 });
             return request;
         }
         
