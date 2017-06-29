@@ -4,6 +4,7 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
+
 export interface IGroupingOfNameValuePair  {
 name? : string;
 id? : any;
@@ -21,12 +22,37 @@ export const IGroupingOfNameValuePairMetadata =
 {
     name:
     {
+        propertyName:'Name',
+        displayName:'Name',
+        displayFormat:'text'
     }
     ,id:
     {
+        propertyName:'Id',
+        displayName:'Id',
+        displayFormat:'text'
     }
     ,data:
     {
+        propertyName:'Data',
+        displayName:'Data',
+        displayFormat:'text'
+    }
+}
+
+export const INameValuePairMetadata =
+{
+    name:
+    {
+        propertyName:'Name',
+        displayName:'Name',
+        displayFormat:'text'
+    }
+    ,value:
+    {
+        propertyName:'Value',
+        displayName:'Value',
+        displayFormat:'text'
     }
 }
 
@@ -58,10 +84,10 @@ export const IApplicationSettingDetailMetadata =
 {
     id:
     {
-        displayFormat:'text',
-        isHidden: true,
         propertyName:'Id',
-        displayName:'Id'
+        displayName:'Id',
+        displayFormat:'text',
+        isHidden: true
         ,int:
         {
             shouldValidate:true
@@ -69,7 +95,10 @@ export const IApplicationSettingDetailMetadata =
     }
     ,name:
     {
-        length:
+        propertyName:'Name',
+        displayName:'Name',
+        displayFormat:'text'
+        ,length:
         {
             shouldValidate:true
             ,min: 0
@@ -79,7 +108,10 @@ export const IApplicationSettingDetailMetadata =
     }
     ,value:
     {
-        length:
+        propertyName:'Value',
+        displayName:'Value',
+        displayFormat:'text'
+        ,length:
         {
             shouldValidate:true
             ,min: 0
@@ -120,6 +152,9 @@ export const IApplicationSettingListRequestMetadata =
 {
     defaultSortMember:
     {
+        propertyName:'DefaultSortMember',
+        displayName:'Default Sort Member',
+        displayFormat:'text'
     }
     ,}
     
@@ -146,6 +181,74 @@ export const EmptyIApplicationSettingListResponse =
     exception:undefined
 }
 
+export const IGridStateMetadata =
+{
+    pageNumber:
+    {
+        propertyName:'PageNumber',
+        displayName:'Page Number',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,pageSize:
+    {
+        propertyName:'PageSize',
+        displayName:'Page Size',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,totalRecords:
+    {
+        propertyName:'TotalRecords',
+        displayName:'Total Records',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,totalPages:
+    {
+        propertyName:'TotalPages',
+        displayName:'Total Pages',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,sortMember:
+    {
+        propertyName:'SortMember',
+        displayName:'Sort Member',
+        displayFormat:'text'
+    }
+    ,sortDirection:
+    {
+        propertyName:'SortDirection',
+        displayName:'Sort Direction',
+        displayFormat:'text'
+    }
+    ,defaultSortMember:
+    {
+        propertyName:'DefaultSortMember',
+        displayName:'Default Sort Member',
+        displayFormat:'text'
+    }
+    ,resetPaging:
+    {
+        propertyName:'ResetPaging',
+        displayName:'Reset Paging',
+        displayFormat:'text'
+    }
+}
+
 export interface IGridState  {
 pageNumber? : number;
 pageSize? : number;
@@ -169,6 +272,51 @@ export const EmptyIGridState =
     resetPaging:undefined
 }
 
+export const IApplicationSettingRowMetadata =
+{
+    id:
+    {
+        propertyName:'Id',
+        displayName:'Id',
+        displayFormat:'text',
+        isHidden: true
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,name:
+    {
+        propertyName:'Name',
+        displayName:'Name',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+    }
+    ,value:
+    {
+        propertyName:'Value',
+        displayName:'Value',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+}
+
 export interface IApplicationSettingRow  {
 id? : number;
 name? : string;
@@ -180,6 +328,22 @@ export const EmptyIApplicationSettingRow =
     id:undefined,
     name:undefined,
     value:undefined
+}
+
+export const INameValuePairMetadata =
+{
+    name:
+    {
+        propertyName:'Name',
+        displayName:'Name',
+        displayFormat:'text'
+    }
+    ,value:
+    {
+        propertyName:'Value',
+        displayName:'Value',
+        displayFormat:'text'
+    }
 }
 
 export interface IAppPrincipal  {
@@ -213,6 +377,8 @@ export const IAppPrincipalMetadata =
 {
     expiration:
     {
+        propertyName:'Expiration',
+        displayName:'Expiration',
         displayFormat:'date'
         ,date:
         {
@@ -221,6 +387,8 @@ export const IAppPrincipalMetadata =
     }
     ,refreshTime:
     {
+        propertyName:'RefreshTime',
+        displayName:'Refresh Time',
         displayFormat:'date'
         ,date:
         {
@@ -229,12 +397,20 @@ export const IAppPrincipalMetadata =
     }
     ,isAuthenticated:
     {
+        propertyName:'IsAuthenticated',
+        displayName:'Is Authenticated',
+        displayFormat:'text'
     }
     ,userName:
     {
+        propertyName:'UserName',
+        displayName:'User Name',
+        displayFormat:'text'
     }
     ,userId:
     {
+        propertyName:'UserId',
+        displayName:'User Id',
         displayFormat:'int'
         ,int:
         {
@@ -243,18 +419,33 @@ export const IAppPrincipalMetadata =
     }
     ,firstName:
     {
+        propertyName:'FirstName',
+        displayName:'First Name',
+        displayFormat:'text'
     }
     ,lastName:
     {
+        propertyName:'LastName',
+        displayName:'Last Name',
+        displayFormat:'text'
     }
     ,roles:
     {
+        propertyName:'Roles',
+        displayName:'Roles',
+        displayFormat:'text'
     }
     ,isAdmin:
     {
+        propertyName:'IsAdmin',
+        displayName:'Is Admin',
+        displayFormat:'text'
     }
     ,token:
     {
+        propertyName:'Token',
+        displayName:'Token',
+        displayFormat:'text'
     }
 }
 
@@ -271,6 +462,8 @@ export const IClientInfoMetadata =
 {
     timeZoneOffsetInMinutes:
     {
+        propertyName:'TimeZoneOffsetInMinutes',
+        displayName:'Time Zone Offset In Minutes',
         displayFormat:'int'
         ,int:
         {
@@ -319,9 +512,15 @@ export const IErrorListRequestMetadata =
 {
     searchText:
     {
+        propertyName:'SearchText',
+        displayName:'Search Text',
+        displayFormat:'text'
     }
     ,defaultSortMember:
     {
+        propertyName:'DefaultSortMember',
+        displayName:'Default Sort Member',
+        displayFormat:'text'
     }
     ,}
     
@@ -346,6 +545,73 @@ export const EmptyIErrorListResponse =
     message:undefined,
     details:undefined,
     exception:undefined
+}
+
+export const IErrorRowMetadata =
+{
+    id:
+    {
+        propertyName:'Id',
+        displayName:'Id',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,creationDate:
+    {
+        propertyName:'CreationDate',
+        displayName:'Creation Date',
+        displayFormat:'date'
+        ,date:
+        {
+            shouldValidate:true
+            ,min: new Date('1/1/1900')
+            ,max: new Date('3/4/2050')
+            ,message: 'date is either too far in the future or past'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,type:
+    {
+        propertyName:'Type',
+        displayName:'Type',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 200
+            ,message: '200 characters or less'
+        }
+    }
+    ,message:
+    {
+        propertyName:'Message',
+        displayName:'Message',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 200
+            ,message: '200 characters or less'
+        }
+    }
+    ,user:
+    {
+        propertyName:'User',
+        displayName:'User',
+        displayFormat:'text'
+    }
 }
 
 export interface IErrorRow  {
@@ -378,6 +644,8 @@ export const IIdRequestMetadata =
 {
     id:
     {
+        propertyName:'Id',
+        displayName:'Id',
         displayFormat:'int'
         ,int:
         {
@@ -410,9 +678,15 @@ export const IListsRequestMetadata =
 {
     includeInactive:
     {
+        propertyName:'IncludeInactive',
+        displayName:'Include Inactive',
+        displayFormat:'text'
     }
     ,lists:
     {
+        propertyName:'Lists',
+        displayName:'Lists',
+        displayFormat:'text'
     }
 }
 
@@ -439,6 +713,26 @@ export const EmptyIListsResponse =
     message:undefined,
     details:undefined,
     exception:undefined
+}
+
+export const IListItemMetadata =
+{
+    value:
+    {
+        propertyName:'Value',
+        displayName:'Value',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,name:
+    {
+        propertyName:'Name',
+        displayName:'Name',
+        displayFormat:'text'
+    }
 }
 
 export interface IListItem  {
@@ -483,10 +777,10 @@ export const IMemberDetailMetadata =
 {
     id:
     {
-        displayFormat:'text',
-        isHidden: true,
         propertyName:'Id',
-        displayName:'Id'
+        displayName:'Id',
+        displayFormat:'text',
+        isHidden: true
         ,int:
         {
             shouldValidate:true
@@ -494,7 +788,10 @@ export const IMemberDetailMetadata =
     }
     ,name:
     {
-        length:
+        propertyName:'Name',
+        displayName:'Name',
+        displayFormat:'text'
+        ,length:
         {
             shouldValidate:true
             ,min: 0
@@ -504,7 +801,10 @@ export const IMemberDetailMetadata =
     }
     ,title:
     {
-        length:
+        propertyName:'Title',
+        displayName:'Title',
+        displayFormat:'text'
+        ,length:
         {
             shouldValidate:true
             ,min: 0
@@ -518,6 +818,8 @@ export const IMemberDetailMetadata =
     }
     ,requiredInt:
     {
+        propertyName:'RequiredInt',
+        displayName:'Required Int',
         displayFormat:'int'
         ,int:
         {
@@ -530,6 +832,8 @@ export const IMemberDetailMetadata =
     }
     ,optionalInt:
     {
+        propertyName:'OptionalInt',
+        displayName:'Optional Int',
         displayFormat:'int'
         ,int:
         {
@@ -538,6 +842,8 @@ export const IMemberDetailMetadata =
     }
     ,requiredDate:
     {
+        propertyName:'RequiredDate',
+        displayName:'Required Date',
         displayFormat:'date'
         ,date:
         {
@@ -553,6 +859,8 @@ export const IMemberDetailMetadata =
     }
     ,optionalDate:
     {
+        propertyName:'OptionalDate',
+        displayName:'Optional Date',
         displayFormat:'date'
         ,date:
         {
@@ -564,6 +872,8 @@ export const IMemberDetailMetadata =
     }
     ,requiredDecimal:
     {
+        propertyName:'RequiredDecimal',
+        displayName:'Required Decimal',
         displayFormat:'decimal'
         ,decimal:
         {
@@ -576,6 +886,8 @@ export const IMemberDetailMetadata =
     }
     ,optionalDecimal:
     {
+        propertyName:'OptionalDecimal',
+        displayName:'Optional Decimal',
         displayFormat:'decimal'
         ,decimal:
         {
@@ -584,6 +896,8 @@ export const IMemberDetailMetadata =
     }
     ,managerId:
     {
+        propertyName:'ManagerId',
+        displayName:'Manager',
         displayFormat:'int'
         ,int:
         {
@@ -619,6 +933,9 @@ export const IMemberListRequestMetadata =
 {
     defaultSortMember:
     {
+        propertyName:'DefaultSortMember',
+        displayName:'Default Sort Member',
+        displayFormat:'text'
     }
     ,}
     
@@ -643,6 +960,75 @@ export const EmptyIMemberListResponse =
     message:undefined,
     details:undefined,
     exception:undefined
+}
+
+export const IMemberRowMetadata =
+{
+    id:
+    {
+        propertyName:'Id',
+        displayName:'Id',
+        displayFormat:'text',
+        isHidden: true
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,name:
+    {
+        propertyName:'Name',
+        displayName:'Name',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+    }
+    ,title:
+    {
+        propertyName:'Title',
+        displayName:'Title',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,requiredInt:
+    {
+        propertyName:'RequiredInt',
+        displayName:'Required Int',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,optionalInt:
+    {
+        propertyName:'OptionalInt',
+        displayName:'Optional Int',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
 }
 
 export interface IMemberRow  {
@@ -683,18 +1069,33 @@ export const IMobileErrorRequestMetadata =
 {
     errorMsg:
     {
+        propertyName:'ErrorMsg',
+        displayName:'Error Msg',
+        displayFormat:'text'
     }
     ,url:
     {
+        propertyName:'Url',
+        displayName:'Url',
+        displayFormat:'text'
     }
     ,lineNumber:
     {
+        propertyName:'LineNumber',
+        displayName:'Line Number',
+        displayFormat:'text'
     }
     ,column:
     {
+        propertyName:'Column',
+        displayName:'Column',
+        displayFormat:'text'
     }
     ,errorObject:
     {
+        propertyName:'ErrorObject',
+        displayName:'Error Object',
+        displayFormat:'text'
     }
 }
 
@@ -757,6 +1158,110 @@ export const EmptyIResponseOfUserDetail =
     message:undefined,
     details:undefined,
     exception:undefined
+}
+
+export const IUserDetailMetadata =
+{
+    id:
+    {
+        propertyName:'Id',
+        displayName:'Id',
+        displayFormat:'text',
+        isHidden: true
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,userName:
+    {
+        propertyName:'UserName',
+        displayName:'User Name',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,clientId:
+    {
+        propertyName:'ClientId',
+        displayName:'Client Id',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,firstName:
+    {
+        propertyName:'FirstName',
+        displayName:'First Name',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,lastName:
+    {
+        propertyName:'LastName',
+        displayName:'Last Name',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,lockoutEnabled:
+    {
+        propertyName:'LockoutEnabled',
+        displayName:'Lockout Enabled',
+        displayFormat:'text'
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,password:
+    {
+        propertyName:'Password',
+        displayName:'Password',
+        displayFormat:'text'
+    }
+    ,confirmPassword:
+    {
+        propertyName:'ConfirmPassword',
+        displayName:'Confirm Password',
+        displayFormat:'text'
+    }
+    ,roles:
+    {
+        propertyName:'Roles',
+        displayName:'Roles',
+        displayFormat:'text'
+    }
 }
 
 export interface IUserDetail  {
@@ -824,6 +1329,97 @@ export const EmptyIResponseOfErrorDetail =
     message:undefined,
     details:undefined,
     exception:undefined
+}
+
+export const IErrorDetailMetadata =
+{
+    details:
+    {
+        propertyName:'Details',
+        displayName:'Details',
+        displayFormat:'text'
+    }
+    ,host:
+    {
+        propertyName:'Host',
+        displayName:'Host',
+        displayFormat:'text'
+    }
+    ,url:
+    {
+        propertyName:'Url',
+        displayName:'Url',
+        displayFormat:'text'
+    }
+    ,items:
+    {
+        propertyName:'Items',
+        displayName:'Items',
+        displayFormat:'text'
+    }
+    ,id:
+    {
+        propertyName:'Id',
+        displayName:'Id',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,creationDate:
+    {
+        propertyName:'CreationDate',
+        displayName:'Creation Date',
+        displayFormat:'date'
+        ,date:
+        {
+            shouldValidate:true
+            ,min: new Date('1/1/1900')
+            ,max: new Date('3/4/2050')
+            ,message: 'date is either too far in the future or past'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,type:
+    {
+        propertyName:'Type',
+        displayName:'Type',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 200
+            ,message: '200 characters or less'
+        }
+    }
+    ,message:
+    {
+        propertyName:'Message',
+        displayName:'Message',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 200
+            ,message: '200 characters or less'
+        }
+    }
+    ,user:
+    {
+        propertyName:'User',
+        displayName:'User',
+        displayFormat:'text'
+    }
 }
 
 export interface IErrorDetail  {
@@ -926,36 +1522,97 @@ export const IUIMetadataMetadata =
 {
     email:
     {
+        propertyName:'Email',
+        displayName:'Email',
+        displayFormat:'text'
     }
     ,length:
     {
+        propertyName:'Length',
+        displayName:'Length',
+        displayFormat:'text'
     }
     ,date:
     {
+        propertyName:'Date',
+        displayName:'Date',
+        displayFormat:'text'
     }
     ,integer:
     {
+        propertyName:'Integer',
+        displayName:'Integer',
+        displayFormat:'text'
     }
     ,decimal:
     {
+        propertyName:'Decimal',
+        displayName:'Decimal',
+        displayFormat:'text'
     }
     ,required:
     {
+        propertyName:'Required',
+        displayName:'Required',
+        displayFormat:'text'
     }
     ,propertyName:
     {
+        propertyName:'PropertyName',
+        displayName:'Property Name',
+        displayFormat:'text'
     }
     ,displayName:
     {
+        propertyName:'DisplayName',
+        displayName:'Display Name',
+        displayFormat:'text'
     }
     ,format:
     {
+        propertyName:'Format',
+        displayName:'Format',
+        displayFormat:'text'
     }
     ,isReadOnly:
     {
+        propertyName:'IsReadOnly',
+        displayName:'Is Read Only',
+        displayFormat:'text'
     }
     ,isHidden:
     {
+        propertyName:'IsHidden',
+        displayName:'Is Hidden',
+        displayFormat:'text'
+    }
+}
+
+export const IValidationMetaDataMetadata =
+{
+    shouldValidate:
+    {
+        propertyName:'ShouldValidate',
+        displayName:'Should Validate',
+        displayFormat:'text'
+    }
+    ,message:
+    {
+        propertyName:'Message',
+        displayName:'Message',
+        displayFormat:'text'
+    }
+    ,min:
+    {
+        propertyName:'Min',
+        displayName:'Min',
+        displayFormat:'text'
+    }
+    ,max:
+    {
+        propertyName:'Max',
+        displayName:'Max',
+        displayFormat:'text'
     }
 }
 
@@ -1005,12 +1662,20 @@ export const IUserListRequestMetadata =
 {
     searchText:
     {
+        propertyName:'SearchText',
+        displayName:'Search Text',
+        displayFormat:'text'
     }
     ,defaultSortMember:
     {
+        propertyName:'DefaultSortMember',
+        displayName:'Default Sort Member',
+        displayFormat:'text'
     }
     ,id:
     {
+        propertyName:'Id',
+        displayName:'Id',
         displayFormat:'int'
         ,int:
         {
@@ -1040,6 +1705,88 @@ export const EmptyIUserListResponse =
     message:undefined,
     details:undefined,
     exception:undefined
+}
+
+export const IUserRowMetadata =
+{
+    id:
+    {
+        propertyName:'Id',
+        displayName:'Id',
+        displayFormat:'text',
+        isHidden: true
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,userName:
+    {
+        propertyName:'UserName',
+        displayName:'User Name',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,clientId:
+    {
+        propertyName:'ClientId',
+        displayName:'Client Id',
+        displayFormat:'int'
+        ,int:
+        {
+            shouldValidate:true
+        }
+    }
+    ,firstName:
+    {
+        propertyName:'FirstName',
+        displayName:'First Name',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,lastName:
+    {
+        propertyName:'LastName',
+        displayName:'Last Name',
+        displayFormat:'text'
+        ,length:
+        {
+            shouldValidate:true
+            ,min: 0
+            ,max: 128
+            ,message: '128 characters or less'
+        }
+        ,required:
+        {
+            shouldValidate:true
+        }
+    }
+    ,roles:
+    {
+        propertyName:'Roles',
+        displayName:'Roles',
+        displayFormat:'text'
+    }
 }
 
 export interface IUserRow  {

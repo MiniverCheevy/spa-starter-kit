@@ -53,6 +53,7 @@ module.exports = (env) => {
             new CopyWebpackPlugin([
                 { from: 'ClientApp/index.html', to: '../' },
                 { from: 'ClientApp/favicon.ico', to: '../' },
+                { from: 'ClientApp/theme/site.css', to: '../' },
             ])
         ].concat(isDevBuild ? [
             new webpack.SourceMapDevToolPlugin({

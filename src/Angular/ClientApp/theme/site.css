@@ -168,6 +168,7 @@ navbar-collapse .main-nav .navbar a {
 }
 
 #container {
+    margin-top: 90px;
     margin-left: 10%;
     margin-right: 10%;
 }

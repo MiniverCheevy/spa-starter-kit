@@ -4,19 +4,21 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-import * as Models from "./models.generated";
-import { MessengerService } from "./services/messenger-service";
-import { EncoderService } from "./services/encoder-service";
-import { AjaxService } from "./services/ajax-service";
-
+import * as Models from './models.generated';
+import { MessengerService }
+from './services/messenger-service';
+import { EncoderService }
+from './services/encoder-service';
+import { AjaxService }
+from './services/ajax-service';
+import { Injectable }   from '@angular/core';
+@Injectable()
 export class ApplicationSetting
 {
     url: string = 'api/ApplicationSetting';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async delete (request: Models.IIdRequest):
     Promise<Models.IResponse>
     {
@@ -25,25 +27,22 @@ export class ApplicationSetting
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
-
 public async put (request: Models.IApplicationSettingDetail):
 Promise<Models.INewItemResponse>
 {
@@ -52,25 +51,22 @@ Promise<Models.INewItemResponse>
     try {
     var response = await requestBuilder.send();
     this.messenger.decrementHttpRequestCounter();
-    var out = <Models.IResponse>JSON.parse(response.response);
+    var out = < Models.IResponse > JSON.parse(response.response);
     this.messenger.showResponseMessage(out);
     return out;
 }
 catch (err)
 {
     this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-    
     var result = {
     isOk: false,
     message: err.statusText
 };
-
 this.messenger.decrementHttpRequestCounter();
 this.messenger.showResponseMessage(result);
 return result;
 }
 }
-
 public async get (request: Models.IIdRequest):
 Promise<Models.IResponseOfApplicationSettingDetail>
 {
@@ -79,34 +75,30 @@ Promise<Models.IResponseOfApplicationSettingDetail>
     try {
     var response = await requestBuilder.send();
     this.messenger.decrementHttpRequestCounter();
-    var out = <Models.IResponse>JSON.parse(response.response);
+    var out = < Models.IResponse > JSON.parse(response.response);
     this.messenger.showResponseMessage(out);
     return out;
 }
 catch (err)
 {
     this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-    
     var result = {
     isOk: false,
     message: err.statusText
 };
-
 this.messenger.decrementHttpRequestCounter();
 this.messenger.showResponseMessage(result);
 return result;
 }
 }
 }
-
+@Injectable()
 export class ApplicationSettingList
 {
     url: string = 'api/ApplicationSettingList';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async get (request: Models.IApplicationSettingListRequest):
     Promise<Models.IApplicationSettingListResponse>
     {
@@ -115,34 +107,30 @@ export class ApplicationSettingList
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
 }
-
+@Injectable()
 export class CurrentUser
 {
     url: string = 'api/CurrentUser';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async get (request: Models.IEmptyRequest):
     Promise<Models.IResponseOfAppPrincipal>
     {
@@ -151,34 +139,30 @@ export class CurrentUser
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
 }
-
+@Injectable()
 export class ErrorDetail
 {
     url: string = 'api/ErrorDetail';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async get (request: Models.IIdRequest):
     Promise<Models.IResponseOfErrorDetail>
     {
@@ -187,34 +171,30 @@ export class ErrorDetail
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
 }
-
+@Injectable()
 export class ErrorList
 {
     url: string = 'api/ErrorList';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async get (request: Models.IErrorListRequest):
     Promise<Models.IErrorListResponse>
     {
@@ -223,34 +203,30 @@ export class ErrorList
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
 }
-
+@Injectable()
 export class Lists
 {
     url: string = 'api/Lists';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async get (request: Models.IListsRequest):
     Promise<Models.IListsResponse>
     {
@@ -259,34 +235,30 @@ export class Lists
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
 }
-
+@Injectable()
 export class Member
 {
     url: string = 'api/Member';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async delete (request: Models.IIdRequest):
     Promise<Models.IResponse>
     {
@@ -295,25 +267,22 @@ export class Member
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
-
 public async get (request: Models.IIdRequest):
 Promise<Models.IResponseOfMemberDetail>
 {
@@ -322,25 +291,22 @@ Promise<Models.IResponseOfMemberDetail>
     try {
     var response = await requestBuilder.send();
     this.messenger.decrementHttpRequestCounter();
-    var out = <Models.IResponse>JSON.parse(response.response);
+    var out = < Models.IResponse > JSON.parse(response.response);
     this.messenger.showResponseMessage(out);
     return out;
 }
 catch (err)
 {
     this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-    
     var result = {
     isOk: false,
     message: err.statusText
 };
-
 this.messenger.decrementHttpRequestCounter();
 this.messenger.showResponseMessage(result);
 return result;
 }
 }
-
 public async put (request: Models.IMemberDetail):
 Promise<Models.INewItemResponse>
 {
@@ -349,34 +315,30 @@ Promise<Models.INewItemResponse>
     try {
     var response = await requestBuilder.send();
     this.messenger.decrementHttpRequestCounter();
-    var out = <Models.IResponse>JSON.parse(response.response);
+    var out = < Models.IResponse > JSON.parse(response.response);
     this.messenger.showResponseMessage(out);
     return out;
 }
 catch (err)
 {
     this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-    
     var result = {
     isOk: false,
     message: err.statusText
 };
-
 this.messenger.decrementHttpRequestCounter();
 this.messenger.showResponseMessage(result);
 return result;
 }
 }
 }
-
+@Injectable()
 export class MemberList
 {
     url: string = 'api/MemberList';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async get (request: Models.IMemberListRequest):
     Promise<Models.IMemberListResponse>
     {
@@ -385,34 +347,30 @@ export class MemberList
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
 }
-
+@Injectable()
 export class MobileError
 {
     url: string = 'api/MobileError';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async post (request: Models.IMobileErrorRequest):
     Promise<Models.IResponse>
     {
@@ -421,34 +379,30 @@ export class MobileError
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
 }
-
+@Injectable()
 export class UserDetail
 {
     url: string = 'api/UserDetail';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async delete (request: Models.IIdRequest):
     Promise<Models.IResponse>
     {
@@ -457,25 +411,22 @@ export class UserDetail
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
-
 public async get (request: Models.IIdRequest):
 Promise<Models.IResponseOfUserDetail>
 {
@@ -484,25 +435,22 @@ Promise<Models.IResponseOfUserDetail>
     try {
     var response = await requestBuilder.send();
     this.messenger.decrementHttpRequestCounter();
-    var out = <Models.IResponse>JSON.parse(response.response);
+    var out = < Models.IResponse > JSON.parse(response.response);
     this.messenger.showResponseMessage(out);
     return out;
 }
 catch (err)
 {
     this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-    
     var result = {
     isOk: false,
     message: err.statusText
 };
-
 this.messenger.decrementHttpRequestCounter();
 this.messenger.showResponseMessage(result);
 return result;
 }
 }
-
 public async put (request: Models.IUserDetail):
 Promise<Models.INewItemResponse>
 {
@@ -511,34 +459,30 @@ Promise<Models.INewItemResponse>
     try {
     var response = await requestBuilder.send();
     this.messenger.decrementHttpRequestCounter();
-    var out = <Models.IResponse>JSON.parse(response.response);
+    var out = < Models.IResponse > JSON.parse(response.response);
     this.messenger.showResponseMessage(out);
     return out;
 }
 catch (err)
 {
     this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-    
     var result = {
     isOk: false,
     message: err.statusText
 };
-
 this.messenger.decrementHttpRequestCounter();
 this.messenger.showResponseMessage(result);
 return result;
 }
 }
 }
-
+@Injectable()
 export class UserList
 {
     url: string = 'api/UserList';
-    
     constructor(private ajaxService: AjaxService, private messenger:MessengerService)
     {
     }
-    
     public async get (request: Models.IUserListRequest):
     Promise<Models.IUserListResponse>
     {
@@ -547,23 +491,34 @@ export class UserList
         try {
         var response = await requestBuilder.send();
         this.messenger.decrementHttpRequestCounter();
-        var out = <Models.IResponse>JSON.parse(response.response);
+        var out = < Models.IResponse > JSON.parse(response.response);
         this.messenger.showResponseMessage(out);
         return out;
     }
     catch (err)
     {
         this.ajaxService.logError(err, this.url, (<any>new Error()).stack);
-        
         var result = {
         isOk: false,
         message: err.statusText
     };
-    
     this.messenger.decrementHttpRequestCounter();
     this.messenger.showResponseMessage(result);
     return result;
 }
 }
 }
+export const providers =[
+ApplicationSetting,
+ApplicationSettingList,
+CurrentUser,
+ErrorDetail,
+ErrorList,
+Lists,
+Member,
+MemberList,
+MobileError,
+UserDetail,
+UserList
+];
 

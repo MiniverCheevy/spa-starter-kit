@@ -280,18 +280,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TestTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Scratch\GridMdFile.cs" />
-    <Compile Include="Templates\Scratch\GridMdTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GridMdTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\Scratch\MappingFile.cs" />
-    <Compile Include="Templates\Scratch\MappingTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MappingTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Batches\Token.cs" />
     <Compile Include="Batches\Webs\WebBatch.cs" />
     <Compile Include="Models\ConfigurationFile.cs" />
@@ -362,26 +350,16 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\Logic\OperationLevel\Extras\MapperFile.cs" />
-    <Compile Include="Templates\Scratch\TypeScriptModel.cs" />
     <Compile Include="Templates\Tests\UpdateSaveCommandTestsFile.cs" />
     <Compile Include="Templates\Tests\UpdateSaveCommandTestsTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UpdateSaveCommandTestsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\TextBlocks.cs" />
     <Compile Include="Templates\Web\ProjectLevel\ApiControllerFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceBatchFile.cs" />
-    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceBatchTemplate.cs">
-      <DependentUpon>TsServiceBatchTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TypeScriptModelsFile.cs" />
-    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TypeScriptModelsTemplate.cs">
-      <DependentUpon>TypeScriptModelsTemplate.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\JsServiceFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\JsServiceTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -405,11 +383,6 @@
     </Compile>
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TsServiceFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TypeScriptModelsFile.cs" />
-    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TypeScriptModelsTemplate.cs">
-      <DependentUpon>TypeScriptModelsTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\TSServiceFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\TsServiceTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -488,14 +461,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TestTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Scratch\GridMdTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>GridMdTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Scratch\MappingTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>MappingTemplate.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\Logic\OperationLevel\_fileTemplate.txt" />
     <Content Include="Templates\Logic\OperationLevel\_templateTemplate.txt" />
     <Content Include="Templates\Logic\OperationLevel\Extras\RepositoryTemplate.tt">
@@ -540,14 +505,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UpdateSaveCommandTestsTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TsServiceBatchTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TsServiceBatchTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular2\TypeScriptModelsTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeScriptModelsTemplate.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Angular\JsServiceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>JsServiceTemplate.cs</LastGenOutput>
@@ -563,10 +520,6 @@
     <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TsServiceBatchTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TsServiceBatchTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Web\ProjectLevel\WebFrameworks\Aurelia\TypeScriptModelsTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeScriptModelsTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

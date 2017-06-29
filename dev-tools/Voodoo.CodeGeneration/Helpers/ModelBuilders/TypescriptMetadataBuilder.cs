@@ -35,7 +35,10 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         public string Build()
         {
             if (type.DoesImplementInterfaceOf(typeof(IResponse)))
+            {               
                 return string.Empty;
+            }
+                
 
             output.AppendLine($"export const {typeName}Metadata =");
             output.AppendLine(" {");
@@ -59,8 +62,10 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 || property.DeclaringType == typeof(PagedRequest)
                 || property.DeclaringType == typeof(GridState)
                 )
+            {
+               
                 return;
-
+            }
             var tsName = ModelBuilder.LowerCaseFirstLetter(property.Name);
 
             isDate = dateTypes.Contains(property.PropertyType);
@@ -93,6 +98,9 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         {
             var items = new List<string>();
             var ui = property.GetCustomAttribute<UIAttribute>();
+            items.Add($"propertyName:'{property.Name}'");
+            var displayName = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name.ToFriendlyString();
+            items.Add($"displayName:'{displayName}'");
             if (ui == null)
             {
                 if (isDecimal)
@@ -101,7 +109,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                     items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(DisplayFormat.Date.ToString())}'");
                 else if (isInt)
                     items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(DisplayFormat.Int.ToString())}'");
-
+                else
+                    items.Add($"displayFormat:'text'");
             }
             else
             {
@@ -113,11 +122,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                     items.Add("isReadonly: true");
                 if (!string.IsNullOrWhiteSpace(ui.Grouping))
                     items.Add($"grouping:'{ui.Grouping}'");
-                items.Add($"propertyName:'{property.Name}'");
-
-                var displayName = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name.ToFriendlyString();
-
-                items.Add($"displayName:'{displayName}'");
+                
             }
 
             if (!items.Any())

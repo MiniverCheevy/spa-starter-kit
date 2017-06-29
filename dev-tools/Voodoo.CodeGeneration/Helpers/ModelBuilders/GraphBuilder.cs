@@ -63,7 +63,10 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             {
                 if (!alreadyTouched.Contains(t))
                 {
+
                     alreadyTouched.Add(t);
+                    var childMetaData = new TypescriptMetadataBuilder(t, t.GetProperties());
+                    output.AppendLine(childMetaData.Build());
                     buildDeclaration(t, false);
                     enumTypes.AddRange(builder.getEnumPropertyTypes(t));
                     buildGraph(t, false);

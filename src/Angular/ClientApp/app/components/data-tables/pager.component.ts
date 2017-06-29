@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter, DoCheck } from '@angular/core';
-import { Models } from './../root';
+import { Models } from './../../root';
 @Component({
     selector: 'pager',
     templateUrl: './pager.component.html',

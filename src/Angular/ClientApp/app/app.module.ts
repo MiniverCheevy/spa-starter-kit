@@ -3,19 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import * as Services from './../services';
+import * as Api from './../api.generated';
+import { AjaxServiceStatic } from '../services/ajax-service';
 import { LayoutComponent } from './layout/layout.component';
 import { NavmenuComponent } from './layout/navmenu.component';
 import { HomeComponent } from './home/home.component';
-import { ToolbarIconLinkComponent } from './components/toolbar-icon-link.component';
 import { AppComponent } from './app.component';
-//import { Services } from './root';
-import * as Services from './../services';
-import { AjaxServiceStatic } from '../services/ajax-service';
-import { InputFieldComponent } from './components/input-field.component';
-import { SwitchComponent } from './components/switch.component';
+import { ToolbarIconLinkComponent } from './components/toolbar-icon-link.component';
 import { ScratchComponent } from './scratch/scratch.component';
-import { SorterComponent } from './components/sorter.component';
-import { DataTableComponent } from './components/data-table.component';
+import { InputFieldComponent } from './components/forms/input-field.component';
+import { SwitchComponent } from './components/forms/switch.component';
+import { SorterComponent } from './components/data-tables/sorter.component';
+import { DataTableComponent } from './components/data-tables/data-table.component';
+
+
+
+
 export class GlobalErrorHandler implements ErrorHandler {
     handleError(ex) {
         var error: any = {};
@@ -31,6 +35,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         //    url: "api/clienterror",
         //    data: error
         //});
+        console.log(ex);
         console.error(exc.originalStack);
     };
 }
@@ -55,7 +60,10 @@ export class GlobalErrorHandler implements ErrorHandler {
         { provide: ErrorHandler, useClass: GlobalErrorHandler },
 
         Services.MessengerService,
-        Services.CurrentUserService
+        Services.CurrentUserService,
+        Services.AjaxService,
+        Api.providers
+        
     ],
     exports: [InputFieldComponent],
     imports: [
@@ -63,9 +71,10 @@ export class GlobalErrorHandler implements ErrorHandler {
         FormsModule,
         HttpModule,
         RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            
             { path: 'home', component: HomeComponent },
             { path: 'scratch', component: ScratchComponent },
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: '**', redirectTo: 'home' }
         ], { useHash:true })
     ]
