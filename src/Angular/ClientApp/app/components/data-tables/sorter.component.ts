@@ -1,66 +1,66 @@
-import { Component, OnInit, Output, Input, EventEmitter, DoCheck } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, OnChanges } from '@angular/core';
 import { Models } from './../../root';
 
 @Component({
+
   selector: 'sorter',
   templateUrl: './sorter.component.html',
   styleUrls: ['./sorter.component.css']
 })
-export class SorterComponent implements DoCheck {
-    @Input() public gridState: Models.IGridState;
+export class SorterComponent implements OnChanges {
+    @Input() public request: Models.IGridState;
     @Input() member: string = '';
     @Input() text: string = '';
     @Output() change = new EventEmitter();
+    currentSortKey:string;
+    currentSort: string;
+    isCurrentSortAsc: boolean;
+    isCurrentSortDesc: boolean;
     constructor() {
         this.currentSortKey = '';
     }
 
-    ngDoCheck() {
-        if (this.gridState == null || this.gridState.totalRecords == undefined ||
-            this.gridState.totalRecords == 0) {
+    ngOnChanges() {
+        if (!this.request || !this.request.totalPages)
             return;
-        }
-        else {
+        
             this.setup();
-        }
     }
 
 
   setup = () => {
-      this.currentSort = this.gridState.sortDirection + this.gridState.sortMember;
+      this.currentSort = this.request.sortDirection + this.request.sortMember;
       this.isCurrentSortAsc = this.checkIfCurrentSortAsc(this.member);
       this.isCurrentSortDesc = this.checkIfCurrentSortDesc(this.member);
   }
 
   checkIfCurrentSortAsc = (member) => {      
-      if (this.gridState === null || this.gridState.sortMember == null || this.gridState.sortDirection == null)
+      if (this.request === null || this.request.sortMember == null || this.request.sortDirection == null)
           return false;
-      return this.gridState.sortMember.toUpperCase() === member.toUpperCase()
-          && this.gridState.sortDirection.toUpperCase() === "ASC";
+      return this.request.sortMember.toUpperCase() === member.toUpperCase()
+          && this.request.sortDirection.toUpperCase() === "ASC";
   }
 
   checkIfCurrentSortDesc = (member) => {      
-      if (this.gridState === null || this.gridState.sortMember == null || this.gridState.sortDirection == null)
+      if (this.request === null || this.request.sortMember == null || this.request.sortDirection == null)
           return false;
-      return this.gridState.sortMember.toUpperCase() === member.toUpperCase()
-          && this.gridState.sortDirection.toUpperCase() === "DESC";
+      return this.request.sortMember.toUpperCase() === member.toUpperCase()
+          && this.request.sortDirection.toUpperCase() === "DESC";
   }
 
   sort = (member) => {
+      console.log('sort=' + member);
       this.setup();
-      if (member.toUpperCase() === this.gridState.sortMember.toUpperCase())
-          this.gridState.sortDirection = this.gridState.sortDirection === "ASC" ? "DESC" : "ASC";
+      if (member.toUpperCase() === this.request.sortMember.toUpperCase())
+          this.request.sortDirection = this.request.sortDirection === "ASC" ? "DESC" : "ASC";
       else
-          this.gridState.sortDirection = "ASC";
-      this.gridState.sortMember = member;
+          this.request.sortDirection = "ASC";
+      this.request.sortMember = member;
       let e = new CustomEvent('change', {
           bubbles: true
       });
       this.change.emit({});
   }
 
-  currentSort: string;
-  currentSortKey: string;
-  isCurrentSortAsc: boolean;
-  isCurrentSortDesc: boolean;
+
 }

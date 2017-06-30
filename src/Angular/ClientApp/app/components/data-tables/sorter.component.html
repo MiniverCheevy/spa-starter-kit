@@ -1,13 +1,15 @@
 <span>
-    <span className="sort-indicator">
-        <i *ngIf="this.isCurrentSortAsc" class="mdi mdi-arrow-up"></i>
-        <i *ngIf="this.isCurrentSortDesc" class="mdi mdi-arrow-down"></i>;
-        <span *ngIf="!this.isCurrentSortDesc && !isCurrentSortAsc"
-              className="available-sort-indicator">
-            <i className="mdi mdi-arrow-up"></i>
+    
+    <button class="mdc-button mdc-button--compact" data-demo-no-js="">
+        
+        <span className="sort-indicator">
+            <span *ngIf="this.isCurrentSortAsc" class="mdi mdi-arrow-up"></span>
+            <span *ngIf="this.isCurrentSortDesc" class="mdi mdi-arrow-down"></span>
+            <span *ngIf="!this.isCurrentSortDesc && !isCurrentSortAsc"
+                  className="available-sort-indicator">
+                <span className="mdi mdi-sort"></span>
+            </span>
         </span>
-    </span>
-    <span className="sorter" onClick=(this.sort(this.member)>
         {{this.text}}
-    </span>
+    </button>    
 </span>

@@ -54,7 +54,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="Voodoo, Version=2.2.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Patterns.2.2.23\lib\net46\Voodoo.dll</HintPath>
+      <HintPath>..\..\packages\Voodoo.Patterns.2.2.24\lib\net46\Voodoo.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

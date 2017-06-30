@@ -16,6 +16,7 @@ namespace Core.Infrastructure.Metadata
         public string Format { get; set; } = "Text";
         public bool IsReadOnly { get; set; }
         public bool IsHidden { get; set; }
+        public bool DoNotSort { get; set; }
     }
 
     [Client]

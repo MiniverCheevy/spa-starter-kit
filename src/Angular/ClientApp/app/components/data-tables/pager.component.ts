@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter, DoCheck } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, OnChanges } from '@angular/core';
 import { Models } from './../../root';
 @Component({
     selector: 'pager',
@@ -6,7 +6,7 @@ import { Models } from './../../root';
     styleUrls: ['./pager.component.css']
 })
 
-export class PagerComponent implements DoCheck {
+export class PagerComponent implements OnChanges {
     @Input() public gridState: Models.IGridState;
 
     @Output() change = new EventEmitter();
@@ -36,7 +36,9 @@ export class PagerComponent implements DoCheck {
         this.hasRecords = false;
     }
 
-    ngDoCheck() {
+    ngOnChanges() {
+        if (!this.gridState || !this.gridState.totalPages)
+            return;
         if (this.gridState.totalRecords == 0) {
             this.gridState.pageNumber = 1;
             this.hasRecords = false;

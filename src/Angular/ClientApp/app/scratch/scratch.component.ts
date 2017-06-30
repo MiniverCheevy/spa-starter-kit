@@ -8,11 +8,13 @@ import { Api, Models } from './../root';
 })
 export class ScratchComponent implements OnInit {
 
-    request: Models.IMemberListRequest;
-    data: Models.IMemberRow[] = [];
+    metadata = Models.IMemberRowMetadata;
+    request: Models.IMemberListRequest = Models.EmptyIMemberListRequest;
+    api;
+    
     constructor(private memberList: Api.MemberList) {
         console.log('scratch');
-        
+        this.api = memberList;
     }
 
     async ngOnInit() {
@@ -21,9 +23,7 @@ export class ScratchComponent implements OnInit {
     }
     async refresh()
     {
-        var response = await this.memberList.get(this.request);
-        if (response.isOk)
-            this.data = response.data;
+        
     }
 
 }

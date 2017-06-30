@@ -330,22 +330,6 @@ export const EmptyIApplicationSettingRow =
     value:undefined
 }
 
-export const INameValuePairMetadata =
-{
-    name:
-    {
-        propertyName:'Name',
-        displayName:'Name',
-        displayFormat:'text'
-    }
-    ,value:
-    {
-        propertyName:'Value',
-        displayName:'Value',
-        displayFormat:'text'
-    }
-}
-
 export interface IAppPrincipal  {
 expiration? : Date;
 refreshTime? : Date;
@@ -1501,6 +1485,7 @@ displayName? : string;
 format? : string;
 isReadOnly? : boolean;
 isHidden? : boolean;
+doNotSort? : boolean;
 }
 
 export const EmptyIUIMetadata =
@@ -1515,7 +1500,8 @@ export const EmptyIUIMetadata =
     displayName:undefined,
     format:undefined,
     isReadOnly:undefined,
-    isHidden:undefined
+    isHidden:undefined,
+    doNotSort:undefined
 }
 
 export const IUIMetadataMetadata =
@@ -1584,6 +1570,12 @@ export const IUIMetadataMetadata =
     {
         propertyName:'IsHidden',
         displayName:'Is Hidden',
+        displayFormat:'text'
+    }
+    ,doNotSort:
+    {
+        propertyName:'DoNotSort',
+        displayName:'Do Not Sort',
         displayFormat:'text'
     }
 }

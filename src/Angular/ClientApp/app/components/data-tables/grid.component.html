@@ -1,0 +1,37 @@
+<div class="mdc-card">
+    
+    <span  class="mdi mdi-arrow-down"></span>
+    <table class="data-table mdc-card__primary">
+        <thead class="mdc-typography--body2">
+        <tr>
+            <th *ngIf="links && links.length > 0"></th>
+            <th *ngFor="let column of columns" class="">
+                <span *ngIf="column.doNotSort && column.doNotSort == true">{{column.DisplayName}}</span>
+                <sorter *ngIf="!column.doNotSort || column.doNotSort == false"
+                        [(member)]="column.propertyName"
+                        [(text)]="column.displayName"
+                        [(request)]="request"
+                        (change)="refresh()"></sorter>
+            </th>
+        </tr>
+        </thead>
+        <tbody class="mdc-typography--body1">
+        <tr *ngFor="let row of rows">
+            <td class="button-column" *ngIf="links && links.length > 0">
+                <button *ngFor="let link of links" type="button"
+                        (click)="link.action != null && link.action(row)"
+                        class="btn btn-sm btn-primary">
+                    <i [ngClass]="'fa fa-fw fa-'+link.icon"></i>{{link.text}}
+                </button>
+            </td>
+            <td *ngFor="let column of columns">
+                {{format(row[column.ColumnName], column.Format)}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <section className="mdc-card__supporting-text"></section>
+    <section className="mdc-card__actions">
+        Pager
+    </section>
+</div>

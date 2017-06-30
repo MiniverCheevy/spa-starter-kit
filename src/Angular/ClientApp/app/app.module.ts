@@ -15,7 +15,8 @@ import { ScratchComponent } from './scratch/scratch.component';
 import { InputFieldComponent } from './components/forms/input-field.component';
 import { SwitchComponent } from './components/forms/switch.component';
 import { SorterComponent } from './components/data-tables/sorter.component';
-import { DataTableComponent } from './components/data-tables/data-table.component';
+import { GridComponent } from './components/data-tables/grid.component';
+
 
 
 
@@ -53,7 +54,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         SwitchComponent,
         ScratchComponent,
         SorterComponent,
-        DataTableComponent
+        GridComponent
     ],    
     providers: [
         { provide: 'ORIGIN_URL', useValue: location.origin },

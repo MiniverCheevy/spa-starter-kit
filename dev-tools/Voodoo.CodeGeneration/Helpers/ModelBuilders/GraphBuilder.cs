@@ -10,7 +10,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
     public abstract class GraphBuilder<TModelBuilder>
         where TModelBuilder : ModelBuilder, new()
     {
-        private List<Type> alreadyTouched = new List<Type>();
+        private HashSet<string> generatedNames = new HashSet<string>();
+        private HashSet<Type> alreadyTouched = new HashSet<Type>();
         protected TModelBuilder builder;
         protected readonly StringBuilder output;
 
@@ -48,9 +49,9 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
         private void buildGraph(Type type, bool isResponse)
         {
-            if (alreadyTouched.Contains(type))
+            if (!shouldWrite(type))
                 return;
-            alreadyTouched.Add(type);
+
             buildDeclaration(type, isResponse);
             
             var metaData = new TypescriptMetadataBuilder(type, type.GetProperties());
@@ -61,16 +62,14 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             enumTypes.AddRange(builder.getEnumPropertyTypes(type));
             foreach (var t in types)
             {
-                if (!alreadyTouched.Contains(t))
-                {
+                if (!shouldWrite(t))
+                    continue;
 
-                    alreadyTouched.Add(t);
-                    var childMetaData = new TypescriptMetadataBuilder(t, t.GetProperties());
-                    output.AppendLine(childMetaData.Build());
-                    buildDeclaration(t, false);
-                    enumTypes.AddRange(builder.getEnumPropertyTypes(t));
-                    buildGraph(t, false);
-                }
+                var childMetaData = new TypescriptMetadataBuilder(t, t.GetProperties());
+                output.AppendLine(childMetaData.Build());
+                buildDeclaration(t, false);
+                enumTypes.AddRange(builder.getEnumPropertyTypes(t));
+                buildGraph(t, false);
             }
 
             foreach (var t in enumTypes.Distinct().ToArray())
@@ -83,7 +82,17 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
             }
         }
-
+        private bool shouldWrite(Type type)
+        {
+            if (alreadyTouched.Contains(type))
+                return false;
+            alreadyTouched.Add(type);
+            var name = builder.RewriteTypeName(type);
+            if (generatedNames.Contains(name))
+                return false;
+            generatedNames.Add(name);
+            return true;
+        }
         public string GetOutput()
         {
             return output.ToString();

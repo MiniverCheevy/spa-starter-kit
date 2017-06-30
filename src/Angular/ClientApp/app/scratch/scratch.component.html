@@ -1,17 +1,8 @@
-<h3>Manual Grid</h3>
+<h3>Grid</h3>
 <div>
-    <table data-table>
-        <thead>
-        <tr>
-            <sorter member="Name" text="Name" change="refresh()"></sorter>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *NgForOf="row of data">
-            <td>{{row.name}}</td>
-        </tr>
-        </tbody>
-    </table>
+    <grid [(metadata)]="metadata"
+          [(request)]="request"
+          [(api)]="api"></grid>
 
 </div>
 <hr />

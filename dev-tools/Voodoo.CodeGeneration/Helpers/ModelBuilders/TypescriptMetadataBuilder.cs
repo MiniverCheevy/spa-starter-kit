@@ -122,7 +122,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                     items.Add("isReadonly: true");
                 if (!string.IsNullOrWhiteSpace(ui.Grouping))
                     items.Add($"grouping:'{ui.Grouping}'");
-                
+                if (ui.DoNotSort)
+                    items.Add($"doNotSort:'true'");
             }
 
             if (!items.Any())
