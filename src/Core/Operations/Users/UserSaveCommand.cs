@@ -54,12 +54,12 @@ namespace Core.Operations.Users
         private void updateModel()
         {
             model.UpdateFrom(request);
-            context.Sync(model.Roles, request.Roles, c => c.Id, c => c.Value, mapRole);
+            context.Sync(model.Roles, request.Roles, c => c.Id, c => c.Id, mapRole);
         }
 
         private Role mapRole(IListItem clientRole, Role dbRole)
         {
-            return allRoles.FirstOrDefault(c => c.Id == clientRole.Value);
+            return allRoles.FirstOrDefault(c => c.Id == clientRole.Id);
         }
 
 

@@ -1,4 +1,5 @@
-﻿using Voodoo.CodeGeneration.Infrastructure;
+﻿using Voodoo.CodeGeneration.Helpers;
+using Voodoo.CodeGeneration.Infrastructure;
 using Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras;
 using Voodoo.CodeGeneration.Templates.Tests;
 
@@ -25,7 +26,7 @@ namespace Voodoo.CodeGeneration.Batches.Logics
             data.AddFile(new MessagesFile(data, type));
 
             tests?.AddFile(new MappingTestsFile(tests, type, logic));
-            if (contextType != null)
+            if (Vs.Helper.Solution.ContextType != null)
                 addNameValuePairs();
         }
     }

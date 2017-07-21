@@ -81,16 +81,16 @@ if (item.Facade.HasActiveFlag) {
 }
             this.Write("\t\t\t\t\titems = await query");
             this.Write(this.ToStringHelper.ToStringWithCulture(item.DbSet.Name));
-            this.Write("\r\n\t\t\t\t\t\t.Select (c=>new ListItem{Name = c.Name, Value=c.Id})\r\n\t\t\t\t\t\t.ToListAsync(" +
-                    ");\r\n\t\t\t\t\t\r\n\t\t\t\t}\r\n\t\t\t\t\t");
+            this.Write("\r\n\t\t\t\t\t\t.Select (c=>new ListItem{Name = c.Name, Id=c.Id})\r\n\t\t\t\t\t\t.ToListAsync();\r" +
+                    "\n\t\t\t\t\t\r\n\t\t\t\t}\r\n\t\t\t\t\t");
  } else {
             this.Write("\t\t\t\tif(list == Lists.");
             this.Write(this.ToStringHelper.ToStringWithCulture(item.EntityType.Name));
             this.Write(")\r\n\t\t\t\t{\r\n\t\t\t\t\tenumType = typeof(");
             this.Write(this.ToStringHelper.ToStringWithCulture(item.EntityType.FullName));
             this.Write(");\r\n\t\t\t\t\tenumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new Lis" +
-                    "tItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();\r\n\t\t\t\t\tresponse.Ad" +
-                    "dRange(enumItems);\r\n\t\t\t\t}\r\n\t\t\t\t");
+                    "tItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();\r\n\t\t\t\t\tresponse.AddRa" +
+                    "nge(enumItems);\r\n\t\t\t\t}\r\n\t\t\t\t");
 }
 			}
             this.Write("\r\n            response.AddRange(items);\r\n\t     return response;\r\n        }\r\n\r\n\t\tp" +
@@ -132,15 +132,15 @@ if (item.Facade.HasActiveFlag) {
 }
             this.Write("\t\t\t\t\titems = await query");
             this.Write(this.ToStringHelper.ToStringWithCulture(item.DbSet.Name));
-            this.Write("\r\n\t\t\t\t\t\t.Select (c=>new ListItem{Name = c.Name, Value=c.Id})\r\n\t\t\t\t\t\t.ToListAsync(" +
-                    ");\r\n\t\t\t\t\tresponse.");
+            this.Write("\r\n\t\t\t\t\t\t.Select (c=>new ListItem{Name = c.Name, Id=c.Id})\r\n\t\t\t\t\t\t.ToListAsync();\r" +
+                    "\n\t\t\t\t\tresponse.");
             this.Write(this.ToStringHelper.ToStringWithCulture(item.PluralName));
             this.Write(".AddRange(items);\r\n\t\t\t\t");
  } else {
             this.Write("\r\n\t\t\t\t\tenumType = typeof(");
             this.Write(this.ToStringHelper.ToStringWithCulture(item.EntityType.FullName));
             this.Write(");\r\n\t\t\t\t\tenumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new Lis" +
-                    "tItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();\r\n\t\t\t\t\tresponse.");
+                    "tItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();\r\n\t\t\t\t\tresponse.");
             this.Write(this.ToStringHelper.ToStringWithCulture(item.PluralName));
             this.Write(".AddRange(enumItems);\r\n\t\t\t\t\r\n\t\t\t");
 }

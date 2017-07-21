@@ -17,7 +17,8 @@ module.exports = (env) => {
     return [{
         stats: { modules: false },
         entry: {
-            'main': ['./ClientApp/boot.ts',
+            'main': ['./ClientApp/polyfills.ts',
+                    './ClientApp/boot.ts',
                 './ClientApp/theme/site.css']
         },
           resolve: { extensions: [ '.js', '.ts'] },
@@ -51,9 +52,11 @@ module.exports = (env) => {
                 manifest: require('./wwwroot/dist/vendor-manifest.json')
             }),
             new CopyWebpackPlugin([
+                { from: 'ClientApp/theme/fileIcons', to: '../fileIcons' },
                 { from: 'ClientApp/index.html', to: '../' },
                 { from: 'ClientApp/favicon.ico', to: '../' },
-                { from: 'ClientApp/theme/site.css', to: '../' },
+                { from: 'ClientApp/theme/site.css', to: '../' },               
+                { from: 'node_modules/filedrop/filedrop.js', to: './' }
             ])
         ].concat(isDevBuild ? [
             new webpack.SourceMapDevToolPlugin({

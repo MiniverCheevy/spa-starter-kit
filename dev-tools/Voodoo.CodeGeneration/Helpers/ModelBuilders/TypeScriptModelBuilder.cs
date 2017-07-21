@@ -35,8 +35,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 return "any";
             type = Nullable.GetUnderlyingType(type) ?? type;
             var name = type.FixUpTypeName();
-            if (!type.IsInterface && !type.IsEnum && !type.IsScalar())
-                name = $"I{name}";
+            //if (!type.IsInterface && !type.IsEnum && !type.IsScalar())
+            //    name = $"I{name}";
 
             if (Mappings.ContainsKey(type.FullName))
             {
@@ -69,7 +69,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
             var result = new StringBuilder();
 
-            result.AppendFormat("interface {0} ", modelType.Name);
+            result.AppendFormat("class {0} ", modelType.Name);
 
             if (modelType.BaseType != null
                 && modelType.BaseType != typeof(object))

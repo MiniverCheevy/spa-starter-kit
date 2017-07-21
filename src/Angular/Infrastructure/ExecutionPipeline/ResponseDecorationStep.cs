@@ -10,11 +10,12 @@ namespace Web.Infrastructure.ExecutionPipeline
     {
         protected override Task<ExecutionState<TRequest, TResponse>> processAsync()
         {
-            if (!state.Response.IsOk && state.Context.Response.StatusCode == 200)
-            {
-                state.Context.Response.StatusCode = 500;
-                return Task.FromResult(state);
-            }
+            //setting the error code to 500 makes some http clients have a cow
+            //if (!state.Response.IsOk && state.Context.Response.StatusCode == 200)
+            //{
+            //    state.Context.Response.StatusCode = 500;
+            //    return Task.FromResult(state);
+            //}
             return Task.FromResult(state);
         }
     }

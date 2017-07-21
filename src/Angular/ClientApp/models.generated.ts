@@ -5,251 +5,457 @@
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
 
-export interface IGroupingOfNameValuePair  {
+export class GroupingOfNameValuePair  {
+
+static empty()
+{
+    const result =
+    {
+        name:undefined,
+        id:undefined,
+        data:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    const result =
+    {
+        name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text'
+        }
+        ,data:
+        {
+            propertyName:'Data',
+            jsName:'data',
+            displayName:'Data',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
 name? : string;
 id? : any;
-data? : INameValuePair[];
+data? : NameValuePair[];
 }
 
-export const EmptyIGroupingOfNameValuePair =
+export class NameValuePair  {
+
+static empty()
 {
-    name:undefined,
-    id:undefined,
-    data:undefined
+    const result =
+    {
+        name:undefined,
+        value:undefined
+    };
+    return result;
 }
 
-export const IGroupingOfNameValuePairMetadata =
+static metadata()
 {
-    name:
+    const result =
     {
-        propertyName:'Name',
-        displayName:'Name',
-        displayFormat:'text'
-    }
-    ,id:
-    {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'text'
-    }
-    ,data:
-    {
-        propertyName:'Data',
-        displayName:'Data',
-        displayFormat:'text'
-    }
+        name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,value:
+        {
+            propertyName:'Value',
+            jsName:'value',
+            displayName:'Value',
+            displayFormat:'text'
+        }
+    };
+    return result;
 }
 
-export const INameValuePairMetadata =
-{
-    name:
-    {
-        propertyName:'Name',
-        displayName:'Name',
-        displayFormat:'text'
-    }
-    ,value:
-    {
-        propertyName:'Value',
-        displayName:'Value',
-        displayFormat:'text'
-    }
-}
-
-export interface INameValuePair  {
 name? : string;
 value? : string;
 }
 
-export const EmptyINameValuePair =
+export class IResponse  {
+
+static empty()
 {
-    name:undefined,
-    value:undefined
+    const result =
+    {
+        isOk:undefined,
+        message:undefined,
+        exception:undefined,
+        details:undefined,
+        hasLogicException:undefined
+    };
+    return result;
 }
 
-export interface IApplicationSettingDetail  {
+static metadata()
+{
+    const result =
+    {
+        isOk:
+        {
+            propertyName:'IsOk',
+            jsName:'isOk',
+            displayName:'Is Ok',
+            displayFormat:'text'
+        }
+        ,message:
+        {
+            propertyName:'Message',
+            jsName:'message',
+            displayName:'Message',
+            displayFormat:'text'
+        }
+        ,exception:
+        {
+            propertyName:'Exception',
+            jsName:'exception',
+            displayName:'Exception',
+            displayFormat:'text'
+        }
+        ,details:
+        {
+            propertyName:'Details',
+            jsName:'details',
+            displayName:'Details',
+            displayFormat:'text'
+        }
+        ,hasLogicException:
+        {
+            propertyName:'HasLogicException',
+            jsName:'hasLogicException',
+            displayName:'Has Logic Exception',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+isOk? : boolean;
+message? : string;
+exception? : any;
+details? : INameValuePair[];
+hasLogicException? : boolean;
+}
+
+export class INameValuePair  {
+
+static empty()
+{
+    const result =
+    {
+        name:undefined,
+        value:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    const result =
+    {
+        name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,value:
+        {
+            propertyName:'Value',
+            jsName:'value',
+            displayName:'Value',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+name? : string;
+value? : string;
+}
+
+export class Response extends IResponse {
+
+static empty()
+{
+    const result =
+    {
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class ApplicationSettingDetail  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined,
+        value:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    const result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+        ,value:
+        {
+            propertyName:'Value',
+            jsName:'value',
+            displayName:'Value',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+    };
+    return result;
+}
+
 id? : number;
 name? : string;
 value? : string;
 }
 
-export const EmptyIApplicationSettingDetail =
+export class ApplicationSettingListRequest  {
+
+static empty()
 {
-    id:undefined,
-    name:undefined,
-    value:undefined
+    const result =
+    {
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
+    };
+    return result;
 }
 
-export const IApplicationSettingDetailMetadata =
+static metadata()
 {
-    id:
+    const result =
     {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'text',
-        isHidden: true
-        ,int:
+        defaultSortMember:
         {
-            shouldValidate:true
+            propertyName:'DefaultSortMember',
+            jsName:'defaultSortMember',
+            displayName:'Default Sort Member',
+            displayFormat:'text'
         }
+        ,};
+        return result;
     }
-    ,name:
-    {
-        propertyName:'Name',
-        displayName:'Name',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-    }
-    ,value:
-    {
-        propertyName:'Value',
-        displayName:'Value',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-}
-
-export interface IApplicationSettingListRequest  {
-defaultSortMember? : string;
-sortDirection? : string;
-resetPaging? : boolean;
-pageNumber? : number;
-pageSize? : number;
-sortMember? : string;
-totalRecords? : number;
-totalPages? : number;
-}
-
-export const EmptyIApplicationSettingListRequest =
-{
-    defaultSortMember:undefined,
-    sortDirection:undefined,
-    resetPaging:undefined,
-    pageNumber:undefined,
-    pageSize:undefined,
-    sortMember:undefined,
-    totalRecords:undefined,
-    totalPages:undefined
-}
-
-export const IApplicationSettingListRequestMetadata =
-{
-    defaultSortMember:
-    {
-        propertyName:'DefaultSortMember',
-        displayName:'Default Sort Member',
-        displayFormat:'text'
-    }
-    ,}
     
-    export interface IApplicationSettingListResponse extends IResponse {
-    state? : IGridState;
-    data? : IApplicationSettingRow[];
-    numberOfRowsEffected? : number;
-    isOk? : boolean;
-    hasLogicException? : boolean;
-    message? : string;
-    details? : INameValuePair[];
-    exception? : any;
+    defaultSortMember? : string;
+    sortDirection? : string;
+    resetPaging? : boolean;
+    pageNumber? : number;
+    pageSize? : number;
+    sortMember? : string;
+    totalRecords? : number;
+    totalPages? : number;
 }
 
-export const EmptyIApplicationSettingListResponse =
+export class ApplicationSettingListResponse extends IResponse {
+
+static empty()
 {
-    state:undefined,
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export const IGridStateMetadata =
+state? : IGridState;
+data? : ApplicationSettingRow[];
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class IGridState  {
+
+static empty()
 {
-    pageNumber:
+    const result =
     {
-        propertyName:'PageNumber',
-        displayName:'Page Number',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,pageSize:
-    {
-        propertyName:'PageSize',
-        displayName:'Page Size',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,totalRecords:
-    {
-        propertyName:'TotalRecords',
-        displayName:'Total Records',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,totalPages:
-    {
-        propertyName:'TotalPages',
-        displayName:'Total Pages',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,sortMember:
-    {
-        propertyName:'SortMember',
-        displayName:'Sort Member',
-        displayFormat:'text'
-    }
-    ,sortDirection:
-    {
-        propertyName:'SortDirection',
-        displayName:'Sort Direction',
-        displayFormat:'text'
-    }
-    ,defaultSortMember:
-    {
-        propertyName:'DefaultSortMember',
-        displayName:'Default Sort Member',
-        displayFormat:'text'
-    }
-    ,resetPaging:
-    {
-        propertyName:'ResetPaging',
-        displayName:'Reset Paging',
-        displayFormat:'text'
-    }
+        pageNumber:undefined,
+        pageSize:undefined,
+        totalRecords:undefined,
+        totalPages:undefined,
+        sortMember:undefined,
+        sortDirection:undefined,
+        defaultSortMember:undefined,
+        resetPaging:undefined
+    };
+    return result;
 }
 
-export interface IGridState  {
+static metadata()
+{
+    const result =
+    {
+        pageNumber:
+        {
+            propertyName:'PageNumber',
+            jsName:'pageNumber',
+            displayName:'Page Number',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,pageSize:
+        {
+            propertyName:'PageSize',
+            jsName:'pageSize',
+            displayName:'Page Size',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,totalRecords:
+        {
+            propertyName:'TotalRecords',
+            jsName:'totalRecords',
+            displayName:'Total Records',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,totalPages:
+        {
+            propertyName:'TotalPages',
+            jsName:'totalPages',
+            displayName:'Total Pages',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,sortMember:
+        {
+            propertyName:'SortMember',
+            jsName:'sortMember',
+            displayName:'Sort Member',
+            displayFormat:'text'
+        }
+        ,sortDirection:
+        {
+            propertyName:'SortDirection',
+            jsName:'sortDirection',
+            displayName:'Sort Direction',
+            displayFormat:'text'
+        }
+        ,defaultSortMember:
+        {
+            propertyName:'DefaultSortMember',
+            jsName:'defaultSortMember',
+            displayName:'Default Sort Member',
+            displayFormat:'text'
+        }
+        ,resetPaging:
+        {
+            propertyName:'ResetPaging',
+            jsName:'resetPaging',
+            displayName:'Reset Paging',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
 pageNumber? : number;
 pageSize? : number;
 totalRecords? : number;
@@ -260,77 +466,186 @@ defaultSortMember? : string;
 resetPaging? : boolean;
 }
 
-export const EmptyIGridState =
+export class ApplicationSettingRow  {
+
+static empty()
 {
-    pageNumber:undefined,
-    pageSize:undefined,
-    totalRecords:undefined,
-    totalPages:undefined,
-    sortMember:undefined,
-    sortDirection:undefined,
-    defaultSortMember:undefined,
-    resetPaging:undefined
+    const result =
+    {
+        id:undefined,
+        name:undefined,
+        value:undefined
+    };
+    return result;
 }
 
-export const IApplicationSettingRowMetadata =
+static metadata()
 {
-    id:
+    const result =
     {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'text',
-        isHidden: true
-        ,int:
+        id:
         {
-            shouldValidate:true
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
         }
-    }
-    ,name:
-    {
-        propertyName:'Name',
-        displayName:'Name',
-        displayFormat:'text'
-        ,length:
+        ,name:
         {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
         }
-    }
-    ,value:
-    {
-        propertyName:'Value',
-        displayName:'Value',
-        displayFormat:'text'
-        ,length:
+        ,value:
         {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
+            propertyName:'Value',
+            jsName:'value',
+            displayName:'Value',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
         }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
+    };
+    return result;
 }
 
-export interface IApplicationSettingRow  {
 id? : number;
 name? : string;
 value? : string;
 }
 
-export const EmptyIApplicationSettingRow =
+export class AppPrincipal  {
+
+static empty()
 {
-    id:undefined,
-    name:undefined,
-    value:undefined
+    const result =
+    {
+        expiration:undefined,
+        refreshTime:undefined,
+        isAuthenticated:undefined,
+        userName:undefined,
+        userId:undefined,
+        firstName:undefined,
+        lastName:undefined,
+        roles:undefined,
+        isAdmin:undefined,
+        token:undefined
+    };
+    return result;
 }
 
-export interface IAppPrincipal  {
+static metadata()
+{
+    const result =
+    {
+        expiration:
+        {
+            propertyName:'Expiration',
+            jsName:'expiration',
+            displayName:'Expiration',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
+            }
+        }
+        ,refreshTime:
+        {
+            propertyName:'RefreshTime',
+            jsName:'refreshTime',
+            displayName:'Refresh Time',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
+            }
+        }
+        ,isAuthenticated:
+        {
+            propertyName:'IsAuthenticated',
+            jsName:'isAuthenticated',
+            displayName:'Is Authenticated',
+            displayFormat:'text'
+        }
+        ,userName:
+        {
+            propertyName:'UserName',
+            jsName:'userName',
+            displayName:'User Name',
+            displayFormat:'text'
+        }
+        ,userId:
+        {
+            propertyName:'UserId',
+            jsName:'userId',
+            displayName:'User Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,firstName:
+        {
+            propertyName:'FirstName',
+            jsName:'firstName',
+            displayName:'First Name',
+            displayFormat:'text'
+        }
+        ,lastName:
+        {
+            propertyName:'LastName',
+            jsName:'lastName',
+            displayName:'Last Name',
+            displayFormat:'text'
+        }
+        ,roles:
+        {
+            propertyName:'Roles',
+            jsName:'roles',
+            displayName:'Roles',
+            displayFormat:'text'
+        }
+        ,isAdmin:
+        {
+            propertyName:'IsAdmin',
+            jsName:'isAdmin',
+            displayName:'Is Admin',
+            displayFormat:'text'
+        }
+        ,token:
+        {
+            propertyName:'Token',
+            jsName:'token',
+            displayName:'Token',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
 expiration? : Date;
 refreshTime? : Date;
 isAuthenticated? : boolean;
@@ -343,341 +658,131 @@ isAdmin? : boolean;
 token? : string;
 }
 
-export const EmptyIAppPrincipal =
+export class ClientInfo  {
+
+static empty()
 {
-    expiration:undefined,
-    refreshTime:undefined,
-    isAuthenticated:undefined,
-    userName:undefined,
-    userId:undefined,
-    firstName:undefined,
-    lastName:undefined,
-    roles:undefined,
-    isAdmin:undefined,
-    token:undefined
+    const result =
+    {
+        timeZoneOffsetInMinutes:undefined
+    };
+    return result;
 }
 
-export const IAppPrincipalMetadata =
+static metadata()
 {
-    expiration:
+    const result =
     {
-        propertyName:'Expiration',
-        displayName:'Expiration',
-        displayFormat:'date'
-        ,date:
+        timeZoneOffsetInMinutes:
         {
-            shouldValidate:true
+            propertyName:'TimeZoneOffsetInMinutes',
+            jsName:'timeZoneOffsetInMinutes',
+            displayName:'Time Zone Offset In Minutes',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
         }
-    }
-    ,refreshTime:
-    {
-        propertyName:'RefreshTime',
-        displayName:'Refresh Time',
-        displayFormat:'date'
-        ,date:
-        {
-            shouldValidate:true
-        }
-    }
-    ,isAuthenticated:
-    {
-        propertyName:'IsAuthenticated',
-        displayName:'Is Authenticated',
-        displayFormat:'text'
-    }
-    ,userName:
-    {
-        propertyName:'UserName',
-        displayName:'User Name',
-        displayFormat:'text'
-    }
-    ,userId:
-    {
-        propertyName:'UserId',
-        displayName:'User Id',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,firstName:
-    {
-        propertyName:'FirstName',
-        displayName:'First Name',
-        displayFormat:'text'
-    }
-    ,lastName:
-    {
-        propertyName:'LastName',
-        displayName:'Last Name',
-        displayFormat:'text'
-    }
-    ,roles:
-    {
-        propertyName:'Roles',
-        displayName:'Roles',
-        displayFormat:'text'
-    }
-    ,isAdmin:
-    {
-        propertyName:'IsAdmin',
-        displayName:'Is Admin',
-        displayFormat:'text'
-    }
-    ,token:
-    {
-        propertyName:'Token',
-        displayName:'Token',
-        displayFormat:'text'
-    }
+    };
+    return result;
 }
 
-export interface IClientInfo  {
 timeZoneOffsetInMinutes? : number;
 }
 
-export const EmptyIClientInfo =
+export class EmptyRequest  {
+
+static empty()
 {
-    timeZoneOffsetInMinutes:undefined
+    const result =
+    {
+    };
+    return result;
 }
 
-export const IClientInfoMetadata =
+static metadata()
 {
-    timeZoneOffsetInMinutes:
+    const result =
     {
-        propertyName:'TimeZoneOffsetInMinutes',
-        displayName:'Time Zone Offset In Minutes',
-        displayFormat:'int'
-        ,int:
+    };
+    return result;
+}
+
+}
+
+export class ErrorListRequest  {
+
+static empty()
+{
+    const result =
+    {
+        searchText:undefined,
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    const result =
+    {
+        searchText:
         {
-            shouldValidate:true
+            propertyName:'SearchText',
+            jsName:'searchText',
+            displayName:'Search Text',
+            displayFormat:'text'
         }
+        ,defaultSortMember:
+        {
+            propertyName:'DefaultSortMember',
+            jsName:'defaultSortMember',
+            displayName:'Default Sort Member',
+            displayFormat:'text'
+        }
+        ,};
+        return result;
     }
-}
-
-export interface IEmptyRequest  {
-}
-
-export const EmptyIEmptyRequest =
-{
-}
-
-export const IEmptyRequestMetadata =
-{
-}
-
-export interface IErrorListRequest  {
-searchText? : string;
-defaultSortMember? : string;
-sortDirection? : string;
-resetPaging? : boolean;
-pageNumber? : number;
-pageSize? : number;
-sortMember? : string;
-totalRecords? : number;
-totalPages? : number;
-}
-
-export const EmptyIErrorListRequest =
-{
-    searchText:undefined,
-    defaultSortMember:undefined,
-    sortDirection:undefined,
-    resetPaging:undefined,
-    pageNumber:undefined,
-    pageSize:undefined,
-    sortMember:undefined,
-    totalRecords:undefined,
-    totalPages:undefined
-}
-
-export const IErrorListRequestMetadata =
-{
-    searchText:
-    {
-        propertyName:'SearchText',
-        displayName:'Search Text',
-        displayFormat:'text'
-    }
-    ,defaultSortMember:
-    {
-        propertyName:'DefaultSortMember',
-        displayName:'Default Sort Member',
-        displayFormat:'text'
-    }
-    ,}
     
-    export interface IErrorListResponse extends IResponse {
-    state? : IGridState;
-    data? : IErrorRow[];
-    numberOfRowsEffected? : number;
-    isOk? : boolean;
-    hasLogicException? : boolean;
-    message? : string;
-    details? : INameValuePair[];
-    exception? : any;
+    searchText? : string;
+    defaultSortMember? : string;
+    sortDirection? : string;
+    resetPaging? : boolean;
+    pageNumber? : number;
+    pageSize? : number;
+    sortMember? : string;
+    totalRecords? : number;
+    totalPages? : number;
 }
 
-export const EmptyIErrorListResponse =
+export class ErrorListResponse extends IResponse {
+
+static empty()
 {
-    state:undefined,
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
-}
-
-export const IErrorRowMetadata =
-{
-    id:
+    const result =
     {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,creationDate:
-    {
-        propertyName:'CreationDate',
-        displayName:'Creation Date',
-        displayFormat:'date'
-        ,date:
-        {
-            shouldValidate:true
-            ,min: new Date('1/1/1900')
-            ,max: new Date('3/4/2050')
-            ,message: 'date is either too far in the future or past'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,type:
-    {
-        propertyName:'Type',
-        displayName:'Type',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 200
-            ,message: '200 characters or less'
-        }
-    }
-    ,message:
-    {
-        propertyName:'Message',
-        displayName:'Message',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 200
-            ,message: '200 characters or less'
-        }
-    }
-    ,user:
-    {
-        propertyName:'User',
-        displayName:'User',
-        displayFormat:'text'
-    }
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export interface IErrorRow  {
-id? : number;
-creationDate? : Date;
-type? : string;
-message? : string;
-user? : string;
-}
-
-export const EmptyIErrorRow =
-{
-    id:undefined,
-    creationDate:undefined,
-    type:undefined,
-    message:undefined,
-    user:undefined
-}
-
-export interface IIdRequest  {
-id? : number;
-}
-
-export const EmptyIIdRequest =
-{
-    id:undefined
-}
-
-export const IIdRequestMetadata =
-{
-    id:
-    {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-}
-
-export enum Lists  {
-Role = 1,
-Lists = 2,
-SqlOperation = 3
-}
-export const ListsMetadata =
-{
-}
-
-export interface IListsRequest  {
-includeInactive? : boolean;
-lists? : Lists[];
-}
-
-export const EmptyIListsRequest =
-{
-    includeInactive:undefined,
-    lists:undefined
-}
-
-export const IListsRequestMetadata =
-{
-    includeInactive:
-    {
-        propertyName:'IncludeInactive',
-        displayName:'Include Inactive',
-        displayFormat:'text'
-    }
-    ,lists:
-    {
-        propertyName:'Lists',
-        displayName:'Lists',
-        displayFormat:'text'
-    }
-}
-
-export interface IListsResponse extends IResponse {
-roles? : IListItem[];
-lists? : IListItem[];
-sqlOperations? : IListItem[];
+state? : IGridState;
+data? : ErrorRow[];
 numberOfRowsEffected? : number;
 isOk? : boolean;
 hasLogicException? : boolean;
@@ -686,51 +791,491 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export const EmptyIListsResponse =
+export class ErrorRow  {
+
+static empty()
 {
-    roles:undefined,
-    lists:undefined,
-    sqlOperations:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        id:undefined,
+        creationDate:undefined,
+        type:undefined,
+        message:undefined,
+        user:undefined
+    };
+    return result;
 }
 
-export const IListItemMetadata =
+static metadata()
 {
-    value:
+    const result =
     {
-        propertyName:'Value',
-        displayName:'Value',
-        displayFormat:'int'
-        ,int:
+        id:
         {
-            shouldValidate:true
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
         }
-    }
-    ,name:
-    {
-        propertyName:'Name',
-        displayName:'Name',
-        displayFormat:'text'
-    }
+        ,creationDate:
+        {
+            propertyName:'CreationDate',
+            jsName:'creationDate',
+            displayName:'Creation Date',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
+                ,min: new Date('1/1/1900')
+                ,max: new Date('3/4/2050')
+                ,message: 'date is either too far in the future or past'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,type:
+        {
+            propertyName:'Type',
+            jsName:'type',
+            displayName:'Type',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 200
+                ,message: '200 characters or less'
+            }
+        }
+        ,message:
+        {
+            propertyName:'Message',
+            jsName:'message',
+            displayName:'Message',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 200
+                ,message: '200 characters or less'
+            }
+        }
+        ,user:
+        {
+            propertyName:'User',
+            jsName:'user',
+            displayName:'User',
+            displayFormat:'text'
+        }
+    };
+    return result;
 }
 
-export interface IListItem  {
-value? : number;
-name? : string;
+id? : number;
+creationDate? : Date;
+type? : string;
+message? : string;
+user? : string;
 }
 
-export const EmptyIListItem =
+export class IdRequest  {
+
+static empty()
 {
-    value:undefined,
-    name:undefined
+    const result =
+    {
+        id:undefined
+    };
+    return result;
 }
 
-export interface IMemberDetail  {
+static metadata()
+{
+    const result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+    };
+    return result;
+}
+
+id? : number;
+}
+
+export class ListItem  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined,
+        filterData:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    const result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,filterData:
+        {
+            propertyName:'FilterData',
+            jsName:'filterData',
+            displayName:'Filter Data',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
+filterData? : string;
+}
+
+export enum Lists  {
+Roles = 1,
+Lists = 2,
+SqlOperation = 3,
+ApplicationSetting = 4,
+Project = 5,
+Member = 6,
+Team = 7
+}
+export class ListsRequest  {
+
+static empty()
+{
+    const result =
+    {
+        includeInactive:undefined,
+        lists:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    const result =
+    {
+        includeInactive:
+        {
+            propertyName:'IncludeInactive',
+            jsName:'includeInactive',
+            displayName:'Include Inactive',
+            displayFormat:'text'
+        }
+        ,lists:
+        {
+            propertyName:'Lists',
+            jsName:'lists',
+            displayName:'Lists',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+includeInactive? : boolean;
+lists? : Lists[];
+}
+
+export class ListsResponse extends IResponse {
+
+static empty()
+{
+    const result =
+    {
+        roles:undefined,
+        lists:undefined,
+        sqlOperations:undefined,
+        applicationSettings:undefined,
+        projects:undefined,
+        members:undefined,
+        teams:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+roles? : IListItem[];
+lists? : IListItem[];
+sqlOperations? : IListItem[];
+applicationSettings? : IListItem[];
+projects? : IListItem[];
+members? : IListItem[];
+teams? : IListItem[];
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class IListItem  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined,
+        filterData:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    const result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,filterData:
+        {
+            propertyName:'FilterData',
+            jsName:'filterData',
+            displayName:'Filter Data',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
+filterData? : string;
+}
+
+export class MemberDetail  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined,
+        title:undefined,
+        requiredInt:undefined,
+        optionalInt:undefined,
+        requiredDate:undefined,
+        optionalDate:undefined,
+        requiredDecimal:undefined,
+        optionalDecimal:undefined,
+        managerId:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    const result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+        ,title:
+        {
+            propertyName:'Title',
+            jsName:'title',
+            displayName:'Title',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,requiredInt:
+        {
+            propertyName:'RequiredInt',
+            jsName:'requiredInt',
+            displayName:'Required Int',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,optionalInt:
+        {
+            propertyName:'OptionalInt',
+            jsName:'optionalInt',
+            displayName:'Optional Int',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,requiredDate:
+        {
+            propertyName:'RequiredDate',
+            jsName:'requiredDate',
+            displayName:'Required Date',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
+                ,min: new Date('1/1/1900')
+                ,max: new Date('3/4/2050')
+                ,message: 'date is either too far in the future or past'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,optionalDate:
+        {
+            propertyName:'OptionalDate',
+            jsName:'optionalDate',
+            displayName:'Optional Date',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
+                ,min: new Date('1/1/1900')
+                ,max: new Date('3/4/2050')
+                ,message: 'date is either too far in the future or past'
+            }
+        }
+        ,requiredDecimal:
+        {
+            propertyName:'RequiredDecimal',
+            jsName:'requiredDecimal',
+            displayName:'Required Decimal',
+            displayFormat:'decimal'
+            ,decimal:
+            {
+                shouldValidate:true
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,optionalDecimal:
+        {
+            propertyName:'OptionalDecimal',
+            jsName:'optionalDecimal',
+            displayName:'Optional Decimal',
+            displayFormat:'decimal'
+            ,decimal:
+            {
+                shouldValidate:true
+            }
+        }
+        ,managerId:
+        {
+            propertyName:'ManagerId',
+            jsName:'managerId',
+            displayName:'Manager',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+    };
+    return result;
+}
+
 id? : number;
 name? : string;
 title? : string;
@@ -743,279 +1288,170 @@ optionalDecimal? : number;
 managerId? : number;
 }
 
-export const EmptyIMemberDetail =
+export class MemberListRequest  {
+
+static empty()
 {
-    id:undefined,
-    name:undefined,
-    title:undefined,
-    requiredInt:undefined,
-    optionalInt:undefined,
-    requiredDate:undefined,
-    optionalDate:undefined,
-    requiredDecimal:undefined,
-    optionalDecimal:undefined,
-    managerId:undefined
+    const result =
+    {
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
+    };
+    return result;
 }
 
-export const IMemberDetailMetadata =
+static metadata()
 {
-    id:
+    const result =
     {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'text',
-        isHidden: true
-        ,int:
+        defaultSortMember:
         {
-            shouldValidate:true
+            propertyName:'DefaultSortMember',
+            jsName:'defaultSortMember',
+            displayName:'Default Sort Member',
+            displayFormat:'text'
         }
+        ,};
+        return result;
     }
-    ,name:
-    {
-        propertyName:'Name',
-        displayName:'Name',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-    }
-    ,title:
-    {
-        propertyName:'Title',
-        displayName:'Title',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,requiredInt:
-    {
-        propertyName:'RequiredInt',
-        displayName:'Required Int',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,optionalInt:
-    {
-        propertyName:'OptionalInt',
-        displayName:'Optional Int',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,requiredDate:
-    {
-        propertyName:'RequiredDate',
-        displayName:'Required Date',
-        displayFormat:'date'
-        ,date:
-        {
-            shouldValidate:true
-            ,min: new Date('1/1/1900')
-            ,max: new Date('3/4/2050')
-            ,message: 'date is either too far in the future or past'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,optionalDate:
-    {
-        propertyName:'OptionalDate',
-        displayName:'Optional Date',
-        displayFormat:'date'
-        ,date:
-        {
-            shouldValidate:true
-            ,min: new Date('1/1/1900')
-            ,max: new Date('3/4/2050')
-            ,message: 'date is either too far in the future or past'
-        }
-    }
-    ,requiredDecimal:
-    {
-        propertyName:'RequiredDecimal',
-        displayName:'Required Decimal',
-        displayFormat:'decimal'
-        ,decimal:
-        {
-            shouldValidate:true
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,optionalDecimal:
-    {
-        propertyName:'OptionalDecimal',
-        displayName:'Optional Decimal',
-        displayFormat:'decimal'
-        ,decimal:
-        {
-            shouldValidate:true
-        }
-    }
-    ,managerId:
-    {
-        propertyName:'ManagerId',
-        displayName:'Manager',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-}
-
-export interface IMemberListRequest  {
-defaultSortMember? : string;
-sortDirection? : string;
-resetPaging? : boolean;
-pageNumber? : number;
-pageSize? : number;
-sortMember? : string;
-totalRecords? : number;
-totalPages? : number;
-}
-
-export const EmptyIMemberListRequest =
-{
-    defaultSortMember:undefined,
-    sortDirection:undefined,
-    resetPaging:undefined,
-    pageNumber:undefined,
-    pageSize:undefined,
-    sortMember:undefined,
-    totalRecords:undefined,
-    totalPages:undefined
-}
-
-export const IMemberListRequestMetadata =
-{
-    defaultSortMember:
-    {
-        propertyName:'DefaultSortMember',
-        displayName:'Default Sort Member',
-        displayFormat:'text'
-    }
-    ,}
     
-    export interface IMemberListResponse extends IResponse {
-    state? : IGridState;
-    data? : IMemberRow[];
-    numberOfRowsEffected? : number;
-    isOk? : boolean;
-    hasLogicException? : boolean;
-    message? : string;
-    details? : INameValuePair[];
-    exception? : any;
+    defaultSortMember? : string;
+    sortDirection? : string;
+    resetPaging? : boolean;
+    pageNumber? : number;
+    pageSize? : number;
+    sortMember? : string;
+    totalRecords? : number;
+    totalPages? : number;
 }
 
-export const EmptyIMemberListResponse =
+export class MemberListResponse extends IResponse {
+
+static empty()
 {
-    state:undefined,
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export const IMemberRowMetadata =
+state? : IGridState;
+data? : MemberRow[];
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class MemberRow  {
+
+static empty()
 {
-    id:
+    const result =
     {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'text',
-        isHidden: true
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,name:
-    {
-        propertyName:'Name',
-        displayName:'Name',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-    }
-    ,title:
-    {
-        propertyName:'Title',
-        displayName:'Title',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,requiredInt:
-    {
-        propertyName:'RequiredInt',
-        displayName:'Required Int',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,optionalInt:
-    {
-        propertyName:'OptionalInt',
-        displayName:'Optional Int',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
+        id:undefined,
+        name:undefined,
+        title:undefined,
+        requiredInt:undefined,
+        optionalInt:undefined
+    };
+    return result;
 }
 
-export interface IMemberRow  {
+static metadata()
+{
+    const result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+        ,title:
+        {
+            propertyName:'Title',
+            jsName:'title',
+            displayName:'Title',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,requiredInt:
+        {
+            propertyName:'RequiredInt',
+            jsName:'requiredInt',
+            displayName:'Required Int',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,optionalInt:
+        {
+            propertyName:'OptionalInt',
+            jsName:'optionalInt',
+            displayName:'Optional Int',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+    };
+    return result;
+}
+
 id? : number;
 name? : string;
 title? : string;
@@ -1023,16 +1459,64 @@ requiredInt? : number;
 optionalInt? : number;
 }
 
-export const EmptyIMemberRow =
+export class MobileErrorRequest  {
+
+static empty()
 {
-    id:undefined,
-    name:undefined,
-    title:undefined,
-    requiredInt:undefined,
-    optionalInt:undefined
+    const result =
+    {
+        errorMsg:undefined,
+        url:undefined,
+        lineNumber:undefined,
+        column:undefined,
+        errorObject:undefined
+    };
+    return result;
 }
 
-export interface IMobileErrorRequest  {
+static metadata()
+{
+    const result =
+    {
+        errorMsg:
+        {
+            propertyName:'ErrorMsg',
+            jsName:'errorMsg',
+            displayName:'Error Msg',
+            displayFormat:'text'
+        }
+        ,url:
+        {
+            propertyName:'Url',
+            jsName:'url',
+            displayName:'Url',
+            displayFormat:'text'
+        }
+        ,lineNumber:
+        {
+            propertyName:'LineNumber',
+            jsName:'lineNumber',
+            displayName:'Line Number',
+            displayFormat:'text'
+        }
+        ,column:
+        {
+            propertyName:'Column',
+            jsName:'column',
+            displayName:'Column',
+            displayFormat:'text'
+        }
+        ,errorObject:
+        {
+            propertyName:'ErrorObject',
+            jsName:'errorObject',
+            displayName:'Error Object',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
 errorMsg? : string;
 url? : string;
 lineNumber? : string;
@@ -1040,50 +1524,23 @@ column? : string;
 errorObject? : string;
 }
 
-export const EmptyIMobileErrorRequest =
+export class NewItemResponse extends IResponse {
+
+static empty()
 {
-    errorMsg:undefined,
-    url:undefined,
-    lineNumber:undefined,
-    column:undefined,
-    errorObject:undefined
+    const result =
+    {
+        newItemId:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export const IMobileErrorRequestMetadata =
-{
-    errorMsg:
-    {
-        propertyName:'ErrorMsg',
-        displayName:'Error Msg',
-        displayFormat:'text'
-    }
-    ,url:
-    {
-        propertyName:'Url',
-        displayName:'Url',
-        displayFormat:'text'
-    }
-    ,lineNumber:
-    {
-        propertyName:'LineNumber',
-        displayName:'Line Number',
-        displayFormat:'text'
-    }
-    ,column:
-    {
-        propertyName:'Column',
-        displayName:'Column',
-        displayFormat:'text'
-    }
-    ,errorObject:
-    {
-        propertyName:'ErrorObject',
-        displayName:'Error Object',
-        displayFormat:'text'
-    }
-}
-
-export interface INewItemResponse extends IResponse {
 newItemId? : number;
 numberOfRowsEffected? : number;
 isOk? : boolean;
@@ -1093,18 +1550,24 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export const EmptyINewItemResponse =
+export class ResponseOfUserDetail extends IResponse {
+
+static empty()
 {
-    newItemId:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export interface IResponse  {
+data? : UserDetail;
 numberOfRowsEffected? : number;
 isOk? : boolean;
 hasLogicException? : boolean;
@@ -1113,142 +1576,142 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export const EmptyIResponse =
+export class UserDetail  {
+
+static empty()
 {
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        id:undefined,
+        userName:undefined,
+        clientId:undefined,
+        firstName:undefined,
+        lastName:undefined,
+        lockoutEnabled:undefined,
+        password:undefined,
+        confirmPassword:undefined,
+        roles:undefined
+    };
+    return result;
 }
 
-export interface IResponseOfUserDetail extends IResponse {
-data? : IUserDetail;
-numberOfRowsEffected? : number;
-isOk? : boolean;
-hasLogicException? : boolean;
-message? : string;
-details? : INameValuePair[];
-exception? : any;
-}
-
-export const EmptyIResponseOfUserDetail =
+static metadata()
 {
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,userName:
+        {
+            propertyName:'UserName',
+            jsName:'userName',
+            displayName:'User Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,clientId:
+        {
+            propertyName:'ClientId',
+            jsName:'clientId',
+            displayName:'Client Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,firstName:
+        {
+            propertyName:'FirstName',
+            jsName:'firstName',
+            displayName:'First Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,lastName:
+        {
+            propertyName:'LastName',
+            jsName:'lastName',
+            displayName:'Last Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,lockoutEnabled:
+        {
+            propertyName:'LockoutEnabled',
+            jsName:'lockoutEnabled',
+            displayName:'Lockout Enabled',
+            displayFormat:'text'
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,password:
+        {
+            propertyName:'Password',
+            jsName:'password',
+            displayName:'Password',
+            displayFormat:'text'
+        }
+        ,confirmPassword:
+        {
+            propertyName:'ConfirmPassword',
+            jsName:'confirmPassword',
+            displayName:'Confirm Password',
+            displayFormat:'text'
+        }
+        ,roles:
+        {
+            propertyName:'Roles',
+            jsName:'roles',
+            displayName:'Roles',
+            displayFormat:'text'
+        }
+    };
+    return result;
 }
 
-export const IUserDetailMetadata =
-{
-    id:
-    {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'text',
-        isHidden: true
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,userName:
-    {
-        propertyName:'UserName',
-        displayName:'User Name',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,clientId:
-    {
-        propertyName:'ClientId',
-        displayName:'Client Id',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,firstName:
-    {
-        propertyName:'FirstName',
-        displayName:'First Name',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,lastName:
-    {
-        propertyName:'LastName',
-        displayName:'Last Name',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,lockoutEnabled:
-    {
-        propertyName:'LockoutEnabled',
-        displayName:'Lockout Enabled',
-        displayFormat:'text'
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,password:
-    {
-        propertyName:'Password',
-        displayName:'Password',
-        displayFormat:'text'
-    }
-    ,confirmPassword:
-    {
-        propertyName:'ConfirmPassword',
-        displayName:'Confirm Password',
-        displayFormat:'text'
-    }
-    ,roles:
-    {
-        propertyName:'Roles',
-        displayName:'Roles',
-        displayFormat:'text'
-    }
-}
-
-export interface IUserDetail  {
 id? : number;
 userName? : string;
 clientId? : number;
@@ -1257,24 +1720,27 @@ lastName? : string;
 lockoutEnabled? : boolean;
 password? : string;
 confirmPassword? : string;
-roles? : IListItem[];
+roles? : ListItem[];
 }
 
-export const EmptyIUserDetail =
+export class ResponseOfMemberDetail extends IResponse {
+
+static empty()
 {
-    id:undefined,
-    userName:undefined,
-    clientId:undefined,
-    firstName:undefined,
-    lastName:undefined,
-    lockoutEnabled:undefined,
-    password:undefined,
-    confirmPassword:undefined,
-    roles:undefined
+    const result =
+    {
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export interface IResponseOfMemberDetail extends IResponse {
-data? : IMemberDetail;
+data? : MemberDetail;
 numberOfRowsEffected? : number;
 isOk? : boolean;
 hasLogicException? : boolean;
@@ -1283,19 +1749,24 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export const EmptyIResponseOfMemberDetail =
+export class ResponseOfErrorDetail extends IResponse {
+
+static empty()
 {
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export interface IResponseOfErrorDetail extends IResponse {
-data? : IErrorDetail;
+data? : ErrorDetail;
 numberOfRowsEffected? : number;
 isOk? : boolean;
 hasLogicException? : boolean;
@@ -1304,113 +1775,133 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export const EmptyIResponseOfErrorDetail =
+export class ErrorDetail  {
+
+static empty()
 {
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        details:undefined,
+        host:undefined,
+        url:undefined,
+        items:undefined,
+        id:undefined,
+        creationDate:undefined,
+        type:undefined,
+        message:undefined,
+        user:undefined
+    };
+    return result;
 }
 
-export const IErrorDetailMetadata =
+static metadata()
 {
-    details:
+    const result =
     {
-        propertyName:'Details',
-        displayName:'Details',
-        displayFormat:'text'
-    }
-    ,host:
-    {
-        propertyName:'Host',
-        displayName:'Host',
-        displayFormat:'text'
-    }
-    ,url:
-    {
-        propertyName:'Url',
-        displayName:'Url',
-        displayFormat:'text'
-    }
-    ,items:
-    {
-        propertyName:'Items',
-        displayName:'Items',
-        displayFormat:'text'
-    }
-    ,id:
-    {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'int'
-        ,int:
+        details:
         {
-            shouldValidate:true
+            propertyName:'Details',
+            jsName:'details',
+            displayName:'Details',
+            displayFormat:'text'
         }
-        ,required:
+        ,host:
         {
-            shouldValidate:true
+            propertyName:'Host',
+            jsName:'host',
+            displayName:'Host',
+            displayFormat:'text'
         }
-    }
-    ,creationDate:
-    {
-        propertyName:'CreationDate',
-        displayName:'Creation Date',
-        displayFormat:'date'
-        ,date:
+        ,url:
         {
-            shouldValidate:true
-            ,min: new Date('1/1/1900')
-            ,max: new Date('3/4/2050')
-            ,message: 'date is either too far in the future or past'
+            propertyName:'Url',
+            jsName:'url',
+            displayName:'Url',
+            displayFormat:'text'
         }
-        ,required:
+        ,items:
         {
-            shouldValidate:true
+            propertyName:'Items',
+            jsName:'items',
+            displayName:'Items',
+            displayFormat:'text'
         }
-    }
-    ,type:
-    {
-        propertyName:'Type',
-        displayName:'Type',
-        displayFormat:'text'
-        ,length:
+        ,id:
         {
-            shouldValidate:true
-            ,min: 0
-            ,max: 200
-            ,message: '200 characters or less'
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
         }
-    }
-    ,message:
-    {
-        propertyName:'Message',
-        displayName:'Message',
-        displayFormat:'text'
-        ,length:
+        ,creationDate:
         {
-            shouldValidate:true
-            ,min: 0
-            ,max: 200
-            ,message: '200 characters or less'
+            propertyName:'CreationDate',
+            jsName:'creationDate',
+            displayName:'Creation Date',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
+                ,min: new Date('1/1/1900')
+                ,max: new Date('3/4/2050')
+                ,message: 'date is either too far in the future or past'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
         }
-    }
-    ,user:
-    {
-        propertyName:'User',
-        displayName:'User',
-        displayFormat:'text'
-    }
+        ,type:
+        {
+            propertyName:'Type',
+            jsName:'type',
+            displayName:'Type',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 200
+                ,message: '200 characters or less'
+            }
+        }
+        ,message:
+        {
+            propertyName:'Message',
+            jsName:'message',
+            displayName:'Message',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 200
+                ,message: '200 characters or less'
+            }
+        }
+        ,user:
+        {
+            propertyName:'User',
+            jsName:'user',
+            displayName:'User',
+            displayFormat:'text'
+        }
+    };
+    return result;
 }
 
-export interface IErrorDetail  {
 details? : string;
 host? : string;
 url? : string;
-items? : IGroupingOfNameValuePair[];
+items? : GroupingOfNameValuePair[];
 id? : number;
 creationDate? : Date;
 type? : string;
@@ -1418,21 +1909,24 @@ message? : string;
 user? : string;
 }
 
-export const EmptyIErrorDetail =
+export class ResponseOfAppPrincipal extends IResponse {
+
+static empty()
 {
-    details:undefined,
-    host:undefined,
-    url:undefined,
-    items:undefined,
-    id:undefined,
-    creationDate:undefined,
-    type:undefined,
-    message:undefined,
-    user:undefined
+    const result =
+    {
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export interface IResponseOfAppPrincipal extends IResponse {
-data? : IAppPrincipal;
+data? : AppPrincipal;
 numberOfRowsEffected? : number;
 isOk? : boolean;
 hasLogicException? : boolean;
@@ -1441,19 +1935,24 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export const EmptyIResponseOfAppPrincipal =
+export class ResponseOfApplicationSettingDetail extends IResponse {
+
+static empty()
 {
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export interface IResponseOfApplicationSettingDetail extends IResponse {
-data? : IApplicationSettingDetail;
+data? : ApplicationSettingDetail;
 numberOfRowsEffected? : number;
 isOk? : boolean;
 hasLogicException? : boolean;
@@ -1462,341 +1961,405 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export const EmptyIResponseOfApplicationSettingDetail =
+export class UIMetadata  {
+
+static empty()
 {
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        propertyName:undefined,
+        jsName:undefined,
+        displayName:undefined,
+        displayFormat:undefined,
+        email:undefined,
+        length:undefined,
+        date:undefined,
+        integer:undefined,
+        decimal:undefined,
+        required:undefined,
+        isReadOnly:undefined,
+        isHidden:undefined,
+        doNotSort:undefined
+    };
+    return result;
 }
 
-export interface IUIMetadata  {
-email? : IValidationMetaData;
-length? : IValidationMetaData;
-date? : IValidationMetaData;
-integer? : IValidationMetaData;
-decimal? : IValidationMetaData;
-required? : IValidationMetaData;
+static metadata()
+{
+    const result =
+    {
+        propertyName:
+        {
+            propertyName:'PropertyName',
+            jsName:'propertyName',
+            displayName:'Property Name',
+            displayFormat:'text'
+        }
+        ,jsName:
+        {
+            propertyName:'JsName',
+            jsName:'jsName',
+            displayName:'Js Name',
+            displayFormat:'text'
+        }
+        ,displayName:
+        {
+            propertyName:'DisplayName',
+            jsName:'displayName',
+            displayName:'Display Name',
+            displayFormat:'text'
+        }
+        ,displayFormat:
+        {
+            propertyName:'DisplayFormat',
+            jsName:'displayFormat',
+            displayName:'Display Format',
+            displayFormat:'text'
+        }
+        ,email:
+        {
+            propertyName:'Email',
+            jsName:'email',
+            displayName:'Email',
+            displayFormat:'text'
+        }
+        ,length:
+        {
+            propertyName:'Length',
+            jsName:'length',
+            displayName:'Length',
+            displayFormat:'text'
+        }
+        ,date:
+        {
+            propertyName:'Date',
+            jsName:'date',
+            displayName:'Date',
+            displayFormat:'text'
+        }
+        ,integer:
+        {
+            propertyName:'Integer',
+            jsName:'integer',
+            displayName:'Integer',
+            displayFormat:'text'
+        }
+        ,decimal:
+        {
+            propertyName:'Decimal',
+            jsName:'decimal',
+            displayName:'Decimal',
+            displayFormat:'text'
+        }
+        ,required:
+        {
+            propertyName:'Required',
+            jsName:'required',
+            displayName:'Required',
+            displayFormat:'text'
+        }
+        ,isReadOnly:
+        {
+            propertyName:'IsReadOnly',
+            jsName:'isReadOnly',
+            displayName:'Is Read Only',
+            displayFormat:'text'
+        }
+        ,isHidden:
+        {
+            propertyName:'IsHidden',
+            jsName:'isHidden',
+            displayName:'Is Hidden',
+            displayFormat:'text'
+        }
+        ,doNotSort:
+        {
+            propertyName:'DoNotSort',
+            jsName:'doNotSort',
+            displayName:'Do Not Sort',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
 propertyName? : string;
+jsName? : string;
 displayName? : string;
-format? : string;
+displayFormat? : string;
+email? : ValidationMetaData;
+length? : ValidationMetaData;
+date? : ValidationMetaData;
+integer? : ValidationMetaData;
+decimal? : ValidationMetaData;
+required? : ValidationMetaData;
 isReadOnly? : boolean;
 isHidden? : boolean;
 doNotSort? : boolean;
 }
 
-export const EmptyIUIMetadata =
+export class ValidationMetaData  {
+
+static empty()
 {
-    email:undefined,
-    length:undefined,
-    date:undefined,
-    integer:undefined,
-    decimal:undefined,
-    required:undefined,
-    propertyName:undefined,
-    displayName:undefined,
-    format:undefined,
-    isReadOnly:undefined,
-    isHidden:undefined,
-    doNotSort:undefined
+    const result =
+    {
+        shouldValidate:undefined,
+        message:undefined,
+        min:undefined,
+        max:undefined
+    };
+    return result;
 }
 
-export const IUIMetadataMetadata =
+static metadata()
 {
-    email:
+    const result =
     {
-        propertyName:'Email',
-        displayName:'Email',
-        displayFormat:'text'
-    }
-    ,length:
-    {
-        propertyName:'Length',
-        displayName:'Length',
-        displayFormat:'text'
-    }
-    ,date:
-    {
-        propertyName:'Date',
-        displayName:'Date',
-        displayFormat:'text'
-    }
-    ,integer:
-    {
-        propertyName:'Integer',
-        displayName:'Integer',
-        displayFormat:'text'
-    }
-    ,decimal:
-    {
-        propertyName:'Decimal',
-        displayName:'Decimal',
-        displayFormat:'text'
-    }
-    ,required:
-    {
-        propertyName:'Required',
-        displayName:'Required',
-        displayFormat:'text'
-    }
-    ,propertyName:
-    {
-        propertyName:'PropertyName',
-        displayName:'Property Name',
-        displayFormat:'text'
-    }
-    ,displayName:
-    {
-        propertyName:'DisplayName',
-        displayName:'Display Name',
-        displayFormat:'text'
-    }
-    ,format:
-    {
-        propertyName:'Format',
-        displayName:'Format',
-        displayFormat:'text'
-    }
-    ,isReadOnly:
-    {
-        propertyName:'IsReadOnly',
-        displayName:'Is Read Only',
-        displayFormat:'text'
-    }
-    ,isHidden:
-    {
-        propertyName:'IsHidden',
-        displayName:'Is Hidden',
-        displayFormat:'text'
-    }
-    ,doNotSort:
-    {
-        propertyName:'DoNotSort',
-        displayName:'Do Not Sort',
-        displayFormat:'text'
-    }
+        shouldValidate:
+        {
+            propertyName:'ShouldValidate',
+            jsName:'shouldValidate',
+            displayName:'Should Validate',
+            displayFormat:'text'
+        }
+        ,message:
+        {
+            propertyName:'Message',
+            jsName:'message',
+            displayName:'Message',
+            displayFormat:'text'
+        }
+        ,min:
+        {
+            propertyName:'Min',
+            jsName:'min',
+            displayName:'Min',
+            displayFormat:'text'
+        }
+        ,max:
+        {
+            propertyName:'Max',
+            jsName:'max',
+            displayName:'Max',
+            displayFormat:'text'
+        }
+    };
+    return result;
 }
 
-export const IValidationMetaDataMetadata =
-{
-    shouldValidate:
-    {
-        propertyName:'ShouldValidate',
-        displayName:'Should Validate',
-        displayFormat:'text'
-    }
-    ,message:
-    {
-        propertyName:'Message',
-        displayName:'Message',
-        displayFormat:'text'
-    }
-    ,min:
-    {
-        propertyName:'Min',
-        displayName:'Min',
-        displayFormat:'text'
-    }
-    ,max:
-    {
-        propertyName:'Max',
-        displayName:'Max',
-        displayFormat:'text'
-    }
-}
-
-export interface IValidationMetaData  {
 shouldValidate? : boolean;
 message? : string;
 min? : any;
 max? : any;
 }
 
-export const EmptyIValidationMetaData =
+export class UserListRequest  {
+
+static empty()
 {
-    shouldValidate:undefined,
-    message:undefined,
-    min:undefined,
-    max:undefined
+    const result =
+    {
+        searchText:undefined,
+        defaultSortMember:undefined,
+        id:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
+    };
+    return result;
 }
 
-export interface IUserListRequest  {
-searchText? : string;
-defaultSortMember? : string;
-id? : number;
-sortDirection? : string;
-resetPaging? : boolean;
-pageNumber? : number;
-pageSize? : number;
-sortMember? : string;
-totalRecords? : number;
-totalPages? : number;
-}
-
-export const EmptyIUserListRequest =
+static metadata()
 {
-    searchText:undefined,
-    defaultSortMember:undefined,
-    id:undefined,
-    sortDirection:undefined,
-    resetPaging:undefined,
-    pageNumber:undefined,
-    pageSize:undefined,
-    sortMember:undefined,
-    totalRecords:undefined,
-    totalPages:undefined
-}
-
-export const IUserListRequestMetadata =
-{
-    searchText:
+    const result =
     {
-        propertyName:'SearchText',
-        displayName:'Search Text',
-        displayFormat:'text'
-    }
-    ,defaultSortMember:
-    {
-        propertyName:'DefaultSortMember',
-        displayName:'Default Sort Member',
-        displayFormat:'text'
-    }
-    ,id:
-    {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'int'
-        ,int:
+        searchText:
         {
-            shouldValidate:true
+            propertyName:'SearchText',
+            jsName:'searchText',
+            displayName:'Search Text',
+            displayFormat:'text'
         }
+        ,defaultSortMember:
+        {
+            propertyName:'DefaultSortMember',
+            jsName:'defaultSortMember',
+            displayName:'Default Sort Member',
+            displayFormat:'text'
+        }
+        ,id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,};
+        return result;
     }
-    ,}
     
-    export interface IUserListResponse extends IResponse {
-    state? : IGridState;
-    data? : IUserRow[];
-    numberOfRowsEffected? : number;
-    isOk? : boolean;
-    hasLogicException? : boolean;
-    message? : string;
-    details? : INameValuePair[];
-    exception? : any;
+    searchText? : string;
+    defaultSortMember? : string;
+    id? : number;
+    sortDirection? : string;
+    resetPaging? : boolean;
+    pageNumber? : number;
+    pageSize? : number;
+    sortMember? : string;
+    totalRecords? : number;
+    totalPages? : number;
 }
 
-export const EmptyIUserListResponse =
+export class UserListResponse extends IResponse {
+
+static empty()
 {
-    state:undefined,
-    data:undefined,
-    numberOfRowsEffected:undefined,
-    isOk:undefined,
-    hasLogicException:undefined,
-    message:undefined,
-    details:undefined,
-    exception:undefined
+    const result =
+    {
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
 }
 
-export const IUserRowMetadata =
+state? : IGridState;
+data? : UserRow[];
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class UserRow  {
+
+static empty()
 {
-    id:
+    const result =
     {
-        propertyName:'Id',
-        displayName:'Id',
-        displayFormat:'text',
-        isHidden: true
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,userName:
-    {
-        propertyName:'UserName',
-        displayName:'User Name',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,clientId:
-    {
-        propertyName:'ClientId',
-        displayName:'Client Id',
-        displayFormat:'int'
-        ,int:
-        {
-            shouldValidate:true
-        }
-    }
-    ,firstName:
-    {
-        propertyName:'FirstName',
-        displayName:'First Name',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,lastName:
-    {
-        propertyName:'LastName',
-        displayName:'Last Name',
-        displayFormat:'text'
-        ,length:
-        {
-            shouldValidate:true
-            ,min: 0
-            ,max: 128
-            ,message: '128 characters or less'
-        }
-        ,required:
-        {
-            shouldValidate:true
-        }
-    }
-    ,roles:
-    {
-        propertyName:'Roles',
-        displayName:'Roles',
-        displayFormat:'text'
-    }
+        id:undefined,
+        userName:undefined,
+        clientId:undefined,
+        firstName:undefined,
+        lastName:undefined,
+        roles:undefined
+    };
+    return result;
 }
 
-export interface IUserRow  {
+static metadata()
+{
+    const result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,userName:
+        {
+            propertyName:'UserName',
+            jsName:'userName',
+            displayName:'User Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,clientId:
+        {
+            propertyName:'ClientId',
+            jsName:'clientId',
+            displayName:'Client Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,firstName:
+        {
+            propertyName:'FirstName',
+            jsName:'firstName',
+            displayName:'First Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,lastName:
+        {
+            propertyName:'LastName',
+            jsName:'lastName',
+            displayName:'Last Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,roles:
+        {
+            propertyName:'Roles',
+            jsName:'roles',
+            displayName:'Roles',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
 id? : number;
 userName? : string;
 clientId? : number;
 firstName? : string;
 lastName? : string;
 roles? : string;
-}
-
-export const EmptyIUserRow =
-{
-    id:undefined,
-    userName:undefined,
-    clientId:undefined,
-    firstName:undefined,
-    lastName:undefined,
-    roles:undefined
 }
 

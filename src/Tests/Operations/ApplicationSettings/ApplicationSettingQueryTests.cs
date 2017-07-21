@@ -49,7 +49,7 @@ namespace Tests.Operations.ApplicationSettings
             response.Message.Should().BeNull();
             response.IsOk.Should().BeTrue();
             response.Data.Should().NotBeNull();
-            response.Data.Should().NotBeEmpty();
+            
         }
     }
 }

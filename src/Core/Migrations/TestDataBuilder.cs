@@ -10,7 +10,6 @@ namespace Core.Migrations
     {
         internal void Build(MainContext context)
         {
-            System.Diagnostics.Debugger.Launch();
             var dev1 = new Member
             {
                 Name = "Dev 1",

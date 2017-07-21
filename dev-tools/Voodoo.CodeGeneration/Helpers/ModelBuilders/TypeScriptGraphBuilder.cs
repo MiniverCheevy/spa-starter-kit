@@ -29,16 +29,18 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             GeneratedTypeDefinitions.Add(currentType);
             GeneratedTypeNames.Add(typeName);
 
-            var properties = currentType.GetProperties();
+            
 
-            buildInterfaceDeclaration(isResponse, typeName, properties);
-            buildConstantDeclaration(typeName, properties);
+            buildClassDeclaration(isResponse, typeName, currentType);
+            //buildConstantDeclaration(typeName, properties);
 
         }
 
         private void buildConstantDeclaration(string typeName, PropertyInfo[] properties)
         {
-            output.AppendLine($"export const Empty{typeName} =");
+            output.AppendLine($"static empty()");
+            output.AppendLine($"{{");
+            output.AppendLine($"const result =");
 
             output.AppendLine(" {");
             var lastProperty = properties.Any() ? properties.Last() : null;
@@ -47,21 +49,33 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 var isLast = property == lastProperty;
                 output.AppendLine(builder.GetConstPropertyDeclaration(property, isLast));
             }
+            output.AppendLine("};");
+            output.AppendLine("return result;");
             output.AppendLine("}");
             output.AppendLine();
         }
 
-        private void buildInterfaceDeclaration(bool isResponse, string typeName, PropertyInfo[] properties)
+        private void buildClassDeclaration(bool isResponse, string typeName, Type currentType)
         {
-            output.Append($"export interface {typeName} ");
+            var properties = currentType.GetProperties();
+            output.Append($"export class {typeName} ");
             if (isResponse && typeName != "IResponse")
             {
                 output.Append("extends IResponse");
                 properties = properties.Except(iResponseProperties).ToArray();
             }
             output.AppendLine(" {");
+
+            output.AppendLine("");
+            buildConstantDeclaration(typeName, properties);
+            output.AppendLine(new TypescriptMetadataBuilder(currentType, properties).Build());
+
+
             foreach (var property in properties)
                 output.AppendLine(builder.GetPropertyDeclaration(property));
+
+
+
             output.AppendLine("}");
             output.AppendLine();
             

@@ -9,17 +9,20 @@ using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Core.Context.ExceptionTranslators;
 using Core.Models;
 using Core.Models.Exceptions;
 using Core.Models.Identity;
 using Core.Models.Scratch;
+using Core.Operations.Lists;
 using Voodoo;
 
 namespace Core.Context
 {
     public class MainContext : DbContext
     {
+        private ListsHelper listHelper = new ListsHelper();
         private const string EffortConnectionString = "instanceid=this";
         public bool IsEffort => Database.Connection.ConnectionString == EffortConnectionString;
         public DbSet<Error> Errors { get; set; }
@@ -44,7 +47,15 @@ namespace Core.Context
             VoodooGlobalConfiguration.RegisterExceptionMapping<SqlException>(
                 new UniqueConstraintExceptionTranslation());
         }
-
+        public async Task<List<IListItem>> GetList(Lists list, bool includeInactive = false)
+        {
+            return await listHelper.GetList(this, list, includeInactive);
+        }
+        public async Task<ListsResponse> GetLists(params Lists[] lists)
+        {
+            var request = new ListsRequest { Lists = lists.ToList() };
+            return await listHelper.GetLists(this, request);
+        }
         public MainContext() : base("DefaultConnection")
         {
             Configuration.ProxyCreationEnabled = false;

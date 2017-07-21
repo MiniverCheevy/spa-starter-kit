@@ -1,0 +1,37 @@
+
+<div class="mdc-card">   
+    
+    <table class="data-table mdc-card__primary">
+        <thead class="mdc-typography--body2">
+        <tr>
+            <th *ngIf="buttons && buttons.length > 0"></th>
+            <th *ngFor="let column of columns" class="">
+                <span *ngIf="column.doNotSort && column.doNotSort == true">{{column.DisplayName}}</span>
+                <sorter *ngIf="!column.doNotSort || column.doNotSort == false"
+                        [(member)]="column.propertyName"
+                        [(text)]="column.displayName"
+                        [(request)]="request"
+                        (change)="refresh()"></sorter>
+            </th>
+        </tr>
+        </thead>
+        <tbody class="mdc-typography--body1">
+        <tr *ngFor="let row of data">
+            <td class="button-column" *ngIf="buttons && buttons.length > 0">
+                <push-button *ngFor="let button of buttons" theme="primary" 
+                [title]="button.text" [icon]="button.icon" (click)="executeAction(button.action, row)"
+                              ></push-button>                
+            </td>
+            <td *ngFor="let column of columns">
+                {{format(row[column.jsName], column)}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <section className="mdc-card__supporting-text"></section>
+    <section className="mdc-card__actions pager-container">
+        <pager [(request)]="request"
+                   (change)="refresh()"></pager>
+
+    </section>
+</div>

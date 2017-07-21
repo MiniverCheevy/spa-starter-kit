@@ -4,10 +4,9 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-
-using System.Collections.Generic;
+using Core;
 using Voodoo.Messages;
-
+using System.Collections.Generic;
 namespace Core.Operations.Lists
 {
     public class ListsResponse :Response
@@ -15,12 +14,20 @@ namespace Core.Operations.Lists
         public List<IListItem> Roles {get;set;}
         public List<IListItem> Lists {get;set;}
         public List<IListItem> SqlOperations {get;set;}
+        public List<IListItem> ApplicationSettings {get;set;}
+        public List<IListItem> Projects {get;set;}
+        public List<IListItem> Members {get;set;}
+        public List<IListItem> Teams {get;set;}
         
         public ListsResponse()
         {
             Roles = new List<IListItem>();
             Lists = new List<IListItem>();
             SqlOperations = new List<IListItem>();
+            ApplicationSettings = new List<IListItem>();
+            Projects = new List<IListItem>();
+            Members = new List<IListItem>();
+            Teams = new List<IListItem>();
         }
     }
 }

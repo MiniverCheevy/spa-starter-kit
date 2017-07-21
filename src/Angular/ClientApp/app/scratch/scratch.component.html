@@ -2,7 +2,9 @@
 <div>
     <grid [(metadata)]="metadata"
           [(request)]="request"
-          [(api)]="api"></grid>
+          [(data)]="data"
+          [(buttons)]="buttons"
+          (change)="refresh()"></grid>
 
 </div>
 <hr />

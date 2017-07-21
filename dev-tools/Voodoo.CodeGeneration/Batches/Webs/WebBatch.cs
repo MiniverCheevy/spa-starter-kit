@@ -34,6 +34,9 @@ namespace Voodoo.CodeGeneration.Batches.Webs
                 Vs.Helper.Solution.JsAppPathFromWebProjectRoot);
             if (webModels != null)
                 web.AddFile(webModels);
+
+            if (Vs.Helper.Solution.ContextType != null)
+                addNameValuePairs();
         }
     }
 }

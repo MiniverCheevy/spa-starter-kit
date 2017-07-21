@@ -77,6 +77,7 @@ namespace Voodoo.CodeGeneration.Helpers
                 if (Solution.PCLProject != null)
                     Projects.Add(Solution.PCLProject);
             }
+            Projects = Projects.Distinct().ToList();
             Projects.ForEach(c => c.Initialize());
 
             var provider = SourceControlProviderFactory.GetProvider();

@@ -28,7 +28,7 @@ namespace Web
             builder
                 .SetBasePath(env.ContentRootPath)
           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             Console.WriteLine($"Environment: {env.EnvironmentName}");
       this.Configuration = builder.Build();
@@ -40,6 +40,7 @@ namespace Web
         {
             services.AddApplicationInsightsTelemetry(Configuration);
             services.AddWebApi();
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 

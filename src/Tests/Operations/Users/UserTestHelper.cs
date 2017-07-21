@@ -30,8 +30,8 @@ namespace Tests.Operations.Users
             const string password = "password";
             request.Password = password;
             request.ConfirmPassword = password;
-
-            request.Roles.Add(new ListItem() { Value = 1 });
+            request.UserName = TestHelper.Data.Person().EmailAddress;
+            request.Roles.Add(new ListItem() { Id = 1 });
             return request;
         }
         

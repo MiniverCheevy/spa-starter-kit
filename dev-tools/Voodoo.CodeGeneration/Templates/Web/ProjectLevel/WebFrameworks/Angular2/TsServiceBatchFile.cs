@@ -65,21 +65,21 @@ import { Injectable }   from '@angular/core';            ");
 
         private static void addMethodBody(StringBuilder output, RestMethod verb)
         {
-            output.AppendLine($"this.messenger.incrementHttpRequestCounter();");
-            output.AppendLine($"var requestBuilder = await this.ajaxService.build{verb.Name}Request(request, this.url);");
+            output.AppendLine($"this.messenger.incrementHttpRequestCounter();");            
             output.AppendLine("try {");
-            output.AppendLine("var response = await requestBuilder.send();");
+            output.AppendLine($"var response = await this.ajaxService.build{verb.Name}Request(request, this.url);");
             output.AppendLine("this.messenger.decrementHttpRequestCounter();");
-            output.AppendLine("var out = < Models.IResponse > JSON.parse(response.response);");
+            output.AppendLine("var out = <any>response;");
             output.AppendLine("this.messenger.showResponseMessage(out);");
             output.AppendLine("return out;");
             output.AppendLine("}");
             output.AppendLine("catch (err)");
             output.AppendLine("{");
+            output.AppendLine("var message = err.statusText || err.message;");
             output.AppendLine("this.ajaxService.logError(err, this.url, (<any>new Error()).stack);");
             output.AppendLine("    var result = {");
             output.AppendLine("isOk: false,");
-            output.AppendLine("message: err.statusText");
+            output.AppendLine("message: message");
             output.AppendLine("};");
             output.AppendLine("this.messenger.decrementHttpRequestCounter();");
             output.AppendLine("this.messenger.showResponseMessage(result);");

@@ -24,7 +24,8 @@ namespace Web.Infrastructure.ExecutionPipeline
             {
                 new ModelStateVerificationStep<TRequest, TResponse>(),
                 new AuthorizationStep<TRequest, TResponse>(),
-                new ExecutionStep<TRequest, TResponse>()
+                new ExecutionStep<TRequest, TResponse>(),
+                //new BinaryResponseStep<TRequest, TResponse>()
             }
             ;
 
@@ -41,7 +42,7 @@ namespace Web.Infrastructure.ExecutionPipeline
                 if (state.IsDone)
                     break;
             }
-            state = await new ResponseDecorationStep<TRequest, TResponse>().ExecuteAsync(state);
+            //state = await new ResponseDecorationStep<TRequest, TResponse>().ExecuteAsync(state);
             return state.Response;
         }
     }

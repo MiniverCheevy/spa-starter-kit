@@ -19,7 +19,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         {
             output = new StringBuilder();
             builder = new TModelBuilder();
-            var constantTypes = new Type[] { new Grouping<NameValuePair>().GetType() };
+            var constantTypes = new Type[] { typeof(IResponse), new Response().GetType(), new Grouping<NameValuePair>().GetType() };
             AddTypes(constantTypes);
         }
 
@@ -54,8 +54,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
             buildDeclaration(type, isResponse);
             
-            var metaData = new TypescriptMetadataBuilder(type, type.GetProperties());
-            output.AppendLine(metaData.Build());
+            //var metaData = new TypescriptMetadataBuilder(type, type.GetProperties());
+            //output.AppendLine(metaData.Build());
             var types = new List<Type>();
             var enumTypes = new List<Type>();
             types.AddRange(builder.getComplexPropertyTypes(type));
@@ -65,8 +65,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 if (!shouldWrite(t))
                     continue;
 
-                var childMetaData = new TypescriptMetadataBuilder(t, t.GetProperties());
-                output.AppendLine(childMetaData.Build());
+                //var childMetaData = new TypescriptMetadataBuilder(t, t.GetProperties());
+                //output.AppendLine(childMetaData.Build());
                 buildDeclaration(t, false);
                 enumTypes.AddRange(builder.getEnumPropertyTypes(t));
                 buildGraph(t, false);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Api, Models } from './../root';
+import { Api, Models, Components } from './../root';
 
 @Component({
   selector: 'scratch',
@@ -8,22 +8,34 @@ import { Api, Models } from './../root';
 })
 export class ScratchComponent implements OnInit {
 
-    metadata = Models.IMemberRowMetadata;
-    request: Models.IMemberListRequest = Models.EmptyIMemberListRequest;
-    api;
     
+    metadata = Models.MemberRow.metadata();
+    request: Models.MemberListRequest = Models.MemberListRequest.empty();
+    data: Models.MemberRow = [];
+    buttons: Components.GridButton[] = [];
     constructor(private memberList: Api.MemberList) {
         console.log('scratch');
-        this.api = memberList;
+        this.buttons.push({
+            action: this.edit, icon: 'pencil', text: 'Edit'
+        })
+        this.refresh();
     }
 
     async ngOnInit() {
         console.log('scratch-init');
         await this.refresh();
     }
-    async refresh()
+    refresh = async ()=>
     {
-        
+        console.log('refresh');
+        var response = await this.memberList.get(this.request);
+        if (response.isOk)
+            {
+            this.data = response.data;
+            this.request = response.state;
+        }
     }
+    edit = async () =>
+    { }
 
 }

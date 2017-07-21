@@ -8,7 +8,7 @@
 
     public enum Roles
     {
-        Administrator = 1,
-        User = 2
+        Administrator = 10,
+        User = 20
     }
 }

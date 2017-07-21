@@ -1,36 +1,42 @@
 ﻿import { EncoderService } from "./encoder-service";
 import { CurrentUserService, CurrentUserServiceStatic } from "./current-user-service";
 import { MessengerService, MessengerServiceStatic } from "./messenger-service";
-//import * as $ from 'jquery';
-//import * as  axios from 'axios';
-let fetch = (<any>window).fetch;
+import { Http, Headers } from "@angular/http";
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/toPromise';
+import { AjaxServiceStatic } from './../app/app.module';
+
+
 @Injectable()
 export class AjaxService {
-    constructor(private messengerService: MessengerService, private currentUserService: CurrentUserService) { }
+    constructor(private messengerService: MessengerService,
+        private currentUserService: CurrentUserService,
+        private fetch: Http) { }
 
-    public showReport(url: string, request: any)
-    {
+    public showReport(url: string, request: any) {
         var params = EncoderService.serializeParams(request);
         var urlWithParams = url + '?' + params;
         window.open(urlWithParams);
     }
     private getAjaxRequest = (url: string, verb: string, token: string, request: any) => {
         try {
+
+            var headers = new Headers();
+
+            headers.append('Accept', 'application/json');
+            headers.append('Content-Type', 'application/json; charset=utf-8');
+            headers.append('Token', token);
+
             var body = JSON.stringify(request);
             if (verb.toLowerCase() == 'get' || verb.toLowerCase() == 'delete') {
-                return fetch(url,
-                    {
-                        method: verb,
-                        credentials: 'same-origin',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json; charset=utf-8',
-                            'Token': token
-                        }
-                    }
-                )
-                    .then((r) => { return r.json(); })
+                return this.fetch.request(url, {
+                    withCredentials: true,
+                    method: verb,
+                    headers: headers
+                }).toPromise()
+                    .then((r) => {
+                        return r.json();
+                    })
                     .catch((e) => {
                         this.logError(e, url, new Error().stack);
                         return {
@@ -39,77 +45,32 @@ export class AjaxService {
                         };
                     });
             } else {
-                return fetch(url,
-                    {
-                        method: verb,
-                        credentials: 'same-origin',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json; charset=utf-8',
-                            'Token': token
-                        },
-                        body: body
-                    }
-                )
-                    .then((r) => {
-                        console.log('get ajax request-then');
-                        return r.json();
-                        
-                    })
+
+                return this.fetch.request(url, {
+                    withCredentials: true,
+                    method: verb,
+                    headers: headers,
+                    body: body
+                }).toPromise()
+                    .then((r) => { return r.json(); })
                     .catch((e) => {
-                        console.log('get ajax request-catch');
+                        
                         this.logError(e, url, new Error().stack);
                         return {
                             isOk: false,
                             message: e.statusText || e.message
                         };
-                    }
-                    );
+                    });                
             }
         }
         catch (e) {
-            //never hit, why?
-            //debugger;
+            //never hit, why?            
             console.log('The try caught' + e.toString());
+            this.logError(e, url, new Error().stack);
         }
 
     }
-    //private getAjaxRequest=(url: string, verb: string, token: string, request: any)=> {
-    //    var body = JSON.stringify(request);
-    //    if (verb.toLowerCase() == 'get' || verb.toLowerCase() == 'delete') {
 
-
-
-    //        return (<any>axios)({
-    //            url: url,
-    //            method: verb,
-    //            credentials: 'same-origin',
-    //            headers: [{ 'Accept': 'application/json' },
-    //            { 'Content-Type': 'application/json; charset=utf-8' },
-    //            { 'Token': token }]
-    //        }).catch(
-    //            (error) => {
-    //                this.logError(error, url, error.stack);
-    //                MessengerService.showToast(error.message, true);
-    //            });;;
-    //    }
-    //    else {
-    //        (<any>axios)({
-    //            url: url,
-    //            method: verb,
-    //            credentials: 'same-origin',
-    //            headers: [{ 'Accept': 'application/json' },
-    //            { 'Content-Type': 'application/json; charset=utf-8' },
-    //            { 'Token': token }],
-    //            data: request
-    //        })
-    //            .catch(
-    //            (error) => {
-    //                this.logError(error, url, error.stack);
-    //                MessengerService.showToast(error.message, true);
-    //            });;;;
-    //    }
-    //}
     public buildGetRequest = async (request, url): Promise<any> => {
         var user = await this.currentUserService.get();
         var params = EncoderService.serializeParams(request);
@@ -136,7 +97,7 @@ export class AjaxService {
 
     }
     public logError(err, url, stack) {
-
+        //TODO:
         //var message = err.message;
         //if (message == null) {
         //    message = err.statusText;
@@ -157,9 +118,7 @@ export class AjaxService {
 
 }
 
-export const AjaxServiceStatic = new AjaxService(MessengerServiceStatic, CurrentUserServiceStatic);
-
-window.onerror =function (message, file, line, column, errorObject)  {
+window.onerror = function (message, file, line, column, errorObject) {
     console.log("window.onerror fired");
 
     column = column || (<any>(window.event));

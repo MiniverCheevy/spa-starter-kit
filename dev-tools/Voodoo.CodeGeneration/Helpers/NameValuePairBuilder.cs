@@ -13,7 +13,7 @@ namespace Voodoo.CodeGeneration.Helpers
     {
         private readonly Type contextType;
         private PluralizationService pluralizer = PluralizationService.CreateService(CultureInfo.CurrentCulture);
-
+        private List<string> lists = new List<string>();
         public NameValuePairBuilder(Type contextType)
         {
             this.contextType = contextType;
@@ -21,8 +21,9 @@ namespace Voodoo.CodeGeneration.Helpers
 
         public NameValuePairTypeInformation[] Build()
         {
-            var data = buildDbSets();
-            data.AddRange(buildEnums());
+            var data = buildEnums();
+            data.AddRange(buildDbSets());
+
             return data.ToArray();
         }
 
@@ -42,7 +43,7 @@ namespace Voodoo.CodeGeneration.Helpers
                                 PluralName = pluralizer.Pluralize(c.Name)
                             })
                     .ToList();
-
+            lists = response.Select(c => c.PluralName).ToList();
             var skipped = response.Where(c => c.EntityType.FullName.Contains("+")).ToArray();
             skipped.ForEach(
                 c =>
@@ -73,7 +74,7 @@ namespace Voodoo.CodeGeneration.Helpers
                     Name = c.EntityType.Name,
                     PluralName = pluralizer.Pluralize(c.EntityType.Name)
                 }).ToArray()
-                .Where(c => c.Facade.HasName && c.Facade.HasId).ToArray();
+                .Where(c => c.Facade.HasName && c.Facade.HasId && !lists.Contains(c.PluralName)).ToArray();
             return dbSets.ToList();
         }
     }

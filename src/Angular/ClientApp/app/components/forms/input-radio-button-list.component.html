@@ -1,0 +1,18 @@
+<div class="mdc-textfield input-field-container mdc-form-field" style="position: relative;">
+    <div *ngFor="let item of items">
+        <div class="mdc-radio">
+            <input class="mdc-radio__native-control" type="radio"
+                   [value]="item.id" [(ngModel)]="internalValue" (ngModelChanged)="onChange(item.id)"
+                   (change)="onChange(item.id)"
+                   [attr.id]="uniqueId+'='+item.id"
+                   name="radios" checked>
+            <div class="mdc-radio__background">
+                <div class="mdc-radio__outer-circle"></div>
+                <div class="mdc-radio__inner-circle"></div>
+            </div>
+        </div>
+        <div style="display: inline; padding-top: 4px; position: relative;">
+            <label class="input-label radio-label" [attr.for]="uniqueId+'='+item.id">{{item.name}}</label>
+        </div>
+    </div>
+</div>

@@ -17,7 +17,8 @@ export class ToolbarIconLinkComponent implements AfterContentInit {
     }
     ngAfterContentInit() {
         this.url = "#/" + this.route;
-        this.iconName = "mdi mdi-" + this.icon;
+        if (this.icon)
+            this.iconName = "mdi mdi-" + this.icon;
     }
 }
 

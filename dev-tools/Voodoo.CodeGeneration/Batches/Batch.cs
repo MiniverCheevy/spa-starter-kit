@@ -10,7 +10,7 @@ namespace Voodoo.CodeGeneration.Batches
     public abstract class Batch
     {
         protected string[] allTargets;
-        protected Type contextType;
+        
         protected string js;
 
         protected string targetTypeName;
@@ -124,7 +124,7 @@ namespace Voodoo.CodeGeneration.Batches
 
         protected void addNameValuePairs()
         {
-            var builder = new NameValuePairBuilder(contextType);
+            var builder = new NameValuePairBuilder(Vs.Helper.Solution.ContextType);
             var listTypes = builder.Build();
             logic.AddFile(new ListsResponseFile(logic, listTypes));
             logic.AddFile(new ListsEnumFile(logic, listTypes));

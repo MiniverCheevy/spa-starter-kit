@@ -15,5 +15,5 @@ export class SwitchComponent extends InputComponent implements AfterContentInit 
     ngAfterContentInit() {
 
     }
-
+    handleFormat() { }
 }

@@ -1,0 +1,25 @@
+<div style="position: relative;">
+    <div class="mdc-textfield input-field-container" style="position: relative; width: 100%; height:auto">
+        <span *ngIf="!nolabel"
+              class="input-label">{{labelText}}</span>
+        <input type="text" class="mdc-textfield__input input-field"
+               autocomplete="off"
+               [(ngModel)]="selectedText"
+               (blur)="!inFocus && blur()"
+               (keydown)="keyPressed()"
+               (focus)="focus()" />
+    </div>
+    
+    <select size="6" class="mdc-list" *ngIf="showList"
+            style="position: absolute; z-index: 10000; width: 100%; min-width: 360px; background-color: white;"        
+            (change)="selectChange($event)"
+            (mouseover)="selectMouseOver()"
+            (mouseout)="selectMouseOut()"
+            tabindex="-1">
+        <option *ngFor="let item of filteredSuggestions"
+                [attr.value]="item.id">
+            {{item.name}}
+        </option>
+    </select>
+</div>
+

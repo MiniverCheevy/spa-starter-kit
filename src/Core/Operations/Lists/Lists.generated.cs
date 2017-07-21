@@ -4,7 +4,7 @@
 //so don't mess with it unless you're debugging
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
-
+using Core;
 using Voodoo.Infrastructure.Notations;
 
 namespace Core.Operations.Lists
@@ -12,8 +12,12 @@ namespace Core.Operations.Lists
     [Client]
     public enum Lists
     {
-        Role=1,
+        Roles=1,
         Lists=2,
         SqlOperation=3,
+        ApplicationSetting=4,
+        Project=5,
+        Member=6,
+        Team=7,
     }
 }

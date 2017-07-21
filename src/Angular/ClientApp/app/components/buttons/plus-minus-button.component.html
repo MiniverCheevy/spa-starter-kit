@@ -1,0 +1,10 @@
+<push-button *ngIf="show" icon="minus-circle" 
+             (click)="minusClick()"
+             (ngModelChange)="minusClick()"
+style="color:#0072a7"
+></push-button>
+<push-button *ngIf="!show" icon="plus-circle" 
+             (click)="plusClick()"
+             (ngModelChange)="plusClick()"
+             style="color:#0072a7"
+></push-button>

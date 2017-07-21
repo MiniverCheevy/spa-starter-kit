@@ -24,9 +24,6 @@ namespace Voodoo.CodeGeneration.Batches.Logics
             logic.AddRestResource(type.PluralName);
             logic.AddFile(new RestResourcesFile(logic));
 
-            if (contextType != null)
-                addNameValuePairs();
-
             if (type == null)
                 return;
 

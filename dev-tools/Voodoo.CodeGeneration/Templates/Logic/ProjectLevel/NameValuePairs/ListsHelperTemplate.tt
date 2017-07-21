@@ -42,7 +42,7 @@ namespace <#=this.File.Namespace#>
 						query<#=item.DbSet.Name#>=query<#=item.DbSet.Name#>.Where(c=>c.IsActive);
 					<#}#>
 					items = await query<#=item.DbSet.Name#>
-						.Select (c=>new ListItem{Name = c.Name, Value=c.Id})
+						.Select (c=>new ListItem{Name = c.Name, Id=c.Id})
 						.ToListAsync();
 					
 				}
@@ -50,7 +50,7 @@ namespace <#=this.File.Namespace#>
 				if(list == Lists.<#=item.EntityType.Name#>)
 				{
 					enumType = typeof(<#=item.EntityType.FullName#>);
-					enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
+					enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
 					response.AddRange(enumItems);
 				}
 				<#}
@@ -81,13 +81,13 @@ namespace <#=this.File.Namespace#>
 						query<#=item.DbSet.Name#>=query<#=item.DbSet.Name#>.Where(c=>c.IsActive);
 					<#}#>
 					items = await query<#=item.DbSet.Name#>
-						.Select (c=>new ListItem{Name = c.Name, Value=c.Id})
+						.Select (c=>new ListItem{Name = c.Name, Id=c.Id})
 						.ToListAsync();
 					response.<#=item.PluralName#>.AddRange(items);
 				<# } else {#>
 
 					enumType = typeof(<#=item.EntityType.FullName#>);
-					enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
+					enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
 					response.<#=item.PluralName#>.AddRange(enumItems);
 				
 			<#}#>}

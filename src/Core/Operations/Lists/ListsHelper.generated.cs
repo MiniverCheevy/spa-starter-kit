@@ -5,79 +5,148 @@
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
 
-using System;
+using Core;
+using Voodoo.Messages;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using Core.Context;
+using System;
 using Voodoo;
+using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace Core.Operations.Lists
 {
     public class ListsHelper
     {
-        public async Task<List<IListItem>> GetList(Context.MainContext context, Lists list, bool includeInactive = false)
+        public async Task<List<IListItem>> GetList(MainContext context, Lists list, bool includeInactive = false)
         {
             var response = new List<IListItem>();
             var items = new List<ListItem>();
             IList<IListItem> enumItems = new List<IListItem>();
             Type enumType=null;
             
-            if(list == Lists.Role)
+            if(list == Lists.Roles)
             {
-                var queryRoles = context.Roles.AsNoTracking().AsQueryable();
-                queryRoles=queryRoles.OrderBy(c=>c.Name);
-                items = await queryRoles
-                .Select (c=>new ListItem{Name = c.Name, Value=c.Id})
-                .ToListAsync();
-                
+                enumType = typeof(Core.Roles);
+                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
+                response.AddRange(enumItems);
             }
             if(list == Lists.Lists)
             {
-                enumType = typeof(Lists);
-                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
+                enumType = typeof(Core.Operations.Lists.Lists);
+                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
                 response.AddRange(enumItems);
             }
             if(list == Lists.SqlOperation)
             {
-                enumType = typeof(SqlOperation);
-                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
+                enumType = typeof(Core.Context.SqlOperation);
+                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
                 response.AddRange(enumItems);
+            }
+            if(list == Lists.ApplicationSetting)
+            {
+                var queryApplicationSettings = context.ApplicationSettings.AsNoTracking().AsQueryable();
+                queryApplicationSettings=queryApplicationSettings.OrderBy(c=>c.Name);
+                items = await queryApplicationSettings
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                
+            }
+            if(list == Lists.Project)
+            {
+                var queryProjects = context.Projects.AsNoTracking().AsQueryable();
+                queryProjects=queryProjects.OrderBy(c=>c.Name);
+                items = await queryProjects
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                
+            }
+            if(list == Lists.Member)
+            {
+                var queryMembers = context.Members.AsNoTracking().AsQueryable();
+                queryMembers=queryMembers.OrderBy(c=>c.Name);
+                items = await queryMembers
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                
+            }
+            if(list == Lists.Team)
+            {
+                var queryTeams = context.Teams.AsNoTracking().AsQueryable();
+                queryTeams=queryTeams.OrderBy(c=>c.Name);
+                items = await queryTeams
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                
             }
             
             response.AddRange(items);
             return response;
         }
         
-        public async Task<ListsResponse> GetLists(Context.MainContext context, ListsRequest request)
+        public async Task<ListsResponse> GetLists(MainContext context, ListsRequest request)
         {
             Type enumType=null;
             var response = new ListsResponse();
             var items = new List<ListItem>();
             IList<IListItem> enumItems = new List<IListItem>();
-            if(request.Lists.Contains(Lists.Role))
+            if(request.Lists.Contains(Lists.Roles))
             {
-                var queryRoles = context.Roles.AsNoTracking().AsQueryable();
-                queryRoles=queryRoles.OrderBy(c=>c.Name);
-                items = await queryRoles
-                .Select (c=>new ListItem{Name = c.Name, Value=c.Id})
-                .ToListAsync();
-                response.Roles.AddRange(items);
+                enumType = typeof(Core.Roles);
+                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
+                response.Roles.AddRange(enumItems);
+                
             }
             if(request.Lists.Contains(Lists.Lists))
             {
-                enumType = typeof(Lists);
-                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
+                enumType = typeof(Core.Operations.Lists.Lists);
+                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
                 response.Lists.AddRange(enumItems);
                 
             }
             if(request.Lists.Contains(Lists.SqlOperation))
             {
-                enumType = typeof(SqlOperation);
-                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Value = c.Value.To<int>() }).ToList ();
+                enumType = typeof(Core.Context.SqlOperation);
+                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
                 response.SqlOperations.AddRange(enumItems);
                 
+            }
+            if(request.Lists.Contains(Lists.ApplicationSetting))
+            {
+                var queryApplicationSettings = context.ApplicationSettings.AsNoTracking().AsQueryable();
+                queryApplicationSettings=queryApplicationSettings.OrderBy(c=>c.Name);
+                items = await queryApplicationSettings
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                response.ApplicationSettings.AddRange(items);
+            }
+            if(request.Lists.Contains(Lists.Project))
+            {
+                var queryProjects = context.Projects.AsNoTracking().AsQueryable();
+                queryProjects=queryProjects.OrderBy(c=>c.Name);
+                items = await queryProjects
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                response.Projects.AddRange(items);
+            }
+            if(request.Lists.Contains(Lists.Member))
+            {
+                var queryMembers = context.Members.AsNoTracking().AsQueryable();
+                queryMembers=queryMembers.OrderBy(c=>c.Name);
+                items = await queryMembers
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                response.Members.AddRange(items);
+            }
+            if(request.Lists.Contains(Lists.Team))
+            {
+                var queryTeams = context.Teams.AsNoTracking().AsQueryable();
+                queryTeams=queryTeams.OrderBy(c=>c.Name);
+                items = await queryTeams
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                response.Teams.AddRange(items);
             }
             
             return response;

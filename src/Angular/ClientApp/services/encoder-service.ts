@@ -43,9 +43,19 @@ class EncoderServicePrototype {
         console.log(this.serializeParams(obj));
 
     }
-    public serializeParams = (params, prefix?) => {
+    public serializeParams = (params, prefix?, depth?) => {
         if (!params) return '';
+        if (depth == undefined)
+            depth = 0;
+        else
+            depth = depth + 1;
+        if (depth  > 100)
+        {
+            console.error("You object is too large for a get try a post or put");
+            return;
+        }
         var parts = [];
+        
 
         for (var key in params) {
             var value = params[key];
@@ -57,12 +67,12 @@ class EncoderServicePrototype {
                 else
                     name = prefix == null ? key : prefix + "." + key;
                 if (this.isObject(value)) {
-                    parts.push(this.serializeParams(value, name));
+                    parts.push(this.serializeParams(value, name, depth));
                 }
                 else if (Array.isArray(value)) {
                     Array.prototype.forEach.call(<any>value, (v) => {
                         if (this.isObject(value)) {
-                            parts.push(this.serializeParams(value, name));
+                            parts.push(this.serializeParams(value, name, depth));
                         }
                         else {
                             parts.push(this.encodeUriQuery(name, null) + '=' + this.encodeUriQuery(this.serializeValue(v), null));

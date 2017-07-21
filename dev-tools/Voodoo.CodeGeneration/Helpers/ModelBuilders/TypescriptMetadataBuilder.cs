@@ -40,7 +40,9 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             }
                 
 
-            output.AppendLine($"export const {typeName}Metadata =");
+            output.AppendLine($"static metadata()");
+            output.AppendLine("{");
+            output.AppendLine($"const result =");
             output.AppendLine(" {");
             var lastProperty = properties.Any() ? properties.Last() : null;
             foreach (var property in properties)
@@ -48,6 +50,8 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 var isLast = property == lastProperty;
                 getDeclaration(property, isLast);
             }
+            output.AppendLine("};");
+            output.AppendLine("return result;");
             output.AppendLine("}");
             output.AppendLine();
 
@@ -99,6 +103,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             var items = new List<string>();
             var ui = property.GetCustomAttribute<UIAttribute>();
             items.Add($"propertyName:'{property.Name}'");
+            items.Add($"jsName:'{ModelBuilder.LowerCaseFirstLetter(property.Name)}'");
             var displayName = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name.ToFriendlyString();
             items.Add($"displayName:'{displayName}'");
             if (ui == null)

@@ -12,6 +12,6 @@
   "TestingFramework": "MSTest",
   "WebFramework": "Angular2",
   "UseTypeScript": true,
-  "PathToTfDotExe": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\TF.exe",
+  "PathToTfDotExe": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\TF.exe",
   "WebIsAspNetCore": true
 }
