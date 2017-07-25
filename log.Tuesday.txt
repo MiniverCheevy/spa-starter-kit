@@ -1,133 +1,18 @@
-Tuesday, May 30, 2017 10:44:44 PM
+Tuesday, July 25, 2017 4:40:30 PM
 System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Tuesday, May 30, 2017 10:44:44 PM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\dev\spa\tools",
-     Arguments= new String[] {
-          "C:\dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Tuesday, May 30, 2017 10:50:09 PM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Tuesday, May 30, 2017 10:50:09 PM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\dev\spa\tools",
-     Arguments= new String[] {
-          "C:\dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Tuesday, May 30, 2017 10:52:56 PM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Tuesday, May 30, 2017 10:52:56 PM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\dev\spa\tools",
-     Arguments= new String[] {
-          "C:\dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Tuesday, May 30, 2017 11:00:05 PM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Tuesday, May 30, 2017 11:00:05 PM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\dev\spa\tools",
-     Arguments= new String[] {
-          "C:\dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Tuesday, May 30, 2017 11:03:26 PM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Tuesday, May 30, 2017 11:03:26 PM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\dev\spa\tools",
-     Arguments= new String[] {
-          "C:\dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Tuesday, June 27, 2017 10:26:44 AM
-System.Exception: Could not find command c:\dev\spa\src\angular/../../tools/spawn
    at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
    at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
    at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Tuesday, June 27, 2017 10:26:44 AM
-Details for 'Could not find command c:\dev\spa\src\angular/../../tools/spawn' exception:
+Tuesday, July 25, 2017 4:40:30 PM
+Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 
 var request= new StartupRequest {
      Path="C:\Dev\spa\tools",
      Arguments= new String[] {
-          "C:\Dev\spa\src\Angular/../../tools/spawn",
+          "C:\Dev\spa\src\React/../../tools/spawn",
           "web",
      },
 },
@@ -136,44 +21,21 @@ var response = new StartupFromConfig(request).Execute();
 Assert.AreEqual(true, response.IsOk);
 
 **********************************************************
-Tuesday, June 27, 2017 10:27:21 AM
-System.Exception: Could not find command c:\dev\spa\src\angular/../../tools/spawn
+Tuesday, July 25, 2017 4:41:13 PM
+System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
    at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
    at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
    at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Tuesday, June 27, 2017 10:27:21 AM
-Details for 'Could not find command c:\dev\spa\src\angular/../../tools/spawn' exception:
+Tuesday, July 25, 2017 4:41:13 PM
+Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 
 var request= new StartupRequest {
      Path="C:\Dev\spa\tools",
      Arguments= new String[] {
-          "C:\Dev\spa\src\Angular/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Tuesday, June 27, 2017 10:29:08 AM
-System.Exception: Could not find command c:\dev\spa\src\angular\..\..\tools\spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Tuesday, June 27, 2017 10:29:08 AM
-Details for 'Could not find command c:\dev\spa\src\angular\..\..\tools\spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\src\Angular\..\..\tools\spawn",
+          "C:\Dev\spa\src\React/../../tools/spawn",
           "web",
      },
 },

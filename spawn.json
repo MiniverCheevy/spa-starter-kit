@@ -1,8 +1,8 @@
 {
-  "SolutionName": "Aurelia.sln",
+  "SolutionName": "React.sln",
   "ModelProjectPath": "\\src\\Core\\Core.csproj",
   "LogicProjectPath": "\\src\\Core\\Core.csproj",
-  "WebProjectPath": "\\src\\Vue\\Vue.csproj",
+  "WebProjectPath": "\\src\\React\\React.csproj",
   "TestProjectPath": "\\src\\Tests\\Tests.csproj",
   "DataProjectPath": "\\src\\Core\\Core.csproj",
   "ContextTypeName": "Core.Context.MainContext",

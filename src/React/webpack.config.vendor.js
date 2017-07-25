@@ -23,10 +23,12 @@ module.exports = (env) => {
             //'jquery','bootstrap',
             vendor: ['babel-polyfill', 'event-source-polyfill', 'isomorphic-fetch',
                 'react', 'react-dom', 'react-router',
-                'react-bootstrap', 'react-router-dom', 'react-router-bootstrap',
-                'react-toastr', 'mobx', 'mobx-react', 'mobx-react-devtools', 
+
+ 'mobx', 'mobx-react', 'mobx-react-devtools', 
                 'mdi/css/materialdesignicons.css', 
-                'toastr/package/nuget/content/content/toastr.min.css'],
+		                'material-components-web/dist/material-components-web.js',
+                'material-components-web/dist/material-components-web.css',
+],
         },
         output: {
             path: path.join(__dirname, 'wwwroot', 'dist'),
@@ -35,6 +37,7 @@ module.exports = (env) => {
             library: '[name]_[hash]',
         },
         plugins: [
+		//new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
             extractCSS,
             //new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
             new webpack.DllPlugin({

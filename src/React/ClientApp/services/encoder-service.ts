@@ -3,8 +3,6 @@
 //https://raw.githubusercontent.com/angular/angular.js/ddb4ef13a9793b93280e6b5ab2e0593af1c04743/src/Angular.js
 //better handling of arrays (more model binder friendly) than $.params
 
-
-
 class EncoderServicePrototype {
     private isNumber = (value) => {
         try {

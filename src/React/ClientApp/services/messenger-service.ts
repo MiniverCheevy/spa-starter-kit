@@ -1,45 +1,53 @@
-﻿//import { Confirm } from "components/confirm";
-import * as $ from 'jquery';
-import * as toastr from 'toastr';
-import { observable } from 'mobx';
+﻿let mdc: any = (<any>window).mdc;
 
 class MessengerServicePrototype {
     private router: any//Router:
     //Do not add additional local dependencies here or you will likely cause circular references and be sad
     //third party stuff (aurelia,jquery, etc) are fine
-    constructor(
-        
-    ) {
+
+    public showDialog = false;
+    public confirmPrompt;
+    private dialogResult: boolean;
+    private dialog: any;
+    private confirmOkCallback;
+    private confirmCancelCallback;
+    constructor() {
 
         this.numberOfPendingHttpRequest = 0;
 
     }
-    public confirm = (prompt: string, yesAction: Function, noAction: Function) => {
-        if (this.modal == null)
-            this.modal = $("#modal_dialog").modal({ show: false });
+   
 
+    public confirm = async (prompt: string, okCallback?, cancelCallback?) => {
+        this.dialogResult = null;
+        this.confirmOkCallback = null;
+        this.confirmCancelCallback = null;
         this.confirmPrompt = prompt;
-        this.confirmYesAction = yesAction;
-        this.confirmNoAction = noAction;
+        this.confirmOkCallback = okCallback;
+        this.confirmCancelCallback = cancelCallback;
 
-        this.modal.css("margin-top", document.body.scrollTop + 100);
-        this.modal.show();
+        this.dialog = new mdc.dialog.MDCDialog(document.querySelector('#my-mdc-dialog'));
+
+        this.dialog.listen('MDCDialog:accept', () => {
+            this.dialogResult = true;
+            if (this.confirmOkCallback)
+                this.confirmOkCallback();
+            //console.log('accepted');
+        })
+
+        this.dialog.listen('MDCDialog:cancel', () => {
+            this.dialogResult = false;
+            if (this.confirmCancelCallback)
+                this.confirmCancelCallback();
+            //console.log('canceled');
+        })
+        this.dialog.show();
     }
-    private confirmNo = () => {
-        this.modal.hide();
-        if (this.confirmNoAction != null)
-            this.confirmNoAction();
-    }
-    private confirmYes = () => {
-        this.modal.hide();
-        if (this.confirmYesAction != null)
-            this.confirmYesAction();
-    }
-    @observable public numberOfPendingHttpRequest: number;
+    public numberOfPendingHttpRequest: number;
     public clearMessages = () => {
-        $("#message2").text('');
-        this.messageCss = '';
-        this.message = ' ';
+        //$("#message2").text('');
+        //this.messageCss = '';
+        //this.message = ' ';
 
     }
     public showResponseMessage = (response: any//Models.IResponse
@@ -49,22 +57,22 @@ class MessengerServicePrototype {
         //file upload?
         if (this.numberOfPendingHttpRequest < 0)
             this.numberOfPendingHttpRequest = 0;
-        if (response.isOk) {
-            if (response.message != null && response.message != '')
-                toastr.success(response.message);
-        }
-        else {
-            this.showToast(response.message, true);
-        }
+        //if (response.isOk) {
+        //    if (response.message != null && response.message != '')
+        //        toastr.success(response.message);
+        //}
+        //else {
+        //    this.showToast(response.message, true);
+        //}
     }
     public showToast = (text: string, isError: boolean) => {
-        if (!isError) {
-            if (text != null && text != '')
-                toastr.success(text);
-        }
-        else {
-            toastr.error(text);
-        }
+        //if (!isError) {
+        //    if (text != null && text != '')
+        //        toastr.success(text);
+        //}
+        //else {
+        //    toastr.error(text);
+        //}
     }
 
     public incrementHttpRequestCounter() {
@@ -81,12 +89,6 @@ class MessengerServicePrototype {
     }
 
 
-    private modal: any;
-    private confirmPrompt: string;
-    private confirmYesAction: Function;
-    private confirmNoAction: Function;
-    public messageCss: string;
-    public message: string;
-}
 
+}
 export const MessengerService = new MessengerServicePrototype();

@@ -2,12 +2,9 @@
 import { CurrentUserService } from "./current-user-service";
 import { MessengerService } from "./messenger-service";
 
-
-import * as $ from 'jquery';
-//import * as  axios from 'axios';
 let fetch = (<any>window).fetch;
 
-export class AjaxServicePrototype {
+class AjaxServicePrototype {
     public showReport(url: string, request: any)
     {
         var params = EncoderService.serializeParams(request);
@@ -73,42 +70,7 @@ export class AjaxServicePrototype {
         }
 
     }
-    //private getAjaxRequest=(url: string, verb: string, token: string, request: any)=> {
-    //    var body = JSON.stringify(request);
-    //    if (verb.toLowerCase() == 'get' || verb.toLowerCase() == 'delete') {
 
-
-
-    //        return (<any>axios)({
-    //            url: url,
-    //            method: verb,
-    //            credentials: 'same-origin',
-    //            headers: [{ 'Accept': 'application/json' },
-    //            { 'Content-Type': 'application/json; charset=utf-8' },
-    //            { 'Token': token }]
-    //        }).catch(
-    //            (error) => {
-    //                this.logError(error, url, error.stack);
-    //                MessengerService.showToast(error.message, true);
-    //            });;;
-    //    }
-    //    else {
-    //        (<any>axios)({
-    //            url: url,
-    //            method: verb,
-    //            credentials: 'same-origin',
-    //            headers: [{ 'Accept': 'application/json' },
-    //            { 'Content-Type': 'application/json; charset=utf-8' },
-    //            { 'Token': token }],
-    //            data: request
-    //        })
-    //            .catch(
-    //            (error) => {
-    //                this.logError(error, url, error.stack);
-    //                MessengerService.showToast(error.message, true);
-    //            });;;;
-    //    }
-    //}
     public buildGetRequest = async (request, url): Promise<any> => {
         var user = await CurrentUserService.get();
         var params = EncoderService.serializeParams(request);
@@ -147,18 +109,19 @@ export class AjaxServicePrototype {
         error.errorMsg = message;
         error.ErrorObject = stack;
         error.url = url;
-        (<any>$).ajax({
-            type: "POST",
-            url: "api/clienterror",
-            data: error
-        });
+        //TODO:
+        //(<any>$).ajax({
+        //    type: "POST",
+        //    url: "api/clienterror",
+        //    data: error
+        //});
     }
 
 }
 
 export const AjaxService = new AjaxServicePrototype();
 
-window.onerror = (message, file, line, column, errorObject) => {
+window.onerror = function (message, file, line, column, errorObject)  {
     console.log("window.onerror fired");
 
     column = column || (<any>(window.event));

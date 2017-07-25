@@ -6,6 +6,8 @@ const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const bundleOutputDir = './wwwroot/dist';
 const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const merge = require('webpack-merge');
 
 module.exports = (env) => {
     const extractCSS = new ExtractTextPlugin('app.css');
@@ -33,6 +35,12 @@ module.exports = (env) => {
             ]
         },
         plugins: [
+new FriendlyErrorsPlugin(),
+            new HtmlWebpackPlugin({
+                filename: '../index.html',
+                template: './ClientApp/index.html',
+                inject: true
+            }),
             extractCSS,
             new CheckerPlugin(),
 

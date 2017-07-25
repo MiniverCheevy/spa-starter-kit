@@ -7,8 +7,7 @@ namespace Core.Models.Scratch
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Title { get; set; }
-        public List<Team> Teams { get; set; } = new List<Team>();
+        public string Title { get; set; }        
         public int RequiredInt { get; set; }
         public int? OptionalInt { get; set; }
         public DateTime RequiredDate { get; set; }
@@ -17,5 +16,7 @@ namespace Core.Models.Scratch
         public decimal? OptionalDecimal { get; set; }
         public int? ManagerId { get; set; }
         public Member Manager { get; set; }
+        public List<Team> Teams { get; set; } = new List<Team>();
+        public List<BlobOfText> BlobsOfText { get; set; } = new List<BlobOfText>();
     }
 }

@@ -27,7 +27,7 @@ module.exports = (env) => {
                 'material-components-web/dist/material-components-web.css',
                 'mdi/css/materialdesignicons.css',
                 'isomorphic-fetch',
-                'event-source-polyfill',],
+                'event-source-polyfill'],
         },
         output: {
             path: path.join(__dirname, 'wwwroot', 'dist'),

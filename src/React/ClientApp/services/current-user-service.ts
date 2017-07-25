@@ -1,6 +1,4 @@
-﻿//import * as Models from "../models.generated";
-//import * as Api from "../api.generated";
-import { MessengerService } from "./messenger-service";
+﻿import { MessengerService } from "./messenger-service";
 import { AjaxService } from "./ajax-service"
 
 let fetch: any;

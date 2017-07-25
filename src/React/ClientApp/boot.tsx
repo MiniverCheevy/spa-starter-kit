@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Routes } from './routes';
 import { Provider } from 'mobx-react';
 import { Services } from './root'
+import * as mdc from 'material-components-web'
 
 //import DevTools from 'mobx-react-devtools' <DevTools />
 ReactDOM.render((
@@ -17,3 +18,4 @@ declare var module: any;
 if (module.hot) {
     module.hot.accept();
 }
+mdc.autoInit();

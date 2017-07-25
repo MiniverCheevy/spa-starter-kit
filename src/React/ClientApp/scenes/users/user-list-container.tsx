@@ -5,18 +5,18 @@ import { observer, observable, IObservableArray,  Models, Api } from './../../ro
 @observer
 export class UserListContainer extends React.Component<any, any>
 {
-    request: Models.IUserListRequest = observable(Models.EmptyIUserListRequest);
-    users: IObservableArray<Models.IUserRow> = observable([]);
+    request: Models.UserListRequest = observable(Models.UserListRequest.empty());
+    users: IObservableArray<Models.UserRow> = observable([]);
 
     public componentDidMount()
     {
         this.refresh(this.request);
     }
    
-    public edit(user: Models.IUserRow) {
+    public edit(user: Models.UserRow) {
 
     }
-    public refresh = async (request: Models.IUserListRequest) => {
+    public refresh = async (request: Models.UserListRequest) => {
         var response = await Api.UserList.get(request);
         if (response.isOk)
         {

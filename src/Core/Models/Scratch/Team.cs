@@ -7,7 +7,7 @@ namespace Core.Models.Scratch
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public List<Member> Members { get; set; }
-        public List<Project> Projects { get; set; }
+        public List<Member> Members { get; set; } = new List<Member>();
+        public List<Project> Projects { get; set; } = new List<Project>();
     }
 }
