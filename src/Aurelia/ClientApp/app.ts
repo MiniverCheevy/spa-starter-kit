@@ -15,7 +15,7 @@ export class App {
         
         
     }
-    handleAutheticationState = async (user: Models.IAppPrincipal) => {
+    handleAutheticationState = async (user: Models.AppPrincipal) => {
 
         console.log("user.isAuthticated=" + user.isAuthenticated);
         console.log("user.userName=" + user.userName);

@@ -11,8 +11,8 @@ import { AjaxService } from "./ajax-service";
 export class CurrentUserService {
 
     url: string = 'api/CurrentUser';
-    private user: Models.IAppPrincipal | Promise<Models.IAppPrincipal>;
-    public ClientInfo: Models.IClientInfo
+    private user: Models.AppPrincipal | Promise<Models.AppPrincipal>;
+    public ClientInfo: Models.ClientInfo
 
     //Do not add additional local dependencies here or you will likely cause circular references and be sad
     //third party stuff (aurelia,jquery, etc) is fine
@@ -48,7 +48,7 @@ export class CurrentUserService {
                 .withHeader('Content-Type', 'application/json; charset=utf-8');
 
             var httpResponse = await requestBuilder.send();
-            var response = <Models.IResponseOfAppPrincipal>JSON.parse(httpResponse.response);
+            var response = <Models.ResponseOfAppPrincipal>JSON.parse(httpResponse.response);
             if (response.isOk) {
                 this.user = response.data;
                 return this.user;

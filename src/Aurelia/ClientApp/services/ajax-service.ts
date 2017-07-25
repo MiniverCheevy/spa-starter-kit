@@ -17,7 +17,7 @@ export class AjaxService {
         private currentUserService: CurrentUserService) {
     }
 
-    private addHeaders = (requestBuilder: RequestBuilder, user: Models.IAppPrincipal): RequestBuilder => {
+    private addHeaders = (requestBuilder: RequestBuilder, user: Models.AppPrincipal): RequestBuilder => {
         return requestBuilder
             .withHeader('Content-Type', 'application/json; charset=utf-8')
             .withHeader('Token', user.token);

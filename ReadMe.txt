@@ -1,10 +1,6 @@
 ﻿if you do not already have it install node
 https://nodejs.org/en/download/
 
-
-FIX SPAWN FOR TOOLS PROJECTS
-
-
 For Aurelia
 
 dotnet restore
