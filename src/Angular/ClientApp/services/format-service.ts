@@ -48,10 +48,14 @@ export class FormatService {
                     return dateTime.toLocaleString();
                 case "currency":
                     var number = parseFloat(value);
-                    return "$" + number.toFixed(2);
+                    if (number != NaN)
+                        return "$" + number.toFixed(2);
+                    return value;
                 case "decimal":
                     var number = parseFloat(value);
-                    return number.toFixed(3);
+                    if (number != NaN)
+                        return number.toFixed(3);
+                    return value;
                 case "phoneNumber":
                     if (value.length == 10) {
                         var first = value.substr(0, 3);

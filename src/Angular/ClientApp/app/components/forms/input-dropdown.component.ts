@@ -20,9 +20,10 @@ export class InputDropdownComponent extends InputComponent  {
     onChange() {
         this.handleFormat();
         this.modelChange.emit(this.internalValue);
+        this.doValidation();
     }
     
-    handleFormat() {
+    handleFormat = () => {
         if (!this.items)
             return;
 

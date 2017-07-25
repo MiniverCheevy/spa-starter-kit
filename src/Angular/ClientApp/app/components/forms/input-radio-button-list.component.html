@@ -1,4 +1,5 @@
 <div class="mdc-textfield input-field-container mdc-form-field" style="position: relative;">
+    <error-icon *ngIf="!isValid" [message]="valiationMessage"></error-icon>
     <div *ngFor="let item of items">
         <div class="mdc-radio">
             <input class="mdc-radio__native-control" type="radio"

@@ -1,31 +1,52 @@
-﻿import { Ng , Models} from './../../root';
+﻿import { Models , Services} from './../../root';
+import * as Validation from './../../../services/validation';
+import { Output, Input, EventEmitter } from '@angular/core';
 
-export abstract class InputComponent
-{
-    
-    
-    @Ng.Output() change = new Ng.EventEmitter();    
-    @Ng.Output() modelChange = new Ng.EventEmitter();
-    @Ng.Input() model: any;
+export abstract class InputComponent {
+
+    @Output() change = new EventEmitter();
+    @Output() modelChange = new EventEmitter();
+    @Input() model: any;
     oldModel;
-    @Ng.Input() metadata: Models.UIMetadata;
+    @Input() metadata: Models.UIMetadata;
     oldMetadata: Models.UIMetadata;
-    @Ng.Input() readonly = false;
-    @Ng.Input() label: string;
-    @Ng.Input() nolabel: boolean = false;
+    @Input() readonly = false;
+    @Input() label: string;
+    @Input() nolabel: boolean = false;
     labelText: string;
     internalValue;
-
+    isAdded: boolean = false;
+    isValid: boolean = true;
+    valiationMessage: string = '';
     emitting: boolean = false;
     uniqueId: string;
     name: string;
-    constructor()
-    {
-        this.uniqueId = Math.random().toString(36).substr(2, 9);
-       
-    }
-    abstract handleFormat();
 
+    constructor() {
+        this.uniqueId = Math.random().toString(36).substr(2, 9);
+
+    }
+
+    abstract handleFormat = () => { };
+    requestFormat = () => {
+        if (!this.isAdded && this.metadata != null) {
+            this.metadata.control = this;
+            this.isAdded=true;
+        }
+        this.handleFormat();
+    }
+    doValidation()
+    {
+        if (this.metadata)
+        {
+            var result = Services.ValidationServiceStatic.validate({ metadata: this.metadata, value: this.internalValue });
+            this.showValidationIfNeeded(result);
+        }
+    }
+    showValidationIfNeeded(validation: Validation.ValidationResponse) {        
+        this.isValid = validation.isValid;
+        this.valiationMessage = validation.message;
+    }
     ngOnChanges() {
         if (this.emitting)
             return;
@@ -38,18 +59,17 @@ export abstract class InputComponent
         if (this.model != this.oldModel || this.model == undefined) {
             //console.log('ngOnChanges => ' + this.model);
             this.internalValue = this.model;
-            this.handleFormat();
+            this.requestFormat();
             this.model = this.internalValue;
             this.oldModel = this.model;
         }
         if (this.metadata != this.oldMetadata) {
             this.labelText = this.label || this.metadata.displayName;
-            this.handleFormat();
+            this.requestFormat();
         }
-        else
-        {
+        else {
             this.labelText = this.label;
         }
-       
-    }    
+
+    }
 }

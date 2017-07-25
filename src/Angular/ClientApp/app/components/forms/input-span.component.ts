@@ -14,7 +14,7 @@ export class InputSpanComponent extends InputComponent {
 
     }
         
-    handleFormat() {
+    handleFormat = () => {
         if (this.metadata)
             this.internalValue = this.formatter.format(this.model, this.metadata);
         else

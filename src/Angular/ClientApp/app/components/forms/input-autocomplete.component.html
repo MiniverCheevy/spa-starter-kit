@@ -1,5 +1,6 @@
 <div style="position: relative;">
-    <div class="mdc-textfield input-field-container" style="position: relative; width: 100%; height:auto">
+    <div class="mdc-textfield input-field-container" style="position: relative; width: 100%; height: auto">
+        <error-icon *ngIf="!isValid" [message]="valiationMessage"></error-icon>
         <span *ngIf="!nolabel"
               class="input-label">{{labelText}}</span>
         <input type="text" class="mdc-textfield__input input-field"
@@ -7,7 +8,8 @@
                [(ngModel)]="selectedText"
                (blur)="!inFocus && blur()"
                (keydown)="keyPressed()"
-               (focus)="focus()" />
+               (focus)="focus()"/>
+        
     </div>
     
     <select size="6" class="mdc-list" *ngIf="showList"

@@ -19,7 +19,7 @@ export class InputRadioButtonListComponent extends InputComponent {
         this.modelChange.emit(this.internalValue);
     }
 
-    handleFormat() {
+    handleFormat = () => {
         
     }
 }

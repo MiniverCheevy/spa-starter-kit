@@ -4,3 +4,4 @@ export * from "./ajax-service";
 export * from "./format-service";
 export * from "./list-service";
 export * from "./encoder-service";
+export * from "./validation-service";

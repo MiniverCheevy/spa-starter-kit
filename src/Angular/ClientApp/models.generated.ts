@@ -1974,12 +1974,13 @@ static empty()
         email:undefined,
         length:undefined,
         date:undefined,
-        integer:undefined,
+        int:undefined,
         decimal:undefined,
         required:undefined,
         isReadOnly:undefined,
         isHidden:undefined,
-        doNotSort:undefined
+        doNotSort:undefined,
+        control:undefined
     };
     return result;
 }
@@ -2037,11 +2038,11 @@ static metadata()
             displayName:'Date',
             displayFormat:'text'
         }
-        ,integer:
+        ,int:
         {
-            propertyName:'Integer',
-            jsName:'integer',
-            displayName:'Integer',
+            propertyName:'Int',
+            jsName:'int',
+            displayName:'Int',
             displayFormat:'text'
         }
         ,decimal:
@@ -2079,6 +2080,13 @@ static metadata()
             displayName:'Do Not Sort',
             displayFormat:'text'
         }
+        ,control:
+        {
+            propertyName:'Control',
+            jsName:'control',
+            displayName:'Control',
+            displayFormat:'text'
+        }
     };
     return result;
 }
@@ -2090,12 +2098,13 @@ displayFormat? : string;
 email? : ValidationMetaData;
 length? : ValidationMetaData;
 date? : ValidationMetaData;
-integer? : ValidationMetaData;
+int? : ValidationMetaData;
 decimal? : ValidationMetaData;
 required? : ValidationMetaData;
 isReadOnly? : boolean;
 isHidden? : boolean;
 doNotSort? : boolean;
+control? : any;
 }
 
 export class ValidationMetaData  {

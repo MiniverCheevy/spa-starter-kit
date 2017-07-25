@@ -16,7 +16,8 @@ export class InputFieldComponent extends InputComponent implements
     @Ng.Input() autofocus: boolean;
     @Ng.Input() multiline: boolean;
     @Ng.Input() fullWidth: boolean;
-
+    @Ng.Input() lines: number;
+    rows: number;
     constructor(private formatter: Services.FormatService) {
         super();
         this.emitting = false;
@@ -39,19 +40,28 @@ export class InputFieldComponent extends InputComponent implements
         this.sync()
         this.emitting = false;
     }
-    sync = () =>
-    {
+    sync = () => {
+        this.doValidation();
+        if (!this.isValid)
+            return;
         this.internalValue = this.formatter.format(this.internalValue, this.metadata);
         this.model = this.internalValue;
         this.modelChange.emit(this.internalValue);
         this.change.emit(this.internalValue);
+        
     }
-    
-   
-    handleFormat() {
+
+
+    handleFormat = () => {
+        
         if (this.metadata)
             this.internalValue = this.formatter.format(this.model, this.metadata);
         else
             this.internalValue = this.model;
+
+        if (!this.lines)
+            this.rows = 4;
+        else
+            this.rows = this.lines;
     }
 }
