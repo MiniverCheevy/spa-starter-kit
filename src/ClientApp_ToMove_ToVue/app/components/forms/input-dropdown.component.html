@@ -1,0 +1,29 @@
+
+<div class="mdc-textfield input-field-container mdc-form-field"
+     style="position:relative;"
+     *ngIf="!readonly">
+
+    <label *ngIf="!nolabel"
+           class="input-label">{{labelText}}</label>
+    <div style="position: relative">
+        <error-icon *ngIf="!isValid" [message]="valiationMessage"></error-icon>
+
+        <select class="mdc-select" style="min-width: 200px;"
+                [(ngModel)]="this.internalValue"
+                (change)="onChange()">
+            <option></option>
+            <option *ngFor="let item of items"
+                    [attr.selected]="item.id == this.internalvalue"
+                    [attr.value]="item.id"
+                    class="mdc-list-item" role="option" [id]="item.id" tabindex="0">
+                {{item.name}}
+            </option>
+        </select>
+    </div>
+</div>
+<div *ngIf="readonly" class="input-field-container">
+    <div *ngFor="let item of items">
+        <input-span *ngIf="item.id == this.internalValue" [label]="labelText" [model]="item.name"></input-span>
+    </div>
+</div>
+

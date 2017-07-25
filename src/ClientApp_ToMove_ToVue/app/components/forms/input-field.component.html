@@ -1,0 +1,36 @@
+<input-span *ngIf="readonly" [(model)]="model" [label]="labelText" [nolabel]="nolabel" [(metadata)]="metada">
+
+</input-span>
+
+<div *ngIf="!multiline && !readonly"
+     class="mdc-textfield input-field-container mdc-form-field" style="position: relative;">
+    <label *ngIf="!nolabel"
+           class="input-label">{{labelText}}</label>
+    <error-icon *ngIf="!isValid" [message]="valiationMessage"></error-icon>
+    
+    <input type="text" [attr.autofocus]="autofocus && autofocus == true"
+           [(ngModel)]="internalValue" 
+           
+           (blur)="onChange()" 
+           (keypress.enter)="onEnterKey()"
+           class="mdc-textfield__input input-field">
+    
+</div>
+<!--(ngModelChanged)="onChange()"--> 
+
+<div *ngIf="multiline && !readonly"
+     [ngClass]="{'full-width-text-area' : fullWidth, 'mdc-textfield':true, 'input-field-container': true,  'mdc-form-field':true }"
+     style="position: relative;">
+    <span *ngIf="!nolabel"
+          class="input-label">{{labelText}}</span>
+    <textarea [attr.autofocus]="autofocus && autofocus == true" [style.width]="fullWidth ? '100%' : 'auto' "
+              [(ngModel)]="internalValue" 
+              
+              (blur)="onChange()" (keypress.enter)="onEnterKey()"
+              class="mdc-textfield__input input-field"
+              [rows]="rows">
+</textarea>
+    <!--(ngModelChanged)="onChange()"--> 
+
+    <span *ngIf="!isValid" class="error">{{valiationMessage}}</span>
+</div>

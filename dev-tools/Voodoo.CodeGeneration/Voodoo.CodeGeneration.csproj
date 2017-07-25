@@ -389,6 +389,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TsServiceTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Vue\TsServiceBatchFile.cs" />
+    <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\Vue\TypeScriptModelsFile.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\WebFrameworkFileFactory.cs" />
     <Compile Include="Templates\Web\ProjectLevel\WebFrameworks\WebFramworkBatchFactory.cs" />
   </ItemGroup>

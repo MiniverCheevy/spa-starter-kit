@@ -1,0 +1,11 @@
+<button class="mdc-button mdc-button--compact" (click)="sort()">
+    <span className="sort-indicator">
+        <span *ngIf="isCurrentSortAsc" class="mdi mdi-arrow-up"></span>
+        <span *ngIf="isCurrentSortDesc" class="mdi mdi-arrow-down"></span>
+        <span *ngIf="!isCurrentSortDesc && !isCurrentSortAsc"
+              className="available-sort-indicator">
+            <span class="mdi mdi-sort"></span>
+        </span>
+    </span>
+    {{this.text}}
+</button>

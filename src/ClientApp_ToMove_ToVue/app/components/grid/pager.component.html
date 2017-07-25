@@ -1,0 +1,36 @@
+<div *ngIf="hasRecords" style="margin-left: 6px;">
+    <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+            <push-button compact="true" [class.disabled]="isFirstPage"
+                         (click)="!isFirstPage && firstPage()"
+                         text="&laquo;">
+
+            </push-button>
+
+            <push-button compact="true" [class.disabled]="isFirstBlock"
+                         (click)="!isFirstBlock && prevBlock()"
+                         text="...">
+            </push-button>
+            <push-button compact="true" [class.disabled]="isFirstPage"
+                         (click)="!isFirstPage && prevPage()" text="&lt;">
+            </push-button>
+            <push-button compact="true" *ngFor="let block of pageBlock"
+                         (click)="page(block.page)" [text]="block.page">
+            </push-button>
+            <push-button compact="true" [class.disabled]="isLastPage"
+                         (click)="!isLastPage && nextPage()" text="&gt;">
+            </push-button>
+            <push-button compact="true" [class.disabled]="isLastBlock"
+                         (click)="!isLastBlock && nextBlock()" text="...">
+            </push-button>
+            <push-button compact="true" [class.disabled]="isLastPage"
+                         (click)="!isLastPage && lastPage()" text="&raquo;">
+            </push-button>
+        </section>
+
+    </div>
+    {{recordsVerbiage}}
+</div>
+<div id="norecords" *ngIf="!hasRecords">
+    <h3>No records found</h3>
+</div>

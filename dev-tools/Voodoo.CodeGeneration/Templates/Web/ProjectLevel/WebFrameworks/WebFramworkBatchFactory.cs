@@ -20,6 +20,8 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
                 return "app";
             if (Vs.Helper.Solution.WebFramework == WebFramework.Angular2)
                 return "app";
+            if (Vs.Helper.Solution.WebFramework == WebFramework.Vue)
+                return "app";
             throw new NotImplementedException("No Module Name Configured");
         }
 
@@ -31,6 +33,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
                 return @"../../src/messages.ts";
             if (Vs.Helper.Solution.WebFramework == WebFramework.Angular2)
                 return "messages.ts";
+
             throw new NotImplementedException("No Message Reference Path Configured");
         }
 
@@ -54,6 +57,11 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
             if (Vs.Helper.Solution.WebFramework == WebFramework.React)
             {
                 var service = new React.TsServiceBatchFile(web, items, path);
+                return service;
+            }
+            if (Vs.Helper.Solution.WebFramework == WebFramework.Vue)
+            {
+                var service = new Vue.TsServiceBatchFile(web, items, path);
                 return service;
             }
             Console.WriteLine("Web Framework unexpected, not supported or not configured.");

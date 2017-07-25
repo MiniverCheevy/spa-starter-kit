@@ -55,6 +55,11 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
                 var service = new React.TypeScriptModelsFile(web, types, path);
                 return service;
             }
+            if (Vs.Helper.Solution.WebFramework == WebFramework.Vue)
+            {
+                var service = new Vue.TypeScriptModelsFile(web, types, path);
+                return service;
+            }
             return null;
         }
     }
