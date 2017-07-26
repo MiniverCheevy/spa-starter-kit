@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Models.Scratch
 {
+    [Table("Member", Schema = "scratch")]
     public class Member
     {
         public int Id { get; set; }

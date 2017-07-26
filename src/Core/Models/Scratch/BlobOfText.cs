@@ -1,10 +1,14 @@
-﻿using Core.Models.Scratch;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-public class BlobOfText
+namespace Core.Models.Scratch
 {
-	public int Id { get; set; }
-	public string Text { get; set; }
-	public int MemberId { get; set; }
-    public Member Member { get; set; }
+    [Table("BlobOfText", Schema = "scratch")]
+    public class BlobOfText
+    {
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public int MemberId { get; set; }
+        public Member Member { get; set; }
 
+    }
 }

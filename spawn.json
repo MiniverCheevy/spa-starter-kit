@@ -1,8 +1,8 @@
 {
-  "SolutionName": "Aurelia.sln",
+  "SolutionName": "React.sln",
   "ModelProjectPath": "\\src\\Core\\Core.csproj",
   "LogicProjectPath": "\\src\\Core\\Core.csproj",
-  "WebProjectPath": "\\src\\Aurelia\\Aurelia.csproj",
+  "WebProjectPath": "\\src\\React\\React.csproj",
   "TestProjectPath": "\\src\\Tests\\Tests.csproj",
   "DataProjectPath": "\\src\\Core\\Core.csproj",
   "ContextTypeName": "Core.Context.MainContext",
@@ -10,7 +10,7 @@
   "AddToSourceControl": false,
   "SourceControlprovider": "tfexe",
   "TestingFramework": "MSTest",
-  "WebFramework": "Aurelia",
+  "WebFramework": "React",
   "UseTypeScript": true,
   "PathToTfDotExe": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\TF.exe",
   "WebIsAspNetCore": true

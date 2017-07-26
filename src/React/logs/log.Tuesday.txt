@@ -300,3 +300,264 @@ Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
 ClientConnectionId:fee05e8f-5dce-4ff8-881a-9c6baded7334
 Error Number:4060,State:1,Class:11
 **********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'FileBufferingReadStream'.
+   at Microsoft.AspNetCore.WebUtilities.FileBufferingReadStream.ThrowIfDisposed()
+   at Microsoft.AspNetCore.WebUtilities.FileBufferingReadStream.set_Position(Int64 value)
+   at Web.Infrastructure.ExceptionHandling.ErrorFactory.captureBody(HttpContext context)
+   at Web.Infrastructure.ExceptionHandling.ErrorFactory.GetError(Exception e, HttpContext context)
+   at Web.Infrastructure.ExceptionHandling.CoreErrorLogger.Log(Exception ex)
+**********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:3e5096e6-3263-4782-8f05-94a6db90d5a5
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:3e5096e6-3263-4782-8f05-94a6db90d5a5
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:3e5096e6-3263-4782-8f05-94a6db90d5a5
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:3e5096e6-3263-4782-8f05-94a6db90d5a5
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:3e5096e6-3263-4782-8f05-94a6db90d5a5
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:3e5096e6-3263-4782-8f05-94a6db90d5a5
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:3e5096e6-3263-4782-8f05-94a6db90d5a5
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:3e5096e6-3263-4782-8f05-94a6db90d5a5
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:10:55 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:3e5096e6-3263-4782-8f05-94a6db90d5a5
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:11:06 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:1712423a-00f9-4f29-bd6f-5670f8273da6
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:11:06 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:1712423a-00f9-4f29-bd6f-5670f8273da6
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:11:06 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:1712423a-00f9-4f29-bd6f-5670f8273da6
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:11:06 PM
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'FileBufferingReadStream'.
+   at Microsoft.AspNetCore.WebUtilities.FileBufferingReadStream.ThrowIfDisposed()
+   at Microsoft.AspNetCore.WebUtilities.FileBufferingReadStream.set_Position(Int64 value)
+   at Web.Infrastructure.ExceptionHandling.ErrorFactory.captureBody(HttpContext context)
+   at Web.Infrastructure.ExceptionHandling.ErrorFactory.GetError(Exception e, HttpContext context)
+   at Web.Infrastructure.ExceptionHandling.CoreErrorLogger.Log(Exception ex)
+**********************************************************
+Tuesday, July 25, 2017 5:11:06 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:1712423a-00f9-4f29-bd6f-5670f8273da6
+Error Number:4060,State:1,Class:11
+**********************************************************
+Tuesday, July 25, 2017 5:11:07 PM
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'FileBufferingReadStream'.
+   at Microsoft.AspNetCore.WebUtilities.FileBufferingReadStream.ThrowIfDisposed()
+   at Microsoft.AspNetCore.WebUtilities.FileBufferingReadStream.set_Position(Int64 value)
+   at Web.Infrastructure.ExceptionHandling.ErrorFactory.captureBody(HttpContext context)
+   at Web.Infrastructure.ExceptionHandling.ErrorFactory.GetError(Exception e, HttpContext context)
+   at Web.Infrastructure.ExceptionHandling.CoreErrorLogger.Log(Exception ex)
+**********************************************************
+Tuesday, July 25, 2017 5:11:08 PM
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "Fernweh" requested by the login. The login failed.
+Login failed for user 'MicrosoftAccount\shawndoucet@azuresoft.net'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Core.Operations.Errors.ErrorAddCommand.ProcessRequestAsync() in C:\Dev\spa\src\Core\Operations\Errors\ErrorAddCommand.cs:line 45
+   at Voodoo.Operations.Async.ExecutorAsync`2.<ExecuteAsync>d__3.MoveNext()
+ClientConnectionId:1712423a-00f9-4f29-bd6f-5670f8273da6
+Error Number:4060,State:1,Class:11
+**********************************************************

@@ -1,5 +1,8 @@
-﻿namespace Core.Models.Scratch
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Core.Models.Scratch
 {
+    [Table("Project",Schema ="scratch")]
     public class Project
     {
         public int Id { get; set; }
