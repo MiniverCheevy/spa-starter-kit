@@ -1,0 +1,21 @@
+﻿<template>
+    <div>
+        <div class="progress-container">
+            <div className="progress" v-if="messengerService.numberOfPendingHttpRequest != 0">
+                <div className="indeterminate"></div>
+            </div>
+        </div>
+        <header class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall header">
+            <div class="mdc-toolbar__row">
+                <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                    <a href="/" class="">
+                        <img class="logo" alt="logo" src="logo.png" />
+                    </a>
+                </section>
+                <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">                
+                    <toolbar-icon-link route="home" icon="home" title="home"></toolbar-icon-link>
+                </section>
+            </div>
+        </header>
+    </div>
+</template>

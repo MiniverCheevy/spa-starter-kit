@@ -45,7 +45,6 @@
   <ProjectReference Include="..\Core\Core.csproj" />
 </ItemGroup>
 <ItemGroup>
-  <Folder Include="ClientApp\layout\" />
   <Folder Include="ClientApp\theme\" />
   <Folder Include="wwwroot\" />
 </ItemGroup>

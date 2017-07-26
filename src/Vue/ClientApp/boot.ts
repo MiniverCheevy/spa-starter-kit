@@ -2,16 +2,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import * as Home from './home/home'
+import { AppComponent }  from './app'
 Vue.use(VueRouter);
 
 const routes = [
     { path: '/', component: Home },   
 ];
-
 new Vue({
     el: '#app-root',
     router: new VueRouter({ mode: 'history', routes: routes }),
-    render: h => h('./app.vue.html')
+    render: h => h(require('./app.vue.html'))
 });
 
 mdc.autoInit();
