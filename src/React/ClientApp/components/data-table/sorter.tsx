@@ -51,17 +51,17 @@ export class Sorter extends React.Component<SorterProps, any>
         var upArrow = <i className="mdi mdi-arrow-up"></i>;
         var downArrow = <i className="mdi mdi-arrow-down"></i>;
         var fadedArrow = <span className="available-sort-indicator">
-            <i className="mdi mdi-arrow-up"></i>
+            <i className="mdi mdi-sort"></i>
         </span>;
         return <span>
-            <span className="sort-indicator">                
+            <span className="sort-indicator">
                 {showUp && upArrow}
                 {showDown && downArrow}
                 {showFaded && fadedArrow}
-             </span>
+            </span>
             <span className="sorter" onClick={() => this.sort(this.member)}>
                 {this.text}
             </span>
-        </span>
+        </span>;
     }
 }

@@ -23,6 +23,7 @@ namespace Core.Operations.Users.Extras
         [StringLength(128, ErrorMessage = UserMessages.LastNameTooLong)]
         public string LastName { get; set; }
 
+        [UI(DoNotSort =true)]
         public string Roles { get; set; }
     }
 }

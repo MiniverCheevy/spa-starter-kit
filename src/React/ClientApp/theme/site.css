@@ -191,12 +191,11 @@ navbar-collapse .main-nav .navbar a {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    /* If a menu item's text is too long, truncate it */
     width: 100%;
 }
 
 #container {
-    margin-top: 48px;
+    margin-top: 58px;
     margin-left: 9%;
     margin-right: 6%;
 }
@@ -422,6 +421,11 @@ plus-minus-button i {
     background-color: #2f93c2 !important;
 }
     */
+.pager-button {
+    width: 36px !important;
+    min-width: 36px !important;
+}
+
 .danger-button {
     background-color: darkred !important;
     color: white !important;

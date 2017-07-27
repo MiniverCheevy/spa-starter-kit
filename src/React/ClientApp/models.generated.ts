@@ -20,7 +20,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         name:
         {
@@ -66,7 +66,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         name:
         {
@@ -107,7 +107,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         isOk:
         {
@@ -169,7 +169,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         name:
         {
@@ -232,7 +232,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -307,7 +307,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         defaultSortMember:
         {
@@ -378,7 +378,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         pageNumber:
         {
@@ -481,7 +481,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -558,7 +558,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         expiration:
         {
@@ -671,7 +671,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         timeZoneOffsetInMinutes:
         {
@@ -703,7 +703,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
     };
     return result;
@@ -732,7 +732,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         searchText:
         {
@@ -808,7 +808,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -902,7 +902,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -937,7 +937,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -996,7 +996,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         includeInactive:
         {
@@ -1073,7 +1073,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -1131,7 +1131,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -1308,7 +1308,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         defaultSortMember:
         {
@@ -1376,7 +1376,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -1476,7 +1476,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         errorMsg:
         {
@@ -1597,7 +1597,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -1796,7 +1796,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         details:
         {
@@ -1987,7 +1987,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         propertyName:
         {
@@ -2123,7 +2123,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         shouldValidate:
         {
@@ -2185,7 +2185,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         searchText:
         {
@@ -2274,7 +2274,7 @@ static empty()
 
 static metadata()
 {
-    const result =
+    var result =
     {
         id:
         {
@@ -2358,7 +2358,8 @@ static metadata()
             propertyName:'Roles',
             jsName:'roles',
             displayName:'Roles',
-            displayFormat:'text'
+            displayFormat:'text',
+            doNotSort:true
         }
     };
     return result;

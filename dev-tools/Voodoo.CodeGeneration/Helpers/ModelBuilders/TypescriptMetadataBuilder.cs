@@ -128,7 +128,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 if (!string.IsNullOrWhiteSpace(ui.Grouping))
                     items.Add($"grouping:'{ui.Grouping}'");
                 if (ui.DoNotSort)
-                    items.Add($"doNotSort:'true'");
+                    items.Add($"doNotSort:true");
             }
 
             if (!items.Any())

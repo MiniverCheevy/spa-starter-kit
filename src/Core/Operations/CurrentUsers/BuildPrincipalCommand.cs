@@ -36,9 +36,7 @@ namespace Core.Operations.CurrentUsers
                     .Where(c => c.UserName == request.UserName)
                     .FirstOrDefaultAsync();
 
-                user.ThrowIfNull(UserMessages.NotFound);
-
-                if (user.LockoutEnabled)
+                if (user != null && user.LockoutEnabled)
                     throw new SecurityException("Your account is locked.");
 
                 response.Data = buildPrincipal();
@@ -50,6 +48,9 @@ namespace Core.Operations.CurrentUsers
 
         private AppPrincipal buildPrincipal()
         {
+            if (user == null)
+                return AppPrincipal.GetAnonymousPrincipal();
+
             var principal = user.ToAppPrincipal();
             principal.IsAuthenticated = true;
             principal.Expiration = DateTime.UtcNow.AddDays(1);
@@ -60,9 +61,12 @@ namespace Core.Operations.CurrentUsers
 
         private async Task updateDatabase()
         {
-            user.LastAuthentication = DateTime.UtcNow;
-            user.LastUserAgent = request.UserAgent.Truncate(256);
-            await context.SaveChangesAsync();
+            if (user != null)
+            {
+                user.LastAuthentication = DateTime.UtcNow;
+                user.LastUserAgent = request.UserAgent.Truncate(256);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

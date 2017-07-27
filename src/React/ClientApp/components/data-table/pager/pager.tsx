@@ -148,6 +148,6 @@ export class Pager extends React.Component<PagerProps, any>
                     <span className="mdc-typography--body1">{this.recordsVerbiage}</span>
                 </div>
             </div >
-        </div>
+        </div>;
     }
 }

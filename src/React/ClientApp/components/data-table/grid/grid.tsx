@@ -8,28 +8,33 @@ import { PushButton } from './../../buttons/push-button';
 export class GridProps {
     request: Models.IGridState = { sortMember: '', sortDirection: '' };
     refresh: (request: Models.IGridState) => void;
-    buttons?: GridButton[]
+    buttons?: GridButton[];
     metadata;
     data: any[];
 }
 export class Grid extends React.Component<GridProps, any>
 {
     columns: Models.UIMetadata[] = [];
-
+    constructor(props)
+    {
+        super(props);
+        this.render.bind(this);
+    }
     executeAction = (action, row) => {
         if (action && typeof action == "function")
             action(row);
     }
 
-    render() {        
-        this.columns = Services.FormsService.getProperties(this.props.metadata);
+    render() {
         debugger;
+        this.columns = Services.FormsService.getProperties(this.props.metadata);
+        let headings = this.columnHeadings();
         return <div className="mdc-card">
             <table className="data-table mdc-card__primary">
                 <thead className="mdc-typography--body2">
                     <tr>
                         {this.props.buttons && this.props.buttons.length > 0 && <th ></th>}
-                        {this.columnHeadings(this.columns)}
+                        {headings}
                     </tr >
                 </thead >
                 <tbody className="mdc-typography--body1">
@@ -40,39 +45,41 @@ export class Grid extends React.Component<GridProps, any>
             <section className="mdc-card__actions pager-container">
                 <Pager request={this.props.request} refresh={this.props.refresh}></Pager>
             </section>
-        </div>
+        </div>;
     }
 
-    columnHeadings = (columns: Models.UIMetadata[]) => {
-        debugger;
-        columns.map((column) => {
-            var shouldSort = column.doNotSort && column.doNotSort == true;
-            <th>
-                {!shouldSort && <span> {column.displayName}</span>}
-                {shouldSort &&
+    columnHeadings () {
+        return this.columns.map((column) => {
+            var dontSort = column.doNotSort != null && column.doNotSort;
+            return <th key={column.jsName}>
+                {dontSort && <span >{column.displayName}</span>}
+                {!dontSort &&
                     <Sorter member={column.propertyName}
                         text={column.displayName}
                         request={this.props.request}
                         refresh={this.props.refresh}></Sorter >}
-            </th>
+            </th>;
         });
     }
 
-    rows = (row, columns) => {
-        let buttons = this.props.buttons;
-        let hasButtons = buttons && buttons.length > 0;
-        let rowButtons = buttons.map((button) => {
-            <PushButton theme="primary"
+    rows(row) {
+        debugger;
+        const buttons = this.props.buttons;
+        const hasButtons = buttons && buttons.length > 0;
+        const rowButtons = buttons.map((button) => {
+            return <PushButton theme="primary"
                 text={button.text} icon={button.icon} click={this.executeAction(button.action, row)}
-            ></PushButton>
+            ></PushButton>;
         });
-        let cells = columns.map((column) => {
-            <td>{Services.FormatService.format(row[column.jsName], column)}</td>
+        debugger;
+        const cells = this.columns.map((column) => {
+            debugger;
+            return <td>{Services.FormatService.format(row[column.jsName], column)}</td>;
         });
-        <tr>
-            hasButtons && <td className="button-column" >{rowButtons}</td >
+        return <tr>
+            {hasButtons && <td className="button-column" >{rowButtons}</td >}
             {cells}
-        </tr>
+        </tr>;
     }
 
 }

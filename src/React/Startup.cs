@@ -24,17 +24,16 @@ namespace Web
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder();
-            builder.AddEnvironmentVariables();
             builder
                 .SetBasePath(env.ContentRootPath)
           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
           .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Console.WriteLine($"Environment: {env.EnvironmentName}");
-      this.Configuration = builder.Build();
+            this.Configuration = builder.Build();
             IOC.Settings = SettingsFactory.GetSettings(builder.Build());
         }
-    public IConfigurationRoot Configuration { get; set; }
+        public IConfigurationRoot Configuration { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -53,15 +52,15 @@ namespace Web
             app.UseMiddleware<TokenReaderMiddleware>();
             app.UseMiddleware<WindowsAuthenticationMiddleware>();
 
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
                     HotModuleReplacement = true,
                     ReactHotModuleReplacement = true
                 });
-            }
+            //}
             app.UseDefaultFiles();
             app.UseStaticFiles();
             updateDatabaseToLatestVersion(env);

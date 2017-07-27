@@ -1,16 +1,16 @@
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const bundleOutputDir = './wwwroot/dist';
+
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
-const bundleOutputDir = './wwwroot/dist';
-const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const extractTextPlugin = require('extract-text-webpack-plugin');
+const checkerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+const copyWebpackPlugin = require('copy-webpack-plugin');
+const { baseHrefWebpackPlugin } = require('base-href-webpack-plugin');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const friendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const merge = require('webpack-merge');
 
 module.exports = (env) => {
-    const extractCSS = new ExtractTextPlugin('app.css');
     const isDevBuild = !(env && env.prod);
     const virtualDirectory = isDevBuild ? '/' : '/audobon.inventory/';
     console.log('IsDevBuild=' + isDevBuild.toString());
@@ -30,35 +30,36 @@ module.exports = (env) => {
             rules: [
                 { test: /\.ts(x?)$/, include: /ClientApp/, use: 'babel-loader' },
                 { test: /\.tsx?$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
-                { test: /\.css$/, use: isDevBuild ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({ use: 'css-loader' }) },
+                { test: /\.css$/, use: isDevBuild ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
             ]
         },
         plugins: [
-new FriendlyErrorsPlugin(),
-            new HtmlWebpackPlugin({
+            new friendlyErrorsPlugin(),
+            new htmlWebpackPlugin({
                 filename: '../index.html',
                 template: './ClientApp/index.html',
                 inject: true
             }),
-            extractCSS,
-            new CheckerPlugin(),
+
+            new checkerPlugin(),
 
             new webpack.DllReferencePlugin({
                 context: __dirname,
                 manifest: require('./wwwroot/dist/vendor-manifest.json')
             }),
-            new CopyWebpackPlugin([
-                { from: 'ClientApp/index.html', to: '../' },
+            new copyWebpackPlugin([
                 { from: 'ClientApp/favicon.ico', to: '../' },
+                { from: 'ClientApp/theme/site.css', to: '.' }
             ])
         ].concat(isDevBuild ? [
+            new extractTextPlugin('site.css'),
             new webpack.SourceMapDevToolPlugin({
                 filename: '[file].map',
                 moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]')
             })
         ] : [
-                new BaseHrefWebpackPlugin({
+                new baseHrefWebpackPlugin({
                     baseHref: virtualDirectory
                 })
             ])
