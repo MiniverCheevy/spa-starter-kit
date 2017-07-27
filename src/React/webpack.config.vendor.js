@@ -11,7 +11,7 @@ module.exports = (env) => {
     return [{
         stats: { modules: false },
         resolve: {
-            extensions: [ '.js' ]
+            extensions: ['.js']
         },
         module: {
             rules: [
@@ -23,21 +23,20 @@ module.exports = (env) => {
             //'jquery','bootstrap',
             vendor: ['babel-polyfill', 'event-source-polyfill', 'isomorphic-fetch',
                 'react', 'react-dom', 'react-router',
-
- 'mobx', 'mobx-react', 'mobx-react-devtools', 
-                'mdi/css/materialdesignicons.css', 
-		                'material-components-web/dist/material-components-web.js',
+                'mobx', 'mobx-react', 'mobx-react-devtools',                
+                'material-components-web/dist/material-components-web.js',
                 'material-components-web/dist/material-components-web.css',
-],
+                'mdi/css/materialdesignicons.css'
+            ],
         },
         output: {
             path: path.join(__dirname, 'wwwroot', 'dist'),
-            publicPath: virtualDirectory+'dist/',
+            publicPath: virtualDirectory + 'dist/',
             filename: '[name].js',
             library: '[name]_[hash]',
         },
         plugins: [
-		//new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+            //new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
             extractCSS,
             //new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
             new webpack.DllPlugin({

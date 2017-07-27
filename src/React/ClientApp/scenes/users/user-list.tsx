@@ -4,8 +4,8 @@ import { observer, observable, IObservableArray, Models, Api, Components } from 
 @observer
 export class UserList extends React.Component<any, any>
 {
-    request: Models.UserListRequest = observable(Models.UserListRequest.empty());
-    data: IObservableArray<Models.UserRow> = observable([]);
+    @observable data: IObservableArray<Models.UserRow> = observable([]);
+    request: Models.UserListRequest = Models.UserListRequest.empty();    
     metadata = Models.UserRow.metadata();
 
     public componentDidMount() {
@@ -23,9 +23,9 @@ export class UserList extends React.Component<any, any>
         }
     }
     render() {
-
+        console.log('render =>' + this.data.length);
         var buttons: Components.GridButton[] = [
-            { action: this.edit, icon: 'pencil', text: 'Edit' }
+            new Components.GridButton( 'Edit', 'pencil', this.edit)
         ];
 
         return (

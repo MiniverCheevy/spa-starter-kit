@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Models.Scratch
 {
-    [Table("Team", Schema = "scratch")]
+    [Table("Teams", Schema = "scratch")]
     public class Team
     {
         public int Id { get; set; }

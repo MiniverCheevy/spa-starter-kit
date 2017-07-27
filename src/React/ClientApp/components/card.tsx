@@ -24,9 +24,9 @@ export class Card extends React.Component<CardProps, any>
             <section className="mdc-card__supporting-text">
                 {this.props.children}
             </section>
-            hasButtons && <section className="mdc-card__actions">
+            {hasButtons && <section className="mdc-card__actions">
                 {this.props.buttons}
-            </section>
+            </section>}
         </div>
     }
 }

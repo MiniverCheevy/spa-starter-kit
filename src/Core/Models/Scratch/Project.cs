@@ -2,7 +2,7 @@
 
 namespace Core.Models.Scratch
 {
-    [Table("Project",Schema ="scratch")]
+    [Table("Projects",Schema ="scratch")]
     public class Project
     {
         public int Id { get; set; }

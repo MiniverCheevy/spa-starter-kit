@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Models.Scratch
 {
-    [Table("Member", Schema = "scratch")]
+    [Table("Members", Schema = "scratch")]
     public class Member
     {
         public int Id { get; set; }

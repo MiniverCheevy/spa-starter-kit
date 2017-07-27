@@ -47,7 +47,7 @@ namespace Core.Migrations
                 .Index(t => t.GUID);
             
             CreateTable(
-                "dbo.Members",
+                "scratch.Members",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -62,11 +62,11 @@ namespace Core.Migrations
                         ManagerId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Members", t => t.ManagerId)
+                .ForeignKey("scratch.Members", t => t.ManagerId)
                 .Index(t => t.ManagerId);
             
             CreateTable(
-                "dbo.BlobOfTexts",
+                "scratch.BlobOfText",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -74,11 +74,11 @@ namespace Core.Migrations
                         MemberId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Members", t => t.MemberId)
+                .ForeignKey("scratch.Members", t => t.MemberId)
                 .Index(t => t.MemberId);
             
             CreateTable(
-                "dbo.Teams",
+                "scratch.Teams",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -87,7 +87,7 @@ namespace Core.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Projects",
+                "scratch.Projects",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -95,7 +95,7 @@ namespace Core.Migrations
                         TeamId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Teams", t => t.TeamId)
+                .ForeignKey("scratch.Teams", t => t.TeamId)
                 .Index(t => t.TeamId);
             
             CreateTable(
@@ -132,8 +132,8 @@ namespace Core.Migrations
                         Member_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Team_Id, t.Member_Id })
-                .ForeignKey("dbo.Teams", t => t.Team_Id)
-                .ForeignKey("dbo.Members", t => t.Member_Id)
+                .ForeignKey("scratch.Teams", t => t.Team_Id)
+                .ForeignKey("scratch.Members", t => t.Member_Id)
                 .Index(t => t.Team_Id)
                 .Index(t => t.Member_Id);
             
@@ -156,28 +156,28 @@ namespace Core.Migrations
         {
             DropForeignKey("dbo.UserRoles", "Role_Id", "dbo.Roles");
             DropForeignKey("dbo.UserRoles", "User_Id", "dbo.Users");
-            DropForeignKey("dbo.Projects", "TeamId", "dbo.Teams");
-            DropForeignKey("dbo.TeamMembers", "Member_Id", "dbo.Members");
-            DropForeignKey("dbo.TeamMembers", "Team_Id", "dbo.Teams");
-            DropForeignKey("dbo.Members", "ManagerId", "dbo.Members");
-            DropForeignKey("dbo.BlobOfTexts", "MemberId", "dbo.Members");
+            DropForeignKey("scratch.Projects", "TeamId", "scratch.Teams");
+            DropForeignKey("dbo.TeamMembers", "Member_Id", "scratch.Members");
+            DropForeignKey("dbo.TeamMembers", "Team_Id", "scratch.Teams");
+            DropForeignKey("scratch.Members", "ManagerId", "scratch.Members");
+            DropForeignKey("scratch.BlobOfText", "MemberId", "scratch.Members");
             DropIndex("dbo.UserRoles", new[] { "Role_Id" });
             DropIndex("dbo.UserRoles", new[] { "User_Id" });
             DropIndex("dbo.TeamMembers", new[] { "Member_Id" });
             DropIndex("dbo.TeamMembers", new[] { "Team_Id" });
             DropIndex("dbo.Users", new[] { "UserName" });
-            DropIndex("dbo.Projects", new[] { "TeamId" });
-            DropIndex("dbo.BlobOfTexts", new[] { "MemberId" });
-            DropIndex("dbo.Members", new[] { "ManagerId" });
+            DropIndex("scratch.Projects", new[] { "TeamId" });
+            DropIndex("scratch.BlobOfText", new[] { "MemberId" });
+            DropIndex("scratch.Members", new[] { "ManagerId" });
             DropIndex("dbo.Exceptions", new[] { "GUID" });
             DropTable("dbo.UserRoles");
             DropTable("dbo.TeamMembers");
             DropTable("dbo.Users");
             DropTable("dbo.Roles");
-            DropTable("dbo.Projects");
-            DropTable("dbo.Teams");
-            DropTable("dbo.BlobOfTexts");
-            DropTable("dbo.Members");
+            DropTable("scratch.Projects");
+            DropTable("scratch.Teams");
+            DropTable("scratch.BlobOfText");
+            DropTable("scratch.Members");
             DropTable("dbo.Exceptions");
             DropTable("dbo.ApplicationSettings");
         }

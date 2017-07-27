@@ -15,20 +15,19 @@ export class GridProps {
 export class Grid extends React.Component<GridProps, any>
 {
     columns: Models.UIMetadata[] = [];
-    constructor(props)
-    {
-        super(props);
-        this.render.bind(this);
-    }
-    executeAction = (action, row) => {
+
+    executeAction(action, row) {
         if (action && typeof action == "function")
             action(row);
     }
-
     render() {
-        debugger;
+        return this.doRender();
+    }
+    doRender=()=> {
+        console.log('grid render=>' + this.props.data.length);
         this.columns = Services.FormsService.getProperties(this.props.metadata);
-        let headings = this.columnHeadings();
+        const headings = this.getColumnHeadings();
+        const rows = this.getRows();
         return <div className="mdc-card">
             <table className="data-table mdc-card__primary">
                 <thead className="mdc-typography--body2">
@@ -38,7 +37,7 @@ export class Grid extends React.Component<GridProps, any>
                     </tr >
                 </thead >
                 <tbody className="mdc-typography--body1">
-                    {this.props.data.map(this.rows)}
+                    {rows}
                 </tbody>
             </table>
             <section className="mdc-card__supporting-text"></section>
@@ -48,7 +47,7 @@ export class Grid extends React.Component<GridProps, any>
         </div>;
     }
 
-    columnHeadings () {
+    getColumnHeadings=()=> {
         return this.columns.map((column) => {
             var dontSort = column.doNotSort != null && column.doNotSort;
             return <th key={column.jsName}>
@@ -62,24 +61,24 @@ export class Grid extends React.Component<GridProps, any>
         });
     }
 
-    rows(row) {
-        debugger;
+    getRows = () => {
         const buttons = this.props.buttons;
         const hasButtons = buttons && buttons.length > 0;
-        const rowButtons = buttons.map((button) => {
-            return <PushButton theme="primary"
-                text={button.text} icon={button.icon} click={this.executeAction(button.action, row)}
-            ></PushButton>;
+
+        return this.props.data.map((row, index) => {
+            const rowButtons = buttons.map((button) => {
+                return <PushButton theme="icon" key={button.key}
+                    text={button.text} icon={button.icon} click={this.executeAction(button.action, row)}
+                ></PushButton>;
+            });
+            const cells = this.columns.map((column) => {
+
+                return <td key={column.jsName}>{Services.FormatService.format(row[column.jsName], column)}</td>;
+            });
+            return <tr key={index}>{hasButtons && <td className="button-column">{rowButtons}</td>}
+                    {cells}
+                   </tr>;
         });
-        debugger;
-        const cells = this.columns.map((column) => {
-            debugger;
-            return <td>{Services.FormatService.format(row[column.jsName], column)}</td>;
-        });
-        return <tr>
-            {hasButtons && <td className="button-column" >{rowButtons}</td >}
-            {cells}
-        </tr>;
     }
 
 }

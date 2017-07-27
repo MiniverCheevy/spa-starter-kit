@@ -14,7 +14,7 @@ export class PushButton extends React.Component<PushButtonProps, void> {
         var normal = "push-button mdc-button mdc-ripple-upgraded mdc-button--raised";
         var buttonClass = '';
         switch (this.props.theme) {
-
+            case "icon":
             case "primary":
                 buttonClass = "push-button mdc-button mdc-button--primary mdc-ripple-upgraded mdc-button--raised";
                 break;
@@ -30,9 +30,7 @@ export class PushButton extends React.Component<PushButtonProps, void> {
             case "warning":
                 buttonClass = normal + ' warning-button';
                 break;
-            case "icon":
-                buttonClass = normal;
-                break;            
+                       
             default:
                 buttonClass = normal + ' default-button';
         }
@@ -59,8 +57,8 @@ export class PushButton extends React.Component<PushButtonProps, void> {
         return  <button type='button'
                 className={buttonClass}
                 title={title}
-                style={{ minWidth: '36px!important' }}>
-                {this.props.icon && <i className={iconName}></i>}
+                style={{ minWidth: '36px !important' }}>
+            {this.props.icon && <i style={{ fontSize: '18px' }} className={iconName}></i>}
                 {text}
             </button >;
     }

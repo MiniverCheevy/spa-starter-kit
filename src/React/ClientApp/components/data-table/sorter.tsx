@@ -12,38 +12,38 @@ export class Sorter extends React.Component<SorterProps, any>
     currentSortKey: string;
     member: string = '';
     text: string = '';
-    gridState: Models.IGridState = { sortMember: '', sortDirection: '' };
-
-    constructor(props: SorterProps) {        
-        super(props);
-        this.gridState = props.request;
-        this.text = props.text;
-        this.member = props.member;
-    }
+    request: Models.IGridState = { sortMember: '', sortDirection: '' };
     
     isCurrentSortAsc= () => {
-        return  this.gridState &&
-                this.gridState.sortMember == this.member && 
-            this.gridState.sortDirection == "ASC";
+        return  this.request &&
+                this.request.sortMember == this.member && 
+            this.request.sortDirection == "ASC";
     }
 
     isCurrentSortDesc = () => {
-        return this.gridState &&
-            this.gridState.sortMember == this.member &&
-            this.gridState.sortDirection == "DESC";
+        return this.request &&
+            this.request.sortMember == this.member &&
+            this.request.sortDirection == "DESC";
     }   
 
     sort = (member) => {
-        if (this.gridState.sortMember != null && this.gridState.sortDirection != null
-            && member.toUpperCase() === this.gridState.sortMember.toUpperCase())
-            this.gridState.sortDirection = this.gridState.sortDirection === "ASC" ? "DESC" : "ASC";
+        console.log('Sort Changed');
+        if (this.request.sortMember != null && this.request.sortDirection != null
+            && member.toUpperCase() === this.request.sortMember.toUpperCase())
+            this.request.sortDirection = this.request.sortDirection === "ASC" ? "DESC" : "ASC";
         else
-            this.gridState.sortDirection = "ASC";
-        this.gridState.sortMember = member;
-        this.props.refresh(this.gridState);
+            this.request.sortDirection = "ASC";
+        this.request.sortMember = member;
+        this.props.refresh(this.request);
     }
+    render() {
+        return this.doRender();
+    }
+    doRender = () => { 
+        this.request = this.props.request;
+        this.text = this.props.text;
+        this.member = this.props.member;
 
-    render() {       
         var showUp = this.isCurrentSortAsc();
         var showDown = this.isCurrentSortDesc();
         var showFaded = !showUp && !showDown;

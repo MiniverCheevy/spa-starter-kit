@@ -408,11 +408,6 @@ plus-minus-button i {
 }
 
 .push-button {
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin: 2px;
     min-width: 36px!important;
 }
 
