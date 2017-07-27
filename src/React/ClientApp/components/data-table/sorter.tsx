@@ -1,10 +1,10 @@
 ﻿import * as React from 'react';
-import { observable, Models } from './../root';
+import { observable, Models } from './../../root';
 
 export class SorterProps {
     member: string = '';
     text: string = '';
-    gridState: Models.IGridState = { sortMember: '', sortDirection: '' };
+    request: Models.IGridState = { sortMember: '', sortDirection: '' };
     refresh: (request: Models.IGridState) => void;
 }
 export class Sorter extends React.Component<SorterProps, any>
@@ -16,7 +16,7 @@ export class Sorter extends React.Component<SorterProps, any>
 
     constructor(props: SorterProps) {        
         super(props);
-        this.gridState = props.gridState;
+        this.gridState = props.request;
         this.text = props.text;
         this.member = props.member;
     }

@@ -6,6 +6,7 @@
      <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <BuildForLiveUnitTesting>false</BuildForLiveUnitTesting>
     <RootNamespace>Web</RootNamespace>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>

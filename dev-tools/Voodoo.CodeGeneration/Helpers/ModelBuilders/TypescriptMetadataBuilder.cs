@@ -42,7 +42,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
             output.AppendLine($"static metadata()");
             output.AppendLine("{");
-            output.AppendLine($"const result =");
+            output.AppendLine($"var result =");
             output.AppendLine(" {");
             var lastProperty = properties.Any() ? properties.Last() : null;
             foreach (var property in properties)

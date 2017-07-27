@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { HashRouter, BrowserRouter, Route, Link } from 'react-router-dom';
-import { hashHistory } from 'react-router';
 import { Layout } from './layout/layout';
 import { Home } from './scenes/home/home';
-import { UserListContainer } from './scenes/users/user-list-container';
+import { UserList } from './scenes/users/user-list';
+import { Route, Link } from './root';
+import { HashRouter} from 'react-router-dom';
+import { hashHistory } from 'react-router';
 
 export class Routes extends React.Component<any, void>
 {
@@ -11,11 +12,9 @@ export class Routes extends React.Component<any, void>
         var style = { margin:'200px'};
         return <HashRouter history={hashHistory}>
             <div>
-                
                 <Layout>                    
-                    <Route path="/about" component={About} />
-                    <Route path="/topics" component={Topics} />
-                    <Route path='/user-list' component={UserListContainer} />
+                    <Route path='/user-list' component={UserList} />
+                    <Route path='/home' component={Home} />
                     <Route exact path='/' component={Home} />
                 </Layout>
             </div>

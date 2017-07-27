@@ -1,20 +1,15 @@
 import * as React from 'react';
-import 'isomorphic-fetch';
-import { CurrentUserService } from "./../../services/current-user-service";
+import { Services } from "./../../root";
 
 export class Home extends React.Component<any, void> {
 
-
     public async componentDidMount() {
 
-        var userResponse = await CurrentUserService.get();
-
+        var userResponse = await Services.CurrentUserService.get();
         console.log("user.isAuthenticated=" + userResponse.isAuthenticated);
         console.log("user.userName=" + userResponse.userName);
-
-
-
     }
+
     public render() {
         return <div>
             <h1>Hello, world!</h1>

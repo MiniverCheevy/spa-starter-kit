@@ -1,37 +1,42 @@
-﻿//https://medium.com/missive-app/45-faster-react-functional-components-now-3509a668e69f
-import * as React from 'react';
-import { Models, Components } from './../../root';
+﻿import * as React from 'react';
+import { observer, observable, IObservableArray, Models, Api, Components } from './../../root';
 
-export const userList = (props: UserListProps) => {
+@observer
+export class UserList extends React.Component<any, any>
+{
+    request: Models.UserListRequest = observable(Models.UserListRequest.empty());
+    data: IObservableArray<Models.UserRow> = observable([]);
+    metadata = Models.UserRow.metadata();
 
-    var header = getHeader();
-    var rows = getRows(props);
-    return <div>{Components.DataTable(header, rows, props.request, props.refresh)}  </div>
-};
-const getHeader = () => {
-    return [{ text: '' },
-    { text: 'User Name', sortMember: 'UserName' },
-    { text: 'First Name', sortMember: 'FirstName' },
-    { text: 'Last Name', sortMember: 'LastName' },
-    { text: 'Roles' }];
-}
-const getRows = (props: UserListProps) => {
-    return props.users.map(
-        (user: Models.UserRow) => {
-            return (
-                <tr key={user.id}>
-                    <td></td>
-                    <td>{user.userName}</td>
-                    <td>{user.firstName}</td>
-                    <td>{user.lastName}</td>
-                    <td>{user.roles}</td>
-                </tr>
-            );
-        });
-}
-class UserListProps {
-    users: Models.UserRow[] = [];
-    request: Models.UserListRequest = {};
-    edit(user: Models.UserRow): void { };
-    refresh(request: Models.UserListRequest): void { };
+    public componentDidMount() {
+        this.refresh(this.request);
+    }
+
+    public edit(user: Models.UserRow) {
+
+    }
+    public refresh = async (request: Models.UserListRequest) => {
+        var response = await Api.UserList.get(request);
+        if (response.isOk) {
+            Object.assign(this.request, response.state);
+            this.data.replace(response.data);
+        }
+    }
+    render() {
+
+        var buttons: Components.GridButton[] = [
+            { action: this.edit, icon: 'pencil', text: 'Edit' }
+        ];
+
+        return (
+            <Components.Card title="Users">
+                <Components.Grid
+                    data={this.data}
+                    refresh={this.refresh}
+                    metadata={this.metadata}
+                    buttons={buttons}
+                    request={this.request}
+                ></Components.Grid>
+            </Components.Card>);
+    }
 }

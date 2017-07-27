@@ -1,16 +1,12 @@
 ﻿import * as React from 'react';
-import { Models, observer, observable, IObservableValue, IObservableArray } from './../root';
-
+import { Models, observer, observable, IObservableValue, IObservableArray } from './../../../root';
+import { PageBlock } from './page-block';
+import { PagerButton } from './pager-button';
 export class PagerProps {
-    gridState: Models.IGridState;
-    refresh(request: Models.IGridState): void { };
+    request: Models.IGridState;
+    refresh: (request: Models.IGridState) => void;
 }
 
-class PageBlock
-{
-    page: number;
-    isActive: boolean;
-}
 export class Pager extends React.Component<PagerProps, any>
 {
     pageBlock: IObservableArray<PageBlock> = observable([]);
@@ -28,7 +24,7 @@ export class Pager extends React.Component<PagerProps, any>
 
     constructor(props: PagerProps) {
         super(props);
-        this.gridState = observable(props.gridState);
+        this.gridState = observable(props.request);
     }
     public resetPagingIfNeeded = () => {
         if (this.gridState != null && this.gridState.resetPaging)
@@ -39,7 +35,7 @@ export class Pager extends React.Component<PagerProps, any>
             this.hasRecords.set(false);
             return;
         }
-        this.hasRecords.set( this.gridState.totalRecords !== 0);
+        this.hasRecords.set(this.gridState.totalRecords !== 0);
 
         this.totalPages = Math.ceil(this.gridState.totalRecords / this.gridState.pageSize);
         var blocks = [];
@@ -58,7 +54,7 @@ export class Pager extends React.Component<PagerProps, any>
         this.prevBlockPage = min - 1;
         this.nextBlockPage = max + 1;
 
-        this.isLastBlock =this.pageBlock.length > 0 && max >= this.totalPages;
+        this.isLastBlock = this.pageBlock.length > 0 && max >= this.totalPages;
         this.isFirstBlock = min === 1;
         this.isFirstPage = pageNumber === 1;
         this.isLastPage = this.totalPages === pageNumber;
@@ -96,22 +92,15 @@ export class Pager extends React.Component<PagerProps, any>
         return this.page(this.totalPages);
     };
 
-    
-
     render() {
-        console.log('pager render');
-        console.log(this.gridState.totalRecords);
         this.setup();
         var noRecords = <div id="norecords" ><h3 className="mdc-typography--body2">No records found</h3></div>;
         var pager = this.pager();
-
         return <div>
             {!this.hasRecords && noRecords}
             {this.hasRecords && pager}
         </div>;
     }
-
-
 
     pageSizeSelector = () => {
         var wrapperStyle =
@@ -139,23 +128,6 @@ export class Pager extends React.Component<PagerProps, any>
             </select>
         </div >;
     }
-    
-    buttons = () => {
-        //return this.pageBlock.map((block) => {
-        //    
-        //});
-
-    }
-    foo()
-    {
-       
-        //{ this.button("...", this.isFirstBlock, this.firstPage(), false) }
-        //{ this.button("&lt", this.isFirstPage, this.prevPage(), false) }
-        //{ this.buttons() }
-        //{ this.button("&lt", this.isLastPage, this.nextPage(), false) }
-        //{ this.button("...", this.isLastBlock, this.nextBlock(), false) }
-        //{ this.button("&laquo;", this.isLastPage, this.lastPage(), false) }
-    }
     pager = () => {
         console.log('pager method');
         var buttons = this.pageBlock.map(
@@ -171,46 +143,11 @@ export class Pager extends React.Component<PagerProps, any>
                 <PagerButton text="&gt;" isDisabled={this.isLastPage} method={this.nextPage} isActive={false} />
                 <PagerButton text="..." isDisabled={this.isLastBlock} method={this.nextBlock} isActive={false} />
                 <PagerButton text="&raquo;" isDisabled={this.isLastPage} method={this.lastPage} isActive={false} />
-                
-            <div>
+
+                <div>
                     <span className="mdc-typography--body1">{this.recordsVerbiage}</span>
                 </div>
             </div >
         </div>
     }
-
-}
-class PagerButtonProps
-{
-    text: string;
-    isDisabled: boolean;
-    method: any;// (request: Models.IGridState)=> void;
-    isActive?: boolean;
-}
-class PagerButton extends React.Component<PagerButtonProps,any>
-{
-    constructor(props: PagerButtonProps) {
-        super(props);        
-    }
-
-    render() {
-        var text = this.props.text;
-        var isDisabled = this.props.isDisabled;
-        var method = this.props.method;
-        var isActive = this.props.isDisabled;
-
-        var classes = "mdc-button mdc-button--raised mdc-button--compact mdc-ripple-upgraded mdc-ripple-upgraded--foreground-deactivation";
-        if (isActive)
-            classes = "mdc-button mdc-button--raised mdc-button--primary mdc-ripple-upgraded mdc-ripple-upgraded--foreground-deactivation";
-        if (!isDisabled) {
-            return <button type="button"
-                className={classes}
-                onClick={method}> {text}</button>
-        }
-        else {
-            return <button type="button" disabled={true}
-                className={classes}
-            >{text}</button>
-        }
-    };
 }
