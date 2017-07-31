@@ -63,6 +63,8 @@ namespace Core.Context
                 .Where(c => c.Name != "Id")
                 .Configure(p => p.IsUnicode(false));
 
+            
+
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 

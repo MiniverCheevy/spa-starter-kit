@@ -17,7 +17,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         private string typeName;
         private PropertyInfo[] properties;
         private StringBuilder output = new StringBuilder();
-        private Type[] dateTypes = new Type[] { typeof(DateTime), typeof(DateTime?) };
+        private Type[] dateTypes = new Type[] { typeof(DateTime), typeof(DateTime?), typeof(DateTimeOffset), typeof(DateTimeOffset?) };
         private Type[] intTypes = new Type[] { typeof(short), typeof(int), typeof(long), typeof(short?), typeof(int?), typeof(long?) };
         private Type[] decimalTypes = new Type[] { typeof(decimal), typeof(decimal?) };
         private bool isDate = false;

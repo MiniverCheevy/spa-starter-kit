@@ -8,11 +8,13 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 {
     //based on
     //https://bitbucket.org/JamesDiacono/jdiacono/src/97b5ac3b21fe/JDiacono/TypeScript?at=default
- 
+
     public class TypeScriptModelBuilder : ModelBuilder
     {
         public static Dictionary<string, string> Mappings => new Dictionary<string, string>
         {
+            { "System.DateTimeOffset", "DateTimeOffset" },
+            { "DateTimeOffset", "DateTimeOffset" },
             {"System.Int16", "number"},
             {"System.Int32", "number"},
             {"System.Int64", "number"},
@@ -25,8 +27,9 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             {"System.Char", "string"},
             {"System.String", "string"},
             {"System.Boolean", "boolean"},
-            {"System.DateTime", "Date"},
-            {"System.Guid", "any"}
+            {"System.DateTime", "DateTimeOffset"},
+            {"System.Guid", "any"},
+
         };
 
         public override string RewriteTypeName(Type type)
@@ -65,7 +68,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
         public override string GenerateDeclaration(Type modelType, params string[] exclusions)
         {
-            exclusions = exclusions ?? new string[] {};
+            exclusions = exclusions ?? new string[] { };
 
             var result = new StringBuilder();
 

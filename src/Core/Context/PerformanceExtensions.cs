@@ -352,7 +352,7 @@ namespace Core.Context
             if (typeof(TProperty) == typeof(DateTime))
                 buildDatePredicate(value, alias, "!=");
             else
-                Target.SqlWhereClauses.Add(string.Format("[{0}].[{1}] != {2}", Prefix, alias, sqlValue));
+                Target.SqlWhereClauses.Add($"[{Prefix}].[{alias}] != {sqlValue}");
         }
 
         private void buildDatePredicate<TProperty>(TProperty value, string alias, string comparison)

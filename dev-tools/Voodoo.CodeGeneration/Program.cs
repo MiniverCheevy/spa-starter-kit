@@ -33,7 +33,7 @@ namespace Voodoo.CodeGeneration
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             break;
                     }
-                if (log.Message != null)
+                if (log?.Message != null)
                     Console.WriteLine(log.Message);
             }
             ;

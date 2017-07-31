@@ -14,6 +14,10 @@ namespace Core.Models.Scratch
         public int? OptionalInt { get; set; }
         public DateTime RequiredDate { get; set; }
         public DateTime? OptionalDate { get; set; }
+
+        public DateTimeOffset RequiredDateTimeOffset { get; set; }
+        public DateTimeOffset? OptionalDateTimeOffset { get; set; }
+
         public decimal RequiredDecimal { get; set; }
         public decimal? OptionalDecimal { get; set; }
         public int? ManagerId { get; set; }

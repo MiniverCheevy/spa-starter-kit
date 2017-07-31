@@ -10,6 +10,41 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
     {
         private IEnumerable<PropertyInfo> iResponseProperties = typeof(IResponse).GetProperties().ToArray();
 
+        public TypeScriptGraphBuilder() :base()
+        {
+            this.output.AppendLine(@"
+
+export class DateTimeOffset
+{
+    constructor(value?: string | Date)
+    { 
+
+        if (value != null)
+        {            
+            this.internalValue = new Date(value).toISOString();
+        }
+                    
+    }
+    private internalValue: string;
+    get() { 
+        return this.internalValue;
+    }
+    set(value)
+    { 
+        this.internalValue = new Date(value).toISOString();
+    }
+    get date():Date {
+        return new Date(this.internalValue);
+    }
+    set date(value:Date) {
+        this.internalValue = value.toISOString(); 
+    }
+    //perhaps add
+    //get DateDisplay
+    //get TimeDisplay
+    //get DateTimeDisplay
+}");
+        }
         protected override void buildDeclaration(Type currentType, bool isResponse)
         {
             var nullableType = Nullable.GetUnderlyingType(currentType);

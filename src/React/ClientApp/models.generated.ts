@@ -217,6 +217,35 @@ details? : INameValuePair[];
 exception? : any;
 }
 
+export class DateTimeOffset
+{
+    constructor(value?: string | Date)
+    {
+        if (value != null)
+        {
+            this.internalValue = new Date(value).toISOString();
+        }
+        
+    }
+    private internalValue: string;
+    get() {
+    return this.internalValue;
+}
+set(value)
+{
+    this.internalValue = new Date(value).toISOString();
+}
+get date():Date {
+return new Date(this.internalValue);
+}
+set date(value:Date) {
+this.internalValue = value.toISOString();
+}
+//perhaps add
+//get DateDisplay
+//get TimeDisplay
+//get DateTimeDisplay
+}
 export class ApplicationSettingDetail  {
 
 static empty()
@@ -646,8 +675,8 @@ static metadata()
     return result;
 }
 
-expiration? : Date;
-refreshTime? : Date;
+expiration? : DateTimeOffset;
+refreshTime? : DateTimeOffset;
 isAuthenticated? : boolean;
 userName? : string;
 userId? : number;
@@ -883,7 +912,7 @@ static metadata()
 }
 
 id? : number;
-creationDate? : Date;
+creationDate? : DateTimeOffset;
 type? : string;
 message? : string;
 user? : string;
@@ -1122,6 +1151,8 @@ static empty()
         optionalInt:undefined,
         requiredDate:undefined,
         optionalDate:undefined,
+        requiredDateOffset:undefined,
+        optionalDateOffset:undefined,
         requiredDecimal:undefined,
         optionalDecimal:undefined,
         managerId:undefined
@@ -1235,6 +1266,38 @@ static metadata()
                 ,message: 'date is either too far in the future or past'
             }
         }
+        ,requiredDateOffset:
+        {
+            propertyName:'RequiredDateOffset',
+            jsName:'requiredDateOffset',
+            displayName:'Required Date',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
+                ,min: new Date('1/1/1900')
+                ,max: new Date('3/4/2050')
+                ,message: 'date is either too far in the future or past'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,optionalDateOffset:
+        {
+            propertyName:'OptionalDateOffset',
+            jsName:'optionalDateOffset',
+            displayName:'Optional Date',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
+                ,min: new Date('1/1/1900')
+                ,max: new Date('3/4/2050')
+                ,message: 'date is either too far in the future or past'
+            }
+        }
         ,requiredDecimal:
         {
             propertyName:'RequiredDecimal',
@@ -1281,8 +1344,10 @@ name? : string;
 title? : string;
 requiredInt? : number;
 optionalInt? : number;
-requiredDate? : Date;
-optionalDate? : Date;
+requiredDate? : DateTimeOffset;
+optionalDate? : DateTimeOffset;
+requiredDateOffset? : DateTimeOffset;
+optionalDateOffset? : DateTimeOffset;
 requiredDecimal? : number;
 optionalDecimal? : number;
 managerId? : number;
@@ -1903,7 +1968,7 @@ host? : string;
 url? : string;
 items? : GroupingOfNameValuePair[];
 id? : number;
-creationDate? : Date;
+creationDate? : DateTimeOffset;
 type? : string;
 message? : string;
 user? : string;

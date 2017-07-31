@@ -36,7 +36,16 @@ namespace Core.Operations.Members.Extras
         [Display(Name = "Optional Date")]
         [Range(typeof(DateTime), "1/1/1900", "3/4/2050", ErrorMessage = Constants.Messages.DateOutOfRange)]
         public DateTime? OptionalDate {get;set;}
-        
+
+        [Display(Name = "Required Date")]
+        [Required(ErrorMessage = Constants.Messages.Required)]
+        [Range(typeof(DateTime), "1/1/1900", "3/4/2050", ErrorMessage = Constants.Messages.DateOutOfRange)]
+        public DateTime RequiredDateOffset { get; set; }
+
+        [Display(Name = "Optional Date")]
+        [Range(typeof(DateTime), "1/1/1900", "3/4/2050", ErrorMessage = Constants.Messages.DateOutOfRange)]
+        public DateTime? OptionalDateOffset { get; set; }
+
         [Display(Name = "Required Decimal")]
         [Required(ErrorMessage = Constants.Messages.Required)]
         public decimal RequiredDecimal {get;set;}
