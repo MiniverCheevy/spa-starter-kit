@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { observable, Models, Services } from './../../../root';
+import { observer,observable, Models, Services } from './../../../root';
 import { Sorter } from './../sorter';
 import { Pager } from './../pager/pager';
 import { GridButton } from './grid-button';
@@ -12,6 +12,7 @@ export class GridProps {
     metadata;
     data: any[];
 }
+@observer
 export class Grid extends React.Component<GridProps, any>
 {
     columns: Models.UIMetadata[] = [];

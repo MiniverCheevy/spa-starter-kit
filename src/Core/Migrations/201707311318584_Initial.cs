@@ -57,6 +57,8 @@ namespace Core.Migrations
                         OptionalInt = c.Int(),
                         RequiredDate = c.DateTime(nullable: false),
                         OptionalDate = c.DateTime(),
+                        RequiredDateTimeOffset = c.DateTimeOffset(nullable: false, precision: 7),
+                        OptionalDateTimeOffset = c.DateTimeOffset(precision: 7),
                         RequiredDecimal = c.Decimal(nullable: false, precision: 18, scale: 2),
                         OptionalDecimal = c.Decimal(precision: 18, scale: 2),
                         ManagerId = c.Int(),

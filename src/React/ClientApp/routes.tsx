@@ -5,6 +5,7 @@ import { UserList } from './scenes/users/user-list';
 import { Route, Link } from './root';
 import { HashRouter} from 'react-router-dom';
 import { hashHistory } from 'react-router';
+import { ScratchHome, ScratchProjectList, ScratchTeamList, ScratchMemberList } from './scenes/scratch';
 
 export class Routes extends React.Component<any, void>
 {
@@ -13,6 +14,13 @@ export class Routes extends React.Component<any, void>
         return <HashRouter history={hashHistory}>
             <div>
                 <Layout>                    
+                    <Route path='/scratch' component={ScratchHome} />
+                    <Route path='/scratch-member-list' component={ScratchMemberList} />
+                    <Route path='/scratch-project-list' component={ScratchProjectList} />
+                    <Route path='/scratch-team-list' component={ScratchTeamList} />
+
+
+
                     <Route path='/user-list' component={UserList} />
                     <Route path='/home' component={Home} />
                     <Route exact path='/' component={Home} />

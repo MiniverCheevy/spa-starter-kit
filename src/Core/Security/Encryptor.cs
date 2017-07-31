@@ -55,6 +55,7 @@ namespace Core.Security
 
         public string Decrypt(string encrypted)
         {
+           
             var cryptogram = Convert.FromBase64String(encrypted);
             if (cryptogram.Length < 17)
                 throw new ArgumentException("Not a valid encrypted string", nameof(encrypted));

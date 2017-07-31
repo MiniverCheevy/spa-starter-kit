@@ -134,7 +134,7 @@ export class Pager extends React.Component<PagerProps, any>
     getPager = () => {
         var buttons = this.blocks.map(
             (block) => {
-                return <PagerButton text={block.page.toString()} isDisabled={this.isFirstPage} method={() => { this.page(block.page) }} isActive={block.isActive} />
+                return <PagerButton key={block.page} text={block.page.toString()} isDisabled={this.isFirstPage} method={() => { this.page(block.page) }} isActive={block.isActive} />
             });
         return <div>
             <div className="pagination">

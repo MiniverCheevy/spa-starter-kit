@@ -14,6 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.csproj", "{F298643E-3DAE-4A0D-914B-CE85DF3B0F99}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7AAC4FDB-1C6A-453F-8126-D2E89BC1B6D9} = {7AAC4FDB-1C6A-453F-8126-D2E89BC1B6D9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "src\Tests\Tests.csproj", "{53DB22F0-C05A-41FC-8473-F0A1EDDF4A6A}"
 EndProject

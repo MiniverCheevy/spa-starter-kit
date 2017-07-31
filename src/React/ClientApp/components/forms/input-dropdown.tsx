@@ -18,9 +18,7 @@ export class InputDropdown extends InputComponent {
 
     }
     doRender = () => {
-        return 
-
-        <div className="mdc-textfield input-field-container mdc-form-field" >
+        return <div className="mdc-textfield input-field-container mdc-form-field" >
                 {!this.nolabel && <label className="input-label" > {this.labelText}</label>}
                     <div className="relative-position">
                         {!this.isValid && <ErrorIcon text={this.validationMessage}></ErrorIcon>}
