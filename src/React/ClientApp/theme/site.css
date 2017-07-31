@@ -211,11 +211,12 @@ navbar-collapse .main-nav .navbar a {
     padding-right: 12px;
     padding-left: 12px;
 }
+
 .tight {
     padding: 0px;
     margin: 2px;
-    
 }
+
 .nav-header-left {
     margin-left: -90px !important;
 }
@@ -252,32 +253,44 @@ a.mdc-toolbar__title {
     font-size: 13px;
     height: 100%;
     width: 100%;
-    text-align: left;
     table-layout: fixed;
 }
+
 .data-table-container {
-    min-height: 460px;
+    min-height: 400px;
 }
+
 .data-table th {
     padding: 2px;
     vertical-align: middle;
+    text-align: center;
 }
 
-    .data-table tr {
-        height: 36px;
-    }
+.format-text, .format-date, .format-time, .format-dateTime, .format-phoneNumber {
+    text-align: left;
+    text-overflow: ellipsis;
+}
 
-    .data-table tbody tr:hover {
-        background-color: #EEEEEE;
-    }
+.format-decimal, .format-currency, .format-int {
+    text-align: right;
+}
 
-    .data-table td {
-        position: relative;
-        border-top: 1px solid rgba(0,0,0,.12);
-        border-bottom: 1px solid rgba(0,0,0,.12);
-        padding: 2px;
-        box-sizing: border-box;
-    }
+.data-table tr {
+    height: 32px;
+}
+
+.data-table tbody tr:hover {
+    background-color: #EEEEEE;
+}
+
+.data-table td {
+    position: relative;
+    border-top: 1px solid rgba(0,0,0,.12);
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    padding-right: 4px;
+    padding-left: 4px;
+    box-sizing: border-box;
+}
 
 .sorter {
     cursor: pointer;
@@ -286,9 +299,11 @@ a.mdc-toolbar__title {
 .sort-indicator {
     width: 12px;
 }
+
 .not-allowed {
     cursor: not-allowed !important;
 }
+
 .available-sort-indicator {
     width: 12px;
     opacity: .54;
@@ -335,22 +350,26 @@ a.mdc-toolbar__title {
     font-weight: bolder;
     font-size: 14px;
 }
+
 .input-field-container {
     min-width: 200px;
     position: relative;
 }
-.full-width
-{
+
+.full-width {
     width: 100%;
 }
+
 .relative-position {
-    position:relative;
+    position: relative;
 }
+
 .toolbar-button {
     font-size: 16px;
 }
+
 plus-minus-button i {
-    color:#0072a7;
+    color: #0072a7;
 }
 
 
@@ -359,9 +378,11 @@ plus-minus-button i {
     white-space: nowrap;
     position: absolute;
 }
+
 .full-width-text-area {
     width: 100% !important;
 }
+
     .full-width-text-area .input-field-container {
         width: 100% !important;
     }
@@ -421,7 +442,7 @@ plus-minus-button i {
 }
 
 .push-button {
-    min-width: 36px!important;
+    min-width: 36px !important;
 }
 
 
@@ -434,14 +455,24 @@ plus-minus-button i {
     min-width: 36px !important;
 }
 
+.grid-icon {
+    height: 32px;
+    width: 32px;
+    min-width: 32px;
+    font-size: 16px;
+    padding: 0px 0px 0px 0px !important;
+}
+
 .danger-button {
     background-color: darkred !important;
     color: white !important;
 }
+
 .error,
-.error-icon{
+.error-icon {
     color: darkred !important;
 }
+
 .error-icon {
     position: absolute;
     top: 0px;

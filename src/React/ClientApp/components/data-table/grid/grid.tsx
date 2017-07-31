@@ -67,22 +67,22 @@ export class Grid extends React.Component<GridProps, any>
             </th>;
         });
     }
-
+    
     getRows = () => {
         const buttons = this.props.buttons;
         const hasButtons = buttons && buttons.length > 0;
         
         return this.props.data.map((row, index) => {
             const rowButtons = buttons.map((button) => {
-                return <PushButton theme="icon" key={button.key}
+                return <PushButton theme="grid-icon" key={button.key}
                     text={button.text} icon={button.icon} click={this.executeAction(button.action, row)}
                 ></PushButton>;
             });
             const cells = this.columns.map((column) => {
-
-                return <td key={column.jsName}>{Services.FormatService.format(row[column.jsName], column)}</td>;
+                return <td key={column.jsName} className={"format-"+column.displayFormat} >{Services.FormatService.formatForDisplay(row[column.jsName], column)}</td>;
             });
-            return <tr key={index}>{hasButtons && <td className="button-column">{rowButtons}</td>}
+            return <tr key={index}>
+                    {hasButtons && <td className="button-column">{rowButtons}</td>}
                     {cells}
                    </tr>;
         });

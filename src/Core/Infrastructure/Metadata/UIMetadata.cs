@@ -11,7 +11,7 @@ namespace Core.Infrastructure.Metadata
         public string PropertyName { get; set; }
         public string JsName { get; set; }
         public string DisplayName { get; set; }
-        public string DisplayFormat { get; set; } = "Text";
+        public string DisplayFormat { get; set; } = "text";
         public ValidationMetaData Email { get; set; }
         public ValidationMetaData Length { get; set; }
         public ValidationMetaData Date { get; set; }

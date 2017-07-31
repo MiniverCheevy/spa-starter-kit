@@ -48,6 +48,9 @@
 <ItemGroup>
   <None Include="wwwroot\index.html" />
 </ItemGroup>
+<ItemGroup>
+  <Folder Include="ClientApp\scenes\scratch\members\" />
+</ItemGroup>
   <Target Name="Custom" AfterTargets="Build">  
       <Exec Command="node node_modules/webpack/bin/webpack.js" />
       <Message Importance="High" Text="built app.js" />      

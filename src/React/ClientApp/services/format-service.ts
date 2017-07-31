@@ -3,8 +3,14 @@
 class FormatServicePrototype {
 
     format(value: string, metadata: Models.UIMetadata) {
-
-
+        var format = "text";
+        if (metadata && metadata.displayFormat)
+            format = metadata.displayFormat;
+        return this.formatValue(value, format);
+    }
+    formatForDisplay(value: string, metadata: Models.UIMetadata)
+    {
+        //TODO: add , to #s
         var format = "text";
         if (metadata && metadata.displayFormat)
             format = metadata.displayFormat;
