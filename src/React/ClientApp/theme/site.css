@@ -253,12 +253,15 @@ a.mdc-toolbar__title {
     height: 100%;
     width: 100%;
     text-align: left;
+    table-layout: fixed;
 }
-
-    .data-table th {
-        padding: 2px;
-        vertical-align: middle;
-    }
+.data-table-container {
+    min-height: 460px;
+}
+.data-table th {
+    padding: 2px;
+    vertical-align: middle;
+}
 
     .data-table tr {
         height: 36px;
@@ -283,7 +286,9 @@ a.mdc-toolbar__title {
 .sort-indicator {
     width: 12px;
 }
-
+.not-allowed {
+    cursor: not-allowed !important;
+}
 .available-sort-indicator {
     width: 12px;
     opacity: .54;

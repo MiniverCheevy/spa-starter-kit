@@ -4,7 +4,7 @@ import { observer, observable, IObservableArray, Models, Api, Components } from 
 @observer
 export class UserList extends React.Component<any, any>
 {
-    @observable data: IObservableArray<Models.UserRow> = observable([]);
+    data: IObservableArray<Models.UserRow> = observable([]);
     request: Models.UserListRequest = Models.UserListRequest.empty();    
     metadata = Models.UserRow.metadata();
 
@@ -18,24 +18,21 @@ export class UserList extends React.Component<any, any>
     public refresh = async (request: Models.UserListRequest) => {
         var response = await Api.UserList.get(request);
         if (response.isOk) {
-            console.log('refresh=>ok=>' + response.data.length)
-            Object.assign(this.request, response.state);
+            Object.assign(this.request, response.state);            
             this.data.replace(response.data);
         }
     }
     render() {
         return this.doRender();
     }
-    doRender = () => {
-        console.log('User List Render');
+    doRender = () => {        
         var buttons: Components.GridButton[] = [
             new Components.GridButton( 'Edit', 'pencil', this.edit)
         ];
-
         return (
             <Components.Card title="Users">
                 <Components.Grid
-                    data={this.data}
+                    data={this.data.slice()}
                     refresh={this.refresh}
                     metadata={this.metadata}
                     buttons={buttons}

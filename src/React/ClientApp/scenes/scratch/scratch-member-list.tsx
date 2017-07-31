@@ -31,7 +31,7 @@ export class ScratchMemberList extends React.Component<any, any>
         return (
             <Components.Card title="Members">
                 <Components.Grid
-                    data={this.data}
+                    data={this.data.slice()}
                     refresh={this.refresh}
                     metadata={this.metadata}
                     buttons={buttons}

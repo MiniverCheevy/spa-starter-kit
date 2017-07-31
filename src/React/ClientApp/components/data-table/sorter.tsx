@@ -13,7 +13,11 @@ export class Sorter extends React.Component<SorterProps, any>
     member: string = '';
     text: string = '';
     request: Models.IGridState = { sortMember: '', sortDirection: '' };
-    
+
+    componentWillReceiveProps = (newProps) => {
+        this.props = newProps;
+    }
+
     isCurrentSortAsc= () => {
         return  this.request &&
                 this.request.sortMember == this.member && 

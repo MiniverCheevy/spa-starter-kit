@@ -16,19 +16,20 @@ export class PagerButton extends React.Component<PagerButtonProps, any>
         let text = this.props.text;
         let isDisabled = this.props.isDisabled;
         let method = this.props.method;
-        let isActive = this.props.isDisabled;
+        let isActive = this.props.isActive;
 
-        let classes = "mdc-button mdc-button--raised mdc-button--compact mdc-ripple-upgraded mdc-ripple-upgraded--foreground-deactivation pager-button ";
+        let classes = "mdc-button mdc-button--raised mdc-ripple-upgraded  pager-button ";
         if (isActive)
-            classes = "mdc-button mdc-button--raised mdc-button--primary mdc-ripple-upgraded mdc-ripple-upgraded--foreground-deactivation pager-button ";
+            classes = "mdc-button--primary mdc-button mdc-button--raised mdc-ripple-upgraded pager-button ";
         if (!isDisabled) {
             return <button type="button"
                 className={classes} 
                 onClick={method}>{text}</button>;
         }
         else {
-            return <button type="button" disabled={true}
-                className={classes} 
+            classes = classes + " not-allowed";
+            return <button type="button"
+                className={classes} disabled={isDisabled}
             >{text}</button>;
         }
     };

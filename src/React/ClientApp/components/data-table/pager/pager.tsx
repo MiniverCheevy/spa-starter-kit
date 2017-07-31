@@ -26,6 +26,9 @@ export class Pager extends React.Component<PagerProps, any>
         if (this.request != null && this.request.resetPaging)
             this.request.pageNumber = 1;
     };
+    componentWillReceiveProps = (newProps) => {
+        this.props = newProps;
+    }
     public setup = () => {
         this.request = this.props.request;
         if (this.request.totalRecords == undefined) {
@@ -66,8 +69,6 @@ export class Pager extends React.Component<PagerProps, any>
         this.page(this.request.pageNumber);
     }
     public page = (number) => {
-        debugger;
-        console.log('Page Changed');
         this.request.pageNumber = number;
         this.props.refresh(this.request);    
     };
@@ -134,17 +135,17 @@ export class Pager extends React.Component<PagerProps, any>
     getPager = () => {
         var buttons = this.blocks.map(
             (block) => {
-                return <PagerButton key={block.page} text={block.page.toString()} isDisabled={this.isFirstPage} method={() => { this.page(block.page) }} isActive={block.isActive} />
+                return <PagerButton key={block.page} text={block.page.toString()} isDisabled={block.page == this.request.pageNumber} method={() => { this.page(block.page) }} isActive={block.isActive} />
             });
         return <div>
             <div className="pagination">
                 <PagerButton text="&laquo;" isDisabled={this.isFirstBlock} method={this.firstPage} isActive={false} />
-                <PagerButton text="..." isDisabled={this.isFirstPage} method={this.prevPage} isActive={false} />
-                <PagerButton text="&lt;" isDisabled={this.isFirstBlock} method={this.prevBlock} isActive={false} />
+                <PagerButton text="..." isDisabled={this.isFirstBlock} method={this.prevBlock} isActive={false} />
+                <PagerButton text="&lt;" isDisabled={this.isFirstPage} method={this.prevPage} isActive={false} />
                 {buttons}
                 <PagerButton text="&gt;" isDisabled={this.isLastPage} method={this.nextPage} isActive={false} />
                 <PagerButton text="..." isDisabled={this.isLastBlock} method={this.nextBlock} isActive={false} />
-                <PagerButton text="&raquo;" isDisabled={this.isLastPage} method={this.lastPage} isActive={false} />
+                <PagerButton text="&raquo;" isDisabled={this.isLastBlock} method={this.lastPage} isActive={false} />
 
                 <div>
                     <span className="mdc-typography--body1">{this.recordsVerbiage}</span>

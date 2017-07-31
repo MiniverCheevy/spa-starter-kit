@@ -16,7 +16,13 @@ export class GridProps {
 export class Grid extends React.Component<GridProps, any>
 {
     columns: Models.UIMetadata[] = [];
-
+    constructor(props: GridProps)
+    {        
+        super(props);
+    }
+    componentWillReceiveProps=(newProps)=> {
+        this.props = newProps;
+    }
     executeAction(action, row) {
         if (action && typeof action == "function")
             action(row);
@@ -24,12 +30,12 @@ export class Grid extends React.Component<GridProps, any>
     render() {
         return this.doRender();
     }
-    doRender=()=> {
-        console.log('grid render=>' + this.props.data.length);
+    doRender = () => {       
         this.columns = Services.FormsService.getProperties(this.props.metadata);
         const headings = this.getColumnHeadings();
         const rows = this.getRows();
         return <div className="mdc-card">
+            <section className="mdc-card__supporting-text data-table-container">
             <table className="data-table mdc-card__primary">
                 <thead className="mdc-typography--body2">
                     <tr>
@@ -41,7 +47,7 @@ export class Grid extends React.Component<GridProps, any>
                     {rows}
                 </tbody>
             </table>
-            <section className="mdc-card__supporting-text"></section>
+            </section>
             <section className="mdc-card__actions pager-container">
                 <Pager request={this.props.request} refresh={this.props.refresh}></Pager>
             </section>
@@ -65,7 +71,7 @@ export class Grid extends React.Component<GridProps, any>
     getRows = () => {
         const buttons = this.props.buttons;
         const hasButtons = buttons && buttons.length > 0;
-
+        
         return this.props.data.map((row, index) => {
             const rowButtons = buttons.map((button) => {
                 return <PushButton theme="icon" key={button.key}
