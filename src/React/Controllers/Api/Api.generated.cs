@@ -19,6 +19,10 @@ using Microsoft.AspNetCore.Http;
 using Voodoo;
 using Core.Operations.Users;
 using Core.Operations.Users.Extras;
+using Core.Operations.Teams;
+using Core.Operations.Teams.Extras;
+using Core.Operations.Projects;
+using Core.Operations.Projects.Extras;
 using Core.Operations.Members;
 using Core.Operations.Members.Extras;
 using Core.Operations.Lists;
@@ -106,6 +110,170 @@ namespace Web.Controllers.Api
                 SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] { "Administrator" } }
             };
             var pipeline = new ExcecutionPipeline<UserListRequest, UserListResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class TeamController : ApiControllerBase
+    {
+        [HttpDelete]
+        public async Task<Response> Delete
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response>
+            {
+                Command = new TeamDeleteCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpGet]
+        public async Task<Response<TeamDetail>> Get
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response<TeamDetail>>
+            {
+                Command = new TeamDetailQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response<TeamDetail>>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpPut]
+        public async Task<NewItemResponse> Put
+        ([FromBody] TeamDetail request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <TeamDetail, NewItemResponse>
+            {
+                Command = new TeamSaveCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<TeamDetail, NewItemResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class TeamListController : ApiControllerBase
+    {
+        [HttpGet]
+        public async Task<TeamListResponse> Get
+        ( TeamListRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <TeamListRequest, TeamListResponse>
+            {
+                Command = new TeamListQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<TeamListRequest, TeamListResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class ProjectController : ApiControllerBase
+    {
+        [HttpDelete]
+        public async Task<Response> Delete
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response>
+            {
+                Command = new ProjectDeleteCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpGet]
+        public async Task<Response<ProjectDetail>> Get
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response<ProjectDetail>>
+            {
+                Command = new ProjectDetailQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response<ProjectDetail>>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpPut]
+        public async Task<NewItemResponse> Put
+        ([FromBody] ProjectDetail request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <ProjectDetail, NewItemResponse>
+            {
+                Command = new ProjectSaveCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<ProjectDetail, NewItemResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class ProjectListController : ApiControllerBase
+    {
+        [HttpGet]
+        public async Task<ProjectListResponse> Get
+        ( ProjectListRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <ProjectListRequest, ProjectListResponse>
+            {
+                Command = new ProjectListQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<ProjectListRequest, ProjectListResponse>
             (state);
             await pipeline.ExecuteAsync();
             return state.Response;

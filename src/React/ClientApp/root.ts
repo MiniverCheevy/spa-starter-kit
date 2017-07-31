@@ -6,13 +6,11 @@ import * as Models from './models.generated';
 import * as Components from './components'
 import * as Services from './services';
 import 'isomorphic-fetch';
-import { HashRouter, Route, Link } from 'react-router-dom';
+import { HashRouter, Route, Link, withRouter } from 'react-router-dom';
 import { hashHistory } from 'react-router';
 
-
-
 export {
-    Route, Link ,
+    Route, Link, withRouter,
     observer, observable, IObservableArray, IObservableValue,
     Models, Api, Components, Services    
 }

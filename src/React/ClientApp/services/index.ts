@@ -6,3 +6,4 @@ export * from "./list-service";
 export * from "./encoder-service";
 export * from "./validation-service";
 export * from "./forms-service";
+export * from "./grid-service";

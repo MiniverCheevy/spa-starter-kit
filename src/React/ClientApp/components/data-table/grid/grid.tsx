@@ -79,7 +79,9 @@ export class Grid extends React.Component<GridProps, any>
                 ></PushButton>;
             });
             const cells = this.columns.map((column) => {
-                return <td key={column.jsName} className={"format-"+column.displayFormat} >{Services.FormatService.formatForDisplay(row[column.jsName], column)}</td>;
+                var className = "format-" + column.displayFormat;
+                var value = Services.FormatService.formatForDisplay(row[column.jsName], column);
+                return <td key={column.jsName} className={className}>{value}</td>;
             });
             return <tr key={index}>
                     {hasButtons && <td className="button-column">{rowButtons}</td>}

@@ -486,6 +486,294 @@ return result;
 }}
 export const MobileError = new MobileErrorPrototype();
 
+export class ProjectPrototype    {
+url: string = 'api/Project';
+public async delete (request: Models.IdRequest):
+Promise<Models.Response>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildDeleteRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}
+public async get (request: Models.IdRequest):
+Promise<Models.ResponseOfProjectDetail>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildGetRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}
+public async put (request: Models.ProjectDetail):
+Promise<Models.NewItemResponse>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildPutRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}}
+export const Project = new ProjectPrototype();
+
+export class ProjectListPrototype    {
+url: string = 'api/ProjectList';
+public async get (request: Models.ProjectListRequest):
+Promise<Models.ProjectListResponse>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildGetRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}}
+export const ProjectList = new ProjectListPrototype();
+
+export class TeamPrototype    {
+url: string = 'api/Team';
+public async delete (request: Models.IdRequest):
+Promise<Models.Response>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildDeleteRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}
+public async get (request: Models.IdRequest):
+Promise<Models.ResponseOfTeamDetail>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildGetRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}
+public async put (request: Models.TeamDetail):
+Promise<Models.NewItemResponse>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildPutRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}}
+export const Team = new TeamPrototype();
+
+export class TeamListPrototype    {
+url: string = 'api/TeamList';
+public async get (request: Models.TeamListRequest):
+Promise<Models.TeamListResponse>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildGetRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}}
+export const TeamList = new TeamListPrototype();
+
 export class UserDetailPrototype    {
 url: string = 'api/UserDetail';
 public async delete (request: Models.IdRequest):

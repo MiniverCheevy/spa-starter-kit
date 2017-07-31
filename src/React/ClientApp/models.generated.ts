@@ -1615,6 +1615,211 @@ details? : INameValuePair[];
 exception? : any;
 }
 
+export class ProjectDetail  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined,
+        teamId:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+        ,teamId:
+        {
+            propertyName:'TeamId',
+            jsName:'teamId',
+            displayName:'Team',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
+teamId? : number;
+}
+
+export class ProjectListRequest  {
+
+static empty()
+{
+    const result =
+    {
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        defaultSortMember:
+        {
+            propertyName:'DefaultSortMember',
+            jsName:'defaultSortMember',
+            displayName:'Default Sort Member',
+            displayFormat:'text'
+        }
+        ,};
+        return result;
+    }
+    
+    defaultSortMember? : string;
+    sortDirection? : string;
+    resetPaging? : boolean;
+    pageNumber? : number;
+    pageSize? : number;
+    sortMember? : string;
+    totalRecords? : number;
+    totalPages? : number;
+}
+
+export class ProjectListResponse extends IResponse {
+
+static empty()
+{
+    const result =
+    {
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+state? : IGridState;
+data? : ProjectRow[];
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class ProjectRow  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined,
+        teamId:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+        ,teamId:
+        {
+            propertyName:'TeamId',
+            jsName:'teamId',
+            displayName:'Team',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
+teamId? : number;
+}
+
 export class ResponseOfUserDetail extends IResponse {
 
 static empty()
@@ -1786,6 +1991,108 @@ lockoutEnabled? : boolean;
 password? : string;
 confirmPassword? : string;
 roles? : ListItem[];
+}
+
+export class ResponseOfTeamDetail extends IResponse {
+
+static empty()
+{
+    const result =
+    {
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+data? : TeamDetail;
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class TeamDetail  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
+}
+
+export class ResponseOfProjectDetail extends IResponse {
+
+static empty()
+{
+    const result =
+    {
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+data? : ProjectDetail;
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
 }
 
 export class ResponseOfMemberDetail extends IResponse {
@@ -2024,6 +2331,127 @@ hasLogicException? : boolean;
 message? : string;
 details? : INameValuePair[];
 exception? : any;
+}
+
+export class TeamListRequest  {
+
+static empty()
+{
+    const result =
+    {
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        defaultSortMember:
+        {
+            propertyName:'DefaultSortMember',
+            jsName:'defaultSortMember',
+            displayName:'Default Sort Member',
+            displayFormat:'text'
+        }
+        ,};
+        return result;
+    }
+    
+    defaultSortMember? : string;
+    sortDirection? : string;
+    resetPaging? : boolean;
+    pageNumber? : number;
+    pageSize? : number;
+    sortMember? : string;
+    totalRecords? : number;
+    totalPages? : number;
+}
+
+export class TeamListResponse extends IResponse {
+
+static empty()
+{
+    const result =
+    {
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+state? : IGridState;
+data? : TeamRow[];
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class TeamRow  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        id:
+        {
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
 }
 
 export class UIMetadata  {

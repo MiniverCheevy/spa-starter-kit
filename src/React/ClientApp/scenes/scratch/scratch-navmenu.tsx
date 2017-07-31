@@ -14,11 +14,11 @@ export class ScratchNavMenu extends React.Component<any, any> {
                     </section>
                     <section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
                         <a className="toolbar-button material-icons mdc-toolbar__icon" title="Home"
-                            href="/#/home"><i className='mdi mdi-home'></i></a>
-                        <a className="toolbar-button material-icons mdc-toolbar__icon" title="Teams"
-                            href="/#/scratch-team-list"><i className='mdi mdi-group'></i></a>
+                            href="/#/home"><i className='mdi mdi-home'></i></a>                       
                         <a className="toolbar-button material-icons mdc-toolbar__icon" title="Members"
                             href="/#/scratch-member-list"><i className='mdi mdi-account-switch'></i></a>
+                        <a className="toolbar-button material-icons mdc-toolbar__icon" title="Teams"
+                           href="/#/scratch-team-list"><i className='mdi mdi-group'></i></a>
                         <a className="toolbar-button material-icons mdc-toolbar__icon" title="Projects"
                             href="/#/scratch-project-list"><i className='mdi mdi-apps'></i></a>
                     </section>

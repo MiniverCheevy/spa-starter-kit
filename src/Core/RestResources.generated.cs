@@ -15,10 +15,14 @@ namespace Core
         public const string ErrorList = "ErrorList";
         public const string Lists = "Lists";
         public const string Member = "Member";
-        public const string MemberDetail = "MemberDetail";
         public const string MemberList = "MemberList";
-        public const string Members = "Members";
         public const string MobileError = "MobileError";
+        public const string Project = "Project";
+        public const string ProjectList = "ProjectList";
+        public const string Team = "Team";
+        public const string TeamDetail = "TeamDetail";
+        public const string TeamList = "TeamList";
+        public const string Teams = "Teams";
         public const string UserDetail = "UserDetail";
         public const string UserList = "UserList";
     }

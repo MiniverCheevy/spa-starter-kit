@@ -1,11 +1,12 @@
 ﻿import * as React from 'react';
-import { observer, observable, IObservableArray, Models, Api, Components } from './../../root';
+import { observer, observable, IObservableArray, Models, Api, Components,  Services} from './../../root';
 
 @observer
 export class UserList extends React.Component<any, any>
 {
-    data: IObservableArray<Models.UserRow> = observable([]);
-    request: Models.UserListRequest = Models.UserListRequest.empty();    
+    key = 'userList';
+    request: Models.UserListRequest = Services.GridService.getRequest(this.key, Models.UserListRequest.empty());
+    data: IObservableArray<Models.UserRow> = observable([]);  
     metadata = Models.UserRow.metadata();
 
     public componentDidMount() {
@@ -16,6 +17,7 @@ export class UserList extends React.Component<any, any>
 
     }
     public refresh = async (request: Models.UserListRequest) => {
+        Services.GridService.setRequest(this.key, request);
         var response = await Api.UserList.get(request);
         if (response.isOk) {
             Object.assign(this.request, response.state);            
