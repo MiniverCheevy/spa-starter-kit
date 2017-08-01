@@ -30,6 +30,10 @@ export class NavMenu extends React.Component<any, void> {
                             href="/#/home"><i className='mdi mdi-home'></i></a>
                         <a className="toolbar-button material-icons mdc-toolbar__icon" title="Users"
                             href="/#/user-list"><i className='mdi mdi-account-multiple'></i></a>
+                        <a className="toolbar-button material-icons mdc-toolbar__icon" title="Scratch"
+                            href="/#/scratch"><i className='mdi mdi-theater'></i></a>
+
+                        
                     </section>
                 </div>
             </header>

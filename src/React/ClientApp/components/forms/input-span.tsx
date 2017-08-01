@@ -1,13 +1,22 @@
 ﻿import * as React from 'react';
 import { InputComponent, InputComponentProps } from './input-component';
 import { Services } from './../../root';
+import { InputHelper } from './input-helper';
 
 export class InputSpan extends InputComponent {
 
     constructor(props)
-    { super(props);}
+    {        
+        super(props);
+        this.helper = new InputHelper(this);
+    }
+    
+    doValidation = () => {
+       
+    };
 
     preRender = () => {
+        this.helper.parseProps();
         if (this.metadata)
             this.internalValue = Services.FormatService.format(this.internalValue, this.metadata);
         else
@@ -15,12 +24,19 @@ export class InputSpan extends InputComponent {
     }
 
     doRender = () => {
-        debugger;
-        return <label className={"mdc-textfield input-field-container mdc-form-fieldinput-field-container mdc-form-field"
-            + this.fullWidth ? " full-width " : ""}>
-            {!this.nolabel && <span className="input-label">{this.labelText}</span>}
+
+        var classes = "mdc-textfield input-field-container mdc-form-fieldinput-field-container mdc-form-field";
+        if (this.fullWidth)
+            classes = classes + " full-width";
+
+        var labelClasses = "input-label";
+        if (this.nolabel)
+            labelClasses = labelClasses + " no-label";
+
+        return <div className={classes}>
+                   <label className={labelClasses}>{this.labelText}</label>
             <span className="input-field">{this.internalValue}</span>
-        </label >;
+        </div >;
     }
 
 

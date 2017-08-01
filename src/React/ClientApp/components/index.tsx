@@ -5,7 +5,8 @@ import { Grid } from './data-table/grid/grid'
 import { PushButton } from './buttons/push-button';
 import { Card } from './card';
 import { Form } from './forms/form';
-import { InputComponent } from './forms/input-component';
+import { InputText } from './forms/input-text';
+import { InputTextArea } from './forms/input-textarea';
 import { InputDropdown } from './forms/input-dropdown';
 import { InputSpan } from './forms/input-span';
 
@@ -14,7 +15,8 @@ export {
     Form,
     Grid,
     GridButton,
-    InputComponent,
+    InputText,
+    InputTextArea,
     InputDropdown,
     InputSpan,
     Sorter,

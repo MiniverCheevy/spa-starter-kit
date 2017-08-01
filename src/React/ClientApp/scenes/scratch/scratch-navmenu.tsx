@@ -21,6 +21,8 @@ export class ScratchNavMenu extends React.Component<any, any> {
                            href="/#/scratch-team-list"><i className='mdi mdi-group'></i></a>
                         <a className="toolbar-button material-icons mdc-toolbar__icon" title="Projects"
                             href="/#/scratch-project-list"><i className='mdi mdi-apps'></i></a>
+                        <a className="toolbar-button material-icons mdc-toolbar__icon" title="Unbound Controls"
+                            href="/#/scratch-unbound-controls"><i className='mdi mdi-widgets'></i></a>
                     </section>
                 </div>
             </header>

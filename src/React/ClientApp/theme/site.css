@@ -195,11 +195,19 @@ navbar-collapse .main-nav .navbar a {
 }
 
 #container {
-    margin-top: 58px;
+    margin-top: 64px;
     margin-left: 9%;
-    margin-right: 6%;
+    margin-right: 9%;
 }
-
+footer {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: blue;
+    /*background-color: rgba(0, 0, 0, 0.8);*/
+    margin-right: 9%;
+}
 .main-panel {
     min-height: 400px;
     padding: 12px;
@@ -268,7 +276,10 @@ a.mdc-toolbar__title {
 
 .format-text, .format-date, .format-time, .format-dateTime, .format-phoneNumber {
     text-align: left;
+    white-space: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
+    
 }
 
 .format-decimal, .format-currency, .format-int {
@@ -294,6 +305,9 @@ a.mdc-toolbar__title {
 
 .sorter {
     cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .sort-indicator {
@@ -312,11 +326,15 @@ a.mdc-toolbar__title {
 .hr {
     border-color: #0072a7;
 }
-
+.input-form-horizontal .no-label {
+    display:none;
+}
 .input-form-horizontal .input-field-container {
     min-height: 50px;
 }
-
+.input-form-vertical .no-label {
+    visibility: hidden;
+}
 .input-form-vertical .input-field-container {
     min-height: 26px;
 }
@@ -415,24 +433,6 @@ plus-minus-button i {
         display: inline-block !important;
     }
 
-/*.column {
-    margin-bottom: 24px;
-    margin-top: 8px;
-    width: 200px;
-}
-
-.column-2 {
-    margin-bottom: 24px;
-    margin-top: 8px;
-    width: 420px;
-    
-}
-
-.column-3 {
-    margin-bottom: 24px;
-    margin-top: 8px;
-    width: 600px;
-}*/
 
 .column .input-field-container,
 .column-2 .input-field-container,
