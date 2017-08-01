@@ -3,9 +3,6 @@
     {
 
     }
-    //text?: string;
-    //icon?: string;
-    //action: (any) => void;
     get key() {
         var key = '_';
         if (this.text != null)
@@ -13,6 +10,5 @@
         if (this.icon != null)
             key = key + this.icon + '_';
         return key;
-
     }
 }

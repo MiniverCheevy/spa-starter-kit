@@ -60,7 +60,9 @@ export class PushButton extends React.Component<PushButtonProps, void> {
         return  <button type='button'
                 className={buttonClass}
                 title={title}
-                style={{ minWidth: '36px !important' }}>
+                style={{ minWidth: '36px !important' }}
+                onClick={() => { this.props.click() }}
+                >
             {this.props.icon && <i  className={iconName}></i>}
                 {text}
             </button >;

@@ -75,7 +75,7 @@ export class Grid extends React.Component<GridProps, any>
         return this.props.data.map((row, index) => {
             const rowButtons = buttons.map((button) => {
                 return <PushButton theme="grid-icon" key={button.key}
-                    text={button.text} icon={button.icon} click={this.executeAction(button.action, row)}
+                    text={button.text} icon={button.icon} click={() => {  this.executeAction(button.action, row) }}
                 ></PushButton>;
             });
             const cells = this.columns.map((column) => {

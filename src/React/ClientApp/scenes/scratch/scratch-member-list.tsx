@@ -3,6 +3,7 @@ import { observer, observable, IObservableArray } from './../../root';
 import {withRouter, Models, Api, Components, Services } from './../../root';
 import { ScratchNavMenu } from './scratch-navmenu';
 
+
 @observer
 export class ScratchMemberList extends React.Component<any, any>
 {
@@ -16,8 +17,8 @@ export class ScratchMemberList extends React.Component<any, any>
         this.refresh(this.request);
     }
 
-    public edit=(user: Models.MemberRow)=>{
-        (history as any).push('/member-detail/' + user.id);
+    public edit = (user: Models.MemberRow) => {
+        this.props.history.push('/member-detail/' + user.id);        
     }
 
     public refresh = async (request: Models.MemberListRequest) => {
