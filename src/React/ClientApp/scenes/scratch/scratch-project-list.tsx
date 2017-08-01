@@ -1,11 +1,14 @@
 ﻿import * as React from 'react';
-import { observer, observable, IObservableArray, Models, Api, Components } from './../../root';
+import {  Models, Api, Components, Services } from './../../root';
+import { observer, observable, IObservableArray } from './../../mx';
 import { ScratchNavMenu } from './scratch-navmenu';
+
 @observer
 export class ScratchProjectList extends React.Component<any, any>
 {
+    key = 'projectList';
+    request: Models.UserListRequest = Services.GridService.getRequest(this.key, Models.UserListRequest.empty());
     @observable data: IObservableArray<Models.ProjectRow> = observable([]);
-    request: Models.UserListRequest = Models.ProjectListRequest.empty();
     metadata = Models.ProjectRow.metadata();
 
     public componentDidMount() {
@@ -16,6 +19,7 @@ export class ScratchProjectList extends React.Component<any, any>
 
     }
     public refresh = async (request: Models.ProjectListRequest) => {
+        Services.GridService.setRequest(this.key, request);
         var response = await Api.ProjectList.get(request);
         if (response.isOk) {
             Object.assign(this.request, response.state);

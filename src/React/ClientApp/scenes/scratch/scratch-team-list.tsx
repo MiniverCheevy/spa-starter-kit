@@ -1,11 +1,15 @@
 ﻿import * as React from 'react';
-import { observer, observable, IObservableArray, Models, Api, Components } from './../../root';
+import { Models, Api, Components, Services } from './../../root';
+import { observer, observable, IObservableArray } from './../../mx';
 import { ScratchNavMenu } from './scratch-navmenu';
 @observer
 export class ScratchTeamList extends React.Component<any, any>
 {
+    key = 'teamList';
+    request: Models.TeamListRequest = Services.GridService.getRequest(this.key, Models.TeamListRequest.empty());
+
     @observable data: IObservableArray<Models.TeamRow> = observable([]);
-    request: Models.UserListRequest = Models.TeamListRequest.empty();
+    
     metadata = Models.TeamRow.metadata();
 
     public componentDidMount() {

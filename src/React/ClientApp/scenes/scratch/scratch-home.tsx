@@ -8,11 +8,9 @@ export class ScratchHome extends React.Component<any, any> {
         return this.doRender();
     }
     doRender = () => {
-        return <div>            
+        return <div>
             <ScratchNavMenu />
             <div><h3>Scratch</h3></div>
         </div>;
     }
-
-
 }

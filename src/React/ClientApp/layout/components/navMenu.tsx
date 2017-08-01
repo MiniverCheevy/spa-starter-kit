@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as  ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom';
 import { Router } from 'react-router';
-import { Components, Services, observer, observable } from './../../root';
-
+import {  Components, Services } from './../../root';
+import { observer } from './../../mx';
 @observer
 export class NavMenu extends React.Component<any, void> {
     public async componentDidMount() {

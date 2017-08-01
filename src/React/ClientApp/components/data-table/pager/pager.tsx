@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
-import { Models, observer, observable, IObservableValue, IObservableArray } from './../../../root';
+import { Models } from './../../../root';
+import { observer } from './../../../mx';
 import { PageBlock } from './page-block';
 import { PagerButton } from './pager-button';
 export class PagerProps {

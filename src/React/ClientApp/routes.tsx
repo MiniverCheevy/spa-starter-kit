@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Layout } from './layout/layout';
 import { Home } from './scenes/home/home';
 import { UserList } from './scenes/users/user-list';
-import { Route, Link } from './root';
-import { HashRouter } from 'react-router-dom';
+
+import { HashRouter, Route, Link, withRouter } from 'react-router-dom';
+import { hashHistory } from 'react-router';
 import { ScratchHome, ScratchProjectList, ScratchTeamList, ScratchMemberList, ScratchMemberDetailContainer } from './scenes/scratch';
 export class Routes extends React.Component<any, void>
 {

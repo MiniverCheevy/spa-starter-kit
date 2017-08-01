@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
-import { observable, Models } from './../../root';
-
+import {  Models } from './../../root';
+import { observer } from './../../mx';
 export class SorterProps {
     member: string = '';
     text: string = '';

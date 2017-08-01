@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
-import { observer,observable, Models, Services } from './../../../root';
+import { Models, Services } from './../../../root';
+import { observer } from './../../../mx';
 import { Sorter } from './../sorter';
 import { Pager } from './../pager/pager';
 import { GridButton } from './grid-button';

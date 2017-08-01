@@ -10,7 +10,7 @@ class FormatServicePrototype {
     }
     formatForDisplay(value: string, metadata: Models.UIMetadata)
     {
-        //TODO: add , to #s
+        //TODO: add , to #s, $ to currency
         var format = "text";
         if (metadata && metadata.displayFormat)
             format = metadata.displayFormat;
@@ -23,7 +23,7 @@ class FormatServicePrototype {
             return '';
         if (!format || format == "text")
             return value;
-        // console.l        mating ' + value + ' to ' + format);
+        
         var sugar = (<any>window).Sugar;
         try {
             switch (format) {

@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
-import { observer, observable, IObservableArray, Models, Api, Components,  Services} from './../../root';
+import {  Models, Api, Components, Services } from './../../root';
+import { observer, observable, IObservableArray } from './../../mx';
 
 @observer
 export class UserList extends React.Component<any, any>
