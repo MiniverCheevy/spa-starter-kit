@@ -1,20 +1,19 @@
-﻿
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Models, Services } from './../../root';
 import * as Validation from './../../services/validation';
 import { Form } from './form';
 
 export class InputComponentProps {
     name: string;
-    form: Form;
+    form?: Form;
     readOnly?: boolean = false;
     label?: string;
     noLabel?: boolean = false;
     value?;
-    autofocus = false;
-    fullWidth = false;
-    lines = 1;
-    items: Models.ListItem[] = [];
+    autofocus? = false;
+    fullWidth? = false;
+    lines? = 1;
+    items?: Models.ListItem[] = [];
 }
 
 export abstract class InputComponent extends React.Component<InputComponentProps, any>
@@ -27,7 +26,7 @@ export abstract class InputComponent extends React.Component<InputComponentProps
     labelText: string;
     metadata: Models.UIMetadata;
     form: Form;
-    
+    fullWidth = false;
 
     abstract preRender = () => { };
     abstract doRender = (): JSX.Element | null => { return null };
@@ -35,22 +34,29 @@ export abstract class InputComponent extends React.Component<InputComponentProps
 
     render()
     {
+        
         this.doPreRender();
-        return this.doRender();
+        this.doRender() ;
     }
 
     doPreRender = () => {
+        this.preRender.bind(this);
+        this.doRender.bind(this);
         this.name = this.props.name;
-        this.nolabel = this.props.noLabel;
-        if (this.props.value != null)
-        {
-            this.internalValue = this.props.value;
+        if (this.props.noLabel != null)
+            this.nolabel = this.props.noLabel;
+        if (this.props.fullWidth != null)
+            this.fullWidth = this.props.fullWidth;
+        if (this.props.label != null)
             this.labelText = this.props.label;
-        }
+        if (this.props.value != null)
+            this.internalValue = this.props.value;        
+
         if (this.form != null)
         {
-            this.internalValue = this.props.value || this.form.getValue(this.name);
             this.metadata = this.form.getMetadata(this.name);
+            this.internalValue = this.props.value || this.form.getValue(this.name);
+            
             if (this.metadata != null)
                 this.labelText = this.props.label || this.metadata.displayName;
         }
@@ -62,7 +68,7 @@ export abstract class InputComponent extends React.Component<InputComponentProps
             this.showValidationIfNeeded(result);
         }
     }
-    showValidationIfNeeded(validation: Validation.ValidationResponse) {
+    showValidationIfNeeded=(validation: Validation.ValidationResponse) =>{
         this.isValid = validation.isValid;
         this.validationMessage = validation.message;
     }

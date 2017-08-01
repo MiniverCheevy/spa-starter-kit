@@ -18,7 +18,7 @@ export class ScratchMemberList extends React.Component<any, any>
     }
 
     public edit = (user: Models.MemberRow) => {
-        this.props.history.push('/member-detail/' + user.id);        
+        this.props.history.push('/scratch-member-detail/' + user.id);        
     }
 
     public refresh = async (request: Models.MemberListRequest) => {

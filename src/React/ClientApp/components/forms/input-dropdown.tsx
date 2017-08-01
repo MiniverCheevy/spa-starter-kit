@@ -1,4 +1,5 @@
-﻿import { InputComponent, InputComponentProps } from './input-component'
+﻿import * as React from 'react';
+import { InputComponent, InputComponentProps } from './input-component'
 import { ErrorIcon } from './error-icon';
 
 export class InputDropdown extends InputComponent {

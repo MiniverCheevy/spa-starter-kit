@@ -13,7 +13,7 @@ export class Routes extends React.Component<any, void>
         return <HashRouter>
             <Layout>
                 <Route path='/scratch' component={ScratchHome} />
-                <Route path='/scratch-member-detail:id' component={ScratchMemberDetailContainer} />
+                <Route path='/scratch-member-detail/:id' component={ScratchMemberDetailContainer} />
                 <Route path='/scratch-member-list' component={ScratchMemberList} />
                 <Route path='/scratch-project-list' component={ScratchProjectList} />
                 <Route path='/scratch-team-list' component={ScratchTeamList} />

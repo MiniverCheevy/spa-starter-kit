@@ -1,4 +1,5 @@
-﻿import { InputComponent, InputComponentProps } from './input-component'
+﻿import * as React from 'react';
+import { InputComponent, InputComponentProps } from './input-component'
 import { InputSpan } from './input-span';
 import { InputText } from './input-text';
 import { InputTextArea } from './input-textarea';
