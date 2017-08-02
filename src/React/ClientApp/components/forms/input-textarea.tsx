@@ -1,7 +1,9 @@
 ﻿import * as React from 'react';
-import { InputComponent, InputComponentProps } from './input-component'
 import { ErrorIcon } from './error-icon';
+import { Services } from './../../root';
+import { InputComponent } from './input-component';
 import { InputHelper } from './input-helper';
+import { InputShell } from './input-shell';
 
 export class InputTextArea extends InputComponent {
     constructor(props) {
@@ -14,33 +16,23 @@ export class InputTextArea extends InputComponent {
     doValidation = () => {
         this.helper.doValidation();
     };
-
-    preRender = () => {
-        this.helper.parseProps();
-    }
+    
     doRender = () => {
+        var state = this.helper.getState();
 
-        var classes = "mdc-textfield input-field-container mdc-form-fieldinput-field-container mdc-form-field";
-        var textAreaClasses = "mdc-textfield__input input-field";
-        var labelClasses = "input-label";
+        var textAreaClasses = "mdc-textfield__input input-field";        
 
-        if (this.fullWidth) {
-            classes = classes + " full-width mdc-textfield mdc-form-fieldinput-field-container mdc-form-field";
+        if (this.props.fullWidth) {
             textAreaClasses = textAreaClasses + " full-width";
         }
-        var labelClasses = "input-label";
-        if (this.nolabel)
-            labelClasses = labelClasses + " no-label";
 
-        return <div className={classes}>
-            <label className={labelClasses}>{this.labelText}</label>
-            {!this.isValid && <ErrorIcon text={this.validationMessage} ></ErrorIcon>}
+        return <InputShell {...this.props} label={state.label}>            
             <textarea
-                autoFocus={this.props.autofocus} value={this.internalValue}
-                onChange={this.onChange} rows={this.lines}
+                autoFocus={this.props.autofocus} value={state.formattedValue}
+                onChange={this.onChange} rows={this.props.lines}
                 className={textAreaClasses} >
             </textarea>
-        </div>;
+        </InputShell>;
 
 
     }

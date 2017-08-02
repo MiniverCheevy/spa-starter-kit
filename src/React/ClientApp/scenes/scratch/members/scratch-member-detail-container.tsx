@@ -2,33 +2,31 @@
 import { ScratchNavMenu } from './../scratch-navmenu';
 import { ScratchMemberDetail } from './scratch-member-detail';
 import { Models, Services, Api, Components } from './../../../root';
-import { observable, observer } from './../../../mx';
+import { observer, observable } from './../../../mx';
 
-
-export class ScratchMemberDetailContainer extends React.Component<any, any> {
-    model: Models.MemberDetail = observable(Models.MemberDetail.empty());    
-    metadata = Models.MemberDetail.metadata();
-    @observable form = new Components.Form(this.metadata, this.model);
+@observer
+export class ScratchMemberDetailContainer extends React.Component<any,any > {
+    @observable model: Models.MemberDetail = observable(Models.MemberDetail.empty());
+    @observable metadata = observable(Models.MemberDetail.metadata());
+    form = new Components.Form(this.metadata);
+    
 
     componentDidMount() {
-
+        this.state = this.form;
         var id = Services.FormsService.getValueAfterLastSlash(this.props.location);
         this.refresh(id);
-        this.form.setCallback(this.onChange);
+
     }
     refresh = async (id) => {
         var response = await Api.Member.get({ id: id });
         if (response.isOk) {
-            
-            this.form.updateModel(response.data);
+            console.log('container refresh ok');
+            Object.assign(this.model, response.data);
         }
     }
-    onChange = (form: Components.Form) =>
-    {
-        console.log('Container');
-        console.log(form.model);
-        Object.assign(this.form, form);
-        Object.assign(this.model, form.model);
+    onChange = (key,value) => {
+        console.log('Container=>' + key + '=' + value);
+        this.model[key] = value;
     }
     render() {
         return this.doRender();
@@ -36,6 +34,7 @@ export class ScratchMemberDetailContainer extends React.Component<any, any> {
     doRender = () => {
 
         return <div>
+
             <ScratchNavMenu />
             <div className="pull-right">
                 <div>IsValid={this.form.isValid.toString()}</div>
@@ -43,7 +42,7 @@ export class ScratchMemberDetailContainer extends React.Component<any, any> {
                 <div>Name={this.model.name}</div>
                 <div>Title={this.model.title}</div>
             </div>
-            <ScratchMemberDetail form={this.form} change={this.onChange}/>
+            <ScratchMemberDetail form={this.form} model={this.model} change={this.onChange} />            
         </div>;
     }
 }

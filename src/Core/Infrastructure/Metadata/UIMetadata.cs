@@ -22,6 +22,9 @@ namespace Core.Infrastructure.Metadata
         public bool IsHidden { get; set; }
         public bool DoNotSort { get; set; }
         public object Control { get; set; }
+
+        public bool IsValid { get; set; }
+        public string ValidationMessage { get; set; }
     }
 
     [Client]

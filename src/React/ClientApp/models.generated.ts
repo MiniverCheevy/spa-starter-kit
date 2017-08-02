@@ -1151,8 +1151,8 @@ static empty()
         optionalInt:undefined,
         requiredDate:undefined,
         optionalDate:undefined,
-        requiredDateOffset:undefined,
-        optionalDateOffset:undefined,
+        requiredDateTimeOffset:undefined,
+        optionalDateTimeOffset:undefined,
         requiredDecimal:undefined,
         optionalDecimal:undefined,
         managerId:undefined
@@ -1266,10 +1266,10 @@ static metadata()
                 ,message: 'date is either too far in the future or past'
             }
         }
-        ,requiredDateOffset:
+        ,requiredDateTimeOffset:
         {
-            propertyName:'RequiredDateOffset',
-            jsName:'requiredDateOffset',
+            propertyName:'RequiredDateTimeOffset',
+            jsName:'requiredDateTimeOffset',
             displayName:'Required Date',
             displayFormat:'date'
             ,date:
@@ -1284,10 +1284,10 @@ static metadata()
                 shouldValidate:true
             }
         }
-        ,optionalDateOffset:
+        ,optionalDateTimeOffset:
         {
-            propertyName:'OptionalDateOffset',
-            jsName:'optionalDateOffset',
+            propertyName:'OptionalDateTimeOffset',
+            jsName:'optionalDateTimeOffset',
             displayName:'Optional Date',
             displayFormat:'date'
             ,date:
@@ -1346,8 +1346,8 @@ requiredInt? : number;
 optionalInt? : number;
 requiredDate? : DateTimeOffset;
 optionalDate? : DateTimeOffset;
-requiredDateOffset? : DateTimeOffset;
-optionalDateOffset? : DateTimeOffset;
+requiredDateTimeOffset? : DateTimeOffset;
+optionalDateTimeOffset? : DateTimeOffset;
 requiredDecimal? : number;
 optionalDecimal? : number;
 managerId? : number;
@@ -2473,7 +2473,9 @@ static empty()
         isReadOnly:undefined,
         isHidden:undefined,
         doNotSort:undefined,
-        control:undefined
+        control:undefined,
+        isValid:undefined,
+        validationMessage:undefined
     };
     return result;
 }
@@ -2580,6 +2582,20 @@ static metadata()
             displayName:'Control',
             displayFormat:'text'
         }
+        ,isValid:
+        {
+            propertyName:'IsValid',
+            jsName:'isValid',
+            displayName:'Is Valid',
+            displayFormat:'text'
+        }
+        ,validationMessage:
+        {
+            propertyName:'ValidationMessage',
+            jsName:'validationMessage',
+            displayName:'Validation Message',
+            displayFormat:'text'
+        }
     };
     return result;
 }
@@ -2598,6 +2614,8 @@ isReadOnly? : boolean;
 isHidden? : boolean;
 doNotSort? : boolean;
 control? : any;
+isValid? : boolean;
+validationMessage? : string;
 }
 
 export class ValidationMetaData  {

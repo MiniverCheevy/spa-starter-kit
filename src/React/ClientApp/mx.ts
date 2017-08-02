@@ -1,3 +1,3 @@
-﻿import { observer } from 'mobx-react';
-import { observable, IObservableArray, IObservableValue } from 'mobx';
-export {observer, observable, IObservableArray, IObservableValue}
+﻿export { observer } from 'mobx-react';
+export { observable, IObservableArray, IObservableValue, isObservable } from 'mobx';
+
