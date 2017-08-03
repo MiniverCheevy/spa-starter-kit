@@ -23,7 +23,7 @@ export class InputComponentProps {
     model?: any;
     form?: Form;
 
-    change?:(key,value)=>void;
+    change?:(key,value, form)=>void;
 }
 
 export abstract class InputComponent extends React.Component<InputComponentProps, any>

@@ -6,7 +6,6 @@ import * as Validation from './../../services/validation';
 
 export class InputState
 {
-    value;
     formattedValue:string;
     metadata: Models.UIMetadata;
     label: string;
@@ -18,14 +17,19 @@ export class InputHelper {
     }
     getState = (): InputState=>
     {
-        debugger;
+        
         var state = new InputState();
-        state.metadata = this.input.props.form.configureMetadata(this.input);
+        if (this.input.props == null)
+            return state;
+        if (this.input.props.form != null)
+            state.metadata = this.input.props.form.configureMetadata(this.input);
+        
         var value = this.input.props.value;
         
         if (this.input.props.model != null)
             {
             var val = (this.input.props.model[this.input.props.name] as IObservableValue<any>);
+            console.log('inputhelper=>' + this.input.props.name + '=' + val);
             if (isObservable(val))
                 value = val.get();
             if (val != null)
@@ -42,6 +46,7 @@ export class InputHelper {
             label = this.input.props.label;
 
         state.label = label;
+        state.formattedValue = formattedValue;
 
         return state;
     }
@@ -49,9 +54,10 @@ export class InputHelper {
     {
         var key = event.target.name;
         var value = event.target.value;
-
+        var form = this.input.props.form;
+        form.isDirty=true;
         if (this.input.props.change != null) {
-            this.input.props.change(key,value);
+            this.input.props.change(key, value, form);
         }
     }
     doValidation=()=> {

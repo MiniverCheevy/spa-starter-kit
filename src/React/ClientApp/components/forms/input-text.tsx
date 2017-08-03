@@ -27,7 +27,7 @@ export class InputText extends InputComponent {
             <input type="text" name={this.props.name}
                 autoFocus={this.props.autofocus}
                 value={state.formattedValue}
-                onBlur={this.internalChangeHandler}
+                onChange={this.internalChangeHandler}
                 className="mdc-textfield__input input-field" />
         </InputShell>;
     }    

@@ -116,7 +116,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
             var lastChar = isLast ? string.Empty : ",";
             var type = ConvertTypeName(property.PropertyType);
-            return $" {LowerCaseFirstLetter(name)}:undefined{lastChar}";
+            return $" {LowerCaseFirstLetter(name)}:null{lastChar}";
         }
 
         public string ConvertTypeName(Type type)

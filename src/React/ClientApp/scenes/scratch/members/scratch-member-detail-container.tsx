@@ -2,30 +2,40 @@
 import { ScratchNavMenu } from './../scratch-navmenu';
 import { ScratchMemberDetail } from './scratch-member-detail';
 import { Models, Services, Api, Components } from './../../../root';
-import { observer, observable } from './../../../mx';
+import { observer, observable, action } from './../../../mx';
 
 @observer
-export class ScratchMemberDetailContainer extends React.Component<any,any > {
+export class ScratchMemberDetailContainer extends React.Component<any, any> {
     @observable model: Models.MemberDetail = observable(Models.MemberDetail.empty());
     @observable metadata = observable(Models.MemberDetail.metadata());
     form = new Components.Form(this.metadata);
-    
+
 
     componentDidMount() {
-        this.state = this.form;
+
         var id = Services.FormsService.getValueAfterLastSlash(this.props.location);
         this.refresh(id);
+        
 
     }
+    @action
     refresh = async (id) => {
-        var response = await Api.Member.get({ id: id });
+        var response = Api.Member.get({ id: id }).then(this.load);
+    }
+    @action
+    load = (response: Models.ResponseOfMemberDetail) => {
         if (response.isOk) {
             console.log('container refresh ok');
+            //this.model = observable(response.data);
             Object.assign(this.model, response.data);
+            //this.setState(response.data);
         }
     }
-    onChange = (key,value) => {
+
+    @action
+    onChange = (key, value,form) => {
         console.log('Container=>' + key + '=' + value);
+        Object.assign(this.form, form);
         this.model[key] = value;
     }
     render() {
@@ -42,7 +52,7 @@ export class ScratchMemberDetailContainer extends React.Component<any,any > {
                 <div>Name={this.model.name}</div>
                 <div>Title={this.model.title}</div>
             </div>
-            <ScratchMemberDetail form={this.form} model={this.model} change={this.onChange} />            
+            <ScratchMemberDetail form={this.form} model={this.model} change={this.onChange} />
         </div>;
     }
 }
