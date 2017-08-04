@@ -11,9 +11,9 @@ static empty()
 {
     const result =
     {
-        name:null,
-        id:null,
-        data:null
+        name:undefined,
+        id:undefined,
+        data:undefined
     };
     return result;
 }
@@ -58,8 +58,8 @@ static empty()
 {
     const result =
     {
-        name:null,
-        value:null
+        name:undefined,
+        value:undefined
     };
     return result;
 }
@@ -96,11 +96,11 @@ static empty()
 {
     const result =
     {
-        isOk:null,
-        message:null,
-        exception:null,
-        details:null,
-        hasLogicException:null
+        isOk:undefined,
+        message:undefined,
+        exception:undefined,
+        details:undefined,
+        hasLogicException:undefined
     };
     return result;
 }
@@ -161,8 +161,8 @@ static empty()
 {
     const result =
     {
-        name:null,
-        value:null
+        name:undefined,
+        value:undefined
     };
     return result;
 }
@@ -199,12 +199,12 @@ static empty()
 {
     const result =
     {
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -252,9 +252,9 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null,
-        value:null
+        id:undefined,
+        name:undefined,
+        value:undefined
     };
     return result;
 }
@@ -322,14 +322,14 @@ static empty()
 {
     const result =
     {
-        defaultSortMember:null,
-        sortDirection:null,
-        resetPaging:null,
-        pageNumber:null,
-        pageSize:null,
-        sortMember:null,
-        totalRecords:null,
-        totalPages:null
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
     };
     return result;
 }
@@ -365,14 +365,14 @@ static empty()
 {
     const result =
     {
-        state:null,
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -393,14 +393,14 @@ static empty()
 {
     const result =
     {
-        pageNumber:null,
-        pageSize:null,
-        totalRecords:null,
-        totalPages:null,
-        sortMember:null,
-        sortDirection:null,
-        defaultSortMember:null,
-        resetPaging:null
+        pageNumber:undefined,
+        pageSize:undefined,
+        totalRecords:undefined,
+        totalPages:undefined,
+        sortMember:undefined,
+        sortDirection:undefined,
+        defaultSortMember:undefined,
+        resetPaging:undefined
     };
     return result;
 }
@@ -501,9 +501,9 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null,
-        value:null
+        id:undefined,
+        name:undefined,
+        value:undefined
     };
     return result;
 }
@@ -571,16 +571,16 @@ static empty()
 {
     const result =
     {
-        expiration:null,
-        refreshTime:null,
-        isAuthenticated:null,
-        userName:null,
-        userId:null,
-        firstName:null,
-        lastName:null,
-        roles:null,
-        isAdmin:null,
-        token:null
+        expiration:undefined,
+        refreshTime:undefined,
+        isAuthenticated:undefined,
+        userName:undefined,
+        userId:undefined,
+        firstName:undefined,
+        lastName:undefined,
+        roles:undefined,
+        isAdmin:undefined,
+        token:undefined
     };
     return result;
 }
@@ -693,7 +693,7 @@ static empty()
 {
     const result =
     {
-        timeZoneOffsetInMinutes:null
+        timeZoneOffsetInMinutes:undefined
     };
     return result;
 }
@@ -746,15 +746,15 @@ static empty()
 {
     const result =
     {
-        searchText:null,
-        defaultSortMember:null,
-        sortDirection:null,
-        resetPaging:null,
-        pageNumber:null,
-        pageSize:null,
-        sortMember:null,
-        totalRecords:null,
-        totalPages:null
+        searchText:undefined,
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
     };
     return result;
 }
@@ -798,14 +798,14 @@ static empty()
 {
     const result =
     {
-        state:null,
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -826,11 +826,11 @@ static empty()
 {
     const result =
     {
-        id:null,
-        creationDate:null,
-        type:null,
-        message:null,
-        user:null
+        id:undefined,
+        creationDate:undefined,
+        type:undefined,
+        message:undefined,
+        user:undefined
     };
     return result;
 }
@@ -924,7 +924,7 @@ static empty()
 {
     const result =
     {
-        id:null
+        id:undefined
     };
     return result;
 }
@@ -957,9 +957,9 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null,
-        filterData:null
+        id:undefined,
+        name:undefined,
+        filterData:undefined
     };
     return result;
 }
@@ -1017,8 +1017,8 @@ static empty()
 {
     const result =
     {
-        includeInactive:null,
-        lists:null
+        includeInactive:undefined,
+        lists:undefined
     };
     return result;
 }
@@ -1055,19 +1055,19 @@ static empty()
 {
     const result =
     {
-        roles:null,
-        lists:null,
-        sqlOperations:null,
-        applicationSettings:null,
-        projects:null,
-        members:null,
-        teams:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        roles:undefined,
+        lists:undefined,
+        sqlOperations:undefined,
+        applicationSettings:undefined,
+        projects:undefined,
+        members:undefined,
+        teams:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -1093,9 +1093,9 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null,
-        filterData:null
+        id:undefined,
+        name:undefined,
+        filterData:undefined
     };
     return result;
 }
@@ -1144,18 +1144,18 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null,
-        title:null,
-        requiredInt:null,
-        optionalInt:null,
-        requiredDate:null,
-        optionalDate:null,
-        requiredDateTimeOffset:null,
-        optionalDateTimeOffset:null,
-        requiredDecimal:null,
-        optionalDecimal:null,
-        managerId:null
+        id:undefined,
+        name:undefined,
+        title:undefined,
+        requiredInt:undefined,
+        optionalInt:undefined,
+        requiredDate:undefined,
+        optionalDate:undefined,
+        requiredDateTimeOffset:undefined,
+        optionalDateTimeOffset:undefined,
+        requiredDecimal:undefined,
+        optionalDecimal:undefined,
+        managerId:undefined
     };
     return result;
 }
@@ -1359,14 +1359,14 @@ static empty()
 {
     const result =
     {
-        defaultSortMember:null,
-        sortDirection:null,
-        resetPaging:null,
-        pageNumber:null,
-        pageSize:null,
-        sortMember:null,
-        totalRecords:null,
-        totalPages:null
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
     };
     return result;
 }
@@ -1402,14 +1402,14 @@ static empty()
 {
     const result =
     {
-        state:null,
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -1430,11 +1430,11 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null,
-        title:null,
-        requiredInt:null,
-        optionalInt:null
+        id:undefined,
+        name:undefined,
+        title:undefined,
+        requiredInt:undefined,
+        optionalInt:undefined
     };
     return result;
 }
@@ -1530,11 +1530,11 @@ static empty()
 {
     const result =
     {
-        errorMsg:null,
-        url:null,
-        lineNumber:null,
-        column:null,
-        errorObject:null
+        errorMsg:undefined,
+        url:undefined,
+        lineNumber:undefined,
+        column:undefined,
+        errorObject:undefined
     };
     return result;
 }
@@ -1595,13 +1595,13 @@ static empty()
 {
     const result =
     {
-        newItemId:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        newItemId:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -1621,9 +1621,9 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null,
-        teamId:null
+        id:undefined,
+        name:undefined,
+        teamId:undefined
     };
     return result;
 }
@@ -1688,14 +1688,14 @@ static empty()
 {
     const result =
     {
-        defaultSortMember:null,
-        sortDirection:null,
-        resetPaging:null,
-        pageNumber:null,
-        pageSize:null,
-        sortMember:null,
-        totalRecords:null,
-        totalPages:null
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
     };
     return result;
 }
@@ -1731,14 +1731,14 @@ static empty()
 {
     const result =
     {
-        state:null,
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -1759,9 +1759,9 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null,
-        teamId:null
+        id:undefined,
+        name:undefined,
+        teamId:undefined
     };
     return result;
 }
@@ -1826,13 +1826,13 @@ static empty()
 {
     const result =
     {
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -1852,15 +1852,15 @@ static empty()
 {
     const result =
     {
-        id:null,
-        userName:null,
-        clientId:null,
-        firstName:null,
-        lastName:null,
-        lockoutEnabled:null,
-        password:null,
-        confirmPassword:null,
-        roles:null
+        id:undefined,
+        userName:undefined,
+        clientId:undefined,
+        firstName:undefined,
+        lastName:undefined,
+        lockoutEnabled:undefined,
+        password:undefined,
+        confirmPassword:undefined,
+        roles:undefined
     };
     return result;
 }
@@ -1999,13 +1999,13 @@ static empty()
 {
     const result =
     {
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -2025,8 +2025,8 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null
+        id:undefined,
+        name:undefined
     };
     return result;
 }
@@ -2075,13 +2075,13 @@ static empty()
 {
     const result =
     {
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -2101,13 +2101,13 @@ static empty()
 {
     const result =
     {
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -2127,13 +2127,13 @@ static empty()
 {
     const result =
     {
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -2153,15 +2153,15 @@ static empty()
 {
     const result =
     {
-        details:null,
-        host:null,
-        url:null,
-        items:null,
-        id:null,
-        creationDate:null,
-        type:null,
-        message:null,
-        user:null
+        details:undefined,
+        host:undefined,
+        url:undefined,
+        items:undefined,
+        id:undefined,
+        creationDate:undefined,
+        type:undefined,
+        message:undefined,
+        user:undefined
     };
     return result;
 }
@@ -2287,13 +2287,13 @@ static empty()
 {
     const result =
     {
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -2313,13 +2313,13 @@ static empty()
 {
     const result =
     {
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -2339,14 +2339,14 @@ static empty()
 {
     const result =
     {
-        defaultSortMember:null,
-        sortDirection:null,
-        resetPaging:null,
-        pageNumber:null,
-        pageSize:null,
-        sortMember:null,
-        totalRecords:null,
-        totalPages:null
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
     };
     return result;
 }
@@ -2382,14 +2382,14 @@ static empty()
 {
     const result =
     {
-        state:null,
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -2410,8 +2410,8 @@ static empty()
 {
     const result =
     {
-        id:null,
-        name:null
+        id:undefined,
+        name:undefined
     };
     return result;
 }
@@ -2460,22 +2460,22 @@ static empty()
 {
     const result =
     {
-        propertyName:null,
-        jsName:null,
-        displayName:null,
-        displayFormat:null,
-        email:null,
-        length:null,
-        date:null,
-        int:null,
-        decimal:null,
-        required:null,
-        isReadOnly:null,
-        isHidden:null,
-        doNotSort:null,
-        control:null,
-        isValid:null,
-        validationMessage:null
+        propertyName:undefined,
+        jsName:undefined,
+        displayName:undefined,
+        displayFormat:undefined,
+        email:undefined,
+        length:undefined,
+        date:undefined,
+        int:undefined,
+        decimal:undefined,
+        required:undefined,
+        isReadOnly:undefined,
+        isHidden:undefined,
+        doNotSort:undefined,
+        control:undefined,
+        isValid:undefined,
+        validationMessage:undefined
     };
     return result;
 }
@@ -2624,10 +2624,10 @@ static empty()
 {
     const result =
     {
-        shouldValidate:null,
-        message:null,
-        min:null,
-        max:null
+        shouldValidate:undefined,
+        message:undefined,
+        min:undefined,
+        max:undefined
     };
     return result;
 }
@@ -2680,16 +2680,16 @@ static empty()
 {
     const result =
     {
-        searchText:null,
-        defaultSortMember:null,
-        id:null,
-        sortDirection:null,
-        resetPaging:null,
-        pageNumber:null,
-        pageSize:null,
-        sortMember:null,
-        totalRecords:null,
-        totalPages:null
+        searchText:undefined,
+        defaultSortMember:undefined,
+        id:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
     };
     return result;
 }
@@ -2745,14 +2745,14 @@ static empty()
 {
     const result =
     {
-        state:null,
-        data:null,
-        numberOfRowsEffected:null,
-        isOk:null,
-        hasLogicException:null,
-        message:null,
-        details:null,
-        exception:null
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
     };
     return result;
 }
@@ -2773,12 +2773,12 @@ static empty()
 {
     const result =
     {
-        id:null,
-        userName:null,
-        clientId:null,
-        firstName:null,
-        lastName:null,
-        roles:null
+        id:undefined,
+        userName:undefined,
+        clientId:undefined,
+        firstName:undefined,
+        lastName:undefined,
+        roles:undefined
     };
     return result;
 }

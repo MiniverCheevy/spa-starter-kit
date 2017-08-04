@@ -3,7 +3,7 @@ import { Models, Services } from './../../root';
 import { observer } from './../../mx';
 import * as Validation from './../../services/validation';
 import { Form } from './form';
-import { InputHelper } from './input-helper';
+import { InputHelper, InputState } from './input-helper';
 
 
 export class InputComponentProps {
@@ -23,7 +23,10 @@ export class InputComponentProps {
     model?: any;
     form?: Form;
 
-    change?:(key,value, form)=>void;
+    change?: (key, value, form) => void;
+
+    isValid?: boolean;
+    validationMessage?: string;
 }
 
 export abstract class InputComponent extends React.Component<InputComponentProps, any>

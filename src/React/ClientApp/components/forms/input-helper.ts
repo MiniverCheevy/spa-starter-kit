@@ -4,6 +4,7 @@ import { Models, Services } from './../../root';
 import * as Validation from './../../services/validation';
 
 export class InputState {
+    rawValue: string;
     formattedValue: string;
     metadata: Models.UIMetadata;
     label: string;
@@ -16,7 +17,6 @@ export class InputHelper {
 
     }
     getState = (): InputState => {
-
         var state = new InputState();
         if (this.input.props == null)
             return state;
@@ -27,19 +27,23 @@ export class InputHelper {
 
         if (this.input.props.model != null) {
             var val = this.input.props.model[this.input.props.name];
-            console.log('inputhelper=>' + this.input.props.name + '=' + val);
-
             if (val != null)
                 value = val;
         }
-        var formattedValue = value;
+        state.rawValue = value;
+        var formattedValue = state.rawValue;
         if (state.metadata) {
-
+            var name = state.metadata.displayName;
+            if (state.metadata.propertyName == "RequiredDateTimeOffset")
+            {
+                var x = state.metadata.propertyName;
+                var y = x.length;
+            }
             var result = Services.ValidationService.validate({ metadata: state.metadata, value: value });
             state.isValid = result.isValid;
             state.validationMessage = result.message;
-            if (state.isValid)
-                formattedValue = Services.FormatService.format(value, state.metadata);
+
+            state.formattedValue = Services.FormatService.format(value, state.metadata);
         }
         var label = this.input.props.name;
         if (state.metadata)
@@ -48,7 +52,6 @@ export class InputHelper {
             label = this.input.props.label;
 
         state.label = label;
-        state.formattedValue = formattedValue;
 
         return state;
     }

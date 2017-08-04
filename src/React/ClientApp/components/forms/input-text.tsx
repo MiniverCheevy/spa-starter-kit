@@ -6,14 +6,17 @@ import { InputHelper } from './input-helper';
 import { InputShell } from './input-shell';
 
 export class InputText extends InputComponent {
+    withFormat: boolean = true;
     constructor(props) {
         super(props);
         this.helper = new InputHelper(this);
     }
     internalChangeHandler = (event) => {
+        this.withFormat = false;
         this.helper.handleChange(event, false);
     }
     internalBlurHandler = (event) => {
+        this.withFormat = true;
         this.helper.handleChange(event, true);
     }
     preRender = () => {
@@ -21,12 +24,13 @@ export class InputText extends InputComponent {
     }
 
     doRender = () => {
+        console.log("withFormat=>" + this.withFormat.toString());
         var state = this.helper.getState();
-
-        return <InputShell {...this.props} label={state.label}>
+        var value = this.withFormat ? state.formattedValue : state.rawValue;
+        return <InputShell {...this.props} label={state.label} isValid={state.isValid} validationMessage={state.validationMessage} >
             <input type="text" name={this.props.name}
                 autoFocus={this.props.autofocus}
-                value={state.formattedValue}
+                value={value}
                 onChange={this.internalChangeHandler}
                 onBlur={this.internalBlurHandler}
                 className="mdc-textfield__input input-field" />

@@ -3,15 +3,15 @@ import { ValidationRequest } from './validation-request';
 import { Validator } from './validator';
 import { Models } from './../../root'
 
-export class IntValidator extends Validator {
+export class DateValidator extends Validator {
 
     validate = () => {
         if (this.request.metadata == null
-            || this.request.metadata.int == null)
+            || this.request.metadata.date == null)
             return;
-        this.validation = this.request.metadata.int;
+        this.validation = this.request.metadata.date;
 
-        var message = this.validation.message || 'must be a whole number';
+        var message = 'invalid date';
 
         var invalidResponse = { message: message, isValid: false };
         if (this.value == null || this.value == undefined) {
@@ -22,15 +22,18 @@ export class IntValidator extends Validator {
                 return;//This is not a required check
         }
 
-        if (!this.isInt(this.value))
+        if (!this.isDate(this.value))
             this.response = invalidResponse;
 
         //TODO: Ranges
+        message = this.validation.message || 'invalid date';
+        var invalidResponse = { message: message, isValid: false };
     }
-    isInt = (value): boolean => {
-        var test = parseInt(value);
-        if (isNaN(test))//because if (test == NaN) return false when test == NaN
-            return false;
-        return true;
+    isDate = (value): boolean => {
+        var d = new Date(value);
+        if (Object.prototype.toString.call(d) === "[object Date]") {
+            return !isNaN(d.getTime());
+        }
+        return false;               
     }
 }

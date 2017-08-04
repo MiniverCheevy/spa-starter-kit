@@ -14,11 +14,11 @@ export class InputShell extends React.Component<InputComponentProps, any> {
         var labelClasses = "input-label";
         if (this.props.noLabel != null && this.props.noLabel)
             labelClasses = labelClasses + " no-label";
-
-        //{!this.props.isValid && <ErrorIcon text={this.props.validationMessage} ></ErrorIcon>}
+        var showError = this.props.isValid != null && !this.props.isValid;
+        
         return <div className={classes}>
-            <label className={labelClasses}>{this.props.label}</label>
-            
+            {showError && <ErrorIcon text={this.props.validationMessage} ></ErrorIcon>}
+            <label className={labelClasses}>{this.props.label}</label>            
             {this.props.children}
         </div>;
     }

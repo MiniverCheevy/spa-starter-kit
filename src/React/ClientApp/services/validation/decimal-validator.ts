@@ -13,7 +13,7 @@ export class DecimalValidator extends Validator {
 
         var message = this.validation.message || 'must be a decimal number';
 
-        var invalidResponse =  { message: message, isValid: false };
+        var invalidResponse = { message: message, isValid: false };
         if (this.value == null || this.value == undefined) {
             return;//This is not a required check
         }
@@ -23,11 +23,14 @@ export class DecimalValidator extends Validator {
         }
         if (!this.isDecimal(this.value))
             this.response = invalidResponse;
+
+        //TODO: Ranges
+
     }
     isDecimal = (value): boolean => {
-    if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|0)$/
-        .test(value))
-        return true;
-    return false;
-}
+        if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|0)$/
+            .test(value))
+            return true;
+        return false;
+    }
 }

@@ -6,7 +6,8 @@ export class ValidationServicePrototype
     private validators: Validation.Validator[] = [
         new Validation.RequiredValidator(),
         new Validation.DecimalValidator(),
-        new Validation.IntValidator()
+        new Validation.IntValidator(),
+        new Validation.DateValidator()
     ];
     public validate(request: Validation.ValidationRequest): Validation.ValidationResponse
     {
