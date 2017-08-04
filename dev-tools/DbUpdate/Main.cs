@@ -11,6 +11,7 @@ namespace DbUpdate
     {
         public static void Main(string[] args)
         {
+           
 
             var connectionString = args.FirstOrDefault().To<string>();
             

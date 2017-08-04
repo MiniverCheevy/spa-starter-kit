@@ -12,27 +12,17 @@ export class ScratchMemberDetailContainer extends React.Component<any, any> {
 
 
     componentDidMount() {
-
         var id = Services.FormsService.getValueAfterLastSlash(this.props.location);
         this.refresh(id);
-        
-
     }
-    @action
+    
     refresh = async (id) => {
-        var response = Api.Member.get({ id: id }).then(this.load);
-    }
-    @action
-    load = (response: Models.ResponseOfMemberDetail) => {
+        var response = await Api.Member.get({ id: id });
         if (response.isOk) {
-            console.log('container refresh ok');
-            //this.model = observable(response.data);
             Object.assign(this.model, response.data);
-            //this.setState(response.data);
         }
-    }
-
-    @action
+    }    
+    
     onChange = (key, value,form) => {
         console.log('Container=>' + key + '=' + value);
         Object.assign(this.form, form);

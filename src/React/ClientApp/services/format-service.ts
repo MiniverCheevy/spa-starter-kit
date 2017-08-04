@@ -1,4 +1,5 @@
 ﻿import { Models } from './../root'
+import * as sugar from 'sugar';
 
 class FormatServicePrototype {
 
@@ -24,7 +25,6 @@ class FormatServicePrototype {
         if (!format || format == "text")
             return value;
         
-        var sugar = (<any>window).Sugar;
         try {
             switch (format) {
                 case "date":
@@ -32,7 +32,7 @@ class FormatServicePrototype {
                     var date = new Date(sugar.Date.create(value));
 
                     if (date == null) {
-                        return '';
+                        return value;
                     }
                     var year = date.getFullYear();
                     if (year < 1900) {

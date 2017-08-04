@@ -13,9 +13,6 @@ export class InputTextArea extends InputComponent {
     onChange = (event) => {
         this.helper.handleChange(event);
     }
-    doValidation = () => {
-        this.helper.doValidation();
-    };
     
     doRender = () => {
         var state = this.helper.getState();

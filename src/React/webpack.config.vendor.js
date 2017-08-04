@@ -26,7 +26,8 @@ module.exports = (env) => {
                 'mobx', 'mobx-react', 'mobx-react-devtools',                
                 'material-components-web/dist/material-components-web.js',
                 'material-components-web/dist/material-components-web.css',
-                'mdi/css/materialdesignicons.css'
+                'mdi/css/materialdesignicons.css',
+                'sugar'
             ],
         },
         output: {
@@ -38,6 +39,7 @@ module.exports = (env) => {
         plugins: [
             //new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
             extractCSS,
+            //new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
             //new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
             new webpack.DllPlugin({
                 path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),

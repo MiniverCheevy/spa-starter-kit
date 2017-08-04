@@ -18,7 +18,7 @@ namespace Core.Models.Exceptions
         [MaxLength(200)]
         public string MachineName { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public DateTimeOffset CreationDate { get; set; }
 
         [MaxLength(200)]
         public string Type { get; set; }
@@ -52,7 +52,7 @@ namespace Core.Models.Exceptions
         [MaxLength]
         public string Sql { get; set; }
 
-        public DateTime? DeletionDate { get; set; }
+        public DateTimeOffset? DeletionDate { get; set; }
 
         [MaxLength]
         public string FullJson { get; set; }

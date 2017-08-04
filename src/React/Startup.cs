@@ -32,6 +32,7 @@ namespace Web
             Console.WriteLine($"Environment: {env.EnvironmentName}");
             this.Configuration = builder.Build();
             IOC.Settings = SettingsFactory.GetSettings(builder.Build());
+            updateDatabaseToLatestVersion(env);
         }
         public IConfigurationRoot Configuration { get; set; }
 
@@ -71,13 +72,17 @@ namespace Web
         //TODO: replace with the equivalent to UpdateDatabaseToLatestVersion when there is one for aspnet.core
         private void updateDatabaseToLatestVersion(IHostingEnvironment env)
         {
+            var connectionString = Objectifyer.Base64Encode(IOC.GetConnectionString());
             var file = Path.GetFullPath($@"{env.WebRootPath}\..\DbUpdate.exe");
+#if DEBUG
+            file = Path.GetFullPath($@"{env.WebRootPath}\..\..\..\tools\DbUpdate.exe");
+#endif
             Console.Write(file);
             if (!File.Exists(file))
                 return;
             Console.Write(" Found");
 
-            var connectionString = Objectifyer.Base64Encode(IOC.GetConnectionString());
+            
             var psi = new ProcessStartInfo
             {
                 FileName = file,

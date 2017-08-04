@@ -43,6 +43,7 @@
     <None Remove="yarn.lock" />
   </ItemGroup>
 <ItemGroup>
+  <ProjectReference Include="..\..\dev-tools\DbUpdate\DbUpdate.csproj" />
   <ProjectReference Include="..\Core\Core.csproj" />
 </ItemGroup>
 <ItemGroup>
