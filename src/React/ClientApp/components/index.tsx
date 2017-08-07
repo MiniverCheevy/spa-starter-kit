@@ -1,4 +1,4 @@
-﻿export { GridButton } from './data-table/grid/grid-button';
+﻿export { ButtonSpec } from './buttons/button-spec';
 export { Sorter } from './data-table/sorter';
 export { Pager, PagerProps } from './data-table/pager/pager';
 export { Grid } from './data-table/grid/grid'
@@ -9,4 +9,4 @@ export { InputText } from './forms/input-text';
 export { InputTextArea } from './forms/input-textarea';
 export { InputDropdown } from './forms/input-dropdown';
 export { InputSpan } from './forms/input-span';
-
+export { ButtonBar } from './buttons/button-bar';

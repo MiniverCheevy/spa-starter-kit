@@ -1,11 +1,11 @@
-Monday, July 31, 2017 8:16:52 AM
+Monday, August 7, 2017 1:11:21 PM
 System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
    at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
    at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
    at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Monday, July 31, 2017 8:16:52 AM
+Monday, August 7, 2017 1:11:21 PM
 Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 
@@ -21,14 +21,14 @@ var response = new StartupFromConfig(request).Execute();
 Assert.AreEqual(true, response.IsOk);
 
 **********************************************************
-Monday, July 31, 2017 10:30:37 AM
+Monday, August 7, 2017 1:11:36 PM
 System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
    at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
    at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
    at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Monday, July 31, 2017 10:30:37 AM
+Monday, August 7, 2017 1:11:36 PM
 Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 
@@ -44,14 +44,14 @@ var response = new StartupFromConfig(request).Execute();
 Assert.AreEqual(true, response.IsOk);
 
 **********************************************************
-Monday, July 31, 2017 12:53:38 PM
+Monday, August 7, 2017 1:12:27 PM
 System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
    at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
    at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
    at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Monday, July 31, 2017 12:53:38 PM
+Monday, August 7, 2017 1:12:27 PM
 Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 
@@ -67,83 +67,14 @@ var response = new StartupFromConfig(request).Execute();
 Assert.AreEqual(true, response.IsOk);
 
 **********************************************************
-Monday, July 31, 2017 12:53:54 PM
+Monday, August 7, 2017 1:44:36 PM
 System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
    at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
    at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
    at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Monday, July 31, 2017 12:53:54 PM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Monday, July 31, 2017 12:54:14 PM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Monday, July 31, 2017 12:54:14 PM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Monday, July 31, 2017 12:58:18 PM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Monday, July 31, 2017 12:58:18 PM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Monday, July 31, 2017 1:04:24 PM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Monday, July 31, 2017 1:04:24 PM
+Monday, August 7, 2017 1:44:36 PM
 Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 

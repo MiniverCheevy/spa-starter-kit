@@ -1,4 +1,6 @@
-﻿let mdc: any = (<any>window).mdc;
+﻿import * as mdc  from 'material-components-web';
+
+//let mdc: any = (<any>window).mdc;
 
 class MessengerServicePrototype {
     private router: any//Router:

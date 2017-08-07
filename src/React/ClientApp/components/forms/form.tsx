@@ -8,16 +8,33 @@ export class Form {
     parent: Form;
     childForms: Form[] = [];
     properties: Models.UIMetadata[] = [];
-    isValid = true;
     isDirty = false;
-    version = 0;
     callback: (form: Form) => void
     
     constructor(public metadata) {
         this.properties = Services.FormsService.getProperties(this.metadata);
-        this.version = this.version + 1;
     }
-    
+    get isValid()
+    {
+        console.log('form isValid')
+        var result = true;
+        for (let key in this.metadata) {
+            if (this.metadata.hasOwnProperty(key)) {
+                var itemMetadata = this.metadata[key] as Models.UIMetadata;
+                if (itemMetadata.control != null)
+                {
+                    var control = itemMetadata.control as InputComponent;
+                    var state = control.helper.getState();
+                    var value = state.rawValue as any;
+                    var validationResult = Services.ValidationService.validate({ value: value, metadata: itemMetadata });
+                    if (!validationResult.isValid)
+                        result = false;
+                }                
+            }
+        }
+        console.log('Form.isValid = ' + result);
+        return result;
+    }
     addChildForm(form: Form) {
         form.parent = this;
         this.childForms.push(form);

@@ -25,7 +25,7 @@ export class InputComponentProps {
 
     change?: (key, value, form) => void;
 
-    isValid?: boolean;
+    isValid?: boolean; 
     validationMessage?: string;
 }
 

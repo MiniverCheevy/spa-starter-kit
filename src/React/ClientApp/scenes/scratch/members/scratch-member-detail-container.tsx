@@ -15,21 +15,30 @@ export class ScratchMemberDetailContainer extends React.Component<any, any> {
         var id = Services.FormsService.getValueAfterLastSlash(this.props.location);
         this.refresh(id);
     }
-    
+
     refresh = async (id) => {
         var response = await Api.Member.get({ id: id });
         if (response.isOk) {
             Object.assign(this.model, response.data);
         }
-    }    
-    
-    onChange = (key, value,form) => {
-        console.log('Container=>' + key + '=' + value);
+    }
+
+    onChange = (key, value, form: Components.Form) => {
         Object.assign(this.form, form);
+        Object.assign(this.form.metadata[key], form.metadata[key]);
         this.model[key] = value;
+        console.log('onChange');
+        console.log(key + '=>' + form.metadata[key].isValid);
     }
     render() {
+        console.log('render');
         return this.doRender();
+    }
+    save() {
+        console.log('Save');
+    }
+    delete() {
+        console.log('Delete');
     }
     doRender = () => {
 
@@ -43,6 +52,9 @@ export class ScratchMemberDetailContainer extends React.Component<any, any> {
                 <div>Title={this.model.title}</div>
             </div>
             <ScratchMemberDetail form={this.form} model={this.model} change={this.onChange} />
+
+
+            <Components.ButtonBar save={this.save} delete={this.delete} form={this.form} />
         </div>;
     }
 }

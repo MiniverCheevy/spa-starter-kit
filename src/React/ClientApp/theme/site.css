@@ -198,6 +198,7 @@ navbar-collapse .main-nav .navbar a {
     margin-top: 64px;
     margin-left: 9%;
     margin-right: 9%;
+    margin-bottom: 32px;
 }
 footer {
     position: fixed;

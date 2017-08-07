@@ -45,6 +45,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             output.AppendLine($"var result =");
             output.AppendLine(" {");
             var lastProperty = properties.Any() ? properties.Last() : null;
+
             foreach (var property in properties)
             {
                 var isLast = property == lastProperty;
@@ -102,8 +103,12 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         {
             var items = new List<string>();
             var ui = property.GetCustomAttribute<UIAttribute>();
+
+            items.Add($"isValid:true");
+            items.Add($"validationMessage:undefined");
             items.Add($"propertyName:'{property.Name}'");
             items.Add($"jsName:'{ModelBuilder.LowerCaseFirstLetter(property.Name)}'");
+
             var displayName = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name.ToFriendlyString();
             items.Add($"displayName:'{displayName}'");
             if (ui == null)

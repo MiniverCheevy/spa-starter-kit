@@ -31,7 +31,6 @@ export class Sorter extends React.Component<SorterProps, any>
     }   
 
     sort = (member) => {
-        console.log('Sort Changed');
         if (this.request.sortMember != null && this.request.sortDirection != null
             && member.toUpperCase() === this.request.sortMember.toUpperCase())
             this.request.sortDirection = this.request.sortDirection === "ASC" ? "DESC" : "ASC";

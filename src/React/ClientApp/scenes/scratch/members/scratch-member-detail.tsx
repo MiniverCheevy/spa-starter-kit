@@ -6,12 +6,14 @@ import { observable, observer } from './../../../mx';
 export class ScratchMemberDetailProps {
     form: Components.Form;
     model: Models.MemberDetail;
-    change
+    change;
+
 }
 
 @observer
 export class ScratchMemberDetail extends React.Component<ScratchMemberDetailProps, any> {
 
+    
     render() {
         return this.doRender();
     }
@@ -41,6 +43,7 @@ export class ScratchMemberDetail extends React.Component<ScratchMemberDetailProp
                     </div>
                 </div>
             </Components.Card>
+
         </div>;
     }
 

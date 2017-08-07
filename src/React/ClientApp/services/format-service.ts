@@ -52,7 +52,7 @@ class FormatServicePrototype {
                 case "currency":
                     var number = parseFloat(value);
                     if (number != NaN)
-                        return "$" + number.toFixed(2);
+                        return number.toFixed(2);
                     return value;
                 case "decimal":
                     var number = parseFloat(value);

@@ -4,10 +4,11 @@ import * as Validation from './validation';
 export class ValidationServicePrototype
 {
     private validators: Validation.Validator[] = [
-        new Validation.RequiredValidator(),
+        
         new Validation.DecimalValidator(),
         new Validation.IntValidator(),
-        new Validation.DateValidator()
+        new Validation.DateValidator(),
+        new Validation.RequiredValidator()
     ];
     public validate(request: Validation.ValidationRequest): Validation.ValidationResponse
     {

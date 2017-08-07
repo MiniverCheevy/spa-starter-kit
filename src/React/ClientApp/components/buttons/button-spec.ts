@@ -1,4 +1,4 @@
-﻿export class GridButton {
+﻿export class ButtonSpec{
     constructor(public text: string, public icon: string, public action: (any) => void)
     {
 

@@ -13,6 +13,7 @@ export class InputState {
 }
 
 export class InputHelper {
+    private previousValue='';
     constructor(public input: InputComponent) {
 
     }
@@ -34,16 +35,13 @@ export class InputHelper {
         var formattedValue = state.rawValue;
         if (state.metadata) {
             var name = state.metadata.displayName;
-            if (state.metadata.propertyName == "RequiredDateTimeOffset")
-            {
-                var x = state.metadata.propertyName;
-                var y = x.length;
-            }
-            var result = Services.ValidationService.validate({ metadata: state.metadata, value: value });
+            state.formattedValue = Services.FormatService.format(value, state.metadata);
+
+            var result = Services.ValidationService.validate({ metadata: state.metadata, value: state.formattedValue as any });
             state.isValid = result.isValid;
             state.validationMessage = result.message;
 
-            state.formattedValue = Services.FormatService.format(value, state.metadata);
+
         }
         var label = this.input.props.name;
         if (state.metadata)
@@ -56,17 +54,30 @@ export class InputHelper {
         return state;
     }
     handleChange = (event, withFormat?: boolean) => {
+        var state = this.getState();
         var key = event.target.name;
         var value = event.target.value;
-        if (withFormat) {
-            var state = this.getState();
+        if (withFormat) {            
             if (state.metadata)
                 value = Services.FormatService.format(value, state.metadata);
         }
         var form = this.input.props.form;
-        form.isDirty = true;
-        if (this.input.props.change != null) {
-            this.input.props.change(key, value, form);
+        if (form) {
+            if (value != this.previousValue)
+                form.isDirty = true;    
+
+            this.previousValue = value;
+
+            if (this.input.props.change != null) {
+                var formattedValue = Services.FormatService.format(value, state.metadata);
+
+                var result = Services.ValidationService.validate({ metadata: state.metadata, value: formattedValue as any});
+                form.metadata[this.input.props.name].isValid = result.isValid;
+                form.metadata[this.input.props.name].validationMessage = result.message;
+               
+
+            }
         }
+        this.input.props.change(key, value, form);
     }
 }

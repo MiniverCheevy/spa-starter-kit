@@ -3,13 +3,13 @@ import { Models, Services } from './../../../root';
 import { observer } from './../../../mx';
 import { Sorter } from './../sorter';
 import { Pager } from './../pager/pager';
-import { GridButton } from './grid-button';
+import { ButtonSpec } from './../../buttons/button-spec';
 import { PushButton } from './../../buttons/push-button';
 
 export class GridProps {
     request: Models.IGridState = { sortMember: '', sortDirection: '' };
     refresh: (request: Models.IGridState) => void;
-    buttons?: GridButton[];
+    buttons?: ButtonSpec[];
     metadata;
     data: any[];
 }
