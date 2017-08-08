@@ -17,19 +17,19 @@ export class ButtonBarProps {
 export class ButtonBar extends React.Component<ButtonBarProps, void> {
 
     private goBack = () => {
-        
+
         if (this.props.form && this.props.form.isDirty) {
             Services.MessengerService.confirm("Are you sure you want to discard your changes?", () => { window.history.back(); });
         }
-        else
-        {
+        else {
             window.history.back();
         }
     }
-    private doSave = (action) =>
-    {
-        if (this.props.form && !this.props.form.isValid)
+    private doSave = (action) => {
+        if (this.props.form && !this.props.form.isValid) {
+            Services.MessengerService.showToast("Please correct validation errors.", true);
             return;
+        }
         action();
     }
     private doDelete(action) {
@@ -45,7 +45,7 @@ export class ButtonBar extends React.Component<ButtonBarProps, void> {
         });
 
         return <div className="button-bar">
-            
+
             <div className="pull-left">
                 {this.props.save != null &&
                     <PushButton theme="primary" click={() => { this.doSave(this.props.save) }} icon="content-save" text="Save" />}

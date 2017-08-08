@@ -13,16 +13,17 @@ export class ScratchMemberDetailProps {
 @observer
 export class ScratchMemberDetail extends React.Component<ScratchMemberDetailProps, any> {
 
-    
+    renderCount = 0;
     render() {
         return this.doRender();
     }
     doRender = () => {
+        this.renderCount++;
         const props = { form: this.props.form, change: this.props.change };
 
         return <div>
             {"name=" + this.props.model.name}
-            <Components.Card title="Member Details" subTitle={'isDirty=' + this.props.form.isDirty + ' | isValid=' + this.props.form.isValid}>
+            <Components.Card title="Member Details" subTitle={'isDirty=' + this.props.form.isDirty + ' | isValid=' + this.props.form.isValid + ' | renderCount=' +this.renderCount}>
                 <div className="input-form-vertical">
                     <div className="row">
                         <Components.InputText {...props} value={this.props.model.name} name="name" />

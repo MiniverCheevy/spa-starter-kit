@@ -86,7 +86,8 @@ namespace Web
             var psi = new ProcessStartInfo
             {
                 FileName = file,
-                Arguments = connectionString
+                Arguments = connectionString,
+                CreateNoWindow =true,
             };
 
             var proc = Process.Start(psi);

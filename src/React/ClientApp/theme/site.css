@@ -32,7 +32,7 @@
 .progress-container {
     height: 6px;
     width: 100%;
-    background-color: #0e4ead;
+    background-color: #00003F;
 }
 
 .progress-conainer,
@@ -195,11 +195,12 @@ navbar-collapse .main-nav .navbar a {
 }
 
 #container {
-    margin-top: 64px;
+    margin-top: 72px;
     margin-left: 9%;
     margin-right: 9%;
     margin-bottom: 32px;
 }
+
 .button-bar {
     bottom: 0px;
     height: 40px;
@@ -207,7 +208,7 @@ navbar-collapse .main-nav .navbar a {
     background-color: whitesmoke;
     margin-right: 9%;
     text-align: center;
-    width:80%;
+    width: 80%;
 }
 
 .main-panel {
@@ -281,7 +282,6 @@ a.mdc-toolbar__title {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    
 }
 
 .format-decimal, .format-currency, .format-int {
@@ -310,9 +310,9 @@ a.mdc-toolbar__title {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    -webkit-user-select: none;  
-    -moz-user-select: none;    
-    -ms-user-select: none;      
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
@@ -332,15 +332,19 @@ a.mdc-toolbar__title {
 .hr {
     border-color: #0072a7;
 }
+
 .input-form-horizontal .no-label {
-    display:none;
+    display: none;
 }
+
 .input-form-horizontal .input-field-container {
     min-height: 50px;
 }
+
 .input-form-vertical .no-label {
     visibility: hidden;
 }
+
 .input-form-vertical .input-field-container {
     min-height: 26px;
 }
@@ -473,9 +477,19 @@ plus-minus-button i {
     background-color: darkred !important;
     color: white !important;
 }
+
+.snackbar-success {
+    background-color: darkgreen !important;
+}
+
+.snackbar-error {
+    background-color: darkred !important;
+}
+
 .success {
     color: darkgreen !important;
 }
+
 .error,
 .error-icon {
     color: darkred !important;
@@ -533,4 +547,3 @@ select {
     .fake-header select option {
         background-color: #0072a7;
     }
-

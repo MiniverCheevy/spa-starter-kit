@@ -1,40 +1,38 @@
 ﻿import * as mdc from 'material-components-web';
 import { observable, IObservableArray } from './../mx';
 
-//let mdc: any = (<any>window).mdc;
 export class ToastMessage {
     className: string;
     message: string;
 }
 class MessengerServicePrototype {
-    //private router: any//Router:
-    //Do not add additional local dependencies here or you will likely cause circular references and be sad
-    //third party stuff (aurelia,jquery, etc) are fine
 
-    public showDialog = false;
-    @observable public confirmPrompt;
-    @observable public toastMessages: IObservableArray<ToastMessage> = observable([]);
-    private dialogResult: boolean;
+    @observable numberOfPendingHttpRequest: number = 0;
+    @observable snackbarclass:string;
+    @observable confirmPrompt: string;
+
     private dialog: any;
     private snackbar: any;
     private confirmOkCallback;
     private confirmCancelCallback;
-    constructor() {
-
-        this.numberOfPendingHttpRequest = 0;
-
-    }
-    snackbarVisibilityChanged(event) {
-        debugger;
-    }
 
     public confirm = async (prompt: string, okCallback?, cancelCallback?) => {
 
         if (!this.dialog) {
             this.dialog = new mdc.dialog.MDCDialog(document.querySelector('#my-mdc-dialog'));
+            this.dialog.listen('MDCDialog:accept', () => {
+                if (this.confirmOkCallback)
+                    this.confirmOkCallback();
+                this.dialog.style = 'display:none';
+            })
+
+            this.dialog.listen('MDCDialog:cancel', () => {
+                if (this.confirmCancelCallback)
+                    this.confirmCancelCallback();
+                this.dialog.style = 'display:none';
+            })
         }
 
-        this.dialogResult = null;
         this.confirmOkCallback = null;
         this.confirmCancelCallback = null;
         this.confirmPrompt = prompt;
@@ -43,30 +41,11 @@ class MessengerServicePrototype {
 
         this.dialog.style = 'display:block';
 
-        this.dialog.listen('MDCDialog:accept', () => {
-            this.dialogResult = true;
-            if (this.confirmOkCallback)
-                this.confirmOkCallback();
-            this.dialog.style = 'display:none';
-        })
-
-        this.dialog.listen('MDCDialog:cancel', () => {
-            this.dialogResult = false;
-            if (this.confirmCancelCallback)
-                this.confirmCancelCallback();
-            this.dialog.style = 'display:none';
-        })
         this.dialog.show();
     }
-    public numberOfPendingHttpRequest: number;
-    public clearMessages = () => {
-        //$("#message2").text('');
-        //this.messageCss = '';
-        //this.message = ' ';
+    
 
-    }
-    public showResponseMessage = (response: any//Models.IResponse
-    ) => {
+    public showResponseMessage = (response: any) => {
         if (response == null)
             return;
         //file upload?
@@ -74,35 +53,43 @@ class MessengerServicePrototype {
             this.numberOfPendingHttpRequest = 0;
         if (response.isOk) {
             if (response.message != null && response.message != '')
-                this.success(response.message);
+                this.showSnackbar(response.message, false);
         }
         else {
-            this.error(response.message);
+            this.showSnackbar(response.message, true);
         }
     }
-    private showSnackbar() {
-        debugger;
+    private showSnackbar = (message: string, isError: boolean) => {
         if (!this.snackbar) {
-            this.snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('#my-mdc-snackbar'));
-            this.snackbar.registerVisibilityChangeHandler(this.snackbarVisibilityChanged);
+            this.snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('#my-mdc-snackbar'));
         }
-        this.snackbar.show();
+
+        var multiline = false;
+        if (message.length > 50)
+            multiline = true;
+
+        const props = {
+            message: message,
+            multiline: multiline
+        };
+
+        if (isError) {
+            this.snackbarclass = "snackbar-error";
+        }
+        else {
+            this.snackbarclass = "snackbar-success";
+        }
+        debugger;
+        this.snackbar.show(props);
     }
-    private success(message: string) {
-        this.toastMessages.push({ message: message, className: 'sucess' });
-        this.showSnackbar();
-    }
-    private error(message: string) {
-        this.toastMessages.push({ message: message, className: 'error' });
-        this.showSnackbar();
-    }
+
     public showToast = (text: string, isError: boolean) => {
         if (!isError) {
             if (text != null && text != '')
-                this.success(text);
+                this.showSnackbar(text, false);
         }
         else {
-            this.error(text);
+            this.showSnackbar(text, true);
         }
     }
 
@@ -112,14 +99,6 @@ class MessengerServicePrototype {
     public decrementHttpRequestCounter() {
         this.numberOfPendingHttpRequest -= 1;
     }
-    //public navigate(routeName: string, args: Object) {
-    //    if (args == null)
-    //        this.router.navigateToRoute(routeName);
-    //    else
-    //        this.router.navigateToRoute(routeName, args);
-    //}
-
-
 
 }
 export const MessengerService = new MessengerServicePrototype();

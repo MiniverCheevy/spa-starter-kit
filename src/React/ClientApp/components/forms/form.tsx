@@ -50,9 +50,10 @@ export class Form {
     {
         var name = input.props.name;
         var metadata = this.metadata[name];
-        if (metadata != null)
+        if (metadata != null && metadata.conrol == null)
         {
             metadata.control = input;
+
         }
         return metadata;
     }
