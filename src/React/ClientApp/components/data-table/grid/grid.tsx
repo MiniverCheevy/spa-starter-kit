@@ -7,11 +7,11 @@ import { ButtonSpec } from './../../buttons/button-spec';
 import { PushButton } from './../../buttons/push-button';
 
 export class GridProps {
-    request: Models.IGridState = { sortMember: '', sortDirection: '' };
-    refresh: (request: Models.IGridState) => void;
+    request?: Models.IGridState = { sortMember: '', sortDirection: '' };
+    refresh?: (request: Models.IGridState) => void;
     buttons?: ButtonSpec[];
-    metadata;
-    data: any[];
+    metadata?;
+    data?: any[];
 }
 @observer
 export class Grid extends React.Component<GridProps, any>

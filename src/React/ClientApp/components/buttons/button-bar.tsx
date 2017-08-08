@@ -17,6 +17,7 @@ export class ButtonBarProps {
 export class ButtonBar extends React.Component<ButtonBarProps, void> {
 
     private goBack = () => {
+        
         if (this.props.form && this.props.form.isDirty) {
             Services.MessengerService.confirm("Are you sure you want to discard your changes?", () => { window.history.back(); });
         }
@@ -43,19 +44,23 @@ export class ButtonBar extends React.Component<ButtonBarProps, void> {
             ></PushButton>;
         });
 
-        return <footer>
+        return <div className="button-bar">
             
             <div className="pull-left">
-                {this.props.save != null && <PushButton theme="primary" click={this.doSave(this.props.save)} icon="content-save" text="Save" />}
-                {this.props.saveAndClose != null && <PushButton theme="primary" click={this.doSave(this.props.saveAndClose)} icon="content-save" text="Save And Close" />}
-                {this.props.saveAndAddAnother != null && <PushButton theme="primary" click={this.doSave(this.props.saveAndAddAnother)} icon="content-save" text="Save And Add Another" />}
+                {this.props.save != null &&
+                    <PushButton theme="primary" click={() => { this.doSave(this.props.save) }} icon="content-save" text="Save" />}
+                {this.props.saveAndClose != null &&
+                    <PushButton theme="primary" click={() => { this.doSave(this.props.saveAndClose) }} icon="content-save" text="Save And Close" />}
+                {this.props.saveAndAddAnother != null &&
+                    <PushButton theme="primary" click={() => { this.doSave(this.props.saveAndAddAnother) }} icon="content-save" text="Save And Add Another" />}
                 <PushButton click={this.goBack} compact={true} theme="info" icon="keyboard-backspace" text="Back" />
                 {buttons}
             </div>
             <div className="pull-right" >
-                {this.props.delete != null && <PushButton theme="danger" click={this.doDelete(this.props.delete)} icon="delete" text="Delete" />}
+                {this.props.delete != null &&
+                    <PushButton theme="danger" click={() => { this.doDelete(this.props.delete) }} icon="delete" text="Delete" />}
             </div>
-        </footer>;
+        </div>;
 
     }
 }

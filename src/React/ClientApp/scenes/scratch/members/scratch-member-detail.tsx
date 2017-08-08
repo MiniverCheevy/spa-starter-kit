@@ -18,21 +18,23 @@ export class ScratchMemberDetail extends React.Component<ScratchMemberDetailProp
         return this.doRender();
     }
     doRender = () => {
+        const props = { form: this.props.form, change: this.props.change };
+
         return <div>
             {"name=" + this.props.model.name}
             <Components.Card title="Member Details" subTitle={'isDirty=' + this.props.form.isDirty + ' | isValid=' + this.props.form.isValid}>
                 <div className="input-form-vertical">
                     <div className="row">
-                        <Components.InputText {...this.props} value={this.props.model.name} name="name" />
-                        <Components.InputText {...this.props} value={this.props.model.title} name="title" />
-                        <Components.InputText {...this.props} value={this.props.model.requiredInt} name="requiredInt" />
-                        <Components.InputText {...this.props} value={this.props.model.optionalInt} name="optionalInt" />
-                        <Components.InputText {...this.props} value={this.props.model.requiredDate} name="requiredDate" />
-                        <Components.InputText {...this.props} value={this.props.model.optionalDate} name="optionalDate" />
-                        <Components.InputText {...this.props} value={this.props.model.requiredDateTimeOffset} name="requiredDateTimeOffset" />
-                        <Components.InputText {...this.props} value={this.props.model.optionalDateTimeOffset} name="optionalDateTimeOffset" />
-                        <Components.InputText {...this.props} value={this.props.model.requiredDecimal} name="requiredDecimal" />
-                        <Components.InputText {...this.props} value={this.props.model.optionalDecimal} name="optionalDecimal" />
+                        <Components.InputText {...props} value={this.props.model.name} name="name" />
+                        <Components.InputText {...props} value={this.props.model.title} name="title" />
+                        <Components.InputText {...props} value={this.props.model.requiredInt} name="requiredInt" />
+                        <Components.InputText {...props} value={this.props.model.optionalInt} name="optionalInt" />
+                        <Components.InputText {...props} value={this.props.model.requiredDate} name="requiredDate" />
+                        <Components.InputText {...props} value={this.props.model.optionalDate} name="optionalDate" />
+                        <Components.InputText {...props} value={this.props.model.requiredDateTimeOffset} name="requiredDateTimeOffset" />
+                        <Components.InputText {...props} value={this.props.model.optionalDateTimeOffset} name="optionalDateTimeOffset" />
+                        <Components.InputText {...props} value={this.props.model.requiredDecimal} name="requiredDecimal" />
+                        <Components.InputText {...props} value={this.props.model.optionalDecimal} name="optionalDecimal" />
 
                     </div>
                 </div>

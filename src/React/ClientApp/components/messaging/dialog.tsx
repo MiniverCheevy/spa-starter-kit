@@ -1,6 +1,8 @@
 ﻿import * as React from 'react';
 import { Components, Services } from './../../root';
+import { observer } from './../../mx';
 
+@observer
 export class Dialog extends React.Component<any, any>
 {
 

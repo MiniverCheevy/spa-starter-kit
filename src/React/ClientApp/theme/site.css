@@ -200,15 +200,16 @@ navbar-collapse .main-nav .navbar a {
     margin-right: 9%;
     margin-bottom: 32px;
 }
-footer {
+.button-bar {
+    bottom: 0px;
+    height: 40px;
     position: fixed;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    color: blue;
-    /*background-color: rgba(0, 0, 0, 0.8);*/
+    background-color: whitesmoke;
     margin-right: 9%;
+    text-align: center;
+    width:80%;
 }
+
 .main-panel {
     min-height: 400px;
     padding: 12px;
@@ -472,7 +473,9 @@ plus-minus-button i {
     background-color: darkred !important;
     color: white !important;
 }
-
+.success {
+    color: darkgreen !important;
+}
 .error,
 .error-icon {
     color: darkred !important;
@@ -530,3 +533,4 @@ select {
     .fake-header select option {
         background-color: #0072a7;
     }
+

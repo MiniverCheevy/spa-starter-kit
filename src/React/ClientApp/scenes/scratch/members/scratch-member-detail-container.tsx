@@ -34,10 +34,12 @@ export class ScratchMemberDetailContainer extends React.Component<any, any> {
         console.log('render');
         return this.doRender();
     }
-    save() {
+    save=()=> {
+        Services.MessengerService.showToast('Save', false);
+        Services.MessengerService.showToast('IsValid=>' + this.form.isValid, !this.form.isValid);
         console.log('Save');
     }
-    delete() {
+    delete = () => {
         console.log('Delete');
     }
     doRender = () => {
@@ -54,7 +56,7 @@ export class ScratchMemberDetailContainer extends React.Component<any, any> {
             <ScratchMemberDetail form={this.form} model={this.model} change={this.onChange} />
 
 
-            <Components.ButtonBar save={this.save} delete={this.delete} form={this.form} />
+            <Components.ButtonBar form={this.form} save={this.save} delete={this.delete}  />
         </div>;
     }
 }
