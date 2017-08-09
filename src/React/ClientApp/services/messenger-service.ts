@@ -11,10 +11,10 @@ class MessengerServicePrototype {
     @observable snackbarclass:string;
     @observable confirmPrompt: string;
 
-    private dialog: any;
-    private snackbar: any;
+    dialog: any;
+    snackbar: any;
     private confirmOkCallback;
-    private confirmCancelCallback;
+    private confirmCancelCallback;    
 
     public confirm = async (prompt: string, okCallback?, cancelCallback?) => {
 
@@ -63,6 +63,12 @@ class MessengerServicePrototype {
         if (!this.snackbar) {
             this.snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('#my-mdc-snackbar'));
         }
+        if (isError) {
+            this.snackbarclass = "snackbar-error";
+        }
+        else {
+            this.snackbarclass = "snackbar-success";
+        }
 
         var multiline = false;
         if (message.length > 50)
@@ -73,13 +79,7 @@ class MessengerServicePrototype {
             multiline: multiline
         };
 
-        if (isError) {
-            this.snackbarclass = "snackbar-error";
-        }
-        else {
-            this.snackbarclass = "snackbar-success";
-        }
-        debugger;
+        
         this.snackbar.show(props);
     }
 

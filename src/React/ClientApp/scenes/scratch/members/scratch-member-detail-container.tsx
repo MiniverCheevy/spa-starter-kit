@@ -19,7 +19,7 @@ export class ScratchMemberDetailContainer extends React.Component<any, any> {
     refresh = async (id) => {
         var response = await Api.Member.get({ id: id });
         if (response.isOk) {
-            Object.assign(this.model, response.data);
+            Object.assign(this.model, response.data);            
         }
     }
 

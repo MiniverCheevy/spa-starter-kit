@@ -21,5 +21,11 @@ export class RequiredValidator extends Validator {
             if (this.value.trim() == '')
                 this.response = invalidResponse;
         }
+        var test = new Date(this.value);
+        if (!isNaN(test.getTime()))
+        {
+            if (test.getFullYear() == 1 || test.getFullYear() == 9999)
+                this.response = invalidResponse;
+        }
     }
 }

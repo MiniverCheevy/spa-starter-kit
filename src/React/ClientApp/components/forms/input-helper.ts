@@ -37,7 +37,7 @@ export class InputHelper {
             var name = state.metadata.displayName;
             state.formattedValue = Services.FormatService.format(value, state.metadata);
 
-            var result = Services.ValidationService.validate({ metadata: state.metadata, value: state.formattedValue as any });
+            var result = Services.ValidationService.validate({ metadata: state.metadata, value: state.rawValue as any });
             state.isValid = result.isValid;
             state.validationMessage = result.message;
 
@@ -53,6 +53,7 @@ export class InputHelper {
 
         return state;
     }
+
     handleChange = (event, withFormat?: boolean) => {
         var state = this.getState();
         var key = event.target.name;
