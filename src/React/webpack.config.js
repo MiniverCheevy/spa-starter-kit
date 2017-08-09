@@ -5,14 +5,14 @@ const webpack = require('webpack');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const checkerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const copyWebpackPlugin = require('copy-webpack-plugin');
-const { baseHrefWebpackPlugin } = require('base-href-webpack-plugin');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const friendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const merge = require('webpack-merge');
 
 module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
-    const virtualDirectory = isDevBuild ? '/' : '/audobon.inventory/';
+    const virtualDirectory = isDevBuild ? '/' : '/';
     console.log('IsDevBuild=' + isDevBuild.toString());
     return [{
         stats: { modules: false },
@@ -30,7 +30,7 @@ module.exports = (env) => {
             rules: [
                 { test: /\.ts(x?)$/, include: /ClientApp/, use: 'babel-loader' },
                 { test: /\.tsx?$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
-                { test: /\.css$/, use: isDevBuild ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
+                { test: /\.css$/, use: isDevBuild ? ['style-loader', 'css-loader'] : extractTextPlugin.extract({ use: 'css-loader?minimize' }) },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
             ]
         },
@@ -59,7 +59,8 @@ module.exports = (env) => {
                 moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]')
             })
         ] : [
-                new baseHrefWebpackPlugin({
+            new extractTextPlugin('site.css'),
+                new BaseHrefWebpackPlugin({
                     baseHref: virtualDirectory
                 })
             ])

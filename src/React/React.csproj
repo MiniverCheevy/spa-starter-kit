@@ -49,6 +49,9 @@
 <ItemGroup>
   <None Include="wwwroot\index.html" />
 </ItemGroup>
+<ItemGroup>
+  <Folder Include="wwwroot\dist\" />
+</ItemGroup>
   <Target Name="Custom" AfterTargets="Build">  
       <Exec Command="node node_modules/webpack/bin/webpack.js" />
       <Message Importance="High" Text="built app.js" />      
@@ -58,8 +61,8 @@
   <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
     <Exec Command="yarn install" />
-    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod" />
-    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --optimize-minimize --config webpack.config.vendor.js --env.prod" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --optimize-minimize --env.prod" />
 
     <!-- Include the newly-built files in the publish output -->
     <ItemGroup>

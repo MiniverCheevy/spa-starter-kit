@@ -1,5 +1,7 @@
-﻿import * as mdc from 'material-components-web';
+﻿//import * as mdc from 'material-components-web';
 import { observable, IObservableArray } from './../mx';
+let mdc = (window as any).mdc;
+const MDCDialog=mdc.dialog.MDCDialog
 
 export class ToastMessage {
     className: string;
@@ -19,7 +21,7 @@ class MessengerServicePrototype {
     public confirm = async (prompt: string, okCallback?, cancelCallback?) => {
 
         if (!this.dialog) {
-            this.dialog = new mdc.dialog.MDCDialog(document.querySelector('#my-mdc-dialog'));
+            this.dialog = new (document.querySelector('#my-mdc-dialog'));
             this.dialog.listen('MDCDialog:accept', () => {
                 if (this.confirmOkCallback)
                     this.confirmOkCallback();

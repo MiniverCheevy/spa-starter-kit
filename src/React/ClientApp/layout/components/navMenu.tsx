@@ -12,7 +12,7 @@ export class NavMenu extends React.Component<any, void> {
     public render() {
         var progress = undefined;
         if (Services.MessengerService.numberOfPendingHttpRequest != 0)
-            progress = <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
+            progress = <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent progress">
                            <div className="mdc-linear-progress__buffering-dots"></div>
                            <div className="mdc-linear-progress__buffer"></div>
                            <div className="mdc-linear-progress__bar mdc-linear-progress__primary-bar">

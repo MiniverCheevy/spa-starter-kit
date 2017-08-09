@@ -31,7 +31,7 @@ class CurrentUserServicePrototype {
             }
         }
         if (this.user == null) {
-            this.user = await this.getUser();
+            this.user = this.getUser();
            // localStorage.setItem("user", JSON.stringify(this.user));
             return this.user;
         }

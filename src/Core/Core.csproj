@@ -110,6 +110,12 @@
     <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingMessages.cs" />
     <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingRepository.cs" />
     <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingRow.cs" />
+    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextDetail.cs" />
+    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextExtensions.cs" />
+    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextExtensions.generated.cs" />
+    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextMessages.cs" />
+    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextRepository.cs" />
+    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextRow.cs" />
     <Compile Include="Operations\CurrentUsers\BuildPrincipalCommand.cs" />
     <Compile Include="Operations\CurrentUsers\Extras\BuildPrincipalRequest.cs" />
     <Compile Include="Operations\CurrentUsers\GetCurrentUserCommand.cs" />

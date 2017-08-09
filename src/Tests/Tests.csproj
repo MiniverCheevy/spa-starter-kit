@@ -84,6 +84,7 @@
     <Compile Include="Operations\ApplicationSettings\ApplicationSettingTestHelper.cs" />
     <Compile Include="Operations\ApplicationSettings\ApplicationSettingDeleteCommandTests.cs" />
     <Compile Include="Operations\ApplicationSettings\ApplicationSettingUpdateCommandTests.cs" />
+    <Compile Include="Operations\BlobOfTexts\BlobOfTextMappingTests.cs" />
     <Compile Include="Operations\Errors\ErrorMappingTests.cs" />
     <Compile Include="Operations\Members\MemberAddCommandTests.cs" />
     <Compile Include="Operations\Members\MemberMappingTests.cs" />

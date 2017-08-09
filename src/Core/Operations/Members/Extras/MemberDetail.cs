@@ -5,8 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Core.Operations.Teams.Extras;
 using Voodoo.Messages;
 using Voodoo.Infrastructure.Notations;
+using Core.Operations.BlobOfTexts.Extras;
+
 namespace Core.Operations.Members.Extras
 {
     public class MemberDetail
@@ -55,7 +58,10 @@ namespace Core.Operations.Members.Extras
         
         [Display(Name = "Manager")]
         public int? ManagerId {get;set;}
-        
+
+        public List<TeamDetail> Teams { get; set; } = new List<TeamDetail>();
+        public List<BlobOfTextDetail> BlobsOfText { get; set; } = new List<BlobOfTextDetail>();
+
     }
 }
 

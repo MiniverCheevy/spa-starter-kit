@@ -6,7 +6,7 @@ const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 module.exports = (env) => {
     const extractCSS = new ExtractTextPlugin('vendor.css');
     const isDevBuild = !(env && env.prod);
-    const virtualDirectory = isDevBuild ? '/' : '/audobon.inventory/';
+    const virtualDirectory = isDevBuild ? '/' : '/';
     console.log('IsDevBuild=' + isDevBuild.toString());
     return [{
         stats: { modules: false },
@@ -24,7 +24,7 @@ module.exports = (env) => {
             vendor: ['babel-polyfill', 'event-source-polyfill', 'isomorphic-fetch',
                 'react', 'react-dom', 'react-router',
                 'mobx', 'mobx-react', 'mobx-react-devtools',                
-                'material-components-web/dist/material-components-web.js',
+                //'material-components-web/dist/material-components-web.js',
                 'material-components-web/dist/material-components-web.css',
                 'mdi/css/materialdesignicons.css',
                 'sugar'
