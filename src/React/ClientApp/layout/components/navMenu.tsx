@@ -5,7 +5,7 @@ import { Router } from 'react-router';
 import {  Components, Services } from './../../root';
 import { observer } from './../../mx';
 @observer
-export class NavMenu extends React.Component<any, void> {
+export class NavMenu extends React.Component<any, any> {
     public async componentDidMount() {
         var user = await Services.CurrentUserService.get();
     }

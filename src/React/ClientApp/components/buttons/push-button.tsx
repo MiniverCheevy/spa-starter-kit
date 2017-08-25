@@ -9,7 +9,7 @@ export class PushButtonProps
     type? = "button";
     compact?: boolean;
 }
-export class PushButton extends React.Component<PushButtonProps, void> {
+export class PushButton extends React.Component<PushButtonProps, any> {
     handleTheme = () => {
         var normal = "push-button mdc-button mdc-ripple-upgraded mdc-button--raised";
         var buttonClass = '';
@@ -60,7 +60,7 @@ export class PushButton extends React.Component<PushButtonProps, void> {
         return  <button type='button'
                 className={buttonClass}
                 title={title}
-                style={{ minWidth: '36px !important' }}
+                style={{ minWidth: '36px', minHeight:'36px', height:'auto' }}
                 onClick={() => { this.props.click() }}
                 >
             {this.props.icon && <i  className={iconName}></i>}

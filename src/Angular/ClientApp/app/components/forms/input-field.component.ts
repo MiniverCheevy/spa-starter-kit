@@ -41,14 +41,16 @@ export class InputFieldComponent extends InputComponent implements
         this.emitting = false;
     }
     sync = () => {
+        
+       
+        this.internalValue = this.formatter.format(this.internalValue, this.metadata);
+        this.model = this.internalValue;
         this.doValidation();
         if (!this.isValid)
             return;
-        this.internalValue = this.formatter.format(this.internalValue, this.metadata);
-        this.model = this.internalValue;
         this.modelChange.emit(this.internalValue);
-        this.change.emit(this.internalValue);
-        
+        this.change.emit(this.internalValue);        
+        console.log('internalvalue=>' + this.internalValue);
     }
 
 

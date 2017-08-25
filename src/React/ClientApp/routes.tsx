@@ -10,7 +10,7 @@ import {
     ScratchMemberList, ScratchMemberDetailContainer,
     ScratchUnboundControls
 } from './scenes/scratch';
-export class Routes extends React.Component<any, void>
+export class Routes extends React.Component<any, any>
 {
     render() {
         var style = { margin: '200px' };

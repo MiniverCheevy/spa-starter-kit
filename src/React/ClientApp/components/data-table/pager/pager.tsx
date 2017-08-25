@@ -27,7 +27,7 @@ export class Pager extends React.Component<PagerProps, any>
         if (this.request != null && this.request.resetPaging)
             this.request.pageNumber = 1;
     };
-    componentWillReceiveProps = (newProps) => {
+    componentWillReceiveProps  (newProps)  {
         this.props = newProps;
     }
     public setup = () => {
@@ -106,7 +106,10 @@ export class Pager extends React.Component<PagerProps, any>
             {this.hasRecords && pager}
         </div>;
     }
-
+    selectChange(event)
+    {
+        this.props.refresh(this.props.request);
+    }
     getPageSizeSelector = () =>  {
         var wrapperStyle =
             {
@@ -124,7 +127,7 @@ export class Pager extends React.Component<PagerProps, any>
             <label>Page Size</label>
             <select
                 value={this.request.pageSize}
-                onChange={this.props.refresh}
+                onChange={this.selectChange}
             >
                 <option>10</option>
                 <option>25</option>

@@ -9,7 +9,7 @@ import { Snackbar } from './../components/messaging/snackbar';
 export interface LayoutProps {
 
 }
-export class Layout extends React.Component<LayoutProps, void> {
+export class Layout extends React.Component<LayoutProps, any> {
     public render() {
         return <div>
                     <NavMenu />            

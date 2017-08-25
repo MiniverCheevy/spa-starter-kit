@@ -25,6 +25,7 @@ export class ScratchMemberList extends React.Component<any, any>
         Services.GridService.setRequest(this.key, request);
         var response = await Api.MemberList.get(request);
         if (response.isOk) {
+            debugger;
             Object.assign(this.request, response.state);
             this.data.replace(response.data);
         }
@@ -39,6 +40,7 @@ export class ScratchMemberList extends React.Component<any, any>
             <div>
                 <ScratchNavMenu />
                 <Components.Card title="Members">
+                    <span>Observable Change not causing refresh</span>
                     <Components.Grid
                         data={this.data.slice()}
                         refresh={this.refresh}
@@ -46,6 +48,7 @@ export class ScratchMemberList extends React.Component<any, any>
                         buttons={buttons}
                         request={this.request}
                     ></Components.Grid>
+                    <span>Observable Change not causing refresh</span>
                 </Components.Card>
             </div>);
     }

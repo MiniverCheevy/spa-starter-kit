@@ -14,7 +14,7 @@ export class Sorter extends React.Component<SorterProps, any>
     text: string = '';
     request: Models.IGridState = { sortMember: '', sortDirection: '' };
 
-    componentWillReceiveProps = (newProps) => {
+    componentWillReceiveProps  (newProps)  {
         this.props = newProps;
     }
 

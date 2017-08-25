@@ -14,7 +14,7 @@ export class ButtonBarProps {
     form?: Form;
 
 }
-export class ButtonBar extends React.Component<ButtonBarProps, void> {
+export class ButtonBar extends React.Component<ButtonBarProps, any> {
 
     private goBack = () => {
 

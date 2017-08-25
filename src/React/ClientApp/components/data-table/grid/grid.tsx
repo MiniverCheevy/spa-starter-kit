@@ -21,7 +21,7 @@ export class Grid extends React.Component<GridProps, any>
     {        
         super(props);
     }
-    componentWillReceiveProps=(newProps)=> {
+    componentWillReceiveProps(newProps) {
         this.props = newProps;
     }
     executeAction(action, row) {

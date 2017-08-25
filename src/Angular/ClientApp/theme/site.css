@@ -412,8 +412,10 @@ plus-minus-button i {
     padding-left: 10px;
     margin: 2px;
 }
-
-
+<!-- buttons will be black in edge without an important style because of how it loads css classes-->
+.mdc-button--primary {
+    background-color: rgb(0, 114, 167) !important;
+}
 /*.info-button {
     background-color: #2f93c2 !important;
 }
