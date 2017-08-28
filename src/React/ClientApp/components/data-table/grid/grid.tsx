@@ -1,19 +1,20 @@
 ﻿import * as React from 'react';
 import { Models, Services } from './../../../root';
-import { observer } from './../../../mx';
+//import { observer, observable, IObservableArray } from './../../../mx';
 import { Sorter } from './../sorter';
 import { Pager } from './../pager/pager';
 import { ButtonSpec } from './../../buttons/button-spec';
 import { PushButton } from './../../buttons/push-button';
+
 
 export class GridProps {
     request?: Models.IGridState = { sortMember: '', sortDirection: '' };
     refresh?: (request: Models.IGridState) => void;
     buttons?: ButtonSpec[];
     metadata?;
-    data?: any[];
+   data?: any[];
 }
-@observer
+
 export class Grid extends React.Component<GridProps, any>
 {
     columns: Models.UIMetadata[] = [];
@@ -21,17 +22,18 @@ export class Grid extends React.Component<GridProps, any>
     {        
         super(props);
     }
-    componentWillReceiveProps(newProps) {
-        this.props = newProps;
-    }
+   
     executeAction(action, row) {
         if (action && typeof action == "function")
             action(row);
     }
     render() {
-        return this.doRender();
+        //render is bound to a different instance of this than the one that the this instance that typescript uses
+        //with fat arrow syntax, we'll pass the props in and do everything with the fat arrow instance
+        return this.doRender(this.props);
     }
-    doRender = () => {       
+    doRender = (props: GridProps) => {
+       this.props = props;
         this.columns = Services.FormsService.getProperties(this.props.metadata);
         const headings = this.getColumnHeadings();
         const rows = this.getRows();
@@ -54,9 +56,9 @@ export class Grid extends React.Component<GridProps, any>
             </section>
         </div>;
     }
-
+   
     getColumnHeadings=()=> {
-        return this.columns.map((column) => {
+        return this.columns.map((column, index, source) => {
             var dontSort = column.doNotSort != null && column.doNotSort;
             return <th key={column.jsName}>
                 {dontSort && <span >{column.displayName}</span>}
@@ -79,7 +81,7 @@ export class Grid extends React.Component<GridProps, any>
                     text={button.text} icon={button.icon} click={() => {  this.executeAction(button.action, row) }}
                 ></PushButton>;
             });
-            const cells = this.columns.map((column) => {
+            const cells = this.columns.map((column, index, source) => {
                 var className = "format-" + column.displayFormat;
                 var value = Services.FormatService.formatForDisplay(row[column.jsName], column);
                 return <td key={column.jsName} className={className}>{value}</td>;

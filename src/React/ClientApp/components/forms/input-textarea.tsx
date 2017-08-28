@@ -14,7 +14,8 @@ export class InputTextArea extends InputComponent {
         this.helper.handleChange(event);
     }
     
-    doRender = () => {
+    doRender = (props) => {
+        this.props = props;
         var state = this.helper.getState();
 
         var textAreaClasses = "mdc-textfield__input input-field";        

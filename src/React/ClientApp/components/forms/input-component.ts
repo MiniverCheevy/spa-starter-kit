@@ -32,10 +32,10 @@ export class InputComponentProps {
 export abstract class InputComponent extends React.Component<InputComponentProps, any>
 {
     helper: InputHelper;
-    abstract doRender = (): JSX.Element | null => { return null };
+    abstract doRender = (props): JSX.Element | null => { return null };
 
     render() {
-        return this.doRender();
+        return this.doRender(this.props);
     }
 
 

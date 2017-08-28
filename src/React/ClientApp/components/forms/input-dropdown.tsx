@@ -32,8 +32,8 @@ export class InputDropdown extends InputComponent {
 
     }
 
-    doRender = () => {
-
+    doRender = (props) => {
+        this.props = props;
         var state = this.helper.getState();
 
         var options = this.props.items.map((item) => {

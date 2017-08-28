@@ -23,7 +23,8 @@ export class InputText extends InputComponent {
 
     }
 
-    doRender = () => {
+    doRender = (props) => {
+        this.props = props;
         var state = this.helper.getState();
         var value = this.withFormat ? state.formattedValue : state.rawValue;
         return <InputShell {...this.props} label={state.label} isValid={state.isValid} validationMessage={state.validationMessage} >

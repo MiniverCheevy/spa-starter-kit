@@ -20,7 +20,8 @@ export class InputSpan extends InputComponent {
 
     }
 
-    doRender = () => {
+    doRender = (props) => {
+        this.props = props;
 
         var state = this.helper.getState();
 

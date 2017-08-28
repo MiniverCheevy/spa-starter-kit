@@ -27,9 +27,7 @@ export class Pager extends React.Component<PagerProps, any>
         if (this.request != null && this.request.resetPaging)
             this.request.pageNumber = 1;
     };
-    componentWillReceiveProps  (newProps)  {
-        this.props = newProps;
-    }
+    
     public setup = () => {
         this.request = this.props.request;
         if (this.request.totalRecords == undefined) {
@@ -93,11 +91,11 @@ export class Pager extends React.Component<PagerProps, any>
     };
     render()
     {
-        var result = this.doRender();
+        var result = this.doRender(this.props);
         return result;
     }
-    doRender=()=> {
-        
+    doRender = (props) => {
+        this.props = props;        
         this.setup();
         var noRecords = <div id="norecords" ><h3 className="mdc-typography--body2">No records found</h3></div>;
         var pager = this.getPager();
