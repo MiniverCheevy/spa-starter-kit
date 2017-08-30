@@ -33,6 +33,7 @@ namespace Web
       Console.WriteLine($"Environment: {env.EnvironmentName}");
       this.Configuration = builder.Build();
       IOC.Settings = SettingsFactory.GetSettings(builder.Build());
+       updateDatabaseToLatestVersion(env);
     }
     public IConfigurationRoot Configuration { get; set; }
 
@@ -62,8 +63,7 @@ namespace Web
       }
 
       app.UseDefaultFiles();
-      app.UseStaticFiles();
-      updateDatabaseToLatestVersion(env);
+      app.UseStaticFiles();      
 
       app.UseMvcWithDefaultRoute();
     }

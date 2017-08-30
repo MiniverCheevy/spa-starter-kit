@@ -64,7 +64,6 @@ namespace Web
             //}
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            updateDatabaseToLatestVersion(env);
 
             app.UseMvcWithDefaultRoute();
         }
