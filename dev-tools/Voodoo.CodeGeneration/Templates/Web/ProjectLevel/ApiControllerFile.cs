@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.Rest;
 using Voodoo.CodeGeneration.Models.VisualStudio;
+using Voodoo.Infrastructure;
 using Voodoo.Messages;
 
 namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
@@ -83,7 +85,18 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
                 builder.AppendLine();
                 builder.AppendLine("[Route(\"api/[controller]\")]");
 
-                builder.AppendLine($"public class {resource.Name}Controller : ApiControllerBase");
+                var isBinary = resource.Verbs.Any(c => c.ResponseType == typeof(BinaryResponse));
+
+                if (isBinary)
+                    builder.AppendLine($"public class {resource.Name}Controller : FileController");
+                else
+                    builder.AppendLine($"public class {resource.Name}Controller : ApiControllerBase");
+
+                if (isBinary && (resource.Verbs.Count() > 1 || resource.Verbs.Any(c => c.Method != Verb.Get)))
+                {
+                    Vs.Helper.Log.Add(new LogEntry { Level = Logging.LogLevels.Info, Message = $"Typically a report resource should have only one get method, this is not the case for {resource.Name}, you may have some problems" });
+                }
+
                 builder.AppendLine("{");
                 foreach (var verb in resource.Verbs)
                 {
@@ -132,7 +145,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
             builder.AppendLine($" (state);");
             builder.AppendLine($"await pipeline.ExecuteAsync();");
 
-            builder.AppendLine($"return File(state.Response.Data, state.Response.ContentType, state.Response.FileName);");            
+            builder.AppendLine($"return HandleBinaryResponse(response);");
 
             builder.AppendLine("}");
         }
