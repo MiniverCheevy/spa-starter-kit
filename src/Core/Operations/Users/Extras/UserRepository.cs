@@ -7,9 +7,9 @@ namespace Core.Operations.Users.Extras
 {
     public class UserRepository
     {
-        private MainContext context;
+        private DatabaseContext context;
 
-        public UserRepository(MainContext context)
+        public UserRepository(DatabaseContext context)
         {
             this.context = context;
         }

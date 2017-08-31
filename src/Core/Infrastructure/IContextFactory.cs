@@ -4,7 +4,7 @@ namespace Core.Infrastructure
 {
     public interface IContextFactory
     {
-        MainContext GetContext();
+        DatabaseContext GetContext();
 
         string GetConnectionString();
     }

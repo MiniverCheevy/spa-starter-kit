@@ -38,7 +38,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             }
             output.AppendLine($"namespace {Namespace}");
             output.AppendLine("{");
-            output.AppendLine($"public class {Type.DetailName}");
+            output.AppendLine($"public class {Type.DetailMessageName}");
             output.AppendLine("{");
             foreach (var item in Type.DetailMessageProperties) {
                 foreach (var attr in item.Property.Attributes) {

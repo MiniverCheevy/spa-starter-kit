@@ -2,6 +2,7 @@
 using Core;
 using Core.Models.Scratch;
 using Core.Operations.Teams.Extras;
+using Core.Models.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Core.Operations.Teams
     public class TeamSaveCommand :CommandAsync<TeamDetail, NewItemResponse>
     {
         private bool isNew;
-        private MainContext context;
+        private DatabaseContext context;
         private IValidator validator = ValidationManager.GetDefaultValidatitor();
         public TeamSaveCommand(TeamDetail request) : base(request)
         {

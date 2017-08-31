@@ -81,36 +81,47 @@
     <Compile Include="Fakes\FakeContextFactory.cs" />
     <Compile Include="Fakes\FakeRequestContextProvider.cs" />
     <Compile Include="Fakes\TestFileSystemProvider.cs" />
+    <Compile Include="Operations\ApplicationSettings\ApplicationSettingAddCommandTests.cs" />
+    <Compile Include="Operations\ApplicationSettings\ApplicationSettingApplicationSettingDetailMappingTests.cs" />
+    <Compile Include="Operations\ApplicationSettings\ApplicationSettingApplicationSettingRowMappingTests.cs" />
+    <Compile Include="Operations\ApplicationSettings\ApplicationSettingQueryTests.cs" />
     <Compile Include="Operations\ApplicationSettings\ApplicationSettingTestHelper.cs" />
     <Compile Include="Operations\ApplicationSettings\ApplicationSettingDeleteCommandTests.cs" />
     <Compile Include="Operations\ApplicationSettings\ApplicationSettingUpdateCommandTests.cs" />
-    <Compile Include="Operations\BlobOfTexts\BlobOfTextMappingTests.cs" />
+    <Compile Include="Operations\BlobOfTexts\BlobOfTextBlobOfTextDetailMappingTests.cs" />
+    <Compile Include="Operations\BlobOfTexts\BlobOfTextBlobOfTextRowMappingTests.cs" />
     <Compile Include="Operations\Errors\ErrorMappingTests.cs" />
     <Compile Include="Operations\Members\MemberAddCommandTests.cs" />
-    <Compile Include="Operations\Members\MemberMappingTests.cs" />
+    <Compile Include="Operations\Members\MemberMemberDetailMappingTests.cs" />
+    <Compile Include="Operations\Members\MemberMemberRowMappingTests.cs" />
     <Compile Include="Operations\Members\MemberQueryTests.cs" />
     <Compile Include="Operations\Members\MemberTestHelper.cs" />
     <Compile Include="Operations\Members\MemberUpdateCommandTests.cs" />
     <Compile Include="Operations\Members\MemberDeleteCommandTests.cs" />
     <Compile Include="Operations\Projects\ProjectAddCommandTests.cs" />
     <Compile Include="Operations\Projects\ProjectDeleteCommandTests.cs" />
-    <Compile Include="Operations\Projects\ProjectMappingTests.cs" />
+    <Compile Include="Operations\Projects\ProjectProjectDetailMappingTests.cs" />
+    <Compile Include="Operations\Projects\ProjectProjectRowMappingTests.cs" />
     <Compile Include="Operations\Projects\ProjectQueryTests.cs" />
     <Compile Include="Operations\Projects\ProjectTestHelper.cs" />
     <Compile Include="Operations\Projects\ProjectUpdateCommandTests.cs" />
-    <Compile Include="Operations\Roles\RoleMappingTests.cs" />
+    <Compile Include="Operations\Roles\RoleRoleDetailMappingTests.cs" />
+    <Compile Include="Operations\Roles\RoleRoleRowMappingTests.cs" />
     <Compile Include="Operations\Teams\TeamAddCommandTests.cs" />
-    <Compile Include="Operations\Teams\TeamMappingTests.cs" />
     <Compile Include="Operations\Teams\TeamDeleteCommandTests.cs" />
     <Compile Include="Operations\Teams\TeamQueryTests.cs" />
+    <Compile Include="Operations\Teams\TeamTeamDetailMappingTests.cs" />
+    <Compile Include="Operations\Teams\TeamTeamRowMappingTests.cs" />
     <Compile Include="Operations\Teams\TeamTestHelper.cs" />
     <Compile Include="Operations\Teams\TeamUpdateCommandTests.cs" />
     <Compile Include="Operations\Users\UserAddCommandTests.cs" />
+    <Compile Include="Operations\Users\UserAppPrincipalMappingTests.cs" />
     <Compile Include="Operations\Users\UserDeleteCommandTests.cs" />
-    <Compile Include="Operations\Users\UserMappingTests.cs" />
     <Compile Include="Operations\Users\UserQueryTests.cs" />
     <Compile Include="Operations\Users\UserTestHelper.cs" />
     <Compile Include="Operations\Users\UserUpdateCommandTests.cs" />
+    <Compile Include="Operations\Users\UserUserDetailMappingTests.cs" />
+    <Compile Include="Operations\Users\UserUserRowMappingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +137,7 @@
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

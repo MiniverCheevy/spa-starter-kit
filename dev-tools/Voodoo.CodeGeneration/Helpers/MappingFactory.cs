@@ -59,20 +59,19 @@ namespace Voodoo.CodeGeneration.Helpers
                     includedTypeNames.Add(map.FullName);
                 }
             }
-            var messageType = Vs.Helper.FindType(type.MessageName);
+            var messageType = Vs.Helper.FindType(type.RowMessageName);
             var properties = messageType == null
                 ? type.MessageProperties
                 : messageType.buildGeneratedProperty(messageType.Properties.ToList());
-            addMapping(messageType, properties, type.MessageName);
+            addMapping(messageType, properties, type.RowMessageName);
 
-            if (type.HasDetailFlag)
-            {
-                var detailType = Vs.Helper.FindType(type.DetailName);
+
+                var detailType = Vs.Helper.FindType(type.DetailMessageName);
                 properties = detailType == null
                     ? type.DetailMessageProperties
                     : detailType.buildGeneratedProperty(detailType.Properties.ToList());
-                addMapping(detailType, properties, type.DetailName);
-            }
+                addMapping(detailType, properties, type.DetailMessageName);
+
 
             return mappings;
         }

@@ -13,9 +13,9 @@ using Voodoo;
 
 namespace Core.Context
 {
-    public partial class MainContext
+    public partial class DatabaseContext
     {
-        static MainContext()
+        static DatabaseContext()
         {
             // http://robsneuron.blogspot.nl/2013/11/entity-framework-upgrade-to-6.html
             var ensureDllIsCopied = SqlProviderServices.Instance;

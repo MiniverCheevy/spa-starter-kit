@@ -13,13 +13,12 @@ namespace Voodoo.CodeGeneration.Models.Reflection
     {
         public bool IsFake { get; set; }
         public string Namespace { get; set; }
-        public string DetailName { get; set; }
-        public string MessageName { get; set; }
+        public string RowMessageName { get; set; }
+        public string DetailMessageName { get; set; }
         public string Name { get; set; }
         public string PluralName { get; set; }
         public string CamelCaseName { get; set; }
         public bool HasId { get; set; }
-        public bool HasDetailFlag { get; set; } = true;
         public bool HasActiveFlag { get; set; }
         public bool HasSortOrder { get; set; }
         public PropertyFacade[] Properties { get; set; }
@@ -27,8 +26,7 @@ namespace Voodoo.CodeGeneration.Models.Reflection
         public bool HasName { get; set; }
         public List<GeneratedProperty> MessageProperties { get; set; }
         public List<GeneratedProperty> DetailMessageProperties { get; set; }
-        public string DetailQueryMapMethodName { get; set; }
-        public string DetailQueryMessageName { get; set; }
+        
 
         public TypeFacade(Type type)
         {
@@ -45,8 +43,8 @@ namespace Voodoo.CodeGeneration.Models.Reflection
             var pluralizer = PluralizationService.CreateService(CultureInfo.CurrentCulture);
             PluralName = pluralizer.Pluralize(Name);
             CamelCaseName = Name.Substring(0, 1).ToLower() + Name.Substring(1);
-            MessageName = $"{Name}Row";
-            DetailName = $"{Name}Detail";
+            RowMessageName = $"{Name}Row";
+            DetailMessageName = $"{Name}Detail";
             buildProperties();
         }
 
@@ -67,8 +65,6 @@ namespace Voodoo.CodeGeneration.Models.Reflection
             if (Properties.Any(c => c.Name == "SortOrder"))
                 HasSortOrder = true;
 
-            DetailQueryMessageName = HasDetailFlag ? DetailName : MessageName;
-            DetailQueryMapMethodName = HasDetailFlag ? "ToDetail" : "ToRow";
             if (Properties.Any(c => c.Name == "Id" && c.PropertyType == typeof(int)))
                 HasId = true;
             if (HasId && Properties.Any(c => c.Name == "Name"))

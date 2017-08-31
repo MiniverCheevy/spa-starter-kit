@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Voodoo;
 using Voodoo.Messages;
 using Voodoo.TestData;
+using Core.Models.Mappings;
 
 namespace Tests.Operations.Errors
 {

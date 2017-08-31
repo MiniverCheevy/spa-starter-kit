@@ -39,7 +39,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             }
             output.AppendLine($"namespace {Namespace}");
             output.AppendLine("{");
-            output.AppendLine($"public class {Name} : PagedResponse<{Type.MessageName}>");
+            output.AppendLine($"public class {Name} : PagedResponse<{Type.RowMessageName}>");
             
             output.AppendLine("{");
             output.AppendLine("}");

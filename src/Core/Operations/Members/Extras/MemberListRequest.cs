@@ -8,6 +8,7 @@ namespace Core.Operations.Members.Extras
 {
     public class MemberListRequest : PagedRequest
     {
-        public override string DefaultSortMember => "Name";}
+        public override string DefaultSortMember => "Name";
     }
-    
+}
+

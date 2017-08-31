@@ -2,6 +2,7 @@
 using Core;
 using Core.Models.Scratch;
 using Core.Operations.Members.Extras;
+using Core.Models.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Core.Operations.Members
     [Rest(Verb.Get, RestResources.Member)]
     public class MemberDetailQuery : QueryAsync<IdRequest,Response<MemberDetail>>
     {
-        private MainContext context;
+        private DatabaseContext context;
         private IValidator validator = ValidationManager.GetDefaultValidatitor();
         
         public MemberDetailQuery (IdRequest request) : base(request)

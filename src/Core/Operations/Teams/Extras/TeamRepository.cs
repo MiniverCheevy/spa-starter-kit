@@ -7,9 +7,9 @@ namespace Core.Operations.Teams.Extras
 {
     public class TeamRepository
     {
-        private MainContext context;
+        private DatabaseContext context;
         
-        public TeamRepository(MainContext context)
+        public TeamRepository(DatabaseContext context)
         {
             this.context = context;
         }

@@ -7,9 +7,9 @@ namespace Core.Operations.ApplicationSettings.Extras
 {
     public class ApplicationSettingRepository
     {
-        private MainContext context;
+        private DatabaseContext context;
         
-        public ApplicationSettingRepository(MainContext context)
+        public ApplicationSettingRepository(DatabaseContext context)
         {
             this.context = context;
         }

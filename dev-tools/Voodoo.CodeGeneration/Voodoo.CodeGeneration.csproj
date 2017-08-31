@@ -134,7 +134,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\Cleaner.cs" />
     <Compile Include="Helpers\CodeFormatter.cs" />
     <Compile Include="Helpers\CommandHelper.cs" />
     <Compile Include="Helpers\CommandLineParser.cs" />
@@ -152,8 +151,6 @@
     <Compile Include="Helpers\StartupHelper.cs" />
     <Compile Include="Helpers\TypeComparer.cs" />
     <Compile Include="Helpers\ClientModelFactory.cs" />
-    <Compile Include="Helpers\VisualStudioAutomator.cs" />
-    <Compile Include="Helpers\ZipHelper.cs" />
     <Compile Include="Infrastructure\GeneratesAttribute.cs" />
     <Compile Include="Infrastructure\CodeFileComparer.cs" />
     <Compile Include="Batches\Batch.cs" />
@@ -195,37 +192,12 @@
     <Compile Include="Projects\ToolsProjects\ToolsProject.cs" />
     <Compile Include="Projects\ToolsProjects\ToolsProject.VisualStudioItemType.cs" />
     <Compile Include="Templates\Logic\OperationLevel\DeleteCommandFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\DeleteCommandTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DeleteCommandTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\Logic\OperationLevel\DetailQueryFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\DetailQueryTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DetailQueryTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\Logic\OperationLevel\Extras\DetailFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\Extras\ExtensionFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\Extras\ExtensionTemplate.cs">
-      <DependentUpon>ExtensionTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\Logic\OperationLevel\Extras\MessagesTemplate.cs">
-      <DependentUpon>MessagesTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Logic\OperationLevel\Extras\MessagesFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\Extras\RowFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\SaveCommandFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\SaveCommandTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SaveCommandTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\PCL\ServiceFile.cs" />
     <Compile Include="Templates\PCL\ServiceTemplate.cs">
       <DependentUpon>ServiceTemplate.tt</DependentUpon>
@@ -246,11 +218,6 @@
     </Compile>
     <Compile Include="Templates\Tests\DeleteCommandTestsFile.cs" />
     <Compile Include="Templates\Tests\MappingTestsFile.cs" />
-    <Compile Include="Templates\Tests\MappingTestsTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MappingTestsTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\Tests\TestHelperSaveFile.cs" />
     <Compile Include="Templates\Tests\TestHelperSaveTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -293,17 +260,6 @@
     <Compile Include="Helpers\VisualStudioHelper.cs" />
     <Compile Include="Helpers\VSHelper.cs" />
     <Compile Include="Templates\Logic\OperationLevel\Extras\RepositoryFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\Extras\RepositoryTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RepositoryTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\Logic\OperationLevel\Extras\MessageFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\Extras\MessageTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MessageTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\Logic\OperationLevel\Extras\ListResponseFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\ListQueryFile.cs" />
     <Compile Include="Templates\Logic\OperationLevel\Extras\ListRequestFile.cs" />
@@ -344,11 +300,6 @@
       <DependentUpon>AddCommandTestsTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Tests\QueryTestsFile.cs" />
-    <Compile Include="Templates\Logic\OperationLevel\Extras\MapperTemplate.cs">
-      <DependentUpon>MapperTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Logic\OperationLevel\Extras\MapperFile.cs" />
     <Compile Include="Templates\Tests\UpdateSaveCommandTestsFile.cs" />
     <Compile Include="Templates\Tests\UpdateSaveCommandTestsTemplate.cs">
@@ -407,26 +358,6 @@
     <Content Include="ReadMe.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Logic\OperationLevel\DeleteCommandTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DeleteCommandTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\OperationLevel\DetailQueryTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DetailQueryTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\OperationLevel\Extras\ExtensionTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ExtensionTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\OperationLevel\Extras\MessagesTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>MessagesTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\OperationLevel\SaveCommandTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>SaveCommandTemplate.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\PCL\ServiceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ServiceTemplate.cs</LastGenOutput>
@@ -443,10 +374,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DeleteCommandTestsTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Tests\MappingTestsTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>MappingTestsTemplate.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\Tests\TestHelperSaveTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TestHelperSaveTemplate.cs</LastGenOutput>
@@ -462,16 +389,6 @@
     <Content Include="Templates\Tests\TestTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TestTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\OperationLevel\_fileTemplate.txt" />
-    <Content Include="Templates\Logic\OperationLevel\_templateTemplate.txt" />
-    <Content Include="Templates\Logic\OperationLevel\Extras\RepositoryTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>RepositoryTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\OperationLevel\Extras\MessageTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>MessageTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Logic\ProjectLevel\NameValuePairs\ListsEnumTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -496,12 +413,6 @@
     <Content Include="Templates\Tests\AddCommandTestsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AddCommandTestsTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Logic\ProjectLevel\_fileTemplate.txt" />
-    <Content Include="Templates\Logic\ProjectLevel\_templateTemplate.txt" />
-    <Content Include="Templates\Logic\OperationLevel\Extras\MapperTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>MapperTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Tests\UpdateSaveCommandTestsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

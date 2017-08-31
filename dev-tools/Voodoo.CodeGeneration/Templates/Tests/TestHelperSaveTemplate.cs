@@ -38,14 +38,14 @@ foreach (var item in this.File.UsingStatements){
             this.Write("\r\n    public class ");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Name));
             this.Write(" \r\n    {\r\n         public static ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.DetailQueryMessageName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.DetailMessageName));
             this.Write(" GetNew");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.Name));
             this.Write("()\r\n        {\r\n            var request= new ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.DetailQueryMessageName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.DetailMessageName));
             this.Write("();\r\n\t\t\tTestHelper.Randomizer.Randomize(request);\r\n\t\t\treturn request;\t\t\t\t\t\t\r\n    " +
                     "    }\r\n\r\n\t\tpublic static async Task<");
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.DetailQueryMessageName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.DetailMessageName));
             this.Write("> GetExisting");
             this.Write(this.ToStringHelper.ToStringWithCulture(this.File.Type.Name));
             this.Write("()\r\n        {\r\n            var request= GetNew");

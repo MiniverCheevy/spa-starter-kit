@@ -8,7 +8,7 @@ namespace Core.Migrations
 {
     internal class TestDataBuilder
     {
-        internal void Build(MainContext context)
+        internal void Build(DatabaseContext context)
         {
             
             var dev1 = new Member

@@ -1,28 +1,28 @@
-﻿using Voodoo.CodeGeneration.Helpers;
+﻿using System.Text;
+using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 
 namespace Voodoo.CodeGeneration.Templates.Tests
 {
-    public partial class MappingTestsTemplate
-    {
-        public MappingTestsFile File { get; set; }
-    }
 
     public class MappingTestsFile : TypedTestFile
     {
-        public MappingTestsTemplate Template { get; set; }
+        private MappingFactory.Mapping map;
 
-        public MappingTestsFile(ProjectFacade project, TypeFacade type, ProjectFacade logic)
+        public MappingTestsFile(ProjectFacade project, TypeFacade type, ProjectFacade logic, MappingFactory.Mapping map)
             : base(project, type)
         {
-            Template = new MappingTestsTemplate {File = this};
-            Name = string.Format("{0}MappingTests", Name);
+            this.map = map;
+            Name = $"{map.ModelTypeName}{map.MessageTypeName}MappingTests";
+
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName);
             PageSpecificUsingStatements.Add(logic.RootNamespace + ".Operations." + PluralName + ".Extras");
             PageSpecificUsingStatements.Add(
-                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+        $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
+            PageSpecificUsingStatements.Add(
+        $"{Vs.Helper.Solution.DataProject.RootNamespace}.Models.Mappings");
             PageSpecificUsingStatements.Add(type.SystemType.Namespace);
             PageSpecificUsingStatements.Add("System");
             PageSpecificUsingStatements.Add("System.Collections.Generic");
@@ -34,17 +34,61 @@ namespace Voodoo.CodeGeneration.Templates.Tests
             PageSpecificUsingStatements.Add("Voodoo.Messages");
             PageSpecificUsingStatements.Add("Voodoo.TestData");
 
-            
-        }
 
-        public override string GetFileContents()
-        {
-            return Template.TransformText();
         }
 
         public override string GetFolder()
         {
-            return string.Format(@"Operations\{0}", PluralName);
+            return $@"Operations\{PluralName}";
+        }
+        public override string GetFileContents()
+        {
+            var output = new StringBuilder();
+            foreach (var item in UsingStatements)
+            {
+                output.AppendLine($"using {item};");
+            }
+            output.AppendLine($"namespace {Namespace}");
+            output.AppendLine("{");
+            output.AppendLine(Tests.ClassLevelAttribute);
+            output.AppendLine($"public class {Name}");
+            output.AppendLine("{");
+            output.AppendLine("");
+            output.AppendLine($"private Randomizer randomizer = new Randomizer();  ");
+            output.AppendLine($"   ");
+            output.AppendLine($"private {Type.Name} arrange()");
+            output.AppendLine("{ ");
+            output.AppendLine($"TestHelper.SetRandomDataSeed(1);");
+            output.AppendLine($"var source = new {Type.Name}();");
+            output.AppendLine($"TestHelper.Randomizer.Randomize(source);");
+            output.AppendLine($"return source; ");
+            output.AppendLine("} ");
+            output.AppendLine("");
+            output.AppendLine(Tests.TestLevelAttribute);
+            output.AppendLine($"public void Map_MapBack_PropertiesTheSame()");
+            output.AppendLine("{");
+            output.AppendLine($"var testHelper =     ");
+            output.AppendLine($"new MappingTesterHelper<{map.ModelTypeName}, {map.MessageTypeName}>();    ");
+            output.AppendLine($"var source = arrange();");
+            output.AppendLine($"var message = source.To{map.MessageTypeName}();       ");
+            output.AppendLine($"var target = new {Type.Name}();");
+            output.AppendLine($"target.UpdateFrom(message);    ");
+            if (Type.HasId)
+            {             
+                output.AppendLine("testHelper.Compare(source, message, new string[]{});");
+                output.AppendLine("testHelper.Compare(target, message, new[] { \"Id\" }); ");
+            }
+            else
+            {
+                output.AppendLine("testHelper.Compare(source, message, new string[]{}); ");
+                output.AppendLine("testHelper.Compare(target, message, new string[]{}); ");                
+            }
+            output.AppendLine("}");
+            output.AppendLine("}");
+            output.AppendLine("}");
+            return output.ToString();
         }
     }
 }
+
+

@@ -11,10 +11,10 @@ using Voodoo.Validation.Infrastructure;
 
 namespace Core.Operations.Users
 {
-    [Rest(Verb.Delete, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
+    [Rest(Verb.Delete, RestResources.User, Roles = new[] {RoleNames.Administrator})]
     public class UserDeleteCommand : CommandAsync<IdRequest, Response>
     {
-        protected MainContext context;
+        protected DatabaseContext context;
         private AppPrincipal currentUser;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 

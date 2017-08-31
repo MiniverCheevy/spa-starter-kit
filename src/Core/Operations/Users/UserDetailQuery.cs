@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Context;
 using Core.Models.Identity;
+using Core.Models.Mappings;
 using Core.Operations.Users.Extras;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
@@ -12,10 +13,10 @@ using Voodoo.Validation.Infrastructure;
 
 namespace Core.Operations.Users
 {
-    [Rest(Verb.Get, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
+    [Rest(Verb.Get, RestResources.User, Roles = new[] {RoleNames.Administrator})]
     public class UserDetailQuery : QueryAsync<IdRequest, Response<UserDetail>>
     {
-        private MainContext context;
+        private DatabaseContext context;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
         public UserDetailQuery(IdRequest request) : base(request)

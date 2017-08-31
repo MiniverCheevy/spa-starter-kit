@@ -1,6 +1,7 @@
 using Core;
 using Core.Models;
 using Core.Operations.ApplicationSettings.Extras;
+using Core.Models.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Core.Operations.ApplicationSettings
     [Rest(Verb.Get, RestResources.ApplicationSettingList)]
     public class ApplicationSettingListQuery:QueryAsync<ApplicationSettingListRequest,ApplicationSettingListResponse>
     {
-        private MainContext context;
+        private DatabaseContext context;
         private IValidator validator = ValidationManager.GetDefaultValidatitor();
         public ApplicationSettingListQuery (ApplicationSettingListRequest request) : base(request)
         {

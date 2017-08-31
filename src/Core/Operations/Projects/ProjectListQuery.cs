@@ -1,6 +1,7 @@
 using Core;
 using Core.Models.Scratch;
 using Core.Operations.Projects.Extras;
+using Core.Models.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Core.Operations.Projects
     [Rest(Verb.Get, RestResources.ProjectList)]
     public class ProjectListQuery:QueryAsync<ProjectListRequest,ProjectListResponse>
     {
-        private MainContext context;
+        private DatabaseContext context;
         private IValidator validator = ValidationManager.GetDefaultValidatitor();
         public ProjectListQuery (ProjectListRequest request) : base(request)
         {

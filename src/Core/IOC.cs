@@ -22,7 +22,7 @@ namespace Core
             return result;
         }
 
-        public static MainContext GetContext()
+        public static DatabaseContext GetContext()
         {
             return ContextFactory.GetContext();
         }

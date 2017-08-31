@@ -16,9 +16,9 @@ namespace Fernweh.Tests.Fakes
         }
 
 
-        MainContext IContextFactory.GetContext()
+        DatabaseContext IContextFactory.GetContext()
         {
-            return new MainContext(connection);
+            return new DatabaseContext(connection);
         }
 
 

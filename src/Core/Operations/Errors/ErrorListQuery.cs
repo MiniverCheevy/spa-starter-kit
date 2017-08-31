@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Context;
+using Core.Models.Mappings;
 using Core.Operations.Errors.Extras;
 using Voodoo;
 using Voodoo.Infrastructure;
@@ -11,7 +12,7 @@ namespace Core.Operations.Errors
     [Rest(Verb.Get, RestResources.ErrorList)]
     public class ErrorListQuery : QueryAsync<ErrorListRequest, ErrorListResponse>
     {
-        private MainContext context;
+        private DatabaseContext context;
 
         public ErrorListQuery(ErrorListRequest request) : base(request)
         {

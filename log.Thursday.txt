@@ -1,19 +1,82 @@
-Thursday, August 3, 2017 8:23:46 AM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
+Thursday, August 31, 2017 8:46:44 AM
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
+   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
+   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
+   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
+   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
+   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
+   at Voodoo.ActionHandler.Execute[T](Func`1 action)
 **********************************************************
-Thursday, August 3, 2017 8:23:46 AM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
+Thursday, August 31, 2017 8:47:11 AM
+System.AggregateException: One or more errors occurred. ---> System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Collections.Generic.List`1.Add(T item)
+   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.writeFile(CodeFile file) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 191
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass31_0`2.<ForEachWorker>b__0(Int32 i)
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass17_0`1.<ForWorker>b__1()
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.InnerInvokeWithArg(Task childTask)
+   at System.Threading.Tasks.Task.<>c__DisplayClass176_0.<ExecuteSelfReplicating>b__0(Object )
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at System.Threading.Tasks.Parallel.ForWorker[TLocal](Int32 fromInclusive, Int32 toExclusive, ParallelOptions parallelOptions, Action`1 body, Action`2 bodyWithState, Func`4 bodyWithLocal, Func`1 localInit, Action`1 localFinally)
+   at System.Threading.Tasks.Parallel.ForEachWorker[TSource,TLocal](IList`1 list, ParallelOptions parallelOptions, Action`1 body, Action`2 bodyWithState, Action`3 bodyWithStateAndIndex, Func`4 bodyWithStateAndLocal, Func`5 bodyWithEverything, Func`1 localInit, Action`1 localFinally)
+   at System.Threading.Tasks.Parallel.ForEachWorker[TSource,TLocal](IEnumerable`1 source, ParallelOptions parallelOptions, Action`1 body, Action`2 bodyWithState, Action`3 bodyWithStateAndIndex, Func`4 bodyWithStateAndLocal, Func`5 bodyWithEverything, Func`1 localInit, Action`1 localFinally)
+   at System.Threading.Tasks.Parallel.ForEach[TSource](IEnumerable`1 source, Action`1 body)
+   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.WriteFiles() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 173
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 42
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 28
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
+   at Voodoo.Operations.Executor`2.Execute()
+---> (Inner Exception #0) System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Collections.Generic.List`1.Add(T item)
+   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.writeFile(CodeFile file) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 191
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass31_0`2.<ForEachWorker>b__0(Int32 i)
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass17_0`1.<ForWorker>b__1()
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.InnerInvokeWithArg(Task childTask)
+   at System.Threading.Tasks.Task.<>c__DisplayClass176_0.<ExecuteSelfReplicating>b__0(Object )<---
+
+---> (Inner Exception #1) System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Collections.Generic.List`1.Add(T item)
+   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.writeFile(CodeFile file) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 191
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass31_0`2.<ForEachWorker>b__0(Int32 i)
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass17_0`1.<ForWorker>b__1()
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.InnerInvokeWithArg(Task childTask)
+   at System.Threading.Tasks.Task.<>c__DisplayClass176_0.<ExecuteSelfReplicating>b__0(Object )<---
+
+---> (Inner Exception #2) System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Collections.Generic.List`1.Add(T item)
+   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.writeFile(CodeFile file) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 191
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass31_0`2.<ForEachWorker>b__0(Int32 i)
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass17_0`1.<ForWorker>b__1()
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.InnerInvokeWithArg(Task childTask)
+   at System.Threading.Tasks.Task.<>c__DisplayClass176_0.<ExecuteSelfReplicating>b__0(Object )<---
+
+---> (Inner Exception #3) System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.Collections.Generic.List`1.Add(T item)
+   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.writeFile(CodeFile file) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 191
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass31_0`2.<ForEachWorker>b__0(Int32 i)
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass17_0`1.<ForWorker>b__1()
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.InnerInvokeWithArg(Task childTask)
+   at System.Threading.Tasks.Task.<>c__DisplayClass176_0.<ExecuteSelfReplicating>b__0(Object )<---
+
+**********************************************************
+Thursday, August 31, 2017 8:47:11 AM
+Details for 'One or more errors occurred.' exception:
 Code to reproduce error:
 
 var request= new StartupRequest {
-     Path="C:\Dev\spa\tools",
+     Path="C:\Dev\spa\spa-starter-kit\tools",
      Arguments= new String[] {
-          "C:\Dev\spa\src\React/../../tools/spawn",
-          "web",
+          "C:\Dev\spa\spa-starter-kit\tools\Spawn.exe",
+          "message",
+          "applicationsetting",
      },
 },
 ;
@@ -21,90 +84,41 @@ var response = new StartupFromConfig(request).Execute();
 Assert.AreEqual(true, response.IsOk);
 
 **********************************************************
-Thursday, August 3, 2017 8:38:59 AM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
+Thursday, August 31, 2017 8:48:03 AM
+System.ArgumentException: The reference node is not a child of this node.
+   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
+   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
+   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
+   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
+   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
+   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
+   at Voodoo.ActionHandler.Execute[T](Func`1 action)
+**********************************************************
+Thursday, August 31, 2017 8:48:03 AM
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
+   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
+   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
+   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
+   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
+   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
+   at Voodoo.ActionHandler.Execute[T](Func`1 action)
+**********************************************************
+Thursday, August 31, 2017 8:50:12 AM
+System.Exception: Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn
+   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 28
+   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Thursday, August 3, 2017 8:38:59 AM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
+Thursday, August 31, 2017 8:50:12 AM
+Details for 'Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 
 var request= new StartupRequest {
-     Path="C:\Dev\spa\tools",
+     Path="C:\Dev\spa\spa-starter-kit\tools",
      Arguments= new String[] {
-          "C:\Dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Thursday, August 3, 2017 11:02:58 AM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Thursday, August 3, 2017 11:02:58 AM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Thursday, August 3, 2017 11:05:38 AM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Thursday, August 3, 2017 11:05:38 AM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Thursday, August 3, 2017 11:07:50 AM
-System.Exception: Could not find command c:\dev\spa\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Thursday, August 3, 2017 11:07:50 AM
-Details for 'Could not find command c:\dev\spa\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\src\React/../../tools/spawn",
+          "C:\Dev\spa\spa-starter-kit\src\React/../../tools/spawn",
           "web",
      },
 },

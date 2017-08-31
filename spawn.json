@@ -5,7 +5,7 @@
   "WebProjectPath": "\\src\\React\\React.csproj",
   "TestProjectPath": "\\src\\Tests\\Tests.csproj",
   "DataProjectPath": "\\src\\Core\\Core.csproj",
-  "ContextTypeName": "Core.Context.MainContext",
+  "ContextTypeName": "Core.Context.DatabaseContext",
   "JsAppPathFromWebProjectRoot": "ClientApp",
   "AddToSourceControl": false,
   "SourceControlprovider": "tfexe",

@@ -41,8 +41,6 @@ namespace Voodoo.CodeGeneration.Helpers
                 if (project.Files.Any())
                     project.WriteFiles();
 
-            Vs.Helper.WriteScratchFiles();
-
             Vs.Helper.UnloadAllProjects();
         }
 

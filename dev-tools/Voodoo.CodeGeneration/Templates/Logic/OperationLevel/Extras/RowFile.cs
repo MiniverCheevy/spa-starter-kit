@@ -40,7 +40,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             }
             output.AppendLine($"namespace {Namespace}");
             output.AppendLine("{");
-            output.AppendLine($"public class {Type.MessageName}");
+            output.AppendLine($"public class {Type.RowMessageName}");
             output.AppendLine("{");
             foreach (var item in Type.MessageProperties)
             {

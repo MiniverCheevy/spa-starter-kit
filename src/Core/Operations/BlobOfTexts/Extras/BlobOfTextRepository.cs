@@ -7,9 +7,9 @@ namespace Core.Operations.BlobOfTexts.Extras
 {
     public class BlobOfTextRepository
     {
-        private MainContext context;
+        private DatabaseContext context;
         
-        public BlobOfTextRepository(MainContext context)
+        public BlobOfTextRepository(DatabaseContext context)
         {
             this.context = context;
         }

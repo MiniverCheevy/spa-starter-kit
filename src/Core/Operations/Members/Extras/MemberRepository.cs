@@ -7,9 +7,9 @@ namespace Core.Operations.Members.Extras
 {
     public class MemberRepository
     {
-        private MainContext context;
+        private DatabaseContext context;
         
-        public MemberRepository(MainContext context)
+        public MemberRepository(DatabaseContext context)
         {
             this.context = context;
         }

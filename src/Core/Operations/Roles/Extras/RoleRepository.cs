@@ -7,9 +7,9 @@ namespace Core.Operations.Roles.Extras
 {
     public class RoleRepository
     {
-        private MainContext context;
+        private DatabaseContext context;
         
-        public RoleRepository(MainContext context)
+        public RoleRepository(DatabaseContext context)
         {
             this.context = context;
         }

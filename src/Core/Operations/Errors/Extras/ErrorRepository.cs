@@ -4,9 +4,9 @@ namespace Core.Operations.Errors.Extras
 {
     public class ErrorRepository
     {
-        private MainContext context;
+        private DatabaseContext context;
 
-        public ErrorRepository(MainContext context)
+        public ErrorRepository(DatabaseContext context)
         {
             this.context = context;
         }

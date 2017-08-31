@@ -11,7 +11,7 @@ namespace Core
         public const string ApplicationSetting = "ApplicationSetting";
         public const string ApplicationSettingList = "ApplicationSettingList";
         public const string CurrentUser = "CurrentUser";
-        public const string ErrorDetail = "ErrorDetail";
+        public const string Error = "Error";
         public const string ErrorList = "ErrorList";
         public const string Lists = "Lists";
         public const string Member = "Member";
@@ -20,10 +20,12 @@ namespace Core
         public const string Project = "Project";
         public const string ProjectList = "ProjectList";
         public const string Team = "Team";
-        public const string TeamDetail = "TeamDetail";
         public const string TeamList = "TeamList";
-        public const string Teams = "Teams";
-        public const string UserDetail = "UserDetail";
+        public const string TestModel = "TestModel";
+        public const string TestModelDetail = "TestModelDetail";
+        public const string TestModelList = "TestModelList";
+        public const string TestModels = "TestModels";
+        public const string User = "User";
         public const string UserList = "UserList";
     }
 }

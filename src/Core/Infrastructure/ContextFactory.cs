@@ -4,9 +4,9 @@ namespace Core.Infrastructure
 {
     public class ContextFactory : IContextFactory
     {
-        public MainContext GetContext()
+        public DatabaseContext GetContext()
         {
-            return new MainContext(IOC.Settings.DefaultConnectionString);
+            return new DatabaseContext(IOC.Settings.DefaultConnectionString);
         }
 
         public string GetConnectionString()

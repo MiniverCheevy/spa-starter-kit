@@ -2,6 +2,7 @@
 using Core;
 using Core.Models.Scratch;
 using Core.Operations.Members.Extras;
+using Core.Models.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Core.Operations.Members
     [Rest(Verb.Delete, RestResources.Member)]
     public class MemberDeleteCommand :CommandAsync<IdRequest,Response>
     {
-        private MainContext context;
+        private DatabaseContext context;
         private IValidator validator = ValidationManager.GetDefaultValidatitor();
         
         public MemberDeleteCommand(IdRequest request) : base(request)

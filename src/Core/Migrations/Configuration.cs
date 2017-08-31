@@ -6,27 +6,27 @@ using Voodoo;
 
 namespace Core.Migrations
 {
-    public sealed class Configuration : DbMigrationsConfiguration<MainContext>
+    public sealed class Configuration : DbMigrationsConfiguration<DatabaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(MainContext context)
+        protected override void Seed(DatabaseContext context)
         {
             addRolesAndUsers(context);
             addTestData(context);
         }
 
-        private void addTestData(MainContext context)
+        private void addTestData(DatabaseContext context)
         {
 #if DEBUG
             new TestDataBuilder().Build(context);
 #endif
         }
 
-        private static void addRolesAndUsers(MainContext context)
+        private static void addRolesAndUsers(DatabaseContext context)
         {
             var roles = typeof(Roles).ToINameIdPairList();
             Role admin = null;

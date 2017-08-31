@@ -1,6 +1,7 @@
 using Core;
 using Core.Models.Scratch;
 using Core.Operations.Members.Extras;
+using Core.Models.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,11 @@ using System.Data.Entity;
 namespace Core.Operations.Members
 {
     [Rest(Verb.Get, RestResources.MemberList)]
-    public class MemberListQuery : QueryAsync<MemberListRequest, MemberListResponse>
+    public class MemberListQuery:QueryAsync<MemberListRequest,MemberListResponse>
     {
-        private MainContext context;
+        private DatabaseContext context;
         private IValidator validator = ValidationManager.GetDefaultValidatitor();
-        public MemberListQuery(MemberListRequest request) : base(request)
+        public MemberListQuery (MemberListRequest request) : base(request)
         {
         }
         protected override async Task<MemberListResponse> ProcessRequestAsync()
@@ -29,9 +30,10 @@ namespace Core.Operations.Members
             {
                 var query = context.Members.AsNoTracking().AsQueryable();
                 var data = await query.ToPagedResponseAsync(request, c => c.ToMemberRow());
-                response.From(data, c => c);
+                response.From(data, c=>c);
             }
             return response;
         }
     }
 }
+

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Core.Context;
 using Core.Identity;
 using Core.Models.Identity;
+using Core.Models.Mappings;
 using Core.Operations.Lists;
 using Core.Operations.Users.Extras;
 using Voodoo;
@@ -15,11 +16,11 @@ using Voodoo.Validation.Infrastructure;
 
 namespace Core.Operations.Users
 {
-    [Rest(Verb.Put, RestResources.UserDetail, Roles = new[] {RoleNames.Administrator})]
+    [Rest(Verb.Put, RestResources.User, Roles = new[] {RoleNames.Administrator})]
     public class UserSaveCommand : CommandAsync<UserDetail, NewItemResponse>
     {
         private List<Role> allRoles;
-        private MainContext context;
+        private DatabaseContext context;
         private bool isNew;
         private User model;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();

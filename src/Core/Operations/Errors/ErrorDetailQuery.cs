@@ -9,10 +9,10 @@ using Voodoo.Operations.Async;
 
 namespace Core.Operations.Errors
 {
-    [Rest(Verb.Get, RestResources.ErrorDetail)]
+    [Rest(Verb.Get, RestResources.Error)]
     public class ErrorDetailQuery : QueryAsync<IdRequest, Response<ErrorDetail>>
     {
-        private MainContext context;
+        private DatabaseContext context;
 
         public ErrorDetailQuery(IdRequest request) : base(request)
         {

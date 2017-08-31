@@ -149,18 +149,6 @@ namespace Voodoo.CodeGeneration.Helpers
         internal void UnloadAllProjects()
         {
             //ProjectCollection.GlobalProjectCollection.UnloadAllProjects();
-        }
-
-        internal void WriteScratchFiles()
-        {
-            var files = ScratchFiles.Distinct(new CodeFileComparer()).ToList();
-
-            foreach (var file in files)
-            {
-                var text = file.GetFileContents();
-                IoNic.WriteFile(text, file.FullPath);
-                VisualStudioAutomator.OpenFileInVisualStudio(file);
-            }
-        }
+        }     
     }
 }

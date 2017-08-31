@@ -20,12 +20,18 @@ namespace Voodoo.CodeGeneration.Batches.Logics
         {
             data.AddFile(new DetailFile(data, type));
             data.AddFile(new RowFile(data, type));
-            logic.AddFile(new RepositoryFile(logic, type));
-            logic.AddFile(new MapperFile(logic, type, models));
-            logic.AddFile(new ExtensionFile(logic, type));
+            logic.AddFile(new RepositoryFile(logic, type));                        
             data.AddFile(new MessagesFile(data, type));
 
-            tests?.AddFile(new MappingTestsFile(tests, type, logic));
+            var mappings =  MappingFactory.GetMappings(type, logic, models);
+            mappings.ForEach(c => logic.AddFile(new MapperFile(logic, type, c)));
+            logic.AddFile(new ExtensionFile(logic, type, mappings));
+
+            if (tests != null)
+            {
+                mappings.ForEach(c => tests.AddFile(new MappingTestsFile(tests, type,logic, c)));
+            }
+            
             if (Vs.Helper.Solution.ContextType != null)
                 addNameValuePairs();
         }

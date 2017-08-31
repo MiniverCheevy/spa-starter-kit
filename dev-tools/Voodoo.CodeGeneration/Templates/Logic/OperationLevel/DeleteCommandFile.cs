@@ -1,30 +1,25 @@
-﻿using Voodoo.CodeGeneration.Helpers;
+﻿using System.Text;
+using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 
 namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
 {
-    public partial class DeleteCommandTemplate
-    {
-        public DeleteCommandFile File { get; set; }
-    }
-
     public class DeleteCommandFile : TypedCodeFile
     {
-        public DeleteCommandTemplate Template { get; set; }
         public bool UseSoftDelete { get; set; }
 
         public DeleteCommandFile(ProjectFacade project, TypeFacade type)
             : base(project, type)
         {
-            Template = new DeleteCommandTemplate {File = this};
-            Name = string.Format("{0}DeleteCommand", Name);
+            Name = $"{Name}DeleteCommand";
             PageSpecificUsingStatements.Add(type.Namespace);
             PageSpecificUsingStatements.Add($"{Namespace}.Extras");
             PageSpecificUsingStatements.Add(
                 $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
-
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Models.Mappings");
 
             PageSpecificUsingStatements.Add("System");
             PageSpecificUsingStatements.Add("System.Collections.Generic");
@@ -45,14 +40,56 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             }
         }
 
-        public override string GetFileContents()
-        {
-            return Template.TransformText();
-        }
-
         public override string GetFolder()
         {
-            return string.Format(@"Operations\{0}", PluralName);
+            return $@"Operations\{PluralName}";
+        }
+        public override string GetFileContents()
+        {
+            var output = new StringBuilder();
+            foreach (var item in UsingStatements)
+            {
+                output.AppendLine($"using {item};");
+            }
+            output.AppendLine($"namespace {Namespace}");
+            output.AppendLine("{");
+            output.AppendLine($"[Rest(Verb.Delete, RestResources.{Type.Name})]");
+            output.AppendLine($"public class {Name} :CommandAsync<IdRequest,Response>");
+            output.Append("{");
+            if (HasContext)
+            {
+                output.AppendLine($"private {ContextName} context;");
+            }
+            output.AppendLine("private IValidator validator = ValidationManager.GetDefaultValidatitor();");
+            output.AppendLine($"public {Name}(IdRequest request) : base(request)");
+            output.AppendLine("{");
+            output.AppendLine("}");
+
+            output.AppendLine($"protected override async Task<Response> ProcessRequestAsync()");
+            output.AppendLine(" {");
+            if (HasContext && Type.HasId)
+            {
+                output.AppendLine($"using(context = IOC.GetContext())");
+                output.AppendLine("{");
+                output.AppendLine($"	var model = await context.{Type.PluralName}");
+                output.AppendLine($"						.FirstOrDefaultAsync(c=>c.Id == request.Id);");
+                output.AppendLine($"model.ThrowIfNull({Type.Name}Messages.NotFound);");
+
+                if (UseSoftDelete)
+                    output.AppendLine($"	model.IsActive = false;");
+                else
+                    output.AppendLine($"	context.{Type.PluralName}.Remove(model);");
+
+                output.AppendLine($"	response.NumberOfRowsEffected = await context.SaveChangesAsync();");
+                output.AppendLine("}");
+                output.AppendLine($"response.Message = {Type.Name}Messages.DeleteOk;");
+                output.AppendLine($"return response;");
+                output.Append("}");
+            }
+
+            output.AppendLine("}");
+            output.AppendLine("}");
+            return output.ToString();
         }
     }
 }

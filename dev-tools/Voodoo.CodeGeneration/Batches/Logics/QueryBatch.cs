@@ -42,8 +42,7 @@ namespace Voodoo.CodeGeneration.Batches.Logics
             if (tests == null)
                 return;
 
-            tests.AddFile(new QueryTestsFile(tests, type, logic));
-            tests.AddFile(new MappingTestsFile(tests, type, logic));
+            tests.AddFile(new QueryTestsFile(tests, type, logic));            
             tests.AddFile(new TestHelperFile(tests, type, logic));
         }
     }

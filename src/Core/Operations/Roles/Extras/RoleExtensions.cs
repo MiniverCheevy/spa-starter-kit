@@ -5,7 +5,7 @@ namespace Core.Operations.Roles.Extras
 {
     public  static partial class RoleExtensions
     {
-        public static RoleRepository RoleRepository(this MainContext context)
+        public static RoleRepository RoleRepository(this DatabaseContext context)
         {
             return new RoleRepository(context);
         }

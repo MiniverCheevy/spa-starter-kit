@@ -19,7 +19,7 @@ namespace Core.Operations.Lists
 {
     public class ListsHelper
     {
-        public async Task<List<IListItem>> GetList(MainContext context, Lists list, bool includeInactive = false)
+        public async Task<List<IListItem>> GetList(DatabaseContext context, Lists list, bool includeInactive = false)
         {
             var response = new List<IListItem>();
             var items = new List<ListItem>();
@@ -85,7 +85,7 @@ namespace Core.Operations.Lists
             return response;
         }
         
-        public async Task<ListsResponse> GetLists(MainContext context, ListsRequest request)
+        public async Task<ListsResponse> GetLists(DatabaseContext context, ListsRequest request)
         {
             Type enumType=null;
             var response = new ListsResponse();

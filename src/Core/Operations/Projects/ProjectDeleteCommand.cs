@@ -2,6 +2,7 @@
 using Core;
 using Core.Models.Scratch;
 using Core.Operations.Projects.Extras;
+using Core.Models.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Core.Operations.Projects
     [Rest(Verb.Delete, RestResources.Project)]
     public class ProjectDeleteCommand :CommandAsync<IdRequest,Response>
     {
-        private MainContext context;
+        private DatabaseContext context;
         private IValidator validator = ValidationManager.GetDefaultValidatitor();
         
         public ProjectDeleteCommand(IdRequest request) : base(request)

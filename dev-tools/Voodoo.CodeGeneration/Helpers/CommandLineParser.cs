@@ -16,12 +16,7 @@ namespace Voodoo.CodeGeneration.Helpers
                 showHelp();
                 return;
             }
-            if (args.Length == 1 && args[0].To<string>().ToLower() == "clean")
-            {
-                clean();
-                return;
-            }
-
+           
             if (!Vs.Helper.HasConfig)
                 throw new Exception("Cannot find config file");
 
@@ -54,10 +49,7 @@ namespace Voodoo.CodeGeneration.Helpers
             return returnedArgs.ToArray();
         }
 
-        private static void clean()
-        {
-            Cleaner.Clean(Vs.Helper.SolutionFolder);
-        }
+      
 
         private static void colorOff()
         {

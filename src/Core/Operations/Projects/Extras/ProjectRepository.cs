@@ -7,9 +7,9 @@ namespace Core.Operations.Projects.Extras
 {
     public class ProjectRepository
     {
-        private MainContext context;
+        private DatabaseContext context;
         
-        public ProjectRepository(MainContext context)
+        public ProjectRepository(DatabaseContext context)
         {
             this.context = context;
         }

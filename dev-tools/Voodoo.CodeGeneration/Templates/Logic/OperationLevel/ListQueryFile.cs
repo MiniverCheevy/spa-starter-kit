@@ -21,7 +21,8 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             PageSpecificUsingStatements.Add($"{Namespace}.Extras");
             PageSpecificUsingStatements.Add(
                 $"{Vs.Helper.Solution.DataProject.RootNamespace}.Operations.{type.PluralName}.Extras");
-
+            PageSpecificUsingStatements.Add(
+                $"{Vs.Helper.Solution.DataProject.RootNamespace}.Models.Mappings");
 
             PageSpecificUsingStatements.Add("System");
             PageSpecificUsingStatements.Add("System.Collections.Generic");

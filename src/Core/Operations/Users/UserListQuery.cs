@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Core.Context;
 using Core.Models.Identity;
+using Core.Models.Mappings;
 using Core.Operations.Users.Extras;
 using Voodoo;
 using Voodoo.Infrastructure;
@@ -16,7 +17,7 @@ namespace Core.Operations.Users
     [Rest(Verb.Get, RestResources.UserList, Roles = new[] { RoleNames.Administrator })]
     public class UserListQuery : QueryAsync<UserListRequest, UserListResponse>
     {
-        private MainContext context;
+        private DatabaseContext context;
         private IQueryable<User> query;
         protected IValidator validator = ValidationManager.GetDefaultValidatitor();
 
