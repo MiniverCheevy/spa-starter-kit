@@ -9,7 +9,7 @@ using Voodoo.Operations.Async;
 
 namespace Core.Operations.Errors
 {
-    [Rest(Verb.Get, RestResources.Error)]
+    [Rest(Verb.Get, RestResources.ErrorLog)]
     public class ErrorDetailQuery : QueryAsync<IdRequest, Response<ErrorDetail>>
     {
         private DatabaseContext context;

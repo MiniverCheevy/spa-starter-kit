@@ -129,8 +129,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Voodoo, Version=2.2.23.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Patterns.2.2.24\lib\net46\Voodoo.dll</HintPath>
+    <Reference Include="Voodoo, Version=2.2.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Voodoo.Patterns.2.2.26\lib\net46\Voodoo.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

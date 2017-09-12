@@ -39,7 +39,11 @@ namespace Core.Operations.Members.Extras
         
         [Display(Name = "Optional Date Time Offset")]
         public DateTimeOffset? OptionalDateTimeOffset {get;set;}
-        
+
+        [Display(Name = "Required Date Time Offset")]
+        [Required(ErrorMessage = Constants.Messages.Required)]
+        public DateTimeOffset? RequiredDateTimeOffset { get; set; }
+
         [Display(Name = "Required Decimal")]
         [Required(ErrorMessage = Constants.Messages.Required)]
         public decimal RequiredDecimal {get;set;}

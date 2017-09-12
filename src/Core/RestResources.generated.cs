@@ -11,10 +11,11 @@ namespace Core
         public const string ApplicationSetting = "ApplicationSetting";
         public const string ApplicationSettingList = "ApplicationSettingList";
         public const string CurrentUser = "CurrentUser";
-        public const string Error = "Error";
-        public const string ErrorList = "ErrorList";
+        public const string ErrorLog = "ErrorLog";
+        public const string ErrorLogList = "ErrorLogList";
         public const string Lists = "Lists";
         public const string Member = "Member";
+        public const string MemberReport = "MemberReport";
         public const string MemberList = "MemberList";
         public const string MobileError = "MobileError";
         public const string Project = "Project";

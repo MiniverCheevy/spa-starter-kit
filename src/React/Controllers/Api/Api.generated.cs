@@ -35,7 +35,7 @@ using Core.Operations.ApplicationSettings.Extras;
 namespace Web.Controllers.Api
 {
     [Route("api/[controller]")]
-    public class UserDetailController : ApiControllerBase
+    public class UserController : ApiControllerBase
     {
         [HttpDelete]
         public async Task<Response> Delete
@@ -363,6 +363,29 @@ namespace Web.Controllers.Api
     }
     
     [Route("api/[controller]")]
+    public class MemberReportController : FileController
+    {
+        [HttpGet]
+        public async Task<ActionResult> Get
+        ( MemberListRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <MemberListRequest, BinaryResponse>
+            {
+                Command = new MemberReportQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<MemberListRequest, BinaryResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return HandleBinaryResponse(state.Response);
+        }
+    }
+    
+    [Route("api/[controller]")]
     public class ListsController : ApiControllerBase
     {
         [HttpGet]
@@ -386,7 +409,7 @@ namespace Web.Controllers.Api
     }
     
     [Route("api/[controller]")]
-    public class ErrorDetailController : ApiControllerBase
+    public class ErrorLogController : ApiControllerBase
     {
         [HttpGet]
         public async Task<Response<ErrorDetail>> Get
@@ -409,7 +432,7 @@ namespace Web.Controllers.Api
     }
     
     [Route("api/[controller]")]
-    public class ErrorListController : ApiControllerBase
+    public class ErrorLogListController : ApiControllerBase
     {
         [HttpGet]
         public async Task<ErrorListResponse> Get
@@ -498,24 +521,6 @@ namespace Web.Controllers.Api
             await pipeline.ExecuteAsync();
             return state.Response;
         }
-        [HttpPut]
-        public async Task<NewItemResponse> Put
-        ([FromBody] ApplicationSettingDetail request)
-        {
-            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
-            <ApplicationSettingDetail, NewItemResponse>
-            {
-                Command = new ApplicationSettingSaveCommand(request),
-                Context = HttpContext,
-                ModelState = ModelState,
-                Request = request,
-                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
-            };
-            var pipeline = new ExcecutionPipeline<ApplicationSettingDetail, NewItemResponse>
-            (state);
-            await pipeline.ExecuteAsync();
-            return state.Response;
-        }
         [HttpGet]
         public async Task<Response<ApplicationSettingDetail>> Get
         ( IdRequest request)
@@ -530,6 +535,24 @@ namespace Web.Controllers.Api
                 SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
             };
             var pipeline = new ExcecutionPipeline<IdRequest, Response<ApplicationSettingDetail>>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpPut]
+        public async Task<NewItemResponse> Put
+        ([FromBody] ApplicationSettingDetail request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <ApplicationSettingDetail, NewItemResponse>
+            {
+                Command = new ApplicationSettingSaveCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<ApplicationSettingDetail, NewItemResponse>
             (state);
             await pipeline.ExecuteAsync();
             return state.Response;

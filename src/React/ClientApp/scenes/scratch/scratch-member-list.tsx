@@ -29,7 +29,11 @@ export class ScratchMemberList extends React.Component<any, any>
             this.data.replace(response.data);
         }
     }
-
+    report = () =>
+    {
+        debugger;
+        Api.MemberReport.getReport(this.request);
+    }
     render() {
        
         var buttons: Components.ButtonSpec[] = [
@@ -39,6 +43,9 @@ export class ScratchMemberList extends React.Component<any, any>
         return (<div>
                 <ScratchNavMenu />
                 <Components.Card title="Members">
+                <div className="pull-right">
+                    <Components.PushButton click={() => { this.report(); }} icon="file-pdf-box" text="Report" theme="icon"/>
+                </div>
                     <Components.Grid
                         data={data}
                         refresh={this.refresh}

@@ -1,11 +1,15 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using Voodoo.CodeGeneration.Models.Rest;
 using Voodoo.CodeGeneration.Models.VisualStudio;
+using Voodoo.Messages;
 
 namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.React
 {
     public class TsServiceBatchFile : TypeScriptServiceBatchFileBase
     {
+        private StringBuilder builder;
+
         public override string FileName => "api.generated.ts";
 
         public TsServiceBatchFile(ProjectFacade project, Resource[] resources, string path)
@@ -15,7 +19,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.React
 
         public override string GetFileContents()
         {
-            var builder = new StringBuilder();
+            this.builder = new StringBuilder();
 
             builder.Append(@"//***************************************************************
 //This code just called you a tool
@@ -26,7 +30,10 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.React
 import { CurrentUserService } from './services/current-user-service';
 import { MessengerService } from './services/messenger-service';
 import { AjaxService } from './services/ajax-service';
-import * as Models from './models.generated';");
+import { EncoderService } from './services/encoder-service';
+import * as Models from './models.generated';
+
+");
 
             foreach (var resource in Resources)
             {
@@ -36,8 +43,24 @@ import * as Models from './models.generated';");
 
                 foreach (var verb in resource.Verbs)
                 {
-                    var declarations = Builder.AddTypes(verb.RequestType, verb.ResponseType);
-                    builder.Append($@"   
+
+                    if (verb.ResponseType == typeof(BinaryResponse))
+                        buildBinaryMethod(verb);
+                    else
+                        buildRestMethod(verb);
+
+
+                }
+                builder.AppendLine("}");
+                builder.AppendLine($"export const {resource.Name} = new {resource.Name}Prototype();");
+            }
+            return builder.ToString();
+        }
+
+        private void buildRestMethod(RestMethod verb)
+        {
+            var declarations = Builder.AddTypes(verb.RequestType, verb.ResponseType);
+            builder.Append($@"   
 			public async {verb.Name.ToLower()} (request: Models.{declarations.RequestDeclaration}):
 											Promise<Models.{declarations.ResponseDeclaration}>
 			{{
@@ -72,11 +95,32 @@ import * as Models from './models.generated';");
         MessengerService.showResponseMessage(result);
         return result;
 }}");
-                }
-                builder.AppendLine("}");
-                builder.AppendLine($"export const {resource.Name} = new {resource.Name}Prototype();");
-            }
-            return builder.ToString();
+        }
+
+        private void buildBinaryMethod(RestMethod verb)
+        {
+            var declarations = Builder.AddTypes(verb.RequestType, verb.ResponseType);
+            builder.Append($@"   
+			public async {verb.Name.ToLower()}Report (request: Models.{declarations.RequestDeclaration})											
+			{{
+               
+            try {{
+                var user = await CurrentUserService.get();
+                (<any>request).token = user.token;
+                var newUrl = EncoderService.buildUrlWithParams(this.url, request);
+                window.open(newUrl);
+            }}
+            catch (e)
+            {{
+                AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+            var  result = {{
+                    isOk: false,
+                    message: e.statusText || e.message
+                }};
+            MessengerService.showResponseMessage(result);
+            }}
+            }}");
         }
     }
 }

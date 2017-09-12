@@ -123,7 +123,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
         {
             builder.AppendLine($"{verb.Attribute}");
 
-            builder.AppendLine($"public async Task<FileResult> {verb.Name}");
+            builder.AppendLine($"public async Task<ActionResult> {verb.Name}");
             builder.AppendLine($"({verb.Parameter} {verb.RequestTypeName} request)");
             builder.AppendLine("{");
             builder.AppendLine();
@@ -145,7 +145,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel
             builder.AppendLine($" (state);");
             builder.AppendLine($"await pipeline.ExecuteAsync();");
 
-            builder.AppendLine($"return HandleBinaryResponse(response);");
+            builder.AppendLine($"return HandleBinaryResponse(state.Response);");
 
             builder.AppendLine("}");
         }

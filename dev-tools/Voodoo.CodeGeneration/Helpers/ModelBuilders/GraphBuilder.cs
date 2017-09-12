@@ -65,10 +65,17 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 if (!shouldWrite(t))
                     continue;
 
-                //var childMetaData = new TypescriptMetadataBuilder(t, t.GetProperties());
-                //output.AppendLine(childMetaData.Build());
                 buildDeclaration(t, false);
-                enumTypes.AddRange(builder.getEnumPropertyTypes(t));
+                var enums = builder.getEnumPropertyTypes(t);
+                var undeclaredEnums = new List<Type>();
+                foreach(var e in enums)
+                {
+                    if (alreadyTouched.Contains(e))
+                        continue;
+                    alreadyTouched.Add(e);
+                    undeclaredEnums.Add(e);
+                }
+                enumTypes.AddRange(undeclaredEnums);
                 buildGraph(t, false);
             }
 

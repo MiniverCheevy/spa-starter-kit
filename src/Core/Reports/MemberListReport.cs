@@ -20,8 +20,7 @@ namespace Core.Reports
             table = this.Body.AddTable();
             table.AddColumn(1.8);
             table.AddColumn(1.8);
-            table.AddColumn(1.8);
-            table.AddColumn(1.8);
+            table.AddColumn(1.8);            
             addHeaderRow();
             data.ForEach(addRow);
         }

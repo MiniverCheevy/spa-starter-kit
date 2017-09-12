@@ -18,8 +18,8 @@ export class Card extends React.Component<CardProps, any>
 
         return <div className="mdc-card">
             {hasHeader && <section className="mdc-card__primary">
-                {this.props.title && <h1 className="mdc-card__title mdc-card__title--large">{this.props.title}</h1>}
-                {this.props.subTitle && <h2 className="mdc-card__subtitle">{this.props.subTitle}</h2>}
+                {this.props.title && <h2 >{this.props.title}</h2>}
+                {this.props.subTitle && <h3 >{this.props.subTitle}</h3>}
             </section>}
             <section className="mdc-card__supporting-text">
                 {this.props.children}
@@ -27,6 +27,6 @@ export class Card extends React.Component<CardProps, any>
             {hasButtons && <section className="mdc-card__actions">
                 {this.props.buttons}
             </section>}
-        </div>
+        </div>;
     }
 }

@@ -37,8 +37,8 @@ export class Grid extends React.Component<GridProps, any>
         this.columns = Services.FormsService.getProperties(this.props.metadata);
         const headings = this.getColumnHeadings();
         const rows = this.getRows();
-        return <div className="mdc-card">
-            <section className="mdc-card__supporting-text data-table-container">
+        return <div >
+            <section className="data-table-container">
             <table className="data-table mdc-card__primary">
                 <thead className="mdc-typography--body2">
                     <tr>

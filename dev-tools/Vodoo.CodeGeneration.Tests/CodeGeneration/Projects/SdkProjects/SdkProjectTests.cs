@@ -1,11 +1,15 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Voodoo;
 using Voodoo.CodeGeneration.Projects.SdkProjects;
 using Project = Voodoo.CodeGeneration.Projects.SdkProjects.Project;
 
-namespace Fernweh.Tests.CodeGeneration.Projects.SdkProjects
+namespace Voodoo.CodeGeneration.Tests.CodeGeneration.Projects.SdkProjects
 {
     [TestClass]
     public class SdkProjectTests

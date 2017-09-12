@@ -7,7 +7,9 @@
 import { CurrentUserService } from './services/current-user-service';
 import { MessengerService } from './services/messenger-service';
 import { AjaxService } from './services/ajax-service';
+import { EncoderService } from './services/encoder-service';
 import * as Models from './models.generated';
+
 export class ApplicationSettingPrototype    {
 url: string = 'api/ApplicationSetting';
 public async delete (request: Models.IdRequest):
@@ -44,13 +46,13 @@ MessengerService.decrementHttpRequestCounter();
 MessengerService.showResponseMessage(result);
 return result;
 }
-public async put (request: Models.ApplicationSettingDetail):
-Promise<Models.NewItemResponse>
+public async get (request: Models.IdRequest):
+Promise<Models.ResponseOfApplicationSettingDetail>
 {
     var result;
     try {
     MessengerService.incrementHttpRequestCounter();
-    var response = await AjaxService.buildPutRequest(request, this.url)
+    var response = await AjaxService.buildGetRequest(request, this.url)
     if (response.isOk != undefined) {
     var out = <Models.IResponse>response;
     result = out;
@@ -78,13 +80,13 @@ MessengerService.decrementHttpRequestCounter();
 MessengerService.showResponseMessage(result);
 return result;
 }
-public async get (request: Models.IdRequest):
-Promise<Models.ResponseOfApplicationSettingDetail>
+public async put (request: Models.ApplicationSettingDetail):
+Promise<Models.NewItemResponse>
 {
     var result;
     try {
     MessengerService.incrementHttpRequestCounter();
-    var response = await AjaxService.buildGetRequest(request, this.url)
+    var response = await AjaxService.buildPutRequest(request, this.url)
     if (response.isOk != undefined) {
     var out = <Models.IResponse>response;
     result = out;
@@ -190,8 +192,8 @@ return result;
 }}
 export const CurrentUser = new CurrentUserPrototype();
 
-export class ErrorDetailPrototype    {
-url: string = 'api/ErrorDetail';
+export class ErrorLogPrototype    {
+url: string = 'api/ErrorLog';
 public async get (request: Models.IdRequest):
 Promise<Models.ResponseOfErrorDetail>
 {
@@ -226,10 +228,10 @@ MessengerService.decrementHttpRequestCounter();
 MessengerService.showResponseMessage(result);
 return result;
 }}
-export const ErrorDetail = new ErrorDetailPrototype();
+export const ErrorLog = new ErrorLogPrototype();
 
-export class ErrorListPrototype    {
-url: string = 'api/ErrorList';
+export class ErrorLogListPrototype    {
+url: string = 'api/ErrorLogList';
 public async get (request: Models.ErrorListRequest):
 Promise<Models.ErrorListResponse>
 {
@@ -264,7 +266,7 @@ MessengerService.decrementHttpRequestCounter();
 MessengerService.showResponseMessage(result);
 return result;
 }}
-export const ErrorList = new ErrorListPrototype();
+export const ErrorLogList = new ErrorLogListPrototype();
 
 export class ListsPrototype    {
 url: string = 'api/Lists';
@@ -447,6 +449,29 @@ MessengerService.showResponseMessage(result);
 return result;
 }}
 export const MemberList = new MemberListPrototype();
+
+export class MemberReportPrototype    {
+url: string = 'api/MemberReport';
+public async getReport (request: Models.MemberListRequest)
+{
+    try {
+    var user = await CurrentUserService.get();
+    (<any>request).token = user.token;
+    var newUrl = EncoderService.buildUrlWithParams(this.url, request);
+    window.open(newUrl);
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    var  result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+MessengerService.showResponseMessage(result);
+}
+}}
+export const MemberReport = new MemberReportPrototype();
 
 export class MobileErrorPrototype    {
 url: string = 'api/MobileError';
@@ -774,8 +799,8 @@ return result;
 }}
 export const TeamList = new TeamListPrototype();
 
-export class UserDetailPrototype    {
-url: string = 'api/UserDetail';
+export class UserPrototype    {
+url: string = 'api/User';
 public async delete (request: Models.IdRequest):
 Promise<Models.Response>
 {
@@ -878,7 +903,7 @@ MessengerService.decrementHttpRequestCounter();
 MessengerService.showResponseMessage(result);
 return result;
 }}
-export const UserDetail = new UserDetailPrototype();
+export const User = new UserPrototype();
 
 export class UserListPrototype    {
 url: string = 'api/UserList';

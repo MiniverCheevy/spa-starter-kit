@@ -24,7 +24,7 @@ static metadata()
     {
         name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -33,7 +33,7 @@ static metadata()
         }
         ,id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -42,7 +42,7 @@ static metadata()
         }
         ,data:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Data',
             jsName:'data',
@@ -76,7 +76,7 @@ static metadata()
     {
         name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -85,7 +85,7 @@ static metadata()
         }
         ,value:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Value',
             jsName:'value',
@@ -121,7 +121,7 @@ static metadata()
     {
         isOk:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'IsOk',
             jsName:'isOk',
@@ -130,7 +130,7 @@ static metadata()
         }
         ,message:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Message',
             jsName:'message',
@@ -139,7 +139,7 @@ static metadata()
         }
         ,exception:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Exception',
             jsName:'exception',
@@ -148,7 +148,7 @@ static metadata()
         }
         ,details:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Details',
             jsName:'details',
@@ -157,7 +157,7 @@ static metadata()
         }
         ,hasLogicException:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'HasLogicException',
             jsName:'hasLogicException',
@@ -193,7 +193,7 @@ static metadata()
     {
         name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -202,7 +202,7 @@ static metadata()
         }
         ,value:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Value',
             jsName:'value',
@@ -289,7 +289,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -303,7 +303,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -319,7 +319,7 @@ static metadata()
         }
         ,value:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Value',
             jsName:'value',
@@ -370,7 +370,7 @@ static metadata()
     {
         defaultSortMember:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DefaultSortMember',
             jsName:'defaultSortMember',
@@ -443,7 +443,7 @@ static metadata()
     {
         pageNumber:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'PageNumber',
             jsName:'pageNumber',
@@ -456,7 +456,7 @@ static metadata()
         }
         ,pageSize:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'PageSize',
             jsName:'pageSize',
@@ -469,7 +469,7 @@ static metadata()
         }
         ,totalRecords:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'TotalRecords',
             jsName:'totalRecords',
@@ -482,7 +482,7 @@ static metadata()
         }
         ,totalPages:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'TotalPages',
             jsName:'totalPages',
@@ -495,7 +495,7 @@ static metadata()
         }
         ,sortMember:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'SortMember',
             jsName:'sortMember',
@@ -504,7 +504,7 @@ static metadata()
         }
         ,sortDirection:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'SortDirection',
             jsName:'sortDirection',
@@ -513,7 +513,7 @@ static metadata()
         }
         ,defaultSortMember:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DefaultSortMember',
             jsName:'defaultSortMember',
@@ -522,7 +522,7 @@ static metadata()
         }
         ,resetPaging:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'ResetPaging',
             jsName:'resetPaging',
@@ -562,7 +562,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -576,7 +576,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -592,7 +592,7 @@ static metadata()
         }
         ,value:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Value',
             jsName:'value',
@@ -645,7 +645,7 @@ static metadata()
     {
         expiration:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Expiration',
             jsName:'expiration',
@@ -658,7 +658,7 @@ static metadata()
         }
         ,refreshTime:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'RefreshTime',
             jsName:'refreshTime',
@@ -671,7 +671,7 @@ static metadata()
         }
         ,isAuthenticated:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'IsAuthenticated',
             jsName:'isAuthenticated',
@@ -680,7 +680,7 @@ static metadata()
         }
         ,userName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'UserName',
             jsName:'userName',
@@ -689,7 +689,7 @@ static metadata()
         }
         ,userId:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'UserId',
             jsName:'userId',
@@ -702,7 +702,7 @@ static metadata()
         }
         ,firstName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'FirstName',
             jsName:'firstName',
@@ -711,7 +711,7 @@ static metadata()
         }
         ,lastName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'LastName',
             jsName:'lastName',
@@ -720,7 +720,7 @@ static metadata()
         }
         ,roles:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Roles',
             jsName:'roles',
@@ -729,7 +729,7 @@ static metadata()
         }
         ,isAdmin:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'IsAdmin',
             jsName:'isAdmin',
@@ -738,7 +738,7 @@ static metadata()
         }
         ,token:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Token',
             jsName:'token',
@@ -761,6 +761,38 @@ isAdmin? : boolean;
 token? : string;
 }
 
+export class BinaryResponse extends IResponse {
+
+static empty()
+{
+    const result =
+    {
+        data:undefined,
+        contentType:undefined,
+        contentDisposition:undefined,
+        fileName:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+data? : any[];
+contentType? : string;
+contentDisposition? : string;
+fileName? : string;
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
 export class ClientInfo  {
 
 static empty()
@@ -778,7 +810,7 @@ static metadata()
     {
         timeZoneOffsetInMinutes:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'TimeZoneOffsetInMinutes',
             jsName:'timeZoneOffsetInMinutes',
@@ -841,7 +873,7 @@ static metadata()
     {
         searchText:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'SearchText',
             jsName:'searchText',
@@ -850,7 +882,7 @@ static metadata()
         }
         ,defaultSortMember:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DefaultSortMember',
             jsName:'defaultSortMember',
@@ -921,7 +953,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -938,7 +970,7 @@ static metadata()
         }
         ,creationDate:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'CreationDate',
             jsName:'creationDate',
@@ -958,7 +990,7 @@ static metadata()
         }
         ,type:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Type',
             jsName:'type',
@@ -974,7 +1006,7 @@ static metadata()
         }
         ,message:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Message',
             jsName:'message',
@@ -990,7 +1022,7 @@ static metadata()
         }
         ,user:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'User',
             jsName:'user',
@@ -1025,7 +1057,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -1062,7 +1094,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -1075,7 +1107,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -1084,7 +1116,7 @@ static metadata()
         }
         ,filterData:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'FilterData',
             jsName:'filterData',
@@ -1127,7 +1159,7 @@ static metadata()
     {
         includeInactive:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'IncludeInactive',
             jsName:'includeInactive',
@@ -1136,7 +1168,7 @@ static metadata()
         }
         ,lists:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Lists',
             jsName:'lists',
@@ -1208,7 +1240,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -1221,7 +1253,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -1230,7 +1262,7 @@ static metadata()
         }
         ,filterData:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'FilterData',
             jsName:'filterData',
@@ -1259,8 +1291,8 @@ static empty()
         optionalInt:undefined,
         requiredDate:undefined,
         optionalDate:undefined,
-        requiredDateTimeOffset:undefined,
         optionalDateTimeOffset:undefined,
+        requiredDateTimeOffset:undefined,
         requiredDecimal:undefined,
         optionalDecimal:undefined,
         managerId:undefined
@@ -1274,7 +1306,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -1288,7 +1320,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -1304,7 +1336,7 @@ static metadata()
         }
         ,title:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Title',
             jsName:'title',
@@ -1324,7 +1356,7 @@ static metadata()
         }
         ,requiredInt:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'RequiredInt',
             jsName:'requiredInt',
@@ -1341,7 +1373,7 @@ static metadata()
         }
         ,optionalInt:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'OptionalInt',
             jsName:'optionalInt',
@@ -1354,7 +1386,7 @@ static metadata()
         }
         ,requiredDate:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'RequiredDate',
             jsName:'requiredDate',
@@ -1374,7 +1406,7 @@ static metadata()
         }
         ,optionalDate:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'OptionalDate',
             jsName:'optionalDate',
@@ -1388,45 +1420,39 @@ static metadata()
                 ,message: 'date is either too far in the future or past'
             }
         }
-        ,requiredDateTimeOffset:
+        ,optionalDateTimeOffset:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
-            propertyName:'RequiredDateTimeOffset',
-            jsName:'requiredDateTimeOffset',
-            displayName:'Required Date',
+            propertyName:'OptionalDateTimeOffset',
+            jsName:'optionalDateTimeOffset',
+            displayName:'Optional Date Time Offset',
             displayFormat:'date'
             ,date:
             {
                 shouldValidate:true
-                ,min: new Date('1/1/1900')
-                ,max: new Date('3/4/2050')
-                ,message: 'date is either too far in the future or past'
+            }
+        }
+        ,requiredDateTimeOffset:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'RequiredDateTimeOffset',
+            jsName:'requiredDateTimeOffset',
+            displayName:'Required Date Time Offset',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
             }
             ,required:
             {
                 shouldValidate:true
             }
         }
-        ,optionalDateTimeOffset:
-        {
-            isValid:undefined,
-            validationMessage:undefined,
-            propertyName:'OptionalDateTimeOffset',
-            jsName:'optionalDateTimeOffset',
-            displayName:'Optional Date',
-            displayFormat:'date'
-            ,date:
-            {
-                shouldValidate:true
-                ,min: new Date('1/1/1900')
-                ,max: new Date('3/4/2050')
-                ,message: 'date is either too far in the future or past'
-            }
-        }
         ,requiredDecimal:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'RequiredDecimal',
             jsName:'requiredDecimal',
@@ -1443,7 +1469,7 @@ static metadata()
         }
         ,optionalDecimal:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'OptionalDecimal',
             jsName:'optionalDecimal',
@@ -1456,7 +1482,7 @@ static metadata()
         }
         ,managerId:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'ManagerId',
             jsName:'managerId',
@@ -1478,8 +1504,8 @@ requiredInt? : number;
 optionalInt? : number;
 requiredDate? : DateTimeOffset;
 optionalDate? : DateTimeOffset;
-requiredDateTimeOffset? : DateTimeOffset;
 optionalDateTimeOffset? : DateTimeOffset;
+requiredDateTimeOffset? : DateTimeOffset;
 requiredDecimal? : number;
 optionalDecimal? : number;
 managerId? : number;
@@ -1509,7 +1535,7 @@ static metadata()
     {
         defaultSortMember:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DefaultSortMember',
             jsName:'defaultSortMember',
@@ -1579,7 +1605,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -1593,7 +1619,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -1609,7 +1635,7 @@ static metadata()
         }
         ,title:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Title',
             jsName:'title',
@@ -1629,7 +1655,7 @@ static metadata()
         }
         ,requiredInt:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'RequiredInt',
             jsName:'requiredInt',
@@ -1646,7 +1672,7 @@ static metadata()
         }
         ,optionalInt:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'OptionalInt',
             jsName:'optionalInt',
@@ -1689,7 +1715,7 @@ static metadata()
     {
         errorMsg:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'ErrorMsg',
             jsName:'errorMsg',
@@ -1698,7 +1724,7 @@ static metadata()
         }
         ,url:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Url',
             jsName:'url',
@@ -1707,7 +1733,7 @@ static metadata()
         }
         ,lineNumber:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'LineNumber',
             jsName:'lineNumber',
@@ -1716,7 +1742,7 @@ static metadata()
         }
         ,column:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Column',
             jsName:'column',
@@ -1725,7 +1751,7 @@ static metadata()
         }
         ,errorObject:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'ErrorObject',
             jsName:'errorObject',
@@ -1788,7 +1814,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -1802,7 +1828,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -1818,7 +1844,7 @@ static metadata()
         }
         ,teamId:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'TeamId',
             jsName:'teamId',
@@ -1866,7 +1892,7 @@ static metadata()
     {
         defaultSortMember:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DefaultSortMember',
             jsName:'defaultSortMember',
@@ -1934,7 +1960,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -1948,7 +1974,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -1964,7 +1990,7 @@ static metadata()
         }
         ,teamId:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'TeamId',
             jsName:'teamId',
@@ -2039,7 +2065,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -2053,7 +2079,7 @@ static metadata()
         }
         ,userName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'UserName',
             jsName:'userName',
@@ -2073,7 +2099,7 @@ static metadata()
         }
         ,clientId:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'ClientId',
             jsName:'clientId',
@@ -2086,7 +2112,7 @@ static metadata()
         }
         ,firstName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'FirstName',
             jsName:'firstName',
@@ -2106,7 +2132,7 @@ static metadata()
         }
         ,lastName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'LastName',
             jsName:'lastName',
@@ -2126,7 +2152,7 @@ static metadata()
         }
         ,lockoutEnabled:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'LockoutEnabled',
             jsName:'lockoutEnabled',
@@ -2139,7 +2165,7 @@ static metadata()
         }
         ,password:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Password',
             jsName:'password',
@@ -2148,7 +2174,7 @@ static metadata()
         }
         ,confirmPassword:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'ConfirmPassword',
             jsName:'confirmPassword',
@@ -2157,7 +2183,7 @@ static metadata()
         }
         ,roles:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Roles',
             jsName:'roles',
@@ -2223,7 +2249,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -2237,7 +2263,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -2362,7 +2388,7 @@ static metadata()
     {
         details:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Details',
             jsName:'details',
@@ -2371,7 +2397,7 @@ static metadata()
         }
         ,host:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Host',
             jsName:'host',
@@ -2380,7 +2406,7 @@ static metadata()
         }
         ,url:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Url',
             jsName:'url',
@@ -2389,7 +2415,7 @@ static metadata()
         }
         ,items:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Items',
             jsName:'items',
@@ -2398,7 +2424,7 @@ static metadata()
         }
         ,id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -2415,7 +2441,7 @@ static metadata()
         }
         ,creationDate:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'CreationDate',
             jsName:'creationDate',
@@ -2435,7 +2461,7 @@ static metadata()
         }
         ,type:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Type',
             jsName:'type',
@@ -2451,7 +2477,7 @@ static metadata()
         }
         ,message:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Message',
             jsName:'message',
@@ -2467,7 +2493,7 @@ static metadata()
         }
         ,user:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'User',
             jsName:'user',
@@ -2565,7 +2591,7 @@ static metadata()
     {
         defaultSortMember:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DefaultSortMember',
             jsName:'defaultSortMember',
@@ -2632,7 +2658,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -2646,7 +2672,7 @@ static metadata()
         }
         ,name:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Name',
             jsName:'name',
@@ -2700,7 +2726,7 @@ static metadata()
     {
         propertyName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'PropertyName',
             jsName:'propertyName',
@@ -2709,7 +2735,7 @@ static metadata()
         }
         ,jsName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'JsName',
             jsName:'jsName',
@@ -2718,7 +2744,7 @@ static metadata()
         }
         ,displayName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DisplayName',
             jsName:'displayName',
@@ -2727,7 +2753,7 @@ static metadata()
         }
         ,displayFormat:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DisplayFormat',
             jsName:'displayFormat',
@@ -2736,7 +2762,7 @@ static metadata()
         }
         ,email:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Email',
             jsName:'email',
@@ -2745,7 +2771,7 @@ static metadata()
         }
         ,length:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Length',
             jsName:'length',
@@ -2754,7 +2780,7 @@ static metadata()
         }
         ,date:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Date',
             jsName:'date',
@@ -2763,7 +2789,7 @@ static metadata()
         }
         ,int:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Int',
             jsName:'int',
@@ -2772,7 +2798,7 @@ static metadata()
         }
         ,decimal:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Decimal',
             jsName:'decimal',
@@ -2781,7 +2807,7 @@ static metadata()
         }
         ,required:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Required',
             jsName:'required',
@@ -2790,7 +2816,7 @@ static metadata()
         }
         ,isReadOnly:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'IsReadOnly',
             jsName:'isReadOnly',
@@ -2799,7 +2825,7 @@ static metadata()
         }
         ,isHidden:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'IsHidden',
             jsName:'isHidden',
@@ -2808,7 +2834,7 @@ static metadata()
         }
         ,doNotSort:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DoNotSort',
             jsName:'doNotSort',
@@ -2817,7 +2843,7 @@ static metadata()
         }
         ,control:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Control',
             jsName:'control',
@@ -2826,7 +2852,7 @@ static metadata()
         }
         ,isValid:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'IsValid',
             jsName:'isValid',
@@ -2835,7 +2861,7 @@ static metadata()
         }
         ,validationMessage:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'ValidationMessage',
             jsName:'validationMessage',
@@ -2884,7 +2910,7 @@ static metadata()
     {
         shouldValidate:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'ShouldValidate',
             jsName:'shouldValidate',
@@ -2893,7 +2919,7 @@ static metadata()
         }
         ,message:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Message',
             jsName:'message',
@@ -2902,7 +2928,7 @@ static metadata()
         }
         ,min:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Min',
             jsName:'min',
@@ -2911,7 +2937,7 @@ static metadata()
         }
         ,max:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Max',
             jsName:'max',
@@ -2954,7 +2980,7 @@ static metadata()
     {
         searchText:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'SearchText',
             jsName:'searchText',
@@ -2963,7 +2989,7 @@ static metadata()
         }
         ,defaultSortMember:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'DefaultSortMember',
             jsName:'defaultSortMember',
@@ -2972,7 +2998,7 @@ static metadata()
         }
         ,id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -3049,7 +3075,7 @@ static metadata()
     {
         id:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Id',
             jsName:'id',
@@ -3063,7 +3089,7 @@ static metadata()
         }
         ,userName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'UserName',
             jsName:'userName',
@@ -3083,7 +3109,7 @@ static metadata()
         }
         ,clientId:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'ClientId',
             jsName:'clientId',
@@ -3096,7 +3122,7 @@ static metadata()
         }
         ,firstName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'FirstName',
             jsName:'firstName',
@@ -3116,7 +3142,7 @@ static metadata()
         }
         ,lastName:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'LastName',
             jsName:'lastName',
@@ -3136,7 +3162,7 @@ static metadata()
         }
         ,roles:
         {
-            isValid:undefined,
+            isValid:true,
             validationMessage:undefined,
             propertyName:'Roles',
             jsName:'roles',

@@ -474,6 +474,8 @@ plus-minus-button i {
     min-width: 32px;
     font-size: 16px;
     padding: 0px 0px 0px 0px !important;
+    cursor:pointer;
+    color: blue;
 }
 
 .danger-button {

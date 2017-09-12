@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.4
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F902E1F0-E4F3-48B5-B077-603E0A193657}"
 	ProjectSection(SolutionItems) = preProject
@@ -25,6 +25,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.CodeGeneration", "dev-tools\Voodoo.CodeGeneration\Voodoo.CodeGeneration.csproj", "{7AAC4FDB-1C6A-453F-8126-D2E89BC1B6D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbUpdate", "dev-tools\DbUpdate\DbUpdate.csproj", "{B328234D-01AA-4EA5-956B-2145B3372570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.CodeGeneration.Tests", "dev-tools\Vodoo.CodeGeneration.Tests\Voodoo.CodeGeneration.Tests.csproj", "{429A23C4-3916-40C5-BF11-ACC6643F4F76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,8 +98,23 @@ Global
 		{B328234D-01AA-4EA5-956B-2145B3372570}.Release|x64.Build.0 = Release|Any CPU
 		{B328234D-01AA-4EA5-956B-2145B3372570}.Release|x86.ActiveCfg = Release|Any CPU
 		{B328234D-01AA-4EA5-956B-2145B3372570}.Release|x86.Build.0 = Release|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Debug|x64.Build.0 = Debug|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Debug|x86.Build.0 = Debug|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Release|x64.ActiveCfg = Release|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Release|x64.Build.0 = Release|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Release|x86.ActiveCfg = Release|Any CPU
+		{429A23C4-3916-40C5-BF11-ACC6643F4F76}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C7559B1-0306-4F7E-BD61-44432AE29A4F}
 	EndGlobalSection
 EndGlobal

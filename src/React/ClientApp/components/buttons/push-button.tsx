@@ -14,12 +14,13 @@ export class PushButton extends React.Component<PushButtonProps, any> {
         var normal = "push-button mdc-button mdc-ripple-upgraded mdc-button--raised";
         var buttonClass = '';
         switch (this.props.theme) {
-            case "icon":
+            
             case "primary":
                 buttonClass = "push-button mdc-button mdc-button--primary mdc-ripple-upgraded mdc-button--raised";
                 break;
+            case "icon":
             case "grid-icon":
-                buttonClass = "grid-icon mdc-button mdc-button--primary mdc-ripple-upgraded mdc-button--raised";
+                buttonClass = "grid-icon mdc-ripple-upgraded ";
                 break;
             case "info":
                 buttonClass = normal + ' info-button';
@@ -57,7 +58,7 @@ export class PushButton extends React.Component<PushButtonProps, any> {
             title = this.props.text;
                 
         this.handleTheme();
-        return  <button type='button'
+        return  <a 
                 className={buttonClass}
                 title={title}
                 style={{ minWidth: '36px', minHeight:'36px', height:'auto' }}
@@ -65,6 +66,6 @@ export class PushButton extends React.Component<PushButtonProps, any> {
                 >
             {this.props.icon && <i  className={iconName}></i>}
                 {text}
-            </button >;
+            </a >;
     }
 }

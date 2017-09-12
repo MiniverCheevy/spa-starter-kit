@@ -32,7 +32,7 @@ export class ScratchMemberDetail extends React.Component<ScratchMemberDetailProp
                         <Components.InputText {...props} value={this.props.model.optionalInt} name="optionalInt" />
                         <Components.InputText {...props} value={this.props.model.requiredDate} name="requiredDate" />
                         <Components.InputText {...props} value={this.props.model.optionalDate} name="optionalDate" />
-                        <Components.InputText {...props} value={this.props.model.requiredDateTimeOffset} name="requiredDateTimeOffset" />
+                        <Components.InputText {...props} value={this.props.model.requiredDate} name="requiredDateTimeOffset" />
                         <Components.InputText {...props} value={this.props.model.optionalDateTimeOffset} name="optionalDateTimeOffset" />
                         <Components.InputText {...props} value={this.props.model.requiredDecimal} name="requiredDecimal" />
                         <Components.InputText {...props} value={this.props.model.optionalDecimal} name="optionalDecimal" />

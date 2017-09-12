@@ -42,6 +42,10 @@ class EncoderServicePrototype {
         console.log(this.serializeParams(obj));
 
     }
+    public buildUrlWithParams= (baseUrl:string, request):string =>
+    {
+        return baseUrl + '?' + this.serializeParams(request);
+    }
     public serializeParams = (params, prefix?) => {
         if (!params) return '';
         var parts = [];
