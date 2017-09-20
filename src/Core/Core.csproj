@@ -113,8 +113,7 @@
     <Compile Include="Infrastructure\RequestContext.cs" />
     <Compile Include="Infrastructure\Settings.cs" />
     <Compile Include="IOC.cs" />
-    <Compile Include="Logging\ITraceWriter.cs" />
-    <Compile Include="Logging\TraceLogger.cs" />
+    <Compile Include="Logging\ITraceLogger.cs" />
     <Compile Include="Migrations\201707311318584_Initial.cs" />
     <Compile Include="Migrations\201707311318584_Initial.Designer.cs">
       <DependentUpon>201707311318584_Initial.cs</DependentUpon>
@@ -127,9 +126,11 @@
     <Compile Include="Migrations\TestDataBuilder.cs" />
     <Compile Include="ModelExtensions\ModelExtensions.cs" />
     <Compile Include="Models\ApplicationSetting.cs" />
-    <Compile Include="Models\Exceptions\Error.cs" />
+    <Compile Include="Models\Logging\Error.cs" />
     <Compile Include="Models\Identity\Role.cs" />
     <Compile Include="Models\Identity\User.cs" />
+    <Compile Include="Models\Logging\LogEntry.cs" />
+    <Compile Include="Models\Logging\RequestLog.cs" />
     <Compile Include="Models\Mappings\ApplicationSettingExtensions.ApplicationSettingDetail.Mapping.generated.cs" />
     <Compile Include="Models\Mappings\ApplicationSettingExtensions.ApplicationSettingRow.Mapping.generated.cs" />
     <Compile Include="Models\Mappings\ApplicationSettingExtensions.cs" />

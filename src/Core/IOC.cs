@@ -12,8 +12,9 @@ namespace Core
         public static IRequestContextProvider RequestContextProvier { get; set; }
 
         public static IContextFactory ContextFactory { get; set; }
-        public static ITraceLogger TraceWriter { get; set; }
         public static RequestContext RequestContext => RequestContextProvier?.RequestContext;
+
+        public static ITraceLogger TraceLogger {get;set;}
 
         public static AppPrincipal GetCurrentPrincipal()
         {

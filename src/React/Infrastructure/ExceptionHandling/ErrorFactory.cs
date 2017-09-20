@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Core.Models.Exceptions;
+using Core.Models.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Http.Internal;
@@ -69,15 +69,12 @@ add the below line to the startup to enable reading the form
 
             error = new Error
             {
-                GUID = Guid.NewGuid(),
-                ApplicationName = VoodooGlobalConfiguration.ApplicationName,
                 MachineName = Environment.MachineName,
                 Type = baseException.GetType().FullName,
                 Message = excptionForMessage.Message,
                 Source = baseException.Source,
                 Details = e.ToString(),
-                CreationDate = DateTime.UtcNow,
-                DuplicateCount = 1
+                CreationDate = DateTime.UtcNow
             };
         }
 
@@ -220,8 +217,6 @@ add the below line to the startup to enable reading the form
 
         internal void AddFromData(Exception exception)
         {
-            if (exception.Data.Contains("SQL"))
-                error.Sql = exception.Data["SQL"] as string;
 
             // Regardless of what Resharper may be telling you, .Data can be null on things like a null ref exception.
             if (exception.Data != null)
@@ -250,20 +245,15 @@ add the below line to the startup to enable reading the form
             return JsonConvert.SerializeObject(
                 new
                 {
-                    error.GUID,
-                    error.ApplicationName,
                     CreationDate = creationDate,
                     CustomData = customData,
                     error.Details,
-                    error.DuplicateCount,
                     error.ErrorHash,
                     HTTPMethod = error.HttpMethod,
                     error.Host,
                     IPAddress = error.IpAddress,
-                    error.IsProtected,
                     error.MachineName,
                     error.Message,
-                    SQL = error.Sql,
                     error.Source,
                     error.StatusCode,
                     error.Type,

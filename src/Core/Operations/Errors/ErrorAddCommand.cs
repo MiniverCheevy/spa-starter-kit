@@ -33,7 +33,7 @@ namespace Core.Operations.Errors
             fallbackLogger.Log(ex);
         }
 
-        protected override Task<NewItemResponse> ProcessRequestAsync()
+        protected override async Task<NewItemResponse> ProcessRequestAsync()
         {
             var error = request.Error;
             using (var scope = new TransactionScope(TransactionScopeOption.Suppress))
@@ -44,16 +44,14 @@ namespace Core.Operations.Errors
                     //TODO:consider moving to dapper
                     connection.Open();
                     var sql =
-                        @"Insert Into Exceptions (GUID, ApplicationName, MachineName, CreationDate, Type, IsProtected, Host, Url, HTTPMethod, IPAddress, Source, Message, Detail, StatusCode, SQL, FullJson, ErrorHash, DuplicateCount, [User])
-                                            Values (@GUID, @ApplicationName, @MachineName, @CreationDate, @Type, @IsProtected, @Host, @Url, @HTTPMethod, @IPAddress, @Source, @Message, @Detail, @StatusCode, @SQL, @FullJson, @ErrorHash, @DuplicateCount, @User)";
+                           @"Insert Into Exceptions (MachineName, CreationDate, Type,  Host, Url, HTTPMethod, IPAddress, Source, Message, Detail, StatusCode, FullJson, ErrorHash, [User])
+                                            Values (@MachineName, @CreationDate, @Type, @Host, @Url, @HTTPMethod, @IPAddress, @Source, @Message, @Detail, @StatusCode, @FullJson, @ErrorHash, @User);
+                                            Select @@Identity;";
                     using (var command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@GUID", error.GUID);
-                        command.Parameters.AddWithValue("@ApplicationName", error.ApplicationName.Truncate(200));
                         command.Parameters.AddWithValue("@MachineName", error.MachineName.Truncate(200));
                         command.Parameters.AddWithValue("@CreationDate", error.CreationDate);
                         command.Parameters.AddWithValue("@Type", error.Type.Truncate(200));
-                        command.Parameters.AddWithValue("@IsProtected", error.IsProtected);
                         command.Parameters.AddWithValue("@Host", error.Host.Truncate(200));
                         command.Parameters.AddWithValue("@Url", error.Url.Truncate(200));
                         command.Parameters.AddWithValue("@HTTPMethod", error.HttpMethod.Truncate(200));
@@ -62,16 +60,15 @@ namespace Core.Operations.Errors
                         command.Parameters.AddWithValue("@Message", error.Message.Truncate(200));
                         command.Parameters.AddWithValue("@Detail", error.Details);
                         command.Parameters.AddWithValue("@StatusCode", error.StatusCode ?? 200);
-                        command.Parameters.AddWithValue("@SQL", error.Sql.To<string>());
                         command.Parameters.AddWithValue("@FullJson", error.FullJson);
                         command.Parameters.AddWithValue("@ErrorHash", error.ErrorHash);
-                        command.Parameters.AddWithValue("@DuplicateCount", error.DuplicateCount);
                         command.Parameters.AddWithValue("@User", error.User.Truncate(128));
-                        command.ExecuteNonQuery();
+                        var result = await command.ExecuteScalarAsync();
+                        response.NewItemId = result.To<int>();
                     }
                 }
             }
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

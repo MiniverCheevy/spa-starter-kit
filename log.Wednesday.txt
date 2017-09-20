@@ -1,11 +1,11 @@
-Wednesday, August 30, 2017 9:16:46 AM
+Wednesday, September 20, 2017 8:40:14 AM
 System.Exception: Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn
    at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 28
    at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Wednesday, August 30, 2017 9:16:46 AM
+Wednesday, September 20, 2017 8:40:14 AM
 Details for 'Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 
@@ -21,47 +21,14 @@ var response = new StartupFromConfig(request).Execute();
 Assert.AreEqual(true, response.IsOk);
 
 **********************************************************
-Wednesday, August 30, 2017 9:17:29 AM
-System.Exception: Could not find command testmodel
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Wednesday, August 30, 2017 9:17:29 AM
-Details for 'Could not find command testmodel' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\spa-starter-kit\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\spa-starter-kit\tools\Spawn.exe",
-          "TestModel",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Wednesday, August 30, 2017 9:32:38 AM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 9:55:42 AM
+Wednesday, September 20, 2017 8:43:16 AM
 System.Exception: Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn
    at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 28
    at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Wednesday, August 30, 2017 9:55:42 AM
+Wednesday, September 20, 2017 8:43:16 AM
 Details for 'Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 
@@ -77,96 +44,14 @@ var response = new StartupFromConfig(request).Execute();
 Assert.AreEqual(true, response.IsOk);
 
 **********************************************************
-Wednesday, August 30, 2017 12:22:22 PM
-System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.Exception: Count not find Logic in Data project, make sure you've built recently in Debug Mode
-   at Voodoo.CodeGeneration.Batches.Batch.GetTargetFrom(Token token, Boolean throwIfNotFound) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Batches\Batch.cs:line 54
-   at Voodoo.CodeGeneration.Batches.Logics.LogicBatch..ctor(String[] targetTypes) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Batches\Logics\LogicBatch.cs:line 18
-   --- End of inner exception stack trace ---
-   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
-   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
-   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
-   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
-   at System.Activator.CreateInstance(Type type, Object[] args)
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 37
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Wednesday, August 30, 2017 12:22:22 PM
-Details for 'Exception has been thrown by the target of an invocation.' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\spa-starter-kit\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\spa-starter-kit\tools\Spawn.exe",
-          "Logic",
-          "TestModel",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Wednesday, August 30, 2017 12:23:19 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:23:19 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:23:19 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:35:22 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:39:11 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:43:08 PM
+Wednesday, September 20, 2017 4:29:00 PM
 System.Exception: Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn
    at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
+   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 28
    at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
    at Voodoo.Operations.Executor`2.Execute()
 **********************************************************
-Wednesday, August 30, 2017 12:43:08 PM
+Wednesday, September 20, 2017 4:29:00 PM
 Details for 'Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn' exception:
 Code to reproduce error:
 
@@ -175,255 +60,6 @@ var request= new StartupRequest {
      Arguments= new String[] {
           "C:\Dev\spa\spa-starter-kit\src\React/../../tools/spawn",
           "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Wednesday, August 30, 2017 12:44:31 PM
-System.Exception: Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn
-   at Voodoo.CodeGeneration.Helpers.CommandHelper.ExecuteCommand(String commandName, String[] targetTypes) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandHelper.cs:line 36
-   at Voodoo.CodeGeneration.Helpers.CommandLineParser.ParseAndExecute(String[] args) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\CommandLineParser.cs:line 33
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 64
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Wednesday, August 30, 2017 12:44:31 PM
-Details for 'Could not find command c:\dev\spa\spa-starter-kit\src\react/../../tools/spawn' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\spa-starter-kit\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\spa-starter-kit\src\React/../../tools/spawn",
-          "web",
-     },
-},
-;
-var response = new StartupFromConfig(request).Execute();
-Assert.AreEqual(true, response.IsOk);
-
-**********************************************************
-Wednesday, August 30, 2017 12:49:08 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:49:08 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:49:08 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:49:08 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:49:08 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:49:08 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:49:08 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 12:49:08 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:18:59 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:18:59 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:23:41 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:23:41 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:29:03 PM
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:29:03 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:29:03 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:29:03 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:29:03 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:29:03 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 3:29:03 PM
-System.ArgumentException: The reference node is not a child of this node.
-   at System.Xml.XmlNode.InsertBefore(XmlNode newChild, XmlNode refChild)
-   at Microsoft.Build.Construction.ProjectElementContainer.InsertBeforeChild(ProjectElement child, ProjectElement reference)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude, IEnumerable`1 metadata)
-   at Microsoft.Build.Evaluation.Project.AddItem(String itemType, String unevaluatedInclude)
-   at Voodoo.CodeGeneration.Projects.ToolsProjects.ToolsProject.AddItem(String visualStudioItemTypeNode, String pathToProject) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ToolsProjects\ToolsProject.cs:line 57
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.<>c__DisplayClass70_0.<writeFile>b__0() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 213
-   at Voodoo.ActionHandler.Execute[T](Func`1 action)
-**********************************************************
-Wednesday, August 30, 2017 4:07:37 PM
-System.InvalidOperationException: An equivalent project (a project with the same global properties and tools version) is already present in the project collection, with the path "C:\Dev\spa\spa-starter-kit\src\Core\Core.csproj". To load an equivalent into this project collection, unload this project first.
-   at Microsoft.Build.Shared.ErrorUtilities.ThrowInvalidOperation(String resourceName, Object[] args)
-   at Microsoft.Build.Evaluation.ProjectCollection.LoadedProjectCollection.AddProject(Project project)
-   at Microsoft.Build.Evaluation.ProjectCollection.OnAfterRenameLoadedProject(String oldFullPathIfAny, Project project)
-   at Microsoft.Build.Evaluation.Project.<Initialize>b__152_0(String oldFullPath)
-   at Microsoft.Build.Evaluation.Project.Initialize(IDictionary`2 globalProperties, String toolsVersion, String subToolsetVersion, ProjectLoadSettings loadSettings)
-   at Microsoft.Build.Evaluation.Project..ctor(String projectFile, IDictionary`2 globalProperties, String toolsVersion, String subToolsetVersion, ProjectCollection projectCollection, ProjectLoadSettings loadSettings)
-   at Microsoft.Build.Evaluation.Project..ctor(String projectFile)
-   at Voodoo.CodeGeneration.Projects.ProjectHelper.GetProject(String path) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Projects\ProjectHelper.cs:line 20
-   at Voodoo.CodeGeneration.Models.VisualStudio.SolutionFacade.GetProject(String fullPath) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\SolutionFacade.cs:line 60
-   at Voodoo.CodeGeneration.Models.VisualStudio.ProjectFacade.Initialize() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Models\VisualStudio\ProjectFacade.cs:line 93
-   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.<>c.<Initialize>b__51_0(ProjectFacade c) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 81
-   at System.Collections.Generic.List`1.ForEach(Action`1 action)
-   at Voodoo.CodeGeneration.Helpers.VisualStudioHelper.Initialize(SolutionFacade solution) in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Helpers\VisualStudioHelper.cs:line 81
-   at Voodoo.CodeGeneration.Operations.StartupFromConfig.ProcessRequest() in C:\Dev\spa\spa-starter-kit\dev-tools\Voodoo.CodeGeneration\Operations\StartupFromConfig.cs:line 50
-   at Voodoo.Operations.Executor`2.Execute()
-**********************************************************
-Wednesday, August 30, 2017 4:07:37 PM
-Details for 'An equivalent project (a project with the same global properties and tools version) is already present in the project collection, with the path "C:\Dev\spa\spa-starter-kit\src\Core\Core.csproj". To load an equivalent into this project collection, unload this project first.' exception:
-Code to reproduce error:
-
-var request= new StartupRequest {
-     Path="C:\Dev\spa\spa-starter-kit\tools",
-     Arguments= new String[] {
-          "C:\Dev\spa\spa-starter-kit\tools\Spawn.exe",
-          "message",
-          "BlobOfText",
-          "debug",
      },
 },
 ;

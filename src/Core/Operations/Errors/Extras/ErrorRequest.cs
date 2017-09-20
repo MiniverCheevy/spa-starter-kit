@@ -1,4 +1,4 @@
-﻿using Core.Models.Exceptions;
+﻿using Core.Models.Logging;
 
 namespace Core.Operations.Errors.Extras
 {

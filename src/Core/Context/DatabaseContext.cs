@@ -12,8 +12,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Context.ExceptionTranslators;
 using Core.Models;
-using Core.Models.Exceptions;
 using Core.Models.Identity;
+using Core.Models.Logging;
 using Core.Models.Scratch;
 using Core.Operations.Lists;
 using Voodoo;
@@ -25,6 +25,7 @@ namespace Core.Context
         private ListsHelper listHelper = new ListsHelper();
         private const string EffortConnectionString = "instanceid=this";
         public bool IsEffort => Database.Connection.ConnectionString == EffortConnectionString;
+
         public DbSet<Error> Errors { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -32,22 +33,27 @@ namespace Core.Context
         
         public DatabaseContext() : base("DefaultConnection")
         {
+            init();
+        }
+
+        private void init()
+        {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
+            Database.Log = IOC.TraceLogger.Log;
         }
+       
 
         public DatabaseContext(string connectionString)
             : base(connectionString)
         {
-            Configuration.ProxyCreationEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
+            init();
         }
 
         public DatabaseContext(DbConnection connection)
             : base(connection, true)
         {
-            Configuration.ProxyCreationEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
+            init();
         }
 
         

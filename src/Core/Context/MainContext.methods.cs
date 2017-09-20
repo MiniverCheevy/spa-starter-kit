@@ -87,13 +87,6 @@ namespace Core.Context
         }
 
 
-        private void LogWrites(string data)
-        {
-            Debug.WriteLine(data);
-            var stackTrace = new StackTrace();
-            var methodBase = stackTrace.GetFrame(3).GetMethod();
-            Debug.WriteLine(methodBase.Name);
-            Debug.WriteLine("\n---------------------------------------------------------------\n");
-        }
+        
     }
 }

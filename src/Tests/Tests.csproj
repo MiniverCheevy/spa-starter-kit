@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInitialize.cs" />
     <Compile Include="Core\Security\EncryptionTests.cs" />
+    <Compile Include="Fakes\TestTraceLogger.cs" />
     <Compile Include="Fakes\FakeContextFactory.cs" />
     <Compile Include="Fakes\FakeRequestContextProvider.cs" />
     <Compile Include="Fakes\TestFileSystemProvider.cs" />

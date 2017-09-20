@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security;
 using System.Threading.Tasks;
-using Core.Models.Exceptions;
+using Core.Models.Logging;
 using Core.Operations.Errors.Extras;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
@@ -29,7 +29,6 @@ namespace Core.Operations.Errors
                 error.Host = request.Url;
                 error.Message = request.ErrorMsg;
                 error.CreationDate = DateTime.UtcNow;
-                error.GUID = Guid.NewGuid();
                 error.FullJson =
                     $"{{\"CustomData\":{{ host:\"{request.Url}\" type:\"javascript\" message:\"{request.ErrorMsg}\" detail:\"{request.ErrorObject}\" user:\"{error.User}\" time:\"{DateTime.UtcNow:o}\" }}}}";
                 context.Errors.Add(error);

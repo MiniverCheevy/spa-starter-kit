@@ -297,7 +297,7 @@ namespace Core.Context
         protected string GetAliasedFieldName(string name, bool forceAliasing = false)
         {
             if (Target.SqlJoinClauses.Any() || Target.SqlOperation == SqlOperation.Delete || forceAliasing)
-                return string.Format(" [{0}].[{1}] ", Prefix, name);
+                return $" [{Prefix}].[{name}] ";
 
             return name;
         }
@@ -374,7 +374,7 @@ namespace Core.Context
             if (typeof(TProperty) == typeof(DateTime))
                 buildDatePredicate(value, alias, "=");
             else
-                Target.SqlWhereClauses.Add(string.Format("[{0}].[{1}] = {2}", Prefix, alias, sqlValue));
+                Target.SqlWhereClauses.Add($"[{Prefix}].[{alias}] = {sqlValue}");
         }
 
         public void WhereGreaterThanOrEqualTo<TProperty>(Expression<Func<TModel, TProperty>> propertyName,
@@ -383,7 +383,7 @@ namespace Core.Context
             var alias = GetFieldName(propertyName);
             var sqlValue = GetParameter(value);
 
-            Target.SqlWhereClauses.Add(string.Format("[{0}].[{1}] >= {2}", Prefix, alias, sqlValue));
+            Target.SqlWhereClauses.Add($"[{Prefix}].[{alias}] >= {sqlValue}");
         }
 
         public void WhereLessThanOrEqualTo<TProperty>(Expression<Func<TModel, TProperty>> propertyName, TProperty value)
@@ -391,7 +391,7 @@ namespace Core.Context
             var alias = GetFieldName(propertyName);
             var sqlValue = GetParameter(value);
 
-            Target.SqlWhereClauses.Add(string.Format("[{0}].[{1}] <= {2}", Prefix, alias, sqlValue));
+            Target.SqlWhereClauses.Add($"[{Prefix}].[{alias}] <= {sqlValue}");
         }
 
         protected static string GetFieldName<TObject, TProperty>(Expression<Func<TObject, TProperty>> propertyName)

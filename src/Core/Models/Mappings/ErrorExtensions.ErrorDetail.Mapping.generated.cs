@@ -6,7 +6,7 @@
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
 using Core;
-using Core.Models.Exceptions;
+using Core.Models.Logging;
 using Core.Operations.Errors.Extras;
 namespace Core.Models.Mappings
 {

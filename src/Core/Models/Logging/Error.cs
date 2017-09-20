@@ -1,19 +1,17 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+using Voodoo;
 
-namespace Core.Models.Exceptions
+namespace Core.Models.Logging
 {
     [Table("Exceptions")]
     public class Error
     {
         public long Id { get; set; }
-
-        [Index]
-        public Guid GUID { get; set; }
-
-        [MaxLength(200)]
-        public string ApplicationName { get; set; }
 
         [MaxLength(200)]
         public string MachineName { get; set; }
@@ -22,8 +20,6 @@ namespace Core.Models.Exceptions
 
         [MaxLength(200)]
         public string Type { get; set; }
-
-        public bool IsProtected { get; set; }
 
         [MaxLength(200)]
         public string Host { get; set; }
@@ -50,15 +46,9 @@ namespace Core.Models.Exceptions
         public int? StatusCode { get; set; }
 
         [MaxLength]
-        public string Sql { get; set; }
-
-        public DateTimeOffset? DeletionDate { get; set; }
-
-        [MaxLength]
         public string FullJson { get; set; }
 
         public int? ErrorHash { get; set; }
-        public int DuplicateCount { get; set; }
         public string User { get; set; }
     }
 }

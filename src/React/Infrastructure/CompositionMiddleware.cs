@@ -18,9 +18,10 @@ namespace Web.Infrastructure
 
         public async Task Invoke(HttpContext context, IHttpContextAccessor httpContextAccessor)
         {
-            IOC.TraceWriter = new TraceWriter();
+            
             IOC.ContextFactory = new ContextFactory();
             IOC.RequestContextProvier = new RequestContextProvider(httpContextAccessor);
+            IOC.TraceLogger = new HttpContextLogger(httpContextAccessor);
             VoodooGlobalConfiguration.ErrorDetailLoggingMethodology = ErrorDetailLoggingMethodology.LogInExceptionData;
             await next(context);
         }

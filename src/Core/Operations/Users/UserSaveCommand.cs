@@ -71,22 +71,22 @@ namespace Core.Operations.Users
 
             if (request.Password.Trim() != request.ConfirmPassword.Trim())
                 throw new LogicException("Password and Confirm Password do not match!");
+
             var manager = new PasswordManager();
             manager.BuildPasswordAndSalt(ref model, request.Password);
         }
 
         private async Task<User> createOrGetExisting()
         {
-            if (request.Id == 0)
-            {
-                isNew = true;
-                var entity = new User();
-                context.Users.Add(entity);
-                return entity;
-            }
-            return await context.Users
-                .Include(c => c.Roles)
-                .FirstOrDefaultAsync(c => c.Id == request.Id);
+            if (request.Id != 0)
+                return await context.Users
+                    .Include(c => c.Roles)
+                    .FirstOrDefaultAsync(c => c.Id == request.Id);
+
+            isNew = true;
+            var entity = new User();
+            context.Users.Add(entity);
+            return entity;
         }
     }
 }
