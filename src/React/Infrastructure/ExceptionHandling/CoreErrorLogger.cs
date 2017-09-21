@@ -12,7 +12,7 @@ namespace Web.Infrastructure.ExceptionHandling
 {
     public class CoreErrorLogger : ILogger
     {
-        public const string ErrorResponse = "ErrorResponse";
+        
         public static IHttpContextAccessor HttpContextAccessor { get; set; }
 
         public void Log(string message)

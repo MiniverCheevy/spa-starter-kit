@@ -64,8 +64,10 @@ namespace Core.Operations.CurrentUsers
         {
             if (user != null)
             {
+                var requestContext = IOC.RequestContext;
+
                 user.LastAuthentication = DateTime.UtcNow;
-                user.LastUserAgent = request.UserAgent.Truncate(256);
+                user.LastUserAgent = requestContext?.UserAgent.Truncate(256);
                 await context.SaveChangesAsync();
             }
         }

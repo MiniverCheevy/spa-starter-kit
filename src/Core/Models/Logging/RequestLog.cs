@@ -29,7 +29,7 @@ namespace Core.Models.Logging
         public string Name { get; set; }
 
         [MaxLength(200)]
-        public decimal Duration { get; set; }
+        public decimal DurationInMs { get; set; }
                 
         public string User { get; set; }
         [MaxLength(8000)]
@@ -41,8 +41,7 @@ namespace Core.Models.Logging
         public string BrowserVersion { get; set; }
         [MaxLength(200)]
         public string OSFamily { get; set; }
-        public long? ExceptionId { get; set; }
-
-        
+        public Guid? RequestId { get; set; }
+        public string TraceLogs { get; set; }
     }
 }

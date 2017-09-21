@@ -20,7 +20,6 @@ namespace Web
     public class Startup
     {
 
-
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder();
@@ -45,6 +44,16 @@ namespace Web
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+/*
+add the below line to the startup to enable reading the request
+    
+    app.Use((context, next) => { context.Request.EnableRewind(); return next(); });
+
+add the below line to the startup to enable reading the form
+
+    services.Configure<FormOptions>(options => options.BufferBody = true);
+*/
+
             //Error Handling should always be first
             app.UseMiddleware<AppErrorHandlingMiddleware>();
             app.UseMiddleware<CompositionMiddleware>();

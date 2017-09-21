@@ -6,6 +6,6 @@ namespace Core.Logging
     public interface ITraceLogger
     {
         void Log(string log);
-        List<LogEntry> getAllLogs(bool clear = true);
+        List<LogEntry> GetAllLogs(bool clear = true);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using Core;
 using Core.Models.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -118,6 +119,7 @@ add the below line to the startup to enable reading the form
         }
 
 
+        [DebuggerNonUserCode]
         private void setContextProperties()
         {
             if (context == null) return;
@@ -127,6 +129,8 @@ add the below line to the startup to enable reading the form
             error.HttpMethod = context.Request.Method;
             error.Url = context.Request.GetEncodedUrl();
             error.Host = context.Request.Host.Host.To<string>();
+            error.RequestId = IOC.RequestContext?.Id;
+
             Func<Func<HttpRequest, List<NameValuePair>>, List<NameValuePair>> tryGetCollection = getter =>
             {
                 try
@@ -135,7 +139,7 @@ add the below line to the startup to enable reading the form
                 }
                 catch (Exception e)
                 {
-                    Trace.WriteLine("Error parsing collection: " + e.Message);
+                    IOC.TraceLogger.Log("Error parsing collection: " + e.Message);
                     return new List<NameValuePair> {{CollectionErrorKey, e.Message}};
                 }
             };
@@ -156,8 +160,7 @@ add the below line to the startup to enable reading the form
             }
             catch (Exception e)
             {
-                form = new List<NameValuePair>();
-                form.Add("Error Reading Form", e.Message);
+                form = new List<NameValuePair> {{"Error Reading Form", e.Message}};
             }
             try
             {
@@ -171,8 +174,7 @@ add the below line to the startup to enable reading the form
             }
             catch (Exception e)
             {
-                queryString = new List<NameValuePair>();
-                queryString.Add("Error Reading QueryString", e.Message);
+                queryString = new List<NameValuePair> {{"Error Reading QueryString", e.Message}};
             }
             try
             {
@@ -186,8 +188,7 @@ add the below line to the startup to enable reading the form
             }
             catch (Exception e)
             {
-                cookies = new List<NameValuePair>();
-                cookies.Add("Error Reading Cookies", e.Message);
+                cookies = new List<NameValuePair> {{"Error Reading Cookies", e.Message}};
             }
 
             requestHeaders = new List<NameValuePair>(request.Headers.Count);
@@ -197,8 +198,7 @@ add the below line to the startup to enable reading the form
                 if (string.Compare(header, "Cookie", StringComparison.OrdinalIgnoreCase) == 0)
                     continue;
                 var value = request.Headers[header].To<string>();
-
-                requestHeaders.Add(header, request.Headers[header]);
+                requestHeaders.Add(header, value);
             }
         }
 
@@ -262,7 +262,8 @@ add the below line to the startup to enable reading the form
                     CookieVariables = cookies,
                     RequestHeaders = requestHeaders,
                     QueryStringVariables = queryString,
-                    FormVariables = form
+                    FormVariables = form,
+                    TraceLogs = IOC.TraceLogger.GetAllLogs(true)
                 });
         }
 

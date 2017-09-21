@@ -34,7 +34,7 @@ namespace Web.Infrastructure.Logging
             httpContext.Items[TraceLog] = logs;
         }
 
-        public List<LogEntry> getAllLogs(bool clear = true)
+        public List<LogEntry> GetAllLogs(bool clear = true)
         {
             var logs = httpContext.Items[TraceLog].To<List<LogEntry>>();
             if (clear)

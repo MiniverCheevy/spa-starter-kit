@@ -20,7 +20,7 @@ namespace Tests.Fakes
             Debug.WriteLine($"{entry.CreationDate.TimeOfDay.ToString().PadRight(20)} -> {log}");
         }
 
-        public List<LogEntry> getAllLogs(bool clear = true)
+        public List<LogEntry> GetAllLogs(bool clear = true)
         {
             var result = logs;
             if (clear)

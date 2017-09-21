@@ -50,5 +50,7 @@ namespace Core.Models.Logging
 
         public int? ErrorHash { get; set; }
         public string User { get; set; }
+
+        public Guid? RequestId { get; set; }
     }
 }

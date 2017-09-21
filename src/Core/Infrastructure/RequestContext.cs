@@ -7,6 +7,7 @@ namespace Core.Infrastructure
     {
         public AppPrincipal AppPrincipal { get; set; }
         public ClientInfo ClientInfo { get; set; }
-       
+        public Guid? Id { get; set; }
+        public string UserAgent { get; set; }
     }
 }

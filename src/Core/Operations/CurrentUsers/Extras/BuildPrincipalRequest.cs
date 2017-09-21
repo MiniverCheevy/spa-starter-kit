@@ -2,7 +2,6 @@
 {
     public class BuildPrincipalRequest
     {
-        public string UserName { get; set; }
-        public string UserAgent { get; set; }
+        public string UserName { get; set; }       
     }
 }
