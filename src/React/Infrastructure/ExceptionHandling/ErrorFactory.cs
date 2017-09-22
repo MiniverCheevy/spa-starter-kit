@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Core;
+using Core.Infrastructure.Logging;
 using Core.Models.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -13,9 +14,10 @@ using Voodoo.Messages;
 
 namespace Web.Infrastructure.ExceptionHandling
 {
-    public class ErrorFactory
+    public class ErrorFactory : IErrorFactory
     {
         internal const string CollectionErrorKey = "CollectionFetchError";
+        private Exception excpetion;
         private HttpContext context;
         private List<NameValuePair> cookies = new List<NameValuePair>();
         private DateTime creationDate;
@@ -25,7 +27,11 @@ namespace Web.Infrastructure.ExceptionHandling
         private List<NameValuePair> queryString = new List<NameValuePair>();
         private List<NameValuePair> requestHeaders = new List<NameValuePair>();
 
-
+        public ErrorFactory(Exception excpetion, HttpContext context)
+        {
+            this.excpetion = excpetion;
+            this.context = context;
+        }
 /*
 add the below line to the startup to enable reading the request
     
@@ -36,23 +42,25 @@ add the below line to the startup to enable reading the form
     services.Configure<FormOptions>(options => options.BufferBody = true);
 */
 
-        public Error GetError(Exception e, HttpContext context)
+        public Error GetError()
         {
-            if (e == null)
-                throw new ArgumentNullException(nameof(e));
+            var start = DateTime.UtcNow;
+            if (excpetion == null)
+                throw new ArgumentNullException(nameof(excpetion));
 
             creationDate = DateTime.Now;
-            this.context = context;
 
-            buildError(e);
+            buildError(excpetion);
 
-            foreach (var key in e.Data.Keys)
-                customData.Add(new NameValuePair(key.To<string>(), e.Data[key].To<string>()));
+            foreach (var key in excpetion.Data.Keys)
+                customData.Add(new NameValuePair(key.To<string>(), excpetion.Data[key].To<string>()));
 
             setContextProperties();
             var body = captureBody(context);
             error.ErrorHash = GetHash();
             error.FullJson = ToDetailedJson();
+
+            var duration = DateTime.UtcNow.Subtract(start);
 
             return error;
         }

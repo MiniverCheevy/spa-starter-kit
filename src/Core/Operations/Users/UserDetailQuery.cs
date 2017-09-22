@@ -13,6 +13,8 @@ using Voodoo.Validation.Infrastructure;
 
 namespace Core.Operations.Users
 {
+    
+
     [Rest(Verb.Get, RestResources.User, Roles = new[] {RoleNames.Administrator})]
     public class UserDetailQuery : QueryAsync<IdRequest, Response<UserDetail>>
     {

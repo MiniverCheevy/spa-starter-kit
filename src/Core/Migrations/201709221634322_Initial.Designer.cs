@@ -7,13 +7,13 @@ namespace Core.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class DateTimeToDateTimeOffsetInErrorsTable : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DateTimeToDateTimeOffsetInErrorsTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201708041345234_DateTimeToDateTimeOffsetInErrorsTable"; }
+            get { return "201709221634322_Initial"; }
         }
         
         string IMigrationMetadata.Source

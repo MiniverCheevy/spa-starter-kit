@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Logging;
+using Core.Infrastructure.Logging;
 using Core.Models.Logging;
 using Microsoft.AspNetCore.Http;
 using Voodoo;
@@ -25,7 +25,7 @@ namespace Web.Infrastructure.Logging
 
         public void Log(string log)
         {
-            var logs = httpContext.Items[TraceLog].To<List<LogEntry>>();
+            var logs = httpContext.Items[TraceLog].To<List<LogEntry>>() ?? new List<LogEntry>();
 
             var stackTrace = new StackTrace();
             var methodBase = stackTrace.GetFrame(3)?.GetMethod();

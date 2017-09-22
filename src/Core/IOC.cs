@@ -1,7 +1,7 @@
 using Core.Context;
 using Core.Identity;
 using Core.Infrastructure;
-using Core.Logging;
+using Core.Infrastructure.Logging;
 using Voodoo;
 
 namespace Core
@@ -14,7 +14,11 @@ namespace Core
         public static IContextFactory ContextFactory { get; set; }
         public static RequestContext RequestContext => RequestContextProvier?.RequestContext;
 
-        public static ITraceLogger TraceLogger {get;set;}
+        private static ITraceLogger traceLogger;
+        public static ITraceLogger TraceLogger {
+            get => traceLogger ?? new ConsoleTraceLogger();
+            set => traceLogger = value;
+        }
 
         public static AppPrincipal GetCurrentPrincipal()
         {

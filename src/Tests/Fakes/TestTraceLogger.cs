@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Logging;
+using Core.Infrastructure.Logging;
 using Core.Models.Logging;
 
 namespace Tests.Fakes

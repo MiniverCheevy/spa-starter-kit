@@ -113,14 +113,12 @@
     <Compile Include="Infrastructure\RequestContext.cs" />
     <Compile Include="Infrastructure\Settings.cs" />
     <Compile Include="IOC.cs" />
-    <Compile Include="Logging\ITraceLogger.cs" />
-    <Compile Include="Migrations\201707311318584_Initial.cs" />
-    <Compile Include="Migrations\201707311318584_Initial.Designer.cs">
-      <DependentUpon>201707311318584_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708041345234_DateTimeToDateTimeOffsetInErrorsTable.cs" />
-    <Compile Include="Migrations\201708041345234_DateTimeToDateTimeOffsetInErrorsTable.Designer.cs">
-      <DependentUpon>201708041345234_DateTimeToDateTimeOffsetInErrorsTable.cs</DependentUpon>
+    <Compile Include="Infrastructure\Logging\IErrorFactory.cs" />
+    <Compile Include="Infrastructure\Logging\IRequestLogFactory.cs" />
+    <Compile Include="Infrastructure\Logging\ITraceLogger.cs" />
+    <Compile Include="Migrations\201709221634322_Initial.cs" />
+    <Compile Include="Migrations\201709221634322_Initial.Designer.cs">
+      <DependentUpon>201709221634322_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\TestDataBuilder.cs" />
@@ -257,13 +255,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709221634322_Initial.resx">
+      <DependentUpon>201709221634322_Initial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Images\logo.png" />
-    <EmbeddedResource Include="Migrations\201707311318584_Initial.resx">
-      <DependentUpon>201707311318584_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708041345234_DateTimeToDateTimeOffsetInErrorsTable.resx">
-      <DependentUpon>201708041345234_DateTimeToDateTimeOffsetInErrorsTable.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Scripts\Lookups.sql" />
     <Content Include="Migrations\Scripts\ReadMe.txt" />
     <EmbeddedResource Include="Migrations\Scripts\Script.sql" />

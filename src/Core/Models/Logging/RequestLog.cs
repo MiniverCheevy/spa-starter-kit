@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Voodoo;
@@ -14,6 +15,7 @@ namespace Core.Models.Logging
         [MaxLength(200)]
         public string MachineName { get; set; }
 
+        [Index]
         public DateTimeOffset CreationDate { get; set; }
 
         [MaxLength(200)]
@@ -41,7 +43,12 @@ namespace Core.Models.Logging
         public string BrowserVersion { get; set; }
         [MaxLength(200)]
         public string OSFamily { get; set; }
+        [Index]
         public Guid? RequestId { get; set; }
+
+        [MaxLength]
         public string TraceLogs { get; set; }
+        public int WeekOfYear { get; set; }
+        public int DayOfYear { get; set; }
     }
 }

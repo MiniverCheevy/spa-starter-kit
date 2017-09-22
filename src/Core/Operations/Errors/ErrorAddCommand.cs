@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Transactions;
+using Core.Infrastructure.Logging;
 using Core.Operations.Errors.Extras;
 using Voodoo;
 using Voodoo.Logging;
@@ -21,9 +22,9 @@ namespace Core.Operations.Errors
         }
     }
 
-    public class ErrorAddCommand : ExecutorAsync<ErrorRequest, NewItemResponse>
+    public class ErrorAddCommand : ExecutorAsync<IErrorFactory, NewItemResponse>
     {
-        public ErrorAddCommand(ErrorRequest request) : base(request)
+        public ErrorAddCommand(IErrorFactory request) : base(request)
         {
         }
 
@@ -35,7 +36,7 @@ namespace Core.Operations.Errors
 
         protected override async Task<NewItemResponse> ProcessRequestAsync()
         {
-            var error = request.Error;
+            var error = request.GetError();
             using (var scope = new TransactionScope(TransactionScopeOption.Suppress))
             {
                 //bypass any entity framework issues (model has changed, etc.) by using sql commands

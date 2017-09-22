@@ -22,12 +22,9 @@ namespace Core.Migrations
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        GUID = c.Guid(nullable: false),
-                        ApplicationName = c.String(maxLength: 200, unicode: false),
                         MachineName = c.String(maxLength: 200, unicode: false),
-                        CreationDate = c.DateTime(nullable: false),
+                        CreationDate = c.DateTimeOffset(nullable: false, precision: 7),
                         Type = c.String(maxLength: 200, unicode: false),
-                        IsProtected = c.Boolean(nullable: false),
                         Host = c.String(maxLength: 200, unicode: false),
                         Url = c.String(maxLength: 200, unicode: false),
                         HttpMethod = c.String(maxLength: 200, unicode: false),
@@ -36,15 +33,15 @@ namespace Core.Migrations
                         Message = c.String(maxLength: 200, unicode: false),
                         Detail = c.String(unicode: false),
                         StatusCode = c.Int(),
-                        Sql = c.String(unicode: false),
-                        DeletionDate = c.DateTime(),
                         FullJson = c.String(unicode: false),
                         ErrorHash = c.Int(),
-                        DuplicateCount = c.Int(nullable: false),
                         User = c.String(maxLength: 128, unicode: false),
+                        RequestId = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.GUID);
+                .Index(t => t.CreationDate)
+                .Index(t => t.Type)
+                .Index(t => t.RequestId);
             
             CreateTable(
                 "scratch.Members",
@@ -171,7 +168,9 @@ namespace Core.Migrations
             DropIndex("scratch.Projects", new[] { "TeamId" });
             DropIndex("scratch.BlobOfText", new[] { "MemberId" });
             DropIndex("scratch.Members", new[] { "ManagerId" });
-            DropIndex("dbo.Exceptions", new[] { "GUID" });
+            DropIndex("dbo.Exceptions", new[] { "RequestId" });
+            DropIndex("dbo.Exceptions", new[] { "Type" });
+            DropIndex("dbo.Exceptions", new[] { "CreationDate" });
             DropTable("dbo.UserRoles");
             DropTable("dbo.TeamMembers");
             DropTable("dbo.Users");

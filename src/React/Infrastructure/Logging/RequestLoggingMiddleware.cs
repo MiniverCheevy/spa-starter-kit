@@ -22,7 +22,7 @@ namespace Web.Infrastructure.Logging
             await next(context);
             this.end = DateTime.UtcNow;
             var duration = end.Subtract(start).Milliseconds;
-            var requestLog = RequestLogFactory.BuildRequestLog(context, duration); 
+            var requestLog = new RequestLogFactory(context, duration).GetLog(); 
         }
     }
 }

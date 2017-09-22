@@ -30,7 +30,7 @@ namespace Core.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<ApplicationSetting> ApplicationSettings { get; set; }
-        
+
         public DatabaseContext() : base("DefaultConnection")
         {
             init();
@@ -42,7 +42,7 @@ namespace Core.Context
             Configuration.LazyLoadingEnabled = false;
             Database.Log = IOC.TraceLogger.Log;
         }
-       
+
 
         public DatabaseContext(string connectionString)
             : base(connectionString)
@@ -56,7 +56,7 @@ namespace Core.Context
             init();
         }
 
-        
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -69,7 +69,7 @@ namespace Core.Context
                 .Where(c => c.Name != "Id")
                 .Configure(p => p.IsUnicode(false));
 
-            
+
 
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

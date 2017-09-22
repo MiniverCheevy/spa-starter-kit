@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using Core;
+using Core.Infrastructure.Logging;
 using Core.Models.Logging;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
@@ -14,7 +16,7 @@ using Web.Infrastructure.ExceptionHandling;
 
 namespace Web.Infrastructure.Logging
 {
-    internal class RequestLogFactory
+    internal class  RequestLogFactory:IRequestLogFactory
     {
         private RequestLog log;
         private HttpContext context;
@@ -25,7 +27,7 @@ namespace Web.Infrastructure.Logging
             this.context = context;
             
         }
-        internal RequestLog GetLog()
+        public RequestLog GetLog()
         {
             decorateLog();
             return log;
@@ -41,7 +43,12 @@ namespace Web.Infrastructure.Logging
             log.Url = $"{context.Request.Scheme}://{context.Request.Host}{context.Request.Path}{context.Request.QueryString}";
             log.Host = System.Environment.MachineName;
             log.Name = context.Request.Path;
-            
+
+            var formatInfo = DateTimeFormatInfo.CurrentInfo;            
+            var calander = formatInfo.Calendar;
+
+            log.WeekOfYear = calander.GetWeekOfYear(log.CreationDate.Date, formatInfo.CalendarWeekRule, formatInfo.FirstDayOfWeek);
+            log.DayOfYear = calander.GetDayOfYear(log.CreationDate.Date);
 
         }
 

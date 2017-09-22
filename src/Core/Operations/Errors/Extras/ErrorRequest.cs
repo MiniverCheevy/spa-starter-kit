@@ -1,9 +1,10 @@
-﻿using Core.Models.Logging;
+﻿using Core.Infrastructure.Logging;
+using Core.Models.Logging;
 
 namespace Core.Operations.Errors.Extras
 {
     public class ErrorRequest
     {
-        public Error Error { get; set; }
+        public IErrorFactory ErrorFactory { get; set; }
     }
 }
