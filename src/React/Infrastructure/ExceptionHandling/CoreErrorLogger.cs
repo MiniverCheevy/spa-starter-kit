@@ -12,7 +12,6 @@ namespace Web.Infrastructure.ExceptionHandling
 {
     public class CoreErrorLogger : ILogger
     {
-        
         public static IHttpContextAccessor HttpContextAccessor { get; set; }
 
         public void Log(string message)
@@ -21,13 +20,21 @@ namespace Web.Infrastructure.ExceptionHandling
             try
             {
                 ex = new Exception(message);
-                Log(ex);
+                var context = HttpContextAccessor.HttpContext;
+                var error = new ErrorFactory().GetError(ex, context);
 
+                var telemetry = new TelemetryClient();
+                var properties = new Dictionary<string, string>();
+                telemetry.TrackException(ex, properties);
+
+#pragma warning disable 4014
+                new ErrorAddCommand(new ErrorRequest {Error = error}).ExecuteAsync();
+#pragma warning restore 4014
             }
             catch (Exception e)
             {
-                writeFallbackLog(e);
-                writeFallbackLog(ex);
+                WriteFallbackLog(e);
+                WriteFallbackLog(ex);
             }
         }
 
@@ -40,17 +47,19 @@ namespace Web.Infrastructure.ExceptionHandling
 
                 Console.WriteLine(ex.ToString());
                 var context = HttpContextAccessor.HttpContext;
-                
-                new ErrorAddCommand(new ErrorFactory(ex, context)).ExecuteAsync().ConfigureAwait(false);
+                var error = new ErrorFactory().GetError(ex, context);
+#pragma warning disable 4014
+                new ErrorAddCommand(new ErrorRequest {Error = error}).ExecuteAsync();
+#pragma warning restore 4014
             }
             catch (Exception e)
             {
-                writeFallbackLog(e);
-                writeFallbackLog(ex);
+                WriteFallbackLog(e);
+                WriteFallbackLog(ex);
             }
         }
 
-        private void writeFallbackLog(Exception ex)
+        private void WriteFallbackLog(Exception ex)
         {
             try
 

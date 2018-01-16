@@ -1,22 +1,23 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
-using Web;
 
-namespace Fernweh
+namespace Web
 {
-  public class Program
-  {
-    public static void Main(string[] args)
+    public class Program
     {
-      var host = new WebHostBuilder()
-        .UseKestrel()
-        .UseContentRoot(Directory.GetCurrentDirectory())
-        .UseIISIntegration()
-        .UseStartup<Startup>()
-        .UseApplicationInsights()
-        .Build();
+        public static void Main(string[] args)
+        {
+            var environment = EnvironmentBuilder.GetEnvironment();
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseEnvironment(environment)
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .UseApplicationInsights()
+                .Build();
 
-      host.Run();
+            host.Run();
+        }
     }
-  }
 }

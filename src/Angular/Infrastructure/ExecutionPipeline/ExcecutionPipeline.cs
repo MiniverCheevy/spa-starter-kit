@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Voodoo.Messages;
 using Web.Infrastructure.ExecutionPipeline.Models;
@@ -20,18 +21,20 @@ namespace Web.Infrastructure.ExecutionPipeline
     {
         private ExecutionState<TRequest, TResponse> state;
 
+        public DateTime StartTime { get; }
+
         private List<Step<TRequest, TResponse>> steps = new List<Step<TRequest, TResponse>>
             {
                 new ModelStateVerificationStep<TRequest, TResponse>(),
                 new AuthorizationStep<TRequest, TResponse>(),
-                new ExecutionStep<TRequest, TResponse>(),
-                //new BinaryResponseStep<TRequest, TResponse>()
+                new ExecutionStep<TRequest, TResponse>()
             }
             ;
 
         public ExcecutionPipeline(ExecutionState<TRequest, TResponse> executionState)
-        {
-            state = executionState;
+        {            
+            this.StartTime = DateTime.UtcNow;
+			state = executionState;
         }
 
         public async Task<TResponse> ExecuteAsync()
@@ -42,7 +45,8 @@ namespace Web.Infrastructure.ExecutionPipeline
                 if (state.IsDone)
                     break;
             }
-            //state = await new ResponseDecorationStep<TRequest, TResponse>().ExecuteAsync(state);
+            state = await new ResponseDecorationStep<TRequest, TResponse>().ExecuteAsync(state);
+            
             return state.Response;
         }
     }

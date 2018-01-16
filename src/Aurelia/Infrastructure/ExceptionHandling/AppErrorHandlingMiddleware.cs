@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using Core.Models.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Newtonsoft.Json;
 using Voodoo.Messages;
+using Voodoo;
 
 namespace Web.Infrastructure.ExceptionHandling
 {
@@ -20,6 +22,7 @@ namespace Web.Infrastructure.ExceptionHandling
         public async Task Invoke(HttpContext context, IHttpContextAccessor httpContextAccessor)
         {
             CoreErrorLogger.HttpContextAccessor = httpContextAccessor;
+            VoodooGlobalConfiguration.RegisterLogger(new CoreErrorLogger());
             context.Request.EnableRewind();
             try
             {

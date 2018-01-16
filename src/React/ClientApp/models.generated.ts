@@ -799,7 +799,6 @@ static empty()
 {
     const result =
     {
-        timeZoneOffsetInMinutes:undefined
     };
     return result;
 }
@@ -808,24 +807,10 @@ static metadata()
 {
     var result =
     {
-        timeZoneOffsetInMinutes:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'TimeZoneOffsetInMinutes',
-            jsName:'timeZoneOffsetInMinutes',
-            displayName:'Time Zone Offset In Minutes',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
     };
     return result;
 }
 
-timeZoneOffsetInMinutes? : number;
 }
 
 export class EmptyRequest  {
@@ -1518,6 +1503,7 @@ static empty()
     const result =
     {
         defaultSortMember:undefined,
+        searchText:undefined,
         sortDirection:undefined,
         resetPaging:undefined,
         pageNumber:undefined,
@@ -1542,11 +1528,21 @@ static metadata()
             displayName:'Default Sort Member',
             displayFormat:'text'
         }
+        ,searchText:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'SearchText',
+            jsName:'searchText',
+            displayName:'Search Text',
+            displayFormat:'text'
+        }
         ,};
         return result;
     }
     
     defaultSortMember? : string;
+    searchText? : string;
     sortDirection? : string;
     resetPaging? : boolean;
     pageNumber? : number;

@@ -28,14 +28,14 @@ namespace Web
       builder
         .SetBasePath(env.ContentRootPath)
           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-        .AddEnvironmentVariables();
-      Console.WriteLine($"Environment: {env.EnvironmentName}");
-      this.Configuration = builder.Build();
-      IOC.Settings = SettingsFactory.GetSettings(builder.Build());
-       updateDatabaseToLatestVersion(env);
-    }
-    public IConfigurationRoot Configuration { get; set; }
+          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables();
+            Console.WriteLine($"Environment: {env.EnvironmentName}");
+            this.Configuration = builder.Build();
+            IOC.Settings = SettingsFactory.GetSettings(builder.Build());
+            updateDatabaseToLatestVersion(env);
+        }
+        public IConfigurationRoot Configuration { get; set; }
 
     public void ConfigureServices(IServiceCollection services)
     {
@@ -71,21 +71,26 @@ namespace Web
     //TODO: replace with the equivalent to UpdateDatabaseToLatestVersion when there is one for aspnet.core
     private void updateDatabaseToLatestVersion(IHostingEnvironment env)
     {
-      var file = Path.GetFullPath($@"{env.WebRootPath}\..\DbUpdate.exe");
+            var connectionString = Objectifyer.Base64Encode(IOC.GetConnectionString());
+            var file = Path.GetFullPath($@"{env.WebRootPath}\..\DbUpdate.exe");
+#if DEBUG
+            file = Path.GetFullPath($@"{env.WebRootPath}\..\..\..\tools\DbUpdate.exe");
+#endif
       Console.Write(file);
       if (!File.Exists(file))
         return;
       Console.Write(" Found");
 
-      var connectionString = Objectifyer.Base64Encode(IOC.GetConnectionString());
-      var psi = new ProcessStartInfo
-      {
-        FileName = file,
-        Arguments = connectionString
-      };
+            
+            var psi = new ProcessStartInfo
+            {
+                FileName = file,
+                Arguments = connectionString,
+                CreateNoWindow = false,
+            };
 
-      var proc = Process.Start(psi);
-      proc.WaitForExit();
+            var proc = Process.Start(psi);
+            proc.WaitForExit();
+        }
     }
-  }
 }

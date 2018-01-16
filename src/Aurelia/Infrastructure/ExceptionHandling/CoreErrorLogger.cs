@@ -21,14 +21,14 @@ namespace Web.Infrastructure.ExceptionHandling
             {
                 ex = new Exception(message);
                 var context = HttpContextAccessor.HttpContext;
-                var error = new ErrorFactory().GetError(ex, context);
+                var error = new ErrorFactory(ex, context).GetError();
 
                 var telemetry = new TelemetryClient();
                 var properties = new Dictionary<string, string>();
                 telemetry.TrackException(ex, properties);
 
 #pragma warning disable 4014
-                new ErrorAddCommand(new ErrorRequest {Error = error}).ExecuteAsync();
+                new ErrorAddCommand(error).ExecuteAsync();
 #pragma warning restore 4014
             }
             catch (Exception e)
@@ -47,9 +47,9 @@ namespace Web.Infrastructure.ExceptionHandling
 
                 Console.WriteLine(ex.ToString());
                 var context = HttpContextAccessor.HttpContext;
-                var error = new ErrorFactory().GetError(ex, context);
+                var error = new ErrorFactory(ex, context).GetError();
 #pragma warning disable 4014
-                new ErrorAddCommand(new ErrorRequest {Error = error}).ExecuteAsync();
+                new ErrorAddCommand(error).ExecuteAsync();
 #pragma warning restore 4014
             }
             catch (Exception e)

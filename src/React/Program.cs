@@ -7,8 +7,10 @@ namespace Web
     {
         public static void Main(string[] args)
         {
+            var environment = EnvironmentBuilder.GetEnvironment();
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseEnvironment(environment)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()

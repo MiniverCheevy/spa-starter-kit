@@ -26,7 +26,7 @@ namespace Web.Infrastructure.Authentication
 
                     var response =
                         await new BuildPrincipalCommand(
-                            new BuildPrincipalRequest {UserName = userName}).ExecuteAsync();
+                            new BuildPrincipalRequest {UserAgent = userAgent, UserName = userName}).ExecuteAsync();
                     if (response.IsOk)
                         context.Items[RequestContextProvider.AppPrincipal] = response.Data;
                 }

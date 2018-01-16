@@ -26,7 +26,7 @@ namespace Web
             builder
                 .SetBasePath(env.ContentRootPath)
           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             Console.WriteLine($"Environment: {env.EnvironmentName}");
             this.Configuration = builder.Build();
@@ -95,7 +95,7 @@ add the below line to the startup to enable reading the form
             {
                 FileName = file,
                 Arguments = connectionString,
-                CreateNoWindow =true,
+                CreateNoWindow = false,
             };
 
             var proc = Process.Start(psi);

@@ -5,6 +5,6 @@ namespace Core.Operations.Errors.Extras
 {
     public class ErrorRequest
     {
-        public IErrorFactory ErrorFactory { get; set; }
+        public Error Error { get; set; }
     }
 }

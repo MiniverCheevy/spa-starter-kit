@@ -10,11 +10,7 @@ namespace Web.Infrastructure.ExecutionPipeline
     {
         protected override Task<ExecutionState<TRequest, TResponse>> processAsync()
         {
-            if (!state.Response.IsOk && state.Context.Response.StatusCode == 200)
-            {
-                state.Context.Response.StatusCode = 500;
-                return Task.FromResult(state);
-            }
+            
             return Task.FromResult(state);
         }
     }

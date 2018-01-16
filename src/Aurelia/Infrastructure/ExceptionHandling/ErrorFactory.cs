@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Core.Models.Exceptions;
+using Core;
+using Core.Infrastructure.Logging;
+using Core.Models.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Http.Internal;
@@ -12,9 +14,10 @@ using Voodoo.Messages;
 
 namespace Web.Infrastructure.ExceptionHandling
 {
-    public class ErrorFactory
+    public class ErrorFactory : IErrorFactory
     {
         internal const string CollectionErrorKey = "CollectionFetchError";
+        private Exception excpetion;
         private HttpContext context;
         private List<NameValuePair> cookies = new List<NameValuePair>();
         private DateTime creationDate;
@@ -24,7 +27,11 @@ namespace Web.Infrastructure.ExceptionHandling
         private List<NameValuePair> queryString = new List<NameValuePair>();
         private List<NameValuePair> requestHeaders = new List<NameValuePair>();
 
-
+        public ErrorFactory(Exception excpetion, HttpContext context)
+        {
+            this.excpetion = excpetion;
+            this.context = context;
+        }
 /*
 add the below line to the startup to enable reading the request
     
@@ -35,23 +42,25 @@ add the below line to the startup to enable reading the form
     services.Configure<FormOptions>(options => options.BufferBody = true);
 */
 
-        public Error GetError(Exception e, HttpContext context)
+        public Error GetError()
         {
-            if (e == null)
-                throw new ArgumentNullException(nameof(e));
+            var start = DateTime.UtcNow;
+            if (excpetion == null)
+                throw new ArgumentNullException(nameof(excpetion));
 
             creationDate = DateTime.Now;
-            this.context = context;
 
-            buildError(e);
+            buildError(excpetion);
 
-            foreach (var key in e.Data.Keys)
-                customData.Add(new NameValuePair(key.To<string>(), e.Data[key].To<string>()));
+            foreach (var key in excpetion.Data.Keys)
+                customData.Add(new NameValuePair(key.To<string>(), excpetion.Data[key].To<string>()));
 
             setContextProperties();
             var body = captureBody(context);
             error.ErrorHash = GetHash();
             error.FullJson = ToDetailedJson();
+
+            var duration = DateTime.UtcNow.Subtract(start);
 
             return error;
         }
@@ -69,15 +78,12 @@ add the below line to the startup to enable reading the form
 
             error = new Error
             {
-                GUID = Guid.NewGuid(),
-                ApplicationName = VoodooGlobalConfiguration.ApplicationName,
                 MachineName = Environment.MachineName,
                 Type = baseException.GetType().FullName,
                 Message = excptionForMessage.Message,
                 Source = baseException.Source,
                 Details = e.ToString(),
-                CreationDate = DateTime.UtcNow,
-                DuplicateCount = 1
+                CreationDate = DateTime.UtcNow
             };
         }
 
@@ -121,6 +127,7 @@ add the below line to the startup to enable reading the form
         }
 
 
+        [DebuggerNonUserCode]
         private void setContextProperties()
         {
             if (context == null) return;
@@ -130,6 +137,8 @@ add the below line to the startup to enable reading the form
             error.HttpMethod = context.Request.Method;
             error.Url = context.Request.GetEncodedUrl();
             error.Host = context.Request.Host.Host.To<string>();
+            error.RequestId = IOC.RequestContext?.Id;
+
             Func<Func<HttpRequest, List<NameValuePair>>, List<NameValuePair>> tryGetCollection = getter =>
             {
                 try
@@ -138,7 +147,7 @@ add the below line to the startup to enable reading the form
                 }
                 catch (Exception e)
                 {
-                    Trace.WriteLine("Error parsing collection: " + e.Message);
+                    IOC.TraceLogger.Log("Error parsing collection: " + e.Message);
                     return new List<NameValuePair> {{CollectionErrorKey, e.Message}};
                 }
             };
@@ -159,8 +168,7 @@ add the below line to the startup to enable reading the form
             }
             catch (Exception e)
             {
-                form = new List<NameValuePair>();
-                form.Add("Error Reading Form", e.Message);
+                form = new List<NameValuePair> {{"Error Reading Form", e.Message}};
             }
             try
             {
@@ -174,8 +182,7 @@ add the below line to the startup to enable reading the form
             }
             catch (Exception e)
             {
-                queryString = new List<NameValuePair>();
-                queryString.Add("Error Reading QueryString", e.Message);
+                queryString = new List<NameValuePair> {{"Error Reading QueryString", e.Message}};
             }
             try
             {
@@ -189,8 +196,7 @@ add the below line to the startup to enable reading the form
             }
             catch (Exception e)
             {
-                cookies = new List<NameValuePair>();
-                cookies.Add("Error Reading Cookies", e.Message);
+                cookies = new List<NameValuePair> {{"Error Reading Cookies", e.Message}};
             }
 
             requestHeaders = new List<NameValuePair>(request.Headers.Count);
@@ -200,8 +206,7 @@ add the below line to the startup to enable reading the form
                 if (string.Compare(header, "Cookie", StringComparison.OrdinalIgnoreCase) == 0)
                     continue;
                 var value = request.Headers[header].To<string>();
-
-                requestHeaders.Add(header, request.Headers[header]);
+                requestHeaders.Add(header, value);
             }
         }
 
@@ -220,8 +225,6 @@ add the below line to the startup to enable reading the form
 
         internal void AddFromData(Exception exception)
         {
-            if (exception.Data.Contains("SQL"))
-                error.Sql = exception.Data["SQL"] as string;
 
             // Regardless of what Resharper may be telling you, .Data can be null on things like a null ref exception.
             if (exception.Data != null)
@@ -250,20 +253,15 @@ add the below line to the startup to enable reading the form
             return JsonConvert.SerializeObject(
                 new
                 {
-                    error.GUID,
-                    error.ApplicationName,
                     CreationDate = creationDate,
                     CustomData = customData,
                     error.Details,
-                    error.DuplicateCount,
                     error.ErrorHash,
                     HTTPMethod = error.HttpMethod,
                     error.Host,
                     IPAddress = error.IpAddress,
-                    error.IsProtected,
                     error.MachineName,
                     error.Message,
-                    SQL = error.Sql,
                     error.Source,
                     error.StatusCode,
                     error.Type,
@@ -272,7 +270,8 @@ add the below line to the startup to enable reading the form
                     CookieVariables = cookies,
                     RequestHeaders = requestHeaders,
                     QueryStringVariables = queryString,
-                    FormVariables = form
+                    FormVariables = form,
+                    TraceLogs = IOC.TraceLogger.GetAllLogs(true)
                 });
         }
 

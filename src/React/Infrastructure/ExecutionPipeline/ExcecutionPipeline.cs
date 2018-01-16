@@ -34,6 +34,7 @@ namespace Web.Infrastructure.ExecutionPipeline
         public ExcecutionPipeline(ExecutionState<TRequest, TResponse> executionState)
         {            
             this.StartTime = DateTime.UtcNow;
+			state = executionState;
         }
 
         public async Task<TResponse> ExecuteAsync()
