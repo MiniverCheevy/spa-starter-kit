@@ -247,7 +247,7 @@ export class DateTimeOffset
     {
         if (value != null)
         {
-            this.internalValue = new Date(value).toISOString();
+            this.internalValue = <any>new Date(<any>value).toISOString();
         }
         
     }
