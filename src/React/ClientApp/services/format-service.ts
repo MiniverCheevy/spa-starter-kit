@@ -9,26 +9,23 @@ class FormatServicePrototype {
             format = metadata.displayFormat;
         return this.formatValue(value, format);
     }
-    formatForDisplay(value: string, metadata: Models.UIMetadata)
-    {
+    formatForDisplay(value: string, metadata: Models.UIMetadata) {
         //TODO: add , to #s, $ to currency
         var format = "text";
         if (metadata && metadata.displayFormat)
             format = metadata.displayFormat;
         return this.formatValue(value, format);
     }
-    formatValue (value: string, format: string)
-    {
-
-        if (value == null || value == '')
+    formatValue(value: string, format: string) {
+        if (value == null || value === '')
             return '';
         if (!format || format == "text")
             return value;
-        
+
         try {
             switch (format) {
                 case "date":
-                    
+
                     var date = new Date(sugar.Date.create(value));
 
                     if (date == null) {
@@ -49,15 +46,20 @@ class FormatServicePrototype {
                 case "dateTime":
                     var dateTime = new Date(value);
                     return dateTime.toLocaleString();
+                case "int":
+                    var number = parseInt(value);
+                    if (number != NaN)
+                        return sugar.Number.format(number, 0);
+                    return value;
                 case "currency":
                     var number = parseFloat(value);
                     if (number != NaN)
-                        return number.toFixed(2);
+                        return sugar.Number.format(number, 2);
                     return value;
                 case "decimal":
                     var number = parseFloat(value);
                     if (number != NaN)
-                        return number.toFixed(3);
+                        return sugar.Number.format(number, 3);
                     return value;
                 case "phoneNumber":
                     if (value.length == 10) {
@@ -78,4 +80,4 @@ class FormatServicePrototype {
         }
     }
 }
-export const  FormatService = new FormatServicePrototype();
+export const FormatService = new FormatServicePrototype();

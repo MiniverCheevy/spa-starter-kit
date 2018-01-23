@@ -17,7 +17,7 @@ module.exports = (env) => {
     return [{
         stats: { modules: false },
         entry: {
-            'main': ['babel-polyfill', './ClientApp/boot.tsx',
+            'main': ['./ClientApp/boot.tsx',
                 './ClientApp/theme/site.css']
         },
         resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
@@ -28,7 +28,7 @@ module.exports = (env) => {
         },
         module: {
             rules: [
-                { test: /\.ts(x?)$/, include: /ClientApp/, use: 'babel-loader' },
+                
                 { test: /\.tsx?$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
                 { test: /\.css$/, use: isDevBuild ? ['style-loader', 'css-loader'] : extractTextPlugin.extract({ use: 'css-loader?minimize' }) },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }

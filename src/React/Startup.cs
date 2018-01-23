@@ -62,15 +62,15 @@ add the below line to the startup to enable reading the form
             app.UseMiddleware<TokenReaderMiddleware>();
             app.UseMiddleware<WindowsAuthenticationMiddleware>();
 
-            //if (env.IsDevelopment())
-            //{
-            app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
             app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
             {
                 HotModuleReplacement = true,
                 ReactHotModuleReplacement = true
             });
-            //}
+            }
             app.UseDefaultFiles();
             app.UseStaticFiles();
 

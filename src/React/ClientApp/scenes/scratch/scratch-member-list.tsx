@@ -5,7 +5,7 @@ import { ScratchNavMenu } from './scratch-navmenu';
 
 
 @observer
-export class ScratchMemberList extends React.Component<any, any>
+export class ScratchMemberList extends React.Component<any,any>
 {
     key = 'memberList';
     request: Models.MemberListRequest = Services.GridService.getRequest(this.key, Models.MemberListRequest.empty());

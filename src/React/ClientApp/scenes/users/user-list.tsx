@@ -3,7 +3,7 @@ import {  Models, Api, Components, Services } from './../../root';
 import { observer, observable, IObservableArray } from './../../mx';
 
 @observer
-export class UserList extends React.Component<any, any>
+export class UserList extends React.Component<any,any>
 {
     key = 'userList';
     request: Models.UserListRequest = Services.GridService.getRequest(this.key, Models.UserListRequest.empty());

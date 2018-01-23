@@ -4,13 +4,12 @@ import { Home } from './scenes/home/home';
 import { UserList } from './scenes/users/user-list';
 
 import { HashRouter, Route, Link, withRouter } from 'react-router-dom';
-import { hashHistory } from 'react-router';
 import {
     ScratchHome, ScratchProjectList, ScratchTeamList,
     ScratchMemberList, ScratchMemberDetailContainer,
     ScratchUnboundControls
 } from './scenes/scratch';
-export class Routes extends React.Component<any, any>
+export class Routes extends React.Component<any,any>
 {
     render() {
         var style = { margin: '200px' };
@@ -22,8 +21,6 @@ export class Routes extends React.Component<any, any>
                 <Route path='/scratch-project-list' component={ScratchProjectList} />
                 <Route path='/scratch-team-list' component={ScratchTeamList} />
                 <Route path='/scratch-unbound-controls' component={ScratchUnboundControls} />
-
-
                 <Route path='/user-list' component={UserList} />
                 <Route path='/home' component={Home} />
                 <Route exact path='/' component={Home} />

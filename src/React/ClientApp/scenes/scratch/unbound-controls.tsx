@@ -3,7 +3,7 @@ import { ScratchNavMenu } from './scratch-navmenu';
 import { Models, Services, Api, Components } from './../../root';
 
 
-export class ScratchUnboundControls extends React.Component<any, any> {
+export class ScratchUnboundControls extends React.Component<any,any> {
 
     render() {
         return this.doRender();

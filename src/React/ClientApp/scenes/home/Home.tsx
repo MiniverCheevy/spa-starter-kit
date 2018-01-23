@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Services } from "./../../root";
 
-export class Home extends React.Component<any, void> {
+export class Home extends React.Component<any,any> {
 
     public async componentDidMount() {
 

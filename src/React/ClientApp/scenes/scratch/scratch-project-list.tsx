@@ -4,7 +4,7 @@ import { observer, observable, IObservableArray } from './../../mx';
 import { ScratchNavMenu } from './scratch-navmenu';
 
 @observer
-export class ScratchProjectList extends React.Component<any, any>
+export class ScratchProjectList extends React.Component<any,any>
 {
     key = 'projectList';
     request: Models.UserListRequest = Services.GridService.getRequest(this.key, Models.UserListRequest.empty());

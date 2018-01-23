@@ -21,7 +21,7 @@ module.exports = (env) => {
         },
         entry: {
             //'jquery','bootstrap',
-            vendor: ['babel-polyfill', 'event-source-polyfill', 'isomorphic-fetch',
+            vendor: ['event-source-polyfill', 'isomorphic-fetch',
                 'react', 'react-dom', 'react-router',
                 'mobx', 'mobx-react', 'mobx-react-devtools',                
                 //'material-components-web/dist/material-components-web.js',
@@ -40,7 +40,7 @@ module.exports = (env) => {
             //new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
             extractCSS,
             //new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
-            //new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
+
             new webpack.DllPlugin({
                 path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),
                 name: '[name]_[hash]'

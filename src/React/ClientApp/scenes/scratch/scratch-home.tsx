@@ -2,7 +2,7 @@
 import { ScratchNavMenu } from './scratch-navmenu';
 
 
-export class ScratchHome extends React.Component<any, any> {
+export class ScratchHome extends React.Component<any,any> {
 
     render() {
         return this.doRender();
