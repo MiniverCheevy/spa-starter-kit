@@ -14,20 +14,20 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         where TModelBuilder : ModelBuilder, new()
     {
         protected TModelBuilder builder;
-        protected readonly StringBuilder output;
-        private HashSet<Type> modelTypes = new HashSet<Type>();
+        protected readonly StringBuilder output;        
+        private List<Type> types = new List<Type>();
 
         protected GraphBuilder(Type[] modelTypes)
         {
             if (modelTypes != null)
-            {                
+            {
                 var walker = new GraphWalker(new GraphWalkerSettings { IncludeScalarTypes = false, TreatNullableTypesAsDistict = false, }, modelTypes);
 
-                this.modelTypes = walker.GetDistinctTypes();
-                var constantTypes = new Type[] 
+                var distinctTypes = walker.GetDistinctTypes().ToList();
+                types = new List<Type>()
                 { typeof(IResponse),typeof(IGridState),typeof(INameIdPair), new Response().GetType(),
                     new Grouping<NameValuePair>().GetType() };
-                modelTypes = constantTypes.Union(modelTypes).ToArray();
+                types.AddRange(distinctTypes);
             }
             output = new StringBuilder();
             builder = new TModelBuilder();
@@ -49,7 +49,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
         public void WriteModelDefinitions()
         {
-            foreach (var model in modelTypes)
+            foreach (var model in types)
             {
                 if (model.IsEnum)
                     buildEnumDeclaration(model);

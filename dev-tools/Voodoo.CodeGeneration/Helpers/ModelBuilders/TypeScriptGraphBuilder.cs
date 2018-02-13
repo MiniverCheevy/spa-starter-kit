@@ -10,7 +10,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
     {
         private IEnumerable<PropertyInfo> iResponseProperties = typeof(IResponse).GetProperties().ToArray();
 
-        public TypeScriptGraphBuilder(Type[] modelTypes) :base(modelTypes)
+        public TypeScriptGraphBuilder(Type[] modelTypes) : base(modelTypes)
         {
             this.output.AppendLine(@"
 
@@ -64,11 +64,7 @@ export class DateTimeOffset
             GeneratedTypeDefinitions.Add(currentType);
             GeneratedTypeNames.Add(typeName);
 
-            
-
             buildClassDeclaration(isResponse, typeName, currentType);
-            //buildConstantDeclaration(typeName, properties);
-
         }
 
         private void buildConstantDeclaration(string typeName, PropertyInfo[] properties)
@@ -92,19 +88,22 @@ export class DateTimeOffset
 
         private void buildClassDeclaration(bool isResponse, string typeName, Type currentType)
         {
+            var declaration = currentType.IsInterface ? "interface" : "class";
             var properties = currentType.GetProperties();
-            output.Append($"export class {typeName} ");
+            output.Append($"export {declaration} {typeName} ");
             if (isResponse && typeName != "IResponse")
             {
-                output.Append("extends IResponse");
+                output.Append("implements IResponse");
                 properties = properties.Except(iResponseProperties).ToArray();
             }
             output.AppendLine(" {");
 
             output.AppendLine("");
-            buildConstantDeclaration(typeName, properties);
-            output.AppendLine(new TypescriptMetadataBuilder(currentType, properties).Build());
-
+            if (!currentType.IsInterface)
+            {
+                buildConstantDeclaration(typeName, properties);
+                output.AppendLine(new TypescriptMetadataBuilder(currentType, properties).Build());
+            }
 
             foreach (var property in properties)
                 output.AppendLine(builder.GetPropertyDeclaration(property));
@@ -113,7 +112,7 @@ export class DateTimeOffset
 
             output.AppendLine("}");
             output.AppendLine();
-            
+
         }
 
         protected override void buildEnumDeclaration(Type currentType)

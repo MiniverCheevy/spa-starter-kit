@@ -34,6 +34,110 @@ this.internalValue = value.toISOString();
 //get TimeDisplay
 //get DateTimeDisplay
 }
+export interface IResponse  {
+
+isOk? : boolean;
+message? : string;
+exception? : any;
+details? : INameValuePair[];
+hasLogicException? : boolean;
+}
+
+export interface IGridState  {
+
+pageNumber? : number;
+pageSize? : number;
+totalRecords? : number;
+totalPages? : number;
+sortMember? : string;
+sortDirection? : string;
+defaultSortMember? : string;
+resetPaging? : boolean;
+}
+
+export interface INameIdPair  {
+
+name? : string;
+id? : number;
+}
+
+export class Response implements IResponse {
+
+static empty()
+{
+    const result =
+    {
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class GroupingOfNameValuePair  {
+
+static empty()
+{
+    const result =
+    {
+        name:undefined,
+        id:undefined,
+        data:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        name:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,id:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text'
+        }
+        ,data:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Data',
+            jsName:'data',
+            displayName:'Data',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+name? : string;
+id? : any;
+data? : NameValuePair[];
+}
+
 export class ApplicationSettingDetail  {
 
 static empty()
@@ -155,7 +259,7 @@ static metadata()
     totalPages? : number;
 }
 
-export class ApplicationSettingListResponse extends IResponse {
+export class ApplicationSettingListResponse implements IResponse {
 
 static empty()
 {
@@ -401,7 +505,7 @@ isAdmin? : boolean;
 token? : string;
 }
 
-export class BinaryResponse extends IResponse {
+export class BinaryResponse implements IResponse {
 
 static empty()
 {
@@ -690,7 +794,7 @@ static metadata()
     totalPages? : number;
 }
 
-export class ErrorListResponse extends IResponse {
+export class ErrorListResponse implements IResponse {
 
 static empty()
 {
@@ -826,59 +930,6 @@ message? : string;
 user? : string;
 }
 
-export class GroupingOfNameValuePair  {
-
-static empty()
-{
-    const result =
-    {
-        name:undefined,
-        id:undefined,
-        data:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        name:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Name',
-            jsName:'name',
-            displayName:'Name',
-            displayFormat:'text'
-        }
-        ,id:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Id',
-            jsName:'id',
-            displayName:'Id',
-            displayFormat:'text'
-        }
-        ,data:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Data',
-            jsName:'data',
-            displayName:'Data',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-name? : string;
-id? : any;
-data? : NameValuePair[];
-}
-
 export class IdRequest  {
 
 static empty()
@@ -914,224 +965,14 @@ static metadata()
 id? : number;
 }
 
-export class IGridState  {
-
-static empty()
-{
-    const result =
-    {
-        pageNumber:undefined,
-        pageSize:undefined,
-        totalRecords:undefined,
-        totalPages:undefined,
-        sortMember:undefined,
-        sortDirection:undefined,
-        defaultSortMember:undefined,
-        resetPaging:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        pageNumber:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'PageNumber',
-            jsName:'pageNumber',
-            displayName:'Page Number',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,pageSize:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'PageSize',
-            jsName:'pageSize',
-            displayName:'Page Size',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,totalRecords:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'TotalRecords',
-            jsName:'totalRecords',
-            displayName:'Total Records',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,totalPages:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'TotalPages',
-            jsName:'totalPages',
-            displayName:'Total Pages',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,sortMember:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'SortMember',
-            jsName:'sortMember',
-            displayName:'Sort Member',
-            displayFormat:'text'
-        }
-        ,sortDirection:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'SortDirection',
-            jsName:'sortDirection',
-            displayName:'Sort Direction',
-            displayFormat:'text'
-        }
-        ,defaultSortMember:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'DefaultSortMember',
-            jsName:'defaultSortMember',
-            displayName:'Default Sort Member',
-            displayFormat:'text'
-        }
-        ,resetPaging:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'ResetPaging',
-            jsName:'resetPaging',
-            displayName:'Reset Paging',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-pageNumber? : number;
-pageSize? : number;
-totalRecords? : number;
-totalPages? : number;
-sortMember? : string;
-sortDirection? : string;
-defaultSortMember? : string;
-resetPaging? : boolean;
-}
-
-export class IListItem  {
-
-static empty()
-{
-    const result =
-    {
-        id:undefined,
-        name:undefined,
-        filterData:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        id:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Id',
-            jsName:'id',
-            displayName:'Id',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,name:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Name',
-            jsName:'name',
-            displayName:'Name',
-            displayFormat:'text'
-        }
-        ,filterData:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'FilterData',
-            jsName:'filterData',
-            displayName:'Filter Data',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
+export interface IListItem  {
 
 id? : number;
 name? : string;
 filterData? : string;
 }
 
-export class INameValuePair  {
-
-static empty()
-{
-    const result =
-    {
-        name:undefined,
-        value:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        name:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Name',
-            jsName:'name',
-            displayName:'Name',
-            displayFormat:'text'
-        }
-        ,value:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Value',
-            jsName:'value',
-            displayName:'Value',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
+export interface INameValuePair  {
 
 name? : string;
 value? : string;
@@ -1245,7 +1086,7 @@ includeInactive? : boolean;
 lists? : Lists[];
 }
 
-export class ListsResponse extends IResponse {
+export class ListsResponse implements IResponse {
 
 static empty()
 {
@@ -1572,7 +1413,7 @@ static metadata()
     totalPages? : number;
 }
 
-export class MemberListResponse extends IResponse {
+export class MemberListResponse implements IResponse {
 
 static empty()
 {
@@ -1827,7 +1668,7 @@ name? : string;
 value? : string;
 }
 
-export class NewItemResponse extends IResponse {
+export class NewItemResponse implements IResponse {
 
 static empty()
 {
@@ -1971,7 +1812,7 @@ static metadata()
     totalPages? : number;
 }
 
-export class ProjectListResponse extends IResponse {
+export class ProjectListResponse implements IResponse {
 
 static empty()
 {
@@ -2072,31 +1913,7 @@ name? : string;
 teamId? : number;
 }
 
-export class Response extends IResponse {
-
-static empty()
-{
-    const result =
-    {
-        numberOfRowsEffected:undefined,
-        isOk:undefined,
-        hasLogicException:undefined,
-        message:undefined,
-        details:undefined,
-        exception:undefined
-    };
-    return result;
-}
-
-numberOfRowsEffected? : number;
-isOk? : boolean;
-hasLogicException? : boolean;
-message? : string;
-details? : INameValuePair[];
-exception? : any;
-}
-
-export class ResponseOfUserDetail extends IResponse {
+export class ResponseOfUserDetail implements IResponse {
 
 static empty()
 {
@@ -2122,7 +1939,7 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export class ResponseOfTeamDetail extends IResponse {
+export class ResponseOfTeamDetail implements IResponse {
 
 static empty()
 {
@@ -2148,7 +1965,7 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export class ResponseOfProjectDetail extends IResponse {
+export class ResponseOfProjectDetail implements IResponse {
 
 static empty()
 {
@@ -2174,7 +1991,7 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export class ResponseOfMemberDetail extends IResponse {
+export class ResponseOfMemberDetail implements IResponse {
 
 static empty()
 {
@@ -2200,7 +2017,7 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export class ResponseOfErrorDetail extends IResponse {
+export class ResponseOfErrorDetail implements IResponse {
 
 static empty()
 {
@@ -2226,7 +2043,7 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export class ResponseOfAppPrincipal extends IResponse {
+export class ResponseOfAppPrincipal implements IResponse {
 
 static empty()
 {
@@ -2252,7 +2069,7 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export class ResponseOfApplicationSettingDetail extends IResponse {
+export class ResponseOfApplicationSettingDetail implements IResponse {
 
 static empty()
 {
@@ -2377,7 +2194,7 @@ static metadata()
     totalPages? : number;
 }
 
-export class TeamListResponse extends IResponse {
+export class TeamListResponse implements IResponse {
 
 static empty()
 {
@@ -2891,7 +2708,7 @@ static metadata()
     totalPages? : number;
 }
 
-export class UserListResponse extends IResponse {
+export class UserListResponse implements IResponse {
 
 static empty()
 {
