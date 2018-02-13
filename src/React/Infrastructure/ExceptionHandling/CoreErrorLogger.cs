@@ -77,5 +77,10 @@ namespace Web.Infrastructure.ExceptionHandling
                 Console.WriteLine(e.ToString());
             }
         }
+
+        public void Log(string message, string category)
+        {
+            Log(message);
+        }
     }
 }

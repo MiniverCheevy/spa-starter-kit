@@ -10,7 +10,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
     {
         private IEnumerable<PropertyInfo> iResponseProperties = typeof(IResponse).GetProperties().ToArray();
 
-        public TypeScriptGraphBuilder() :base()
+        public TypeScriptGraphBuilder(Type[] modelTypes) :base(modelTypes)
         {
             this.output.AppendLine(@"
 

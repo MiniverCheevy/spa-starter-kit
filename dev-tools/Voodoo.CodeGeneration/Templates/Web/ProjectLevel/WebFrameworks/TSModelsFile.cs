@@ -12,7 +12,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
         public Resource[] Resources { get; set; }
 
         public override string VisualStudioItemTypeNode => "TypeScriptCompile";
-        public TypeScriptGraphBuilder Builder { get; set; } = new TypeScriptGraphBuilder();
+        public TypeScriptGraphBuilder Builder { get; set; } = new TypeScriptGraphBuilder(null);
 
 
         public override string FileName => "services.generated.ts";
@@ -40,7 +40,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
         private string path;
 
         public override string VisualStudioItemTypeNode => "TypeScriptCompile";
-        public TypeScriptGraphBuilder Builder { get; set; } = new TypeScriptGraphBuilder();
+        public TypeScriptGraphBuilder Builder { get; set; } = new TypeScriptGraphBuilder(null);
 
 
         public override string FileName => "models.generated.ts";
@@ -51,7 +51,9 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
 
         protected TypeScriptModelsFileBase(ProjectFacade project, Type[] types, string path) : base(project)
         {
-            Builder.AddTypes(types);
+            Builder = new TypeScriptGraphBuilder(types);
+            Builder.WriteModelDefinitions();
+
             OverwriteExistingFile = true;
             this.path = path;
         }

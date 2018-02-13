@@ -13,7 +13,7 @@ namespace Voodoo.CodeGeneration.Templates.PCL
     public class ModelsFile : CodeFile
     {
         public override string VisualStudioItemTypeNode => "Compile";
-        public PclGraphBuilder Builder { get; set; } = new PclGraphBuilder();
+        public PclGraphBuilder Builder { get; set; } = new PclGraphBuilder(null);
         public override string FileName => "models.generated.cs";
         public ModelsTemplate Template { get; set; }
 
@@ -21,7 +21,9 @@ namespace Voodoo.CodeGeneration.Templates.PCL
 
         public ModelsFile(ProjectFacade project, Type[] types) : base(project)
         {
-            Builder.AddTypes(types);
+            Builder = new PclGraphBuilder(types);
+            Builder.WriteModelDefinitions();
+
             Template = new ModelsTemplate {File = this};
             OverwriteExistingFile = true;
         }

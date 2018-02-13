@@ -1,26 +1,37 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Voodoo;
+using Voodoo.Helpers;
 using Voodoo.Messages;
+using Voodoo.Messages.Paging;
 
 namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 {
     public abstract class GraphBuilder<TModelBuilder>
         where TModelBuilder : ModelBuilder, new()
     {
-        private HashSet<string> generatedNames = new HashSet<string>();
-        private HashSet<Type> alreadyTouched = new HashSet<Type>();
         protected TModelBuilder builder;
         protected readonly StringBuilder output;
+        private HashSet<Type> modelTypes = new HashSet<Type>();
 
-        protected GraphBuilder()
+        protected GraphBuilder(Type[] modelTypes)
         {
+            if (modelTypes != null)
+            {                
+                var walker = new GraphWalker(new GraphWalkerSettings { IncludeScalarTypes = false, TreatNullableTypesAsDistict = false, }, modelTypes);
+
+                this.modelTypes = walker.GetDistinctTypes();
+                var constantTypes = new Type[] 
+                { typeof(IResponse),typeof(IGridState),typeof(INameIdPair), new Response().GetType(),
+                    new Grouping<NameValuePair>().GetType() };
+                modelTypes = constantTypes.Union(modelTypes).ToArray();
+            }
             output = new StringBuilder();
             builder = new TModelBuilder();
-            var constantTypes = new Type[] { typeof(IResponse), new Response().GetType(), new Grouping<NameValuePair>().GetType() };
-            AddTypes(constantTypes);
+
         }
 
         protected List<Type> GeneratedTypeDefinitions { get; set; } = new List<Type>();
@@ -33,73 +44,20 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 ResponseDeclaration = builder.RewriteTypeName(responseType),
                 RequestDeclaration = builder.RewriteTypeName(requestType)
             };
-            buildGraph(requestType, false);
-            buildGraph(responseType, true);
             return response;
         }
 
-        public void AddTypes(Type[] types)
+        public void WriteModelDefinitions()
         {
-            var modelTypes = types.Distinct().OrderBy(c => c.Name).ToArray();
             foreach (var model in modelTypes)
             {
-                buildGraph(model, model.DoesImplementInterfaceOf(typeof(IResponse)));
+                if (model.IsEnum)
+                    buildEnumDeclaration(model);
+                else
+                    buildDeclaration(model, model.DoesImplementInterfaceOf(typeof(IResponse)));
             }
         }
 
-        private void buildGraph(Type type, bool isResponse)
-        {
-            if (!shouldWrite(type))
-                return;
-
-            buildDeclaration(type, isResponse);
-            
-            //var metaData = new TypescriptMetadataBuilder(type, type.GetProperties());
-            //output.AppendLine(metaData.Build());
-            var types = new List<Type>();
-            var enumTypes = new List<Type>();
-            types.AddRange(builder.getComplexPropertyTypes(type));
-            enumTypes.AddRange(builder.getEnumPropertyTypes(type));
-            foreach (var t in types)
-            {
-                if (!shouldWrite(t))
-                    continue;
-
-                buildDeclaration(t, false);
-                var enums = builder.getEnumPropertyTypes(t);
-                var undeclaredEnums = new List<Type>();
-                foreach(var e in enums)
-                {
-                    if (alreadyTouched.Contains(e))
-                        continue;
-                    alreadyTouched.Add(e);
-                    undeclaredEnums.Add(e);
-                }
-                enumTypes.AddRange(undeclaredEnums);
-                buildGraph(t, false);
-            }
-
-            foreach (var t in enumTypes.Distinct().ToArray())
-            {
-                if (!alreadyTouched.Contains(t))
-                {
-                    alreadyTouched.Add(t);
-                    buildEnumDeclaration(t);
-                }
-
-            }
-        }
-        private bool shouldWrite(Type type)
-        {
-            if (alreadyTouched.Contains(type))
-                return false;
-            alreadyTouched.Add(type);
-            var name = builder.RewriteTypeName(type);
-            if (generatedNames.Contains(name))
-                return false;
-            generatedNames.Add(name);
-            return true;
-        }
         public string GetOutput()
         {
             return output.ToString();

@@ -26,7 +26,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks
             Resource = resource;
             OverwriteExistingFile = true;
             this.path = path;
-            Builder = new TypeScriptGraphBuilder();
+            Builder = new TypeScriptGraphBuilder(null);
         }
 
         public override string GetFolder()

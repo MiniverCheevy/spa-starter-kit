@@ -6,6 +6,10 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 {
     public class PclGraphBuilder : GraphBuilder<PclModelBuilder>
     {
+        public PclGraphBuilder(Type[] modelTypes):base(modelTypes)
+        {
+            
+        }
         protected override void buildDeclaration(Type currentType, bool isResponse)
         {
             if (currentType.Namespace != null && currentType.Namespace.StartsWith("Voodoo."))

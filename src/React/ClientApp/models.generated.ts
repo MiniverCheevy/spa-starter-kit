@@ -5,242 +5,6 @@
 //subject to change without notice, might regenerate while you're reading, etc
 //***************************************************************
 
-export class GroupingOfNameValuePair  {
-
-static empty()
-{
-    const result =
-    {
-        name:undefined,
-        id:undefined,
-        data:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        name:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Name',
-            jsName:'name',
-            displayName:'Name',
-            displayFormat:'text'
-        }
-        ,id:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Id',
-            jsName:'id',
-            displayName:'Id',
-            displayFormat:'text'
-        }
-        ,data:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Data',
-            jsName:'data',
-            displayName:'Data',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-name? : string;
-id? : any;
-data? : NameValuePair[];
-}
-
-export class NameValuePair  {
-
-static empty()
-{
-    const result =
-    {
-        name:undefined,
-        value:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        name:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Name',
-            jsName:'name',
-            displayName:'Name',
-            displayFormat:'text'
-        }
-        ,value:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Value',
-            jsName:'value',
-            displayName:'Value',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-name? : string;
-value? : string;
-}
-
-export class IResponse  {
-
-static empty()
-{
-    const result =
-    {
-        isOk:undefined,
-        message:undefined,
-        exception:undefined,
-        details:undefined,
-        hasLogicException:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        isOk:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'IsOk',
-            jsName:'isOk',
-            displayName:'Is Ok',
-            displayFormat:'text'
-        }
-        ,message:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Message',
-            jsName:'message',
-            displayName:'Message',
-            displayFormat:'text'
-        }
-        ,exception:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Exception',
-            jsName:'exception',
-            displayName:'Exception',
-            displayFormat:'text'
-        }
-        ,details:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Details',
-            jsName:'details',
-            displayName:'Details',
-            displayFormat:'text'
-        }
-        ,hasLogicException:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'HasLogicException',
-            jsName:'hasLogicException',
-            displayName:'Has Logic Exception',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-isOk? : boolean;
-message? : string;
-exception? : any;
-details? : INameValuePair[];
-hasLogicException? : boolean;
-}
-
-export class INameValuePair  {
-
-static empty()
-{
-    const result =
-    {
-        name:undefined,
-        value:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        name:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Name',
-            jsName:'name',
-            displayName:'Name',
-            displayFormat:'text'
-        }
-        ,value:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Value',
-            jsName:'value',
-            displayName:'Value',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-name? : string;
-value? : string;
-}
-
-export class Response extends IResponse {
-
-static empty()
-{
-    const result =
-    {
-        numberOfRowsEffected:undefined,
-        isOk:undefined,
-        hasLogicException:undefined,
-        message:undefined,
-        details:undefined,
-        exception:undefined
-    };
-    return result;
-}
-
-numberOfRowsEffected? : number;
-isOk? : boolean;
-hasLogicException? : boolean;
-message? : string;
-details? : INameValuePair[];
-exception? : any;
-}
-
 export class DateTimeOffset
 {
     constructor(value?: string | Date)
@@ -417,130 +181,6 @@ hasLogicException? : boolean;
 message? : string;
 details? : INameValuePair[];
 exception? : any;
-}
-
-export class IGridState  {
-
-static empty()
-{
-    const result =
-    {
-        pageNumber:undefined,
-        pageSize:undefined,
-        totalRecords:undefined,
-        totalPages:undefined,
-        sortMember:undefined,
-        sortDirection:undefined,
-        defaultSortMember:undefined,
-        resetPaging:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        pageNumber:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'PageNumber',
-            jsName:'pageNumber',
-            displayName:'Page Number',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,pageSize:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'PageSize',
-            jsName:'pageSize',
-            displayName:'Page Size',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,totalRecords:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'TotalRecords',
-            jsName:'totalRecords',
-            displayName:'Total Records',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,totalPages:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'TotalPages',
-            jsName:'totalPages',
-            displayName:'Total Pages',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,sortMember:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'SortMember',
-            jsName:'sortMember',
-            displayName:'Sort Member',
-            displayFormat:'text'
-        }
-        ,sortDirection:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'SortDirection',
-            jsName:'sortDirection',
-            displayName:'Sort Direction',
-            displayFormat:'text'
-        }
-        ,defaultSortMember:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'DefaultSortMember',
-            jsName:'defaultSortMember',
-            displayName:'Default Sort Member',
-            displayFormat:'text'
-        }
-        ,resetPaging:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'ResetPaging',
-            jsName:'resetPaging',
-            displayName:'Reset Paging',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-pageNumber? : number;
-pageSize? : number;
-totalRecords? : number;
-totalPages? : number;
-sortMember? : string;
-sortDirection? : string;
-defaultSortMember? : string;
-resetPaging? : boolean;
 }
 
 export class ApplicationSettingRow  {
@@ -813,6 +453,15 @@ static metadata()
 
 }
 
+export enum DayOfWeek  {
+Sunday = 0,
+Monday = 1,
+Tuesday = 2,
+Wednesday = 3,
+Thursday = 4,
+Friday = 5,
+Saturday = 6
+}
 export class EmptyRequest  {
 
 static empty()
@@ -831,6 +480,158 @@ static metadata()
     return result;
 }
 
+}
+
+export class ErrorDetail  {
+
+static empty()
+{
+    const result =
+    {
+        details:undefined,
+        host:undefined,
+        url:undefined,
+        items:undefined,
+        id:undefined,
+        creationDate:undefined,
+        type:undefined,
+        message:undefined,
+        user:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        details:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Details',
+            jsName:'details',
+            displayName:'Details',
+            displayFormat:'text'
+        }
+        ,host:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Host',
+            jsName:'host',
+            displayName:'Host',
+            displayFormat:'text'
+        }
+        ,url:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Url',
+            jsName:'url',
+            displayName:'Url',
+            displayFormat:'text'
+        }
+        ,items:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Items',
+            jsName:'items',
+            displayName:'Items',
+            displayFormat:'text'
+        }
+        ,id:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,creationDate:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'CreationDate',
+            jsName:'creationDate',
+            displayName:'Creation Date',
+            displayFormat:'date'
+            ,date:
+            {
+                shouldValidate:true
+                ,min: new Date('1/1/1900')
+                ,max: new Date('3/4/2050')
+                ,message: 'date is either too far in the future or past'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,type:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Type',
+            jsName:'type',
+            displayName:'Type',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 200
+                ,message: '200 characters or less'
+            }
+        }
+        ,message:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Message',
+            jsName:'message',
+            displayName:'Message',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 200
+                ,message: '200 characters or less'
+            }
+        }
+        ,user:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'User',
+            jsName:'user',
+            displayName:'User',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+details? : string;
+host? : string;
+url? : string;
+items? : GroupingOfNameValuePair[];
+id? : number;
+creationDate? : DateTimeOffset;
+type? : string;
+message? : string;
+user? : string;
 }
 
 export class ErrorListRequest  {
@@ -1025,6 +826,59 @@ message? : string;
 user? : string;
 }
 
+export class GroupingOfNameValuePair  {
+
+static empty()
+{
+    const result =
+    {
+        name:undefined,
+        id:undefined,
+        data:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        name:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,id:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text'
+        }
+        ,data:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Data',
+            jsName:'data',
+            displayName:'Data',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+name? : string;
+id? : any;
+data? : NameValuePair[];
+}
+
 export class IdRequest  {
 
 static empty()
@@ -1058,6 +912,229 @@ static metadata()
 }
 
 id? : number;
+}
+
+export class IGridState  {
+
+static empty()
+{
+    const result =
+    {
+        pageNumber:undefined,
+        pageSize:undefined,
+        totalRecords:undefined,
+        totalPages:undefined,
+        sortMember:undefined,
+        sortDirection:undefined,
+        defaultSortMember:undefined,
+        resetPaging:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        pageNumber:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'PageNumber',
+            jsName:'pageNumber',
+            displayName:'Page Number',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,pageSize:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'PageSize',
+            jsName:'pageSize',
+            displayName:'Page Size',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,totalRecords:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'TotalRecords',
+            jsName:'totalRecords',
+            displayName:'Total Records',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,totalPages:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'TotalPages',
+            jsName:'totalPages',
+            displayName:'Total Pages',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,sortMember:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'SortMember',
+            jsName:'sortMember',
+            displayName:'Sort Member',
+            displayFormat:'text'
+        }
+        ,sortDirection:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'SortDirection',
+            jsName:'sortDirection',
+            displayName:'Sort Direction',
+            displayFormat:'text'
+        }
+        ,defaultSortMember:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'DefaultSortMember',
+            jsName:'defaultSortMember',
+            displayName:'Default Sort Member',
+            displayFormat:'text'
+        }
+        ,resetPaging:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'ResetPaging',
+            jsName:'resetPaging',
+            displayName:'Reset Paging',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+pageNumber? : number;
+pageSize? : number;
+totalRecords? : number;
+totalPages? : number;
+sortMember? : string;
+sortDirection? : string;
+defaultSortMember? : string;
+resetPaging? : boolean;
+}
+
+export class IListItem  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined,
+        filterData:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        id:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,filterData:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'FilterData',
+            jsName:'filterData',
+            displayName:'Filter Data',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
+filterData? : string;
+}
+
+export class INameValuePair  {
+
+static empty()
+{
+    const result =
+    {
+        name:undefined,
+        value:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        name:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,value:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Value',
+            jsName:'value',
+            displayName:'Value',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+name? : string;
+value? : string;
 }
 
 export class ListItem  {
@@ -1204,63 +1281,6 @@ hasLogicException? : boolean;
 message? : string;
 details? : INameValuePair[];
 exception? : any;
-}
-
-export class IListItem  {
-
-static empty()
-{
-    const result =
-    {
-        id:undefined,
-        name:undefined,
-        filterData:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        id:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Id',
-            jsName:'id',
-            displayName:'Id',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,name:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Name',
-            jsName:'name',
-            displayName:'Name',
-            displayFormat:'text'
-        }
-        ,filterData:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'FilterData',
-            jsName:'filterData',
-            displayName:'Filter Data',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-id? : number;
-name? : string;
-filterData? : string;
 }
 
 export class MemberDetail  {
@@ -1765,6 +1785,48 @@ column? : string;
 errorObject? : string;
 }
 
+export class NameValuePair  {
+
+static empty()
+{
+    const result =
+    {
+        name:undefined,
+        value:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        name:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+        }
+        ,value:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Value',
+            jsName:'value',
+            displayName:'Value',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+name? : string;
+value? : string;
+}
+
 export class NewItemResponse extends IResponse {
 
 static empty()
@@ -2010,6 +2072,30 @@ name? : string;
 teamId? : number;
 }
 
+export class Response extends IResponse {
+
+static empty()
+{
+    const result =
+    {
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
 export class ResponseOfUserDetail extends IResponse {
 
 static empty()
@@ -2036,171 +2122,6 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export class UserDetail  {
-
-static empty()
-{
-    const result =
-    {
-        id:undefined,
-        userName:undefined,
-        clientId:undefined,
-        firstName:undefined,
-        lastName:undefined,
-        lockoutEnabled:undefined,
-        password:undefined,
-        confirmPassword:undefined,
-        roles:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        id:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Id',
-            jsName:'id',
-            displayName:'Id',
-            displayFormat:'text',
-            isHidden: true
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,userName:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'UserName',
-            jsName:'userName',
-            displayName:'User Name',
-            displayFormat:'text'
-            ,length:
-            {
-                shouldValidate:true
-                ,min: 0
-                ,max: 128
-                ,message: '128 characters or less'
-            }
-            ,required:
-            {
-                shouldValidate:true
-            }
-        }
-        ,clientId:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'ClientId',
-            jsName:'clientId',
-            displayName:'Client Id',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,firstName:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'FirstName',
-            jsName:'firstName',
-            displayName:'First Name',
-            displayFormat:'text'
-            ,length:
-            {
-                shouldValidate:true
-                ,min: 0
-                ,max: 128
-                ,message: '128 characters or less'
-            }
-            ,required:
-            {
-                shouldValidate:true
-            }
-        }
-        ,lastName:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'LastName',
-            jsName:'lastName',
-            displayName:'Last Name',
-            displayFormat:'text'
-            ,length:
-            {
-                shouldValidate:true
-                ,min: 0
-                ,max: 128
-                ,message: '128 characters or less'
-            }
-            ,required:
-            {
-                shouldValidate:true
-            }
-        }
-        ,lockoutEnabled:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'LockoutEnabled',
-            jsName:'lockoutEnabled',
-            displayName:'Lockout Enabled',
-            displayFormat:'text'
-            ,required:
-            {
-                shouldValidate:true
-            }
-        }
-        ,password:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Password',
-            jsName:'password',
-            displayName:'Password',
-            displayFormat:'text'
-        }
-        ,confirmPassword:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'ConfirmPassword',
-            jsName:'confirmPassword',
-            displayName:'Confirm Password',
-            displayFormat:'text'
-        }
-        ,roles:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Roles',
-            jsName:'roles',
-            displayName:'Roles',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-id? : number;
-userName? : string;
-clientId? : number;
-firstName? : string;
-lastName? : string;
-lockoutEnabled? : boolean;
-password? : string;
-confirmPassword? : string;
-roles? : ListItem[];
-}
-
 export class ResponseOfTeamDetail extends IResponse {
 
 static empty()
@@ -2225,60 +2146,6 @@ hasLogicException? : boolean;
 message? : string;
 details? : INameValuePair[];
 exception? : any;
-}
-
-export class TeamDetail  {
-
-static empty()
-{
-    const result =
-    {
-        id:undefined,
-        name:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        id:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Id',
-            jsName:'id',
-            displayName:'Id',
-            displayFormat:'text',
-            isHidden: true
-            ,int:
-            {
-                shouldValidate:true
-            }
-        }
-        ,name:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Name',
-            jsName:'name',
-            displayName:'Name',
-            displayFormat:'text'
-            ,length:
-            {
-                shouldValidate:true
-                ,min: 0
-                ,max: 128
-                ,message: '128 characters or less'
-            }
-        }
-    };
-    return result;
-}
-
-id? : number;
-name? : string;
 }
 
 export class ResponseOfProjectDetail extends IResponse {
@@ -2359,158 +2226,6 @@ details? : INameValuePair[];
 exception? : any;
 }
 
-export class ErrorDetail  {
-
-static empty()
-{
-    const result =
-    {
-        details:undefined,
-        host:undefined,
-        url:undefined,
-        items:undefined,
-        id:undefined,
-        creationDate:undefined,
-        type:undefined,
-        message:undefined,
-        user:undefined
-    };
-    return result;
-}
-
-static metadata()
-{
-    var result =
-    {
-        details:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Details',
-            jsName:'details',
-            displayName:'Details',
-            displayFormat:'text'
-        }
-        ,host:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Host',
-            jsName:'host',
-            displayName:'Host',
-            displayFormat:'text'
-        }
-        ,url:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Url',
-            jsName:'url',
-            displayName:'Url',
-            displayFormat:'text'
-        }
-        ,items:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Items',
-            jsName:'items',
-            displayName:'Items',
-            displayFormat:'text'
-        }
-        ,id:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Id',
-            jsName:'id',
-            displayName:'Id',
-            displayFormat:'int'
-            ,int:
-            {
-                shouldValidate:true
-            }
-            ,required:
-            {
-                shouldValidate:true
-            }
-        }
-        ,creationDate:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'CreationDate',
-            jsName:'creationDate',
-            displayName:'Creation Date',
-            displayFormat:'date'
-            ,date:
-            {
-                shouldValidate:true
-                ,min: new Date('1/1/1900')
-                ,max: new Date('3/4/2050')
-                ,message: 'date is either too far in the future or past'
-            }
-            ,required:
-            {
-                shouldValidate:true
-            }
-        }
-        ,type:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Type',
-            jsName:'type',
-            displayName:'Type',
-            displayFormat:'text'
-            ,length:
-            {
-                shouldValidate:true
-                ,min: 0
-                ,max: 200
-                ,message: '200 characters or less'
-            }
-        }
-        ,message:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Message',
-            jsName:'message',
-            displayName:'Message',
-            displayFormat:'text'
-            ,length:
-            {
-                shouldValidate:true
-                ,min: 0
-                ,max: 200
-                ,message: '200 characters or less'
-            }
-        }
-        ,user:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'User',
-            jsName:'user',
-            displayName:'User',
-            displayFormat:'text'
-        }
-    };
-    return result;
-}
-
-details? : string;
-host? : string;
-url? : string;
-items? : GroupingOfNameValuePair[];
-id? : number;
-creationDate? : DateTimeOffset;
-type? : string;
-message? : string;
-user? : string;
-}
-
 export class ResponseOfAppPrincipal extends IResponse {
 
 static empty()
@@ -2561,6 +2276,60 @@ hasLogicException? : boolean;
 message? : string;
 details? : INameValuePair[];
 exception? : any;
+}
+
+export class TeamDetail  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        id:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
 }
 
 export class TeamListRequest  {
@@ -2886,16 +2655,21 @@ isValid? : boolean;
 validationMessage? : string;
 }
 
-export class ValidationMetaData  {
+export class UserDetail  {
 
 static empty()
 {
     const result =
     {
-        shouldValidate:undefined,
-        message:undefined,
-        min:undefined,
-        max:undefined
+        id:undefined,
+        userName:undefined,
+        clientId:undefined,
+        firstName:undefined,
+        lastName:undefined,
+        lockoutEnabled:undefined,
+        password:undefined,
+        confirmPassword:undefined,
+        roles:undefined
     };
     return result;
 }
@@ -2904,50 +2678,146 @@ static metadata()
 {
     var result =
     {
-        shouldValidate:
+        id:
         {
             isValid:true,
             validationMessage:undefined,
-            propertyName:'ShouldValidate',
-            jsName:'shouldValidate',
-            displayName:'Should Validate',
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,userName:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'UserName',
+            jsName:'userName',
+            displayName:'User Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,clientId:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'ClientId',
+            jsName:'clientId',
+            displayName:'Client Id',
+            displayFormat:'int'
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,firstName:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'FirstName',
+            jsName:'firstName',
+            displayName:'First Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,lastName:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'LastName',
+            jsName:'lastName',
+            displayName:'Last Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,lockoutEnabled:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'LockoutEnabled',
+            jsName:'lockoutEnabled',
+            displayName:'Lockout Enabled',
+            displayFormat:'text'
+            ,required:
+            {
+                shouldValidate:true
+            }
+        }
+        ,password:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Password',
+            jsName:'password',
+            displayName:'Password',
             displayFormat:'text'
         }
-        ,message:
+        ,confirmPassword:
         {
             isValid:true,
             validationMessage:undefined,
-            propertyName:'Message',
-            jsName:'message',
-            displayName:'Message',
+            propertyName:'ConfirmPassword',
+            jsName:'confirmPassword',
+            displayName:'Confirm Password',
             displayFormat:'text'
         }
-        ,min:
+        ,roles:
         {
             isValid:true,
             validationMessage:undefined,
-            propertyName:'Min',
-            jsName:'min',
-            displayName:'Min',
-            displayFormat:'text'
-        }
-        ,max:
-        {
-            isValid:true,
-            validationMessage:undefined,
-            propertyName:'Max',
-            jsName:'max',
-            displayName:'Max',
+            propertyName:'Roles',
+            jsName:'roles',
+            displayName:'Roles',
             displayFormat:'text'
         }
     };
     return result;
 }
 
-shouldValidate? : boolean;
-message? : string;
-min? : any;
-max? : any;
+id? : number;
+userName? : string;
+clientId? : number;
+firstName? : string;
+lastName? : string;
+lockoutEnabled? : boolean;
+password? : string;
+confirmPassword? : string;
+roles? : ListItem[];
 }
 
 export class UserListRequest  {
@@ -3176,5 +3046,69 @@ clientId? : number;
 firstName? : string;
 lastName? : string;
 roles? : string;
+}
+
+export class ValidationMetaData  {
+
+static empty()
+{
+    const result =
+    {
+        shouldValidate:undefined,
+        message:undefined,
+        min:undefined,
+        max:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        shouldValidate:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'ShouldValidate',
+            jsName:'shouldValidate',
+            displayName:'Should Validate',
+            displayFormat:'text'
+        }
+        ,message:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Message',
+            jsName:'message',
+            displayName:'Message',
+            displayFormat:'text'
+        }
+        ,min:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Min',
+            jsName:'min',
+            displayName:'Min',
+            displayFormat:'text'
+        }
+        ,max:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Max',
+            jsName:'max',
+            displayName:'Max',
+            displayFormat:'text'
+        }
+    };
+    return result;
+}
+
+shouldValidate? : boolean;
+message? : string;
+min? : any;
+max? : any;
 }
 

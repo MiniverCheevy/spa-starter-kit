@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using Voodoo.CodeGeneration.Helpers;
+using Voodoo.CodeGeneration.Helpers.ModelBuilders;
 using Voodoo.CodeGeneration.Models.VisualStudio;
 
 namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Vue
@@ -9,7 +10,9 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Vue
     {
         public TypeScriptModelsFile(ProjectFacade project, Type[] types, string path) : base(project, types, path)
         {
-            Builder.AddTypes(types);
+            Builder = new TypeScriptGraphBuilder(types);
+            Builder.WriteModelDefinitions();
+
             OverwriteExistingFile = true;
         }
 

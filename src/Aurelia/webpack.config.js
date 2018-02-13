@@ -66,7 +66,6 @@ module.exports = (env) => {
             new CopyWebpackPlugin([
                 { from: 'ClientApp/index.html', to: '../' },
                 { from: 'ClientApp/favicon.ico', to: '../' },
-                { from: 'ClientApp/assets', to: '../assets/' },
                 { from: 'ClientApp/theme/theme.min.css', to: '../theme/' },
             ])
 
