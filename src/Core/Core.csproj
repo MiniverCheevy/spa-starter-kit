@@ -34,6 +34,9 @@
     <Reference Include="ClosedXML, Version=0.89.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ClosedXML.0.89.0\lib\net452\ClosedXML.dll</HintPath>
     </Reference>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
@@ -88,7 +91,7 @@
       <HintPath>..\..\packages\Voodoo.Patterns.2.2.32\lib\net46\Voodoo.dll</HintPath>
     </Reference>
     <Reference Include="Voodoo.Reports, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Reports.0.9.2.3-rc\lib\net452\Voodoo.Reports.dll</HintPath>
+      <HintPath>..\..\packages\Voodoo.Reports.0.9.2.4-rc\lib\net452\Voodoo.Reports.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
