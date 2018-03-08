@@ -14,6 +14,7 @@ module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
     const virtualDirectory = isDevBuild ? '/' : '/';
     console.log('IsDevBuild=' + isDevBuild.toString());
+    console.log('virtual directory =' + virtualDirectory);
     return [{
         stats: { modules: false },
         entry: {

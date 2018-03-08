@@ -31,6 +31,8 @@ namespace Web
             Console.WriteLine($"Environment: {env.EnvironmentName}");
             this.Configuration = builder.Build();
             IOC.Settings = SettingsFactory.GetSettings(builder.Build());
+            IOC.Settings.Environment = env.EnvironmentName;
+
             updateDatabaseToLatestVersion(env);
         }
         public IConfigurationRoot Configuration { get; set; }

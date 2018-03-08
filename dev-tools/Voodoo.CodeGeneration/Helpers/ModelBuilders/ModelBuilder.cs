@@ -12,12 +12,31 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         public abstract string GenerateDeclaration(Type modelType, params string[] exclusions);
         public abstract string GetPropertyDeclaration(PropertyInfo property);
 
-        public static string LowerCaseFirstLetter(string @string)
+        public static string lowerCaseStartingCapitalLetters(string @string)
         {
-            @string = @string.To<string>();
-            if (@string.Length < 2)
-                return @string;
-            return $"{@string.Substring(0, 1).ToLower()}{@string.Substring(1)}";
+            if (String.IsNullOrWhiteSpace(@string))
+                return string.Empty;
+
+            var result = new List<char>();
+            var hasLower = false;
+            foreach (var letter in @string)
+            {
+
+                var n = (int) letter;
+                if (hasLower)
+                    result.Add(letter);
+                else if (n >= 65 & n <= 90)
+                {
+                    result.Add(letter.ToString().ToLower().First());
+                }
+                else
+                {
+                    result.Add(letter);
+                    hasLower = true;
+                }
+            }
+
+            return string.Join(string.Empty, result.ToArray());
         }
 
         public Type[] getComplexPropertyTypes(Type type)

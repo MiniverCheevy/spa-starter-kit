@@ -6,10 +6,11 @@ import { Form } from './form';
 import { InputHelper, InputState } from './input-helper';
 
 
-export class InputComponentProps {
+export class InputComponentModel {
     name: string;
     label?: string;
-    value?;
+    value?: any;
+    key?: string;
 
     readOnly?: boolean = false;
     noLabel?: boolean = false;
@@ -27,15 +28,35 @@ export class InputComponentProps {
 
     isValid?: boolean; 
     validationMessage?: string;
+
+    prefix?: string;
+    suffix?: string;
 }
 
-export abstract class InputComponent extends React.Component<InputComponentProps, any>
+export abstract class InputComponent extends React.Component<InputComponentModel, InputComponentModel>
 {
     helper: InputHelper;
-    abstract doRender = (props): JSX.Element | null => { return null };
+    abstract doRender = (): JSX.Element | null => { return null };
 
-    render() {
-        return this.doRender(this.props);
+    constructor(props: InputComponentModel) {
+        super(props);
+        this.createInitialState(props);
+    }
+
+    createInitialState=(props: InputComponentModel)=>{
+        this.state = { ...props };
+    }
+
+    componentWillReceiveProps(props: InputComponentModel) {
+        this.copyPropsToState(props);
+    }
+
+    copyPropsToState = (props: InputComponentModel) => {
+        this.setState({ ...props });
+    }
+
+    render() {        
+        return this.doRender();
     }
 
 

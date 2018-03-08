@@ -14,9 +14,9 @@ export class InputTextArea extends InputComponent {
         this.helper.handleChange(event);
     }
     
-    doRender = (props) => {
-        this.props = props;
-        var state = this.helper.getState();
+    doRender = () => {
+        var config = this.helper.getState();
+        var value = config.rawValue;
 
         var textAreaClasses = "mdc-textfield__input input-field";        
 
@@ -24,9 +24,9 @@ export class InputTextArea extends InputComponent {
             textAreaClasses = textAreaClasses + " full-width";
         }
 
-        return <InputShell {...this.props} label={state.label}>            
+        return <InputShell {...this.state} label={config.label}>            
             <textarea
-                autoFocus={this.props.autofocus} value={state.formattedValue}
+                autoFocus={this.props.autofocus} value={config.formattedValue}
                 onChange={this.onChange} rows={this.props.lines}
                 className={textAreaClasses} >
             </textarea>

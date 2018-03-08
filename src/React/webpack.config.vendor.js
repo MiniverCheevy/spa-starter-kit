@@ -8,6 +8,7 @@ module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
     const virtualDirectory = isDevBuild ? '/' : '/';
     console.log('IsDevBuild=' + isDevBuild.toString());
+    console.log('virtual directory =' + virtualDirectory);
     return [{
         stats: { modules: false },
         resolve: {
@@ -21,7 +22,7 @@ module.exports = (env) => {
         },
         entry: {
             //'jquery','bootstrap',
-            vendor: ['event-source-polyfill', 'isomorphic-fetch',
+            vendor: [ 'babel-polyfill','event-source-polyfill', 'isomorphic-fetch',
                 'react', 'react-dom', 'react-router',
                 'mobx', 'mobx-react', 'mobx-react-devtools',                
                 //'material-components-web/dist/material-components-web.js',
@@ -38,8 +39,9 @@ module.exports = (env) => {
         },
         plugins: [
             //new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+            // $: 'jquery', jQuery: 'jquery',
             extractCSS,
-            //new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
+            new webpack.ProvidePlugin({ Promise: 'es6-promise-promise' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
 
             new webpack.DllPlugin({
                 path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),

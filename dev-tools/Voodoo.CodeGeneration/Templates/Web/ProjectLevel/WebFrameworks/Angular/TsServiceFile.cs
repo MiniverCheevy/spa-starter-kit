@@ -17,7 +17,7 @@ namespace Voodoo.CodeGeneration.Templates.Web.ProjectLevel.WebFrameworks.Angular
             : base(project, resource, path)
         {
             Name = $"{resource.Name}Service";
-            TsName = $"{ModelBuilder.LowerCaseFirstLetter(resource.Name)}Service";
+            TsName = $"{ModelBuilder.lowerCaseStartingCapitalLetters(resource.Name)}Service";
             Template = new TsServiceTemplate {File = this};
         }
 

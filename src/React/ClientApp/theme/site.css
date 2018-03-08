@@ -552,3 +552,49 @@ select {
     .fake-header select option {
         background-color: #0072a7;
     }
+
+.btn {
+    margin: 6px !important;
+}
+.input-field-container {
+    margin-right: 6px;
+}
+/*Tight*/
+.tight label {
+    min-width: 130px;
+    width: 130px;
+}
+.tight .input-field-container {
+    min-width: 320px !important;
+    width: 320px !important;
+}
+/*Tiny Text Box*/
+.tiny-text-box input {
+    min-width: 60px !important;
+    width: 60px !important;
+}
+
+.tiny-text-box .input-field-container {
+    min-width: 240px !important;
+    width: 240px !important;
+}
+.tiny-text-box label {
+    min-width: 130px;
+    width: 130px;
+}
+
+.tiny-text-box .input-field-container {
+    margin-left: 18px;
+}
+input {
+    display: inline !important;
+}
+.inline {
+    display: inline;
+}
+.scrolling-panel-small {
+    height: 180px;
+    overflow: scroll;
+
+}
+.hidden { display: none;}

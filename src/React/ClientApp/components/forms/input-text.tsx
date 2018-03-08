@@ -23,17 +23,22 @@ export class InputText extends InputComponent {
 
     }
 
-    doRender = (props) => {
-        this.props = props;
-        var state = this.helper.getState();
-        var value = this.withFormat ? state.formattedValue : state.rawValue;
-        return <InputShell {...this.props} label={state.label} isValid={state.isValid} validationMessage={state.validationMessage} >
-            <input type="text" name={this.props.name}
-                autoFocus={this.props.autofocus}
+    doRender = () => {
+        
+        var config = this.helper.getState();
+        var value = this.withFormat ? config.formattedValue : config.rawValue;
+        return <InputShell {...this.state}
+            label={config.label}
+            isValid={config.isValid}
+            validationMessage={config.validationMessage} >            
+            <input type="text" name={this.state.name}
+                readOnly={config.isReadOnly}
+                autoFocus={this.state.autofocus}
                 value={value}
                 onChange={this.internalChangeHandler}
                 onBlur={this.internalBlurHandler}
-                className="mdc-textfield__input input-field" />
+                className="mdc-textfield__input input-field" 
+		key={this.state.key} />
         </InputShell>;
     }
 }

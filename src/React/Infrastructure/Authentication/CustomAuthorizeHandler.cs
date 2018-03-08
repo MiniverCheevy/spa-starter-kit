@@ -3,7 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using Core;
-using Microsoft.ApplicationInsights.AspNetCore.Extensions;
+
 using Microsoft.AspNetCore.Http;
 using Voodoo.Messages;
 
@@ -23,7 +23,8 @@ namespace Web.Infrastructure.Authentication
         {
             var user = IOC.GetCurrentPrincipal();
             var isAuthenticated = IOC.GetCurrentPrincipal().IsAuthenticated;
-            var requestPath = context.Request.GetUri().ToString().ToLower();
+            
+            var requestPath = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(context.Request);
             if (!isAuthenticated)
                 if (requestPath.Contains("api") && !requestPath.Contains("login") && !requestPath.Contains("profile") &&
                     !requestPath.Contains("oauth"))

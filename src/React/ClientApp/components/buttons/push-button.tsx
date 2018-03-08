@@ -58,10 +58,12 @@ export class PushButton extends React.Component<PushButtonProps, any> {
             title = this.props.text;
                 
         this.handleTheme();
+        if (text != '')
+            text = ' ' + text + ' ';
         return  <a 
                 className={buttonClass}
                 title={title}
-                style={{ minWidth: '36px', minHeight:'36px', height:'auto' }}
+                style={{ minWidth: '36px', minHeight:'36px', height:'auto', cursor: 'pointer'  }}
                 onClick={() => { this.props.click() }}
                 >
             {this.props.icon && <i  className={iconName}></i>}

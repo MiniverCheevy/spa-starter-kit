@@ -20,10 +20,9 @@ export class InputDropdown extends InputComponent {
     }
 
     preRender = () => {
-        //TODO: something
-        if (this.props.readOnly) {
+        if (this.state.readOnly) {
             this.isLabel = true;
-            let items = this.props.items.filter((item) => { return item.id == this.props.value; });
+            const items = this.props.items.filter((item) => { return item.id == this.state.value; });
             if (items.length > 0)
                 this.selectedText = items[0].name;
         }
@@ -32,19 +31,28 @@ export class InputDropdown extends InputComponent {
 
     }
 
-    doRender = (props) => {
-        this.props = props;
-        var state = this.helper.getState();
-
-        var options = this.props.items.map((item) => {
-            return <option
-                selected={item.id == this.props.value}
+    doRender = () => {
+        var config = this.helper.getState();
+        var value = config.rawValue;
+        var items = this.props.items || [];
+        
+        var options = items.map((item, index) => {
+            var key = this.state.name + '_o_' + index;
+            return <option key={key}               
                 value={item.id}
                 className="mdc-list-item">{item.name}</option>;
         }
         );
-        return <InputShell {...this.props} label={state.label}>
-            <select className="mdc-select input-component" onChange={this.onChange}>
+        return <InputShell {...this.state}
+                   label={config.label}
+                   isValid={config.isValid}
+                   validationMessage={config.validationMessage} >       
+            <select className="mdc-select input-component form-control"
+                onChange={this.onChange}
+                value={config.rawValue}
+                key={this.state.key}
+                    name={this.state.name}
+            >
                 <option></option>
                 {options}
             </select >

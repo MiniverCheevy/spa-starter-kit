@@ -17,6 +17,7 @@ namespace Core.Infrastructure.Metadata
         public ValidationMetaData Date { get; set; }
         public ValidationMetaData Int { get; set; }
         public ValidationMetaData Decimal { get; set; }
+        public ValidationMetaData Bool { get; set; }
         public ValidationMetaData Required { get; set; }        
         public bool IsReadOnly { get; set; }
         public bool IsHidden { get; set; }

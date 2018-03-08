@@ -11,7 +11,7 @@ export class IntValidator extends Validator {
             return;
         this.validation = this.request.metadata.int;
 
-        var message = this.validation.message || 'must be a whole number';
+        var message:string = this.validation.message || 'must be a whole number';
 
         var invalidResponse = { message: message, isValid: false };
         if (this.value == null || this.value == undefined) {

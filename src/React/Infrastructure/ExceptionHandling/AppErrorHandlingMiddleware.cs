@@ -36,7 +36,7 @@ namespace Web.Infrastructure.ExceptionHandling
 
         private async Task handleExceptionAsync(HttpContext context, Exception exception)
         {
-            context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+            
             context.Response.ContentType = "application/json";
 
             if (exception != null)

@@ -8,21 +8,32 @@ import { PushButton } from './../../buttons/push-button';
 
 
 export class GridProps {
+    doNotPageOrSort?: boolean = false;
     request?: Models.IGridState = { sortMember: '', sortDirection: '' };
     refresh?: (request: Models.IGridState) => void;
     buttons?: ButtonSpec[];
-    metadata?;
-   data?: any[];
+    metadata;
+    data: any[];
 }
 
 export class Grid extends React.Component<GridProps, any>
 {
     columns: Models.UIMetadata[] = [];
-    constructor(props: GridProps)
-    {        
+    constructor(props: GridProps) {
         super(props);
+        this.createInitialState(props);
     }
-   
+    createInitialState = (props: GridProps) => {
+        var data = props.data || [];
+        this.state = { data: data };
+    }
+    componentWillReceiveProps(nextProps) {
+        this.copyPropsToState(nextProps);
+    }
+    copyPropsToState = (props) => {
+        var data = props.data || [];
+        this.setState({ data: data });
+    }
     executeAction(action, row) {
         if (action && typeof action == "function")
             action(row);
@@ -37,6 +48,7 @@ export class Grid extends React.Component<GridProps, any>
         this.columns = Services.FormsService.getProperties(this.props.metadata);
         const headings = this.getColumnHeadings();
         const rows = this.getRows();
+        var showPager = this.props.doNotPageOrSort == null || this.props.doNotPageOrSort === false;
         return <div >
             <section className="data-table-container">
             <table className="data-table mdc-card__primary">
@@ -52,14 +64,14 @@ export class Grid extends React.Component<GridProps, any>
             </table>
             </section>
             <section className="mdc-card__actions pager-container">
-                <Pager request={this.props.request} refresh={this.props.refresh}></Pager>
+                {showPager && <Pager request={this.props.request} refresh={this.props.refresh}></Pager>}
             </section>
         </div>;
     }
    
     getColumnHeadings=()=> {
         return this.columns.map((column, index, source) => {
-            var dontSort = column.doNotSort != null && column.doNotSort;
+            var dontSort = (column.doNotSort != null && column.doNotSort) || this.props.doNotPageOrSort;
             return <th key={column.jsName}>
                 {dontSort && <span >{column.displayName}</span>}
                 {!dontSort &&
@@ -74,13 +86,22 @@ export class Grid extends React.Component<GridProps, any>
     getRows = () => {
         const buttons = this.props.buttons;
         const hasButtons = buttons && buttons.length > 0;
-        
-        return this.props.data.map((row, index) => {
-            const rowButtons = buttons.map((button) => {
-                return <PushButton theme="grid-icon" key={button.key}
-                    text={button.text} icon={button.icon} click={() => {  this.executeAction(button.action, row) }}
-                ></PushButton>;
+        let rowButtons = null;
+        return this.state.data.map((row, index) => {
+            if (hasButtons) {
+            rowButtons = buttons.map((button) => {
+                if (button.showIf == null || button.showIf(row)) {
+                    if (button.icon != null)
+                    return <PushButton theme="grid-icon" key={button.key}
+                            text={button.text} icon={button.icon} click={() => { this.executeAction(button.action, row) }}></PushButton>;
+                    else
+                        return <PushButton theme="primary" key={button.key}
+                            text={button.text} compact={true}
+                            click={() => { this.executeAction(button.action, row) }}></PushButton>;
+                } else
+                    return null;
             });
+            }
             const cells = this.columns.map((column, index, source) => {
                 var className = "format-" + column.displayFormat;
                 var value = Services.FormatService.formatForDisplay(row[column.jsName], column);

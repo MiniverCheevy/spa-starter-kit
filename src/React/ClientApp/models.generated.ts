@@ -2291,6 +2291,7 @@ static empty()
         date:undefined,
         int:undefined,
         decimal:undefined,
+        bool:undefined,
         required:undefined,
         isReadOnly:undefined,
         isHidden:undefined,
@@ -2387,6 +2388,15 @@ static metadata()
             displayName:'Decimal',
             displayFormat:'text'
         }
+        ,bool:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Bool',
+            jsName:'bool',
+            displayName:'Bool',
+            displayFormat:'text'
+        }
         ,required:
         {
             isValid:true,
@@ -2463,6 +2473,7 @@ length? : ValidationMetaData;
 date? : ValidationMetaData;
 int? : ValidationMetaData;
 decimal? : ValidationMetaData;
+bool? : ValidationMetaData;
 required? : ValidationMetaData;
 isReadOnly? : boolean;
 isHidden? : boolean;

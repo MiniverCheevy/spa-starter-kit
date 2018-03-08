@@ -1,6 +1,6 @@
 ﻿import { Models } from './../../root'
 
 export class ValidationRequest {
-    public value: object;
+    public value: any;
     public metadata: Models.UIMetadata;
 }

@@ -20,9 +20,11 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
         private Type[] dateTypes = new Type[] { typeof(DateTime), typeof(DateTime?), typeof(DateTimeOffset), typeof(DateTimeOffset?) };
         private Type[] intTypes = new Type[] { typeof(short), typeof(int), typeof(long), typeof(short?), typeof(int?), typeof(long?) };
         private Type[] decimalTypes = new Type[] { typeof(decimal), typeof(decimal?) };
+        private Type[] boolTypes = new Type[] { typeof(bool), typeof(bool?) };
         private bool isDate = false;
         private bool isInt = false;
         private bool isDecimal = false;
+        private bool isBool = false;
         private ModelBuilder modelBuilder = new TypeScriptModelBuilder();
         private Type type;
 
@@ -71,11 +73,12 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                
                 return;
             }
-            var tsName = ModelBuilder.LowerCaseFirstLetter(property.Name);
+            var tsName = ModelBuilder.lowerCaseStartingCapitalLetters(property.Name);
 
             isDate = dateTypes.Contains(property.PropertyType);
             isInt = intTypes.Contains(property.PropertyType);
             isDecimal = decimalTypes.Contains(property.PropertyType);
+            isBool = decimalTypes.Contains(property.PropertyType);
 
             output.Append(tsName);
             output.AppendLine(":");
@@ -107,29 +110,31 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             items.Add($"isValid:true");
             items.Add($"validationMessage:undefined");
             items.Add($"propertyName:'{property.Name}'");
-            items.Add($"jsName:'{ModelBuilder.LowerCaseFirstLetter(property.Name)}'");
+            items.Add($"jsName:'{ModelBuilder.lowerCaseStartingCapitalLetters(property.Name)}'");
 
             var displayName = property.GetCustomAttribute<DisplayAttribute>()?.Name ?? property.Name.ToFriendlyString();
             items.Add($"displayName:'{displayName}'");
             if (ui == null)
             {
                 if (isDecimal)
-                    items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(DisplayFormat.Decimal.ToString())}'");
+                    items.Add($"displayFormat:'{ModelBuilder.lowerCaseStartingCapitalLetters(DisplayFormat.Decimal.ToString())}'");
                 else if (isDate)
-                    items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(DisplayFormat.Date.ToString())}'");
+                    items.Add($"displayFormat:'{ModelBuilder.lowerCaseStartingCapitalLetters(DisplayFormat.Date.ToString())}'");
                 else if (isInt)
-                    items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(DisplayFormat.Int.ToString())}'");
+                    items.Add($"displayFormat:'{ModelBuilder.lowerCaseStartingCapitalLetters(DisplayFormat.Int.ToString())}'");
+                else if (isBool)
+                    items.Add($"displayFormat:'{ModelBuilder.lowerCaseStartingCapitalLetters("bool")}'");
                 else
                     items.Add($"displayFormat:'text'");
             }
             else
             {
 
-                items.Add($"displayFormat:'{ModelBuilder.LowerCaseFirstLetter(ui.DisplayFormat.ToString())}'");
+                items.Add($"displayFormat:'{ModelBuilder.lowerCaseStartingCapitalLetters(ui.DisplayFormat.ToString())}'");
                 if (ui.IsHidden)
                     items.Add("isHidden: true");
                 if (ui.IsReadOnly)
-                    items.Add("isReadonly: true");
+                    items.Add("isReadOnly: true");
                 if (!string.IsNullOrWhiteSpace(ui.Grouping))
                     items.Add($"grouping:'{ui.Grouping}'");
                 if (ui.DoNotSort)
@@ -212,7 +217,18 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
         }
 
+        private bool generateBoolDeclaration(PropertyInfo property, bool hasPrevious)
+        {
+            if (!isBool)
+                return hasPrevious;
+            if (hasPrevious)
+                output.Append(",");
 
+            output.AppendLine($"bool:");
+            output.AppendLine("{");
+            output.AppendLine("}");
+            return true;
+        }
 
         private bool generateDateDeclaration(PropertyInfo property, bool hasPrevious)
         {

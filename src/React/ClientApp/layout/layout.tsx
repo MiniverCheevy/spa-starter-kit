@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { NavMenu } from './Components/NavMenu';
 import { Routes } from './../routes';
-import { Router, Route } from 'react-router';
 import { Home } from '../scenes/Home/Home';
 import { Dialog } from './../components/messaging/dialog';
 import { Snackbar } from './../components/messaging/snackbar';

@@ -19,13 +19,13 @@ export class Form {
         for (let key in this.metadata) {
 
             if (this.metadata.hasOwnProperty(key)) {
-                var itemMetadata = this.metadata[key] as Models.UIMetadata;
+                const itemMetadata = this.metadata[key] as Models.UIMetadata;
                 if (itemMetadata.control != null) {
-                    var control = itemMetadata.control as InputComponent;
-                    var state = control.helper.getState();
-                    var value = state.rawValue as any;
-                    var validationResult = Services.ValidationService.validate({ value: value, metadata: itemMetadata });
-                    //console.log({ key: key, value: value, isValid: validationResult.isValid, metadata: itemMetadata });
+                    const control = itemMetadata.control as InputComponent;
+                    const state = control.helper.getState();
+                    const value = state.rawValue as any;
+                    const validationResult = Services.ValidationService.validate({ value: value, metadata: itemMetadata });
+                    
                     if (!validationResult.isValid)
                         return false;
                 }
@@ -37,6 +37,9 @@ export class Form {
         form.parent = this;
         this.childForms.push(form);
     }
+    clearDirty = () => {
+        this.isDirty = false;
+    }
     setDirty = () => {
         this.isDirty = true;
         if (this.parent != null)
@@ -44,13 +47,23 @@ export class Form {
     }
 
     configureMetadata(input: InputComponent) {
-        var name = input.props.name;
-        var metadata = this.metadata[name];
+        const name = input.props.name;
+        const metadata = this.metadata[name];
         if (metadata != null && metadata.conrol == null) {
             metadata.control = input;
 
         }
         return metadata;
+    }
+
+    clearPreviousValidationResults() {
+       for(let key in this.metadata) {
+
+            if (this.metadata.hasOwnProperty(key)) {
+                const itemMetadata = this.metadata[key] as Models.UIMetadata;
+                itemMetadata.control = null;
+           }
+       }
     }
 
 }

@@ -1,5 +1,5 @@
 ﻿export class ButtonSpec{
-    constructor(public text: string, public icon: string, public action: (any) => void)
+    constructor(public text: string, public icon: string, public action: (any) => void, public showIf?:(any) => boolean)
     {
 
     }

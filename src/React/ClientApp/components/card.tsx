@@ -13,8 +13,8 @@ export class Card extends React.Component<CardProps, any>
     }
     render() {
 
-        let hasHeader = this.props.title || this.props.subTitle;
-        let hasButtons = this.props.buttons && this.props.buttons.length > 0;
+        const hasHeader = this.props.title || this.props.subTitle;
+        const hasButtons = this.props.buttons && this.props.buttons.length > 0;
 
         return <div className="mdc-card">
             {hasHeader && <section className="mdc-card__primary">

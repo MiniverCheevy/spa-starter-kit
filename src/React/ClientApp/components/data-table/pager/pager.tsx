@@ -89,9 +89,8 @@ export class Pager extends React.Component<PagerProps, any>
     public lastPage = () => {
         return this.page(this.totalPages);
     };
-    render()
-    {
-        var result = this.doRender(this.props);
+    render() {
+        const result = this.doRender(this.props);
         return result;
     }
     doRender = (props) => {

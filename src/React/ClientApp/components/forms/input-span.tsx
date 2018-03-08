@@ -20,13 +20,12 @@ export class InputSpan extends InputComponent {
 
     }
 
-    doRender = (props) => {
-        this.props = props;
+    doRender = () => {
+        var config = this.helper.getState();
+        var value = config.rawValue;
 
-        var state = this.helper.getState();
-
-        return <InputShell {...this.props} label={state.label}>
-            <span className="input-field">{state.formattedValue}</span>
+        return <InputShell {...this.state} label={config.label}>
+            <span className="input-field">{config.formattedValue}</span>
         </InputShell>;
 
     }

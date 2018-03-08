@@ -108,7 +108,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
             var name = property.Name;
 
             var type = ConvertTypeName(property.PropertyType);
-            return $" {LowerCaseFirstLetter(name)}? : {type};";
+            return $" {lowerCaseStartingCapitalLetters(name)}? : {type};";
         }
         public string GetConstPropertyDeclaration(PropertyInfo property, bool isLast)
         {
@@ -116,7 +116,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
 
             var lastChar = isLast ? string.Empty : ",";
             var type = ConvertTypeName(property.PropertyType);
-            return $" {LowerCaseFirstLetter(name)}:undefined{lastChar}";
+            return $" {lowerCaseStartingCapitalLetters(name)}:undefined{lastChar}";
         }
 
         public string ConvertTypeName(Type type)

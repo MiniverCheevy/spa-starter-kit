@@ -12,8 +12,7 @@ export abstract class Validator {
         this.request = request;
         this.response = new ValidationResponse();
         this.value = request.value;
-        this.validate();
-
+        var validatonResposne = this.validate();
         return this.response;
     }
     protected abstract validate = () => {};

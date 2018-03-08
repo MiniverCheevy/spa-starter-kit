@@ -1,15 +1,16 @@
-﻿import { InputComponentProps, InputComponent } from './input-component';
+﻿import { InputComponentModel as InputComponentProps, InputComponent } from './input-component';
 import * as React from 'react';
 import { Models, Services } from './../../root';
 import * as Validation from './../../services/validation';
 
 export class InputState {
-    rawValue: string;
+    rawValue: any;
     formattedValue: string;
     metadata: Models.UIMetadata;
     label: string;
     isValid: boolean = true;
     validationMessage: string;
+    isReadOnly: boolean;
 }
 
 export class InputHelper {
@@ -18,67 +19,76 @@ export class InputHelper {
 
     }
     getState = (): InputState => {
-        var state = new InputState();
-        if (this.input.props == null)
-            return state;
-        if (this.input.props.form != null)
-            state.metadata = this.input.props.form.configureMetadata(this.input);
+        
+        var internalState = new InputState();
+        if (this.input.state == null)
+            return internalState;
+        if (this.input.state.form != null)
+            internalState.metadata = this.input.state.form.configureMetadata(this.input);
 
-        var value = this.input.props.value;
+        
+        var value = this.input.state.value;
 
-        if (this.input.props.model != null) {
-            var val = this.input.props.model[this.input.props.name];
+        if (this.input.state.model != null) {
+            const val = this.input.state.model[this.input.state.name];
             if (val != null)
                 value = val;
         }
-        state.rawValue = value;
-        var formattedValue = state.rawValue;
-        if (state.metadata) {
-            var name = state.metadata.displayName;
-            state.formattedValue = Services.FormatService.format(value, state.metadata);
+        internalState.rawValue = value;
+        var formattedValue = internalState.rawValue;
+        if (internalState.metadata) {
+            const name = internalState.metadata.displayName;
+            internalState.formattedValue = Services.FormatService.format(value, internalState.metadata);
 
-            var result = Services.ValidationService.validate({ metadata: state.metadata, value: state.rawValue as any });
-            state.isValid = result.isValid;
-            state.validationMessage = result.message;
-
-
+            const result = Services.ValidationService.validate({ metadata: internalState.metadata, value: internalState.rawValue});
+            internalState.isValid = result.isValid;
+            internalState.validationMessage = result.message;
+            internalState.isReadOnly = internalState.metadata.isReadOnly;
+           
         }
-        var label = this.input.props.name;
-        if (state.metadata)
-            label = state.metadata.displayName;
-        if (this.input.props.label)
-            label = this.input.props.label;
+        if (this.input.state.readOnly != null)
+            internalState.isReadOnly = this.input.state.readOnly;
 
-        state.label = label;
+        var label = this.input.state.name;
+        if (internalState.metadata)
+            label = internalState.metadata.displayName;
+        if (this.input.state.label)
+            label = this.input.state.label;
 
-        return state;
+        internalState.label = label;
+
+        return internalState;
     }
 
     handleChange = (event, withFormat?: boolean) => {
+        debugger;
         var state = this.getState();
         var key = event.target.name;
         var value = event.target.value;
-        if (withFormat) {            
+        if (state.metadata && state.metadata.bool) {
+            value = event.target.checked;
+        } else if (withFormat) {            
             if (state.metadata)
                 value = Services.FormatService.format(value, state.metadata);
         }
-        var form = this.input.props.form;
+        var form = this.input.state.form;
         if (form) {
             if (value != this.previousValue)
                 form.isDirty = true;    
 
             this.previousValue = value;
 
-            if (this.input.props.change != null) {
-                var formattedValue = Services.FormatService.format(value, state.metadata);
+            if (this.input.state.change != null) {
+                const formattedValue = Services.FormatService.format(value, state.metadata);
 
-                var result = Services.ValidationService.validate({ metadata: state.metadata, value: formattedValue as any});
-                form.metadata[this.input.props.name].isValid = result.isValid;
-                form.metadata[this.input.props.name].validationMessage = result.message;
+                const result = Services.ValidationService.validate({ metadata: state.metadata, value: formattedValue as any});
+                form.metadata[this.input.state.name].isValid = result.isValid;
+                form.metadata[this.input.state.name].validationMessage = result.message;
                
 
             }
         }
-        this.input.props.change(key, value, form);
+        if (this.input.state.change)
+            this.input.state.change(key, value, form);
     }
 }

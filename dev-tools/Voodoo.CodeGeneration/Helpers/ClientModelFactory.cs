@@ -28,7 +28,7 @@ namespace Voodoo.CodeGeneration.Helpers
             }
             modelTypes.AddRange(logic.ClientTypes);
             modelTypes.AddRange(models.ClientTypes);
-            return modelTypes.ToList();
+            return modelTypes.OrderBy(c => c.Name).ToList();
         }
     }
 }

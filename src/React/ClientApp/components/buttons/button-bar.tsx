@@ -12,6 +12,7 @@ export class ButtonBarProps {
     deletePrompt?: string;
     buttons?: ButtonSpec[] = [];
     form?: Form;
+    doNotShowBack?: boolean = false;
 
 }
 export class ButtonBar extends React.Component<ButtonBarProps, any> {
@@ -33,32 +34,38 @@ export class ButtonBar extends React.Component<ButtonBarProps, any> {
         action();
     }
     private doDelete(action) {
-        var text = this.props.deletePrompt || "Are you sure?";
+        const text = this.props.deletePrompt || 'Are you sure?';
         Services.MessengerService.confirm(text, action);
     }
     public render() {
+        const showBackButton = this.props.doNotShowBack == null || !this.props.doNotShowBack;
 
-        let buttons = (this.props.buttons || []).map((button) => {
-            return <PushButton theme="grid-icon" key={button.key}
-                text={button.text} icon={button.icon} click={button.action}
-            ></PushButton>;
+        const buttons = (this.props.buttons || []).map((button) => {
+            return <PushButton theme="primary" key={button.key}
+                               text={button.text} icon={button.icon} click={button.action}
+                   ></PushButton>;
         });
 
         return <div className="button-bar">
 
             <div className="pull-left">
                 {this.props.save != null &&
-                    <PushButton theme="primary" click={() => { this.doSave(this.props.save) }} icon="content-save" text="Save" />}
+                    <PushButton theme="primary" click={() => { this.doSave(this.props.save) }
+                        } icon="content-save" text="Save"/>}
                 {this.props.saveAndClose != null &&
-                    <PushButton theme="primary" click={() => { this.doSave(this.props.saveAndClose) }} icon="content-save" text="Save And Close" />}
+                    <PushButton theme="primary" click={() => { this.doSave(this.props.saveAndClose) }
+                        } icon="content-save" text="Save And Close"/>}
                 {this.props.saveAndAddAnother != null &&
-                    <PushButton theme="primary" click={() => { this.doSave(this.props.saveAndAddAnother) }} icon="content-save" text="Save And Add Another" />}
-                <PushButton click={this.goBack} compact={true} theme="info" icon="keyboard-backspace" text="Back" />
+                    <PushButton theme="primary" click={() => { this.doSave(this.props.saveAndAddAnother) }
+                        } icon="content-save" text="Save And Add Another"/>}
+                {!this.props.doNotShowBack &&
+                    <PushButton click={this.goBack} theme="info" icon="keyboard-backspace" text="Exit"/>}
                 {buttons}
             </div>
             <div className="pull-right" >
                 {this.props.delete != null &&
-                    <PushButton theme="danger" click={() => { this.doDelete(this.props.delete) }} icon="delete" text="Delete" />}
+                    <PushButton theme="danger" click={() => { this.doDelete(this.props.delete) }
+                        } icon="delete" text="Delete"/>}
             </div>
         </div>;
 

@@ -7,6 +7,9 @@ class FormatServicePrototype {
         var format = "text";
         if (metadata && metadata.displayFormat)
             format = metadata.displayFormat;
+        //TODO: add do not format to UI attribute
+        if (metadata.propertyName.endsWith('ID') || metadata.propertyName.endsWith('Id'))
+            return value;
         return this.formatValue(value, format);
     }
     formatForDisplay(value: string, metadata: Models.UIMetadata) {
@@ -14,18 +17,32 @@ class FormatServicePrototype {
         var format = "text";
         if (metadata && metadata.displayFormat)
             format = metadata.displayFormat;
+        //TODO: add do not format to UI attribute
+        if (metadata.propertyName.endsWith('ID') || metadata.propertyName.endsWith('Id'))
+            return value;
         return this.formatValue(value, format);
     }
-    formatValue(value: string, format: string) {
+    //TODO: add parseValue to deformat, possibly rename to toView and toModel 
+    private formatValue (value: any, format: string)
+    {
+
         if (value == null || value === '')
             return '';
         if (!format || format == "text")
             return value;
-
+        
         try {
+            
             switch (format) {
+                case "bool":
+                    if (value == true || value == "true")
+                        return "Yes";
+                    else if (value == null || value == '')
+                        return '';
+                    else
+                        return 'No';
                 case "date":
-
+                    
                     var date = new Date(sugar.Date.create(value));
 
                     if (date == null) {
@@ -40,9 +57,10 @@ class FormatServicePrototype {
                     var formatted = sugar.Date.format(date, '%m/%d/%Y');
                     //console.log('returning formatted date => ' + formatted);                    
                     return formatted;
-                case "time":
-                    var time = new Date(value);
-                    return time.toTimeString();
+                case "time":               
+                    var time = sugar.Date.create(value, { fromUTC: true });
+                    var formatted = sugar.Date.format(time, '%r');
+                    return formatted;
                 case "dateTime":
                     var dateTime = new Date(value);
                     return dateTime.toLocaleString();
@@ -54,19 +72,19 @@ class FormatServicePrototype {
                 case "currency":
                     var number = parseFloat(value);
                     if (number != NaN)
-                        return sugar.Number.format(number, 2);
+                        return sugar.Number.format( number,2);
                     return value;
                 case "decimal":
                     var number = parseFloat(value);
                     if (number != NaN)
-                        return sugar.Number.format(number, 3);
+                        return sugar.Number.format(number, 2);
                     return value;
                 case "phoneNumber":
                     if (value.length == 10) {
                         var first = value.substr(0, 3);
                         var second = value.substr(3, 3);
                         var third = value.substr(6, 4);
-                        return `(${first}) #{second}-${third}`;
+                        return `(${first}) ${second}-${third}`;
                     }
                     else {
                         return value;
@@ -80,4 +98,4 @@ class FormatServicePrototype {
         }
     }
 }
-export const FormatService = new FormatServicePrototype();
+export const  FormatService = new FormatServicePrototype();
