@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Web
@@ -8,8 +9,14 @@ namespace Web
     {
         public static void Main(string[] args)
         {
+
+            var host = BuildWebHost(args);
+            host.Run();
+        }
+        public static IWebHost BuildWebHost(string[] args)
+        {
             var environment = EnvironmentBuilder.GetEnvironment();
-            var host = new WebHostBuilder()
+            return new WebHostBuilder()
                 .UseKestrel()
                 .UseEnvironment(environment)
                 .UseContentRoot(Directory.GetCurrentDirectory())
@@ -17,8 +24,6 @@ namespace Web
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
                 .Build();
-
-            host.Run();
         }
 
         private static string DetermineDeploymentEnvironment(string directory)

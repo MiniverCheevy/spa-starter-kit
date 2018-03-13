@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Core.Models.Scratch
 {
+    [Owned]
     [Table("Teams", Schema = "scratch")]
     public class Team
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public List<Member> Members { get; set; } = new List<Member>();
-        public List<Project> Projects { get; set; } = new List<Project>();
+        
     }
 }

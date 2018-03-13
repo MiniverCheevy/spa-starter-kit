@@ -1,62 +1,64 @@
-﻿using System;
-using System.Data.Entity.Design.PluralizationServices;
-using System.Globalization;
-using System.Linq;
-using Voodoo.Infrastructure;
-using Voodoo.Logging;
-using Voodoo.Messages;
+﻿//TODO: eval 
 
-namespace Core.Context.ExceptionTranslators
-{
-    public class ForiegnKeyExceptionTranslation : ExceptionTranslation
-    {
-        //The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Evaluations_dbo.Users_UserId". The conflict occurred in database "LGM", table "dbo.Users", column 'Id'.
-        //The statement has been terminated.
+//using System;
 
-        private const string flag = "FOREIGN KEY constraint";
-        private IResponse response;
+//using System.Globalization;
+//using System.Linq;
+//using Voodoo.Infrastructure;
+//using Voodoo.Logging;
+//using Voodoo.Messages;
 
-        protected override bool TranslateException(Exception exception, IResponse response)
-        {
-            this.response = response;
-            var message = exception.Message;
-            if (!message.Contains(flag))
-                return false;
+//namespace Core.Context.ExceptionTranslators
+//{
+//    public class ForiegnKeyExceptionTranslation : ExceptionTranslation
+//    {
+//        //The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Evaluations_dbo.Users_UserId". The conflict occurred in database "LGM", table "dbo.Users", column 'Id'.
+//        //The statement has been terminated.
 
-            return parseMessage(message);
-        }
+//        private const string flag = "FOREIGN KEY constraint";
+//        private IResponse response;
 
-        private bool parseMessage(string message)
-        {
-            try
-            {
-                //"FK_dbo.Evaluations_dbo.Users_UserId".
+//        protected override bool TranslateException(Exception exception, IResponse response)
+//        {
+//            this.response = response;
+//            var message = exception.Message;
+//            if (!message.Contains(flag))
+//                return false;
 
-                var first = message.Split('"');
-                if (first.Length < 2)
-                    return false;
+//            return parseMessage(message);
+//        }
 
-                var second = first[1].Split('_');
-                var leftTable = second[1];
-                var rightTable = second[2];
+//        private bool parseMessage(string message)
+//        {
+//            try
+//            {
+//                //"FK_dbo.Evaluations_dbo.Users_UserId".
 
-                var schemalessLeftTable = leftTable.Split('.').Last();
-                var schemalessRightTable = rightTable.Split('.').Last();
+//                var first = message.Split('"');
+//                if (first.Length < 2)
+//                    return false;
 
-                var pluralizer = PluralizationService.CreateService(CultureInfo.CurrentCulture);
+//                var second = first[1].Split('_');
+//                var leftTable = second[1];
+//                var rightTable = second[2];
 
-                var singularLeftTable = pluralizer.Singularize(schemalessLeftTable);
-                var singularRightTable = pluralizer.Singularize(schemalessRightTable);
+//                var schemalessLeftTable = leftTable.Split('.').Last();
+//                var schemalessRightTable = rightTable.Split('.').Last();
 
-                response.Message = $"The {singularLeftTable} has a(n) invalid {singularRightTable}. fkconstraint";
-            }
-            catch (Exception ex)
-            {
-                LogManager.Log(ex);
-                return false;
-            }
+//                var pluralizer = PluralizationService.CreateService(CultureInfo.CurrentCulture);
 
-            return true;
-        }
-    }
-}
+//                var singularLeftTable = pluralizer.Singularize(schemalessLeftTable);
+//                var singularRightTable = pluralizer.Singularize(schemalessRightTable);
+
+//                response.Message = $"The {singularLeftTable} has a(n) invalid {singularRightTable}. fkconstraint";
+//            }
+//            catch (Exception ex)
+//            {
+//                LogManager.Log(ex);
+//                return false;
+//            }
+
+//            return true;
+//        }
+//    }
+//}

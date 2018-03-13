@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Voodoo.CodeGeneration": {
+      "commandName": "Project",
+      "commandLineArgs": "web"
+    }
+  }
+}

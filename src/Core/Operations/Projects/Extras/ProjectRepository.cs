@@ -1,7 +1,7 @@
 using Core;
 using Core.Models.Scratch;
 using Core.Context;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Core.Operations.Projects.Extras
 {

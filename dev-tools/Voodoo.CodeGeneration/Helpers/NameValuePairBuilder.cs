@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Design.PluralizationServices;
 using System.Globalization;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
+using Voodoo.CodeGeneration.Pluralizer;
 
 namespace Voodoo.CodeGeneration.Helpers
 {

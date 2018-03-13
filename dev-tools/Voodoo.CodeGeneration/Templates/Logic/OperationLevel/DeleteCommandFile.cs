@@ -36,7 +36,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             if (HasContext)
             {
                 PageSpecificUsingStatements.Add(ContextNamespace);
-                PageSpecificUsingStatements.Add("System.Data.Entity");
+                PageSpecificUsingStatements.Add("Microsoft.EntityFrameworkCore");
             }
         }
 
@@ -75,10 +75,9 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
                 output.AppendLine($"						.FirstOrDefaultAsync(c=>c.Id == request.Id);");
                 output.AppendLine($"model.ThrowIfNull({Type.Name}Messages.NotFound);");
 
-                if (UseSoftDelete)
-                    output.AppendLine($"	model.IsActive = false;");
-                else
-                    output.AppendLine($"	context.{Type.PluralName}.Remove(model);");
+                output.AppendLine(UseSoftDelete
+                    ? $"	model.IsActive = false;"
+                    : $"	context.{Type.PluralName}.Remove(model);");
 
                 output.AppendLine($"	response.NumberOfRowsEffected = await context.SaveChangesAsync();");
                 output.AppendLine("}");
@@ -86,7 +85,12 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
                 output.AppendLine($"return response;");
                 output.Append("}");
             }
-
+            else
+            {
+                output.AppendLine($"throw new NotImplementedException();");
+                output.Append("}");
+            }
+            
             output.AppendLine("}");
             output.AppendLine("}");
             return output.ToString();

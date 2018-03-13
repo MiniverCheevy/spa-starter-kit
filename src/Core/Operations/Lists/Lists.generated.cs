@@ -14,10 +14,10 @@ namespace Core.Operations.Lists
     {
         Roles=1,
         Lists=2,
-        SqlOperation=3,
-        ApplicationSetting=4,
-        Project=5,
-        Member=6,
-        Team=7,
+        ApplicationSetting=3,
+        Project=4,
+        Member=5,
+        Team=6,
+        TestClass=7,
     }
 }

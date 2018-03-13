@@ -1,9 +1,6 @@
 ﻿using Core.Operations.Lists;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.SqlServer;
-using System.Data.Entity.Validation;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -17,16 +14,16 @@ namespace Core.Context
     {
         static DatabaseContext()
         {
-            // http://robsneuron.blogspot.nl/2013/11/entity-framework-upgrade-to-6.html
-            var ensureDllIsCopied = SqlProviderServices.Instance;
-            VoodooGlobalConfiguration.RegisterExceptionMapping<DbEntityValidationException>(
-                new DbEntityValidationExceptionTranlator());
-            VoodooGlobalConfiguration.RegisterExceptionMapping<SqlException>(
-                new SqlExceptionTranslator());
-            VoodooGlobalConfiguration.RegisterExceptionMapping<SqlException>(
-                new ForiegnKeyExceptionTranslation());
-            VoodooGlobalConfiguration.RegisterExceptionMapping<SqlException>(
-                new UniqueConstraintExceptionTranslation());
+            //// http://robsneuron.blogspot.nl/2013/11/entity-framework-upgrade-to-6.html
+            //var ensureDllIsCopied = SqlProviderServices.Instance;
+            //VoodooGlobalConfiguration.RegisterExceptionMapping<DbEntityValidationException>(
+            //    new DbEntityValidationExceptionTranlator());
+            //VoodooGlobalConfiguration.RegisterExceptionMapping<SqlException>(
+            //    new SqlExceptionTranslator());
+            //VoodooGlobalConfiguration.RegisterExceptionMapping<SqlException>(
+            //    new ForiegnKeyExceptionTranslation());
+            //VoodooGlobalConfiguration.RegisterExceptionMapping<SqlException>(
+            //    new UniqueConstraintExceptionTranslation());
         }
         public async Task<List<IListItem>> GetList(Lists list, bool includeInactive = false)
         {

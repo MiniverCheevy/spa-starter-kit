@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Design.PluralizationServices;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using Voodoo.CodeGeneration.Helpers;
+using Voodoo.CodeGeneration.Pluralizer;
 using Voodoo.CodeGeneration.Models.Reflection;
 using Voodoo.CodeGeneration.Models.TestingFramework;
 using Voodoo.CodeGeneration.Models.VisualStudio;
@@ -17,7 +17,7 @@ namespace Voodoo.CodeGeneration.Models
         public string Name { get; set; }
         public ProjectFacade Project { get; set; }
         public List<string> PageSpecificUsingStatements { get; set; } = new List<string>();
-        public bool HasContext { get; set; }
+        public bool HasContext => Vs.Helper.Solution.ContextType != null;
         public string ContextName { get; set; }
         public string ContextNamespace { get; set; }
 
@@ -53,10 +53,8 @@ namespace Voodoo.CodeGeneration.Models
             if (project == null) return;
             Project = project;
 
-            if (Vs.Helper.Solution.ContextType == null) return;
-            HasContext = true;
-            ContextName = Vs.Helper.Solution.ContextType.Name;
-            ContextNamespace = Vs.Helper.Solution.ContextType.Namespace;
+            ContextName = Vs.Helper.Solution.ContextType?.Name;
+            ContextNamespace = Vs.Helper.Solution.ContextType?.Namespace;
         }
 
         public virtual IEnumerable<KeyValuePair<string, string>> CustomVisualStudioMetaData()

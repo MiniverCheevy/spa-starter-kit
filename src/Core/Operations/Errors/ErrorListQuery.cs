@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Core.Context;
 using Core.Models.Mappings;
 using Core.Operations.Errors.Extras;
+using Microsoft.EntityFrameworkCore;
 using Voodoo;
 using Voodoo.Infrastructure;
 using Voodoo.Operations.Async;

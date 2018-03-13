@@ -1,4 +1,5 @@
 using Core.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Core.Infrastructure
 {
@@ -6,7 +7,11 @@ namespace Core.Infrastructure
     {
         public DatabaseContext GetContext()
         {
-            return new DatabaseContext(IOC.Settings.DefaultConnectionString);
+
+            var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
+            optionsBuilder.UseSqlServer(GetConnectionString());
+
+            return new DatabaseContext(optionsBuilder.Options);
         }
 
         public string GetConnectionString()

@@ -16,8 +16,8 @@ namespace Core
 
         private static ITraceLogger traceLogger;
         public static ITraceLogger TraceLogger {
-            get => traceLogger ?? new ConsoleTraceLogger();
-            set => traceLogger = value;
+            get { return traceLogger ?? new ConsoleTraceLogger(); }
+            set { traceLogger = value; }
         }
 
         public static AppPrincipal GetCurrentPrincipal()

@@ -1,271 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F298643E-3DAE-4A0D-914B-CE85DF3B0F99}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core</RootNamespace>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <AssemblyName>Core</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="ClosedXML, Version=0.89.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ClosedXML.0.89.0\lib\net452\ClosedXML.dll</HintPath>
-    </Reference>
-    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
-    </Reference>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="FastMember.Signed, Version=1.0.0.9, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FastMember.Signed.1.1.0\lib\net40\FastMember.Signed.dll</HintPath>
-    </Reference>
-    <Reference Include="MigraDoc.DocumentObjectModel, Version=1.50.4619.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PDFsharp-MigraDoc.1.50.4619-beta4c\lib\net20\MigraDoc.DocumentObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="MigraDoc.Rendering, Version=1.50.4619.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PDFsharp-MigraDoc.1.50.4619-beta4c\lib\net20\MigraDoc.Rendering.dll</HintPath>
-    </Reference>
-    <Reference Include="MigraDoc.RtfRendering, Version=1.50.4619.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PDFsharp-MigraDoc.1.50.4619-beta4c\lib\net20\MigraDoc.RtfRendering.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp, Version=1.50.4619.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PDFsharp-MigraDoc.1.50.4619-beta4c\lib\net20\PdfSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp.Charting, Version=1.50.4619.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PDFsharp-MigraDoc.1.50.4619-beta4c\lib\net20\PdfSharp.Charting.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Transactions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Voodoo, Version=2.2.32.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Patterns.2.2.32\lib\net46\Voodoo.dll</HintPath>
-    </Reference>
-    <Reference Include="Voodoo.Reports, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Voodoo.Reports.0.9.2.4-rc\lib\net452\Voodoo.Reports.dll</HintPath>
-    </Reference>
-    <Reference Include="WindowsBase" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Attributes" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.0" />
+
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.4.2" />
+    <PackageReference Include="voodoo.patterns" Version="3.0.0-alpha" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppSettings.cs" />
-    <Compile Include="Constants.generated.cs" />
-    <Compile Include="Context\DatabaseContext.cs" />
-    <Compile Include="Context\ExceptionTranslators\DbEntityValidationExceptionTranslator.cs" />
-    <Compile Include="Context\ExceptionTranslators\ForiegnKeyExceptionTranslation.cs" />
-    <Compile Include="Context\ExceptionTranslators\SqlExceptionTranslator.cs" />
-    <Compile Include="Context\MainContext.methods.cs" />
-    <Compile Include="Context\MainContext.scrach.cs" />
-    <Compile Include="Context\PerformanceExtensions.cs" />
-    <Compile Include="Context\ExceptionTranslators\UniqueConstraintExceptionTranslation.cs" />
-    <Compile Include="Identity\AppPrincipal.cs" />
-    <Compile Include="Identity\PasswordManager.cs" />
-    <Compile Include="Infrastructure\ClientInfo.cs" />
-    <Compile Include="Infrastructure\ContextFactory.cs" />
-    <Compile Include="Infrastructure\IContextFactory.cs" />
-    <Compile Include="Infrastructure\IRequestContextProvider.cs" />
-    <Compile Include="Infrastructure\Metadata\UIMetadata.cs" />
-    <Compile Include="Infrastructure\RequestContext.cs" />
-    <Compile Include="Infrastructure\Settings.cs" />
-    <Compile Include="IOC.cs" />
-    <Compile Include="Infrastructure\Logging\IErrorFactory.cs" />
-    <Compile Include="Infrastructure\Logging\IRequestLogFactory.cs" />
-    <Compile Include="Infrastructure\Logging\ITraceLogger.cs" />
-    <Compile Include="Migrations\201709221634322_Initial.cs" />
-    <Compile Include="Migrations\201709221634322_Initial.Designer.cs">
-      <DependentUpon>201709221634322_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\TestDataBuilder.cs" />
-    <Compile Include="ModelExtensions\ModelExtensions.cs" />
-    <Compile Include="Models\ApplicationSetting.cs" />
-    <Compile Include="Models\Logging\Error.cs" />
-    <Compile Include="Models\Identity\Role.cs" />
-    <Compile Include="Models\Identity\User.cs" />
-    <Compile Include="Models\Logging\LogEntry.cs" />
-    <Compile Include="Models\Logging\RequestLog.cs" />
-    <Compile Include="Models\Mappings\ApplicationSettingExtensions.ApplicationSettingDetail.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\ApplicationSettingExtensions.ApplicationSettingRow.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\ApplicationSettingExtensions.cs" />
-    <Compile Include="Models\Mappings\BlobOfTextExtensions.BlobOfTextDetail.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\BlobOfTextExtensions.BlobOfTextRow.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\BlobOfTextExtensions.cs" />
-    <Compile Include="Models\Mappings\ErrorExtensions.cs" />
-    <Compile Include="Models\Mappings\ErrorExtensions.ErrorDetail.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\ErrorExtensions.ErrorRow.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\MemberExtensions.cs" />
-    <Compile Include="Models\Mappings\MemberExtensions.MemberDetail.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\MemberExtensions.MemberRow.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\ProjectExtensions.cs" />
-    <Compile Include="Models\Mappings\ProjectExtensions.ProjectDetail.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\ProjectExtensions.ProjectRow.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\RoleExtensions.RoleDetail.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\TeamExtensions.cs" />
-    <Compile Include="Models\Mappings\TeamExtensions.TeamDetail.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\TeamExtensions.TeamRow.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\UserExtensions.AppPrincipal.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\UserExtensions.cs" />
-    <Compile Include="Models\Mappings\UserExtensions.UserDetail.Mapping.generated.cs" />
-    <Compile Include="Models\Mappings\UserExtensions.UserRow.Mapping.generated.cs" />
-    <Compile Include="Models\Scratch\Member.cs" />
-    <Compile Include="Models\Scratch\Project.cs" />
-    <Compile Include="Models\Scratch\Team.cs" />
-    <Compile Include="Models\Scratch\TestModel.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingDeleteCommand.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingDetailQuery.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingListQuery.cs" />
-    <Compile Include="Operations\ApplicationSettings\ApplicationSettingSaveCommand.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingDetail.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingListRequest.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingListResponse.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingMessages.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingRepository.cs" />
-    <Compile Include="Operations\ApplicationSettings\Extras\ApplicationSettingRow.cs" />
-    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextDetail.cs" />
-    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextMessages.cs" />
-    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextRepository.cs" />
-    <Compile Include="Operations\BlobOfTexts\Extras\BlobOfTextRow.cs" />
-    <Compile Include="Operations\CurrentUsers\BuildPrincipalCommand.cs" />
-    <Compile Include="Operations\CurrentUsers\Extras\BuildPrincipalRequest.cs" />
-    <Compile Include="Operations\CurrentUsers\GetCurrentUserCommand.cs" />
-    <Compile Include="Operations\Errors\ErrorAddCommand.cs" />
-    <Compile Include="Operations\Errors\ErrorDetailQuery.cs" />
-    <Compile Include="Operations\Errors\ErrorJsonDeserializer.cs" />
-    <Compile Include="Operations\Errors\ErrorListQuery.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorDetail.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorListRequest.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorListResponse.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorMessages.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorRepository.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorRequest.cs" />
-    <Compile Include="Operations\Errors\Extras\ErrorRow.cs" />
-    <Compile Include="Operations\Errors\Extras\IError.cs" />
-    <Compile Include="Operations\Errors\Extras\MobileErrorRequest.cs" />
-    <Compile Include="Operations\Errors\MobileErrorAddCommand.cs" />
-    <Compile Include="Operations\Lists\ListItem.cs" />
-    <Compile Include="Operations\Lists\Lists.generated.cs" />
-    <Compile Include="Operations\Lists\ListsHelper.generated.cs" />
-    <Compile Include="Operations\Lists\ListsQuery.cs" />
-    <Compile Include="Operations\Lists\ListsRequest.cs" />
-    <Compile Include="Operations\Lists\ListsResponse.generated.cs" />
-    <Compile Include="Operations\Members\Extras\MemberDetail.cs" />
-    <Compile Include="Operations\Members\Extras\MemberListRequest.cs" />
-    <Compile Include="Operations\Members\Extras\MemberListResponse.cs" />
-    <Compile Include="Operations\Members\Extras\MemberMessages.cs" />
-    <Compile Include="Operations\Members\Extras\MemberRepository.cs" />
-    <Compile Include="Operations\Members\Extras\MemberRow.cs" />
-    <Compile Include="Operations\Members\MemberDeleteCommand.cs" />
-    <Compile Include="Operations\Members\MemberDetailQuery.cs" />
-    <Compile Include="Operations\Members\MemberListQuery.cs" />
-    <Compile Include="Operations\Members\MemberReportQuery.cs" />
-    <Compile Include="Operations\Members\MemberSaveCommand.cs" />
-    <Compile Include="Operations\Projects\Extras\ProjectDetail.cs" />
-    <Compile Include="Operations\Projects\Extras\ProjectListRequest.cs" />
-    <Compile Include="Operations\Projects\Extras\ProjectListResponse.cs" />
-    <Compile Include="Operations\Projects\Extras\ProjectMessages.cs" />
-    <Compile Include="Operations\Projects\Extras\ProjectRepository.cs" />
-    <Compile Include="Operations\Projects\Extras\ProjectRow.cs" />
-    <Compile Include="Operations\Projects\ProjectDeleteCommand.cs" />
-    <Compile Include="Operations\Projects\ProjectDetailQuery.cs" />
-    <Compile Include="Operations\Projects\ProjectListQuery.cs" />
-    <Compile Include="Operations\Projects\ProjectSaveCommand.cs" />
-    <Compile Include="Operations\Roles\Extras\RoleDetail.cs" />
-    <Compile Include="Operations\Roles\Extras\RoleExtensions.cs" />
-    <Compile Include="Operations\Roles\Extras\RoleExtensions.generated.cs" />
-    <Compile Include="Operations\Roles\Extras\RoleMessages.cs" />
-    <Compile Include="Operations\Roles\Extras\RoleRepository.cs" />
-    <Compile Include="Operations\Roles\Extras\RoleRow.cs" />
-    <Compile Include="Operations\Teams\Extras\TeamDetail.cs" />
-    <Compile Include="Operations\Teams\Extras\TeamListRequest.cs" />
-    <Compile Include="Operations\Teams\Extras\TeamListResponse.cs" />
-    <Compile Include="Operations\Teams\Extras\TeamMessages.cs" />
-    <Compile Include="Operations\Teams\Extras\TeamRepository.cs" />
-    <Compile Include="Operations\Teams\Extras\TeamRow.cs" />
-    <Compile Include="Operations\Teams\TeamDeleteCommand.cs" />
-    <Compile Include="Operations\Teams\TeamDetailQuery.cs" />
-    <Compile Include="Operations\Teams\TeamListQuery.cs" />
-    <Compile Include="Operations\Teams\TeamSaveCommand.cs" />
-    <Compile Include="Operations\Users\Extras\UserDetail.cs" />
-    <Compile Include="Operations\Users\Extras\UserListRequest.cs" />
-    <Compile Include="Operations\Users\Extras\UserListResponse.cs" />
-    <Compile Include="Operations\Users\Extras\UserMessages.cs" />
-    <Compile Include="Operations\Users\Extras\UserRepository.cs" />
-    <Compile Include="Operations\Users\Extras\UserRow.cs" />
-    <Compile Include="Operations\Users\UserDeleteCommand.cs" />
-    <Compile Include="Operations\Users\UserDetailQuery.cs" />
-    <Compile Include="Operations\Users\UserListQuery.cs" />
-    <Compile Include="Operations\Users\UserSaveCommand.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\BaseReport.cs" />
-    <Compile Include="Reports\MemberListReport.cs" />
-    <Compile Include="RestResources.generated.cs" />
-    <Compile Include="RoleNames.cs" />
-    <Compile Include="Security\Encryption.cs" />
-    <Compile Include="Security\Encryptor.cs" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="app.config" />
-    <Compile Include="Models\Scratch\BlobOfText.cs" />
-    <None Include="Operations\Errors\error.json" />
-    <None Include="packages.config" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709221634322_Initial.resx">
-      <DependentUpon>201709221634322_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Images\logo.png" />
-    <EmbeddedResource Include="Migrations\Scripts\Lookups.sql" />
-    <Content Include="Migrations\Scripts\ReadMe.txt" />
-    <EmbeddedResource Include="Migrations\Scripts\Script.sql" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

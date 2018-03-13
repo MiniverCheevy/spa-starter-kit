@@ -9,6 +9,7 @@ namespace Voodoo.CodeGeneration
     {
         public static void Main(string[] args)
         {
+            
             var request = new StartupRequest
             {
                 Arguments = Environment.GetCommandLineArgs(),

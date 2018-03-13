@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using System.Web.Script.Serialization;
 using Core.Operations.Errors.Extras;
+using Newtonsoft.Json;
 using Voodoo;
 using Voodoo.Messages;
 
@@ -32,8 +32,8 @@ namespace Core.Operations.Errors
         public static ErrorDetail Deserialize(string json)
         {
             var response = new ErrorDetail();
-            var error = new JavaScriptSerializer().Deserialize(json, typeof(ErrorModel)).To<ErrorModel>();
-            //JsonConvert.DeserializeObject<ErrorModel>(json);
+            var error = //new JavaScriptSerializer().Deserialize(json, typeof(ErrorModel)).To<ErrorModel>();
+            JsonConvert.DeserializeObject<ErrorModel>(json);
 
             response.Type = error.Type;
             response.Message = error.Message;

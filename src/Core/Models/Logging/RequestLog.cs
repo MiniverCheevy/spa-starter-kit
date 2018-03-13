@@ -15,7 +15,7 @@ namespace Core.Models.Logging
         [MaxLength(200)]
         public string MachineName { get; set; }
 
-        [Index]
+        //[Index]
         public DateTimeOffset CreationDate { get; set; }
 
         [MaxLength(200)]
@@ -43,7 +43,7 @@ namespace Core.Models.Logging
         public string BrowserVersion { get; set; }
         [MaxLength(200)]
         public string OSFamily { get; set; }
-        [Index]
+        //[Index]
         public Guid? RequestId { get; set; }
 
         [MaxLength]

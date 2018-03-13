@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Projects;
 
 namespace Voodoo.CodeGeneration.Models.VisualStudio
@@ -10,24 +11,11 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
         public ProjectFacade PCLProject;
 
 
-        //TODO: revisit this
-        //public bool Build()
-        //{
-        //	if (!File.Exists(FullPath))
-        //		return false;
-        //	if (String.IsNullOrWhiteSpace(VisualStudioPath))
-        //		return false;
-
-
-        //	var arguments = $"{FullPath} /Build Debug";
-        //	var build = IoNic.ExecuteAndReturnOutput(VisualStudioPath, arguments);
-        //	return true;
-        //}
+       
 
         public string SolutionName { get; set; }
         public string RootFolder { get; set; }
-        public ProjectFacade ModelProject { get; set; }
-        public ProjectFacade IonicProject { get; set; }
+        public ProjectFacade ModelProject { get; set; }        
         public ProjectFacade LogicProject { get; set; }
         public ProjectFacade WebProject { get; set; }
         public ProjectFacade TestProject { get; set; }
@@ -50,16 +38,6 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
             if (!AddToSourceControl.HasValue)
                 AddToSourceControl = true;
         }
-
-        internal IProject GetProject(string fullPath)
-        {
-            var loweredPath = fullPath.ToLower();
-            if (projects.ContainsKey(loweredPath))
-                return projects[loweredPath];
-
-            var project = ProjectHelper.GetProject(fullPath);
-            projects.Add(loweredPath, project);
-            return project;
-        }
+      
     }
 }

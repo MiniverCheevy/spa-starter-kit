@@ -1,12 +1,16 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using Core;
 using Core.Infrastructure;
-using Fernweh.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tests.Fakes;
+using Voodoo;
 
-namespace Fernweh.Tests
+namespace Tests
 {
     [TestClass]
     public class AssemblyInitialize

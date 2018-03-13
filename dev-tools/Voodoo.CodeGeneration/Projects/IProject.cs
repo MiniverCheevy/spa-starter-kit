@@ -1,14 +1,15 @@
-﻿namespace Voodoo.CodeGeneration.Projects
+﻿using Voodoo.CodeGeneration.Models;
+
+namespace Voodoo.CodeGeneration.Projects
 {
     public interface IProject
     {
-        bool NeedsUpdating { get; }
-        void Save();
-        string GeRootNamespace();
-        string GetOutputPath();
-        string GetOutputType();
-        string GetAssemblyName();
-        void AddItem(string visualStudioItemTypeNode, string pathToProject);
+        IProject GetProject(ProjectRef project);
+
+        string GetFullAsseblyPath();
+        string GeRootNamespace();        
+        string GetAssemblyName();        
         bool Contains(string item);
+        string GetFolder();
     }
 }

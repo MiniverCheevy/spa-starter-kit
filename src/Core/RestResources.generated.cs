@@ -15,17 +15,16 @@ namespace Core
         public const string ErrorLogList = "ErrorLogList";
         public const string Lists = "Lists";
         public const string Member = "Member";
-        public const string MemberReport = "MemberReport";
         public const string MemberList = "MemberList";
         public const string MobileError = "MobileError";
         public const string Project = "Project";
         public const string ProjectList = "ProjectList";
         public const string Team = "Team";
         public const string TeamList = "TeamList";
-        public const string TestModel = "TestModel";
-        public const string TestModelDetail = "TestModelDetail";
-        public const string TestModelList = "TestModelList";
-        public const string TestModels = "TestModels";
+        public const string TestClass = "TestClass";
+        public const string TestClassDetail = "TestClassDetail";
+        public const string TestClasses = "TestClasses";
+        public const string TestClassList = "TestClassList";
         public const string User = "User";
         public const string UserList = "UserList";
     }

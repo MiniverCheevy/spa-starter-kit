@@ -32,7 +32,8 @@ export class ScratchMemberList extends React.Component<any,any>
     report = () =>
     {
         debugger;
-        Api.MemberReport.getReport(this.request);
+        // Api.MemberReport.getReport(this.request);
+        console.log('When reports are net standard ified');
     }
     render() {
        

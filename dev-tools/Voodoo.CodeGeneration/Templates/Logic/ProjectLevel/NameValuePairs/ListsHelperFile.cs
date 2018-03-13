@@ -27,7 +27,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.ProjectLevel.NameValuePairs
             PageSpecificUsingStatements.Add(ContextNamespace);
             PageSpecificUsingStatements.Add("System");
             PageSpecificUsingStatements.Add("Voodoo");
-            PageSpecificUsingStatements.Add("System.Data.Entity");
+            PageSpecificUsingStatements.Add("Microsoft.EntityFrameworkCore");
             PageSpecificUsingStatements.Add("System.Threading.Tasks");
         }
 

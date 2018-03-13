@@ -39,7 +39,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             if (HasContext)
             {
                 PageSpecificUsingStatements.Add(ContextNamespace);
-                PageSpecificUsingStatements.Add("System.Data.Entity");
+                PageSpecificUsingStatements.Add("Microsoft.EntityFrameworkCore");
             }
         }
 
@@ -76,8 +76,14 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
                 output.AppendLine($"var data = await query.ToPagedResponseAsync(request, c => c.To{Type.Name}Row());");
                 output.AppendLine("response.From(data, c=>c);");
                 output.AppendLine("}");
+                output.AppendLine("return response;");
             }
-            output.AppendLine("return response;");
+            else
+            {
+                output.AppendLine($"throw new NotImplementedException();");
+                
+            }
+            
             output.AppendLine("}");
             output.AppendLine("}");
             output.AppendLine("}");

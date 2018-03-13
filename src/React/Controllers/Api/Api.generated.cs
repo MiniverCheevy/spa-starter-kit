@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Http;
 using Voodoo;
 using Core.Operations.Users;
 using Core.Operations.Users.Extras;
+using Core.Operations.TestClasses;
+using Core.Operations.TestClasses.Extras;
 using Core.Operations.Teams;
 using Core.Operations.Teams.Extras;
 using Core.Operations.Projects;
@@ -110,6 +112,88 @@ namespace Web.Controllers.Api
                 SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] { "Administrator" } }
             };
             var pipeline = new ExcecutionPipeline<UserListRequest, UserListResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class TestClassController : ApiControllerBase
+    {
+        [HttpDelete]
+        public async Task<Response> Delete
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response>
+            {
+                Command = new TestClassDeleteCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpGet]
+        public async Task<Response<TestClassDetail>> Get
+        ( IdRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <IdRequest, Response<TestClassDetail>>
+            {
+                Command = new TestClassDetailQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<IdRequest, Response<TestClassDetail>>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+        [HttpPost]
+        public async Task<NewItemResponse> Post
+        ([FromBody] TestClassDetail request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <TestClassDetail, NewItemResponse>
+            {
+                Command = new TestClassSaveCommand(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<TestClassDetail, NewItemResponse>
+            (state);
+            await pipeline.ExecuteAsync();
+            return state.Response;
+        }
+    }
+    
+    [Route("api/[controller]")]
+    public class TestClassListController : ApiControllerBase
+    {
+        [HttpGet]
+        public async Task<TestClassListResponse> Get
+        ( TestClassListRequest request)
+        {
+            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
+            <TestClassListRequest, TestClassListResponse>
+            {
+                Command = new TestClassListQuery(request),
+                Context = HttpContext,
+                ModelState = ModelState,
+                Request = request,
+                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
+            };
+            var pipeline = new ExcecutionPipeline<TestClassListRequest, TestClassListResponse>
             (state);
             await pipeline.ExecuteAsync();
             return state.Response;
@@ -359,29 +443,6 @@ namespace Web.Controllers.Api
             (state);
             await pipeline.ExecuteAsync();
             return state.Response;
-        }
-    }
-    
-    [Route("api/[controller]")]
-    public class MemberReportController : FileController
-    {
-        [HttpGet]
-        public async Task<ActionResult> Get
-        ( MemberListRequest request)
-        {
-            var state = new Infrastructure.ExecutionPipeline.Models.ExecutionState
-            <MemberListRequest, BinaryResponse>
-            {
-                Command = new MemberReportQuery(request),
-                Context = HttpContext,
-                ModelState = ModelState,
-                Request = request,
-                SecurityContext = new SecurityContext { AllowAnonymouse = false, Roles=new string[] {  } }
-            };
-            var pipeline = new ExcecutionPipeline<MemberListRequest, BinaryResponse>
-            (state);
-            await pipeline.ExecuteAsync();
-            return HandleBinaryResponse(state.Response);
         }
     }
     

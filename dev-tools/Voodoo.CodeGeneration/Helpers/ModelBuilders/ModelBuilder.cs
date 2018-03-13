@@ -111,7 +111,7 @@ namespace Voodoo.CodeGeneration.Helpers.ModelBuilders
                 return TypeFamily.Collection;
             if (type.IsEnum || nullableUnderlyingType != null && nullableUnderlyingType.IsEnum)
                 return TypeFamily.Enum;
-            if (type.Module.ScopeName == "CommonLanguageRuntimeLibrary")
+            if (type.Module.ScopeName == "CommonLanguageRuntimeLibrary" || type.Module.ScopeName == "System.Private.CoreLib.dll")
                 return TypeFamily.System;
             return TypeFamily.Model;
         }

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using Core;
 
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using Voodoo.Messages;
 
 namespace Web.Infrastructure.Authentication
@@ -35,7 +35,7 @@ namespace Web.Infrastructure.Authentication
                     var response = new Response();
                     response.IsOk = false;
                     response.Message = "Please login";
-                    var json = new JavaScriptSerializer().Serialize(response);
+                    var json = JsonConvert.SerializeObject(response);                    
                     await context.Response.WriteAsync(json).ConfigureAwait(false);
                     return;
                 }

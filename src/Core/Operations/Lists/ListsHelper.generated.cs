@@ -12,7 +12,7 @@ using System.Linq;
 using Core.Context;
 using System;
 using Voodoo;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace Core.Operations.Lists
@@ -35,12 +35,6 @@ namespace Core.Operations.Lists
             if(list == Lists.Lists)
             {
                 enumType = typeof(Core.Operations.Lists.Lists);
-                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
-                response.AddRange(enumItems);
-            }
-            if(list == Lists.SqlOperation)
-            {
-                enumType = typeof(Core.Context.SqlOperation);
                 enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
                 response.AddRange(enumItems);
             }
@@ -80,6 +74,15 @@ namespace Core.Operations.Lists
                 .ToListAsync();
                 
             }
+            if(list == Lists.TestClass)
+            {
+                var queryTestClasses = context.TestClasses.AsNoTracking().AsQueryable();
+                queryTestClasses=queryTestClasses.OrderBy(c=>c.Name);
+                items = await queryTestClasses
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                
+            }
             
             response.AddRange(items);
             return response;
@@ -103,13 +106,6 @@ namespace Core.Operations.Lists
                 enumType = typeof(Core.Operations.Lists.Lists);
                 enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
                 response.Lists.AddRange(enumItems);
-                
-            }
-            if(request.Lists.Contains(Lists.SqlOperation))
-            {
-                enumType = typeof(Core.Context.SqlOperation);
-                enumItems = enumType.ToINameValuePairList().Select(c=>(IListItem)new ListItem { Name = c.Name, Id = c.Value.To<int>() }).ToList ();
-                response.SqlOperations.AddRange(enumItems);
                 
             }
             if(request.Lists.Contains(Lists.ApplicationSetting))
@@ -147,6 +143,15 @@ namespace Core.Operations.Lists
                 .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
                 .ToListAsync();
                 response.Teams.AddRange(items);
+            }
+            if(request.Lists.Contains(Lists.TestClass))
+            {
+                var queryTestClasses = context.TestClasses.AsNoTracking().AsQueryable();
+                queryTestClasses=queryTestClasses.OrderBy(c=>c.Name);
+                items = await queryTestClasses
+                .Select (c=>new ListItem{Name = c.Name, Id=c.Id})
+                .ToListAsync();
+                response.TestClasses.AddRange(items);
             }
             
             return response;

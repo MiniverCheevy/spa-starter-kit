@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Common;
+using System.Linq;
+using System.Threading.Tasks;
 using Core.Context;
 using Core.Infrastructure;
-using Effort;
+using Voodoo;
 
-namespace Fernweh.Tests.Fakes
+namespace Tests.Fakes
 {
     public class FakeContextFactory : IContextFactory
     {
@@ -12,13 +15,14 @@ namespace Fernweh.Tests.Fakes
 
         static FakeContextFactory()
         {
-            connection = DbConnectionFactory.CreatePersistent("this");
+            
         }
 
 
         DatabaseContext IContextFactory.GetContext()
         {
-            return new DatabaseContext(connection);
+            //todo: replace with ef core in memory
+            return new ContextFactory().GetContext();
         }
 
 

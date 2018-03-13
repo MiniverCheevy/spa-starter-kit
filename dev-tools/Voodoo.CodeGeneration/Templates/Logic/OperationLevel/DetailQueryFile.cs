@@ -44,7 +44,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             if (HasContext)
             {
                 PageSpecificUsingStatements.Add(ContextNamespace);
-                PageSpecificUsingStatements.Add("System.Data.Entity");
+                PageSpecificUsingStatements.Add("Microsoft.EntityFrameworkCore");
             }
         }
         public override string GetFolder()
@@ -86,7 +86,11 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
                 output.AppendLine($"return response;");
                 output.AppendLine("}");
             }
-
+            else
+            {
+                output.AppendLine($"throw new NotImplementedException();");
+                output.Append("}");
+            }
             output.AppendLine("}");
             output.AppendLine("}");
             return output.ToString();

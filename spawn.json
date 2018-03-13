@@ -1,10 +1,26 @@
 {
   "SolutionName": "React.sln",
-  "ModelProjectPath": "\\src\\Core\\Core.csproj",
-  "LogicProjectPath": "\\src\\Core\\Core.csproj",
-  "WebProjectPath": "\\src\\React\\React.csproj",
-  "TestProjectPath": "\\src\\Tests\\Tests.csproj",
-  "DataProjectPath": "\\src\\Core\\Core.csproj",
+  "ModelProject": {
+    "rootPath": "\\src\\Core\\",
+    "dllPath": "\\bin\\debug\\Core.dll"
+  },
+  "LogicProject": {
+    "rootPath": "\\src\\Core\\",
+    "dllPath": "\\bin\\debug\\Core.dll"
+  },
+  "DataProject": {
+    "rootPath": "\\src\\Core\\",
+    "dllPath": "\\bin\\debug\\Core.dll"
+  },
+  "WebProject": {
+    "rootPath": "\\src\\React\\",
+    "namespace":  "Web"
+  },
+  "TestProject": {
+    "rootPath": "\\src\\Tests\\",
+    "namespace":  "Tests" 
+  },
+
   "ContextTypeName": "Core.Context.DatabaseContext",
   "JsAppPathFromWebProjectRoot": "ClientApp",
   "AddToSourceControl": false,

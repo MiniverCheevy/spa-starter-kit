@@ -20,7 +20,6 @@ namespace Voodoo.CodeGeneration.Batches
         protected ProjectFacade tests => Vs.Helper.Solution.TestProject;
         protected ProjectFacade web => Vs.Helper.Solution.WebProject;
         protected ProjectFacade pcl => Vs.Helper.Solution.PCLProject;
-        protected ProjectFacade ionic => Vs.Helper.Solution.IonicProject;
         protected ProjectFacade models => Vs.Helper.Solution.ModelProject;
 
         protected Batch(string[] targetTypes = null)
@@ -88,8 +87,6 @@ namespace Voodoo.CodeGeneration.Batches
                     return web != null;
                 case Token.Data:
                     return data != null;
-                case Token.Ionic:
-                    return ionic != null;
                 case Token.JsWebAppPath:
                     return !string.IsNullOrWhiteSpace(js);
                 case Token.Models:

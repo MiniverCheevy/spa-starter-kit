@@ -505,38 +505,6 @@ isAdmin? : boolean;
 token? : string;
 }
 
-export class BinaryResponse implements IResponse {
-
-static empty()
-{
-    const result =
-    {
-        data:undefined,
-        contentType:undefined,
-        contentDisposition:undefined,
-        fileName:undefined,
-        numberOfRowsEffected:undefined,
-        isOk:undefined,
-        hasLogicException:undefined,
-        message:undefined,
-        details:undefined,
-        exception:undefined
-    };
-    return result;
-}
-
-data? : any[];
-contentType? : string;
-contentDisposition? : string;
-fileName? : string;
-numberOfRowsEffected? : number;
-isOk? : boolean;
-hasLogicException? : boolean;
-message? : string;
-details? : INameValuePair[];
-exception? : any;
-}
-
 export class ClientInfo  {
 
 static empty()
@@ -1038,11 +1006,11 @@ filterData? : string;
 export enum Lists  {
 Roles = 1,
 Lists = 2,
-SqlOperation = 3,
-ApplicationSetting = 4,
-Project = 5,
-Member = 6,
-Team = 7
+ApplicationSetting = 3,
+Project = 4,
+Member = 5,
+Team = 6,
+TestClass = 7
 }
 export class ListsRequest  {
 
@@ -1094,11 +1062,11 @@ static empty()
     {
         roles:undefined,
         lists:undefined,
-        sqlOperations:undefined,
         applicationSettings:undefined,
         projects:undefined,
         members:undefined,
         teams:undefined,
+        testClasses:undefined,
         numberOfRowsEffected:undefined,
         isOk:undefined,
         hasLogicException:undefined,
@@ -1111,11 +1079,11 @@ static empty()
 
 roles? : IListItem[];
 lists? : IListItem[];
-sqlOperations? : IListItem[];
 applicationSettings? : IListItem[];
 projects? : IListItem[];
 members? : IListItem[];
 teams? : IListItem[];
+testClasses? : IListItem[];
 numberOfRowsEffected? : number;
 isOk? : boolean;
 hasLogicException? : boolean;
@@ -1939,6 +1907,32 @@ details? : INameValuePair[];
 exception? : any;
 }
 
+export class ResponseOfTestClassDetail implements IResponse {
+
+static empty()
+{
+    const result =
+    {
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+data? : TestClassDetail;
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
 export class ResponseOfTeamDetail implements IResponse {
 
 static empty()
@@ -2223,6 +2217,187 @@ exception? : any;
 }
 
 export class TeamRow  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        id:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
+}
+
+export class TestClassDetail  {
+
+static empty()
+{
+    const result =
+    {
+        id:undefined,
+        name:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        id:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Id',
+            jsName:'id',
+            displayName:'Id',
+            displayFormat:'text',
+            isHidden: true
+            ,int:
+            {
+                shouldValidate:true
+            }
+        }
+        ,name:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'Name',
+            jsName:'name',
+            displayName:'Name',
+            displayFormat:'text'
+            ,length:
+            {
+                shouldValidate:true
+                ,min: 0
+                ,max: 128
+                ,message: '128 characters or less'
+            }
+        }
+    };
+    return result;
+}
+
+id? : number;
+name? : string;
+}
+
+export class TestClassListRequest  {
+
+static empty()
+{
+    const result =
+    {
+        defaultSortMember:undefined,
+        sortDirection:undefined,
+        resetPaging:undefined,
+        pageNumber:undefined,
+        pageSize:undefined,
+        sortMember:undefined,
+        totalRecords:undefined,
+        totalPages:undefined
+    };
+    return result;
+}
+
+static metadata()
+{
+    var result =
+    {
+        defaultSortMember:
+        {
+            isValid:true,
+            validationMessage:undefined,
+            propertyName:'DefaultSortMember',
+            jsName:'defaultSortMember',
+            displayName:'Default Sort Member',
+            displayFormat:'text'
+        }
+        ,};
+        return result;
+    }
+    
+    defaultSortMember? : string;
+    sortDirection? : string;
+    resetPaging? : boolean;
+    pageNumber? : number;
+    pageSize? : number;
+    sortMember? : string;
+    totalRecords? : number;
+    totalPages? : number;
+}
+
+export class TestClassListResponse implements IResponse {
+
+static empty()
+{
+    const result =
+    {
+        state:undefined,
+        data:undefined,
+        numberOfRowsEffected:undefined,
+        isOk:undefined,
+        hasLogicException:undefined,
+        message:undefined,
+        details:undefined,
+        exception:undefined
+    };
+    return result;
+}
+
+state? : IGridState;
+data? : TestClassRow[];
+numberOfRowsEffected? : number;
+isOk? : boolean;
+hasLogicException? : boolean;
+message? : string;
+details? : INameValuePair[];
+exception? : any;
+}
+
+export class TestClassRow  {
 
 static empty()
 {

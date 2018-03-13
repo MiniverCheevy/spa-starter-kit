@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Voodoo.CodeGeneration.Infrastructure;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.Reflection;
@@ -61,8 +62,6 @@ namespace Voodoo.CodeGeneration.Helpers
             HasConfig = true;
             UnloadAllProjects();
             findSolutionPath();
-            if (Solution.IonicProject != null)
-                Projects.Add(Solution.IonicProject);
             if (Solution.WebProject != null)
                 Projects.Add(Solution.WebProject);
             if (Solution.LogicProject != null)
@@ -83,7 +82,7 @@ namespace Voodoo.CodeGeneration.Helpers
             var provider = SourceControlProviderFactory.GetProvider();
             if (provider != null)
             {
-                var paths = Projects.Select(c => c.FullPath).Distinct().ToArray();
+                var paths = Projects.Select(c => c.Folder).Distinct().ToArray();
                 foreach (var path in paths)
                     provider.CheckOutFiles(path);
             }
@@ -93,27 +92,29 @@ namespace Voodoo.CodeGeneration.Helpers
 
         private void findContext()
         {
-            if (!string.IsNullOrWhiteSpace(Solution.ContextTypeName))
-                try
+            var dummyContext = new DbContext(new DbContextOptionsBuilder().Options);
+
+            if (string.IsNullOrWhiteSpace(Solution.ContextTypeName))
+                return;
+            try
+            {
+                foreach (var project in Projects)
                 {
-                    foreach (var project in Projects)
-                    {
-                        var type = project.FindType(Solution.ContextTypeName);
-                        if (type != null)
-                        {
-                            Solution.ContextType = type;
-                            return;
-                        }
-                    }
+                    var type = project.FindType(Solution.ContextTypeName);
+                    if (type == null)
+                        continue;
+                    Solution.ContextType = type;
+                    return;
                 }
-                catch
+            }
+            catch
+            {
+                Vs.Helper.Log.Add(new LogEntry
                 {
-                    Vs.Helper.Log.Add(new LogEntry
-                    {
-                        Level = LogLevels.Error,
-                        Message = $"Could not find Context: {Solution.ContextTypeName}"
-                    });
-                }
+                    Level = LogLevels.Error,
+                    Message = $"Could not find Context: {Solution.ContextTypeName}"
+                });
+            }
         }
 
         private void findSolutionPath()

@@ -8,6 +8,7 @@ using Voodoo.CodeGeneration.Helpers;
 using Voodoo.CodeGeneration.Models;
 using Voodoo.CodeGeneration.Models.TestingFramework;
 using Voodoo.CodeGeneration.Models.VisualStudio;
+using Voodoo.CodeGeneration.Projects;
 using Voodoo.Messages;
 using Voodoo.Operations;
 
@@ -86,21 +87,19 @@ namespace Voodoo.CodeGeneration.Operations
         private void configureSolution()
         {
             projects = new Dictionary<string, ProjectFacade>();
-
-            solution.ModelProject = getProject(configFile.ModelProjectPath, true);
-            solution.LogicProject = getProject(configFile.LogicProjectPath, true);
-            solution.IonicProject = getProject(configFile.IonicProjectPath, false);
-            solution.WebProject = getProject(configFile.WebProjectPath, false);
-            solution.TestProject = getProject(configFile.TestProjectPath, false);
-            solution.DataProject = getProject(configFile.DataProjectPath, true);
-            solution.PCLProject = getProject(configFile.PclProjectPath, false);
-
             if (!string.IsNullOrWhiteSpace(configFile.SolutionName))
                 solution.SolutionName = configFile.SolutionName;
+
+            solution.ModelProject = getProject(configFile.ModelProject, true, solution.RootFolder);
+            solution.LogicProject = getProject(configFile.LogicProject, true, solution.RootFolder);
+            solution.WebProject = getProject(configFile.WebProject, false, solution.RootFolder);
+            solution.TestProject = getProject(configFile.TestProject, false, solution.RootFolder);
+            solution.DataProject = getProject(configFile.DataProject, true, solution.RootFolder);
+            solution.PCLProject = getProject(configFile.PclProject, false, solution.RootFolder);
+
+            
             solution.AddToSourceControl = configFile.AddToSourceControl;
 
-            if (!string.IsNullOrEmpty(configFile.PluginPath))
-                Vs.Helper.PluginPath = configFile.PluginPath;
 
             if (solution.AddToSourceControl.To<bool>())
                 solution.SourceControlProviderName = configFile.SourceControlProvider?.ToLower();
@@ -124,16 +123,16 @@ namespace Voodoo.CodeGeneration.Operations
             solution.WebIsAspDotNetCore = configFile.WebIsAspNetCore;
         }
 
-        private ProjectFacade getProject(string path, bool needsAssembly)
+        private ProjectFacade getProject(ProjectRef projectRef, bool needsAssembly, string spawnPath)
         {
+            var path = projectRef?.RootPath;
             if (path == null)
                 return null;
 
-            var key = path.ToLower();
-            if (projects.ContainsKey(key))
-                return projects[key];
+            var project = Project.GetProject(projectRef, spawnPath);            
 
-            return new ProjectFacade(path, needsAssembly);
+            var key = path.ToLower();
+            return projects.ContainsKey(key) ? projects[key] : new ProjectFacade(project, needsAssembly);
         }
 
         private ConfigurationFile findConfigFile(string path)
@@ -175,11 +174,5 @@ namespace Voodoo.CodeGeneration.Operations
             Console.WriteLine("Loaded Configuration File");
             return configFile;
         }
-    }
-
-    public class StartupRequest
-    {
-        public string Path { get; set; }
-        public string[] Arguments { get; set; }
-    }
+    }   
 }

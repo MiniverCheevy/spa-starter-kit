@@ -2,10 +2,12 @@
 using System.Diagnostics;
 using System.IO;
 using Core;
+using Core.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -14,7 +16,7 @@ using Web.Infrastructure;
 using Web.Infrastructure.Authentication;
 using Web.Infrastructure.ExceptionHandling;
 using Web.Infrastructure.Settings;
-
+ 
 namespace Web
 {
     public class Startup
@@ -34,6 +36,7 @@ namespace Web
             IOC.Settings.Environment = env.EnvironmentName;
 
             updateDatabaseToLatestVersion(env);
+            new ConfigurationBuilder().SetBasePath(string.Empty).AddJsonFile(string.Empty);
         }
         public IConfigurationRoot Configuration { get; set; }
 
@@ -42,19 +45,21 @@ namespace Web
             services.AddApplicationInsightsTelemetry(Configuration);
             services.AddWebApi();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddDbContext<DatabaseContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-/*
-add the below line to the startup to enable reading the request
-    
-    app.Use((context, next) => { context.Request.EnableRewind(); return next(); });
+            /*
+            add the below line to the startup to enable reading the request
 
-add the below line to the startup to enable reading the form
+                app.Use((context, next) => { context.Request.EnableRewind(); return next(); });
 
-    services.Configure<FormOptions>(options => options.BufferBody = true);
-*/
+            add the below line to the startup to enable reading the form
+
+                services.Configure<FormOptions>(options => options.BufferBody = true);
+            */
 
             //Error Handling should always be first
             app.UseMiddleware<AppErrorHandlingMiddleware>();
@@ -67,11 +72,11 @@ add the below line to the startup to enable reading the form
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-            {
-                HotModuleReplacement = true,
-                ReactHotModuleReplacement = true
-            });
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true,
+                    ReactHotModuleReplacement = true
+                });
             }
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -92,7 +97,7 @@ add the below line to the startup to enable reading the form
                 return;
             Console.Write(" Found");
 
-            
+
             var psi = new ProcessStartInfo
             {
                 FileName = file,

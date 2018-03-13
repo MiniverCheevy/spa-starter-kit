@@ -9,7 +9,7 @@ namespace Core.Models.Identity
     {
         public int Id { get; set; }
 
-        [Index(IsUnique = true)]
+        //[Index(IsUnique = true)]
         public string UserName { get; set; }
 
         public string FirstName { get; set; }
@@ -26,6 +26,7 @@ namespace Core.Models.Identity
         public string LastUserAgent { get; set; }
         public DateTime? LastAuthentication { get; set; }
 
+        
         public List<Role> Roles { get; set; }
 
         public User()

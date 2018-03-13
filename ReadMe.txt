@@ -1,12 +1,25 @@
-﻿To generate EF Database Scripts
+﻿To add migrations
+From a command prompt in the Core Folder
 
-update-database –SourceMigration $InitialDatabase -script
+dotnet ef migrations add [MigrationName]
+dotnet ef database update
 
+
+To generate EF Database Scripts
+
+dotnet ef migrations script > ./dbUpdate.sql
+
+<outdated?>
 There should always be an up to date script Database.Update.sql in the tools folder 
 that contains both ef migrations and custom embeded resource scripts from Core\Migrations\Scripts
+</outdated?>
 
 if you do not already have it install node
 https://nodejs.org/en/download/
+
+install yarn
+https://yarnpkg.com/lang/en/docs/install/
+
 
 From the web project
 
@@ -49,7 +62,7 @@ Updating Controllers
 
 Controllers are generated from the Rest attributes on your Core/Operations commands and queries
 
-The query decoarated with this attribute
+The query decorated with this attribute
 
 [Rest(Verb.Get, RestResources.UserList, Roles = new[] { RoleNames.Administrator })]
 

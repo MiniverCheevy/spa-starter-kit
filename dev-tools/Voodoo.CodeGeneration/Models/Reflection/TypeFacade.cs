@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Design.PluralizationServices;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Voodoo.CodeGeneration.Helpers;
+using Voodoo.CodeGeneration.Pluralizer;
 using Voodoo.Infrastructure.Notations;
 
 namespace Voodoo.CodeGeneration.Models.Reflection

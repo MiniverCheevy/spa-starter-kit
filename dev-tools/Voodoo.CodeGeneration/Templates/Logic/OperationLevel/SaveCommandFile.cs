@@ -43,7 +43,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             if (HasContext)
             {
                 PageSpecificUsingStatements.Add(ContextNamespace);
-                PageSpecificUsingStatements.Add("System.Data.Entity");
+                PageSpecificUsingStatements.Add("Microsoft.EntityFrameworkCore");
             }
         }
 
@@ -69,7 +69,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
             }
             output.AppendLine("private bool isNew = false;");
             output.AppendLine("private IValidator validator = ValidationManager.GetDefaultValidatitor();");
-            output.AppendLine($"public {Name}(IdRequest request) : base(request)");
+            output.AppendLine($"public {Name}({Type.DetailMessageName} request) : base(request)");
             output.AppendLine("{");
             output.AppendLine("}");
 
@@ -110,7 +110,11 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel
 
                 output.AppendLine("}");
             }
-
+            else
+            {
+                output.AppendLine($"throw new NotImplementedException();");
+                output.Append("}");
+            }
             output.AppendLine("}");
             output.AppendLine("}");
             return output.ToString();

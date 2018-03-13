@@ -22,10 +22,9 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
         private bool isInitialized;
         private ISourceControlProvider sourceControl;
 
-        public string CsProj { get; set; }
+        //public string CsProj { get; set; }
         public string RootNamespace { get; set; }
-        public string Folder { get; set; }
-        public string FullPath { get; set; }
+        public string Folder { get; set; }        
         public Assembly Assembly { get; set; }
         public IProject Project { get; set; }
         public List<CodeFile> Files { get; set; }
@@ -40,10 +39,10 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
 
         public bool NeedsAssembly { get; set; }
 
-        public ProjectFacade(string csProj, bool needsAssembly)
+        public ProjectFacade(IProject project, bool needsAssembly)
         {
             NeedsAssembly = needsAssembly;
-            CsProj = csProj;
+            this.Project = project;
             UsingStatements = new List<string>();
             Files = new List<CodeFile>();
         }
@@ -57,7 +56,7 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
 
         public override string ToString()
         {
-            return $"{Assembly.FullName} {CsProj}";
+            return $"{Assembly.FullName}";
         }
 
         private void discoverTypes()
@@ -89,9 +88,9 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
                 return;
 
             sourceControl = SourceControlProviderFactory.GetProvider();
-            FullPath = $"{Vs.Helper.SolutionFolder}{CsProj}";
-            Project = Vs.Helper.Solution.GetProject(FullPath);
-            Folder = Path.GetDirectoryName(FullPath);
+
+
+            Folder = Project.GetFolder();
             RootNamespace = Project.GeRootNamespace();
             UsingStatements.Add(RootNamespace);
 
@@ -145,12 +144,8 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
         {
             if (!NeedsAssembly)
                 return null;
-
-            var outputPath = Project.GetOutputPath();
-            var extension = Project.GetOutputType().ToLower() == "exe" ? "exe" : "dll";
-            var assemblyName = Project.GetAssemblyName() + "." + extension;
-            var assemblyDirectory = IoNic.PathCombineLocal(Path.GetDirectoryName(FullPath), outputPath);
-            var asmPath = IoNic.PathCombineLocal(assemblyDirectory, assemblyName);
+          
+            var asmPath = Project.GetFullAsseblyPath();
 
             if (!File.Exists(asmPath))
                 throw new Exception("Try building your project (in debug mode).  Could not find " + asmPath);
@@ -171,7 +166,7 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
         {
             Files = Files.Distinct(new CodeFileComparer()).ToList();
             Parallel.ForEach(Files, writeFile);
-            Project.Save();
+            
             if (Vs.Helper.Solution.AddToSourceControl.To<bool>())
                 addToSourceControl();
         }
@@ -201,21 +196,7 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
                 return;
 
             writeFileToFileSystem(file, text);
-
-            var pathToProject = Project.NeedsUpdating ? file.PathToProject : file.FullPath;
-
-            if (Contains(pathToProject))
-                return;
-
-            var added = new Response();
-            added = ActionHandler.Execute(() =>
-            {
-                Project.AddItem(file.VisualStudioItemTypeNode, pathToProject);
-                return new Response();
-            });
-            if (!added.IsOk)
-                LogEntry.Info("There was a problem adding '{0}' please try again");
-
+            
             filesToAddToSourceControl.Add(file.FullPath);
         }
 
@@ -258,7 +239,7 @@ namespace Voodoo.CodeGeneration.Models.VisualStudio
                 type = types.First();
             else if (types.Count > 1)
                 throw new Exception(
-                    $"More than one type with the name {targetTypeName} in {CsProj} project, try using the full type name");
+                    $"More than one type with the name {targetTypeName} in {Project.GetAssemblyName()} project, try using the full type name");
             return type;
         }
     }

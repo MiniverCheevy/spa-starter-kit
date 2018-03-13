@@ -1,8 +1,8 @@
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Context;
 using Core.Operations.Errors.Extras;
+using Microsoft.EntityFrameworkCore;
 using Voodoo.Infrastructure;
 using Voodoo.Messages;
 using Voodoo.Operations.Async;

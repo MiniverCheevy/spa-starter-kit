@@ -16,10 +16,10 @@ namespace Core.Models.Logging
         [MaxLength(200)]
         public string MachineName { get; set; }
 
-        [Index]
+        //[Index]
         public DateTimeOffset CreationDate { get; set; }
 
-        [Index]
+        //[Index]
         [MaxLength(200)]
         public string Type { get; set; }
 
@@ -53,7 +53,7 @@ namespace Core.Models.Logging
         public int? ErrorHash { get; set; }
         public string User { get; set; }
 
-        [Index]
+        //[Index]
         public Guid? RequestId { get; set; }
     }
 }

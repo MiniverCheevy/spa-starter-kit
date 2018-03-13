@@ -450,29 +450,6 @@ return result;
 }}
 export const MemberList = new MemberListPrototype();
 
-export class MemberReportPrototype    {
-url: string = 'api/MemberReport';
-public async getReport (request: Models.MemberListRequest)
-{
-    try {
-    var user = await CurrentUserService.get();
-    (<any>request).token = user.token;
-    var newUrl = EncoderService.buildUrlWithParams(this.url, request);
-    window.open(newUrl);
-}
-catch (e)
-{
-    AjaxService.logError(e, this.url, (< any > new Error()).stack);
-    
-    var  result = {
-    isOk: false,
-    message: e.statusText || e.message
-};
-MessengerService.showResponseMessage(result);
-}
-}}
-export const MemberReport = new MemberReportPrototype();
-
 export class MobileErrorPrototype    {
 url: string = 'api/MobileError';
 public async post (request: Models.MobileErrorRequest):
@@ -798,6 +775,150 @@ MessengerService.showResponseMessage(result);
 return result;
 }}
 export const TeamList = new TeamListPrototype();
+
+export class TestClassPrototype    {
+url: string = 'api/TestClass';
+public async delete (request: Models.IdRequest):
+Promise<Models.Response>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildDeleteRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}
+public async get (request: Models.IdRequest):
+Promise<Models.ResponseOfTestClassDetail>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildGetRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}
+public async post (request: Models.TestClassDetail):
+Promise<Models.NewItemResponse>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildPostRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}}
+export const TestClass = new TestClassPrototype();
+
+export class TestClassListPrototype    {
+url: string = 'api/TestClassList';
+public async get (request: Models.TestClassListRequest):
+Promise<Models.TestClassListResponse>
+{
+    var result;
+    try {
+    MessengerService.incrementHttpRequestCounter();
+    var response = await AjaxService.buildGetRequest(request, this.url)
+    if (response.isOk != undefined) {
+    var out = <Models.IResponse>response;
+    result = out;
+}
+else {
+AjaxService.logError(response, this.url, (< any > new Error()).stack);
+
+var errorResposne = {
+isOk: false,
+message: response.statusText || response.message
+};
+result = out;
+}
+}
+catch (e)
+{
+    AjaxService.logError(e, this.url, (< any > new Error()).stack);
+    
+    result = {
+    isOk: false,
+    message: e.statusText || e.message
+};
+}
+MessengerService.decrementHttpRequestCounter();
+MessengerService.showResponseMessage(result);
+return result;
+}}
+export const TestClassList = new TestClassListPrototype();
 
 export class UserPrototype    {
 url: string = 'api/User';

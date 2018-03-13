@@ -28,7 +28,7 @@ namespace Voodoo.CodeGeneration.Templates.Logic.OperationLevel.Extras
             if (HasContext)
             {
                 PageSpecificUsingStatements.Add(ContextNamespace);
-                PageSpecificUsingStatements.Add("System.Data.Entity");
+                PageSpecificUsingStatements.Add("Microsoft.EntityFrameworkCore");
             }
         }
         public override string GetFolder()
