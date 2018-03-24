@@ -12,6 +12,7 @@ class AjaxServicePrototype {
         window.open(urlWithParams);
     }
     private getAjaxRequest = (url: string, verb: string, token: string, request: any) => {
+
         try {
             var body = JSON.stringify(request);
             if (verb.toLowerCase() == 'get' || verb.toLowerCase() == 'delete') {
@@ -28,6 +29,7 @@ class AjaxServicePrototype {
                 )
                     .then((r) => { return r.json(); })
                     .catch((e) => {
+                
                         this.logError(e, url, new Error().stack);
                         return {
                             isOk: false,
@@ -64,8 +66,7 @@ class AjaxServicePrototype {
             }
         }
         catch (e) {
-            //never hit, why?
-            //debugger;
+            //never hit, why?            
             console.log('The try caught' + e.toString());
         }
 

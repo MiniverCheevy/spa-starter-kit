@@ -37,12 +37,13 @@ export class ButtonBar extends React.Component<ButtonBarProps, any> {
         const text = this.props.deletePrompt || 'Are you sure?';
         Services.MessengerService.confirm(text, action);
     }
-    public render() {
+
+    render() {
         const showBackButton = this.props.doNotShowBack == null || !this.props.doNotShowBack;
 
-        const buttons = (this.props.buttons || []).map((button) => {
-            return <PushButton theme="primary" key={button.key}
-                               text={button.text} icon={button.icon} click={button.action}
+        const buttons = (this.props.buttons || []).map((button) => {             
+            return <PushButton theme={button.theme} key={button.key}
+                text={button.text} icon={button.icon} click={button.action} enableIf={button.enableIf}
                    ></PushButton>;
         });
 

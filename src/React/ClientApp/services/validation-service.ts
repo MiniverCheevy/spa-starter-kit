@@ -22,7 +22,7 @@ export class ValidationServicePrototype
             const validatorResult = validator.isValid(request);
             
             if (!validatorResult.isValid) {
-                console.log(request.metadata.propertyName + '=>' + JSON.stringify(validatorResult));
+                //console.log(request.metadata.propertyName + '=>' + JSON.stringify(validatorResult));
                 return validatorResult;
             }
                 

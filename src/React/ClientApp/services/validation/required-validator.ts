@@ -11,6 +11,9 @@ export class RequiredValidator extends Validator {
             return;
         this.validation = this.request.metadata.required;
 
+        if (!this.validation.shouldValidate)
+            return;
+
         var message:string = this.validation.message || 'required';
         var invalidResponse =  { message: message, isValid: false };
 

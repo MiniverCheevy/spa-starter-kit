@@ -1,11 +1,17 @@
 ﻿import * as React from 'react';
 import { Models, Services } from './../../../root';
-//import { observer, observable, IObservableArray } from './../../../mx';
 import { Sorter } from './../sorter';
 import { Pager } from './../pager/pager';
 import { ButtonSpec } from './../../buttons/button-spec';
 import { PushButton } from './../../buttons/push-button';
+import { InputCheck } from './../../forms/input-check'
+import { Form } from './../../forms/form';
 
+export class SelectionCheckBox {
+    propertyName: string;
+    checkChanged: (model: any) => void;
+    enableIf?: (model: any) => boolean;
+}
 
 export class GridProps {
     doNotPageOrSort?: boolean = false;
@@ -14,6 +20,7 @@ export class GridProps {
     buttons?: ButtonSpec[];
     metadata;
     data: any[];
+    selectionCheckBox?: SelectionCheckBox;
 }
 
 export class Grid extends React.Component<GridProps, any>
@@ -34,9 +41,14 @@ export class Grid extends React.Component<GridProps, any>
         var data = props.data || [];
         this.setState({ data: data });
     }
-    executeAction(action, row) {
+    executeAction=(action, row)=> {
         if (action && typeof action == "function")
             action(row);
+    }
+
+    handleCheckChanged = (key, value, row) => {
+        row[key] = value;
+        this.props.selectionCheckBox.checkChanged(row);
     }
     render() {
         //render is bound to a different instance of this than the one that the this instance that typescript uses
@@ -55,6 +67,7 @@ export class Grid extends React.Component<GridProps, any>
                 <thead className="mdc-typography--body2">
                     <tr>
                         {this.props.buttons && this.props.buttons.length > 0 && <th ></th>}
+                            {this.props.selectionCheckBox && <th></th>}
                         {headings}
                     </tr >
                 </thead >
@@ -82,7 +95,7 @@ export class Grid extends React.Component<GridProps, any>
             </th>;
         });
     }
-    
+
     getRows = () => {
         const buttons = this.props.buttons;
         const hasButtons = buttons && buttons.length > 0;
@@ -102,15 +115,32 @@ export class Grid extends React.Component<GridProps, any>
                     return null;
             });
             }
+            var checkBoxColumn = null;
+            if (this.props.selectionCheckBox) {
+                const key = 'checkboxColumn' + index;
+                const name = this.props.selectionCheckBox.propertyName;                
+                const form = new Form(this.props.metadata);
+                let readOnly = false;
+
+                if (this.props.selectionCheckBox.enableIf) {
+                    readOnly = !this.props.selectionCheckBox.enableIf(row);                  
+                } 
+                checkBoxColumn = <td key={key}>
+                    <InputCheck model={row} name={name} form={form}
+                        noLabel={true} readOnly={readOnly}
+                        change={(key, value) => { this.handleCheckChanged(key, value,row) } } 
+                    />
+                    </td >}
             const cells = this.columns.map((column, index, source) => {
                 var className = "format-" + column.displayFormat;
                 var value = Services.FormatService.formatForDisplay(row[column.jsName], column);
                 return <td key={column.jsName} className={className}>{value}</td>;
             });
             return <tr key={index}>
-                    {hasButtons && <td className="button-column">{rowButtons}</td>}
-                    {cells}
-                   </tr>;
+                {hasButtons && <td className="button-column">{rowButtons}</td>}
+                {this.props.selectionCheckBox && checkBoxColumn}
+                {cells}
+            </tr>;
         });
     }
 

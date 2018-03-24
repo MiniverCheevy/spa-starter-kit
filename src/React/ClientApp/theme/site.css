@@ -1,3 +1,25 @@
+.btn-cell {
+    width: 60px;
+}
+
+.text-cell {
+    min-width: 280px;
+    text-align: center;
+}
+
+th {
+    text-align: center !important;
+}
+
+.center {
+    text-align: center !important;
+}
+
+.header-search {
+    color: white;
+    font-size: 2em !important;
+    margin-top: 5px;
+}
 .fd-file {
     opacity: 0;
     font-size: 118px;
@@ -205,10 +227,11 @@ navbar-collapse .main-nav .navbar a {
     bottom: 0px;
     height: 40px;
     position: fixed;
-    background-color: whitesmoke;
+    background-color: white;
     margin-right: 9%;
     text-align: center;
     width: 80%;
+    z-index: 9999;
 }
 
 .main-panel {
@@ -385,7 +408,15 @@ a.mdc-toolbar__title {
 }
 
 .full-width {
-    width: 100%;
+    width: 100% !important;
+}
+.full-height {
+    height: 100% !important;
+    min-height: 400px;
+}
+
+.double-width {
+    width: 532px !important;
 }
 
 .relative-position {
@@ -429,7 +460,7 @@ plus-minus-button i {
 }
 
 .block {
-    display: block;
+    display: block !important;
 }
 
 
@@ -595,6 +626,13 @@ input {
 .scrolling-panel-small {
     height: 180px;
     overflow: scroll;
-
 }
-.hidden { display: none;}
+
+.hidden {
+    display: none;
+}
+
+td .input-field-container {
+    margin: 0px 0px 0px 0px !important;
+    padding: 0px 0px 0px 0px !important;
+}

@@ -30,7 +30,7 @@ export class UserList extends React.Component<any,any>
     }
     doRender = () => {        
         var buttons: Components.ButtonSpec[] = [
-            new Components.ButtonSpec( 'Edit', 'pencil', this.edit)
+            new Components.ButtonSpec({ text: 'Edit', icon: 'pencil', action: this.edit })
         ];
         return (
             <Components.Card title="Users">

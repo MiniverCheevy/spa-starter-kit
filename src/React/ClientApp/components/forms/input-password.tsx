@@ -5,7 +5,7 @@ import { InputComponent } from './input-component';
 import { InputHelper } from './input-helper';
 import { InputShell } from './input-shell';
 
-export class InputText extends InputComponent {
+export class InputPassword extends InputComponent {
     withFormat: boolean = true;
     constructor(props) {
         super(props);
@@ -24,23 +24,24 @@ export class InputText extends InputComponent {
     }
 
     doRender = () => {
-        
+
         var config = this.helper.getState();
-        var value = this.withFormat ? config.formattedValue : config.rawValue;
+        var value = config.rawValue;
         if (value == null)
             value = '';
+
         return <InputShell {...this.state}
-            label={config.label}
-            isValid={config.isValid}
-            validationMessage={config.validationMessage} >            
-            <input type="text" name={this.state.name}
-                readOnly={config.isReadOnly}
-                autoFocus={this.state.autofocus}
-                value={value}
-                onChange={this.internalChangeHandler}
-                onBlur={this.internalBlurHandler}
-                className="mdc-textfield__input input-field" 
-		key={this.state.key} />
-        </InputShell>;
+                   label={config.label}
+                   isValid={config.isValid}
+                   validationMessage={config.validationMessage} >
+                   <input type="password" name={this.state.name}
+                          readOnly={config.isReadOnly}
+                          autoFocus={this.state.autofocus}
+                          value={value}
+                          onChange={this.internalChangeHandler}
+                          onBlur={this.internalBlurHandler}
+                          className=" mdc-textfield__input input-field form-control"
+                          key={this.state.key} />
+               </InputShell>;
     }
 }

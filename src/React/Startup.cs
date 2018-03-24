@@ -35,8 +35,7 @@ namespace Web
             IOC.Settings = SettingsFactory.GetSettings(builder.Build());
             IOC.Settings.Environment = env.EnvironmentName;
 
-            updateDatabaseToLatestVersion(env);
-            new ConfigurationBuilder().SetBasePath(string.Empty).AddJsonFile(string.Empty);
+            updateDatabaseToLatestVersion(env);            
         }
         public IConfigurationRoot Configuration { get; set; }
 

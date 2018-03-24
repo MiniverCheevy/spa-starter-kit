@@ -8,7 +8,7 @@ class FormatServicePrototype {
         if (metadata && metadata.displayFormat)
             format = metadata.displayFormat;
         //TODO: add do not format to UI attribute
-        if (metadata.propertyName.endsWith('ID') || metadata.propertyName.endsWith('Id'))
+        if (metadata && metadata.propertyName && ( metadata.propertyName.endsWith('ID') || metadata.propertyName.endsWith('Id')))
             return value;
         return this.formatValue(value, format);
     }
@@ -18,7 +18,7 @@ class FormatServicePrototype {
         if (metadata && metadata.displayFormat)
             format = metadata.displayFormat;
         //TODO: add do not format to UI attribute
-        if (metadata.propertyName.endsWith('ID') || metadata.propertyName.endsWith('Id'))
+        if (metadata && metadata.propertyName && (metadata.propertyName.endsWith('ID') || metadata.propertyName.endsWith('Id')))
             return value;
         return this.formatValue(value, format);
     }
@@ -50,12 +50,10 @@ class FormatServicePrototype {
                     }
                     var year = date.getFullYear();
                     if (year < 1900) {
-                        //console.log('year too low');
                         return '';
                     }
 
-                    var formatted = sugar.Date.format(date, '%m/%d/%Y');
-                    //console.log('returning formatted date => ' + formatted);                    
+                    var formatted = sugar.Date.format(date, '%m/%d/%Y');              
                     return formatted;
                 case "time":               
                     var time = sugar.Date.create(value, { fromUTC: true });

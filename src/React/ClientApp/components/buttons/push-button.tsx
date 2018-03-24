@@ -2,12 +2,14 @@
 
 export class PushButtonProps
 {
-    theme?: string;
+    theme?: 'primary' | 'icon' | 'grid-icon' | 'info' | 'danger' | 'success' | 'warning';
     click: any;
     text?='';
     icon?='';
-    type? = "button";
+    type? = 'button';
     compact?: boolean;
+    additionalCss?: string;
+    enableIf?: () => boolean;
 }
 export class PushButton extends React.Component<PushButtonProps, any> {
     handleTheme = () => {
@@ -28,8 +30,8 @@ export class PushButton extends React.Component<PushButtonProps, any> {
             case "danger":
                 buttonClass = normal + ' danger-button';
                 break;
-            case "sucess":
-                buttonClass = normal + ' sucess-button';
+            case "success":
+                buttonClass = normal + ' success-button';
                 break;
             case "warning":
                 buttonClass = normal + ' warning-button';
@@ -60,6 +62,18 @@ export class PushButton extends React.Component<PushButtonProps, any> {
         this.handleTheme();
         if (text != '')
             text = ' ' + text + ' ';
+        if (this.props.additionalCss)
+            buttonClass = buttonClass + ' ' + this.props.additionalCss;
+        let enabled = true;
+        var click = this.props.click;
+
+        if (this.props.enableIf)
+            enabled = this.props.enableIf();
+        if (!enabled) {
+            buttonClass = buttonClass + " disabled";
+            click = () => {};
+        }
+            
         return  <a 
                 className={buttonClass}
                 title={title}

@@ -32,6 +32,7 @@ export class InputDropdown extends InputComponent {
     }
 
     doRender = () => {
+        
         var config = this.helper.getState();
         var value = config.rawValue;
         var items = this.props.items || [];

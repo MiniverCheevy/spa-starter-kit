@@ -16,9 +16,9 @@ export class InputComponentModel {
     noLabel?: boolean = false;
     autofocus?= false;
     fullWidth?= false;
+    fullHeight?= false;
 
     lines?= 1;
-
     items?: Models.ListItem[] = [];
 
     model?: any;

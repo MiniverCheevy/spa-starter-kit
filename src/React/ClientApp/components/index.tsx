@@ -12,6 +12,7 @@ export { RowStateFactory } from './data-table/grid/rowstate-factory'
 export { Card } from './card';
 export { Form } from './forms/form';
 export { InputText } from './forms/input-text';
+export { InputPassword } from './forms/input-password';
 export { InputTextArea } from './forms/input-textarea';
 export { InputDropdown } from './forms/input-dropdown';
 export { InputSpan } from './forms/input-span';

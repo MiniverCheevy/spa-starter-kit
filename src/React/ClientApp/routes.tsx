@@ -10,6 +10,28 @@ import {
     ScratchMemberList, ScratchMemberDetailContainer,
     ScratchUnboundControls
 } from './scenes/scratch';
+//private routes https://tylermcginnis.com/react-router-protected-routes-authentication/
+//https://stackoverflow.com/questions/42123261/programmatically-navigate-using-react-router-v4
+//const PrivateRoute = ({ component: Component, ...rest }) => (
+//    <Route {...rest} render={(props) => (
+//        Services.CurrentUserService.user.isAuthenticated 
+//            ? <Component {...rest} {...props} />
+//            : <Redirect to={{
+//                pathname: '/login',
+//                state: { from: props.location }
+//            }} />
+//    )}/>
+//);
+//const AdminRoute = ({ component: Component, ...rest }) => (
+//    <Route {...rest} render={(props) => (
+//        Services.CurrentUserService.user.isAdmin 
+//            ? <Component {...rest} {...props}/>
+//            : <Redirect to={{
+//                pathname: '/login',
+//                state: { from: props.location }
+//            }} />
+//    )} />
+//);
 export class Routes extends React.Component<any,any>
 {
     render() {

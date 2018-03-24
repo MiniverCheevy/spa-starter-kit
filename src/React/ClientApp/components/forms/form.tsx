@@ -9,7 +9,7 @@ export class Form {
     childForms: Form[] = [];
     properties: Models.UIMetadata[] = [];
     isDirty = false;
-    callback: (form: Form) => void
+    callback: (form: Form) => void;
 
     constructor(public metadata) {
         this.properties = Services.FormsService.getProperties(this.metadata);

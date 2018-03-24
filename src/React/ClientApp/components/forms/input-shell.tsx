@@ -29,6 +29,8 @@ export class InputShell extends React.Component<InputComponentProps, any> {
         var classes = "mdc-textfield input-field-container mdc-form-field mdc-form-field";
         if (this.state.fullWidth)
             classes = classes + " full-width";
+        if (this.state.fullWidth)
+            classes = classes + " full-height";
         var labelClasses = " input-label";
         if (this.state.noLabel != null && this.state.noLabel)
             labelClasses = labelClasses + " no-label";

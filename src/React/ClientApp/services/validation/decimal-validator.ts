@@ -11,8 +11,7 @@ export class DecimalValidator extends Validator {
             return;
         this.validation = this.request.metadata.decimal;
 
-        var message = this.validation.message || 'must be a decimal number';
-
+        var message:string = this.validation.message || 'must be a decimal number';
         var invalidResponse = { message: message, isValid: false };
         if (this.value == null || this.value == undefined) {
             return;//This is not a required check

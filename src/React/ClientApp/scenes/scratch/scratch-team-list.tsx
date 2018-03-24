@@ -28,7 +28,7 @@ export class ScratchTeamList extends React.Component<any,any>
     }
     render() {
         var buttons: Components.ButtonSpec[] = [
-            new Components.ButtonSpec('Edit', 'pencil', this.edit)
+            new Components.ButtonSpec({ text: 'Edit', icon: 'pencil', action: this.edit })
         ];
 
         return (

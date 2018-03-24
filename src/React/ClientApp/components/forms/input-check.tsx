@@ -31,6 +31,7 @@ export class InputCheck extends InputComponent {
                           checked={value == true}
                           onChange={this.internalChangeHandler}
                           onBlur={this.internalBlurHandler}
+                disabled={config.isReadOnly}
                           className="mdc-textfield__input input-field" />
                </InputShell>;
     }
